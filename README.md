@@ -19,3 +19,17 @@ Write your SQL for the singular change(s) (not the history of work/rework/undo/r
 Push change.  
 
 
+REPO structure   
+Master- what is on live server  
+Development - what is on dev server  
+Your branch - what you do  
+
+Submit changes via PULL REQUEST from Your branch to Development    
+DB Patches to stateful DB's (DB's that persist) patch based on differences to their source branch  
+
+The Development DB will 'monitor' its state based on the Development Branch  
+The live DB will patch based on Pull Requests that are merged from Development Branch to Master.  ONLY  
+
+YOUR DB should be dropped and re-initialized by the most recent Development SQL commit.
+
+
