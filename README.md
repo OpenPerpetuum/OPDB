@@ -1,11 +1,21 @@
 # OPDB
 
-##DB VERSIONCONTROL PROCEDURE
+## DB VERSION CONTROL PROCEDURE
 
-**Follow CONTRIBUTING guidelines for git**  
-Additionally:
-ALL SQL OPERATES ON PerpSQL as from the installer
-SQL statements then are version controlled in the OPDB repo
+**Follow [CONTRIBUTING](https://github.com/OpenPerpetuum/OP-Project/blob/master/CONTRIBUTING.md) guidelines for git**  
+OPP Team members:  
+Commit and push changes to **YOUR-BRANCH-ONLY**
+When you are ready, submit a Pull Request to **DEVELOPMENT ONLY**
+Your changes MUST BE REVIEWED before they can be merged to Development
+
+OPP DB Admins:  
+You are in charge of ensuring the states of the Dev and Live Server DB, and their coordination with the Server Repo and the changes as You accept them on Development and Master respectively.  
+Pull Requests should be submitted to Master from DEVELOPMENT ONLY.  
+
+
+How this Repo operates:
+ALL SQL OPERATES ON the PerpSQL state from a FRESH INSTALL  
+SQL statements then are version controlled in the OPDB repo  
 
 ** To commit a change w/o key conflicts**  
 Pull and catch up to most recent SQL state, run SQL, then make changes freely locally.    
@@ -19,12 +29,6 @@ Master- what is on live server
 Development - what is on dev server  
 Your branch - what you do  
 
-Submit changes via PULL REQUEST from Your branch to Development    
-DB Patches to stateful DB's (DB's that persist) patch based on differences to their source branch  
-
-The Development DB will 'monitor' its state based on the Development Branch  
-The live DB will patch based on Pull Requests that are merged from Development Branch to Master.  ONLY  
-
-YOUR DB should be dropped and re-initialized by the most recent Development SQL commit.
+YOUR DB should be dropped and re-initialized with the most recent Development commit.
 
 
