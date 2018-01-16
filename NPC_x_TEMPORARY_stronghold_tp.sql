@@ -89,23 +89,6 @@ UPDATE [dbo].[zoneentities]
  WHERE ID=2417
 GO
 
-INSERT INTO [dbo].[npcpresence] ([name],[topx],[topy],[bottomx],[bottomy],[note],[spawnid],[enabled],[roaming],[roamingrespawnseconds]
-                ,[presencetype],[maxrandomflock],[randomcenterx],[randomcentery],[randomradius],[dynamiclifetime],[isbodypull],[isrespawnallowed],[safebodypull])
-                VALUES ('test_npc_stronghold1',0,0,2000,2000,'main container for flox',21,1,0,0,0,0,0
-			    ,0,0,0,1,1,0);
 
-DECLARE @presenceID int;
-SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'test_npc_stronghold1' ORDER BY id DESC);
-UPDATE [dbo].[npcpresence]
-                SET [name] = 'test_npc_stronghold1',[topx] = 0,[topy] = 0,[bottomx] = 2000,[bottomy] = 2000,[note] = 'main container for flox',[spawnid] = 21,[enabled] = 1,[roaming] = 0
-                ,[roamingrespawnseconds] = 0,[presencetype] = 0,[maxrandomflock] = 0,[randomcenterx] = 0,[randomcentery] = 0
-                ,[randomradius] = 0,[dynamiclifetime] = 0 ,[isbodypull] = 1,[isrespawnallowed] = 1,[safebodypull] = 0
-                WHERE id=@presenceID;
-DECLARE @flockID int;
-DECLARE @definitionID int;
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_kain_guard' ORDER BY definition DESC);
-INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
-                ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('test_kain_bot', @presenceID, 1, @definitionID, 994, 1013, 0, 5, 60, 0,
-                 10, 'test1', 1, 1, 1, 1);
+
 
