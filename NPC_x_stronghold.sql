@@ -18,7 +18,7 @@ INSERT INTO [dbo].[npcpresence] ([name],[topx],[topy],[bottomx],[bottomy],[note]
 
 SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'stronghold1_presence2' ORDER BY id DESC);
 UPDATE [dbo].[npcpresence]
-                SET [name] = 'stronghold1_presence2',[topx] = 990,[topy] = 1010,[bottomx] = 995,[bottomy] = 1015,[note] = '',[spawnid] = 16,[enabled] = 1,[roaming] = 0
+                SET [name] = 'stronghold1_presence2',[topx] = 990,[topy] = 1010,[bottomx] = 995,[bottomy] = 1015,[note] = '',[spawnid] = 21,[enabled] = 1,[roaming] = 0
                 ,[roamingrespawnseconds] = 0,[presencetype] = 0,[maxrandomflock] = '',[randomcenterx] = '',[randomcentery] = ''
                 ,[randomradius] = '',[dynamiclifetime] = '' ,[isbodypull] = 0,[isrespawnallowed] = 1,[safebodypull] = 1
                 WHERE id=@presenceID;
@@ -111,6 +111,36 @@ INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
                 ('troiar_with_protector', @presenceID, 2, @definitionID, 1023, 1099, 0, 5, 60, 0,
                  10, 'troiar_with_protector', 1, 1, 1, 1);
+
+------------------
+INSERT INTO [dbo].[npcpresence] ([name],[topx],[topy],[bottomx],[bottomy],[note],[spawnid],[enabled],[roaming],[roamingrespawnseconds]
+                ,[presencetype],[maxrandomflock],[randomcenterx],[randomcentery],[randomradius],[dynamiclifetime],[isbodypull],[isrespawnallowed],[safebodypull])
+                VALUES ('stronghold1_trashgroup',7,7,2038,2038,'',21,1,0,0,0,'',''
+			    ,'','','',1,1,1);
+
+SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'stronghold1_trashgroup' ORDER BY id DESC);
+UPDATE [dbo].[npcpresence]
+                SET [name] = 'stronghold1_trashgroup',[topx] = 7,[topy] = 7,[bottomx] = 2038,[bottomy] = 2038,[note] = '',[spawnid] = 21,[enabled] = 1,[roaming] = 0
+                ,[roamingrespawnseconds] = 0,[presencetype] = 0,[maxrandomflock] = '',[randomcenterx] = '',[randomcentery] = ''
+                ,[randomradius] = '',[dynamiclifetime] = '' ,[isbodypull] = 1,[isrespawnallowed] = 1,[safebodypull] = 1
+                WHERE id=@presenceID;
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_intakt_ewjammer_rank5' ORDER BY definition DESC);
+INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
+                ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
+                ('intakt_stronghold_trash', @presenceID, 1, @definitionID, 1046, 979, 0, 5, 900, 0,
+                 50, 'intakt_stronghold_trash', 0, 1, 1, 2);
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_cameleon_ewjammer_rank5' ORDER BY definition DESC);
+INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
+                ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
+                ('cam_stronghold_trash', @presenceID, 1, @definitionID, 970, 1051, 0, 5, 900, 0,
+                 50, 'cam_stronghold_trash', 0, 1, 1, 2);
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_troiar_ewjammer_rank5' ORDER BY definition DESC);
+INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
+                ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
+                ('troiar_stronghold_trash', @presenceID, 1, @definitionID, 926, 988, 0, 5, 900, 0,
+                 50, 'trioar_stronghold_trash', 0, 1, 1, 2);
+
 
 
 -----------------LOOT-------------
