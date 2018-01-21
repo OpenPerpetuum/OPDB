@@ -18,11 +18,7 @@ INSERT INTO [dbo].[npcpresence] ([name],[topx],[topy],[bottomx],[bottomy],[note]
 
 SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'stronghold1_presence2' ORDER BY id DESC);
 UPDATE [dbo].[npcpresence]
-<<<<<<< HEAD
                 SET [name] = 'stronghold1_presence2',[topx] = 990,[topy] = 1010,[bottomx] = 995,[bottomy] = 1015,[note] = '',[spawnid] = 21,[enabled] = 1,[roaming] = 0
-=======
-                SET [name] = 'stronghold1_presence2',[topx] = 990,[topy] = 1010,[bottomx] = 995,[bottomy] = 1015,[note] = '',[spawnid] = 16,[enabled] = 1,[roaming] = 0
->>>>>>> development
                 ,[roamingrespawnseconds] = 0,[presencetype] = 0,[maxrandomflock] = '',[randomcenterx] = '',[randomcentery] = ''
                 ,[randomradius] = '',[dynamiclifetime] = '' ,[isbodypull] = 0,[isrespawnallowed] = 1,[safebodypull] = 1
                 WHERE id=@presenceID;
@@ -116,7 +112,6 @@ INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],
                 ('troiar_with_protector', @presenceID, 2, @definitionID, 1023, 1099, 0, 5, 60, 0,
                  10, 'troiar_with_protector', 1, 1, 1, 1);
 
-<<<<<<< HEAD
 ------------------
 INSERT INTO [dbo].[npcpresence] ([name],[topx],[topy],[bottomx],[bottomy],[note],[spawnid],[enabled],[roaming],[roamingrespawnseconds]
                 ,[presencetype],[maxrandomflock],[randomcenterx],[randomcentery],[randomradius],[dynamiclifetime],[isbodypull],[isrespawnallowed],[safebodypull])
@@ -147,8 +142,6 @@ INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],
                  50, 'trioar_stronghold_trash', 0, 1, 1, 2);
 
 
-=======
->>>>>>> development
 
 -----------------LOOT-------------
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_kain_guard' ORDER BY definition DESC);

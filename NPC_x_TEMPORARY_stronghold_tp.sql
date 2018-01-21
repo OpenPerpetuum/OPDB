@@ -2,35 +2,36 @@ USE [perpetuumsa]
 GO
 
 --TEMPORARY PORT to STRONGHOLD
-UPDATE [dbo].[zones]
-   SET [id] = 16
-      ,[x] = 2000
-      ,[y] = -4000
-      ,[name] = 'zone_pvp_arena'
-      ,[description] = 'zone_pvp_arena'
-      ,[note] = 'pvp arena'
-      ,[fertility] = 20
-      ,[zoneplugin] = 'zone_16'
-      ,[zoneip] = '109.236.88.106'
-      ,[zoneport] = 18816
-      ,[isinstance] = 0
-      ,[enabled] = 1
-      ,[spawnid] = 21
-      ,[plantruleset] = 0
-      ,[protected] = 0
-      ,[raceid] = 1
-      ,[width] = 2048
-      ,[height] = 2048
-      ,[terraformable] = 0
-      ,[zonetype] = 1
-      ,[sparkcost] = 3
-      ,[maxdockingbase] = 0
-      ,[sleeping] = 0
-      ,[plantaltitudescale] = 1
-      ,[host] = 'genxyHost-01'
-      ,[active] = 1
- WHERE ID=16
-GO
+--in combined file
+--UPDATE [dbo].[zones]
+--   SET [id] = 16
+--      ,[x] = 2000
+--      ,[y] = -4000
+--      ,[name] = 'zone_pvp_arena'
+--      ,[description] = 'zone_pvp_arena'
+--      ,[note] = 'pvp arena'
+--      ,[fertility] = 20
+--      ,[zoneplugin] = 'zone_16'
+--      ,[zoneip] = '109.236.88.106'
+--      ,[zoneport] = 18816
+--      ,[isinstance] = 0
+--      ,[enabled] = 1
+--      ,[spawnid] = 21
+--      ,[plantruleset] = 0
+--      ,[protected] = 0
+--      ,[raceid] = 1
+--      ,[width] = 2048
+--      ,[height] = 2048
+--      ,[terraformable] = 0
+--      ,[zonetype] = 1
+--      ,[sparkcost] = 3
+--      ,[maxdockingbase] = 0
+--      ,[sleeping] = 0
+--      ,[plantaltitudescale] = 1
+--      ,[host] = 'genxyHost-01'
+--      ,[active] = 1
+-- WHERE ID=16
+--GO
 
 UPDATE [dbo].[teleportdescriptions]
    SET [description] = 'tp_zone_39_3_to_teleport_column_tm_maddis_Z'
