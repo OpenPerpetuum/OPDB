@@ -11,6 +11,8 @@ REQUIRES FILES from /Server directory to be in the server folder
 
 
 -- Change extensions granted for choosing syndicate out of tutorial island
+PRINT '-- Change extensions granted for choosing syndicate out of tutorial island'
+
 UPDATE [dbo].[cw_race_extension]
    SET [raceid] = 1
       ,[extensionid] = 355
@@ -39,6 +41,8 @@ UPDATE [dbo].[cw_race_extension]
 GO
 
 -- Enable steam sparks
+PRINT '-- Enable steam sparks'
+
 UPDATE [dbo].[sparks]
    SET [sparkname] = 'spark_steam_a'
       ,[unlockprice] = NULL
@@ -78,6 +82,8 @@ UPDATE [dbo].[sparks]
 GO
 
 --Add sterm to hersh
+PRINT '--Add sterm to hersh'
+
 INSERT INTO [dbo].[mineralconfigs]
            ([zoneid]
            ,[materialtype]
@@ -94,6 +100,8 @@ INSERT INTO [dbo].[mineralconfigs]
            ,.5)
 
 --update immenitium on hersh
+PRINT'--update immenitium on hersh'
+
 UPDATE [dbo].[mineralconfigs]
    SET [zoneid] = 8
       ,[materialtype] = 4
@@ -104,6 +112,8 @@ UPDATE [dbo].[mineralconfigs]
  WHERE zoneid = 8 AND materialtype = 4
 
  --Only Liquizit, HDT, Titan on NV
+ PRINT '--Only Liquizit, HDT, Titan on NV'
+
 DELETE FROM [dbo].[mineralconfigs]
 	WHERE zoneid = 0 AND materialtype = 12
 
@@ -112,7 +122,9 @@ DELETE FROM [dbo].[mineralconfigs]
 
 GO
 
---TODO comments and no ids
+--Modify mineral amounts
+PRINT '--Modify mineral amounts'
+
 UPDATE [dbo].[mineralconfigs]
    SET [zoneid] = 0
       ,[materialtype] = 1
@@ -444,6 +456,8 @@ UPDATE [dbo].[mineralconfigs]
 GO
 
 --Move isloands to new locations
+PRINT '--Move isloands to new locations'
+
 UPDATE zones
 SET
 	active = 0
@@ -516,7 +530,9 @@ WHERE
 
 GO
 
---activate omega zone
+--activate stronghold zone
+PRINT '--activate stronghold zone'
+
 UPDATE [dbo].[zones]
    SET [id] = 16
       ,[x] = 3000
@@ -548,6 +564,8 @@ UPDATE [dbo].[zones]
 GO
 
 -- change training exits
+PRINT '-- change training exits'
+
 UPDATE [dbo].[zoneentities]
    SET [zoneID] = 45
       ,[eid] = 2461
@@ -582,6 +600,8 @@ UPDATE [dbo].[zoneentities]
 GO
 
 --Add Prismo to New Virginia and Hershfield
+PRINT '--Add Prismo to New Virginia and Hershfield'
+
 INSERT INTO [dbo].[plantrules]
            ([plantrule]
            ,[rulesetid]
@@ -593,6 +613,8 @@ INSERT INTO [dbo].[plantrules]
 GO
 
 --Add Wild Noralgis to Betas
+PRINT '--Add Wild Noralgis to Betas'
+
 INSERT INTO [dbo].[plantrules]
            ([plantrule]
            ,[rulesetid]
@@ -622,6 +644,8 @@ INSERT INTO [dbo].[plantrules]
 GO
 
 --Teleport changes
+PRINT '--Teleport changes'
+
 SET IDENTITY_INSERT [dbo].[teleportdescriptions] ON
 GO 
 
@@ -705,6 +729,8 @@ WHERE
 GO
 
 -- Training rewards updates
+PRINT '-- Training rewards updates'
+
 UPDATE [dbo].[trainingrewards]
    SET [level] = 1
       ,[definition] = 259
@@ -769,6 +795,8 @@ UPDATE [dbo].[trainingrewards]
  GO
 
  --Syndicate extensions complexity reduction
+ PRINT '--Syndicate extensions complexity reduction'
+
  UPDATE [dbo].[extensions]
    SET [extensionid] = 361
       ,[extensionname] = 'ext_syndicate_industry_specialist'
@@ -811,6 +839,9 @@ UPDATE [dbo].[extensions]
 
 
  ---------------------------------------------------------------------------------------------------------
+ --Major NPC additions
+ PRINT '--Major NPC additions'
+
 DECLARE @presenceID int;
 DECLARE @flockID int;
 DECLARE @definitionID int;
@@ -820,6 +851,8 @@ DECLARE @npclootID int;
 
 
 --ADD NPC's
+PRINT '--ADD NPCs'
+
 INSERT INTO robottemplates ([name], [description], [note]) VALUES ('vektor_swab_lead', '#robot=i1580#head=i1581#chassis=i1582#leg=i1583#container=i147#headModules=[|m0=[|definition=i2b|slot=i1]|m1=[|definition=i33|slot=i2]|m2=[|definition=i390|slot=i3]]#chassisModules=[|m0=[|definition=i3c|slot=i1|ammoDefinition=i103|ammoQuantity=ic8]|m1=[|definition=i3c|slot=i2|ammoDefinition=i103|ammoQuantity=ic8]|m2=[|definition=i3c|slot=i3|ammoDefinition=i103|ammoQuantity=ic8]|m3=[|definition=i3c|slot=i4|ammoDefinition=i103|ammoQuantity=ic8]]#legModules=[|m0=[|definition=ie|slot=i1]|m1=[|definition=i12|slot=i2]]', 'Vektor Swab Lead')
 
 SET @robottemplateid = (SELECT TOP 1 id FROM robottemplates WHERE [name] = 'vektor_swab_lead' ORDER BY id DESC)
@@ -1183,7 +1216,7 @@ INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@defi
 INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, 506, 0.1);
 
 ---------------------------
-INSERT INTO robottemplates ([name], [description], [note]) VALUES ('legatus_mastergoat', '#robot=i1594#head=i1595#chassis=i1596#leg=i1597#container=i14c#headModules=[|m0=[|definition=i2b|slot=i1]|m1=[|definition=i32|slot=i2]|m2=[|definition=i33|slot=i3]|m3=[|definition=i34|slot=i4]]#chassisModules=[|m0=[|definition=i3d|slot=i1|ammoDefinition=i107|ammoQuantity=ic8]|m1=[|definition=i3d|slot=i2|ammoDefinition=i107|ammoQuantity=ic8]|m2=[|definition=i3d|slot=i3|ammoDefinition=i107|ammoQuantity=ic8]|m3=[|definition=i3d|slot=i4|ammoDefinition=i107|ammoQuantity=ic8]|m4=[|definition=i3d|slot=i5|ammoDefinition=i107|ammoQuantity=ic8]|m5=[|definition=i3d|slot=i6|ammoDefinition=i107|ammoQuantity=ic8]|m6=[|definition=i3d|slot=i7|ammoDefinition=i107|ammoQuantity=ic8]]#legModules=[|m0=[|definition=i10|slot=i1]|m1=[|definition=i13|slot=i2]|m2=[|definition=i19|slot=i3]|m3=[|definition=i10|slot=i4]]', 'THE GOAT RRRAAAAWWWRRRR')
+INSERT INTO robottemplates ([name], [description], [note]) VALUES ('legatus_mastergoat', '#robot=i1594#head=i1595#chassis=i1596#leg=i1597#container=i14c#headModules=[|m0=[|definition=i2b|slot=i1]|m1=[|definition=i32|slot=i2]|m2=[|definition=i33|slot=i3]|m3=[|definition=i34|slot=i4]]#chassisModules=[|m0=[|definition=i3d|slot=i1|ammoDefinition=i107|ammoQuantity=ic8]|m1=[|definition=i3d|slot=i2|ammoDefinition=i107|ammoQuantity=ic8]|m2=[|definition=i3d|slot=i3|ammoDefinition=i107|ammoQuantity=ic8]|m3=[|definition=i3d|slot=i4|ammoDefinition=i107|ammoQuantity=ic8]|m4=[|definition=i3d|slot=i5|ammoDefinition=i107|ammoQuantity=ic8]|m5=[|definition=i3d|slot=i6|ammoDefinition=i107|ammoQuantity=ic8]]#legModules=[|m0=[|definition=i10|slot=i1]|m1=[|definition=i13|slot=i2]|m2=[|definition=i19|slot=i3]|m3=[|definition=i10|slot=i4]]', 'THE GOAT RRRAAAAWWWRRRR')
 
 SET @robottemplateid = (SELECT TOP 1 id FROM robottemplates WHERE [name] = 'legatus_mastergoat' ORDER BY id DESC)
 
@@ -1284,6 +1317,8 @@ DECLARE @npclootID int;
 
 
 --Add tasty loots
+PRINT '--Add tasty loots'
+
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_vektor_swab_rank1' ORDER BY definition DESC);
 
 SET @lootdefinitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_ammo_small_lasercrystal_d' ORDER BY definition DESC);
@@ -2030,12 +2065,16 @@ DECLARE @npclootID int;
 
 
 -- Disable existing New Virgina spawns
+PRINT '-- Disable existing New Virgina spawns'
+
  UPDATE npcpresence
   SET [enabled] = 0 
   WHERE spawnid = 1
 
   
 --ADD NPC's to Spawns
+PRINT '--ADD NPCs to Spawns'
+
 INSERT INTO [dbo].[npcpresence] ([name],[topx],[topy],[bottomx],[bottomy],[note],[spawnid],[enabled],[roaming],[roamingrespawnseconds]
                 ,[presencetype],[maxrandomflock],[randomcenterx],[randomcentery],[randomradius],[dynamiclifetime],[isbodypull],[isrespawnallowed],[safebodypull])
                 VALUES ('tma_fort_donnerth',7,7,2040,2040,'tm npc set',1,0,0,0,0,'',''
@@ -2811,11 +2850,15 @@ DECLARE @npclootID int;
 
 
 -- Disable existing Hershfield spawns
+PRINT '-- Disable existing Hershfield spawns'
+
  UPDATE npcpresence
   SET [enabled] = 0 
   WHERE spawnid = 13
 
 -- Add spawns
+PRINT '-- Add spawns'
+
 INSERT INTO [dbo].[npcpresence] ([name],[topx],[topy],[bottomx],[bottomy],[note],[spawnid],[enabled],[roaming],[roamingrespawnseconds]
                 ,[presencetype],[maxrandomflock],[randomcenterx],[randomcentery],[randomradius],[dynamiclifetime],[isbodypull],[isrespawnallowed],[safebodypull])
                 VALUES ('hershfield_syndicate_npcs',959,283,1159,483,'',13,1,0,0,3,3,1059
@@ -3417,6 +3460,8 @@ DECLARE @npclootID int;
 
 
 --Stronghold NPC's
+PRINT '--Stronghold NPCs'
+
 INSERT INTO [dbo].[npcpresence] ([name],[topx],[topy],[bottomx],[bottomy],[note],[spawnid],[enabled],[roaming],[roamingrespawnseconds]
                 ,[presencetype],[maxrandomflock],[randomcenterx],[randomcentery],[randomradius],[dynamiclifetime],[isbodypull],[isrespawnallowed],[safebodypull])
                 VALUES ('stronghold1_presence2',990,1010,995,1015,'',16,1,0,0,0,'',''
@@ -3549,7 +3594,8 @@ INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],
 
 
 
------------------LOOT-------------
+--Stronghold Loot
+PRINT '--Stronghold Loot'
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_kain_guard' ORDER BY definition DESC);
 
 SET @lootdefinitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_ammo_medium_railgun_d' ORDER BY definition DESC);
@@ -3861,6 +3907,8 @@ DECLARE @aggvalueID int;
 DECLARE @aggfieldID int;
 
 -----------------------
+--Stronghold Spawns
+PRINT '--Stronghold Spawns'
 
 SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'stronghold1_presence3' ORDER BY id DESC);
 UPDATE [dbo].[npcpresence]
@@ -4043,6 +4091,199 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=30
 
 GO
 
+--Remove Oxnair 3 TP
+PRINT '--Remove Oxnair 3 TP'
+UPDATE [dbo].[zoneentities]
+   SET [zoneID] = 8
+      ,[eid] = 1894
+      ,[definition] = NULL
+      ,[owner] = NULL
+      ,[ename] = 'tp_zone_8_8'
+      ,[x] = 1563.5
+      ,[y] = 1547.5
+      ,[z] = 63.65625
+      ,[orientation] = 192
+      ,[enabled] = 0
+      ,[note] = 'tpcol'
+      ,[runtime] = 0
+      ,[synckey] = 'tpc_mddozaz'
+ WHERE ID=1951
+GO
+
+
+--fix Scarabs in training zone
+PRINT '--fix Scarabs in training zone'
+DECLARE @presenceID int
+SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'training_shooting_range_presence' ORDER BY id DESC)
+UPDATE [dbo].[npcpresence]
+                SET [name] = 'training_shooting_range_presence',[topx] = 20,[topy] = 20,[bottomx] = 1000,[bottomy] = 1000,[note] = '',[spawnid] = 48,[enabled] = 1,[roaming] = 0
+                ,[roamingrespawnseconds] = 3,[presencetype] = 0,[maxrandomflock] = '',[randomcenterx] = '',[randomcentery] = ''
+                ,[randomradius] = '',[dynamiclifetime] = '' ,[isbodypull] = 0,[isrespawnallowed] = 1,[safebodypull] = 0
+                WHERE id=@presenceID;
+DECLARE @flockID int;
+DECLARE @definitionID int;
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_dummy_decoy' ORDER BY definition DESC);
+UPDATE [dbo].[npcflock] SET [name] = 'training_flock_a' ,[presenceid] = @presenceID, [flockmembercount] = 20, [definition] = 1473, [spawnoriginX] = 676, [spawnoriginY] = 414 ,[spawnrangeMin] = 10, [spawnrangeMax] = 20,[respawnseconds] = 0, [totalspawncount] = 0, [homerange] = 30 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 0, [behaviorType] = 1 WHERE id=@flockID;
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_scarab_training' ORDER BY definition DESC);
+UPDATE [dbo].[npcflock] SET [name] = 'training_flock_scarab' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = 5334, [spawnoriginX] = 713, [spawnoriginY] = 406 ,[spawnrangeMin] = 1, [spawnrangeMax] = 2,[respawnseconds] = 0, [totalspawncount] = 0, [homerange] = 2 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 0, [behaviorType] = 1 WHERE id=@flockID;
+
+GO
+
+
+--Fully enable all syndicate bots
+PRINT '--Fully enable all syndicate bots'
+/*
+SELECT *
+FROM [perpetuumsa].[dbo].[entitydefaults]
+where (categoryflags & 65535)=3841;
+*/
+UPDATE entitydefaults SET purchasable=1, enabled=1, hidden=0
+WHERE (categoryflags & 65535)=3841;
+
+GO
+
+----------------------------------------------------------
+--Remove all T2+/T4+ from npc loot
+PRINT '--Remove all T2+/T4+ from npc loot' 
+/*
+SELECT * FROM [perpetuumsa].[dbo].[entitydefaults]
+JOIN npcloot ON lootdefinition=entitydefaults.definition
+WHERE tiertype = 3 AND (tierlevel=2 or tierlevel=4);
+*/
+
+--Deletes
+DELETE loot FROM [perpetuumsa].[dbo].npcloot as loot
+Join entitydefaults on lootdefinition=entitydefaults.definition
+where tiertype = 3 and (tierlevel=2 or tierlevel=4)
+
+
+------------------------------------------------------------
+--Remove all T2+/T4+, (includes lottery), and elite heavy mechs from SyndicateShops
+PRINT '--Remove all T2+/T4+, (includes lottery), and elite heavy mechs from SyndicateShops'
+/*
+SELECT [itemshop].*, entitydefaults.* FROM [perpetuumsa].[dbo].[itemshop]
+Join entitydefaults on targetdefinition=entitydefaults.definition
+where tiertype = 3 and (tierlevel=2 or tierlevel=4);
+
+SELECT [itemshop].*, entitydefaults.* FROM [perpetuumsa].[dbo].[itemshop]
+Join entitydefaults on targetdefinition=entitydefaults.definition
+where entitydefaults.categoryflags=1179 and entitydefaults.definitionname like '%lottery%';
+
+SELECT [itemshop].*, entitydefaults.* FROM [perpetuumsa].[dbo].[itemshop]
+Join entitydefaults on targetdefinition=entitydefaults.definition
+where entitydefaults.definitionname like '%reward1_bot%';
+*/
+
+--Deletes
+DELETE item FROM [perpetuumsa].[dbo].[itemshop] as item
+Join entitydefaults on targetdefinition=entitydefaults.definition
+where tiertype = 3 and (tierlevel=2 or tierlevel=4);
+
+DELETE item FROM [perpetuumsa].[dbo].[itemshop] as item
+Join entitydefaults on targetdefinition=entitydefaults.definition
+where entitydefaults.categoryflags=1179 and entitydefaults.definitionname like '%lottery%';
+
+DELETE item FROM [perpetuumsa].[dbo].[itemshop] as item
+Join entitydefaults on targetdefinition=entitydefaults.definition
+where entitydefaults.definitionname like '%reward1_bot%';
+
+
+--------------------------------------------------------
+--EntityDefault Disabling T2+/T4+, lottery, elite heavies
+PRINT '--EntityDefault Disabling T2+/T4+, lottery, elite heavies'
+
+--Set t2+/t4+ disabled, hidden and non-purchasable
+Update [perpetuumsa].[dbo].[entitydefaults]
+SET enabled=0, hidden=1, purchasable=0
+WHERE tiertype = 3 and (tierlevel=2 or tierlevel=4)
+
+--Set lottery disabled, hidden and non-purchasable
+Update [perpetuumsa].[dbo].[entitydefaults]
+SET enabled=0, hidden=1, purchasable=0
+where entitydefaults.categoryflags=1179 and entitydefaults.definitionname like '%lottery%';
+
+--Set elite heavies disabled, hidden and non-purchasable
+Update [perpetuumsa].[dbo].[entitydefaults]
+SET enabled=0, hidden=1, purchasable=0
+where entitydefaults.definitionname like '%reward1_bot%';
+
+
+-----------------------------------------------------
+--Disable PBS research tree and skill
+PRINT '--Disable PBS research tree and skill'
+DECLARE @groupID int;
+SET @groupID = (SELECT TOP 1 id from techtreegroups where name='pbs');
+
+--disable and hide pbs extension
+UPDATE dbo.extensions
+SET active=0, hidden=1
+WHERE extensionid=350;
+
+--Lockout PBS research tree
+UPDATE prices
+SET prices.pointtype=7
+FROM techtreenodeprices prices
+    INNER JOIN techtree tree ON
+        prices.definition = tree.childdefinition
+WHERE tree.groupID = @groupID;
+
+
+
+----------------------------------------------------------
+--Disable PBS "capsules" (things that are used to make structures)
+PRINT '--Disable PBS "capsules" (things that are used to make structures)'
+
+SELECT * FROM entitydefaults
+WHERE (categoryflags & 255)=154;
+
+UPDATE entitydefaults SET enabled=0, hidden=1, purchasable=0
+WHERE (categoryflags & 255)=154;
+
+
+-------------------------------------------------------
+--DELETE mk2 CTs from Artifact loot
+PRINT '--DELETE mk2 CTs from Artifact loot'
+/*
+SELECT artifactloot.*, entitydefaults.*
+  FROM [perpetuumsa].[dbo].[artifactloot]
+  join entitydefaults on artifactloot.definition=entitydefaults.definition
+  WHERE entitydefaults.categoryflags=153;
+*/
+
+--Delete all mk2 CT drops from artifacts
+DELETE loot FROM [perpetuumsa].[dbo].[artifactloot] as loot
+  JOIN entitydefaults ON loot.definition=entitydefaults.definition
+  WHERE entitydefaults.categoryflags=153;
+
+--Disable EntityDefaults for mk2CTS
+--SELECT * from entitydefaults where categoryflags=153;
+
+--Disable mk2 CT items
+UPDATE entitydefaults SET enabled=0, hidden=1
+WHERE categoryflags=153;
+
+
+
+---------------------------------------------------------------
+--Disable mk2 bots
+PRINT '--Disable mk2 bots'
+--TODO could be better query
+--SELECT * from entitydefaults where definitionname like '%mk2_bot%';
+
+--DISABLE mk2 bots
+UPDATE entitydefaults SET enabled=0, hidden=1, purchasable=0
+WHERE definitionname like '%mk2_bot';
+
+
+
+--------------------------------------------------
+--FINAL run cleanup procedure
+PRINT '--FINAL run cleanup procedure'
+
+EXEC dbo.cleanUpGame;
+EXEC dbo.cleanUpMarket;
+
+GO
 
 
 
@@ -4050,15 +4291,10 @@ GO
 
 
 
+--alter startup SP to prevent it form changing npcs around
+PRINT '--alter startup SP to prevent it form changing npcs around'
 
-
-
-
-
-
-
- --alter startup SP to prevent it form changing npcs around
- SET ANSI_NULLS ON
+SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
