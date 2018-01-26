@@ -5447,6 +5447,277 @@ GO
 
 
 
+--Remove All pelistal Syndicate shop items from NV and Hersh
+PRINT '--Remove All pelistal Syndicate shop items from NV and Hersh'
+SELECT * FROM [perpetuumsa].[dbo].[itemshop]
+JOIN entitydefaults on targetdefinition=definition
+WHERE presetid=1 and ( definitionname like '%pelistal%' or definitionname like '%rocket%' or definitionname like '%missile%');
+
+DELETE item FROM [perpetuumsa].[dbo].[itemshop] as item
+Join entitydefaults on targetdefinition=entitydefaults.definition
+where presetid=1 and definitionname like '%pelistal%' or definitionname like '%rocket%' or definitionname like '%missile%'
+
+
+SELECT * FROM [perpetuumsa].[dbo].[itemshop]
+JOIN entitydefaults on targetdefinition=definition
+WHERE presetid=1 
+
+--Clear other token costs for syndicate bots
+PRINT '--Clear other token costs for syndicate bots'
+UPDATE items
+SET tmcoin=NULL, icscoin=NULL, asicoin=NULL
+FROM itemshop as items
+JOIN entitydefaults on targetdefinition=definition
+WHERE (categoryflags & 65535)=3841;
+
+--def_vektor_bot
+UPDATE itemshop SET unicoin=60 WHERE targetdefinition=5504;
+--def_locust_bot
+UPDATE itemshop SET unicoin=150 WHERE targetdefinition=5512;
+--def_ikarus_bot
+UPDATE itemshop SET unicoin=30 WHERE targetdefinition=5528;
+--def_echelon_bot
+UPDATE itemshop SET unicoin=750 WHERE targetdefinition=5516;
+--def_daidalos_bot
+UPDATE itemshop SET unicoin=1050 WHERE targetdefinition=5540;
+--def_cronus_bot
+UPDATE itemshop SET unicoin=180 WHERE targetdefinition=5532;
+--def_hermes_bot
+UPDATE itemshop SET unicoin=180 WHERE targetdefinition=5536;
+
+---inserts---
+PRINT '---inserts---'
+--5508	def_helix_bot
+INSERT INTO [dbo].[itemshop]
+([presetid],[targetdefinition],[targetamount],[tmcoin],[icscoin],[asicoin],[credit],[unicoin],[globallimit],[purchasecount],[standing])
+VALUES(1,5508,1,NULL,NULL,NULL,800000,240,NULL,1,NULL)
+--5520	def_callisto_bot
+INSERT INTO [dbo].[itemshop]
+([presetid],[targetdefinition],[targetamount],[tmcoin],[icscoin],[asicoin],[credit],[unicoin],[globallimit],[purchasecount],[standing])
+VALUES(1,5520,1,NULL,NULL,NULL,8000000,2100,NULL,1,NULL)
+--5524	def_legatus_bot
+INSERT INTO [dbo].[itemshop]
+([presetid],[targetdefinition],[targetamount],[tmcoin],[icscoin],[asicoin],[credit],[unicoin],[globallimit],[purchasecount],[standing])
+VALUES(1,5524,1,NULL,NULL,NULL,20000000,6000,NULL,1,NULL)
+--5544	def_metis_bot
+INSERT INTO [dbo].[itemshop]
+([presetid],[targetdefinition],[targetamount],[tmcoin],[icscoin],[asicoin],[credit],[unicoin],[globallimit],[purchasecount],[standing])
+VALUES(1,5544,1,NULL,NULL,NULL,40000000,12000,NULL,1,NULL)
+
+GO
+
+
+
+--Syndicate market orders
+PRINT '--Syndicate market orders'
+
+--VendorEIDs for NV and hersh
+--TMA: 1562
+--Hersh: 5114985996031923315
+--Cadavria: 5017597357619707005
+--Lenworth: 6748526534285802691
+--Bellicha: 8565344739145077685
+DECLARE @buyMult float;
+DECLARE @sellMult float;
+DECLARE @vendorid bigint;
+
+DECLARE @buyprice float;
+DECLARE @sellprice float;
+
+DECLARE @vektorDef int;
+DECLARE @locustDef int;
+DECLARE @ikarusDef int;
+DECLARE @cronusDef int;
+DECLARE @hermesDef int;
+
+SET @vektorDef=5504;
+SET @locustDef=5512;
+SET @ikarusDef=5528;
+SET @cronusDef=5532;
+SET @hermesDef=5536;
+
+
+DECLARE @vekprice float;
+DECLARE @cronusprice float;
+DECLARE @hermesprice float;
+DECLARE @ikarusprice float;
+DECLARE @locustprice float;
+
+SET @vekprice = 300000;
+SET @locustprice = 1220000;
+SET @ikarusprice = 190000;
+SET @hermesprice = 1090000;
+SET @cronusprice = 1090000;
+
+--TMA
+SET @vendorid = 1562;
+SET @sellMult = (SELECT TOP 1 vendorsellprofit from vendors where vendorEID=@vendorid)
+SET @buyMult = (SELECT TOP 1 vendorbuyprofit from vendors where vendorEID=@vendorid)
+--vektor
+SET @sellprice = @vekprice/@sellMult;
+SET @buyprice = (@vekprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @vektorDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @vektorDef,  @buyprice, 0;
+--ikarus
+SET @sellprice = @ikarusprice/@sellMult;
+SET @buyprice = (@ikarusprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @ikarusDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @ikarusDef,  @buyprice, 0;
+--locust
+SET @sellprice = @locustprice/@sellMult;
+SET @buyprice = (@locustprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @locustDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @locustDef,  @buyprice, 0;
+--hermes
+SET @sellprice = @hermesprice/@sellMult;
+SET @buyprice = (@hermesprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @hermesDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @hermesDef,  @buyprice, 0;
+--cronus
+SET @sellprice = @cronusprice/@sellMult;
+SET @buyprice = (@cronusprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @cronusDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @cronusDef,  @buyprice, 0;
+
+
+
+--Hershfield
+SET @vendorid = 5114985996031923315;
+SET @sellMult = (SELECT TOP 1 vendorsellprofit from vendors where vendorEID=@vendorid)
+SET @buyMult = (SELECT TOP 1 vendorbuyprofit from vendors where vendorEID=@vendorid)
+--vektor
+SET @sellprice = @vekprice/@sellMult;
+SET @buyprice = (@vekprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @vektorDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @vektorDef,  @buyprice, 0;
+--ikarus
+SET @sellprice = @ikarusprice/@sellMult;
+SET @buyprice = (@ikarusprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @ikarusDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @ikarusDef,  @buyprice, 0;
+--locust
+SET @sellprice = @locustprice/@sellMult;
+SET @buyprice = (@locustprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @locustDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @locustDef,  @buyprice, 0;
+--hermes
+SET @sellprice = @hermesprice/@sellMult;
+SET @buyprice = (@hermesprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @hermesDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @hermesDef,  @buyprice, 0;
+--cronus
+SET @sellprice = @cronusprice/@sellMult;
+SET @buyprice = (@cronusprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @cronusDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @cronusDef,  @buyprice, 0;
+
+
+
+
+--Cadravia
+SET @vendorid = 5017597357619707005;
+SET @sellMult = (SELECT TOP 1 vendorsellprofit from vendors where vendorEID=@vendorid)
+SET @buyMult = (SELECT TOP 1 vendorbuyprofit from vendors where vendorEID=@vendorid)
+--vektor
+SET @sellprice = @vekprice/@sellMult;
+SET @buyprice = (@vekprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @vektorDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @vektorDef,  @buyprice, 0;
+--ikarus
+SET @sellprice = @ikarusprice/@sellMult;
+SET @buyprice = (@ikarusprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @ikarusDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @ikarusDef,  @buyprice, 0;
+--locust
+SET @sellprice = @locustprice/@sellMult;
+SET @buyprice = (@locustprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @locustDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @locustDef,  @buyprice, 0;
+--hermes
+SET @sellprice = @hermesprice/@sellMult;
+SET @buyprice = (@hermesprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @hermesDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @hermesDef,  @buyprice, 0;
+--cronus
+SET @sellprice = @cronusprice/@sellMult;
+SET @buyprice = (@cronusprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @cronusDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @cronusDef,  @buyprice, 0;
+;
+
+
+
+--Lenworth
+SET @vendorid = 6748526534285802691;
+SET @sellMult = (SELECT TOP 1 vendorsellprofit from vendors where vendorEID=@vendorid)
+SET @buyMult = (SELECT TOP 1 vendorbuyprofit from vendors where vendorEID=@vendorid)
+--vektor
+SET @sellprice = @vekprice/@sellMult;
+SET @buyprice = (@vekprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @vektorDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @vektorDef,  @buyprice, 0;
+--ikarus
+SET @sellprice = @ikarusprice/@sellMult;
+SET @buyprice = (@ikarusprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @ikarusDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @ikarusDef,  @buyprice, 0;
+--locust
+SET @sellprice = @locustprice/@sellMult;
+SET @buyprice = (@locustprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @locustDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @locustDef,  @buyprice, 0;
+--hermes
+SET @sellprice = @hermesprice/@sellMult;
+SET @buyprice = (@hermesprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @hermesDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @hermesDef,  @buyprice, 0;
+--cronus
+SET @sellprice = @cronusprice/@sellMult;
+SET @buyprice = (@cronusprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @cronusDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @cronusDef,  @buyprice, 0;
+
+
+
+
+--Bellicha
+SET @vendorid = 8565344739145077685;
+SET @sellMult = (SELECT TOP 1 vendorsellprofit from vendors where vendorEID=@vendorid)
+SET @buyMult = (SELECT TOP 1 vendorbuyprofit from vendors where vendorEID=@vendorid)
+--vektor
+SET @sellprice = @vekprice/@sellMult;
+SET @buyprice = (@vekprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @vektorDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @vektorDef,  @buyprice, 0;
+--ikarus
+SET @sellprice = @ikarusprice/@sellMult;
+SET @buyprice = (@ikarusprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @ikarusDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @ikarusDef,  @buyprice, 0;
+--locust
+SET @sellprice = @locustprice/@sellMult;
+SET @buyprice = (@locustprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @locustDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @locustDef,  @buyprice, 0;
+--hermes
+SET @sellprice = @hermesprice/@sellMult;
+SET @buyprice = (@hermesprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @hermesDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @hermesDef,  @buyprice, 0;
+--cronus
+SET @sellprice = @cronusprice/@sellMult;
+SET @buyprice = (@cronusprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @cronusDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @cronusDef,  @buyprice, 0;
+
+
+GO
+
+
+
+
+
+
 
 
 --alter startup SP to prevent it form changing npcs around
