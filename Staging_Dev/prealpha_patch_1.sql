@@ -3478,21 +3478,21 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('kain_protector_stronghold1', @presenceID, 1, @definitionID, 994, 1013, 0, 5, 60, 0,
+                ('kain_protector_stronghold1', @presenceID, 1, @definitionID, 994, 1013, 0, 5, 7200, 0,
                  20, 'kain_protector_stronghold1', 1, 1, 1, 2);
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_cameleon_miniboss_rank3' ORDER BY definition DESC);
 
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('cameleon_with_numiquol_protector', @presenceID, 2, @definitionID, 994, 1013, 0, 5, 60, 0,
+                ('cameleon_with_numiquol_protector', @presenceID, 2, @definitionID, 994, 1013, 0, 5, 7200, 0,
                  5, 'cameleon_with_numiquol_protector', 1, 1, 1, 1);
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_arbalest_miniboss_rank3' ORDER BY definition DESC);
 
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('arbalest_with_numiquol_protector', @presenceID, 2, @definitionID, 994, 1013, 0, 5, 60, 0,
+                ('arbalest_with_numiquol_protector', @presenceID, 2, @definitionID, 994, 1013, 0, 5, 7200, 0,
                  5, 'arbalest_with_numiquol_protector', 1, 1, 1, 1);
 
 ------------------
@@ -3512,21 +3512,21 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('artemis_protector_stronghold1', @presenceID, 1, @definitionID, 1024, 946, 0, 5, 60, 0,
+                ('artemis_protector_stronghold1', @presenceID, 1, @definitionID, 1024, 946, 0, 5, 7200, 0,
                  10, 'artemis_protector_stronghold1', 1, 1, 1, 1);
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_intakt_miniboss_rank3' ORDER BY definition DESC);
 
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('intakt_by_protector', @presenceID, 2, @definitionID, 1024, 946, 0, 5, 60, 0,
+                ('intakt_by_protector', @presenceID, 2, @definitionID, 1024, 946, 0, 5, 7200, 0,
                  10, 'def_npc_intakt_miniboss_rank3', 1, 1, 1, 1);
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_baphomet_miniboss_rank3' ORDER BY definition DESC);
 
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('baphomet_by_protector', @presenceID, 2, @definitionID, 1024, 946, 0, 5, 60, 0,
+                ('baphomet_by_protector', @presenceID, 2, @definitionID, 1024, 946, 0, 5, 7200, 0,
                  10, 'baphomet_by_protector', 1, 1, 1, 1);
 
 ------------------
@@ -3546,21 +3546,21 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('tyrannos_protector', @presenceID, 1, @definitionID, 1023, 1099, 0, 5, 60, 0,
+                ('tyrannos_protector', @presenceID, 1, @definitionID, 1023, 1099, 0, 5, 7200, 0,
                  10, 'tyrannos_protector', 1, 1, 1, 1);
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_waspish_miniboss_rank3' ORDER BY definition DESC);
 
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('waspish_with_protector', @presenceID, 2, @definitionID, 1023, 1099, 0, 5, 60, 0,
+                ('waspish_with_protector', @presenceID, 2, @definitionID, 1023, 1099, 0, 5, 7200, 0,
                  10, 'waspish_with_protector', 1, 1, 1, 1);
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_troiar_miniboss_rank3' ORDER BY definition DESC);
 
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('troiar_with_protector', @presenceID, 2, @definitionID, 1023, 1099, 0, 5, 60, 0,
+                ('troiar_with_protector', @presenceID, 2, @definitionID, 1023, 1099, 0, 5, 7200, 0,
                  10, 'troiar_with_protector', 1, 1, 1, 1);
 
 ------------------
