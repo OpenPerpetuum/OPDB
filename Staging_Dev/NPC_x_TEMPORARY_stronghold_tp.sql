@@ -73,22 +73,22 @@ UPDATE [dbo].[teleportdescriptions]
  WHERE ID=402
 GO
 
-UPDATE [dbo].[zoneentities]
-   SET [zoneID] = 16
-      ,[eid] = 2557
-      ,[definition] = NULL
-      ,[owner] = NULL
-      ,[ename] = 'tp_zone_16_1'
-      ,[x] = 1108
-      ,[y] = 1048
-      ,[z] = 50
-      ,[orientation] = 0
-      ,[enabled] = 1
-      ,[note] = 'PVP Stronghold 1'
-      ,[runtime] = 0
-      ,[synckey] = 'tpc_glmodxi'
- WHERE ID=2417
-GO
+--UPDATE [dbo].[zoneentities]
+--   SET [zoneID] = 16
+--      ,[eid] = 2557
+--      ,[definition] = NULL
+--      ,[owner] = NULL
+--      ,[ename] = 'tp_zone_16_1'
+--      ,[x] = 1108
+--      ,[y] = 1048
+--      ,[z] = 50
+--      ,[orientation] = 0
+--      ,[enabled] = 1
+--      ,[note] = 'PVP Stronghold 1'
+--      ,[runtime] = 0
+--      ,[synckey] = 'tpc_glmodxi'
+-- WHERE ID=2417
+--GO
 
 
 

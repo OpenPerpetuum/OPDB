@@ -3478,21 +3478,21 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('kain_protector_stronghold1', @presenceID, 1, @definitionID, 994, 1013, 0, 5, 60, 0,
+                ('kain_protector_stronghold1', @presenceID, 1, @definitionID, 994, 1013, 0, 5, 7200, 0,
                  20, 'kain_protector_stronghold1', 1, 1, 1, 2);
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_cameleon_miniboss_rank3' ORDER BY definition DESC);
 
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('cameleon_with_numiquol_protector', @presenceID, 2, @definitionID, 994, 1013, 0, 5, 60, 0,
+                ('cameleon_with_numiquol_protector', @presenceID, 2, @definitionID, 994, 1013, 0, 5, 7200, 0,
                  5, 'cameleon_with_numiquol_protector', 1, 1, 1, 1);
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_arbalest_miniboss_rank3' ORDER BY definition DESC);
 
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('arbalest_with_numiquol_protector', @presenceID, 2, @definitionID, 994, 1013, 0, 5, 60, 0,
+                ('arbalest_with_numiquol_protector', @presenceID, 2, @definitionID, 994, 1013, 0, 5, 7200, 0,
                  5, 'arbalest_with_numiquol_protector', 1, 1, 1, 1);
 
 ------------------
@@ -3512,21 +3512,21 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('artemis_protector_stronghold1', @presenceID, 1, @definitionID, 1024, 946, 0, 5, 60, 0,
+                ('artemis_protector_stronghold1', @presenceID, 1, @definitionID, 1024, 946, 0, 5, 7200, 0,
                  10, 'artemis_protector_stronghold1', 1, 1, 1, 1);
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_intakt_miniboss_rank3' ORDER BY definition DESC);
 
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('intakt_by_protector', @presenceID, 2, @definitionID, 1024, 946, 0, 5, 60, 0,
+                ('intakt_by_protector', @presenceID, 2, @definitionID, 1024, 946, 0, 5, 7200, 0,
                  10, 'def_npc_intakt_miniboss_rank3', 1, 1, 1, 1);
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_baphomet_miniboss_rank3' ORDER BY definition DESC);
 
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('baphomet_by_protector', @presenceID, 2, @definitionID, 1024, 946, 0, 5, 60, 0,
+                ('baphomet_by_protector', @presenceID, 2, @definitionID, 1024, 946, 0, 5, 7200, 0,
                  10, 'baphomet_by_protector', 1, 1, 1, 1);
 
 ------------------
@@ -3546,21 +3546,21 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('tyrannos_protector', @presenceID, 1, @definitionID, 1023, 1099, 0, 5, 60, 0,
+                ('tyrannos_protector', @presenceID, 1, @definitionID, 1023, 1099, 0, 5, 7200, 0,
                  10, 'tyrannos_protector', 1, 1, 1, 1);
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_waspish_miniboss_rank3' ORDER BY definition DESC);
 
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('waspish_with_protector', @presenceID, 2, @definitionID, 1023, 1099, 0, 5, 60, 0,
+                ('waspish_with_protector', @presenceID, 2, @definitionID, 1023, 1099, 0, 5, 7200, 0,
                  10, 'waspish_with_protector', 1, 1, 1, 1);
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_troiar_miniboss_rank3' ORDER BY definition DESC);
 
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('troiar_with_protector', @presenceID, 2, @definitionID, 1023, 1099, 0, 5, 60, 0,
+                ('troiar_with_protector', @presenceID, 2, @definitionID, 1023, 1099, 0, 5, 7200, 0,
                  10, 'troiar_with_protector', 1, 1, 1, 1);
 
 ------------------
@@ -4123,9 +4123,12 @@ UPDATE [dbo].[npcpresence]
 DECLARE @flockID int;
 DECLARE @definitionID int;
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_dummy_decoy' ORDER BY definition DESC);
+SET @flockID = (SELECT TOP 1 id from [npcflock] WHERE [name] = 'training_flock_a' ORDER BY id DESC);
 UPDATE [dbo].[npcflock] SET [name] = 'training_flock_a' ,[presenceid] = @presenceID, [flockmembercount] = 20, [definition] = 1473, [spawnoriginX] = 676, [spawnoriginY] = 414 ,[spawnrangeMin] = 10, [spawnrangeMax] = 20,[respawnseconds] = 0, [totalspawncount] = 0, [homerange] = 30 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 0, [behaviorType] = 1 WHERE id=@flockID;
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_scarab_training' ORDER BY definition DESC);
+SET @flockID = (SELECT TOP 1 id from [npcflock] WHERE [name] = 'training_flock_scarab' ORDER BY id DESC);
 UPDATE [dbo].[npcflock] SET [name] = 'training_flock_scarab' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = 5334, [spawnoriginX] = 713, [spawnoriginY] = 406 ,[spawnrangeMin] = 1, [spawnrangeMax] = 2,[respawnseconds] = 0, [totalspawncount] = 0, [homerange] = 2 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 0, [behaviorType] = 1 WHERE id=@flockID;
+
 
 GO
 
@@ -4284,6 +4287,1432 @@ EXEC dbo.cleanUpGame;
 EXEC dbo.cleanUpMarket;
 
 GO
+
+
+--tp on stronghold
+PRINT '--tp on stronghold'
+UPDATE [dbo].[zoneentities]
+   SET [zoneID] = 16
+      ,[eid] = 2557
+      ,[definition] = NULL
+      ,[owner] = NULL
+      ,[ename] = 'tp_zone_16_1'
+      ,[x] = 1108
+      ,[y] = 1048
+      ,[z] = 50
+      ,[orientation] = 0
+      ,[enabled] = 1
+      ,[note] = 'PVP Stronghold 1'
+      ,[runtime] = 0
+      ,[synckey] = 'tpc_glmodxi'
+ WHERE ID=2417
+GO
+
+
+
+
+--Balance pass 1
+PRINT'--Balance pass 1'
+
+DECLARE @definitionID int;
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_standard_mining_upgrade' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_standard_mining_upgrade', quantity=1, attributeflags=524288, categoryflags=263695, options='#moduleFlag=i8#tier=$tierlevel_t1', 
+                note='', enabled=1, volume=1, mass=100, hidden='False', health=100, descriptiontoken='def_standard_mining_upgrade_desc', purchasable=1, tiertype=1, 
+                tierlevel=1 where definition=@definitionID;
+DECLARE @aggvalueID int;
+DECLARE @aggfieldID int;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'harvesting_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.1 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'harvesting_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatefields SET [name]='harvesting_amount_modifier', [formula]=1, [measurementunit]='harvesting_amount_modifier_unit', [measurementmultiplier]=100, [measurementoffset]=0, [category]=6, [digits]=2, [moreisbetter]=1, [usedinconfig]=1, [note]='' WHERE id =@aggfieldID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'mining_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.1 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'mining_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatefields SET [name]='mining_amount_modifier', [formula]=1, [measurementunit]='mining_amount_modifier_unit', [measurementmultiplier]=100, [measurementoffset]=0, [category]=6, [digits]=2, [moreisbetter]=1, [usedinconfig]=1, [note]='' WHERE id =@aggfieldID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_drillers_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_harvester_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_standard_mass_reductor' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_standard_mass_reductor', quantity=1, attributeflags=524320, categoryflags=327951, options='#moduleFlag=i20#tier=$tierlevel_t1', 
+                note='', enabled=1, volume=0.5, mass=2, hidden='False', health=100, descriptiontoken='def_standard_mass_reductor_desc', purchasable=1, tiertype=1, 
+                tierlevel=1 where definition=@definitionID;
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'speed_max_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 1.05);
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'mass_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_standard_medium_harvester' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_standard_medium_harvester', quantity=1, attributeflags=327696, categoryflags=33949199, options='#moduleFlag=i290#ammoCapacity=i2d#ammoType=La0a#tier=$tierlevel_t1', 
+                note='', enabled=1, volume=1.5, mass=1000, hidden='False', health=100, descriptiontoken='def_standard_harvester_desc', purchasable=1, tiertype=1, 
+                tierlevel=1 where definition=@definitionID;
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=55 WHERE id =  @aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_standard_medium_driller' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_standard_medium_driller', quantity=1, attributeflags=327696, categoryflags=33621519, options='#moduleFlag=i290#ammoCapacity=i2d#ammoType=L50a#tier=$tierlevel_t1', 
+                note='', enabled=1, volume=1.5, mass=1000, hidden='False', health=100, descriptiontoken='def_standard_driller_desc', purchasable=1, tiertype=1, 
+                tierlevel=1 where definition=@definitionID;
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=55 WHERE id =  @aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named1_medium_driller' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named1_medium_driller', quantity=1, attributeflags=327696, categoryflags=33621519, options='#moduleFlag=i290#ammoCapacity=i2d#ammoType=L50a#tier=$tierlevel_t2', 
+                note='', enabled=1, volume=1.5, mass=900, hidden='False', health=100, descriptiontoken='def_named_driller_desc', purchasable=1, tiertype=1, 
+                tierlevel=2 where definition=@definitionID;
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=45 WHERE id =  @aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named2_medium_driller' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named2_medium_driller', quantity=1, attributeflags=327696, categoryflags=33621519, options='#moduleFlag=i290#ammoCapacity=i2d#ammoType=L50a#tier=$tierlevel_t3', 
+                note='', enabled=1, volume=1.5, mass=1000, hidden='False', health=100, descriptiontoken='def_named_driller_desc', purchasable=1, tiertype=1, 
+                tierlevel=3 where definition=@definitionID;
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=60 WHERE id =  @aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named3_medium_driller' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named3_medium_driller', quantity=1, attributeflags=327696, categoryflags=33621519, options='#moduleFlag=i290#ammoCapacity=i2d#ammoType=L50a#tier=$tierlevel_t4', 
+                note='', enabled=1, volume=1.5, mass=1000, hidden='False', health=100, descriptiontoken='def_named_driller_desc', purchasable=1, tiertype=1, 
+                tierlevel=4 where definition=@definitionID;
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=65 WHERE id =  @aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named1_mining_upgrade' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named1_mining_upgrade', quantity=1, attributeflags=524288, categoryflags=263695, options='#moduleFlag=i8#tier=$tierlevel_t2', 
+                note='', enabled=1, volume=0.1, mass=60, hidden='False', health=100, descriptiontoken='def_named_mining_upgrade_desc', purchasable=1, tiertype=1, 
+                tierlevel=2 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'harvesting_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.15 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'mining_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.15 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_drillers_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_harvester_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named2_mining_upgrade' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named2_mining_upgrade', quantity=1, attributeflags=524288, categoryflags=263695, options='#moduleFlag=i8#tier=$tierlevel_t3', 
+                note='', enabled=1, volume=0.1, mass=60, hidden='False', health=100, descriptiontoken='def_named_mining_upgrade_desc', purchasable=1, tiertype=1, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'harvesting_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.2 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'mining_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.2 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_drillers_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_harvester_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named3_mining_upgrade' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named3_mining_upgrade', quantity=1, attributeflags=524288, categoryflags=263695, options='#moduleFlag=i8#tier=$tierlevel_t4', 
+                note='', enabled=1, volume=0.1, mass=60, hidden='False', health=100, descriptiontoken='def_named_mining_upgrade_desc', purchasable=1, tiertype=1, 
+                tierlevel=4 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'harvesting_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.25 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'mining_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.25 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_drillers_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_harvester_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named1_medium_harvester' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named1_medium_harvester', quantity=1, attributeflags=327696, categoryflags=33949199, options='#moduleFlag=i290#ammoCapacity=i2d#ammoType=La0a#tier=$tierlevel_t2', 
+                note='', enabled=1, volume=1.5, mass=900, hidden='False', health=100, descriptiontoken='def_named_harvester_desc', purchasable=1, tiertype=1, 
+                tierlevel=2 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=45 WHERE id =  @aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named2_medium_harvester' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named2_medium_harvester', quantity=1, attributeflags=327696, categoryflags=33949199, options='#moduleFlag=i290#ammoCapacity=i2d#ammoType=La0a#tier=$tierlevel_t3', 
+                note='', enabled=1, volume=1.5, mass=1000, hidden='False', health=100, descriptiontoken='def_named_harvester_desc', purchasable=1, tiertype=1, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=60 WHERE id =  @aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named3_medium_harvester' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named3_medium_harvester', quantity=1, attributeflags=327696, categoryflags=33949199, options='#moduleFlag=i290#ammoCapacity=i2d#ammoType=La0a#tier=$tierlevel_t4', 
+                note='', enabled=1, volume=1.5, mass=1000, hidden='False', health=100, descriptiontoken='def_named_harvester_desc', purchasable=1, tiertype=1, 
+                tierlevel=4 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=65 WHERE id =  @aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_standard_damage_mod_railgun' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_standard_damage_mod_railgun', quantity=1, attributeflags=524292, categoryflags=17106703, options='#moduleFlag=i8#tier=$tierlevel_t1', 
+                note='', enabled=1, volume=0.5, mass=100, hidden='False', health=100, descriptiontoken='def_damage_mod_railgun_desc', purchasable=1, tiertype=1, 
+                tierlevel=1 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_railgun_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.1 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_railgun_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatefields SET [name]='damage_railgun_modifier', [formula]=1, [measurementunit]='damage_railgun_modifier_unit', [measurementmultiplier]=100, [measurementoffset]=0, [category]=6, [digits]=2, [moreisbetter]=1, [usedinconfig]=1, [note]='' WHERE id =@aggfieldID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_railgun_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_standard_damage_mod_missile' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_standard_damage_mod_missile', quantity=1, attributeflags=524292, categoryflags=67438351, options='#moduleFlag=i8#tier=$tierlevel_t1', 
+                note='', enabled=1, volume=0.5, mass=100, hidden='False', health=100, descriptiontoken='def_damage_mod_missile_desc', purchasable=1, tiertype=1, 
+                tierlevel=1 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_missile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.1 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_missile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatefields SET [name]='damage_missile_modifier', [formula]=1, [measurementunit]='damage_missile_modifier_unit', [measurementmultiplier]=100, [measurementoffset]=0, [category]=6, [digits]=2, [moreisbetter]=1, [usedinconfig]=1, [note]='' WHERE id =@aggfieldID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_missile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_standard_damage_mod_laser' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_standard_damage_mod_laser', quantity=1, attributeflags=524292, categoryflags=50661135, options='#moduleFlag=i8#tier=$tierlevel_t1', 
+                note='', enabled=1, volume=0.5, mass=100, hidden='False', health=100, descriptiontoken='def_damage_mod_laser_desc', purchasable=1, tiertype=1, 
+                tierlevel=1 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_laser_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.1 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_laser_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatefields SET [name]='damage_laser_modifier', [formula]=1, [measurementunit]='damage_laser_modifier_unit', [measurementmultiplier]=100, [measurementoffset]=0, [category]=6, [digits]=2, [moreisbetter]=1, [usedinconfig]=1, [note]='' WHERE id =@aggfieldID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_laser_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_standard_damage_mod_projectile' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_standard_damage_mod_projectile', quantity=1, attributeflags=524292, categoryflags=33883919, options='#moduleFlag=i8#tier=$tierlevel_t1', 
+                note='', enabled=1, volume=0.5, mass=100, hidden='False', health=100, descriptiontoken='def_damage_mod_projectile_desc', purchasable=1, tiertype=1, 
+                tierlevel=1 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_projectile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.1 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_projectile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatefields SET [name]='damage_projectile_modifier', [formula]=1, [measurementunit]='damage_projectile_modifier_unit', [measurementmultiplier]=100, [measurementoffset]=0, [category]=6, [digits]=2, [moreisbetter]=1, [usedinconfig]=1, [note]='' WHERE id =@aggfieldID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_projectile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named1_damage_mod_railgun' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named1_damage_mod_railgun', quantity=1, attributeflags=524292, categoryflags=17106703, options='#moduleFlag=i8#tier=$tierlevel_t2', 
+                note='', enabled=1, volume=0.5, mass=90, hidden='False', health=100, descriptiontoken='def_damage_mod_railgun_desc', purchasable=1, tiertype=1, 
+                tierlevel=2 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_railgun_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.15 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_railgun_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named2_damage_mod_railgun' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named2_damage_mod_railgun', quantity=1, attributeflags=524292, categoryflags=17106703, options='#moduleFlag=i8#tier=$tierlevel_t3', 
+                note='', enabled=1, volume=0.5, mass=100, hidden='False', health=100, descriptiontoken='def_damage_mod_railgun_desc', purchasable=1, tiertype=1, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_railgun_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.2 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_railgun_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named3_damage_mod_railgun' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named3_damage_mod_railgun', quantity=1, attributeflags=524292, categoryflags=17106703, options='#moduleFlag=i8#tier=$tierlevel_t4', 
+                note='', enabled=1, volume=0.5, mass=125, hidden='False', health=100, descriptiontoken='def_damage_mod_railgun_desc', purchasable=1, tiertype=1, 
+                tierlevel=4 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_railgun_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.25 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_railgun_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named1_damage_mod_missile' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named1_damage_mod_missile', quantity=1, attributeflags=524292, categoryflags=67438351, options='#moduleFlag=i8#tier=$tierlevel_t2', 
+                note='', enabled=1, volume=0.5, mass=90, hidden='False', health=100, descriptiontoken='def_damage_mod_missile_desc', purchasable=1, tiertype=1, 
+                tierlevel=2 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_missile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.15 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_missile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named2_damage_mod_missile' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named2_damage_mod_missile', quantity=1, attributeflags=524292, categoryflags=67438351, options='#moduleFlag=i8#tier=$tierlevel_t3', 
+                note='', enabled=1, volume=0.5, mass=100, hidden='False', health=100, descriptiontoken='def_damage_mod_missile_desc', purchasable=1, tiertype=1, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_missile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.2 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_missile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named3_damage_mod_missile' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named3_damage_mod_missile', quantity=1, attributeflags=524292, categoryflags=67438351, options='#moduleFlag=i8#tier=$tierlevel_t4', 
+                note='', enabled=1, volume=0.5, mass=125, hidden='False', health=100, descriptiontoken='def_damage_mod_missile_desc', purchasable=1, tiertype=1, 
+                tierlevel=4 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_missile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.25 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_missile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named1_damage_mod_laser' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named1_damage_mod_laser', quantity=1, attributeflags=524292, categoryflags=50661135, options='#moduleFlag=i8#tier=$tierlevel_t2', 
+                note='', enabled=1, volume=0.5, mass=90, hidden='False', health=100, descriptiontoken='def_damage_mod_laser_desc', purchasable=1, tiertype=1, 
+                tierlevel=2 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_laser_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.15 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_laser_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named2_damage_mod_laser' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named2_damage_mod_laser', quantity=1, attributeflags=524292, categoryflags=50661135, options='#moduleFlag=i8#tier=$tierlevel_t3', 
+                note='', enabled=1, volume=0.5, mass=100, hidden='False', health=100, descriptiontoken='def_damage_mod_laser_desc', purchasable=1, tiertype=1, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_laser_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.2 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_laser_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named3_damage_mod_laser' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named3_damage_mod_laser', quantity=1, attributeflags=524292, categoryflags=50661135, options='#moduleFlag=i8#tier=$tierlevel_t4', 
+                note='', enabled=1, volume=0.5, mass=125, hidden='False', health=100, descriptiontoken='def_damage_mod_laser_desc', purchasable=1, tiertype=1, 
+                tierlevel=4 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_laser_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.25 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_laser_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named1_damage_mod_projectile' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named1_damage_mod_projectile', quantity=1, attributeflags=524292, categoryflags=33883919, options='#moduleFlag=i8#tier=$tierlevel_t2', 
+                note='', enabled=1, volume=0.5, mass=90, hidden='False', health=100, descriptiontoken='def_damage_mod_projectile_desc', purchasable=1, tiertype=1, 
+                tierlevel=2 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_projectile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.15 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_projectile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named2_damage_mod_projectile' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named2_damage_mod_projectile', quantity=1, attributeflags=524292, categoryflags=33883919, options='#moduleFlag=i8#tier=$tierlevel_t3', 
+                note='', enabled=1, volume=0.5, mass=100, hidden='False', health=100, descriptiontoken='def_damage_mod_projectile_desc', purchasable=1, tiertype=1, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_projectile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.2 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_projectile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named3_damage_mod_projectile' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named3_damage_mod_projectile', quantity=1, attributeflags=524292, categoryflags=33883919, options='#moduleFlag=i8#tier=$tierlevel_t4', 
+                note='', enabled=1, volume=0.5, mass=125, hidden='False', health=100, descriptiontoken='def_damage_mod_projectile_desc', purchasable=1, tiertype=1, 
+                tierlevel=4 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_projectile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.25 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_projectile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_standard_armor_repairer_upgrade' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_standard_armor_repairer_upgrade', quantity=1, attributeflags=524292, categoryflags=393487, options='#moduleFlag=i8#tier=$tierlevel_t1', 
+                note='', enabled=1, volume=0.5, mass=300, hidden='False', health=100, descriptiontoken='def_armor_repairer_upgrade_desc', purchasable=1, tiertype=1, 
+                tierlevel=1 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'armor_repair_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.1 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'armor_repair_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatefields SET [name]='armor_repair_amount_modifier', [formula]=1, [measurementunit]='armor_repair_amount_modifier_unit', [measurementmultiplier]=100, [measurementoffset]=0, [category]=2, [digits]=2, [moreisbetter]=1, [usedinconfig]=1, [note]='' WHERE id =@aggfieldID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_armor_repair_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_remote_armor_repair_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named1_armor_repairer_upgrade' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named1_armor_repairer_upgrade', quantity=1, attributeflags=524292, categoryflags=393487, options='#moduleFlag=i8#tier=$tierlevel_t2', 
+                note='', enabled=1, volume=0.5, mass=270, hidden='False', health=100, descriptiontoken='def_armor_repairer_upgrade_desc', purchasable=1, tiertype=1, 
+                tierlevel=2 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'armor_repair_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.15 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_armor_repair_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_remote_armor_repair_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named2_armor_repairer_upgrade' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named2_armor_repairer_upgrade', quantity=1, attributeflags=524292, categoryflags=393487, options='#moduleFlag=i8#tier=$tierlevel_t3', 
+                note='', enabled=1, volume=0.5, mass=300, hidden='False', health=100, descriptiontoken='def_armor_repairer_upgrade_desc', purchasable=1, tiertype=1, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'armor_repair_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.2 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_armor_repair_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_remote_armor_repair_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named3_armor_repairer_upgrade' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named3_armor_repairer_upgrade', quantity=1, attributeflags=524292, categoryflags=393487, options='#moduleFlag=i8#tier=$tierlevel_t4', 
+                note='', enabled=1, volume=0.5, mass=375, hidden='False', health=100, descriptiontoken='def_armor_repairer_upgrade_desc', purchasable=1, tiertype=1, 
+                tierlevel=4 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'armor_repair_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.25 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_armor_repair_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_remote_armor_repair_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_armor_repair_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_remote_armor_repair_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named1_mass_reductor' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named1_mass_reductor', quantity=1, attributeflags=524320, categoryflags=327951, options='#moduleFlag=i20#tier=$tierlevel_t2', 
+                note='', enabled=1, volume=0.5, mass=2, hidden='False', health=100, descriptiontoken='def_named_mass_reductor_desc', purchasable=1, tiertype=1, 
+                tierlevel=2 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'speed_max_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 1.1);
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'mass_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named2_mass_reductor' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named2_mass_reductor', quantity=1, attributeflags=524320, categoryflags=327951, options='#moduleFlag=i20#tier=$tierlevel_t3', 
+                note='', enabled=1, volume=0.5, mass=2, hidden='False', health=100, descriptiontoken='def_named_mass_reductor_desc', purchasable=1, tiertype=1, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'speed_max_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 1.2);
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'mass_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named3_mass_reductor' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named3_mass_reductor', quantity=1, attributeflags=524320, categoryflags=327951, options='#moduleFlag=i20#tier=$tierlevel_t4', 
+                note='', enabled=1, volume=0.5, mass=2, hidden='False', health=100, descriptiontoken='def_named_mass_reductor_desc', purchasable=1, tiertype=1, 
+                tierlevel=4 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'speed_max_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 1.25);
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'mass_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named1_damage_mod_railgun_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named1_damage_mod_railgun_pr', quantity=1, attributeflags=524292, categoryflags=17106703, options='#moduleFlag=i8#tier=$tierlevel_t2_pr', 
+                note='', enabled=1, volume=0.5, mass=75, hidden='False', health=100, descriptiontoken='def_damage_mod_railgun_desc', purchasable=1, tiertype=2, 
+                tierlevel=2 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_railgun_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.05 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_railgun_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named2_damage_mod_railgun_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named2_damage_mod_railgun_pr', quantity=1, attributeflags=524292, categoryflags=17106703, options='#moduleFlag=i8#tier=$tierlevel_t3_pr', 
+                note='', enabled=1, volume=0.5, mass=80, hidden='False', health=100, descriptiontoken='def_damage_mod_railgun_desc', purchasable=1, tiertype=2, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_railgun_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.075 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_railgun_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named3_damage_mod_railgun_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named3_damage_mod_railgun_pr', quantity=1, attributeflags=524292, categoryflags=17106703, options='#moduleFlag=i8#tier=$tierlevel_t4_pr', 
+                note='', enabled=1, volume=0.5, mass=100, hidden='False', health=100, descriptiontoken='def_damage_mod_railgun_desc', purchasable=1, tiertype=2, 
+                tierlevel=4 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_railgun_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.095 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_railgun_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named1_damage_mod_missile_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named1_damage_mod_missile_pr', quantity=1, attributeflags=524292, categoryflags=67438351, options='#moduleFlag=i8#tier=$tierlevel_t2_pr', 
+                note='', enabled=1, volume=0.5, mass=75, hidden='False', health=100, descriptiontoken='def_damage_mod_missile_desc', purchasable=1, tiertype=2, 
+                tierlevel=2 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_missile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.05 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_missile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named2_damage_mod_missile_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named2_damage_mod_missile_pr', quantity=1, attributeflags=524292, categoryflags=67438351, options='#moduleFlag=i8#tier=$tierlevel_t3_pr', 
+                note='', enabled=1, volume=0.5, mass=80, hidden='False', health=100, descriptiontoken='def_damage_mod_missile_desc', purchasable=1, tiertype=2, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_missile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.075 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_missile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named3_damage_mod_missile_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named3_damage_mod_missile_pr', quantity=1, attributeflags=524292, categoryflags=67438351, options='#moduleFlag=i8#tier=$tierlevel_t4_pr', 
+                note='', enabled=1, volume=0.5, mass=100, hidden='False', health=100, descriptiontoken='def_damage_mod_missile_desc', purchasable=1, tiertype=2, 
+                tierlevel=4 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_missile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.095 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_missile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named1_damage_mod_laser_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named1_damage_mod_laser_pr', quantity=1, attributeflags=524292, categoryflags=50661135, options='#moduleFlag=i8#tier=$tierlevel_t2_pr', 
+                note='', enabled=1, volume=0.5, mass=75, hidden='False', health=100, descriptiontoken='def_damage_mod_laser_desc', purchasable=1, tiertype=2, 
+                tierlevel=2 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_laser_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.05 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_laser_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named2_damage_mod_laser_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named2_damage_mod_laser_pr', quantity=1, attributeflags=524292, categoryflags=50661135, options='#moduleFlag=i8#tier=$tierlevel_t3_pr', 
+                note='', enabled=1, volume=0.5, mass=80, hidden='False', health=100, descriptiontoken='def_damage_mod_laser_desc', purchasable=1, tiertype=2, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_laser_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.075 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_laser_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named3_damage_mod_laser_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named3_damage_mod_laser_pr', quantity=1, attributeflags=524292, categoryflags=50661135, options='#moduleFlag=i8#tier=$tierlevel_t4_pr', 
+                note='', enabled=1, volume=0.5, mass=100, hidden='False', health=100, descriptiontoken='def_damage_mod_laser_desc', purchasable=1, tiertype=2, 
+                tierlevel=4 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_laser_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.095 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_laser_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named1_damage_mod_projectile_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named1_damage_mod_projectile_pr', quantity=1, attributeflags=524292, categoryflags=33883919, options='#moduleFlag=i8#tier=$tierlevel_t2_pr', 
+                note='', enabled=1, volume=0.5, mass=75, hidden='False', health=100, descriptiontoken='def_damage_mod_projectile_desc', purchasable=1, tiertype=2, 
+                tierlevel=2 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_projectile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.05 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_projectile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named2_damage_mod_projectile_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named2_damage_mod_projectile_pr', quantity=1, attributeflags=524292, categoryflags=33883919, options='#moduleFlag=i8#tier=$tierlevel_t3_pr', 
+                note='', enabled=1, volume=0.5, mass=80, hidden='False', health=100, descriptiontoken='def_damage_mod_projectile_desc', purchasable=1, tiertype=2, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_projectile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.075 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_projectile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named3_damage_mod_projectile_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named3_damage_mod_projectile_pr', quantity=1, attributeflags=524292, categoryflags=33883919, options='#moduleFlag=i8#tier=$tierlevel_t4_pr', 
+                note='', enabled=1, volume=0.5, mass=100, hidden='False', health=100, descriptiontoken='def_damage_mod_projectile_desc', purchasable=1, tiertype=2, 
+                tierlevel=4 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_projectile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.095 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_projectile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named1_armor_repairer_upgrade_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named1_armor_repairer_upgrade_pr', quantity=1, attributeflags=524292, categoryflags=393487, options='#moduleFlag=i8#tier=$tierlevel_t2_pr', 
+                note='', enabled=1, volume=0.5, mass=216, hidden='False', health=100, descriptiontoken='def_armor_repairer_upgrade_desc', purchasable=1, tiertype=2, 
+                tierlevel=2 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'armor_repair_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.05 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_armor_repair_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_remote_armor_repair_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named2_armor_repairer_upgrade_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named2_armor_repairer_upgrade_pr', quantity=1, attributeflags=524292, categoryflags=393487, options='#moduleFlag=i8#tier=$tierlevel_t3_pr', 
+                note='', enabled=1, volume=0.5, mass=240, hidden='False', health=100, descriptiontoken='def_armor_repairer_upgrade_desc', purchasable=1, tiertype=2, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'armor_repair_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.075 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_armor_repair_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_remote_armor_repair_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named3_armor_repairer_upgrade_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named3_armor_repairer_upgrade_pr', quantity=1, attributeflags=524292, categoryflags=393487, options='#moduleFlag=i8#tier=$tierlevel_t4_pr', 
+                note='', enabled=1, volume=0.5, mass=300, hidden='False', health=100, descriptiontoken='def_armor_repairer_upgrade_desc', purchasable=1, tiertype=2, 
+                tierlevel=4 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'armor_repair_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.095 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_armor_repair_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_remote_armor_repair_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named1_mass_reductor_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named1_mass_reductor_pr', quantity=1, attributeflags=524320, categoryflags=327951, options='#moduleFlag=i20#tier=$tierlevel_t2_pr', 
+                note='', enabled=1, volume=0.5, mass=1.5, hidden='False', health=100, descriptiontoken='def_named_mass_reductor_desc', purchasable=1, tiertype=2, 
+                tierlevel=2 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'speed_max_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 1.05);
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'mass_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named2_mass_reductor_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named2_mass_reductor_pr', quantity=1, attributeflags=524320, categoryflags=327951, options='#moduleFlag=i20#tier=$tierlevel_t3_pr', 
+                note='', enabled=1, volume=0.5, mass=1.5, hidden='False', health=100, descriptiontoken='def_named_mass_reductor_desc', purchasable=1, tiertype=2, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'speed_max_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 1.075);
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'mass_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named3_mass_reductor_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named3_mass_reductor_pr', quantity=1, attributeflags=524320, categoryflags=327951, options='#moduleFlag=i20#tier=$tierlevel_t4_pr', 
+                note='', enabled=1, volume=0.5, mass=1.5, hidden='False', health=100, descriptiontoken='def_named_mass_reductor_desc', purchasable=1, tiertype=2, 
+                tierlevel=4 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'speed_max_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 1.095);
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'mass_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_damaged_armor_repairer_upgrade' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_artifact_damaged_armor_repairer_upgrade', quantity=1, attributeflags=524292, categoryflags=393487, options='#moduleFlag=i8#tier=$tierlevel_t0', 
+                note='', enabled=1, volume=0.5, mass=300, hidden='False', health=100, descriptiontoken='def_artifact_damaged_armor_repairer_upgrade_desc', purchasable=1, tiertype=1, 
+                tierlevel=0 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'armor_repair_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.05 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_armor_repair_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_remote_armor_repair_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_a_armor_repairer_upgrade' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_artifact_a_armor_repairer_upgrade', quantity=1, attributeflags=524292, categoryflags=393487, options='#moduleFlag=i8#tier=$tierlevel_t3a', 
+                note='', enabled=1, volume=0.5, mass=240, hidden='False', health=100, descriptiontoken='def_artifact_a_armor_repairer_upgrade_desc', purchasable=1, tiertype=3, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'armor_repair_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.1 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_armor_repair_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_remote_armor_repair_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_damaged_mass_reductor' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_artifact_damaged_mass_reductor', quantity=1, attributeflags=524320, categoryflags=327951, options='#moduleFlag=i20#tier=$tierlevel_t0', 
+                note='', enabled=1, volume=0.5, mass=2, hidden='False', health=100, descriptiontoken='def_artifact_damaged_mass_reductor_desc', purchasable=1, tiertype=1, 
+                tierlevel=0 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'speed_max_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 1.03);
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'mass_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_a_mass_reductor' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_artifact_a_mass_reductor', quantity=1, attributeflags=524320, categoryflags=327951, options='#moduleFlag=i20#tier=$tierlevel_t3a', 
+                note='', enabled=1, volume=0.5, mass=2, hidden='False', health=100, descriptiontoken='def_artifact_a_mass_reductor_desc', purchasable=1, tiertype=3, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'speed_max_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 1.075);
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'mass_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_damaged_mining_upgrade' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_artifact_damaged_mining_upgrade', quantity=1, attributeflags=524288, categoryflags=263695, options='#moduleFlag=i8#tier=$tierlevel_t0', 
+                note='', enabled=1, volume=1, mass=100, hidden='False', health=100, descriptiontoken='def_artifact_damaged_mining_upgrade_desc', purchasable=1, tiertype=1, 
+                tierlevel=0 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'harvesting_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.05 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'mining_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.05 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_drillers_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_harvester_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_a_mining_upgrade' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_artifact_a_mining_upgrade', quantity=1, attributeflags=524288, categoryflags=263695, options='#moduleFlag=i8#tier=$tierlevel_t3a', 
+                note='', enabled=1, volume=0.1, mass=50, hidden='False', health=100, descriptiontoken='def_artifact_a_mining_upgrade_desc', purchasable=1, tiertype=3, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'harvesting_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.1 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'mining_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.1 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_drillers_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_harvester_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_damaged_damage_mod_railgun' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_artifact_damaged_damage_mod_railgun', quantity=1, attributeflags=524292, categoryflags=17106703, options='#moduleFlag=i8#tier=$tierlevel_t0', 
+                note='', enabled=1, volume=0.5, mass=100, hidden='False', health=100, descriptiontoken='def_artifact_damaged_damage_mod_railgun_desc', purchasable=1, tiertype=1, 
+                tierlevel=0 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_railgun_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.03 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_railgun_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_a_damage_mod_railgun' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_artifact_a_damage_mod_railgun', quantity=1, attributeflags=524292, categoryflags=17106703, options='#moduleFlag=i8#tier=$tierlevel_t3a', 
+                note='', enabled=1, volume=0.5, mass=90, hidden='False', health=100, descriptiontoken='def_artifact_a_damage_mod_railgun_desc', purchasable=1, tiertype=3, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_railgun_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.075 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_railgun_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_damaged_damage_mod_laser' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_artifact_damaged_damage_mod_laser', quantity=1, attributeflags=524292, categoryflags=50661135, options='#moduleFlag=i8#tier=$tierlevel_t0', 
+                note='', enabled=1, volume=0.5, mass=100, hidden='False', health=100, descriptiontoken='def_artifact_damaged_mod_laser_desc', purchasable=1, tiertype=1, 
+                tierlevel=0 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_laser_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.03 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_laser_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_a_damage_mod_laser' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_artifact_a_damage_mod_laser', quantity=1, attributeflags=524292, categoryflags=50661135, options='#moduleFlag=i8#tier=$tierlevel_t3a', 
+                note='', enabled=1, volume=0.5, mass=90, hidden='False', health=100, descriptiontoken='def_artifact_a_mod_laser_desc', purchasable=1, tiertype=3, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_laser_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.075 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_laser_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_damaged_damage_mod_missile' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_artifact_damaged_damage_mod_missile', quantity=1, attributeflags=524292, categoryflags=67438351, options='#moduleFlag=i8#tier=$tierlevel_t0', 
+                note='', enabled=1, volume=0.5, mass=100, hidden='False', health=100, descriptiontoken='def_artifact_damaged_damage_mod_missile_desc', purchasable=1, tiertype=1, 
+                tierlevel=0 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_missile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.03 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_missile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_a_damage_mod_missile' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_artifact_a_damage_mod_missile', quantity=1, attributeflags=524292, categoryflags=67438351, options='#moduleFlag=i8#tier=$tierlevel_t3a', 
+                note='', enabled=1, volume=0.5, mass=90, hidden='False', health=100, descriptiontoken='def_artifact_a_damage_mod_missile_desc', purchasable=1, tiertype=3, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_missile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.075 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_missile_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named3_mining_upgrade_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named3_mining_upgrade_pr', quantity=1, attributeflags=524288, categoryflags=263695, options='#moduleFlag=i8#tier=$tierlevel_t4_pr', 
+                note='', enabled=1, volume=0.1, mass=45, hidden='False', health=100, descriptiontoken='def_named_mining_upgrade_desc', purchasable=1, tiertype=2, 
+                tierlevel=4 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'harvesting_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.25 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'mining_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.25 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_drillers_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_harvester_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named2_mining_upgrade_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named2_mining_upgrade_pr', quantity=1, attributeflags=524288, categoryflags=263695, options='#moduleFlag=i8#tier=$tierlevel_t3_pr', 
+                note='', enabled=1, volume=0.1, mass=45, hidden='False', health=100, descriptiontoken='def_named_mining_upgrade_desc', purchasable=1, tiertype=2, 
+                tierlevel=3 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'harvesting_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.2 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'mining_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.2 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_drillers_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_harvester_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_named1_mining_upgrade_pr' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_named1_mining_upgrade_pr', quantity=1, attributeflags=524288, categoryflags=263695, options='#moduleFlag=i8#tier=$tierlevel_t2_pr', 
+                note='', enabled=1, volume=0.1, mass=45, hidden='False', health=100, descriptiontoken='def_named_mining_upgrade_desc', purchasable=1, tiertype=2, 
+                tierlevel=2 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'harvesting_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.15 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'mining_amount_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.15 WHERE id =  @aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_drillers_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage_harvester_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
+
+GO
+
+
+
+--Remove All pelistal Syndicate shop items from NV and Hersh
+PRINT '--Remove All pelistal Syndicate shop items from NV and Hersh'
+SELECT * FROM [perpetuumsa].[dbo].[itemshop]
+JOIN entitydefaults on targetdefinition=definition
+WHERE presetid=1 and ( definitionname like '%pelistal%' or definitionname like '%rocket%' or definitionname like '%missile%');
+
+DELETE item FROM [perpetuumsa].[dbo].[itemshop] as item
+Join entitydefaults on targetdefinition=entitydefaults.definition
+where presetid=1 and definitionname like '%pelistal%' or definitionname like '%rocket%' or definitionname like '%missile%'
+
+
+SELECT * FROM [perpetuumsa].[dbo].[itemshop]
+JOIN entitydefaults on targetdefinition=definition
+WHERE presetid=1 
+
+--Clear other token costs for syndicate bots
+PRINT '--Clear other token costs for syndicate bots'
+UPDATE items
+SET tmcoin=NULL, icscoin=NULL, asicoin=NULL
+FROM itemshop as items
+JOIN entitydefaults on targetdefinition=definition
+WHERE (categoryflags & 65535)=3841;
+
+--def_vektor_bot
+UPDATE itemshop SET unicoin=60 WHERE targetdefinition=5504;
+--def_locust_bot
+UPDATE itemshop SET unicoin=150 WHERE targetdefinition=5512;
+--def_ikarus_bot
+UPDATE itemshop SET unicoin=30 WHERE targetdefinition=5528;
+--def_echelon_bot
+UPDATE itemshop SET unicoin=750 WHERE targetdefinition=5516;
+--def_daidalos_bot
+UPDATE itemshop SET unicoin=1050 WHERE targetdefinition=5540;
+--def_cronus_bot
+UPDATE itemshop SET unicoin=180 WHERE targetdefinition=5532;
+--def_hermes_bot
+UPDATE itemshop SET unicoin=180 WHERE targetdefinition=5536;
+
+---inserts---
+PRINT '---inserts---'
+--5508	def_helix_bot
+INSERT INTO [dbo].[itemshop]
+([presetid],[targetdefinition],[targetamount],[tmcoin],[icscoin],[asicoin],[credit],[unicoin],[globallimit],[purchasecount],[standing])
+VALUES(1,5508,1,NULL,NULL,NULL,800000,240,NULL,1,NULL)
+--5520	def_callisto_bot
+INSERT INTO [dbo].[itemshop]
+([presetid],[targetdefinition],[targetamount],[tmcoin],[icscoin],[asicoin],[credit],[unicoin],[globallimit],[purchasecount],[standing])
+VALUES(1,5520,1,NULL,NULL,NULL,8000000,2100,NULL,1,NULL)
+--5524	def_legatus_bot
+INSERT INTO [dbo].[itemshop]
+([presetid],[targetdefinition],[targetamount],[tmcoin],[icscoin],[asicoin],[credit],[unicoin],[globallimit],[purchasecount],[standing])
+VALUES(1,5524,1,NULL,NULL,NULL,20000000,6000,NULL,1,NULL)
+--5544	def_metis_bot
+INSERT INTO [dbo].[itemshop]
+([presetid],[targetdefinition],[targetamount],[tmcoin],[icscoin],[asicoin],[credit],[unicoin],[globallimit],[purchasecount],[standing])
+VALUES(1,5544,1,NULL,NULL,NULL,40000000,12000,NULL,1,NULL)
+
+GO
+
+
+
+--Syndicate market orders
+PRINT '--Syndicate market orders'
+
+--VendorEIDs for NV and hersh
+--TMA: 1562
+--Hersh: 5114985996031923315
+--Cadavria: 5017597357619707005
+--Lenworth: 6748526534285802691
+--Bellicha: 8565344739145077685
+DECLARE @buyMult float;
+DECLARE @sellMult float;
+DECLARE @vendorid bigint;
+
+DECLARE @buyprice float;
+DECLARE @sellprice float;
+
+DECLARE @vektorDef int;
+DECLARE @locustDef int;
+DECLARE @ikarusDef int;
+DECLARE @cronusDef int;
+DECLARE @hermesDef int;
+
+SET @vektorDef=5504;
+SET @locustDef=5512;
+SET @ikarusDef=5528;
+SET @cronusDef=5532;
+SET @hermesDef=5536;
+
+
+DECLARE @vekprice float;
+DECLARE @cronusprice float;
+DECLARE @hermesprice float;
+DECLARE @ikarusprice float;
+DECLARE @locustprice float;
+
+SET @vekprice = 300000;
+SET @locustprice = 1220000;
+SET @ikarusprice = 190000;
+SET @hermesprice = 1090000;
+SET @cronusprice = 1090000;
+
+--TMA
+SET @vendorid = 1562;
+SET @sellMult = (SELECT TOP 1 vendorsellprofit from vendors where vendorEID=@vendorid)
+SET @buyMult = (SELECT TOP 1 vendorbuyprofit from vendors where vendorEID=@vendorid)
+--vektor
+SET @sellprice = @vekprice/@sellMult;
+SET @buyprice = (@vekprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @vektorDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @vektorDef,  @buyprice, 0;
+--ikarus
+SET @sellprice = @ikarusprice/@sellMult;
+SET @buyprice = (@ikarusprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @ikarusDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @ikarusDef,  @buyprice, 0;
+--locust
+SET @sellprice = @locustprice/@sellMult;
+SET @buyprice = (@locustprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @locustDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @locustDef,  @buyprice, 0;
+--hermes
+SET @sellprice = @hermesprice/@sellMult;
+SET @buyprice = (@hermesprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @hermesDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @hermesDef,  @buyprice, 0;
+--cronus
+SET @sellprice = @cronusprice/@sellMult;
+SET @buyprice = (@cronusprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @cronusDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @cronusDef,  @buyprice, 0;
+
+
+
+--Hershfield
+SET @vendorid = 5114985996031923315;
+SET @sellMult = (SELECT TOP 1 vendorsellprofit from vendors where vendorEID=@vendorid)
+SET @buyMult = (SELECT TOP 1 vendorbuyprofit from vendors where vendorEID=@vendorid)
+--vektor
+SET @sellprice = @vekprice/@sellMult;
+SET @buyprice = (@vekprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @vektorDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @vektorDef,  @buyprice, 0;
+--ikarus
+SET @sellprice = @ikarusprice/@sellMult;
+SET @buyprice = (@ikarusprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @ikarusDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @ikarusDef,  @buyprice, 0;
+--locust
+SET @sellprice = @locustprice/@sellMult;
+SET @buyprice = (@locustprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @locustDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @locustDef,  @buyprice, 0;
+--hermes
+SET @sellprice = @hermesprice/@sellMult;
+SET @buyprice = (@hermesprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @hermesDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @hermesDef,  @buyprice, 0;
+--cronus
+SET @sellprice = @cronusprice/@sellMult;
+SET @buyprice = (@cronusprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @cronusDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @cronusDef,  @buyprice, 0;
+
+
+
+
+--Cadravia
+SET @vendorid = 5017597357619707005;
+SET @sellMult = (SELECT TOP 1 vendorsellprofit from vendors where vendorEID=@vendorid)
+SET @buyMult = (SELECT TOP 1 vendorbuyprofit from vendors where vendorEID=@vendorid)
+--vektor
+SET @sellprice = @vekprice/@sellMult;
+SET @buyprice = (@vekprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @vektorDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @vektorDef,  @buyprice, 0;
+--ikarus
+SET @sellprice = @ikarusprice/@sellMult;
+SET @buyprice = (@ikarusprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @ikarusDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @ikarusDef,  @buyprice, 0;
+--locust
+SET @sellprice = @locustprice/@sellMult;
+SET @buyprice = (@locustprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @locustDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @locustDef,  @buyprice, 0;
+--hermes
+SET @sellprice = @hermesprice/@sellMult;
+SET @buyprice = (@hermesprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @hermesDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @hermesDef,  @buyprice, 0;
+--cronus
+SET @sellprice = @cronusprice/@sellMult;
+SET @buyprice = (@cronusprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @cronusDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @cronusDef,  @buyprice, 0;
+;
+
+
+
+--Lenworth
+SET @vendorid = 6748526534285802691;
+SET @sellMult = (SELECT TOP 1 vendorsellprofit from vendors where vendorEID=@vendorid)
+SET @buyMult = (SELECT TOP 1 vendorbuyprofit from vendors where vendorEID=@vendorid)
+--vektor
+SET @sellprice = @vekprice/@sellMult;
+SET @buyprice = (@vekprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @vektorDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @vektorDef,  @buyprice, 0;
+--ikarus
+SET @sellprice = @ikarusprice/@sellMult;
+SET @buyprice = (@ikarusprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @ikarusDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @ikarusDef,  @buyprice, 0;
+--locust
+SET @sellprice = @locustprice/@sellMult;
+SET @buyprice = (@locustprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @locustDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @locustDef,  @buyprice, 0;
+--hermes
+SET @sellprice = @hermesprice/@sellMult;
+SET @buyprice = (@hermesprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @hermesDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @hermesDef,  @buyprice, 0;
+--cronus
+SET @sellprice = @cronusprice/@sellMult;
+SET @buyprice = (@cronusprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @cronusDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @cronusDef,  @buyprice, 0;
+
+
+
+
+--Bellicha
+SET @vendorid = 8565344739145077685;
+SET @sellMult = (SELECT TOP 1 vendorsellprofit from vendors where vendorEID=@vendorid)
+SET @buyMult = (SELECT TOP 1 vendorbuyprofit from vendors where vendorEID=@vendorid)
+--vektor
+SET @sellprice = @vekprice/@sellMult;
+SET @buyprice = (@vekprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @vektorDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @vektorDef,  @buyprice, 0;
+--ikarus
+SET @sellprice = @ikarusprice/@sellMult;
+SET @buyprice = (@ikarusprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @ikarusDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @ikarusDef,  @buyprice, 0;
+--locust
+SET @sellprice = @locustprice/@sellMult;
+SET @buyprice = (@locustprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @locustDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @locustDef,  @buyprice, 0;
+--hermes
+SET @sellprice = @hermesprice/@sellMult;
+SET @buyprice = (@hermesprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @hermesDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @hermesDef,  @buyprice, 0;
+--cronus
+SET @sellprice = @cronusprice/@sellMult;
+SET @buyprice = (@cronusprice/@buyMult)/10;
+EXEC dbo.addVendorSellItem @vendorid, @cronusDef, @sellprice, 0;
+EXEC dbo.addVendorBuyItem @vendorid, @cronusDef,  @buyprice, 0;
+
+
+GO
+
 
 
 
