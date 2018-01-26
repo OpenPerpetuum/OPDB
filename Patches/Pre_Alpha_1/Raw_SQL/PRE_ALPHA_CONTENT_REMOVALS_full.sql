@@ -78,11 +78,11 @@ WHERE tree.groupID = @groupID;
 
 
 ----------------------------------------------------------
---Disable PBS "capsules" (things that are used to make structures)
+--HIDE PBS "capsules" (things that are used to make structures)
 SELECT * FROM entitydefaults
 WHERE (categoryflags & 255)=154;
 
-UPDATE entitydefaults SET enabled=0, hidden=1, purchasable=0
+UPDATE entitydefaults SET enabled=1, hidden=1, purchasable=0
 WHERE (categoryflags & 255)=154;
 
 
