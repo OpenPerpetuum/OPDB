@@ -4233,13 +4233,13 @@ WHERE tree.groupID = @groupID;
 
 
 ----------------------------------------------------------
---HIDE PBS "capsules" (things that are used to make structures)
-PRINT '--HIDE PBS "capsules" (things that are used to make structures)'
+--Disable PBS "capsules" (things that are used to make structures)
+PRINT '--Disable PBS "capsules" (things that are used to make structures)'
 
 SELECT * FROM entitydefaults
 WHERE (categoryflags & 255)=154;
 
-UPDATE entitydefaults SET enabled=1, hidden=1, purchasable=0
+UPDATE entitydefaults SET enabled=0, hidden=1, purchasable=0
 WHERE (categoryflags & 255)=154;
 
 
@@ -5715,26 +5715,9 @@ GO
 
 
 
---teleport out of stronghold oops
-UPDATE [dbo].[teleportdescriptions]
-   SET [description] = 'tp_zone_39_3_to_teleport_column_tm_maddis_Z'
-      ,[sourcecolumn] = 2557
-      ,[targetcolumn] = 5326
-      ,[sourcezone] = 16
-      ,[sourcerange] = 7
-      ,[targetzone] = 0
-      ,[targetx] = NULL
-      ,[targety] = NULL
-      ,[targetz] = NULL
-      ,[targetrange] = 7
-      ,[usetimeout] = 0
-      ,[listable] = 1
-      ,[active] = 1
-      ,[type] = 2
-      ,[sourcecolumnname] = 'tp_zone_39_3'
-      ,[targetcolumnname] = 'teleport_column_tm_maddis_Z'
-	  where ID=403
-GO
+
+
+
 
 
 --alter startup SP to prevent it form changing npcs around
