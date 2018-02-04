@@ -1,3 +1,5 @@
+---BALANCE bots mk1 v0 must be run first! --
+
 DECLARE @definitionID int;
 DECLARE @extensionID int;
 DECLARE @aggfieldID int;
