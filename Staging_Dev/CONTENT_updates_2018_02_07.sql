@@ -1,6 +1,28 @@
 USE [perpetuumsa]
 GO
 
+
+-----Syndicate (new/broken) bot extension fix for proper skill requirements-----
+PRINT N'Updating Syndicate Bot Extension Requirements (Fix)'
+--Helix
+UPDATE enablerextensions
+SET extensionid=360
+WHERE definition=5508 and extensionid=147 and extensionlevel=3
+--Callisto
+UPDATE enablerextensions
+SET extensionid=360
+WHERE definition=5520 and extensionid=147 and extensionlevel=7
+--Legatus
+UPDATE enablerextensions
+SET extensionid=360
+WHERE definition=5524 and extensionid=147 and extensionlevel=8
+--Metis
+UPDATE enablerextensions
+SET extensionid=361
+WHERE definition=5544 and extensionid=154 and extensionlevel=8
+
+
+
 --------------Gives Small Armor Plate to training rewards to Numiquol and Theo
 PRINT N'TRAINING REWARDS INSERTS';
 
