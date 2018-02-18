@@ -3071,46 +3071,47 @@ INSERT INTO [dbo].[channels]
            ,1)
 END
 
---------Modify Alpha2 Observer NPC velocities-------------
-PRINT N'Update observer NPC speeds';
+--REMOVED as not working on dev
+----------Modify Alpha2 Observer NPC velocities-------------
+--PRINT N'Update observer NPC speeds';
 
 
 
-DECLARE @definitionID int;
-DECLARE @aggvalueID int;
-DECLARE @aggfieldID int;
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_roaming_waspish_alpha' ORDER BY definition DESC);
-UPDATE entitydefaults Set definitionname='def_npc_roaming_waspish_alpha', quantity=1, attributeflags=1024, categoryflags=1423, options='', 
-                note='', enabled=1, volume=0, mass=0, hidden='True', health=100, descriptiontoken='def_npc_roaming_waspish_alpha_desc', purchasable=0, tiertype=0, 
-                tierlevel=0 where definition=@definitionID;
+--DECLARE @definitionID int;
+--DECLARE @aggvalueID int;
+--DECLARE @aggfieldID int;
+--SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_roaming_waspish_alpha' ORDER BY definition DESC);
+--UPDATE entitydefaults Set definitionname='def_npc_roaming_waspish_alpha', quantity=1, attributeflags=1024, categoryflags=1423, options='', 
+--                note='', enabled=1, volume=0, mass=0, hidden='True', health=100, descriptiontoken='def_npc_roaming_waspish_alpha_desc', purchasable=0, tiertype=0, 
+--                tierlevel=0 where definition=@definitionID;
 
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'effect_speed_max_modifier' ORDER BY [name] DESC);
-SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+--SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'effect_speed_max_modifier' ORDER BY [name] DESC);
+--SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
 
-INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 0.75);
-
-
-
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_roaming_baphomet_alpha' ORDER BY definition DESC);
-UPDATE entitydefaults Set definitionname='def_npc_roaming_baphomet_alpha', quantity=1, attributeflags=1024, categoryflags=911, options='', 
-                note='', enabled=1, volume=0, mass=0, hidden='True', health=100, descriptiontoken='def_npc_roaming_baphomet_alpha_desc', purchasable=0, tiertype=0, 
-                tierlevel=0 where definition=@definitionID;
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'effect_speed_max_modifier' ORDER BY [name] DESC);
-SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
-
-INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 0.75);
+--INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 0.75);
 
 
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_roaming_arbalest_alpha' ORDER BY definition DESC);
-UPDATE entitydefaults Set definitionname='def_npc_roaming_arbalest_alpha', quantity=1, attributeflags=1024, categoryflags=1167, options='', 
-                note='', enabled=1, volume=0, mass=0, hidden='True', health=100, descriptiontoken='def_npc_roaming_arbalest_alpha_desc', purchasable=0, tiertype=0, 
-                tierlevel=0 where definition=@definitionID;
 
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'effect_speed_max_modifier' ORDER BY [name] DESC);
-SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+--SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_roaming_baphomet_alpha' ORDER BY definition DESC);
+--UPDATE entitydefaults Set definitionname='def_npc_roaming_baphomet_alpha', quantity=1, attributeflags=1024, categoryflags=911, options='', 
+--                note='', enabled=1, volume=0, mass=0, hidden='True', health=100, descriptiontoken='def_npc_roaming_baphomet_alpha_desc', purchasable=0, tiertype=0, 
+--                tierlevel=0 where definition=@definitionID;
 
-INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 0.75);
+--SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'effect_speed_max_modifier' ORDER BY [name] DESC);
+--SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+--INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 0.75);
+
+
+--SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_roaming_arbalest_alpha' ORDER BY definition DESC);
+--UPDATE entitydefaults Set definitionname='def_npc_roaming_arbalest_alpha', quantity=1, attributeflags=1024, categoryflags=1167, options='', 
+--                note='', enabled=1, volume=0, mass=0, hidden='True', health=100, descriptiontoken='def_npc_roaming_arbalest_alpha_desc', purchasable=0, tiertype=0, 
+--                tierlevel=0 where definition=@definitionID;
+
+--SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'effect_speed_max_modifier' ORDER BY [name] DESC);
+--SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+--INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 0.75);
 
 GO
 
@@ -3374,3 +3375,16 @@ SET @npclootID = (SELECT TOP 1 id from npcloot WHERE definition = @definitionID 
 UPDATE npcloot SET [definition]=@definitionID, [lootdefinition]=@lootdefinitionID, [quantity]=1, [probability]=0.05, [repackaged]=0, [dontdamage]=0, [minquantity]=0 WHERE [id]=@npclootID;
 GO
 
+USE [perpetuumsa]
+GO
+
+PRINT N'Delete Stale facility point entries on beta outposts';
+
+SELECT *
+  FROM [perpetuumsa].[dbo].[intrusionproductionstack]
+  WHERE eventtime<DATETIMEFROMPARTS (2018, 1, 20, 0, 0, 0, 0);
+
+DELETE FROM [perpetuumsa].[dbo].[intrusionproductionstack]
+WHERE eventtime<DATETIMEFROMPARTS (2018, 1, 20, 0, 0, 0, 0);
+
+GO
