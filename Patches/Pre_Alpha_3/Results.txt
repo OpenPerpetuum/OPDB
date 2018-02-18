@@ -1,0 +1,1069 @@
+(1 row affected)
+Updating Syndicate Bot Extension Requirements (Fix)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+TRAINING REWARDS INSERTS
+
+(1 row affected)
+
+(1 row affected)
+NPC flock for tutorial mission on NV tweak
+
+(1 row affected)
+
+(1 row affected)
+NPC safespawnpoints changes for roaming spawns on Hershfield zoneid=8
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+INSERTing new InsurancePrices for all syndicate bots
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Locust-chassis
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Vektor-chassis
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Legatus-chassis
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Echelon-chassis
+
+(1 row affected)
+
+(1 row affected)
+Helix-chassis
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Callisto-chassis
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Echelon-head
+
+(1 row affected)
+Vektor-leg
+
+(1 row affected)
+
+(1 row affected)
+Helix-leg
+
+(1 row affected)
+
+(1 row affected)
+locust-leg
+
+(1 row affected)
+
+(1 row affected)
+Hermes-leg
+
+(1 row affected)
+
+(1 row affected)
+Echelon-leg
+
+(1 row affected)
+
+(1 row affected)
+Callisto-leg
+
+(1 row affected)
+
+(1 row affected)
+Legatus-leg
+
+(1 row affected)
+
+(1 row affected)
+Yagel-chassis
+
+(1 row affected)
+
+(1 row affected)
+Kain-chassis
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Mesmer-chassis
+
+(1 row affected)
+
+(1 row affected)
+Arblest-chassis
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Kain-Head
+
+(1 row affected)
+
+(1 row affected)
+Castel-chassis
+
+(1 row affected)
+
+(1 row affected)
+Wasp-chassis
+
+(1 row affected)
+
+(1 row affected)
+Tyrannos-chassis
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Gropho-chassis
+
+(1 row affected)
+
+(1 row affected)
+Tyrannos-head
+
+(1 row affected)
+
+(1 row affected)
+Prometheus-chassis
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Baphomet-chassis
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Artemis-chassis
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Seth-chassis
+
+(1 row affected)
+
+(1 row affected)
+Artemis-head
+
+(1 row affected)
+
+(1 row affected)
+yagel-chassis-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Cam-chassis-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+arblest-chassis-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+kain-chassis-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+mesmer-chassis-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+vaga-chassis-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+yagel-leg-proto
+
+(1 row affected)
+
+(1 row affected)
+cam-leg-proto
+
+(1 row affected)
+
+(1 row affected)
+arba-leg-proto
+
+(1 row affected)
+
+(1 row affected)
+kain-leg-proto
+
+(1 row affected)
+
+(1 row affected)
+vaga-leg-proto
+
+(1 row affected)
+
+(1 row affected)
+mesmer-leg-proto
+
+(1 row affected)
+
+(1 row affected)
+yagel-head-proto
+
+(1 row affected)
+
+(1 row affected)
+castel-head-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(0 rows affected)
+prometheus-head-proto
+
+(1 row affected)
+
+(1 row affected)
+cam-head-proto
+
+(1 row affected)
+
+(1 row affected)
+vaga-head-proto
+
+(1 row affected)
+
+(1 row affected)
+trojar-head-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+ictus-head-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(0 rows affected)
+
+(0 rows affected)
+intakt-head-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+zenith-head-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+arbalest-head-proto
+
+(1 row affected)
+
+(1 row affected)
+kain-head-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+mesmer-head-proto
+
+(1 row affected)
+
+(1 row affected)
+castel-chassis-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+trojar-chassis-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+wasp-chassis-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+tyrannos-chassis-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+ictus-chassis-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+gropho-chassis-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+castel-leg-proto
+
+(1 row affected)
+
+(1 row affected)
+wasp-leg-proto
+
+(1 row affected)
+
+(1 row affected)
+tryannos-leg-proto
+
+(1 row affected)
+
+(1 row affected)
+gropho-leg-proto
+
+(1 row affected)
+
+(1 row affected)
+trojar-leg-proto
+
+(1 row affected)
+
+(1 row affected)
+ictus-leg-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(0 rows affected)
+wasp-head-proto
+
+(1 row affected)
+
+(1 row affected)
+gropho-head-proto
+
+(1 row affected)
+
+(1 row affected)
+tyrannos-head-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+prometheus-chassis-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+intakt-chassis-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(0 rows affected)
+
+(0 rows affected)
+
+(0 rows affected)
+
+(0 rows affected)
+bapho-chassis-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+artemis-chassis-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+zenith-chassis-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+seth-chassis-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+prometheus-leg-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+intakt-leg-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+baphomet-leg-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+artemis-leg-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+zenith-leg-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+seth-leg-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+bapho-head-proto
+
+(1 row affected)
+
+(1 row affected)
+seth-head-proto
+
+(1 row affected)
+
+(1 row affected)
+artemis-head-proto
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+argano-head
+
+(1 row affected)
+
+(1 row affected)
+argano-head-pr
+
+(1 row affected)
+
+(1 row affected)
+laird-head-pr
+
+(1 row affected)
+
+(1 row affected)
+laird-head
+
+(1 row affected)
+
+(1 row affected)
+termis-head
+
+(1 row affected)
+
+(1 row affected)
+termis-head-pr
+
+(1 row affected)
+
+(1 row affected)
+riveler-head-pr
+
+(1 row affected)
+
+(1 row affected)
+riveler-head
+
+(1 row affected)
+
+(1 row affected)
+symbiont-head
+
+(1 row affected)
+
+(1 row affected)
+symbiont-head=pr
+
+(1 row affected)
+
+(1 row affected)
+sequer-head
+
+(1 row affected)
+
+(1 row affected)
+sequer-head-pr
+
+(1 row affected)
+sequer-leg
+
+(1 row affected)
+sequer-head-pr
+
+(1 row affected)
+sequer-leg-pr
+
+(1 row affected)
+
+(1 row affected)
+sequer-leg
+
+(1 row affected)
+sequer-chassis
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+sequer-chassis-pr
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+scarab_head_pr
+
+(1 row affected)
+
+(1 row affected)
+scarab_head
+
+(1 row affected)
+
+(1 row affected)
+scarab_leg
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+scarab_leg_pr
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+scarab_chassis_pr
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+scarab_chassis
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Spark cost increases
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Move Spawn
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Drop probabilities on def_npc_echelon_masterdeathdealer_rank2 loot
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Delete Stale facility point entries on beta outposts
+
+(58 rows affected)
+
+(58 rows affected)
