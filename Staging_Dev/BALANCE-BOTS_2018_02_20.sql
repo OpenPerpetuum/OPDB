@@ -15,8 +15,6 @@ UPDATE entitydefaults Set definitionname='def_vektor_head', quantity=1, attribut
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_vektor_chassis' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -32,8 +30,6 @@ SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @de
 UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=4.5 WHERE id =  @aggvalueID;
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_vektor_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -43,16 +39,12 @@ UPDATE entitydefaults Set definitionname='def_vektor_leg', quantity=1, attribute
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_helix_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_helix_head', quantity=1, attributeflags=1024, categoryflags=65872, options='#slotFlags=48,8,8,8', 
                 note='', enabled=1, volume=1, mass=200, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -71,8 +63,6 @@ SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @de
 UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=4 WHERE id =  @aggvalueID;
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_helix_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -82,16 +72,12 @@ UPDATE entitydefaults Set definitionname='def_helix_leg', quantity=1, attributef
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_locust_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_locust_head', quantity=1, attributeflags=1024, categoryflags=131408, options='#height=f0,01#slotFlags=48,8,8,8,8', 
                 note='', enabled=1, volume=1, mass=300, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -110,8 +96,6 @@ SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @de
 UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=5.5 WHERE id =  @aggvalueID;
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_locust_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -121,16 +105,12 @@ UPDATE entitydefaults Set definitionname='def_locust_leg', quantity=1, attribute
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_echelon_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_echelon_head', quantity=1, attributeflags=1024, categoryflags=196944, options='#height=f0,01#slotFlags=48,8,8,8,8', 
                 note='', enabled=1, volume=3, mass=700, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -150,7 +130,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=11
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_echelon_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -160,16 +139,12 @@ UPDATE entitydefaults Set definitionname='def_echelon_leg', quantity=1, attribut
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_callisto_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_callisto_head', quantity=1, attributeflags=1024, categoryflags=196944, options='#height=f0,15#slotFlags=48,8,8,8,8', 
                 note='', enabled=1, volume=2, mass=600, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -189,15 +164,12 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=9.
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_callisto_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_callisto_leg', quantity=1, attributeflags=1024, categoryflags=197456, options='#height=f1#slotFlags=420,20,20,20,20', 
                 note='', enabled=1, volume=6, mass=2400, hidden='True', health=100, descriptiontoken='bot_leg_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -217,7 +189,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=35
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_legatus_chassis' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -234,7 +205,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=14
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_legatus_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -244,16 +214,12 @@ UPDATE entitydefaults Set definitionname='def_legatus_leg', quantity=1, attribut
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_castel_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_castel_head', quantity=1, attributeflags=1024, categoryflags=65872, options='#height=f0,01#slotFlags=48,8,8,8', 
                 note='', enabled=1, volume=1, mass=300, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -273,7 +239,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=5 
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_castel_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -283,16 +248,12 @@ UPDATE entitydefaults Set definitionname='def_castel_leg', quantity=1, attribute
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_yagel_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_yagel_head', quantity=1, attributeflags=1024, categoryflags=65872, options='#height=f0,01#slotFlags=48,8,8', 
                 note='', enabled=1, volume=1, mass=300, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -312,7 +273,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=5 
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_yagel_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -322,16 +282,12 @@ UPDATE entitydefaults Set definitionname='def_yagel_leg', quantity=1, attributef
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_prometheus_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_prometheus_head', quantity=1, attributeflags=1024, categoryflags=65872, options='#height=f0,01#slotFlags=48,8,8', 
                 note='', enabled=1, volume=1, mass=300, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -351,7 +307,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=5 
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_prometheus_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -361,16 +316,12 @@ UPDATE entitydefaults Set definitionname='def_prometheus_leg', quantity=1, attri
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_troiar_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_troiar_head', quantity=1, attributeflags=1024, categoryflags=65872, options='#slotFlags=48,8,8', 
                 note='', enabled=1, volume=1, mass=200, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -390,7 +341,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=4.
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_troiar_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -400,16 +350,12 @@ UPDATE entitydefaults Set definitionname='def_troiar_leg', quantity=1, attribute
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_cameleon_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_cameleon_head', quantity=1, attributeflags=1024, categoryflags=65872, options='#height=f0,01#slotFlags=48,8,8,8,8', 
                 note='', enabled=1, volume=1, mass=200, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -429,7 +375,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=4.
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_cameleon_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -439,16 +384,12 @@ UPDATE entitydefaults Set definitionname='def_cameleon_leg', quantity=1, attribu
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_intakt_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_intakt_head', quantity=1, attributeflags=1024, categoryflags=65872, options='#height=f0,01#slotFlags=48,8,8,8,8', 
                 note='scanning speed 10%', enabled=1, volume=1, mass=200, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -468,7 +409,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=4.
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_intakt_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -478,16 +418,12 @@ UPDATE entitydefaults Set definitionname='def_intakt_leg', quantity=1, attribute
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_waspish_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_waspish_head', quantity=1, attributeflags=1024, categoryflags=131408, options='#height=f0,01#slotFlags=48,8,8,8,8', 
                 note='', enabled=1, volume=1, mass=300, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -507,7 +443,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=6 
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_waspish_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -517,16 +452,12 @@ UPDATE entitydefaults Set definitionname='def_waspish_leg', quantity=1, attribut
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_arbalest_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_arbalest_head', quantity=1, attributeflags=1024, categoryflags=131408, options='#height=f0,05#slotFlags=48,8,8,8', 
                 note='', enabled=1, volume=1, mass=300, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -546,7 +477,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=6 
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_arbalest_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -556,16 +486,12 @@ UPDATE entitydefaults Set definitionname='def_arbalest_leg', quantity=1, attribu
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_baphomet_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_baphomet_head', quantity=1, attributeflags=1024, categoryflags=131408, options='#height=f0,01#slotFlags=48,8,8,8,8', 
                 note='', enabled=1, volume=1, mass=300, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -585,7 +511,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=6 
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_baphomet_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -595,16 +520,12 @@ UPDATE entitydefaults Set definitionname='def_baphomet_leg', quantity=1, attribu
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_tyrannos_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_tyrannos_head', quantity=1, attributeflags=1024, categoryflags=196944, options='#height=f0,15#slotFlags=48,8,8,8,8', 
                 note='', enabled=1, volume=2, mass=700, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -634,16 +555,12 @@ UPDATE entitydefaults Set definitionname='def_tyrannos_leg', quantity=1, attribu
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_kain_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_kain_head', quantity=1, attributeflags=1024, categoryflags=196944, options='#height=f0,15#slotFlags=48,8,8,8', 
                 note='', enabled=1, volume=2, mass=700, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -660,7 +577,6 @@ SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @de
 
 
 UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=12 WHERE id =  @aggvalueID;
-
 
 
 
@@ -688,8 +604,6 @@ UPDATE entitydefaults Set definitionname='def_artemis_head', quantity=1, attribu
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artemis_chassis' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -706,7 +620,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=12
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artemis_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -716,16 +629,12 @@ UPDATE entitydefaults Set definitionname='def_artemis_leg', quantity=1, attribut
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_ictus_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_ictus_head', quantity=1, attributeflags=1024, categoryflags=196944, options='#height=f0,15#slotFlags=48,8,8,8', 
                 note='', enabled=1, volume=2, mass=600, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -745,7 +654,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=10
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_ictus_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -755,16 +663,12 @@ UPDATE entitydefaults Set definitionname='def_ictus_leg', quantity=1, attributef
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_vagabond_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_vagabond_head', quantity=1, attributeflags=1024, categoryflags=196944, options='#height=f0,15#slotFlags=48,8,8,8,8,8', 
                 note='', enabled=1, volume=2, mass=600, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -784,7 +688,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=10
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_vagabond_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -794,16 +697,12 @@ UPDATE entitydefaults Set definitionname='def_vagabond_leg', quantity=1, attribu
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_zenith_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_zenith_head', quantity=1, attributeflags=1024, categoryflags=196944, options='#height=f0,15#slotFlags=48,8,8,8,8,8', 
                 note='bonuszok remote sensor boosterre ', enabled=1, volume=2, mass=600, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -823,7 +722,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=10
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_zenith_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -833,16 +731,12 @@ UPDATE entitydefaults Set definitionname='def_zenith_leg', quantity=1, attribute
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_gropho_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_gropho_head', quantity=1, attributeflags=1024, categoryflags=262480, options='#height=f0,2#slotFlags=48,8,8,8,8,8', 
                 note='', enabled=1, volume=2.5, mass=1000, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -862,7 +756,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=15
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_gropho_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -872,16 +765,12 @@ UPDATE entitydefaults Set definitionname='def_gropho_leg', quantity=1, attribute
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_mesmer_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_mesmer_head', quantity=1, attributeflags=1024, categoryflags=262480, options='#height=f0,15#slotFlags=48,8,8,8,8', 
                 note='', enabled=1, volume=2.5, mass=1000, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -901,7 +790,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=15
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_mesmer_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -911,16 +799,12 @@ UPDATE entitydefaults Set definitionname='def_mesmer_leg', quantity=1, attribute
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_seth_head' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_seth_head', quantity=1, attributeflags=1024, categoryflags=262480, options='#height=f0,01#slotFlags=48,8,8,8,8,8', 
                 note='', enabled=1, volume=2.5, mass=1000, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -940,7 +824,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=15
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_seth_leg' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -950,16 +833,12 @@ UPDATE entitydefaults Set definitionname='def_seth_leg', quantity=1, attributefl
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_yagel_head_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_yagel_head_pr', quantity=1, attributeflags=1024, categoryflags=65872, options='#height=f0,01#slotFlags=48,8,8', 
                 note='', enabled=1, volume=1, mass=300, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -979,7 +858,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=5 
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_yagel_leg_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -989,16 +867,12 @@ UPDATE entitydefaults Set definitionname='def_yagel_leg_pr', quantity=1, attribu
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_prometheus_head_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_prometheus_head_pr', quantity=1, attributeflags=1024, categoryflags=65872, options='#height=f0,01#slotFlags=48,8,8', 
                 note='', enabled=1, volume=1, mass=300, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -1018,7 +892,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=5 
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_prometheus_leg_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -1028,16 +901,12 @@ UPDATE entitydefaults Set definitionname='def_prometheus_leg_pr', quantity=1, at
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_waspish_head_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_waspish_head_pr', quantity=1, attributeflags=1024, categoryflags=131408, options='#height=f0,01#slotFlags=48,8,8,8,8', 
                 note='', enabled=1, volume=1, mass=300, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -1067,16 +936,12 @@ UPDATE entitydefaults Set definitionname='def_waspish_leg_pr', quantity=1, attri
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_cameleon_head_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_cameleon_head_pr', quantity=1, attributeflags=1024, categoryflags=65872, options='#height=f0,01#slotFlags=48,8,8,8,8', 
                 note='', enabled=1, volume=1, mass=200, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -1096,7 +961,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=4.
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_cameleon_leg_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -1106,16 +970,12 @@ UPDATE entitydefaults Set definitionname='def_cameleon_leg_pr', quantity=1, attr
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_intakt_head_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_intakt_head_pr', quantity=1, attributeflags=1024, categoryflags=65872, options='#height=f0,01#slotFlags=48,8,8,8,8', 
                 note='scanning speed 10%', enabled=1, volume=1, mass=200, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -1135,7 +995,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=4.
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_intakt_leg_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -1145,16 +1004,12 @@ UPDATE entitydefaults Set definitionname='def_intakt_leg_pr', quantity=1, attrib
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_arbalest_head_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_arbalest_head_pr', quantity=1, attributeflags=1024, categoryflags=131408, options='#height=f0,05#slotFlags=48,8,8,8', 
                 note='', enabled=1, volume=1, mass=300, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -1174,7 +1029,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=6 
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_arbalest_leg_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -1184,16 +1038,12 @@ UPDATE entitydefaults Set definitionname='def_arbalest_leg_pr', quantity=1, attr
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_baphomet_head_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_baphomet_head_pr', quantity=1, attributeflags=1024, categoryflags=131408, options='#height=f0,01#slotFlags=48,8,8,8,8', 
                 note='', enabled=1, volume=1, mass=300, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -1213,7 +1063,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=6 
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_baphomet_leg_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -1223,16 +1072,12 @@ UPDATE entitydefaults Set definitionname='def_baphomet_leg_pr', quantity=1, attr
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_castel_head_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_castel_head_pr', quantity=1, attributeflags=1024, categoryflags=65872, options='#height=f0,01#slotFlags=48,8,8,8', 
                 note='', enabled=1, volume=1, mass=300, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -1252,7 +1097,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=5 
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_castel_leg_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -1262,16 +1106,12 @@ UPDATE entitydefaults Set definitionname='def_castel_leg_pr', quantity=1, attrib
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_kain_head_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_kain_head_pr', quantity=1, attributeflags=1024, categoryflags=196944, options='#height=f0,15#slotFlags=48,8,8,8', 
                 note='', enabled=1, volume=2, mass=700, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -1291,7 +1131,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=12
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_kain_leg_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -1301,16 +1140,12 @@ UPDATE entitydefaults Set definitionname='def_kain_leg_pr', quantity=1, attribut
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artemis_head_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_artemis_head_pr', quantity=1, attributeflags=1024, categoryflags=196944, options='#height=f0,15#slotFlags=48,8,8,8,8', 
                 note='', enabled=1, volume=2, mass=700, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -1330,7 +1165,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=12
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artemis_leg_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -1340,16 +1174,12 @@ UPDATE entitydefaults Set definitionname='def_artemis_leg_pr', quantity=1, attri
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_tyrannos_head_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_tyrannos_head_pr', quantity=1, attributeflags=1024, categoryflags=196944, options='#height=f0,15#slotFlags=48,8,8,8,8', 
                 note='', enabled=1, volume=2, mass=700, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -1369,7 +1199,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=12
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_tyrannos_leg_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -1379,16 +1208,12 @@ UPDATE entitydefaults Set definitionname='def_tyrannos_leg_pr', quantity=1, attr
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_vagabond_head_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_vagabond_head_pr', quantity=1, attributeflags=1024, categoryflags=196944, options='#height=f0,15#slotFlags=48,8,8,8,8,8', 
                 note='', enabled=1, volume=2, mass=600, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -1408,7 +1233,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=10
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_vagabond_leg_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -1418,16 +1242,12 @@ UPDATE entitydefaults Set definitionname='def_vagabond_leg_pr', quantity=1, attr
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_zenith_head_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_zenith_head_pr', quantity=1, attributeflags=1024, categoryflags=196944, options='#height=f0,15#slotFlags=48,8,8,8,8,8', 
                 note='bonuszok remote sensor boosterre ', enabled=1, volume=2, mass=600, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -1457,16 +1277,12 @@ UPDATE entitydefaults Set definitionname='def_zenith_leg_pr', quantity=1, attrib
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_mesmer_head_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_mesmer_head_pr', quantity=1, attributeflags=1024, categoryflags=262480, options='#height=f0,15#slotFlags=48,8,8,8,8', 
                 note='', enabled=1, volume=2.5, mass=1000, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -1486,7 +1302,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=15
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_mesmer_leg_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -1496,16 +1311,12 @@ UPDATE entitydefaults Set definitionname='def_mesmer_leg_pr', quantity=1, attrib
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_seth_head_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_seth_head_pr', quantity=1, attributeflags=1024, categoryflags=262480, options='#height=f0,01#slotFlags=48,8,8,8,8,8', 
                 note='', enabled=1, volume=2.5, mass=1000, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -1525,7 +1336,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=15
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_seth_leg_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -1535,16 +1345,12 @@ UPDATE entitydefaults Set definitionname='def_seth_leg_pr', quantity=1, attribut
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_gropho_head_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_gropho_head_pr', quantity=1, attributeflags=1024, categoryflags=262480, options='#height=f0,2#slotFlags=48,8,8,8,8,8', 
                 note='', enabled=1, volume=2.5, mass=1000, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -1564,7 +1370,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=15
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_gropho_leg_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -1574,16 +1379,12 @@ UPDATE entitydefaults Set definitionname='def_gropho_leg_pr', quantity=1, attrib
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_troiar_head_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_troiar_head_pr', quantity=1, attributeflags=1024, categoryflags=65872, options='#slotFlags=48,8,8', 
                 note='', enabled=1, volume=1, mass=200, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -1603,7 +1404,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=4.
 
 
 
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_troiar_leg_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
@@ -1613,16 +1413,12 @@ UPDATE entitydefaults Set definitionname='def_troiar_leg_pr', quantity=1, attrib
 
 
 
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_ictus_head_pr' ORDER BY definition DESC);
 PRINT @definitionID;
 
 UPDATE entitydefaults Set definitionname='def_ictus_head_pr', quantity=1, attributeflags=1024, categoryflags=196944, options='#height=f0,15#slotFlags=48,8,8,8', 
                 note='', enabled=1, volume=2, mass=600, hidden='True', health=100, descriptiontoken='bot_head_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
-
-
 
 
 
@@ -1773,24 +1569,270 @@ SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'core_max_
  SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
 
 DELETE [dbo].[chassisbonus] WHERE id=@chassisbonusID;
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_heavyarmored_unit_piloting');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_metis_chassis' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'harvesting_amount_modifier' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
 
-DELETE [dbo].[chassisbonus] WHERE id=@chassisbonusID;
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_industry_specialist');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_metis_chassis' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'cpu_usage_gathering_modifier' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
 
-DELETE [dbo].[chassisbonus] WHERE id=@chassisbonusID;
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_indy_role_specialist');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_metis_chassis' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'core_max_modifier' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
+PRINT N'Indy bot size adjustments in line with recent changes';
 
-DELETE [dbo].[chassisbonus] WHERE id=@chassisbonusID;
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_noob_bot_chassis' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_noob_bot_chassis', quantity=1, attributeflags=1024, categoryflags=66128, options='#height=f0.3#slotFlags=4651,653#tier=$tierlevel_s', 
+                note='', enabled=1, volume=7, mass=3000, hidden='True', health=100, descriptiontoken='bot_chassis_desc', purchasable=0, tiertype=3, 
+                tierlevel=0 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'signature_radius' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=4.75 WHERE id =  @aggvalueID;
+
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_sequer_chassis' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_sequer_chassis', quantity=1, attributeflags=1024, categoryflags=131664, options='#height=f0.9#slotFlags=4653', 
+                note='', enabled=1, volume=12, mass=8000, hidden='True', health=100, descriptiontoken='def_sequer_chassis_desc', purchasable=0, tiertype=0, 
+                tierlevel=0 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'signature_radius' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=5 WHERE id =  @aggvalueID;
+
+
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_ikarus_chassis' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_ikarus_chassis', quantity=1, attributeflags=1024, categoryflags=66128, options='#height=f0.3#slotFlags=46d3', 
+                note='', enabled=1, volume=8, mass=6650, hidden='True', health=100, descriptiontoken='bot_chassis_desc', purchasable=0, tiertype=0, 
+                tierlevel=0 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'signature_radius' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=4 WHERE id =  @aggvalueID;
+
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_metis_chassis' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_metis_chassis', quantity=1, attributeflags=1024, categoryflags=262736, options='#height=f1#slotFlags=42d0,2d0,6d0,6d0,6d0,4d3', 
+                note='', enabled=1, volume=20, mass=35000, hidden='True', health=100, descriptiontoken='bot_chassis_desc', purchasable=0, tiertype=0, 
+                tierlevel=0 where definition=@definitionID;
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'signature_radius' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=14 WHERE id =  @aggvalueID;
+
+
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_daidalos_chassis' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_daidalos_chassis', quantity=1, attributeflags=1024, categoryflags=197200, options='#height=f0.75#slotFlags=42d0,2d0,d1,d1', 
+                note='', enabled=1, volume=13, mass=43000, hidden='True', health=100, descriptiontoken='bot_chassis_desc', purchasable=0, tiertype=0, 
+                tierlevel=0 where definition=@definitionID;
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'signature_radius' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=11 WHERE id =  @aggvalueID;
+
+
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_hermes_chassis' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_hermes_chassis', quantity=1, attributeflags=1024, categoryflags=131664, options='#height=f0.5#slotFlags=4451,6d1,451,6d1', 
+                note='', enabled=1, volume=9, mass=4000, hidden='True', health=100, descriptiontoken='bot_chassis_desc', purchasable=0, tiertype=0, 
+                tierlevel=0 where definition=@definitionID;
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'signature_radius' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=5 WHERE id =  @aggvalueID;
+
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_lithus_chassis_pr' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_lithus_chassis_pr', quantity=1, attributeflags=1024, categoryflags=262736, options='#height=f2#slotFlags=4d3,6d0', 
+                note='', enabled=1, volume=100, mass=65000, hidden='True', health=100, descriptiontoken='def_lithus_chassis_desc', purchasable=0, tiertype=0, 
+                tierlevel=0 where definition=@definitionID;
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'signature_radius' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=14 WHERE id =  @aggvalueID;
+
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_sequer_chassis_pr' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_sequer_chassis_pr', quantity=1, attributeflags=1024, categoryflags=131664, options='#height=f0.9#slotFlags=4653', 
+                note='', enabled=1, volume=12, mass=8000, hidden='True', health=100, descriptiontoken='def_sequer_chassis_desc', purchasable=0, tiertype=0, 
+                tierlevel=0 where definition=@definitionID;
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'signature_radius' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=5 WHERE id =  @aggvalueID;
+
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_symbiont_chassis_pr' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_symbiont_chassis_pr', quantity=1, attributeflags=1024, categoryflags=262736, options='#height=f1#slotFlags=42d0,2d0,6d0,6d0,6d0,4d3', 
+                note='', enabled=1, volume=20, mass=35000, hidden='True', health=100, descriptiontoken='bot_chassis_desc', purchasable=0, tiertype=0, 
+                tierlevel=0 where definition=@definitionID;
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'signature_radius' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=14 WHERE id =  @aggvalueID;
+
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_riveler_chassis_pr' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_riveler_chassis_pr', quantity=1, attributeflags=1024, categoryflags=262736, options='#height=f1#slotFlags=42d0,6d0,2d0,6d0,6d0,4d3', 
+                note='', enabled=1, volume=20, mass=35000, hidden='True', health=100, descriptiontoken='bot_chassis_desc', purchasable=0, tiertype=0, 
+                tierlevel=0 where definition=@definitionID;
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'signature_radius' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=14 WHERE id =  @aggvalueID;
+
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_gargoyle_chassis_pr' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_gargoyle_chassis_pr', quantity=1, attributeflags=1024, categoryflags=197200, options='#height=f1.3#slotFlags=42d0,2d0,6d0,6d0,4d3', 
+                note='', enabled=1, volume=16, mass=13500, hidden='True', health=100, descriptiontoken='bot_chassis_desc', purchasable=0, tiertype=0, 
+                tierlevel=0 where definition=@definitionID;
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'signature_radius' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=11 WHERE id =  @aggvalueID;
+
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_termis_chassis_pr' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_termis_chassis_pr', quantity=1, attributeflags=1024, categoryflags=197200, options='#height=f1.3#slotFlags=42d0,2d0,6d0,6d0,4d3', 
+                note='', enabled=1, volume=16, mass=13500, hidden='True', health=100, descriptiontoken='bot_chassis_desc', purchasable=0, tiertype=0, 
+                tierlevel=0 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'signature_radius' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=11 WHERE id =  @aggvalueID;
+
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_symbiont_chassis' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_symbiont_chassis', quantity=1, attributeflags=1024, categoryflags=262736, options='#height=f1#slotFlags=42d0,2d0,6d0,6d0,6d0,4d3', 
+                note='', enabled=1, volume=20, mass=35000, hidden='True', health=100, descriptiontoken='bot_chassis_desc', purchasable=0, tiertype=0, 
+                tierlevel=0 where definition=@definitionID;
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'signature_radius' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=14 WHERE id =  @aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_riveler_chassis' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_riveler_chassis', quantity=1, attributeflags=1024, categoryflags=262736, options='#height=f1#slotFlags=42d0,6d0,2d0,6d0,6d0,4d3', 
+                note='', enabled=1, volume=20, mass=35000, hidden='True', health=100, descriptiontoken='bot_chassis_desc', purchasable=0, tiertype=0, 
+                tierlevel=0 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'signature_radius' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=14 WHERE id =  @aggvalueID;
+
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_gargoyle_chassis' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_gargoyle_chassis', quantity=1, attributeflags=1024, categoryflags=197200, options='#height=f1.3#slotFlags=42d0,2d0,6d0,6d0,4d3', 
+                note='', enabled=1, volume=16, mass=13500, hidden='True', health=100, descriptiontoken='bot_chassis_desc', purchasable=0, tiertype=0, 
+                tierlevel=0 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'signature_radius' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=11 WHERE id =  @aggvalueID;
+
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_termis_chassis' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_termis_chassis', quantity=1, attributeflags=1024, categoryflags=197200, options='#height=f1.3#slotFlags=42d0,2d0,6d0,6d0,4d3', 
+                note='', enabled=1, volume=16, mass=13500, hidden='True', health=100, descriptiontoken='bot_chassis_desc', purchasable=0, tiertype=0, 
+                tierlevel=0 where definition=@definitionID;
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'signature_radius' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=11 WHERE id =  @aggvalueID;
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_lithus_chassis' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_lithus_chassis', quantity=1, attributeflags=1024, categoryflags=262736, options='#height=f2#slotFlags=4d3,6d0', 
+                note='', enabled=1, volume=100, mass=65000, hidden='True', health=100, descriptiontoken='def_lithus_chassis_desc', purchasable=0, tiertype=0, 
+                tierlevel=0 where definition=@definitionID;
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'signature_radius' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=14 WHERE id =  @aggvalueID;
+
 
 GO
 

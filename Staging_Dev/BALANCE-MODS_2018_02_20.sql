@@ -1685,15 +1685,6 @@ SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @de
 
 DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
 
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'critical_hit_chance_modifier' ORDER BY [name] DESC);
-SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
-
-DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'railgun_cycle_time_modifier' ORDER BY [name] DESC);
-SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
-
-DELETE FROM [dbo].[aggregatevalues] WHERE id=@aggvalueID;
 
 
 
@@ -3402,6 +3393,105 @@ SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @de
 
 
 UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.6 WHERE id =  @aggvalueID;
+
+---Some missing modules from original---
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_damaged_medium_laser' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_artifact_damaged_medium_laser', quantity=1, attributeflags=336592, categoryflags=33621775, options='#moduleFlag=i91#ammoCapacity=i78#ammoType=L2020a#tier=$tierlevel_t0', 
+                note='', enabled=1, volume=1, mass=300, hidden='False', health=100, descriptiontoken='def_artifact_damaged_medium_shortrange_laser_desc', purchasable=1, tiertype=1, 
+                tierlevel=0 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'accuracy' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=11.5 WHERE id =  @aggvalueID;
+
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_damaged_small_laser' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_artifact_damaged_small_laser', quantity=1, attributeflags=303824, categoryflags=16844559, options='#moduleFlag=i51#ammoCapacity=i78#ammoType=L1020a#tier=$tierlevel_t0', 
+                note='', enabled=1, volume=0.5, mass=150, hidden='False', health=100, descriptiontoken='def_artifact_damaged_small_longrange_laser_desc', purchasable=1, tiertype=1, 
+                tierlevel=0 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'accuracy' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=4 WHERE id =  @aggvalueID;
+
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_damaged_small_railgun' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_artifact_damaged_small_railgun', quantity=1, attributeflags=303824, categoryflags=17041167, options='#moduleFlag=i51#ammoCapacity=i32#ammoType=L1010a#tier=$tierlevel_t0', 
+                note='RailgunWork:
+-OptimalRange: a fegyver optionsbol (optimal_range) kiolvas egy alap értéket , azt megszorozza az accumlator értékével(railgun_optimal_range_modifier); az igy kapott értéket a fegyver hasznalatakor modositja még az ammo optimal range modifierével ami az ammo optionsében van (optimalRangeModifier)
+
+-Fallof: a fegyver optionsbol (turret_fallof) kiolvas egy alapértéket, azt megszorozza az accumlator ertekevel (railgun_falloff_modifer), az igy kapott értéket a fegyver hasznalatokr modositja még az ammo falloff modifierével ami az ammo optionsében van (falloff_modifier)
+
+-Damage: veszi az ammo sebzeset az ammo optionsébol és meg szorozza a fegyver optionsbol vett (damage_modifier) sebzés értékkel, és ezt az accumlatorbol (damage_small_railgun_modifier és a damage_railgun_modifier)
+
+-Accuracy: fegyver optionsbol (accuracy) vett értéket szorozza az accumlatorral (accuracy_modifier) és ezt veti ossze a target méretével (signature_radius); "0-fegyver accuracy" intervallumban vett random float szám ha bele esik a "0-target signature_radius értéke" intervallumban akkor: talált!
+
+-Tracking: képlet!!!
+a robot chassis optionsbol veszi az értéket, összehasonlitja hogy a célpont az adott távolságon az adott pillanatban a meroleges haladasi iranyanak sebessege lekovetheto e a trackingspeedel, ha igen:. talalt; ha nem: nem talalt.
+
+-CycleTime: ', enabled=1, volume=0.5, mass=250, hidden='False', health=100, descriptiontoken='def_artifact_damaged_small_longrange_railgun_desc', purchasable=1, tiertype=1, 
+                tierlevel=0 where definition=@definitionID;
+
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'accuracy' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=5 WHERE id =  @aggvalueID;
+
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_damaged_medium_railgun' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_artifact_damaged_medium_railgun', quantity=1, attributeflags=336592, categoryflags=33818383, options='#moduleFlag=i91#ammoCapacity=i32#ammoType=L2010a#tier=$tierlevel_t0', 
+                note='', enabled=1, volume=1, mass=500, hidden='False', health=100, descriptiontoken='def_artifact_damaged_medium_shortrange_railgun_desc', purchasable=1, tiertype=1, 
+                tierlevel=0 where definition=@definitionID;
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'accuracy' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=13.5 WHERE id =  @aggvalueID;
+
+
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_damaged_small_shield_generator' ORDER BY definition DESC);
+PRINT @definitionID;
+
+UPDATE entitydefaults Set definitionname='def_artifact_damaged_small_shield_generator', quantity=1, attributeflags=49432, categoryflags=16843279, options='#moduleFlag=i20#tier=$tierlevel_t0', 
+                note='damage to core = shield_absorbtion * shield_absorbtion_modifier
+
+amig ez a modul fut addig nincs damage, csak a core-bol von le.
+', enabled=1, volume=0.3, mass=200, hidden='False', health=100, descriptiontoken='def_artifact_damaged_shield_generator_desc', purchasable=1, tiertype=1, 
+                tierlevel=0 where definition=@definitionID;
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'shield_radius' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=4.5 WHERE id =  @aggvalueID;
+
+
+
+
+
 
 
 
