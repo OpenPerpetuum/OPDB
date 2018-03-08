@@ -1,0 +1,2698 @@
+Ammo Balance 2018-02-20
+259
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+260
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+261
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+262
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+263
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+264
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+265
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+266
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+283
+
+(1 row affected)
+
+(1 row affected)
+284
+
+(1 row affected)
+
+(1 row affected)
+285
+
+(1 row affected)
+
+(1 row affected)
+286
+
+(1 row affected)
+
+(1 row affected)
+288
+
+(1 row affected)
+
+(1 row affected)
+287
+
+(1 row affected)
+
+(1 row affected)
+289
+
+(1 row affected)
+
+(1 row affected)
+290
+
+(1 row affected)
+
+(1 row affected)
+1036
+
+(1 row affected)
+
+(1 row affected)
+1037
+
+(1 row affected)
+
+(1 row affected)
+1038
+
+(1 row affected)
+
+(1 row affected)
+1039
+
+(1 row affected)
+
+(1 row affected)
+2437
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2440
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2445
+
+(1 row affected)
+
+(1 row affected)
+2446
+
+(1 row affected)
+
+(1 row affected)
+2447
+
+(1 row affected)
+
+(1 row affected)
+2448
+
+(1 row affected)
+
+(1 row affected)
+2449
+
+(1 row affected)
+
+(1 row affected)
+2450
+
+(1 row affected)
+
+(1 row affected)
+Bot Balance 2018-02-20
+5505
+
+(1 row affected)
+5506
+
+(1 row affected)
+
+(1 row affected)
+5507
+
+(1 row affected)
+5509
+
+(1 row affected)
+5510
+
+(1 row affected)
+
+(1 row affected)
+5511
+
+(1 row affected)
+5513
+
+(1 row affected)
+5514
+
+(1 row affected)
+
+(1 row affected)
+5515
+
+(1 row affected)
+5517
+
+(1 row affected)
+5518
+
+(1 row affected)
+
+(1 row affected)
+5519
+
+(1 row affected)
+5521
+
+(1 row affected)
+5522
+
+(1 row affected)
+
+(1 row affected)
+5523
+
+(1 row affected)
+5525
+
+(1 row affected)
+
+(1 row affected)
+5526
+
+(1 row affected)
+
+(1 row affected)
+5527
+
+(1 row affected)
+103
+
+(1 row affected)
+104
+
+(1 row affected)
+
+(1 row affected)
+105
+
+(1 row affected)
+70
+
+(1 row affected)
+71
+
+(1 row affected)
+
+(1 row affected)
+72
+
+(1 row affected)
+73
+
+(1 row affected)
+74
+
+(1 row affected)
+
+(1 row affected)
+75
+
+(1 row affected)
+939
+
+(1 row affected)
+940
+
+(1 row affected)
+
+(1 row affected)
+941
+
+(1 row affected)
+88
+
+(1 row affected)
+89
+
+(1 row affected)
+
+(1 row affected)
+90
+
+(1 row affected)
+91
+
+(1 row affected)
+92
+
+(1 row affected)
+
+(1 row affected)
+93
+
+(1 row affected)
+79
+
+(1 row affected)
+80
+
+(1 row affected)
+
+(1 row affected)
+81
+
+(1 row affected)
+94
+
+(1 row affected)
+95
+
+(1 row affected)
+
+(1 row affected)
+96
+
+(1 row affected)
+97
+
+(1 row affected)
+98
+
+(1 row affected)
+
+(1 row affected)
+99
+
+(1 row affected)
+115
+
+(1 row affected)
+116
+
+(1 row affected)
+
+(1 row affected)
+117
+
+(1 row affected)
+106
+
+(1 row affected)
+107
+
+(1 row affected)
+
+(1 row affected)
+108
+
+(1 row affected)
+
+(1 row affected)
+109
+
+(1 row affected)
+110
+
+(1 row affected)
+
+(1 row affected)
+111
+
+(1 row affected)
+945
+
+(1 row affected)
+946
+
+(1 row affected)
+
+(1 row affected)
+947
+
+(1 row affected)
+124
+
+(1 row affected)
+125
+
+(1 row affected)
+
+(1 row affected)
+126
+
+(1 row affected)
+127
+
+(1 row affected)
+128
+
+(1 row affected)
+
+(1 row affected)
+129
+
+(1 row affected)
+139
+
+(1 row affected)
+140
+
+(1 row affected)
+
+(1 row affected)
+141
+
+(1 row affected)
+130
+
+(1 row affected)
+131
+
+(1 row affected)
+
+(1 row affected)
+132
+
+(1 row affected)
+133
+
+(1 row affected)
+134
+
+(1 row affected)
+
+(1 row affected)
+135
+
+(1 row affected)
+5216
+
+(1 row affected)
+5217
+
+(1 row affected)
+
+(1 row affected)
+5218
+
+(1 row affected)
+5219
+
+(1 row affected)
+5220
+
+(1 row affected)
+
+(1 row affected)
+5221
+
+(1 row affected)
+5222
+
+(1 row affected)
+5223
+
+(1 row affected)
+
+(1 row affected)
+5224
+
+(1 row affected)
+5231
+
+(1 row affected)
+5232
+
+(1 row affected)
+
+(1 row affected)
+5233
+
+(1 row affected)
+5234
+
+(1 row affected)
+5235
+
+(1 row affected)
+
+(1 row affected)
+5236
+
+(1 row affected)
+5237
+
+(1 row affected)
+5238
+
+(1 row affected)
+
+(1 row affected)
+5239
+
+(1 row affected)
+5240
+
+(1 row affected)
+5241
+
+(1 row affected)
+
+(1 row affected)
+5242
+
+(1 row affected)
+5243
+
+(1 row affected)
+5244
+
+(1 row affected)
+
+(1 row affected)
+5245
+
+(1 row affected)
+5246
+
+(1 row affected)
+5247
+
+(1 row affected)
+
+(1 row affected)
+5248
+
+(1 row affected)
+5249
+
+(1 row affected)
+5250
+
+(1 row affected)
+
+(1 row affected)
+5251
+
+(1 row affected)
+5252
+
+(1 row affected)
+5253
+
+(1 row affected)
+
+(1 row affected)
+5254
+
+(1 row affected)
+5261
+
+(1 row affected)
+5262
+
+(1 row affected)
+
+(1 row affected)
+5263
+
+(1 row affected)
+5264
+
+(1 row affected)
+5265
+
+(1 row affected)
+
+(1 row affected)
+5266
+
+(1 row affected)
+5267
+
+(1 row affected)
+5268
+
+(1 row affected)
+
+(1 row affected)
+5269
+
+(1 row affected)
+5270
+
+(1 row affected)
+5271
+
+(1 row affected)
+
+(1 row affected)
+5272
+
+(1 row affected)
+5273
+
+(1 row affected)
+5274
+
+(1 row affected)
+
+(1 row affected)
+5275
+
+(1 row affected)
+5282
+
+(1 row affected)
+5283
+
+(1 row affected)
+
+(1 row affected)
+5284
+
+(1 row affected)
+5285
+
+(1 row affected)
+5286
+
+(1 row affected)
+
+(1 row affected)
+5287
+
+(1 row affected)
+Bot bonuses
+5518
+
+(1 row affected)
+5518
+
+(1 row affected)
+5518
+
+(1 row affected)
+5515
+
+(1 row affected)
+5515
+
+(1 row affected)
+Metis bonuses
+Metis leg bonuses
+
+(1 row affected)
+
+(1 row affected)
+Metis head bonuses
+
+(1 row affected)
+
+(1 row affected)
+Metis chassis bonuses
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Indy bot size adjustments in line with recent changes
+7
+
+(1 row affected)
+
+(1 row affected)
+1481
+
+(1 row affected)
+
+(1 row affected)
+5530
+
+(1 row affected)
+
+(1 row affected)
+5546
+
+(1 row affected)
+
+(1 row affected)
+5542
+
+(1 row affected)
+
+(1 row affected)
+5538
+
+(1 row affected)
+
+(1 row affected)
+5292
+
+(1 row affected)
+
+(1 row affected)
+5289
+
+(1 row affected)
+
+(1 row affected)
+5280
+
+(1 row affected)
+
+(1 row affected)
+5277
+
+(1 row affected)
+
+(1 row affected)
+5259
+
+(1 row affected)
+
+(1 row affected)
+5256
+
+(1 row affected)
+
+(1 row affected)
+146
+
+(1 row affected)
+
+(1 row affected)
+143
+
+(1 row affected)
+
+(1 row affected)
+122
+
+(1 row affected)
+
+(1 row affected)
+119
+
+(1 row affected)
+
+(1 row affected)
+2864
+
+(1 row affected)
+
+(1 row affected)
+60
+
+(1 row affected)
+
+(1 row affected)
+63
+
+(1 row affected)
+66
+
+(1 row affected)
+
+(1 row affected)
+67
+
+(1 row affected)
+
+(1 row affected)
+16
+
+(1 row affected)
+687
+
+(1 row affected)
+688
+
+(1 row affected)
+689
+
+(1 row affected)
+831
+
+(1 row affected)
+
+(1 row affected)
+832
+
+(1 row affected)
+
+(1 row affected)
+833
+
+(1 row affected)
+
+(1 row affected)
+834
+
+(1 row affected)
+
+(1 row affected)
+835
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+836
+
+(1 row affected)
+
+(1 row affected)
+840
+
+(1 row affected)
+
+(1 row affected)
+841
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+842
+
+(1 row affected)
+
+(1 row affected)
+843
+
+(1 row affected)
+
+(1 row affected)
+844
+
+(1 row affected)
+
+(1 row affected)
+845
+
+(1 row affected)
+
+(1 row affected)
+849
+
+(1 row affected)
+850
+
+(1 row affected)
+851
+
+(1 row affected)
+858
+
+(1 row affected)
+
+(1 row affected)
+859
+
+(1 row affected)
+
+(1 row affected)
+860
+
+(1 row affected)
+
+(1 row affected)
+861
+
+(1 row affected)
+
+(1 row affected)
+862
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+863
+
+(1 row affected)
+
+(1 row affected)
+924
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+925
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+926
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+927
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+928
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+929
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+930
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+931
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+932
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+933
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+934
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+935
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+1000
+
+(1 row affected)
+
+(1 row affected)
+1002
+
+(1 row affected)
+
+(1 row affected)
+1004
+
+(1 row affected)
+
+(1 row affected)
+1018
+
+(1 row affected)
+
+(1 row affected)
+1019
+
+(1 row affected)
+
+(1 row affected)
+1020
+
+(1 row affected)
+
+(1 row affected)
+1024
+
+(1 row affected)
+
+(1 row affected)
+1025
+
+(1 row affected)
+
+(1 row affected)
+1026
+
+(1 row affected)
+
+(1 row affected)
+1025
+
+(1 row affected)
+
+(1 row affected)
+1030
+
+(1 row affected)
+
+(1 row affected)
+1031
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+1032
+
+(1 row affected)
+
+(1 row affected)
+1060
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+1063
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+1064
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+1065
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2177
+
+(1 row affected)
+2178
+
+(1 row affected)
+2179
+
+(1 row affected)
+2204
+
+(1 row affected)
+
+(1 row affected)
+2205
+
+(1 row affected)
+
+(1 row affected)
+2206
+
+(1 row affected)
+
+(1 row affected)
+2207
+
+(1 row affected)
+
+(1 row affected)
+2208
+
+(1 row affected)
+
+(1 row affected)
+2210
+
+(1 row affected)
+
+(1 row affected)
+2211
+
+(1 row affected)
+
+(1 row affected)
+2212
+
+(1 row affected)
+
+(1 row affected)
+2273
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2274
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2275
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2294
+
+(1 row affected)
+
+(1 row affected)
+2295
+
+(1 row affected)
+
+(1 row affected)
+2296
+
+(1 row affected)
+
+(1 row affected)
+2297
+
+(1 row affected)
+
+(1 row affected)
+2298
+
+(1 row affected)
+
+(1 row affected)
+2299
+
+(1 row affected)
+
+(1 row affected)
+2300
+
+(1 row affected)
+
+(1 row affected)
+2301
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2302
+
+(1 row affected)
+
+(1 row affected)
+2303
+
+(1 row affected)
+
+(1 row affected)
+2304
+
+(1 row affected)
+
+(1 row affected)
+2305
+
+(1 row affected)
+
+(1 row affected)
+2306
+
+(1 row affected)
+2307
+
+(1 row affected)
+2308
+
+(1 row affected)
+2309
+
+(1 row affected)
+2310
+
+(1 row affected)
+2311
+
+(1 row affected)
+2312
+
+(1 row affected)
+
+(1 row affected)
+2313
+
+(1 row affected)
+
+(1 row affected)
+2314
+
+(1 row affected)
+
+(1 row affected)
+2315
+
+(1 row affected)
+
+(1 row affected)
+2316
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2317
+
+(1 row affected)
+
+(1 row affected)
+2318
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2319
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2320
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2321
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2322
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2323
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2324
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2325
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2326
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2327
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2328
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2329
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2336
+
+(1 row affected)
+
+(1 row affected)
+2337
+
+(1 row affected)
+
+(1 row affected)
+2338
+
+(1 row affected)
+
+(1 row affected)
+2339
+
+(1 row affected)
+
+(1 row affected)
+2340
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2341
+
+(1 row affected)
+
+(1 row affected)
+2342
+
+(1 row affected)
+
+(1 row affected)
+2343
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2344
+
+(1 row affected)
+
+(1 row affected)
+2345
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2346
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+2347
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+3134
+
+(1 row affected)
+3158
+
+(1 row affected)
+
+(1 row affected)
+3160
+
+(1 row affected)
+
+(1 row affected)
+3162
+
+(1 row affected)
+
+(1 row affected)
+3222
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+3231
+
+(1 row affected)
+
+(1 row affected)
+3233
+
+(1 row affected)
+
+(1 row affected)
+3234
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+3235
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+3237
+
+(1 row affected)
+3239
+
+(1 row affected)
+3241
+
+(1 row affected)
+
+(1 row affected)
+3243
+
+(1 row affected)
+
+(1 row affected)
+3244
+
+(1 row affected)
+
+(1 row affected)
+3245
+
+(1 row affected)
+
+(1 row affected)
+3247
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+3250
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+3252
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+28
+
+(1 row affected)
+
+(1 row affected)
+29
+
+(1 row affected)
+
+(1 row affected)
+31
+
+(1 row affected)
+
+(1 row affected)
+56
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+57
+
+(1 row affected)
+
+(1 row affected)
+58
+
+(1 row affected)
+
+(1 row affected)
+61
+
+(1 row affected)
+
+(1 row affected)
+3140
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+804
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+805
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+806
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+909
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+910
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+911
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+912
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+723
+
+(1 row affected)
+
+(1 row affected)
+724
+
+(1 row affected)
+
+(1 row affected)
+725
+
+(1 row affected)
+
+(1 row affected)
+726
+
+(1 row affected)
+
+(1 row affected)
+727
+
+(1 row affected)
+
+(1 row affected)
+728
+
+(1 row affected)
+
+(1 row affected)
+732
+
+(1 row affected)
+
+(1 row affected)
+733
+
+(1 row affected)
+
+(1 row affected)
+734
+
+(1 row affected)
+
+(1 row affected)
+3256
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+3294
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+3295
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+3296
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+3297
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+3298
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+3299
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+3300
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+3301
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+3302
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+3303
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+3304
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+3232
+
+(1 row affected)
+
+(1 row affected)
+3229
+
+(1 row affected)
+
+(1 row affected)
+3240
+
+(1 row affected)
+
+(1 row affected)
+3242
+
+(1 row affected)
+
+(1 row affected)
+3157
+
+(1 row affected)
+
+(1 row affected)
+Medium Aux accum changes
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+ERP-fixes and prototype balance
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+INSERT def_npc_goblin_shark
+
+(1 row affected)
+
+(1 row affected)
+INSERT aggfields for def_npc_goblin_shark
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+INSERT robottemplate for def_npc_goblin_shark
+
+(1 row affected)
+
+(1 row affected)
+INSERT goblinshark templaterelation
+
+(1 row affected)
+INSERT gateguard presence
+
+(1 row affected)
+UPDATE gateguard presence, INSERT flocks
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+UPDATE goblinshark lockingtime
+
+(1 row affected)
+
+(1 row affected)
+UPDATE presences and flocks
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Alpha 1 reds
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Insert roaming reds
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+def_npc_scarab_basic_rank3 template
+
+(1 row affected)
+Hersh observers speed tweaks
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+def_npc_echelon_masterdeathdealer_rank1 LOOT
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+def_npc_waspish_miniboss_rank3
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+def_npc_tyrannos_guard
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+def_npc_troiar_miniboss_rank3
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+def_npc_kain_guard
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+def_npc_intakt_miniboss_rank3
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+def_npc_cameleon_miniboss_rank3
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+def_npc_baphomet_miniboss_rank3
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+def_npc_artemis_guard
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+def_npc_arbalest_miniboss_rank3
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Wasp miniboss template
+
+(1 row affected)
+Troiar NPC miniboss3
+
+(1 row affected)
+Intakt NPC miniboss3
+
+(1 row affected)
+stronghold1_trashgroup
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Insert def_ammo_rocket_rewa into SyndicateShop tm_preset_pvp
+
+(1 row affected)
+Insert def_ammo_rocket_rewa into SyndicateShop tm_preset_pvp
+
+(1 row affected)
+Insert def_ammo_missile_rewa into SyndicateShop tm_preset_pvp
+
+(1 row affected)
+Insert def_ammo_missile_rewa into SyndicateShop tm_preset_pvp
+
+(1 row affected)
+Insert def_ammo_longrange_missile_rewa into SyndicateShop tm_preset_pvp
+
+(1 row affected)
+Insert def_ammo_longrange_missile_rewb into SyndicateShop tm_preset_pvp
+
+(1 row affected)
+Update all facility costpersecond from 3 to 7
+
+(19 rows affected)
+Seed NPC buy orders for cortexes
+Legatus Loots
+def_npc_legatus_mastergoat_rank4
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+def_npc_legatus_mastergoat_rank3
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+def_npc_legatus_mastergoat_rank2
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Drones fix for NV training assignment v2
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
