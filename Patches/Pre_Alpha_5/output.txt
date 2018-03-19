@@ -1,0 +1,184 @@
+Balance fixes for prototype inconsistencies as of 3/4/2018
+def_yagel_leg_pr
+
+(1 row affected)
+
+(1 row affected)
+def_yagel_chassis_pr
+
+(1 row affected)
+
+(1 row affected)
+def_prometheus_chassis_pr
+
+(1 row affected)
+
+(1 row affected)
+def_prometheus_leg_pr
+
+(1 row affected)
+
+(1 row affected)
+def_cameleon_chassis_pr
+
+(1 row affected)
+
+(1 row affected)
+def_cameleon_leg_pr
+
+(1 row affected)
+
+(1 row affected)
+def_arbalest_chassis_pr
+
+(1 row affected)
+
+(1 row affected)
+def_arbalest_leg_pr
+
+(1 row affected)
+
+(1 row affected)
+def_baphomet_chassis_pr
+
+(1 row affected)
+
+(1 row affected)
+def_castel_leg_pr
+
+(1 row affected)
+
+(1 row affected)
+def_kain_chassis_pr
+
+(1 row affected)
+
+(1 row affected)
+def_artemis_chassis_pr
+
+(1 row affected)
+
+(1 row affected)
+def_tyrannos_chassis_pr
+
+(1 row affected)
+
+(1 row affected)
+def_vagabond_chassis_pr
+
+(1 row affected)
+
+(1 row affected)
+def_vagabond_leg_pr
+
+(1 row affected)
+
+(1 row affected)
+def_zenith_chassis_pr
+
+(1 row affected)
+
+(1 row affected)
+def_mesmer_chassis_pr
+
+(1 row affected)
+
+(1 row affected)
+def_mesmer_leg_pr
+
+(1 row affected)
+
+(1 row affected)
+def_gropho_chassis_pr
+
+(1 row affected)
+
+(1 row affected)
+def_kain_leg_pr
+
+(1 row affected)
+
+(1 row affected)
+def_intakt_chassis_pr
+
+(1 row affected)
+
+(1 row affected)
+Turn off special missions -- sends to inactive islands
+
+(14 rows affected)
+Cameleon NPC miniboss3 template
+
+(1 row affected)
+Baphomet NPC miniboss3 template
+
+(1 row affected)
+Arbalest NPC miniboss3 template
+
+(1 row affected)
+
+(30 rows affected)
+public docking facility-super 100->75pt
+
+(30 rows affected)
+
+(36 rows affected)
+Alpha TM outposts0
+
+(1 row affected)
+
+(1 row affected)
+Alpha TM outposts1
+
+(1 row affected)
+
+(1 row affected)
+Alpha TM outposts2
+
+(1 row affected)
+
+(1 row affected)
+A2 Hershfield
+
+(1 row affected)
+
+(1 row affected)
+TMB Norhoop
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+ICS-B Dom
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+ASI-B Hokk
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)

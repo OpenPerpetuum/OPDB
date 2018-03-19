@@ -1,6 +1,13 @@
 USE [perpetuumsa]
 GO
+/*
+BEGIN TRANSACTION
 
+ROLLBACK TRANSACTION
+
+COMMIT TRANSACTION
+
+*/
 
 -------------Balance fix prototype inconsistent velocities and armors------------
 
