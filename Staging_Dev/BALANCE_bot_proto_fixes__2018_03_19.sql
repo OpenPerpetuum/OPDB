@@ -2,7 +2,7 @@ USE [perpetuumsa]
 GO
 
 
--------------Balance fix prototype inconsistent velocities and armors------------
+-------------Balance fix prototype inconsistent mass and slots------------
 
 PRINT N'Balance fixes for prototype inconsistencies as of 3/19/2018';
 
