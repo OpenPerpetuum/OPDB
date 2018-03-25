@@ -8,7 +8,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-ALTER PROCEDURE [dbo].[opp_create_account] 
+CREATE PROCEDURE [dbo].[opp_create_account] 
 
 @email			VARCHAR(50),
 @password		VARCHAR(100),
@@ -36,7 +36,7 @@ BEGIN
 					   ,[campaignid])
 				 VALUES
 					   (@email
-					   ,CONVERT(VARCHAR(100),HASHBYTES('SHA1',@password),2)
+					   ,@password
 					   ,2
 					   ,0
 					   ,0           
