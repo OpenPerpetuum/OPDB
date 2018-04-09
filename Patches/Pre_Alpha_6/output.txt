@@ -1,0 +1,356 @@
+1. Create entity (from tool)
+
+(1 row affected)
+2. Create template (from tool)
+
+(1 row affected)
+3. Create templaterelation
+
+(1 row affected)
+4. Insert config w/ desired tint
+
+(1 row affected)
+5. Give bot skills
+
+(0 rows affected)
+Create Packages for pre-alpha participant levels
+
+(2 rows affected)
+Insert items into Packages for pre-alpha participant levels
+Items for pack1
+
+(2 rows affected)
+Items for pack2
+
+(2 rows affected)
+Balance fixes for prototype inconsistencies as of 3/19/2018
+def_yagel_leg_pr
+
+(1 row affected)
+def_prometheus_chassis_pr
+
+(1 row affected)
+def_prometheus_leg_pr
+
+(1 row affected)
+def_cameleon_chassis_pr
+
+(1 row affected)
+def_cameleon_leg_pr
+
+(1 row affected)
+def_arbalest_chassis_pr
+
+(1 row affected)
+def_arbalest_leg_pr
+
+(1 row affected)
+def_baphomet_chassis_pr
+
+(1 row affected)
+def_castel_leg_pr
+
+(1 row affected)
+def_kain_chassis_pr
+
+(1 row affected)
+def_artemis_chassis_pr
+
+(1 row affected)
+def_tyrannos_chassis_pr
+
+(1 row affected)
+def_vagabond_chassis_pr
+
+(1 row affected)
+def_vagabond_leg_pr
+
+(1 row affected)
+def_zenith_chassis_pr
+
+(1 row affected)
+def_mesmer_chassis_pr
+
+(1 row affected)
+def_mesmer_leg_pr
+
+(1 row affected)
+def_gropho_chassis_pr
+
+(1 row affected)
+def_kain_leg_pr
+
+(1 row affected)
+def_intakt_chassis_pr
+
+(1 row affected)
+Creating table for reimbursement logging
+
+(5 rows affected)
+
+(5 rows affected)
+def_ammo_artifact_scan_b
+
+(10 rows affected)
+def_ammo_artifact_scan_c
+
+(10 rows affected)
+def_ammo_longrange_missile_a
+
+(10 rows affected)
+
+(5 rows affected)
+def_ammo_longrange_missile_b
+
+(10 rows affected)
+
+(5 rows affected)
+def_ammo_longrange_missile_d
+
+(10 rows affected)
+
+(5 rows affected)
+def_ammo_medium_lasercrystal_b
+
+(10 rows affected)
+
+(5 rows affected)
+def_ammo_medium_projectile_a
+
+(10 rows affected)
+
+(5 rows affected)
+def_ammo_medium_projectile_d
+
+(10 rows affected)
+
+(5 rows affected)
+def_ammo_mining_epriton
+
+(10 rows affected)
+def_ammo_mining_silgium
+
+(10 rows affected)
+def_ammo_mining_stermonit
+
+(10 rows affected)
+def_ammo_mining_titan
+
+(10 rows affected)
+def_ammo_missile_a
+
+(10 rows affected)
+
+(5 rows affected)
+def_ammo_missile_b
+
+(10 rows affected)
+
+(5 rows affected)
+def_ammo_missile_c
+
+(10 rows affected)
+
+(5 rows affected)
+def_ammo_missile_d
+
+(10 rows affected)
+
+(5 rows affected)
+def_ammo_rocket_a
+
+(10 rows affected)
+
+(5 rows affected)
+def_ammo_rocket_b
+
+(10 rows affected)
+
+(5 rows affected)
+def_ammo_rocket_c
+
+(10 rows affected)
+
+(5 rows affected)
+def_ammo_rocket_d
+
+(10 rows affected)
+
+(5 rows affected)
+def_ammo_small_lasercrystal_b
+
+(10 rows affected)
+
+(5 rows affected)
+def_ammo_small_projectile_a
+
+(10 rows affected)
+
+(5 rows affected)
+def_ammo_small_projectile_d
+
+(10 rows affected)
+
+(5 rows affected)
+def_castel_bot
+
+(10 rows affected)
+
+(5 rows affected)
+def_common_reactor_plasma
+
+(5 rows affected)
+def_pelistal_reactor_plasma
+
+(5 rows affected)
+def_standard_damage_mod_missile
+
+(10 rows affected)
+
+(5 rows affected)
+def_standard_gang_assist_core_management_module
+
+(10 rows affected)
+
+(5 rows affected)
+def_standard_gang_assist_siege_module
+
+(10 rows affected)
+
+(5 rows affected)
+def_standard_medium_energy_neutralizer
+
+(10 rows affected)
+
+(5 rows affected)
+def_standard_medium_shield_generator
+
+(10 rows affected)
+
+(5 rows affected)
+def_standard_missile_launcher
+
+(10 rows affected)
+
+(5 rows affected)
+def_standard_rocket_launcher
+
+(10 rows affected)
+
+(5 rows affected)
+def_standard_shield_hardener
+
+(10 rows affected)
+
+(5 rows affected)
+def_standard_small_energy_neutralizer
+
+(10 rows affected)
+
+(5 rows affected)
+def_standard_small_shield_generator
+
+(10 rows affected)
+
+(5 rows affected)
+def_standard_thermal_kers
+
+(10 rows affected)
+
+(5 rows affected)
+def_standard_thrm_armor_hardener
+
+(10 rows affected)
+
+(5 rows affected)
+def_waspish_bot
+
+(10 rows affected)
+
+(5 rows affected)
+Updates/Deletes of NV red roamers
+Update presence tma_antiafksequerscum3
+
+(1 row affected)
+Update flock tmaroamingsequer6 where npc was def_npc_argano_basic_rank1
+
+(1 row affected)
+DELETE flock tmaroamingsequer7 where npc was def_npc_laird_basic_rank1
+
+(1 row affected)
+Update presence tma_antiafksequerscum2
+
+(1 row affected)
+Update flock roamingtmasequer where npc was def_npc_argano_basic_rank1
+
+(1 row affected)
+DELETE flock roamingtmasequer2 where npc was def_npc_laird_basic_rank1
+
+(1 row affected)
+Update presence tma_antiafksequerscum
+
+(1 row affected)
+Update flock the_joker_is_me where npc was def_npc_argano_basic_rank1
+
+(1 row affected)
+DELETE flock the_joker_is_me2 where npc was def_npc_laird_basic_rank1
+
+(1 row affected)
+Robot Template updates for training rewards
+baphomet_starterpack
+
+(1 row affected)
+arbalest_starterpack
+
+(1 row affected)
+waspish_starterpack
+
+(1 row affected)
+Updates to pelistal training rewards
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Insert Addl skills on trainingexit
+Insert ext_core_management skill to races 1-3
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Insert ext_shield_operation skill to race 1
+
+(1 row affected)
+Insert ext_shield_upgrades skill to race 1
+
+(1 row affected)
+Insert ext_hull_upgrades skill to race 3
+
+(1 row affected)
+Insert ext_weapon_cpu_upgrade skill to races 1-3
+
+(1 row affected)
+
+(1 row affected)
+
+(1 row affected)
+Bonuses for accum on green enwar to -0.02
+def_troiar_leg_pr
+
+(1 row affected)
+def_troiar_leg
+
+(1 row affected)
+def_ictus_leg_pr
+
+(1 row affected)
+def_ictus_leg
+
+(1 row affected)
