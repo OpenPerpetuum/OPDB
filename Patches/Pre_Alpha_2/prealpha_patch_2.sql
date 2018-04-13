@@ -176,6 +176,198 @@ UPDATE [dbo].[zoneentities]
  --Add syndicate stuff to all exits
  PRINT '--Add syndicate stuff to all exits'
 
+
+
+ PRINT '-----TRAINING REWARD INSERTS---------'
+INSERT INTO [dbo].[trainingrewards]
+           ([level]
+           ,[definition]
+           ,[quantity]
+           ,[robottemplateid]
+           ,[raceid])
+     VALUES
+           (1
+           ,259
+           ,5000
+           ,NULL
+           ,1)
+
+INSERT INTO [dbo].[trainingrewards]
+           ([level]
+           ,[definition]
+           ,[quantity]
+           ,[robottemplateid]
+           ,[raceid])
+     VALUES
+           (1
+           ,259
+           ,5000
+           ,NULL
+           ,2)
+
+INSERT INTO [dbo].[trainingrewards]
+           ([level]
+           ,[definition]
+           ,[quantity]
+           ,[robottemplateid]
+           ,[raceid])
+     VALUES
+           (1
+           ,259
+           ,5000
+           ,NULL
+           ,3)
+
+
+INSERT INTO [dbo].[trainingrewards]
+           ([level]
+           ,[definition]
+           ,[quantity]
+           ,[robottemplateid]
+           ,[raceid])
+     VALUES
+           (2
+           ,60
+           ,4
+           ,NULL
+           ,1)
+
+INSERT INTO [dbo].[trainingrewards]
+           ([level]
+           ,[definition]
+           ,[quantity]
+           ,[robottemplateid]
+           ,[raceid])
+     VALUES
+           (2
+           ,60
+           ,4
+           ,NULL
+           ,2)
+
+INSERT INTO [dbo].[trainingrewards]
+           ([level]
+           ,[definition]
+           ,[quantity]
+           ,[robottemplateid]
+           ,[raceid])
+     VALUES
+           (2
+           ,60
+           ,4
+           ,NULL
+           ,3)
+
+INSERT INTO [dbo].[trainingrewards]
+           ([level]
+           ,[definition]
+           ,[quantity]
+           ,[robottemplateid]
+           ,[raceid])
+     VALUES
+           (3
+           ,NULL
+           ,1
+           ,740
+           ,1)
+
+INSERT INTO [dbo].[trainingrewards]
+           ([level]
+           ,[definition]
+           ,[quantity]
+           ,[robottemplateid]
+           ,[raceid])
+     VALUES
+           (3
+           ,NULL
+           ,1
+           ,740
+           ,2)
+
+INSERT INTO [dbo].[trainingrewards]
+           ([level]
+           ,[definition]
+           ,[quantity]
+           ,[robottemplateid]
+           ,[raceid])
+     VALUES
+           (3
+           ,NULL
+           ,1
+           ,740
+           ,3)
+
+INSERT INTO [dbo].[trainingrewards]
+           ([level]
+           ,[definition]
+           ,[quantity]
+           ,[robottemplateid]
+           ,[raceid])
+     VALUES
+           (4
+           ,NULL
+           ,1
+           ,732
+           ,1)
+
+INSERT INTO [dbo].[trainingrewards]
+           ([level]
+           ,[definition]
+           ,[quantity]
+           ,[robottemplateid]
+           ,[raceid])
+     VALUES
+           (4
+           ,NULL
+           ,1
+           ,732
+           ,2)
+
+INSERT INTO [dbo].[trainingrewards]
+           ([level]
+           ,[definition]
+           ,[quantity]
+           ,[robottemplateid]
+           ,[raceid])
+     VALUES
+           (4
+           ,NULL
+           ,1
+           ,732
+           ,3)
+
+INSERT INTO [dbo].[trainingrewards]
+           ([level]
+           ,[definition]
+           ,[quantity]
+           ,[robottemplateid]
+           ,[raceid])
+     VALUES
+           (2
+           ,912
+           ,2
+           ,NULL
+           ,2)
+
+INSERT INTO [dbo].[trainingrewards]
+           ([level]
+           ,[definition]
+           ,[quantity]
+           ,[robottemplateid]
+           ,[raceid])
+     VALUES
+           (2
+           ,912
+           ,2
+           ,NULL
+           ,3)
+
+GO
+
+
+PRINT '----TRAINING REWARDS UPDATES-----'
+
+
 UPDATE [dbo].[trainingrewards]
    SET [level] = 1
       ,[definition] = 286
@@ -240,154 +432,13 @@ UPDATE [dbo].[trainingrewards]
       ,[raceid] = 1
  WHERE ID=37
 
-INSERT INTO [dbo].[trainingrewards]
-           ([level]
-           ,[definition]
-           ,[quantity]
-           ,[robottemplateid]
-           ,[raceid])
-     VALUES
-           (2
-           ,60
-           ,4
-           ,NULL
-           ,1)
-
-INSERT INTO [dbo].[trainingrewards]
-           ([level]
-           ,[definition]
-           ,[quantity]
-           ,[robottemplateid]
-           ,[raceid])
-     VALUES
-           (2
-           ,60
-           ,4
-           ,NULL
-           ,2)
-
-INSERT INTO [dbo].[trainingrewards]
-           ([level]
-           ,[definition]
-           ,[quantity]
-           ,[robottemplateid]
-           ,[raceid])
-     VALUES
-           (2
-           ,60
-           ,4
-           ,NULL
-           ,3)
-
-INSERT INTO [dbo].[trainingrewards]
-           ([level]
-           ,[definition]
-           ,[quantity]
-           ,[robottemplateid]
-           ,[raceid])
-     VALUES
-           (3
-           ,NULL
-           ,1
-           ,740
-           ,1)
-
-INSERT INTO [dbo].[trainingrewards]
-           ([level]
-           ,[definition]
-           ,[quantity]
-           ,[robottemplateid]
-           ,[raceid])
-     VALUES
-           (3
-           ,NULL
-           ,1
-           ,740
-           ,2)
-
-INSERT INTO [dbo].[trainingrewards]
-           ([level]
-           ,[definition]
-           ,[quantity]
-           ,[robottemplateid]
-           ,[raceid])
-     VALUES
-           (3
-           ,NULL
-           ,1
-           ,740
-           ,3)
-
-INSERT INTO [dbo].[trainingrewards]
-           ([level]
-           ,[definition]
-           ,[quantity]
-           ,[robottemplateid]
-           ,[raceid])
-     VALUES
-           (4
-           ,NULL
-           ,1
-           ,732
-           ,1)
-
-INSERT INTO [dbo].[trainingrewards]
-           ([level]
-           ,[definition]
-           ,[quantity]
-           ,[robottemplateid]
-           ,[raceid])
-     VALUES
-           (4
-           ,NULL
-           ,1
-           ,732
-           ,2)
-
-INSERT INTO [dbo].[trainingrewards]
-           ([level]
-           ,[definition]
-           ,[quantity]
-           ,[robottemplateid]
-           ,[raceid])
-     VALUES
-           (4
-           ,NULL
-           ,1
-           ,732
-           ,3)
-
-INSERT INTO [dbo].[trainingrewards]
-           ([level]
-           ,[definition]
-           ,[quantity]
-           ,[robottemplateid]
-           ,[raceid])
-     VALUES
-           (2
-           ,912
-           ,2
-           ,NULL
-           ,2)
-
-INSERT INTO [dbo].[trainingrewards]
-           ([level]
-           ,[definition]
-           ,[quantity]
-           ,[robottemplateid]
-           ,[raceid])
-     VALUES
-           (2
-           ,912
-           ,2
-           ,NULL
-           ,3)
-
 UPDATE [dbo].[cw_race_extension]
    SET [raceid] = 1
       ,[extensionid] = 145
       ,[levelincrement] = 1
  WHERE race_extension_id=1
+
+GO
 
 INSERT INTO [dbo].[cw_race_extension]
            ([raceid]
@@ -478,45 +529,6 @@ INSERT INTO [dbo].[cw_race_extension]
            (3
            ,360
            ,1)
-
-INSERT INTO [dbo].[trainingrewards]
-           ([level]
-           ,[definition]
-           ,[quantity]
-           ,[robottemplateid]
-           ,[raceid])
-     VALUES
-           (1
-           ,259
-           ,5000
-           ,NULL
-           ,1)
-
-INSERT INTO [dbo].[trainingrewards]
-           ([level]
-           ,[definition]
-           ,[quantity]
-           ,[robottemplateid]
-           ,[raceid])
-     VALUES
-           (1
-           ,259
-           ,5000
-           ,NULL
-           ,2)
-
-INSERT INTO [dbo].[trainingrewards]
-           ([level]
-           ,[definition]
-           ,[quantity]
-           ,[robottemplateid]
-           ,[raceid])
-     VALUES
-           (1
-           ,259
-           ,5000
-           ,NULL
-           ,3)
 
 GO
 
