@@ -98,7 +98,7 @@ PRINT N'def_artifact_a_small_shield_generator';
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_a_small_shield_generator' ORDER BY definition DESC);
 SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
 
-UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=2.25 WHERE id =  @aggvalueID;
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=2250 WHERE id =  @aggvalueID;
 
 
 
