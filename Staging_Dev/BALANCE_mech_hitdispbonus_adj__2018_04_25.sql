@@ -30,7 +30,7 @@ UPDATE chassisbonus SET effectenhancer=0, bonus=-0.02 WHERE id = @chassisbonusID
 
 
 
-;
+
 PRINT N'def_locust_head';
 SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_combat_specialist');
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_locust_head' ORDER BY definition DESC);
@@ -139,7 +139,7 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'laser_optimal_range_modifier' ORDER BY [name] DESC);
 SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
 
-UPDATE chassisbonus SET effectenhancer=0, bonus=0.02 WHERE id = @chassisbonusID;
+UPDATE chassisbonus SET effectenhancer=0, bonus=0.01 WHERE id = @chassisbonusID;
 
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'accuracy_modifier' ORDER BY [name] DESC);
@@ -162,7 +162,7 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'laser_optimal_range_modifier' ORDER BY [name] DESC);
 SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
 
-UPDATE chassisbonus SET effectenhancer=0, bonus=0.02 WHERE id = @chassisbonusID;
+UPDATE chassisbonus SET effectenhancer=0, bonus=0.01 WHERE id = @chassisbonusID;
 
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'accuracy_modifier' ORDER BY [name] DESC);
