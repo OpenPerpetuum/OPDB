@@ -79,6 +79,7 @@ SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'locked_t
 SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
 UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=3 WHERE id =  @aggvalueID;
 
+
 PRINT N'def_symbiont_head';
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_symbiont_head' ORDER BY definition DESC);
 UPDATE entitydefaults Set definitionname='def_symbiont_head', quantity=1, attributeflags=1024, categoryflags=262480, options='#height=f0.2#slotFlags=48,8,8,8', 
