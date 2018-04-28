@@ -44,17 +44,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=2.
 
 
 
-PRINT N'def_echelon_leg';
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_echelon_leg' ORDER BY definition DESC);
-UPDATE entitydefaults Set definitionname='def_echelon_leg', quantity=1, attributeflags=1024, categoryflags=197456, options='#height=f1.1#slotFlags=420,20,20,20,20', 
-                note='', enabled=1, volume=6, mass=3300, hidden='True', health=100, descriptiontoken='bot_leg_desc', purchasable=0, tiertype=0, 
-                tierlevel=0 where definition=@definitionID;
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'speed_max' ORDER BY [name] DESC);
-SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
-UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=2.486 WHERE id =  @aggvalueID;
-
-
 PRINT N'def_callisto_leg';
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_callisto_leg' ORDER BY definition DESC);
 
@@ -68,6 +57,18 @@ SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @de
 UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=2.556 WHERE id =  @aggvalueID;
 
 
+----------------Speed remain -10% baseline for Mech/HMech------------
+
+PRINT N'def_echelon_leg';
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_echelon_leg' ORDER BY definition DESC);
+UPDATE entitydefaults Set definitionname='def_echelon_leg', quantity=1, attributeflags=1024, categoryflags=197456, options='#height=f1.1#slotFlags=420,20,20,20,20', 
+                note='', enabled=1, volume=6, mass=3300, hidden='True', health=100, descriptiontoken='bot_leg_desc', purchasable=0, tiertype=0, 
+                tierlevel=0 where definition=@definitionID;
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'speed_max' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=2.362 WHERE id =  @aggvalueID;
+
 
 PRINT N'def_legatus_leg';
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_legatus_leg' ORDER BY definition DESC);
@@ -78,7 +79,7 @@ UPDATE entitydefaults Set definitionname='def_legatus_leg', quantity=1, attribut
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'speed_max' ORDER BY [name] DESC);
 SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
-UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=1.847 WHERE id =  @aggvalueID;
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=1.755 WHERE id =  @aggvalueID;
 
 
 GO

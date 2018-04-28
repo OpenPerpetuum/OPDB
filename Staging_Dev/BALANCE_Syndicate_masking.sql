@@ -33,7 +33,7 @@ SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @de
 UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=110 WHERE id =  @aggvalueID;
 
 
-
+-----------Keep masking same for lights/assaults--------------
 PRINT N'def_locust_head';
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_locust_head' ORDER BY definition DESC);
 UPDATE entitydefaults Set definitionname='def_locust_head', quantity=1, attributeflags=1024, categoryflags=131408, options='#height=f0.01#slotFlags=48,8,8,8,8', 
@@ -43,7 +43,7 @@ UPDATE entitydefaults Set definitionname='def_locust_head', quantity=1, attribut
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'stealth_strength' ORDER BY [name] DESC);
 SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
-UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=130 WHERE id =  @aggvalueID;
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=110 WHERE id =  @aggvalueID;
 
 
 
@@ -56,6 +56,6 @@ UPDATE entitydefaults Set definitionname='def_vektor_head', quantity=1, attribut
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'stealth_strength' ORDER BY [name] DESC);
 SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
-UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=135 WHERE id =  @aggvalueID;
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=105 WHERE id =  @aggvalueID;
 
 GO
