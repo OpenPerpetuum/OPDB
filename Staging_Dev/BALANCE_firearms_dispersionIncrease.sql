@@ -7,6 +7,7 @@ GO
 ------med 14.5->17
 ------med 15->18
 
+PRINT N'Firearm dispersion increase';
 DECLARE @definitionID int;
 DECLARE @aggvalueID int;
 DECLARE @aggfieldID int;

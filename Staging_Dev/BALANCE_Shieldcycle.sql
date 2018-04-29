@@ -4,6 +4,7 @@ GO
 
 ----------Shield cycle time adjust to match missiles------
 
+PRINT N'Shield cycle time adjust to match missiles';
 
 DECLARE @definitionID int;
 DECLARE @aggvalueID int;
@@ -13,6 +14,7 @@ DECLARE @aggfieldID int;
 --T0 small
 PRINT N'def_artifact_damaged_small_shield_generator';
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_damaged_small_shield_generator' ORDER BY definition DESC);
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'cycle_time' ORDER BY [name] DESC);
 SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
 
 UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=3000 WHERE id =  @aggvalueID;
@@ -21,7 +23,6 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=30
 --t1 small
 PRINT N'def_standard_small_shield_generator';
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_standard_small_shield_generator' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'cycle_time' ORDER BY [name] DESC);
 SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
 UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=2750 WHERE id =  @aggvalueID;
 

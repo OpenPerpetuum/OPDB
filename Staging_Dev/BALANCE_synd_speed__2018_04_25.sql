@@ -3,6 +3,8 @@ GO
 
 -----Syndicate Speed Increase to -5% baseline (light->ew mech only)-------
 
+PRINT N'Syndicate Speed Increase to -5% baseline (light->ew mech only)';
+
 DECLARE @definitionID int;
 DECLARE @aggvalueID int;
 DECLARE @aggfieldID int;

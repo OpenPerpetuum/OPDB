@@ -1,6 +1,9 @@
 USE [perpetuumsa]
 GO
 
+-----------REVERT ERP CHANGES----------
+PRINT N'REVERT ERP TO PERP 3.8.3';
+
 
 DECLARE @definitionID int;
 DECLARE @aggvalueID int;

@@ -2,7 +2,7 @@ USE [perpetuumsa]
 GO
 
 ------------Nuimqol Armor repair 7%->5%-----------
-
+PRINT N'-Nuimqol Armor repair 7%->5%';
 DECLARE @definitionID int;
 DECLARE @extensionID int;
 DECLARE @aggfieldID int;

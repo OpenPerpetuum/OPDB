@@ -4,7 +4,7 @@ GO
 
 ------------Nuimqol: remove crit--------
 
-
+PRINT N'Nuimqol: remove crit';
 DECLARE @definitionID int;
 DECLARE @extensionID int;
 DECLARE @aggfieldID int;

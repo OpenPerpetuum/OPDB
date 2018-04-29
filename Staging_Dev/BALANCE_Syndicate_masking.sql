@@ -4,6 +4,8 @@ GO
 
 --------------Syndicate Combat masking buff mech/Hmech only--------------
 
+PRINT N'Syndicate Combat masking buff mech/Hmech only';
+
 DECLARE @definitionID int;
 DECLARE @aggvalueID int;
 DECLARE @aggfieldID int;

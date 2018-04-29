@@ -1,6 +1,9 @@
 USE [perpetuumsa]
 GO
 
+----------Revert Reactor Sealant changes-----------
+PRINT N'REACTOR SEALANTS REVERT TO PERP 3.8.3';
+
 
 DECLARE @definitionID int;
 DECLARE @aggvalueID int;
