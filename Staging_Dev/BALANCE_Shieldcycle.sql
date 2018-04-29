@@ -87,11 +87,13 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=20
 ---Mediums
 
 --t0
-PRINT N'def_artifact_a_medium_shield_generator';
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_a_medium_shield_generator' ORDER BY definition DESC);
+
+PRINT N'def_artifact_damaged_medium_shield_generator';
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_damaged_medium_shield_generator' ORDER BY definition DESC);
 SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
 
 UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=12000 WHERE id =  @aggvalueID;
+
 
 
 --t1
@@ -119,12 +121,11 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=95
 
 
 -- t3-
-PRINT N'def_artifact_damaged_medium_shield_generator';
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_damaged_medium_shield_generator' ORDER BY definition DESC);
+PRINT N'def_artifact_a_medium_shield_generator';
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_artifact_a_medium_shield_generator' ORDER BY definition DESC);
 SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
 
 UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=8500 WHERE id =  @aggvalueID;
-
 
 --t3
 PRINT N'def_named2_medium_shield_generator';
