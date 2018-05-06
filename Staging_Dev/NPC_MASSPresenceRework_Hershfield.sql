@@ -29,7 +29,7 @@ DECLARE @presName varchar(128);
 DECLARE @groupRadius int;
 
 --Set radius from which to grab neighboring flock-spawn homes to cluster into same presence (compensate for typos in origins)
-SET @groupRadius = 2;
+SET @groupRadius = 5;
 
 
 DECLARE db_cursor CURSOR FOR 

@@ -3,7 +3,7 @@ GO
 
 --Name of the Spawn to Reallocate new presences in
 DECLARE @spawnName varchar(128);
-SET @spawnName = 'tm_spawn';
+SET @spawnName = 'tm_spawn'; -- NewVirginia
 
 --Name prefix for new presences
 DECLARE @newPresenceNamePrefix varchar(128);
