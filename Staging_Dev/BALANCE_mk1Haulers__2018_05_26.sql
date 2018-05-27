@@ -16,7 +16,7 @@ SET options='#capacity=f120.0'
 WHERE definitionname = 'def_robot_inventory_sequer';
 
 UPDATE entitydefaults
-SET options='#capacity=f260.0'
+SET options='#capacity=f360.0'
 WHERE definitionname = 'def_robot_inventory_daidalos';
 
 UPDATE entitydefaults
