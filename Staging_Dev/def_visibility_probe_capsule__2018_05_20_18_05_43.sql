@@ -2,7 +2,7 @@ USE [perpetuumsa]
 GO
 
 
---ADD DESPAWN TIME FIELD TO PROXIMITY PROBE
+--ADD DESPAWN TIME FIELD TO PROXIMITY PROBE (8hr)
 PRINT N'ADD DESPAWN TIME FIELD TO PROXIMITY PROBE';
 
 DECLARE @definitionID int;
@@ -12,5 +12,7 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'despawn_time' ORDER BY [name] DESC);
 SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
 
-INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 10800000);
+INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 28800000);
+
+GO
 
