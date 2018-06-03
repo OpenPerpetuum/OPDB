@@ -24,10 +24,10 @@ SET respawnseconds=@MechRespawnTime
 WHERE name='tyrannos_protector';
 
 
--------Assist Spawns to 15min----------
+-------Assist Spawns to 2hr----------
 PRINT N'2ndary spawn times';
 DECLARE @SecondarySpawns int;
-SET @SecondarySpawns = 900;
+SET @SecondarySpawns = 7200;
 
 UPDATE npcflock
 SET respawnseconds=@SecondarySpawns
