@@ -1,6 +1,8 @@
 USE [perpetuumsa]
 GO
 
+--UPDATE IZ TELEPORT AND MOVE ZONE0 EAST
+
 DECLARE @aggvalueID int;
 DECLARE @aggfieldID int;
 DECLARE @definitionID int;
@@ -37,5 +39,15 @@ SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'stealth_
 SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
 
 UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=50 WHERE id =  @aggvalueID;
+
+GO
+
+
+--MOVE NV FURTHER EAST TO BE OUT OF IZ RANGE W/ 30,720m
+PRINT N'MOVE NV FURTHER EAST (x+) 4000x->5000x';
+UPDATE zones
+SET x = 5000, y = 1000
+WHERE
+id = (SELECT TOP 1 id FROM zones WHERE name='zone_TM' or note='new virginia');
 
 GO
