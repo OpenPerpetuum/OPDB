@@ -36,7 +36,7 @@ INSERT INTO #PAINTS VALUES
 ('def_paint_gray','#979797',NULL,NULL,10000000,333,333,333,NULL,@alphaItemShop),
 ('def_paint_red','#fb0101',NULL,NULL,10000000,992,4,4,NULL,@alphaItemShop),
 ('def_paint_magenta','#fb01fb',NULL,NULL,10000000,499,2,499,NULL,@alphaItemShop),
-('def_paint_orange','#fb9701',NULL,NULL,10000000,623,375,2,NULL,@alphaItemShop),
+('def_paint_orange','#fb6701',NULL,NULL,10000000,623,375,2,NULL,@alphaItemShop),
 ('def_paint_yellow','#fbfb01',NULL,NULL,10000000,499,499,2,NULL,@alphaItemShop),
 ('def_paint_white','#fbfbfb',NULL,NULL,10000000,333,333,333,NULL,@alphaItemShop);
 
@@ -69,9 +69,15 @@ BEGIN
 
 	SET @paintDef = (SELECT TOP 1 definition from entitydefaults where definitionname=@paintName);
 
+	--Set paint cost on alpha to nicPrice
 	UPDATE [dbo].[itemshop]
-	SET tmcoin = @tmToken, icscoin=@icsToken
-	WHERE targetdefinition=@paintDef
+	SET credit = @nicPrice, tmcoin=NULL, icscoin=NULL, asicoin=NULL, unicoin=NULL
+	WHERE targetdefinition=@paintDef AND presetid=@alphaItemShop
+
+	--Set paint to correct token amounts and NULL nic on non-alpha shops
+	UPDATE [dbo].[itemshop]
+	SET tmcoin=@tmToken, icscoin=@icsToken, asicoin=@asiToken, credit=NULL, unicoin=NULL
+	WHERE targetdefinition=@paintDef AND presetid!=@alphaItemShop
 		
     FETCH NEXT FROM db_cursor INTO  @paintName,@paintColor,@tierType,@techLevel,@nicPrice,@asiToken,@tmToken,@icsToken,@uniToken,@itemshopPresetID
 END 
