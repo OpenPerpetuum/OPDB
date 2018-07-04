@@ -167,7 +167,7 @@ INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
                 ('Hersh_RR_1', @presenceID, 1, @definitionID, 1976, 1810, 0, 5, 7200, 0, 30, 'Hersh_RR_1', 1, 1, 1, 1); 
 
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'Rough Rider Cavalry' ORDER BY definition DESC);
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_RoughRider_Cavalry' ORDER BY definition DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
                 ('Hersh_RR_2', @presenceID, 2, @definitionID, 1976, 1810, 0, 5, 900, 0, 30, 'Hersh_RR_2', 1, 1, 1, 1); 
@@ -179,7 +179,6 @@ INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
                 ('Hersh_RR_4', @presenceID, 2, @definitionID, 1869, 1890, 0, 5, 900, 0, 30, 'Hersh_RR_4', 1, 1, 1, 1); 
-
 
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
