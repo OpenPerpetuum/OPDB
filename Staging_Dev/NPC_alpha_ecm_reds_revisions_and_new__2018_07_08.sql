@@ -107,7 +107,7 @@ UPDATE [dbo].[npcpresence]
 PRINT N'set flock member count from 2->1, respawn time from 1s->180s';
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_laird_basic_rank1' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'free_roaming_laird_NV' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'free_roaming_laird_NV' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 0, [spawnoriginY] = 0 ,[spawnrangeMin] = 0, [spawnrangeMax] = 10,[respawnseconds] = 180, [totalspawncount] = 0, [homerange] = 70 ,[note] = 'NV Roaming Spawn 1', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'free_roaming_laird_NV' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 0, [spawnoriginY] = 0 ,[spawnrangeMin] = 0, [spawnrangeMax] = 10,[respawnseconds] = 180, [totalspawncount] = 0, [homerange] = 70 ,[note] = 'NV Roaming Spawn 1', [respawnmultiplierlow] = 0, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 PRINT N'Remove argano from freeroaming_NPC_New_Virginia';
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_argano_basic_rank1' ORDER BY definition DESC);
@@ -127,7 +127,7 @@ UPDATE [dbo].[npcpresence]
 PRINT N'set flock member count from 2->1, respawn time from 1s->180s';
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_argano_basic_rank1' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'argano_free_roaming_NV2' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'argano_free_roaming_NV2' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 0, [spawnoriginY] = 0 ,[spawnrangeMin] = 0, [spawnrangeMax] = 10,[respawnseconds] = 1, [totalspawncount] = 180, [homerange] = 70 ,[note] = 'free_roaming_argano2', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'argano_free_roaming_NV2' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 0, [spawnoriginY] = 0 ,[spawnrangeMin] = 0, [spawnrangeMax] = 10,[respawnseconds] = 180, [totalspawncount] = 0, [homerange] = 70 ,[note] = 'free_roaming_argano2', [respawnmultiplierlow] = 0, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 PRINT N'Remove laird from freeroaming_NPC_New_Virginia_2';
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_laird_basic_rank1' ORDER BY definition DESC);
@@ -148,7 +148,7 @@ UPDATE [dbo].[npcpresence]
 PRINT N'set flock member count from 2->1, respawn time from 1s->180s';
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_argano_basic_rank1' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Free_roaming_argano_NV3' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'Free_roaming_argano_NV3' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 0, [spawnoriginY] = 0 ,[spawnrangeMin] = 0, [spawnrangeMax] = 10,[respawnseconds] = 180, [totalspawncount] = 0, [homerange] = 70 ,[note] = 'Free_roaming_argano_NV3', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'Free_roaming_argano_NV3' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 0, [spawnoriginY] = 0 ,[spawnrangeMin] = 0, [spawnrangeMax] = 10,[respawnseconds] = 180, [totalspawncount] = 0, [homerange] = 70 ,[note] = 'Free_roaming_argano_NV3', [respawnmultiplierlow] = 0, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 PRINT N'Remove laird from freeroaming_NPC_New_Virginia_3';
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_laird_basic_rank1' ORDER BY definition DESC);
@@ -167,7 +167,7 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'NV_free_roamer_laird' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('NV_free_roamer_laird', @presenceID, 1, @definitionID, 0, 0, 0, 10, 180, 0, 70, 'NV laird free roamer', 1, 1, 1, 2); 
+                ('NV_free_roamer_laird', @presenceID, 1, @definitionID, 0, 0, 0, 10, 180, 0, 70, 'NV laird free roamer', 0, 1, 1, 2); 
 
 
 
@@ -177,7 +177,7 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'free_roaming_argano_Hersh_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('free_roaming_argano_Hersh_1', @presenceID, 2, @definitionID, 0, 0, 0, 10, 180, 0, 70, 'Pair of ecm arganos - hersh - free roam - red', 1, 1, 1, 2); 
+                ('free_roaming_argano_Hersh_1', @presenceID, 2, @definitionID, 0, 0, 0, 10, 180, 0, 70, 'Pair of ecm arganos - hersh - free roam - red', 0, 1, 1, 2); 
 
 
 
@@ -187,7 +187,7 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'free_roaming_laird_hersh_2' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('free_roaming_laird_hersh_2', @presenceID, 2, @definitionID, 0, 0, 0, 10, 180, 0, 70, 'pair of ecm lairds, - hersh -  roaming - red', 1, 1, 1, 2); 
+                ('free_roaming_laird_hersh_2', @presenceID, 2, @definitionID, 0, 0, 0, 10, 180, 0, 70, 'pair of ecm lairds, - hersh -  roaming - red', 0, 1, 1, 2); 
 
 
 
@@ -197,7 +197,7 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'free_roaming_laird_hersh_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('free_roaming_laird_hersh_1', @presenceID, 2, @definitionID, 0, 0, 0, 10, 180, 0, 70, 'Pair of ECM lairds - Red npc', 1, 1, 1, 2); 
+                ('free_roaming_laird_hersh_1', @presenceID, 2, @definitionID, 0, 0, 0, 10, 180, 0, 70, 'Pair of ECM lairds - Red npc', 0, 1, 1, 2); 
 
 
 
