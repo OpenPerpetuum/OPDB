@@ -21,7 +21,7 @@ IF 'Open Perpetuum Project Live Server - OpenPerpetuum.com' in (SELECT name from
 
 --Set this!
 DECLARE @repLevel float;
-SET @repLevel = 6.33;
+SET @repLevel = 7.33;
 
 DECLARE @ACCOUNTSTABLE TABLE(accID int);
 
