@@ -26,10 +26,9 @@ SET @repLevel = 7.33;
 DECLARE @ACCOUNTSTABLE TABLE(accID int);
 
 --Set these!
-INSERT INTO @ACCOUNTSTABLE
-VALUES
-(8),
-(9);
+INSERT INTO @ACCOUNTSTABLE (accID)
+SELECT accountid
+from accounts where accLevel = 14
 
 DECLARE @CHARS TABLE(charID int, charEID bigint, currentStanding float);
 
