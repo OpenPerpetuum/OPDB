@@ -11,11 +11,14 @@ GO
 ALTER TABLE [epforactivitylog]
 ADD multiplier int; 
 
+GO
 
 --Set all previous null entries to the default server BonusMultiplier (assumes no events have run)
-UPDATE epforactivitylog
-SET epforactivitylog.multiplier=25
+UPDATE 
+	epforactivitylog
+SET 
+	multiplier = 25
 WHERE
-multiplier=NULL;
+	multiplier IS NULL;
 
 GO
