@@ -5,7 +5,11 @@ GO
 --ENTITYDEFAULT
 --ROBOTTEMPLATE
 --ROBOTTEMPLATERELATION
---
+--AGGREGATEVALUES
+--NPCPRESENCE
+--NPCFLOCK
+
+--PITBOSS ON HERSHFIELD FOR DEV-TESTING PURPOSES ONLY
 
 
 DECLARE @templateID int;
@@ -31,13 +35,7 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 INSERT INTO [dbo].[robottemplaterelation] ([definition],[templateid],[itemscoresum],[raceid],[missionlevel],[missionleveloverride],[killep],[note])
                 VALUES (@definitionID,@templateID,0,0,NULL,NULL,40,'Hersh_Pit_Boss');
 
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_Hersh_PitBoss' ORDER BY definition DESC);
-
-UPDATE entitydefaults Set definitionname='def_npc_Hersh_PitBoss', quantity=1, attributeflags=1024, categoryflags=911, options='', 
-                note='', enabled=1, volume=0, mass=0, hidden=0, health=100, descriptiontoken='def_npc_seth_heavydps_rank1_desc', purchasable=0, tiertype=0, 
-                tierlevel=0 where definition=@definitionID;
-
-
+PRINT N'INSERT AGGVALUES - NPC modifiers';
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'armor_max_modifier' ORDER BY [name] DESC);
 SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
 INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 3.0);
@@ -94,36 +92,17 @@ SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'armor_re
 SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
 INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 5.0);
 
-
+PRINT N'INSERT NPCPRESENCE';
 INSERT INTO [dbo].[npcpresence] ([name],[topx],[topy],[bottomx],[bottomy],[note],[spawnid],[enabled],[roaming],[roamingrespawnseconds]
                 ,[presencetype],[maxrandomflock],[randomcenterx],[randomcentery],[randomradius],[dynamiclifetime],[isbodypull],[isrespawnallowed],[safebodypull])
-                VALUES ('Presence_NPC_Hersh_PitBoss',822,583,1022,783,'Hersh_BlueBoss',13,1,1,0,0,0,0,0,0,0,0,1,1);
+                VALUES ('Presence_NPC_Hersh_PitBoss',7,7,2038,2038,'Hersh_BlueBoss',13,1,1,60,5,0,0,0,0,0,0,1,1);
 
+PRINT N'INSERT NPCFLOCK';
 SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'Presence_NPC_Hersh_PitBoss' ORDER BY id DESC)
-UPDATE [dbo].[npcpresence]
-                SET [name] = 'Presence_NPC_Hersh_PitBoss',[topx] = 822,[topy] = 583,[bottomx] = 1022,[bottomy] = 783,[note] = 'Hersh_BlueBoss',[spawnid] = 13,[enabled] = 1,[roaming] = 1
-                ,[roamingrespawnseconds] = 60,[presencetype] = 0,[maxrandomflock] = 0,[randomcenterx] = 0,[randomcentery] = 0
-                ,[randomradius] = 0,[dynamiclifetime] = 0 ,[isbodypull] = 0,[isrespawnallowed] = 1,[safebodypull] = 1
-                WHERE id=@presenceID;
-
-
-
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_Hersh_PitBoss' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Hersh_Pit_Boss' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
                 ('Hersh_Pit_Boss', @presenceID, 1, @definitionID, 933, 1231, 0, 5, 60, 0, 100, 'Hersh_Pit_Boss', 1, 1, 1, 1); 
-
-
-SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'Presence_NPC_Hersh_PitBoss' ORDER BY id DESC)
-UPDATE [dbo].[npcpresence]
-                SET [name] = 'Presence_NPC_Hersh_PitBoss',[topx] = 7,[topy] = 7,[bottomx] = 2038,[bottomy] = 2038,[note] = 'Hersh_BlueBoss',[spawnid] = 13,[enabled] = 1,[roaming] = 1
-                ,[roamingrespawnseconds] = 60,[presencetype] = 5,[maxrandomflock] = '',[randomcenterx] = '',[randomcentery] = ''
-                ,[randomradius] = '',[dynamiclifetime] = '' ,[isbodypull] = 0,[isrespawnallowed] = 1,[safebodypull] = 1
-                WHERE id=@presenceID;
-
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_Hersh_PitBoss' ORDER BY definition DESC);
-SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Hersh_Pit_Boss' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'Hersh_Pit_Boss' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 933, [spawnoriginY] = 1231 ,[spawnrangeMin] = 0, [spawnrangeMax] = 5,[respawnseconds] = 60, [totalspawncount] = 0, [homerange] = 100 ,[note] = 'Hersh_Pit_Boss', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 1 WHERE id=@flockID;
 
 GO
