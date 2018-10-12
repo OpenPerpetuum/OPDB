@@ -12,10 +12,10 @@ DECLARE @chassisbonusID int;
 
 
 --SET HERMES CARGO 16->20
-PRINT N'HERMES cargo';
+PRINT N'HERMES cargo for real this time';
 UPDATE entitydefaults
 SET options='#capacity=f20.0'
-WHERE definitionname = 'def_robot_inventory_ikarus';
+WHERE definitionname = 'def_robot_inventory_hermes';
 
 
 --HERMES HEAD STATS
