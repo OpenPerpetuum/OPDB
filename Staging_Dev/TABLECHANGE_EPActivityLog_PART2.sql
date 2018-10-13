@@ -12,16 +12,11 @@ GO
 
 --Add integer column named 'bonusMultiplier'
 ALTER TABLE [epforactivitylog]
-ADD bonusMultiplier int; 
+ADD bonusMultiplier int NULL
+CONSTRAINT D_epforactivitylog_bonusMultiplier
+DEFAULT (0)
+WITH VALUES --Set all existing entries to the default server BonusMultiplier (assumes no events have run)
 
 GO
 
---Set all previous null entries to the default server BonusMultiplier (assumes no events have run)
-UPDATE 
-	epforactivitylog
-SET 
-	bonusMultiplier = 0
-WHERE
-	bonusMultiplier IS NULL;
 
-GO
