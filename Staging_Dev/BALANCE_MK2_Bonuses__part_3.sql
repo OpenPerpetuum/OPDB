@@ -51,31 +51,31 @@ SET @railgun_cycle_field = (SELECT TOP 1 id from aggregatefields WHERE[name] = '
 SET @railgun_cycle_bonus = -0.01;
 
 SET @ecm_strength_field = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'ecm_strength_modifier' ORDER BY [name] DESC);
-SET @ecm_strength_bonus =0.01;
+SET @ecm_strength_bonus = 0.01;
 
 SET @missile_range_field = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'missile_range_modifier' ORDER BY [name] DESC);
 SET @missile_range_bonus = 0.01;
 
 SET @neutralize_field = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'energy_neutralized_amount_modifier' ORDER BY [name] DESC);
-SET @neutralize_bonus =0.01;
+SET @neutralize_bonus = 0.01;
 
 SET @drain_field =(SELECT TOP 1 id from aggregatefields WHERE[name] = 'energy_vampired_amount_modifier' ORDER BY [name] DESC);
-SET @drain_bonus =0.01;
+SET @drain_bonus = 0.01;
 
 SET @crit_field  = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'critical_hit_chance_modifier' ORDER BY [name] DESC);
-SET @crit_bonus =0.01;
+SET @crit_bonus = 0.01;
 
 SET @suppress_time_field = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'effect_enhancer_sensor_dampener_locking_time_modifier' ORDER BY [name] DESC);
-SET @suppress_time_bonus =0.01;
+SET @suppress_time_bonus = 0.01;
 
 SET @suppress_range_field =(SELECT TOP 1 id from aggregatefields WHERE[name] = 'effect_enhancer_sensor_dampener_locking_range_modifier' ORDER BY [name] DESC);
-SET @suppress_range_bonus =0.005;
+SET @suppress_range_bonus = 0.01;
 
 SET @mining_amount_field =(SELECT TOP 1 id from aggregatefields WHERE[name] = 'mining_amount_modifier' ORDER BY [name] DESC);
-SET @mining_amount_bonus =0.01;
+SET @mining_amount_bonus = 0.01;
 
 SET @harvesting_amount_field =(SELECT TOP 1 id from aggregatefields WHERE[name] = 'harvesting_amount_modifier' ORDER BY [name] DESC);
-SET @harvesting_amount_bonus= 0.01;
+SET @harvesting_amount_bonus = 0.01;
 
 SET @demob_resist_field = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'massiveness' ORDER BY [name] DESC);
 SET @demob_resist_bonus = 0.01;
