@@ -1,6 +1,15 @@
 USE [perpetuumsa]
 GO
 
+------ARTIFACT LOOT CORRECTIONS AND CHANCE UPDATE
+--First: properly recover the 'chance' col from raw vanilla data
+--UPDATE: the EXISTING loot with this chance
+--+++++++++++
+--INCLUDES LOOT-CHANCE CHANGE: 50% reduction in chance for all CT-capsules from vanilla chance
+--
+--Notes: This script is stable to re-run arbitrary times after 1_0_MK2_CT_Capsules.sql
+--Due to chance modification from fixed values extracted at vanilla-state
+
 
 DROP TABLE IF EXISTS #TEMP_OLD_MK2CT_LOOTS
 
@@ -629,11 +638,11 @@ VALUES
 
 
 --UPDATE ONLY THE CHANCE OF THE PREVIOUSLY INSERTED/SWAPPED MK2 CT CAPSULES
---The Chance column will now match 1:1 the old table chances
+--The Chance column will now match 1:1 the old table chances +++ chance reduction for loot balance
 
-PRINT N'UPDATE ARTI LOOT CHANCE W/ RECOVERED CHANCES FROM VANILLA LOOT TABLE'
+PRINT N'UPDATE ARTI LOOT CHANCE W/ RECOVERED CHANCES FROM VANILLA LOOT TABLE +++ CHANCE TWEAK!!!'
 UPDATE artifactloot
-SET chance = old_arti.chance
+SET chance = old_arti.chance/2.0
 FROM calibrationtemplateitems AS capsules
 JOIN #TEMP_OLD_MK2CT_LOOTS AS old_arti ON old_arti.definition=capsules.targetdefinition WHERE old_arti.artifacttype=artifactloot.artifacttype
 
