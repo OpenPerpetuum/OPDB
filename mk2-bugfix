@@ -1,0 +1,8 @@
+--Increases Symbiont and Riveler CPU from 450 to 495
+
+UPDATE aggregatevalues SET value=495 where [definition]=3042 and [field]=62;
+UPDATE aggregatevalues SET value=495 where [definition]=3045 and [field]=62;
+
+--Changes hitech robot bonus on numiquol from increasing to decreasing cycle time of weapons
+
+UPDATE chassisbonus SET bonus=0.01 WHERE [targetpropertyID]=300 and [extension]=358
