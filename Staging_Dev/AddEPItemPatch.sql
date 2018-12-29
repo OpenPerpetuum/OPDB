@@ -189,7 +189,7 @@ from #temp_ins_entitydefaults
 join aggregatefields af on af.[name] = 'despawn_time';
 
 select * from #temp_ins_entitydefaults
-drop table #temp_ins_entitydefaults;
+--drop table #temp_ins_entitydefaults;
 
 commit transaction
 go
@@ -224,8 +224,8 @@ begin transaction
 set xact_abort on
 set transaction isolation level read committed
 
-if exists (select * from extensionsubscription where accountid = @accountID and @endTime > @startTime)-- and multiplierBonus <> @multiplierBonus)
-	throw 100000, 'Extension bonus already active', 1; --delete from extensionsubscription where accountid = @accountID;
+if exists (select * from extensionsubscription where accountid = @accountID and endTime > @startTime)
+	throw 100000, 'Extension bonus already active', 1;
 
 insert into dbo.extensionsubscription
 (
@@ -265,13 +265,3 @@ select top 1
 from extensionsubscription
 where startTime < getutcdate() and endtime > getutcdate()
 order by endtime desc;
-
---begin tran
---set xact_abort on
-
---delete ag from aggregatevalues ag join #temp_ins_entitydefaults tie on ag.[definition] = tie.[definition];
---delete its from itemshop its join #temp_ins_entitydefaults tie on its.targetdefinition = tie.[definition];
---delete ed from entitydefaults ed join #temp_ins_entitydefaults tie on ed.[definition] = tie.[definition]
-
---drop table #temp_ins_entitydefaults;
---commit tran
