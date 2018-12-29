@@ -102,7 +102,7 @@ values
 	'def_redeemable_ep_standard_desc', -- descriptiontoken
 	1, --purchasable
 	1, -- tiertype
-	1 -- tierlevel
+	2 -- tierlevel
 );
 
 insert into entitydefaults
@@ -148,7 +148,7 @@ values
 	'def_redeemable_ep_standard_desc', -- descriptiontoken
 	1, --purchasable
 	1, -- tiertype
-	1 -- tierlevel
+	3 -- tierlevel
 );
 
 insert into itemshop
