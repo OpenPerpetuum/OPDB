@@ -223,8 +223,8 @@ go
 
 -- Update the subscription procedure to accept a value
 -- Split into 2 parts, removal and addition
-if object_id('dbo.extensionSubscriptionStart', 'P') is not null
-	drop procedure dbo.extensionSubscriptionStart;
+if object_id('opp.extensionSubscriptionStart', 'P') is not null
+	drop procedure opp.extensionSubscriptionStart;
 go
 
 create procedure opp.extensionSubscriptionStart
@@ -266,8 +266,8 @@ if object_id('dbo.extensionSubscriptionExtend', 'P') is not null
 	drop procedure dbo.extensionSubscriptionExtend;
 go
 
-if object_id('dbo.getExtensionSubscription', 'P') is not null
-	drop procedure dbo.getExtensionSubscription;
+if object_id('opp.getExtensionSubscription', 'P') is not null
+	drop procedure opp.getExtensionSubscription;
 go
 
 create procedure opp.getExtensionSubscription
