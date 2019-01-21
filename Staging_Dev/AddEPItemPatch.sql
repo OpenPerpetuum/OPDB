@@ -1,3 +1,11 @@
+USE [perpetuumsa]
+GO
+
+CREATE SCHEMA opp
+GO
+
+
+
 -- Patch to add EP Boost Item Definition
 begin transaction
 set xact_abort on
@@ -13,7 +21,7 @@ create table #temp_ins_entitydefaults
 	unicoin int not null
 );
 
-insert into entitydefaults
+insert into dbo.entitydefaults
 (
 	definitionname,
 	quantity,
@@ -59,7 +67,7 @@ values
 	1 -- tierlevel
 );
 
-insert into entitydefaults
+insert into dbo.entitydefaults
 (
 	definitionname,
 	quantity,
@@ -105,7 +113,7 @@ values
 	2 -- tierlevel
 );
 
-insert into entitydefaults
+insert into dbo.entitydefaults
 (
 	definitionname,
 	quantity,
@@ -151,7 +159,7 @@ values
 	3 -- tierlevel
 );
 
-insert into itemshop
+insert into dbo.itemshop
 (
 	presetid,
 	targetdefinition,
@@ -175,7 +183,7 @@ select
 	unicoin -- unicoin
 from #temp_ins_entitydefaults
 
-insert into aggregatevalues
+insert into dbo.aggregatevalues
 (
 	[definition],
 	[field],
@@ -198,20 +206,28 @@ go
 begin transaction
 set xact_abort on
 
-alter table extensionsubscription
+alter table dbo.extensionsubscription
 add multiplierBonus int not null;
 
 commit transaction
 go
 
 
--- Update the subscription procedure to accept a value
--- Split into 2 parts, removal and addition
-if object_id('extensionSubscriptionStart', 'P') is not null
-	drop procedure extensionSubscriptionStart;
+begin transaction
+set xact_abort on
+
+commit transaction
 go
 
-create procedure extensionSubscriptionStart
+
+
+-- Update the subscription procedure to accept a value
+-- Split into 2 parts, removal and addition
+if object_id('dbo.extensionSubscriptionStart', 'P') is not null
+	drop procedure dbo.extensionSubscriptionStart;
+go
+
+create procedure opp.extensionSubscriptionStart
 	@accountID int,
 	@startTime datetime,
 	@endTime datetime,
@@ -224,7 +240,7 @@ begin transaction
 set xact_abort on
 set transaction isolation level read committed
 
-if exists (select * from extensionsubscription where accountid = @accountID and endTime > @startTime)
+if exists (select * from dbo.extensionsubscription where accountid = @accountID and endTime > @startTime)
 	throw 100000, 'Extension bonus already active', 1;
 
 insert into dbo.extensionsubscription
@@ -246,15 +262,15 @@ go
 
 
 -- Remove the extension extension procedure - no longer required
-if object_id('extensionSubscriptionExtend', 'P') is not null
-	drop procedure extensionSubscriptionExtend;
+if object_id('dbo.extensionSubscriptionExtend', 'P') is not null
+	drop procedure dbo.extensionSubscriptionExtend;
 go
 
-if object_id('getExtensionSubscription', 'P') is not null
-	drop procedure getExtensionSubscription;
+if object_id('dbo.getExtensionSubscription', 'P') is not null
+	drop procedure dbo.getExtensionSubscription;
 go
 
-create procedure getExtensionSubscription
+create procedure opp.getExtensionSubscription
 	@accountID int
 as
 
@@ -262,6 +278,6 @@ select top 1
 	starttime,
 	endtime,
 	multiplierBonus
-from extensionsubscription
+from dbo.extensionsubscription
 where startTime < getutcdate() and endtime > getutcdate()
 order by endtime desc;
