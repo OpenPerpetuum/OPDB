@@ -203,19 +203,8 @@ commit transaction
 go
 
 -- Update the extensionsubscription table to add the extra bonus value
--- And switch datetimes to datetimeoffsets
 begin transaction
 set xact_abort on
-
-ALTER TABLE [dbo].[extensionsubscription] DROP CONSTRAINT [DF_extensionsubscription_eventdate]
-
-alter table dbo.extensionsubscription
-ALTER COLUMN starttime datetimeoffset not null;
-
-ALTER TABLE [dbo].[extensionsubscription] ADD  CONSTRAINT [DF_extensionsubscription_eventdate]  DEFAULT (SYSDATETIMEOFFSET()) FOR [starttime]
-
-alter table dbo.extensionsubscription
-ALTER COLUMN endtime datetimeoffset not null;
 
 alter table dbo.extensionsubscription
 add multiplierBonus int not null;
@@ -240,8 +229,8 @@ go
 
 create procedure opp.extensionSubscriptionStart
 	@accountID int,
-	@startTime datetimeoffset,
-	@endTime datetimeoffset,
+	@startTime datetime,
+	@endTime datetime,
 	@multiplierBonus int
 as
 
@@ -290,7 +279,5 @@ select top 1
 	endtime,
 	multiplierBonus
 from dbo.extensionsubscription
-where startTime < SYSDATETIMEOFFSET() and endtime > SYSDATETIMEOFFSET() and @accountID = accountid
+where startTime < getdate() and endtime > getdate() and @accountID = accountid
 order by endtime desc;
-
-GO
