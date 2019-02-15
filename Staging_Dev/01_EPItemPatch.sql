@@ -279,5 +279,5 @@ select top 1
 	endtime,
 	multiplierBonus
 from dbo.extensionsubscription
-where startTime < getutcdate() and endtime > getutcdate()
+where startTime < getdate() and endtime > getdate() and @accountID = accountid
 order by endtime desc;
