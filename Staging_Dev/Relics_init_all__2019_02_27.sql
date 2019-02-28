@@ -37,6 +37,18 @@ INSERT INTO [dbo].[entitydefaults]
            ,NULL)
 GO
 
+PRINT N'Relic Definition - Add absurd masking';
+DECLARE @definitionID int;
+DECLARE @aggvalueID int;
+DECLARE @aggfieldID int;
+
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_relic' ORDER BY definition DESC);
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'stealth_strength' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 99999999);
+GO
+
 
 PRINT N'Relics - Initial config and settings 2019-01-19';
 
