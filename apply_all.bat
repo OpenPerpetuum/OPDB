@@ -6,7 +6,7 @@
 @echo off
 
 set StartAndWait=start /min /wait
-set SqlCmd=sqlcmd -E -S %computername%\PERPSQL -d perpetuumsa -i
+set SqlCmd=sqlcmd -E -S %computername%\PERPSQL -d perpetuumsa -I -i
 
 set TARGET_DIR=C:\PerpetuumServer\data
 set TOOLS_DIR=%~dp0Tools
@@ -18,7 +18,7 @@ if not exist %TARGET_DIR% goto :directoryNotFound
 echo Welcome to the patching script
 echo.
 echo Restoring original database state
-%StartAndWait% %SqlCmd% %TOOLS_DIR%\restore_DB_to_original_state.sql
+%StartAndWait% %SqlCmd% "%TOOLS_DIR%\restore_DB_to_original_state.sql"
 
 :: Apply the patches in order
 call:applyPatch Pre_Alpha_1 prealpha_patch_1.sql Server
@@ -56,10 +56,10 @@ exit
 	echo Patching %patchDir%
 	
 	:: Patching SQL
-	%StartAndWait% %SqlCmd% %PATCHES_DIR%\%patchDir%\%sqlFile%
+	%StartAndWait% %SqlCmd% "%PATCHES_DIR%\%patchDir%\%sqlFile%"
 
 	:: Copy data directory if applicable
-	if not "%dataDir%"=="" %StartAndWait% xcopy %PATCHES_DIR%\%patchDir%\%dataDir%\data %TARGET_DIR% /s /e /y
+	if not "%dataDir%"=="" %StartAndWait% xcopy "%PATCHES_DIR%\%patchDir%\%dataDir%\data" "%TARGET_DIR%" /s /e /y
 exit /b
 
 :directoryNotFound
