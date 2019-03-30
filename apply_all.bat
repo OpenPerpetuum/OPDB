@@ -39,6 +39,14 @@ call:applyPatch Live_7 live_patch_7.sql
 call:applyPatch Live_8 live_patch_8.sql
 call:applyPatch Live_9 live_patch_9.sql
 
+echo.
+echo Setting up the tool admin account..
+echo Username: test
+echo Password: test
+%StartAndWait% %SqlCmd% "%TOOLS_DIR%\TOOL_test_account.sql"
+echo Tool admin account is created
+echo.
+
 echo Patching complete
 pause
 exit
