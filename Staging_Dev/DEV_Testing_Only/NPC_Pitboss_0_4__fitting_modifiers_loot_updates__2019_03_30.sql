@@ -36,7 +36,7 @@ SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_rec
 SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
 
 
-UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=15 WHERE id =  @aggvalueID;
+UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=0.9 WHERE id =  @aggvalueID;
 
 
 ------Loot update
