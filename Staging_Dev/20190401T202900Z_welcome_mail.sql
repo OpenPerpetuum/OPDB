@@ -52,13 +52,13 @@ Consider joining a player Corporation - and meet other players like yourself, le
 ');
 GO
 
-/* Setup overlord character */
+/* Setup Welcome-Agent Account and Character */
 DECLARE @PASSWORD_TEMP varbinary(40);
-SET @PASSWORD_TEMP = HASHBYTES('SHA1', 'overlord');
+SET @PASSWORD_TEMP = HASHBYTES('SHA1', '!CHANGE_ME! please');
 DECLARE @PASSWORD varchar(40);
 SET @PASSWORD = CONVERT(varchar(40), @PASSWORD_TEMP, 2);
 
-
+--This account will be used to host server-defined characters for automated interactions with players
 INSERT INTO [dbo].[accounts]
            ([email]
            ,[password]
@@ -88,7 +88,7 @@ INSERT INTO [dbo].[accounts]
            ,[payingcustomer]
            ,[campaignid])
 VALUES 
-			(N'overlord', --email
+			(N'OPP_server_account', --email
 			@PASSWORD, --pw
 			NULL, 
 			NULL,
@@ -116,6 +116,8 @@ VALUES
 			0, 
 			N'{"host":"tooladmin"}');
 
+
+--This character will be used to send informative welcome messages to new players
 INSERT INTO [dbo].[characters]
            ([accountID]
            ,[rootEID]
@@ -155,7 +157,7 @@ INSERT INTO [dbo].[characters]
 VALUES
 			((SELECT accountID FROM dbo.accounts where email = 'overlord'), --accountID
 			8702057415139945528, 
-			N'[OPP] Welcome-Agent', --nick
+			N'[OPP] Sparky - The Syndicate Welcome Agent', --nick
 			NULL, 
 			CAST(N'2019-03-17T01:02:00' AS SmallDateTime), 
 			CAST(N'2019-03-17T01:05:00' AS SmallDateTime), 
