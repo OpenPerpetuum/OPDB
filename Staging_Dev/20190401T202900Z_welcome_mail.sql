@@ -54,9 +54,9 @@ GO
 
 /* Setup Welcome-Agent Account and Character */
 DECLARE @PASSWORD_TEMP varbinary(40);
-SET @PASSWORD_TEMP = HASHBYTES('SHA1', '!CHANGE_ME! please');
-DECLARE @PASSWORD varchar(40);
-SET @PASSWORD = CONVERT(varchar(40), @PASSWORD_TEMP, 2);
+SET @PASSWORD_TEMP = HASHBYTES('SHA1', (LEFT(REPLACE(NEWID(),'-',''),31)));
+DECLARE @PASSWORD varchar(100);
+SET @PASSWORD = (SELECT CONVERT(VARCHAR(100),HASHBYTES('SHA1',CRYPT_GEN_RANDOM(32)),2));
 
 --This account will be used to host server-defined characters for automated interactions with players
 INSERT INTO [dbo].[accounts]
