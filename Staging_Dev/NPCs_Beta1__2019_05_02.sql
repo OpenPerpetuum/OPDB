@@ -455,10 +455,11 @@ INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],
 
 INSERT INTO [dbo].[npcpresence] ([name],[topx],[topy],[bottomx],[bottomy],[note],[spawnid],[enabled],[roaming],[roamingrespawnseconds]
                 ,[presencetype],[maxrandomflock],[randomcenterx],[randomcentery],[randomradius],[dynamiclifetime],[isbodypull],[isrespawnallowed],[safebodypull])
-                VALUES ('presence_flock_hok_BetaTerminal_2',569,244,769,444,'BetaTerminal_2',8,1,0,0,0,'',''
+                VALUES ('presence_flock_hok_BetaTerminal_2_Blue',569,244,769,444,'BetaTerminal_2',8,1,0,0,0,'',''
 			    ,'','','',1,1,1);
 
 SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'presence_flock_hok_BetaTerminal_2_Blue' ORDER BY id DESC)
+
 UPDATE [dbo].[npcpresence]
                 SET [name] = 'presence_flock_hok_BetaTerminal_2_Blue',[topx] = 569,[topy] = 244,[bottomx] = 769,[bottomy] = 444,[note] = 'BetaTerminal_2_Blue',[spawnid] = 8,[enabled] = 1,[roaming] = 0
                 ,[roamingrespawnseconds] = 0,[presencetype] = 0,[maxrandomflock] = '',[randomcenterx] = '',[randomcentery] = ''
