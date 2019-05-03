@@ -66,25 +66,25 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Seth_nauwy_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('Seth_nauwy_1', @presenceID, 3, @definitionID, 838, 310, 0, 5, 60, 0, 15, 'Seth_nauwy_1', 0, 1, 1, 1); 
+                ('Seth_nauwy_1', @presenceID, 3, @definitionID, 838, 310, 0, 5, 60, 0, 30, 'Seth_nauwy_1', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_artemis_dps_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'artemis_nauwy_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('artemis_nauwy_1', @presenceID, 3, @definitionID, 838, 310, 0, 5, 60, 0, 15, 'artemis_nauwy_1', 0, 1, 1, 1); 
+                ('artemis_nauwy_1', @presenceID, 3, @definitionID, 838, 310, 0, 5, 60, 0, 30, 'artemis_nauwy_1', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_zenith_dps_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'zenith_nauwy_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('zenith_nauwy_1', @presenceID, 3, @definitionID, 838, 310, 0, 5, 60, 0, 15, 'Zenith_nauwy_1', 0, 1, 1, 1); 
+                ('zenith_nauwy_1', @presenceID, 3, @definitionID, 838, 310, 0, 5, 60, 0, 30, 'Zenith_nauwy_1', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_sequer_basic_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'sequer_nauwy_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('sequer_nauwy_1', @presenceID, 3, @definitionID, 838, 310, 0, 5, 60, 0, 15, 'sequer_nauwy_1', 0, 1, 1, 1); 
+                ('sequer_nauwy_1', @presenceID, 3, @definitionID, 838, 310, 0, 5, 60, 0, 30, 'sequer_nauwy_1', 0, 1, 1, 1); 
 
 INSERT INTO [dbo].[npcpresence] ([name],[topx],[topy],[bottomx],[bottomy],[note],[spawnid],[enabled],[roaming],[roamingrespawnseconds]
                 ,[presencetype],[maxrandomflock],[randomcenterx],[randomcentery],[randomradius],[dynamiclifetime],[isbodypull],[isrespawnallowed],[safebodypull])
@@ -163,13 +163,13 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'seth_nauwy_4' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('seth_nauwy_4', @presenceID, 2, @definitionID, 911, 257, 2, 5, 60, 0, 15, 'Seth_nauwy_4', 1, 1, 1, 1); 
+                ('seth_nauwy_4', @presenceID, 2, @definitionID, 911, 257, 2, 5, 60, 0, 30, 'Seth_nauwy_4', 1, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_artemis_dps_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'artemis_nauwy_4' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('artemis_nauwy_4', @presenceID, 2, @definitionID, 911, 257, 2, 5, 60, 0, 15, 'Artemis_nauwy_4', 1, 1, 1, 1); 
+                ('artemis_nauwy_4', @presenceID, 2, @definitionID, 911, 257, 2, 5, 60, 0, 30, 'Artemis_nauwy_4', 1, 1, 1, 1); 
 
 ---Abbu NPCs
 
@@ -189,25 +189,25 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'seth_abbu_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('seth_abbu_1', @presenceID, 3, @definitionID, 1157, 780, 2, 5, 60, 0, 15, 'seth_abbu_1', 0, 1, 1, 1); 
+                ('seth_abbu_1', @presenceID, 3, @definitionID, 1157, 780, 2, 5, 60, 0, 30, 'seth_abbu_1', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_artemis_dps_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'artemis_abbu_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('artemis_abbu_1', @presenceID, 3, @definitionID, 1157, 780, 2, 5, 60, 0, 15, 'artemis_abbu_1', 0, 1, 1, 1); 
+                ('artemis_abbu_1', @presenceID, 3, @definitionID, 1157, 780, 2, 5, 60, 0, 30, 'artemis_abbu_1', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_zenith_dps_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Zenith_abbu_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('Zenith_abbu_1', @presenceID, 3, @definitionID, 1157, 780, 2, 5, 60, 0, 15, 'Zenith_abbu_1', 0, 1, 1, 1); 
+                ('Zenith_abbu_1', @presenceID, 3, @definitionID, 1157, 780, 2, 5, 60, 0, 30, 'Zenith_abbu_1', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_sequer_basic_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Sequer_abbu_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('Sequer_abbu_1', @presenceID, 3, @definitionID, 1157, 780, 2, 5, 60, 0, 15, 'Sequer_abbu_1', 0, 1, 1, 1); 
+                ('Sequer_abbu_1', @presenceID, 3, @definitionID, 1157, 780, 2, 5, 60, 0, 30, 'Sequer_abbu_1', 0, 1, 1, 1); 
 
 INSERT INTO [dbo].[npcpresence] ([name],[topx],[topy],[bottomx],[bottomy],[note],[spawnid],[enabled],[roaming],[roamingrespawnseconds]
                 ,[presencetype],[maxrandomflock],[randomcenterx],[randomcentery],[randomradius],[dynamiclifetime],[isbodypull],[isrespawnallowed],[safebodypull])
@@ -261,13 +261,13 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'seth_abbu_3' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('seth_abbu_3', @presenceID, 2, @definitionID, 1107, 1065, 2, 5, 60, 0, 15, 'seth_abbu_3', 0, 1, 1, 1); 
+                ('seth_abbu_3', @presenceID, 2, @definitionID, 1107, 1065, 2, 5, 60, 0, 30, 'seth_abbu_3', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_artemis_dps_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'artemis_abbu_3' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('artemis_abbu_3', @presenceID, 2, @definitionID, 1107, 1065, 2, 5, 60, 0, 15, 'artemis_abbu_3', 0, 1, 1, 1); 
+                ('artemis_abbu_3', @presenceID, 2, @definitionID, 1107, 1065, 2, 5, 60, 0, 30, 'artemis_abbu_3', 0, 1, 1, 1); 
 
 INSERT INTO [dbo].[npcpresence] ([name],[topx],[topy],[bottomx],[bottomy],[note],[spawnid],[enabled],[roaming],[roamingrespawnseconds]
                 ,[presencetype],[maxrandomflock],[randomcenterx],[randomcentery],[randomradius],[dynamiclifetime],[isbodypull],[isrespawnallowed],[safebodypull])
@@ -311,25 +311,25 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'seth_darm_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('seth_darm_1', @presenceID, 3, @definitionID, 464, 1072, 2, 5, 60, 0, 15, 'seth_darm_1', 0, 1, 1, 1); 
+                ('seth_darm_1', @presenceID, 3, @definitionID, 464, 1072, 2, 5, 60, 0, 30, 'seth_darm_1', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_artemis_dps_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'artemis_darm_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('artemis_darm_1', @presenceID, 3, @definitionID, 464, 1072, 2, 5, 60, 0, 15, 'artemis_darm_1', 0, 1, 1, 1); 
+                ('artemis_darm_1', @presenceID, 3, @definitionID, 464, 1072, 2, 5, 60, 0, 30, 'artemis_darm_1', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_zenith_dps_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Zenith_darm_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('Zenith_darm_1', @presenceID, 3, @definitionID, 464, 1072, 2, 5, 60, 0, 15, 'zenith_darm_1', 0, 1, 1, 1); 
+                ('Zenith_darm_1', @presenceID, 3, @definitionID, 464, 1072, 2, 5, 60, 0, 30, 'zenith_darm_1', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_sequer_basic_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'sequer_darm_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('sequer_darm_1', @presenceID, 3, @definitionID, 464, 1072, 2, 5, 60, 0, 15, 'sequer_darm_1', 0, 1, 1, 1); 
+                ('sequer_darm_1', @presenceID, 3, @definitionID, 464, 1072, 2, 5, 60, 0, 30, 'sequer_darm_1', 0, 1, 1, 1); 
 
 INSERT INTO [dbo].[npcpresence] ([name],[topx],[topy],[bottomx],[bottomy],[note],[spawnid],[enabled],[roaming],[roamingrespawnseconds]
                 ,[presencetype],[maxrandomflock],[randomcenterx],[randomcentery],[randomradius],[dynamiclifetime],[isbodypull],[isrespawnallowed],[safebodypull])
@@ -383,13 +383,13 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'seth_Darm_3' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('seth_Darm_3', @presenceID, 2, @definitionID, 693, 1385, 2, 5, 60, 0, 15, 'seth_darm_3', 0, 1, 1, 1); 
+                ('seth_Darm_3', @presenceID, 2, @definitionID, 693, 1385, 2, 5, 60, 0, 30, 'seth_darm_3', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_artemis_dps_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'artemis_darm_3' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('artemis_darm_3', @presenceID, 2, @definitionID, 693, 1385, 2, 5, 60, 0, 15, 'artemis_darm_3', 0, 1, 1, 1); 
+                ('artemis_darm_3', @presenceID, 2, @definitionID, 693, 1385, 2, 5, 60, 0, 30, 'artemis_darm_3', 0, 1, 1, 1); 
 
 INSERT INTO [dbo].[npcpresence] ([name],[topx],[topy],[bottomx],[bottomy],[note],[spawnid],[enabled],[roaming],[roamingrespawnseconds]
                 ,[presencetype],[maxrandomflock],[randomcenterx],[randomcentery],[randomradius],[dynamiclifetime],[isbodypull],[isrespawnallowed],[safebodypull])
@@ -433,25 +433,25 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Mesmer_BT_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('Mesmer_BT_1', @presenceID, 2, @definitionID, 630, 400, 2, 5, 60, 0, 15, 'Mesmer_BT_1', 0, 1, 1, 1); 
+                ('Mesmer_BT_1', @presenceID, 2, @definitionID, 630, 400, 2, 5, 60, 0, 30, 'Mesmer_BT_1', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_kain_dps_rank2' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Kain_BT_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('Kain_BT_1', @presenceID, 2, @definitionID, 630, 400, 2, 5, 60, 0, 15, 'Kain_BT_1', 0, 1, 1, 1); 
+                ('Kain_BT_1', @presenceID, 2, @definitionID, 630, 400, 2, 5, 60, 0, 30, 'Kain_BT_1', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_vagabond_dps_rank2' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Vagabond_BT_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('Vagabond_BT_1', @presenceID, 2, @definitionID, 630, 400, 2, 5, 60, 0, 15, 'Vagabond_BT_1', 0, 1, 1, 1); 
+                ('Vagabond_BT_1', @presenceID, 2, @definitionID, 630, 400, 2, 5, 60, 0, 30, 'Vagabond_BT_1', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_sequer_basic_rank2' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Sequer_BT_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('Sequer_BT_1', @presenceID, 2, @definitionID, 630, 400, 2, 5, 60, 0, 15, 'Sequer_BT_1', 0, 1, 1, 1); 
+                ('Sequer_BT_1', @presenceID, 2, @definitionID, 630, 400, 2, 5, 60, 0, 30, 'Sequer_BT_1', 0, 1, 1, 1); 
 
 INSERT INTO [dbo].[npcpresence] ([name],[topx],[topy],[bottomx],[bottomy],[note],[spawnid],[enabled],[roaming],[roamingrespawnseconds]
                 ,[presencetype],[maxrandomflock],[randomcenterx],[randomcentery],[randomradius],[dynamiclifetime],[isbodypull],[isrespawnallowed],[safebodypull])
@@ -505,7 +505,7 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'kain_BT3_blue' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('kain_BT3_blue', @presenceID, 2, @definitionID, 840, 450, 2, 5, 60, 0, 15, 'kain_BT3_blue', 0, 1, 1, 1); 
+                ('kain_BT3_blue', @presenceID, 2, @definitionID, 840, 450, 2, 5, 60, 0, 30, 'kain_BT3_blue', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_yagel_scout_rank2' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'yagel_BT3_blue' ORDER BY id DESC);
@@ -524,25 +524,25 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'gropho_BTG1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('gropho_BTG1', @presenceID, 2, @definitionID, 565, 460, 2, 5, 60, 0, 15, 'gropho_BTG1', 0, 1, 1, 1); 
+                ('gropho_BTG1', @presenceID, 2, @definitionID, 565, 460, 2, 5, 60, 0, 30, 'gropho_BTG1', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_tyrannos_dps_rank2' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'tyrannos_BTG1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('tyrannos_BTG1', @presenceID, 2, @definitionID, 565, 460, 2, 5, 60, 0, 15, 'Tyrannos_BTG1', 0, 1, 1, 1); 
+                ('tyrannos_BTG1', @presenceID, 2, @definitionID, 565, 460, 2, 5, 60, 0, 30, 'Tyrannos_BTG1', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_ictus_dps_rank2' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'ictus_BTG1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('ictus_BTG1', @presenceID, 2, @definitionID, 565, 460, 2, 5, 60, 0, 15, 'ictus_BTG1', 0, 1, 1, 1); 
+                ('ictus_BTG1', @presenceID, 2, @definitionID, 565, 460, 2, 5, 60, 0, 30, 'ictus_BTG1', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_sequer_basic_rank2' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'sequer_BTG1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('sequer_BTG1', @presenceID, 2, @definitionID, 565, 460, 2, 5, 60, 0, 15, 'sequer_BTG1', 0, 1, 1, 1); 
+                ('sequer_BTG1', @presenceID, 2, @definitionID, 565, 460, 2, 5, 60, 0, 30, 'sequer_BTG1', 0, 1, 1, 1); 
 
 INSERT INTO [dbo].[npcpresence] ([name],[topx],[topy],[bottomx],[bottomy],[note],[spawnid],[enabled],[roaming],[roamingrespawnseconds]
                 ,[presencetype],[maxrandomflock],[randomcenterx],[randomcentery],[randomradius],[dynamiclifetime],[isbodypull],[isrespawnallowed],[safebodypull])
@@ -596,7 +596,7 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'castel_BT3G' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('castel_BT3G', @presenceID, 2, @definitionID, 915, 575, 2, 5, 60, 0, 15, 'castel_BT3G', 0, 1, 1, 1); 
+                ('castel_BT3G', @presenceID, 2, @definitionID, 915, 575, 2, 5, 60, 0, 30, 'castel_BT3G', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_tyrannos_dps_rank2' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Tyrannos_BT3G' ORDER BY id DESC);
@@ -622,25 +622,25 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'seth_hitech_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('seth_hitech_1', @presenceID, 3, @definitionID, 210, 1675, 2, 5, 60, 0, 15, 'seth_hitech_1', 0, 1, 1, 1); 
+                ('seth_hitech_1', @presenceID, 3, @definitionID, 210, 1675, 2, 5, 60, 0, 30, 'seth_hitech_1', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_artemis_dps_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'artemis_hitech_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('artemis_hitech_1', @presenceID, 3, @definitionID, 210, 1675, 2, 5, 60, 0, 15, 'artemis_hitech_1', 0, 1, 1, 1); 
+                ('artemis_hitech_1', @presenceID, 3, @definitionID, 210, 1675, 2, 5, 60, 0, 30, 'artemis_hitech_1', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_zenith_dps_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'zenith_hitech_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('zenith_hitech_1', @presenceID, 3, @definitionID, 210, 1675, 2, 5, 60, 0, 15, 'zenith_hitech_1', 0, 1, 1, 1); 
+                ('zenith_hitech_1', @presenceID, 3, @definitionID, 210, 1675, 2, 5, 60, 0, 30, 'zenith_hitech_1', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_sequer_basic_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'sequer_hitech_1' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('sequer_hitech_1', @presenceID, 3, @definitionID, 210, 1675, 2, 5, 60, 0, 15, 'sequer_hitech_1', 0, 1, 1, 1); 
+                ('sequer_hitech_1', @presenceID, 3, @definitionID, 210, 1675, 2, 5, 60, 0, 30, 'sequer_hitech_1', 0, 1, 1, 1); 
 
 -----Indy T3
 
@@ -660,25 +660,25 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Riveler_hokk_indyT3' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('Riveler_hokk_indyT3', @presenceID, 3, @definitionID, 1170, 1450, 2, 5, 60, 0, 15, 'Riveler_hokk_indyT3', 0, 1, 1, 1); 
+                ('Riveler_hokk_indyT3', @presenceID, 3, @definitionID, 1170, 1450, 2, 5, 60, 0, 30, 'Riveler_hokk_indyT3', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_symbiont_basic_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Symb_hokk_indyT3' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('Symb_hokk_indyT3', @presenceID, 3, @definitionID, 1170, 1450, 2, 5, 60, 0, 15, 'Symb_hokk_indyT3', 0, 1, 1, 1); 
+                ('Symb_hokk_indyT3', @presenceID, 3, @definitionID, 1170, 1450, 2, 5, 60, 0, 30, 'Symb_hokk_indyT3', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_lithus_basic_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Lithus_hokk_indyT3' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('Lithus_hokk_indyT3', @presenceID, 3, @definitionID, 1170, 1450, 2, 5, 60, 0, 15, 'Lithus_hokk_indyT3', 0, 1, 1, 1); 
+                ('Lithus_hokk_indyT3', @presenceID, 3, @definitionID, 1170, 1450, 2, 5, 60, 0, 30, 'Lithus_hokk_indyT3', 0, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_scarab_basic_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Scarab_hokk_indyT3' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('Scarab_hokk_indyT3', @presenceID, 3, @definitionID, 1170, 1450, 2, 5, 60, 0, 15, 'Scarab_hokk_indyT3', 0, 1, 1, 1); 
+                ('Scarab_hokk_indyT3', @presenceID, 3, @definitionID, 1170, 1450, 2, 5, 60, 0, 30, 'Scarab_hokk_indyT3', 0, 1, 1, 1); 
 
 ----Indy T5
 
@@ -698,19 +698,19 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'scarab_hokk_T5G' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('scarab_hokk_T5G', @presenceID, 3, @definitionID, 1880, 1610, 2, 5, 60, 0, 15, 'scarab_hokk_T5G', 1, 1, 1, 1); 
+                ('scarab_hokk_T5G', @presenceID, 3, @definitionID, 1880, 1610, 2, 5, 60, 0, 30, 'scarab_hokk_T5G', 1, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_riveler_basic_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Riveler_hokk_T5G' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('Riveler_hokk_T5G', @presenceID, 3, @definitionID, 1880, 1610, 2, 5, 60, 0, 15, 'Riveler_hokk_T5G', 1, 1, 1, 1); 
+                ('Riveler_hokk_T5G', @presenceID, 3, @definitionID, 1880, 1610, 2, 5, 60, 0, 30, 'Riveler_hokk_T5G', 1, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_symbiont_basic_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Symbiont_hokk_T5G' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('Symbiont_hokk_T5G', @presenceID, 3, @definitionID, 1880, 1610, 2, 5, 60, 0, 15, 'Symbiont_hokk_T5G', 1, 1, 1, 1); 
+                ('Symbiont_hokk_T5G', @presenceID, 3, @definitionID, 1880, 1610, 2, 5, 60, 0, 30, 'Symbiont_hokk_T5G', 1, 1, 1, 1); 
 
 
 ---T3 Solo Indy
@@ -731,19 +731,19 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'scarab_hokk_T3S' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('scarab_hokk_T3S', @presenceID, 1, @definitionID, 1415, 1180, 2, 5, 60, 0, 15, 'scarab_hokk_t3s', 1, 1, 1, 1); 
+                ('scarab_hokk_T3S', @presenceID, 1, @definitionID, 1415, 1180, 2, 5, 60, 0, 30, 'scarab_hokk_t3s', 1, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_symbiont_basic_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Symb_hokk_T3S' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('Symb_hokk_T3S', @presenceID, 1, @definitionID, 1415, 1180, 2, 5, 60, 0, 15, 'symb_hokk_t3s', 1, 1, 1, 1); 
+                ('Symb_hokk_T3S', @presenceID, 1, @definitionID, 1415, 1180, 2, 5, 60, 0, 30, 'symb_hokk_t3s', 1, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_riveler_basic_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Riveler_hokk_T3S' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('Riveler_hokk_T3S', @presenceID, 1, @definitionID, 1415, 1180, 2, 5, 60, 0, 15, 'riveler_hokk_t3s', 1, 1, 1, 1); 
+                ('Riveler_hokk_T3S', @presenceID, 1, @definitionID, 1415, 1180, 2, 5, 60, 0, 30, 'riveler_hokk_t3s', 1, 1, 1, 1); 
 
 
 ---T5 Solo Indy
@@ -764,19 +764,19 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'scarab_hokk_T5S' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('scarab_hokk_T5S', @presenceID, 1, @definitionID, 995, 1310, 2, 5, 60, 0, 15, 'scarab_hokk_t5s', 1, 1, 1, 1); 
+                ('scarab_hokk_T5S', @presenceID, 1, @definitionID, 995, 1310, 2, 5, 60, 0, 30, 'scarab_hokk_t5s', 1, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_riveler_basic_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Riveler_hokk_T5S' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('Riveler_hokk_T5S', @presenceID, 1, @definitionID, 995, 1310, 2, 5, 60, 0, 15, 'Riveler_hokk_t5s', 1, 1, 1, 1); 
+                ('Riveler_hokk_T5S', @presenceID, 1, @definitionID, 995, 1310, 2, 5, 60, 0, 30, 'Riveler_hokk_t5s', 1, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_symbiont_basic_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Symb_hokk_T5S' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('Symb_hokk_T5S', @presenceID, 1, @definitionID, 995, 1310, 2, 5, 60, 0, 15, 'Symb_hokk_T5s', 1, 1, 1, 1); 
+                ('Symb_hokk_T5S', @presenceID, 1, @definitionID, 995, 1310, 2, 5, 60, 0, 30, 'Symb_hokk_T5s', 1, 1, 1, 1); 
 
 ---Hokk Money Spawn
 
@@ -846,13 +846,13 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'seth_hokk_soloT5MHM' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('seth_hokk_soloT5MHM', @presenceID, 2, @definitionID, 630, 1075, 2, 5, 60, 0, 15, 'seth_hokk_soloT5MHM', 1, 1, 1, 1); 
+                ('seth_hokk_soloT5MHM', @presenceID, 2, @definitionID, 630, 1075, 2, 5, 60, 0, 30, 'seth_hokk_soloT5MHM', 1, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_zenith_dps_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'Zenith_hokk_soloT5MHM' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('Zenith_hokk_soloT5MHM', @presenceID, 3, @definitionID, 630, 1075, 2, 5, 60, 0, 15, 'Zenith_hokk_soloT5MHM', 1, 1, 1, 1); 
+                ('Zenith_hokk_soloT5MHM', @presenceID, 3, @definitionID, 630, 1075, 2, 5, 60, 0, 30, 'Zenith_hokk_soloT5MHM', 1, 1, 1, 1); 
 
 ------ Solo T5 Ass/Light
 
@@ -898,13 +898,13 @@ SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definiti
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'lithus_Hokk_T3' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('lithus_Hokk_T3', @presenceID, 3, @definitionID, 1155, 1675, 2, 5, 60, 0, 15, 'lithus_hokk_T3', 1, 1, 1, 1); 
+                ('lithus_Hokk_T3', @presenceID, 3, @definitionID, 1155, 1675, 2, 5, 60, 0, 30, 'lithus_hokk_T3', 1, 1, 1, 1); 
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_lithus_basic_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'lithus_Hokk_T5' ORDER BY id DESC);
 INSERT INTO[dbo].[npcflock]([name],[presenceid],[flockmembercount],[definition],[spawnoriginX],[spawnoriginY],[spawnrangeMin],[spawnrangeMax],[respawnseconds]
                 ,[totalspawncount],[homerange],[note],[respawnmultiplierlow],[enabled],[iscallforhelp],[behaviorType]) VALUES
-                ('lithus_Hokk_T5', @presenceID, 3, @definitionID, 1155, 1675, 2, 5, 60, 0, 15, 'lithus_hokk_T5', 1, 1, 1, 1); 
+                ('lithus_Hokk_T5', @presenceID, 3, @definitionID, 1155, 1675, 2, 5, 60, 0, 30, 'lithus_hokk_T5', 1, 1, 1, 1); 
 
 ------Norhoop
 
@@ -2711,7 +2711,7 @@ UPDATE [dbo].[npcpresence]
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_roaming_tyrannos_beta' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_gei_roaming1_tyrannosbeta1' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_roaming1_tyrannosbeta1' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 559, [spawnoriginY] = 286 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_roaming1_tyrannosbeta1' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 559, [spawnoriginY] = 286 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'dom_roaming_01' ORDER BY id DESC)
 UPDATE [dbo].[npcpresence]
@@ -2722,7 +2722,7 @@ UPDATE [dbo].[npcpresence]
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_roaming_kain_beta' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_dom_roaming1_kainbeta1' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_roaming1_kainbeta1' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 1730, [spawnoriginY] = 1400 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_roaming1_kainbeta1' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 1730, [spawnoriginY] = 1400 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'hok_roaming_01' ORDER BY id DESC)
 UPDATE [dbo].[npcpresence]
@@ -2733,7 +2733,7 @@ UPDATE [dbo].[npcpresence]
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_roaming_artemis_beta' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_hok_roaming1_artemisbeta1' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_roaming1_artemisbeta1' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 1716, [spawnoriginY] = 1754 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_roaming1_artemisbeta1' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 1716, [spawnoriginY] = 1754 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'gei_caravan_01' ORDER BY id DESC)
 UPDATE [dbo].[npcpresence]
@@ -2744,19 +2744,19 @@ UPDATE [dbo].[npcpresence]
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_sequer_basic_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_gei_caravan1_sequer' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_caravan1_sequer' ,[presenceid] = @presenceID, [flockmembercount] = 5, [definition] = @definitionID, [spawnoriginX] = 573, [spawnoriginY] = 279 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_caravan1_sequer' ,[presenceid] = @presenceID, [flockmembercount] = 5, [definition] = @definitionID, [spawnoriginX] = 573, [spawnoriginY] = 279 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_troiar_interceptor_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_gei_caravan1_troiar' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_caravan1_troiar' ,[presenceid] = @presenceID, [flockmembercount] = 5, [definition] = @definitionID, [spawnoriginX] = 573, [spawnoriginY] = 280 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_caravan1_troiar' ,[presenceid] = @presenceID, [flockmembercount] = 5, [definition] = @definitionID, [spawnoriginX] = 573, [spawnoriginY] = 280 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_gropho_heavydps_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_gei_caravan1_gropho' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_caravan1_gropho' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 573, [spawnoriginY] = 281 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_caravan1_gropho' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 573, [spawnoriginY] = 281 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_scarab_basic_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_gei_caravan1_scarab' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_caravan1_scarab' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 573, [spawnoriginY] = 279 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_caravan1_scarab' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 573, [spawnoriginY] = 279 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'dom_caravan_01' ORDER BY id DESC)
 UPDATE [dbo].[npcpresence]
@@ -2767,19 +2767,19 @@ UPDATE [dbo].[npcpresence]
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_sequer_basic_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_dom_caravan1_sequer' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_caravan1_sequer' ,[presenceid] = @presenceID, [flockmembercount] = 5, [definition] = @definitionID, [spawnoriginX] = 1722, [spawnoriginY] = 1411 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_caravan1_sequer' ,[presenceid] = @presenceID, [flockmembercount] = 5, [definition] = @definitionID, [spawnoriginX] = 1722, [spawnoriginY] = 1411 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_cameleon_interceptor_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_dom_caravan1_cameleon' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_caravan1_cameleon' ,[presenceid] = @presenceID, [flockmembercount] = 5, [definition] = @definitionID, [spawnoriginX] = 1722, [spawnoriginY] = 1412 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_caravan1_cameleon' ,[presenceid] = @presenceID, [flockmembercount] = 5, [definition] = @definitionID, [spawnoriginX] = 1722, [spawnoriginY] = 1412 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_mesmer_heavydps_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_dom_caravan1_mesmer' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_caravan1_mesmer' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1722, [spawnoriginY] = 1413 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_caravan1_mesmer' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1722, [spawnoriginY] = 1413 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_scarab_basic_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_dom_caravan1_scarab' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_caravan1_scarab' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 1722, [spawnoriginY] = 1411 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_caravan1_scarab' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 1722, [spawnoriginY] = 1411 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'hok_caravan_01' ORDER BY id DESC)
 UPDATE [dbo].[npcpresence]
@@ -2790,19 +2790,19 @@ UPDATE [dbo].[npcpresence]
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_sequer_basic_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_hok_caravan1_sequer' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_caravan1_sequer' ,[presenceid] = @presenceID, [flockmembercount] = 5, [definition] = @definitionID, [spawnoriginX] = 1728, [spawnoriginY] = 1753 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_caravan1_sequer' ,[presenceid] = @presenceID, [flockmembercount] = 5, [definition] = @definitionID, [spawnoriginX] = 1728, [spawnoriginY] = 1753 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_intakt_interceptor_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_hok_caravan1_intakt' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_caravan1_intakt' ,[presenceid] = @presenceID, [flockmembercount] = 5, [definition] = @definitionID, [spawnoriginX] = 1729, [spawnoriginY] = 1754 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_caravan1_intakt' ,[presenceid] = @presenceID, [flockmembercount] = 5, [definition] = @definitionID, [spawnoriginX] = 1729, [spawnoriginY] = 1754 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_seth_heavydps_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_hok_caravan1_seth' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_caravan1_seth' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1730, [spawnoriginY] = 1755 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_caravan1_seth' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1730, [spawnoriginY] = 1755 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_scarab_basic_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_hok_caravan1_scarab' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_caravan1_scarab' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 1730, [spawnoriginY] = 1755 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_caravan1_scarab' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 1730, [spawnoriginY] = 1755 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'gei_roaming_02' ORDER BY id DESC)
 UPDATE [dbo].[npcpresence]
@@ -2813,11 +2813,11 @@ UPDATE [dbo].[npcpresence]
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_roaming_tyrannos_beta' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_gei_roaming2_tyrannosbeta1' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_roaming2_tyrannosbeta1' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 558, [spawnoriginY] = 286 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_roaming2_tyrannosbeta1' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 558, [spawnoriginY] = 286 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_roaming_gropho_beta' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_gei_roaming2_grophobeta1' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_roaming2_grophobeta1' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 557, [spawnoriginY] = 286 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_roaming2_grophobeta1' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 557, [spawnoriginY] = 286 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'gei_caravan_02' ORDER BY id DESC)
 UPDATE [dbo].[npcpresence]
@@ -2828,19 +2828,19 @@ UPDATE [dbo].[npcpresence]
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_sequer_basic_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_gei_caravan2_sequer' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_caravan2_sequer' ,[presenceid] = @presenceID, [flockmembercount] = 5, [definition] = @definitionID, [spawnoriginX] = 565, [spawnoriginY] = 279 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_caravan2_sequer' ,[presenceid] = @presenceID, [flockmembercount] = 5, [definition] = @definitionID, [spawnoriginX] = 565, [spawnoriginY] = 279 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_ictus_heavyew_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_gei_caravan2_ictus' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_caravan2_ictus' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 565, [spawnoriginY] = 280 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_caravan2_ictus' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 565, [spawnoriginY] = 280 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_gropho_heavydps_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_gei_caravan2_gropho' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_caravan2_gropho' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 565, [spawnoriginY] = 281 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_caravan2_gropho' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 565, [spawnoriginY] = 281 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_scarab_basic_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_gei_caravan2_scarab' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_caravan2_scarab' ,[presenceid] = @presenceID, [flockmembercount] = 2, [definition] = @definitionID, [spawnoriginX] = 565, [spawnoriginY] = 279 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_caravan2_scarab' ,[presenceid] = @presenceID, [flockmembercount] = 2, [definition] = @definitionID, [spawnoriginX] = 565, [spawnoriginY] = 279 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'gei_roaming_03' ORDER BY id DESC)
 UPDATE [dbo].[npcpresence]
@@ -2851,19 +2851,19 @@ UPDATE [dbo].[npcpresence]
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_troiar_interceptor_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_gei_roaming3_troiar' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_roaming3_troiar' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 573, [spawnoriginY] = 290 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_roaming3_troiar' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 573, [spawnoriginY] = 290 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_tyrannos_dps_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_gei_roaming3_tyrannos' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_roaming3_tyrannos' ,[presenceid] = @presenceID, [flockmembercount] = 2, [definition] = @definitionID, [spawnoriginX] = 572, [spawnoriginY] = 290 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_roaming3_tyrannos' ,[presenceid] = @presenceID, [flockmembercount] = 2, [definition] = @definitionID, [spawnoriginX] = 572, [spawnoriginY] = 290 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_waspish_dps_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_gei_roaming3_waspish' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_roaming3_waspish' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 571, [spawnoriginY] = 290 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_roaming3_waspish' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 571, [spawnoriginY] = 290 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_ictus_heavyew_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_gei_roaming3_ictus' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_roaming3_ictus' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 570, [spawnoriginY] = 290 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_gei_roaming3_ictus' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 570, [spawnoriginY] = 290 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'dom_roaming_02' ORDER BY id DESC)
 UPDATE [dbo].[npcpresence]
@@ -2874,11 +2874,11 @@ UPDATE [dbo].[npcpresence]
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_roaming_kain_beta' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_dom_roaming2_kainbeta1' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_roaming2_kainbeta1' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 1731, [spawnoriginY] = 1399 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_roaming2_kainbeta1' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 1731, [spawnoriginY] = 1399 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_roaming_mesmer_beta' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_dom_roaming2_mesmer1' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_roaming2_mesmer1' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 1731, [spawnoriginY] = 1398 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_roaming2_mesmer1' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 1731, [spawnoriginY] = 1398 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'dom_caravan_02' ORDER BY id DESC)
 UPDATE [dbo].[npcpresence]
@@ -2889,23 +2889,23 @@ UPDATE [dbo].[npcpresence]
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_mesmer_heavydps_rank3' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_dom_caravan2_mesmer' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_caravan2_mesmer' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1731, [spawnoriginY] = 1410 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_caravan2_mesmer' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1731, [spawnoriginY] = 1410 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_vagabond_heavyew_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_dom_caravan2_vagabond' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_caravan2_vagabond' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1731, [spawnoriginY] = 1409 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_caravan2_vagabond' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1731, [spawnoriginY] = 1409 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_sequer_basic_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_dom_caravan2_sequer' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_caravan2_sequer' ,[presenceid] = @presenceID, [flockmembercount] = 5, [definition] = @definitionID, [spawnoriginX] = 1731, [spawnoriginY] = 1411 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_caravan2_sequer' ,[presenceid] = @presenceID, [flockmembercount] = 5, [definition] = @definitionID, [spawnoriginX] = 1731, [spawnoriginY] = 1411 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_scarab_basic_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_dom_caravan2_scarab' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_caravan2_scarab' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1731, [spawnoriginY] = 1411 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_caravan2_scarab' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1731, [spawnoriginY] = 1411 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_scarab_basic_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_dom_caravan2_scarab' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_caravan2_scarab' ,[presenceid] = @presenceID, [flockmembercount] = 2, [definition] = @definitionID, [spawnoriginX] = 1731, [spawnoriginY] = 1411 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_caravan2_scarab' ,[presenceid] = @presenceID, [flockmembercount] = 2, [definition] = @definitionID, [spawnoriginX] = 1731, [spawnoriginY] = 1411 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'dom_roaming_03' ORDER BY id DESC)
 UPDATE [dbo].[npcpresence]
@@ -2916,19 +2916,19 @@ UPDATE [dbo].[npcpresence]
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_cameleon_interceptor_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_dom_roaming3_cameleon' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_roaming3_cameleon' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1721, [spawnoriginY] = 1398 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_roaming3_cameleon' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1721, [spawnoriginY] = 1398 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_kain_dps_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_dom_roaming3_kain' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_roaming3_kain' ,[presenceid] = @presenceID, [flockmembercount] = 2, [definition] = @definitionID, [spawnoriginX] = 1721, [spawnoriginY] = 1399 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_roaming3_kain' ,[presenceid] = @presenceID, [flockmembercount] = 2, [definition] = @definitionID, [spawnoriginX] = 1721, [spawnoriginY] = 1399 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_arbalest_dps_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_dom_roaming3_arbalest' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_roaming3_arbalest' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1721, [spawnoriginY] = 1400 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_roaming3_arbalest' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1721, [spawnoriginY] = 1400 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_vagabond_heavyew_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_dom_roaming3_vagabond' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_roaming3_vagabond' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 1721, [spawnoriginY] = 1401 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_dom_roaming3_vagabond' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 1721, [spawnoriginY] = 1401 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'hok_roaming_02' ORDER BY id DESC)
 UPDATE [dbo].[npcpresence]
@@ -2939,11 +2939,11 @@ UPDATE [dbo].[npcpresence]
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_roaming_artemis_beta' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_hok_roaming2_artemisbeta1' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_roaming2_artemisbeta1' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 1717, [spawnoriginY] = 1753 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_roaming2_artemisbeta1' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 1717, [spawnoriginY] = 1753 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_roaming_seth_beta' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_hok_roaming2_sethbeta1' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_roaming2_sethbeta1' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 1718, [spawnoriginY] = 1752 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_roaming2_sethbeta1' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 1718, [spawnoriginY] = 1752 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'hok_caravan_02' ORDER BY id DESC)
 UPDATE [dbo].[npcpresence]
@@ -2954,23 +2954,23 @@ UPDATE [dbo].[npcpresence]
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_sequer_basic_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_hok_caravan2_sequer' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_caravan2_sequer' ,[presenceid] = @presenceID, [flockmembercount] = 5, [definition] = @definitionID, [spawnoriginX] = 1724, [spawnoriginY] = 1757 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_caravan2_sequer' ,[presenceid] = @presenceID, [flockmembercount] = 5, [definition] = @definitionID, [spawnoriginX] = 1724, [spawnoriginY] = 1757 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_zenith_heavyew_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_hok_caravan2_zenith' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_caravan2_zenith' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1725, [spawnoriginY] = 1758 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_caravan2_zenith' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1725, [spawnoriginY] = 1758 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_seth_heavydps_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_hok_caravan2_seth' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_caravan2_seth' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1726, [spawnoriginY] = 1759 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_caravan2_seth' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1726, [spawnoriginY] = 1759 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_scarab_basic_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_hok_caravan2_scarab' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_caravan2_scarab' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1724, [spawnoriginY] = 1757 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_caravan2_scarab' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1724, [spawnoriginY] = 1757 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_scarab_basic_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_hok_caravan2_scarab' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_caravan2_scarab' ,[presenceid] = @presenceID, [flockmembercount] = 2, [definition] = @definitionID, [spawnoriginX] = 1724, [spawnoriginY] = 1757 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_caravan2_scarab' ,[presenceid] = @presenceID, [flockmembercount] = 2, [definition] = @definitionID, [spawnoriginX] = 1724, [spawnoriginY] = 1757 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 86400, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @presenceID = (SELECT TOP 1 id from npcpresence WHERE [name] = 'hok_roaming_03' ORDER BY id DESC)
 UPDATE [dbo].[npcpresence]
@@ -2981,19 +2981,19 @@ UPDATE [dbo].[npcpresence]
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_intakt_interceptor_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_hok_roaming3_intakt' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_roaming3_intakt' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1718, [spawnoriginY] = 1756 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_roaming3_intakt' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1718, [spawnoriginY] = 1756 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_baphomet_dps_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_hok_roaming3_baphomet' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_roaming3_baphomet' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1719, [spawnoriginY] = 1755 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_roaming3_baphomet' ,[presenceid] = @presenceID, [flockmembercount] = 3, [definition] = @definitionID, [spawnoriginX] = 1719, [spawnoriginY] = 1755 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_artemis_dps_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_hok_roaming3_artemis' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_roaming3_artemis' ,[presenceid] = @presenceID, [flockmembercount] = 2, [definition] = @definitionID, [spawnoriginX] = 1720, [spawnoriginY] = 1754 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_roaming3_artemis' ,[presenceid] = @presenceID, [flockmembercount] = 2, [definition] = @definitionID, [spawnoriginX] = 1720, [spawnoriginY] = 1754 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_zenith_heavyew_rank5' ORDER BY definition DESC);
 SET @flockID = (SELECT TOP 1 id from npcflock WHERE [name] = 'flock_hok_roaming3_zenith' ORDER BY id DESC);
-UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_roaming3_zenith' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 1721, [spawnoriginY] = 1753 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 25 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
+UPDATE [dbo].[npcflock] SET [name] = 'flock_hok_roaming3_zenith' ,[presenceid] = @presenceID, [flockmembercount] = 1, [definition] = @definitionID, [spawnoriginX] = 1721, [spawnoriginY] = 1753 ,[spawnrangeMin] = 2, [spawnrangeMax] = 5,[respawnseconds] = 3600, [totalspawncount] = 0, [homerange] = 15 ,[note] = '', [respawnmultiplierlow] = 1, [enabled] = 1, [iscallforhelp] = 1, [behaviorType] = 2 WHERE id=@flockID;
 
 
 set noexec off;
