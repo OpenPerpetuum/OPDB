@@ -7,9 +7,8 @@ GO
 -- INSERT: account and character
 -- A table of predefined chat messages is created with a name
 -- by which to lookup chat messages on the server when being sent
--- A character and account are also created to allow the chat 
+-- A character are also created to allow the chat 
 -- message to be sent from this character.
--- The account should be perma-banned, and the PASSWORD CHANGED at patch time or after
 --
 -- Date: 2019/05/08 
 ------------------------------------------------
@@ -30,7 +29,10 @@ GO
 
 
 INSERT INTO dbo.premadechatmessage (id, name, message)
-VALUES (1, 'TutorialCompleteMessage', 'Attention Nia members, we have a new challenger to the world: $NAME$');
+VALUES (1, 'NewPlayerEnteredTheGame', '$NAME$ has entered the game.');
+
+INSERT INTO dbo.premadechatmessage (id, name, message)
+VALUES (2, 'NewPlayerFinishedTheTutorial', '$NAME$ has completed the tutorial, say Hello!');
 GO
 
 --This character will be used to send informative welcome messages to new players
