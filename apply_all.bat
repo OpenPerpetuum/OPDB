@@ -38,6 +38,7 @@ call:applyPatch Live_6 live_patch_6.sql
 call:applyPatch Live_7 live_patch_7.sql
 call:applyPatch Live_8 live_patch_8.sql
 call:applyPatch Live_9 live_patch_9.sql
+call:applyPatch Live_10 live_patch_10.sql Server
 
 echo Patching complete
 pause
