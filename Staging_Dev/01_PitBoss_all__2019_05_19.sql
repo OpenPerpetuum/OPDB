@@ -872,7 +872,7 @@ UPDATE npcloot SET [definition]=@definitionID, [lootdefinition]=@lootdefinitionI
 
 SET @lootdefinitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_kernel_hitech' ORDER BY definition DESC);
 SET @npclootID = (SELECT TOP 1 id from npcloot WHERE definition = @definitionID AND lootdefinition = @lootdefinitionID  ORDER BY definition, lootdefinition DESC);
-UPDATE npcloot SET [definition]=@definitionID, [lootdefinition]=@lootdefinitionID, [quantity]=50000, [probability]=1, [repackaged]=1, [dontdamage]=1, [minquantity]=50000 WHERE [id]=@npclootID;
+UPDATE npcloot SET [definition]=@definitionID, [lootdefinition]=@lootdefinitionID, [quantity]=50000, [probability]=1, [repackaged]=1, [dontdamage]=1, [minquantity]=25000 WHERE [id]=@npclootID;
 
 SET @lootdefinitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_robotshard_common_basic' ORDER BY definition DESC);
 SET @npclootID = (SELECT TOP 1 id from npcloot WHERE definition = @definitionID AND lootdefinition = @lootdefinitionID  ORDER BY definition, lootdefinition DESC);
@@ -991,5 +991,17 @@ INSERT INTO [dbo].[npcloot] ([definition],[lootdefinition],[quantity],[probabili
 
 GO
 
+
+USE [perpetuumsa]
+GO
+
+DECLARE @definitionID int;
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_npc_Hersh_PitBoss' ORDER BY definition DESC);
+
+UPDATE npcflock 
+SET npcflock.npcSpecialType=(SELECT TOP 1 value FROM dbo.npcSpecialTypes WHERE name='boss')
+WHERE definition=@definitionID;
+
+GO
 
 PRINT N'====PITBOSS PATCH COMPLETE======';
