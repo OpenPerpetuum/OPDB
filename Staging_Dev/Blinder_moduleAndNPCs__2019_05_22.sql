@@ -1,5 +1,68 @@
 USE [perpetuumsa]
 GO
+--PART 1 INSERT BLINDER
+--------------------------------------------
+--New Module: The Blinder
+--Not purchasable, targetpainter category item
+--INSERT entitydefaults, aggregatevalues
+--Date: 2019/03/30
+--------------------------------------------
+
+--Insert the Blinder definition - a targetpainter category item, not purchasable
+PRINT N'entitydefaults INSERT The Blinder';
+INSERT INTO entitydefaults ( definitionname ,  quantity ,  attributeflags ,  categoryflags ,  options ,  note ,  enabled ,  volume ,  mass ,  hidden , 
+                health ,  descriptiontoken ,  purchasable ,  tiertype ,  tierlevel ) 
+                VALUES ( 'def_standard_blinder', 1, 720, 721935, '#moduleFlag=i8#tier=$tierlevel_t1', 'THE BLINDER', 1, 0.5, 500, 0, 100, 'def_standard_target_painter_desc', 0, 1, 1); 
+GO
+
+
+--Set the module stats, of note: range, and detection strength modifier
+PRINT N'aggregatevalues INSERT Blinder stats';
+DECLARE @definitionID int;
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_standard_blinder' ORDER BY definition DESC);
+
+
+DECLARE @aggvalueID int;
+DECLARE @aggfieldID int;
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_usage' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 25);
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'cpu_usage' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 55);
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'cycle_time' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 10000);
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'optimal_range' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 25);
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'powergrid_usage' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 20);
+
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'effect_detection_strength_modifier' ORDER BY [name] DESC);
+SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
+
+INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, -120);
+
+GO
+
+
+
+-----PART 2 ADD NPCS THAT USE BLINDER
+
+
+USE [perpetuumsa]
+GO
 
 SET NOEXEC OFF;
 
@@ -22,8 +85,6 @@ SET @blinderModule = (SELECT TOP 1 definition from dbo.entitydefaults WHERE defi
 PRINT @blinderModule;
 
 SET @blinderModHex = (SELECT dbo.ToHex(@blinderModule));
-
-print '#robot=ic4#head=i4f#chassis=i50#leg=i51#container=i148#headModules=[|m0=[|definition=i'+@blinderModHex+'|slot=i3]]#chassisModules=[|m0=[|definition=i26|slot=i1]|m1=[|definition=i26|slot=i2]]#legModules=[|m0=[|definition=i12a|slot=i1]|m1=[|definition=i0|slot=i2]|m2=[|definition=i0|slot=i3]]'
 
 DECLARE @templateID int
 DECLARE @definitionID int;
@@ -85,7 +146,7 @@ SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_max
 SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
 
 
-INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 4);
+INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 3);
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'core_recharge_time_modifier' ORDER BY [name] DESC);
 SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
 
