@@ -202,11 +202,11 @@ SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @de
 
 INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 0.1);
 
---Set the ECM strength to 50%
+--Set the ECM strength to 75%
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'ecm_strength_modifier' ORDER BY [name] DESC);
 SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
 
-INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 0.5);
+INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 0.75);
 
 --Set Speed of lancer to 50% of its max
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'speed_max_modifier' ORDER BY [name] DESC);
@@ -227,7 +227,7 @@ INSERT INTO [dbo].[aggregatevalues]
 
 
 PRINT N'Insert new npc template';
-INSERT INTO robottemplates ([name], [description], [note]) VALUES ('Goblin_Lancer', '#robot=i1584#head=i1585#chassis=i1586#leg=i1587#container=i146#headModules=[|m0=[|definition=i'+@blinderModHex+'|slot=i1]|m1=[|definition=i33|slot=i2]|m2=[|definition=i0|slot=i3]|m3=[|definition=i0|slot=i4]]#chassisModules=[|m0=[|definition=i0|slot=i1]|m1=[|definition=i0|slot=i2]|m2=[|definition=i0|slot=i3]]#legModules=[|m0=[|definition=i286|slot=i1]|m1=[|definition=i0|slot=i2]|m2=[|definition=i0|slot=i3]]', 'AFK Roaming NPC')
+INSERT INTO robottemplates ([name], [description], [note]) VALUES ('Goblin_Lancer', '#robot=i1584#head=i1585#chassis=i1586#leg=i1587#container=i146#headModules=[|m0=[|definition=i'+@blinderModHex+'|slot=i1]|m1=[|definition=i32|slot=i2]|m2=[|definition=i0|slot=i3]|m3=[|definition=i0|slot=i4]]#chassisModules=[|m0=[|definition=i0|slot=i1]|m1=[|definition=i0|slot=i2]|m2=[|definition=i0|slot=i3]]#legModules=[|m0=[|definition=i286|slot=i1]|m1=[|definition=i0|slot=i2]|m2=[|definition=i0|slot=i3]]', 'AFK Roaming NPC')
 
 PRINT N'Insert new npc template relation';
 SET @templateID = (SELECT TOP 1 id from robottemplates WHERE [name] = 'Goblin_Lancer' ORDER BY id DESC)
