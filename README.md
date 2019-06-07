@@ -1,34 +1,22 @@
 # OPDB
+This is the database patch repository for the Open Perpetuum Server.  
 
-## DB VERSION CONTROL PROCEDURE
+This repository and others in this github group is developed under the direction of the game design and development team the [Open Perpetuum Project](https://openperpetuum.com): 100% volunteer opensource player development and persistant Perpetuum Server hosting project.
 
-**Follow [CONTRIBUTING](https://github.com/OpenPerpetuum/OP-Project/blob/master/CONTRIBUTING.md) guidelines for git**  
-OPP Team members:  
-Commit and push changes to **YOUR-BRANCH-ONLY**
-When you are ready, submit a Pull Request to **DEVELOPMENT ONLY**
-Your changes MUST BE REVIEWED before they can be merged to Development
+To join the Team, find our call for volunteers on our website [here!](https://openperpetuum.com/volunteer-tech)
+Where you will also find our [Volunteer Survey](https://forms.gle/V7B5zNAFCFmSLLxt6).
+If you have any questions about joining the team hit us up on [discord](https://discord.gg/e4gH9Ff)!
 
-OPP DB Admins:  
-You are in charge of ensuring the states of the Dev and Live Server DB, and their coordination with the Server Repo and the changes as You accept them on Development and Master respectively.  
-Pull Requests should be submitted to Master from DEVELOPMENT ONLY.  
+To see what we are working on acquaint yourself with our:
+ - Website [https://openperpetuum.com](https://openperpetuum.com)
+ - Project Kanban [Board](https://github.com/OpenPerpetuum/OP-Project)
+ - [Discord](https://discord.gg/e4gH9Ff)
 
+To contribute: join the team and we will get you up and running.  
+Or show us your moxie and submit a pull request!
 
-How this Repo operates:
-ALL SQL OPERATES ON the PerpSQL state from a FRESH INSTALL  
-SQL statements then are version controlled in the OPDB repo  
+Note:
+This is a divergent fork and changes within may not be generally applicable outside of the Open Perpetuum Project.  
 
-** To commit a change w/o key conflicts**  
-Pull and catch up to most recent SQL state, run SQL, then make changes freely locally.    
-Once you are done, REVERT to the pull state.  
-Write your SQL for the singular change(s) (not the history of work/rework/undo/redo).  
-Push change.  
-
-
-REPO structure   
-Master- what is on live server  
-Development - what is on dev server  
-Your branch - what you do  
-
-YOUR DB should be dropped and re-initialized with the most recent Development commit.
-
-
+Open Perpetuum does not provide technical support.  
+**Use at your own risk.**  See LICENSE for details.  
