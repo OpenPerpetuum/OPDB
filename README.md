@@ -1,7 +1,7 @@
 # OPDB
 This is the database patch repository for the Open Perpetuum Server.  
 
-This repository and others in this github group is developed under the direction of the game design and development team the [Open Perpetuum Project](https://openperpetuum.com): 100% volunteer opensource player development and persistant Perpetuum Server hosting project.
+This repository is developed under the direction of the [Open Perpetuum Project](https://openperpetuum.com) game design and development team; a 100% volunteer opensource player development and persistant Perpetuum Server hosting project.
 
 To join the Team, find our call for volunteers on our website [here!](https://openperpetuum.com/volunteer-tech)
 Where you will also find our [Volunteer Survey](https://forms.gle/V7B5zNAFCFmSLLxt6).
