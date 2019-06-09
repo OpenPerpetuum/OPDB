@@ -40,6 +40,14 @@ call:applyPatch Live_8 live_patch_8.sql
 call:applyPatch Live_9 live_patch_9.sql
 call:applyPatch Live_10 live_patch_10.sql Server
 
+echo.
+echo Setting up the tool admin account..
+echo Username: test
+echo Password: test
+%StartAndWait% %SqlCmd% "%TOOLS_DIR%\TOOL_test_account.sql"
+echo Tool admin account is created
+echo.
+
 echo Patching complete
 :: Providing "skip" as the first argument to the script, you can skip the pause when the script ends
 :: It can be useful when you have multiple scripts you want to run with a single command
