@@ -47,15 +47,15 @@ UPDATE aggregatevalues SET definition=@epboost3, field=@aggfieldID, value=172800
 
 PRINT N'Update itemshop nic pricing to T1=40m, T2=57.5m T3=95m';
 UPDATE itemshop SET
-credit = 40000000
+credit = 24600000
 WHERE targetdefinition=@epboost1;
 
 UPDATE itemshop SET
-credit = 57500000
+credit = 36000000
 WHERE targetdefinition=@epboost2;
 
 UPDATE itemshop SET
-credit = 95000000
+credit = 57000000
 WHERE targetdefinition=@epboost3;
 
 GO
