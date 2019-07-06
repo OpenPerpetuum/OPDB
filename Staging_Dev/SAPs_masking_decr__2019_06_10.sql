@@ -10,7 +10,7 @@ GO
 PRINT N'Set Masking Value';
 DECLARE @maskingValue float;
 
-SET @maskingValue = 50.0;
+SET @maskingValue = 25.0;
 
 DECLARE @definitionID int;
 DECLARE @aggvalueID int;
