@@ -3,7 +3,7 @@ GO
 
 ------------------------------------------------------------
 --World Shaping: Move NV and Hersh to center, adjust beta circle
---Date modified: 2019/06/10
+--Date modified: 2019/07/27
 --------------------------------------------------------
 
 
@@ -42,44 +42,49 @@ SET @Emperth  = (SELECT TOP 1 id FROM dbo.zones WHERE name='zone_tm_g_3');
 --- Vanilla Islands Pre Gamma
 PRINT N'Alpha/Beta islands relocation';
 UPDATE zones SET 
-x = -375,
-y = 1000
+x = 0,
+y = -1000
 WHERE id= @NewVirginia;
 
-
 UPDATE zones SET
-x= 2500,
-y= -750
-WHERE id= @Domhalarn;
-
-
-UPDATE zones SET
- x= -1250,
- y= 4000
-WHERE id= @Hokkogaros;
-
-
-UPDATE zones SET
- x= -2300,
- y= 1000
+ x= -2000,
+ y= -1000
 WHERE id= @Hershfield
 
+UPDATE zones SET
+ x= -5000,
+ y= -2500
+WHERE id= @Hokkogaros;
 
 UPDATE zones SET
- x= 2500,
- y= 2750
+ x= -1000,
+ y= -4000
+WHERE id= @Novastrov;
+
+UPDATE zones SET
+x= 3000,
+y= -2500
+WHERE id= @Domhalarn;
+
+UPDATE zones SET
+ x= 3000,
+ y= 500
+WHERE id= @Alsbale;
+
+UPDATE zones SET
+x= -1000,
+y= 2000
+WHERE id= @Norhoop;
+
+UPDATE zones SET
+ x= -5000,
+ y= 500
 WHERE id= @Kentagura;
 
 
 UPDATE zones SET
- x= -1250,
- y= -2000
-WHERE id= @Alsbale;
-
-
-UPDATE zones SET
- x= 5000,
- y= -10000
+ x= 10000,
+ y= 10000
 WHERE id= @Omega;
 
 
@@ -88,19 +93,17 @@ PRINT N'Gamma location prep - still hidden';
 
 UPDATE zones SET
 x= 5000,
-y= -8500
+y= -12000
 WHERE id= @Emperth;
 
-
 UPDATE zones SET
- x= -1250,
- y= -6750
+ x= -1000,
+ y= -10000
 WHERE id= @Chalydor;
 
-
 UPDATE zones SET
- x= -7500,
- y= -8500
+ x= -7000,
+ y= -12000
 WHERE id= @Xiantor;
 
 GO
