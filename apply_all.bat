@@ -49,6 +49,8 @@ echo Tool admin account is created
 echo.
 
 echo Patching complete
+:: Providing "skip" as the first argument to the script, you can skip the pause when the script ends
+:: It can be useful when you have multiple scripts you want to run with a single command
 if not "%~1" == "skip" pause
 
 :: Functions definition below this line
