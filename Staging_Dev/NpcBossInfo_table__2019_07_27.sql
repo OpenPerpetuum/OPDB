@@ -20,7 +20,7 @@ CREATE TABLE dbo.npcbossinfo(
 );
 
 --Insert default values
-INSERT INTO dbo.npcbossinfo (flockid, respawnNoiseFactor, lootSplitFlag, outpostEID) 
+INSERT INTO dbo.npcbossinfo (flockid, respawnNoiseFactor, lootSplitFlag, outpostEID, customDeathMessage) 
 SELECT npcflock.id, 0.15, 1, NULL, 'You killed a Boss!'
 FROM npcflock
 WHERE npcflock.npcSpecialType=1;
