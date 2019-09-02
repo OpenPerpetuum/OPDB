@@ -17,12 +17,13 @@ CREATE TABLE dbo.npcbossinfo(
 	outpostEID BIGINT NULL,
 	stabilityPts INT NULL,
 	overrideRelations BIT NOT NULL,
-	customDeathMessage VARCHAR(128) NULL
+	customDeathMessage VARCHAR(128) NULL,
+	customAggressMessage VARCHAR(128) NULL
 );
 
 --Insert default values
-INSERT INTO dbo.npcbossinfo (flockid, respawnNoiseFactor, lootSplitFlag, outpostEID, stabilityPts, overrideRelations, customDeathMessage) 
-SELECT npcflock.id, 0.15, 1, NULL, NULL, 0, 'You killed a Boss!'
+INSERT INTO dbo.npcbossinfo (flockid, respawnNoiseFactor, lootSplitFlag, outpostEID, stabilityPts, overrideRelations, customDeathMessage, customAggressMessage) 
+SELECT npcflock.id, 0.15, 1, NULL, NULL, 0, 'Nice Shot! Enjoy the loot ;)', 'CAUTION: you are engaging with a particularly dangerous foe!'
 FROM npcflock
 WHERE npcflock.npcSpecialType=1;
 
