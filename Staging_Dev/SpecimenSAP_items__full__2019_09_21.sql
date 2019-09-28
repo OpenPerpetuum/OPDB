@@ -11,7 +11,7 @@ GO
 DECLARE @dynCtCategory bigint;
 DECLARE @categoryOfItem bigint;
 SET @dynCtCategory = (SELECT TOP 1 value FROM categoryFlags WHERE name='cf_dynamic_cprg');
-SET @categoryOfItem = (SELECT TOP 1 value FROM categoryFlags where name='cf_primary_commodities');
+SET @categoryOfItem = (SELECT TOP 1 value FROM categoryFlags where name='cf_pbs_reactor_booster');
 
 DECLARE @hershfieldPresetShop int;
 SET @hershfieldPresetShop = (SELECT TOP 1 id FROM itemshoppresets WHERE name = 'tm_preset_pve');
@@ -138,7 +138,8 @@ BEGIN
 		--Maybe we try different volumes on the item
 		UPDATE [dbo].[entitydefaults] SET
 		volume=16,
-		mass=16
+		mass=16,
+		categoryflags=@categoryOfItem
 		WHERE definitionname=@itemName;
 	END
 
