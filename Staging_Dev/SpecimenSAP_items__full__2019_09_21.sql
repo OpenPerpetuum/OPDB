@@ -4,8 +4,69 @@ GO
 ------------------------------------------------
 --Specimen SAP Items, CTs, CT-capsules, production tables, and Specimen SAP item requirements
 --A full rework of Specimen SAPS - largely just making new producable items
---Last Modified: 2019/09/21
+--NOW INCLUDES: a new T0 module recycled-material
+--
+--Last Modified: 2019/10/02
 ------------------------------------------------
+
+
+
+USE [perpetuumsa]
+GO
+
+----------------------------------------
+-- Add new material for recovery from t0 module recycling
+-- To be used by specimen items production
+----------------------------------------
+
+
+PRINT N'INSERT new material for t0 recycling'
+DECLARE @itemName VARCHAR(128);
+DECLARE @categoryOfItem BIGINT;
+SET @itemName = 'def_specimen_sap_item_flux';
+SET @categoryOfItem = (SELECT TOP 1 value FROM categoryFlags where name='cf_pbs_reactor_booster');
+
+IF NOT EXISTS (SELECT TOP 1 definition from entitydefaults WHERE definitionname=@itemName)
+BEGIN
+	PRINT N'INSERT ' + @itemName;
+	INSERT INTO [dbo].[entitydefaults]
+		([definitionname],[quantity],[attributeflags],[categoryflags],[options],[note],[enabled],[volume],[mass],[hidden],[health],[descriptiontoken],[purchasable],[tiertype],[tierlevel])
+	VALUES
+		(@itemName,1,2048,@categoryOfItem,'','Specimen Item Material',1,0.1,0.1,0,100,'def_titanium_desc',1,NULL,NULL);
+END
+ELSE
+BEGIN
+	PRINT N'Updating ' + @itemName;
+	UPDATE [dbo].[entitydefaults] SET
+		volume=0.1,
+		mass=0.1,
+		categoryflags=@categoryOfItem,
+		tierlevel=NULL,
+		tiertype=NULL
+	WHERE definitionname=@itemName;
+END
+
+DECLARE @itemDef int;
+SET @itemDef = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=@itemName);
+
+PRINT N'Adding ' + @itemName + ' to t0 components';
+IF EXISTS (SELECT TOP 1 componentdefinition from [components] WHERE componentdefinition=@itemDef)
+BEGIN
+	PRINT N'Deleting existing entries for this type of item for any product - for re-insert';
+	DELETE FROM components WHERE componentdefinition=@itemDef;
+END
+
+DECLARE @lookupFlag BIGINT;
+SET @lookupFlag = (SELECT value FROM dbo.categoryFlags WHERE name='cf_robot_equipment');
+PRINT N'INSERTING INTO COMPONENTS FOR T0 MODULES ' + @itemName;
+--INSERT add'l component on all t0 artifact modules for recovery via recycling
+INSERT INTO [dbo].[components] ([definition],[componentdefinition],[componentamount]) 
+SELECT definition, @itemDef, 4 FROM entitydefaults WHERE tiertype=1 AND tierlevel=0 AND definitionname LIKE 'def_artifact_damaged_%'
+AND (categoryflags & CAST(dbo.GetCFMask(@lookupFlag)as BIGINT) = @lookupFlag);
+
+GO
+
+-------------------------------------------------------------------------
 
 
 DECLARE @dynCtCategory bigint;
@@ -36,14 +97,7 @@ CREATE TABLE #MATERIAL_TABLE
 	mat01 varchar(128),
 	mat02 varchar(128),
 	mat03 varchar(128),
-	mat04 varchar(128),
-	mat05 varchar(128),
-	mat06 varchar(128),
-	mat07 varchar(128),
-	mat08 varchar(128),
-	mat09 varchar(128),
-	mat10 varchar(128),
-	mat11 varchar(128)
+	mat04 varchar(128)
 );
 
 DROP TABLE IF EXISTS #AMOUNTS_TABLE
@@ -62,13 +116,13 @@ INSERT INTO #NAME_TABLE (itemName, ctName, capsuleName) VALUES
 ('def_specimen_sap_item_06', 'def_specimen_sap_item_06_dynamic_cprg', 'def_specimen_sap_item_06_CT_capsule');
 
 
-INSERT INTO #MATERIAL_TABLE (itemName, mat01, mat02, mat03, mat04, mat05, mat06, mat07, mat08, mat09, mat10, mat11) VALUES
-('def_specimen_sap_item_01', 'def_titan', 'def_crude', 'def_liquizit', 'def_titan_rare_small', 'def_crude_rare_small', 'def_stermonit_rare_small', 'def_imentium_rare_small', 'def_silgium_rare_small', 'def_helioptris_rare_small', 'def_triandlus_rare_small', 'def_prismocitae_rare_small'),
-('def_specimen_sap_item_02', 'def_silgium', 'def_stermonit', 'def_imentium', 'def_titan_rare_medium', 'def_crude_rare_medium', 'def_stermonit_rare_medium', 'def_imentium_rare_medium', 'def_silgium_rare_medium', 'def_helioptris_rare_medium', 'def_triandlus_rare_medium', 'def_prismocitae_rare_medium'),
-('def_specimen_sap_item_03', 'def_helioptris', 'def_triandlus', 'def_prismocitae', 'def_titan_rare_large', 'def_crude_rare_large', 'def_stermonit_rare_large', 'def_imentium_rare_large', 'def_silgium_rare_large', 'def_helioptris_rare_large', 'def_triandlus_rare_large', 'def_prismocitae_rare_large'),
-('def_specimen_sap_item_04', 'def_silgium', 'def_triandlus', 'def_prismocitae', 'def_titan_rare_small', 'def_crude_rare_small', 'def_stermonit_rare_small', 'def_imentium_rare_small', 'def_silgium_rare_small', 'def_helioptris_rare_small', 'def_triandlus_rare_small', 'def_prismocitae_rare_small'),
-('def_specimen_sap_item_05', 'def_stermonit', 'def_helioptris', 'def_prismocitae', 'def_titan_rare_medium', 'def_crude_rare_medium', 'def_stermonit_rare_medium', 'def_imentium_rare_medium', 'def_silgium_rare_medium', 'def_helioptris_rare_medium', 'def_triandlus_rare_medium', 'def_prismocitae_rare_medium'),
-('def_specimen_sap_item_06', 'def_imentium', 'def_helioptris', 'def_triandlus', 'def_titan_rare_large', 'def_crude_rare_large', 'def_stermonit_rare_large', 'def_imentium_rare_large', 'def_silgium_rare_large', 'def_helioptris_rare_large', 'def_triandlus_rare_large', 'def_prismocitae_rare_large');
+INSERT INTO #MATERIAL_TABLE (itemName, mat01, mat02, mat03, mat04) VALUES
+('def_specimen_sap_item_01', 'def_titan', 'def_crude', 'def_liquizit', 'def_specimen_sap_item_flux'),
+('def_specimen_sap_item_02', 'def_silgium', 'def_stermonit', 'def_imentium', 'def_specimen_sap_item_flux'),
+('def_specimen_sap_item_03', 'def_helioptris', 'def_triandlus', 'def_prismocitae', 'def_specimen_sap_item_flux'),
+('def_specimen_sap_item_04', 'def_silgium', 'def_triandlus', 'def_prismocitae', 'def_specimen_sap_item_flux'),
+('def_specimen_sap_item_05', 'def_stermonit', 'def_helioptris', 'def_prismocitae', 'def_specimen_sap_item_flux'),
+('def_specimen_sap_item_06', 'def_imentium', 'def_helioptris', 'def_triandlus', 'def_specimen_sap_item_flux');
 
 INSERT INTO #AMOUNTS_TABLE (matName, matAmount) VALUES
 ('def_titan', 100000),
@@ -80,33 +134,7 @@ INSERT INTO #AMOUNTS_TABLE (matName, matAmount) VALUES
 ('def_helioptris', 200000),
 ('def_triandlus', 200000),
 ('def_prismocitae', 200000),
-('def_titan_rare_small', 100),
-('def_titan_rare_medium', 50),
-('def_titan_rare_large', 25),
-('def_crude_rare_small', 200),
-('def_crude_rare_medium', 100),
-('def_crude_rare_large', 50),
-('def_liquizit_rare_small', 200),
-('def_liquizit_rare_medium', 100),
-('def_liquizit_rare_large', 50),
-('def_stermonit_rare_small', 100),
-('def_stermonit_rare_medium', 50),
-('def_stermonit_rare_large', 25),
-('def_imentium_rare_small', 100),
-('def_imentium_rare_medium', 50),
-('def_imentium_rare_large', 25),
-('def_silgium_rare_small', 100),
-('def_silgium_rare_medium', 50),
-('def_silgium_rare_large', 25),
-('def_helioptris_rare_small', 100),
-('def_helioptris_rare_medium', 50),
-('def_helioptris_rare_large', 25),
-('def_triandlus_rare_small', 100),
-('def_triandlus_rare_medium', 50),
-('def_triandlus_rare_large', 25),
-('def_prismocitae_rare_small', 100),
-('def_prismocitae_rare_medium', 50),
-('def_prismocitae_rare_large', 25);
+('def_specimen_sap_item_flux', 4);
 
 
 DECLARE @itemName varchar(128);
@@ -220,28 +248,8 @@ BEGIN
 	(SELECT TOP 1 matAmount from #AMOUNTS_TABLE join #MATERIAL_TABLE on mat03=matName)),
 	(@itemDef,
 	(SELECT TOP 1 definition from entitydefaults join #MATERIAL_TABLE on mat04=definitionname WHERE #MATERIAL_TABLE.itemName=@itemName),
-	(SELECT TOP 1 matAmount from #AMOUNTS_TABLE join #MATERIAL_TABLE on mat04=matName)),
-	(@itemDef,
-	(SELECT TOP 1 definition from entitydefaults join #MATERIAL_TABLE on mat05=definitionname WHERE #MATERIAL_TABLE.itemName=@itemName),
-	(SELECT TOP 1 matAmount from #AMOUNTS_TABLE join #MATERIAL_TABLE on mat05=matName)),
-	(@itemDef,
-	(SELECT TOP 1 definition from entitydefaults join #MATERIAL_TABLE on mat06=definitionname WHERE #MATERIAL_TABLE.itemName=@itemName),
-	(SELECT TOP 1 matAmount from #AMOUNTS_TABLE join #MATERIAL_TABLE on mat06=matName)),
-	(@itemDef,
-	(SELECT TOP 1 definition from entitydefaults join #MATERIAL_TABLE on mat07=definitionname WHERE #MATERIAL_TABLE.itemName=@itemName),
-	(SELECT TOP 1 matAmount from #AMOUNTS_TABLE join #MATERIAL_TABLE on mat07=matName)),
-	(@itemDef,
-	(SELECT TOP 1 definition from entitydefaults join #MATERIAL_TABLE on mat08=definitionname WHERE #MATERIAL_TABLE.itemName=@itemName),
-	(SELECT TOP 1 matAmount from #AMOUNTS_TABLE join #MATERIAL_TABLE on mat08=matName)),
-	(@itemDef,
-	(SELECT TOP 1 definition from entitydefaults join #MATERIAL_TABLE on mat09=definitionname WHERE #MATERIAL_TABLE.itemName=@itemName),
-	(SELECT TOP 1 matAmount from #AMOUNTS_TABLE join #MATERIAL_TABLE on mat09=matName)),
-	(@itemDef,
-	(SELECT TOP 1 definition from entitydefaults join #MATERIAL_TABLE on mat10=definitionname WHERE #MATERIAL_TABLE.itemName=@itemName),
-	(SELECT TOP 1 matAmount from #AMOUNTS_TABLE join #MATERIAL_TABLE on mat10=matName)),
-	(@itemDef,
-	(SELECT TOP 1 definition from entitydefaults join #MATERIAL_TABLE on mat11=definitionname WHERE #MATERIAL_TABLE.itemName=@itemName),
-	(SELECT TOP 1 matAmount from #AMOUNTS_TABLE join #MATERIAL_TABLE on mat11=matName));
+	(SELECT TOP 1 matAmount from #AMOUNTS_TABLE join #MATERIAL_TABLE on mat04=matName));
+
 
 	FETCH NEXT FROM db_cursor INTO  @itemName, @ctName, @capsuleName
 END 
@@ -285,7 +293,7 @@ ELSE
 BEGIN
 	UPDATE [productionduration]
 	SET
-		durationmodifier = 0.005
+		durationmodifier = 0.1
 	WHERE category=@categoryOfItem;
 	PRINT N'updated production duration for this category';
 END
