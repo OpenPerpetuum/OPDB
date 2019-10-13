@@ -2,17 +2,18 @@ USE [perpetuumsa]
 GO
 
 ------------------------------------------------
---Specimen SAP Items, CTs, CT-capsules, production tables, and Specimen SAP item requirements
+--Specimen SAP Item, CTs, CT-capsule, production table, and Specimen SAP item requirements
 --A full rework of Specimen SAPS - largely just making new producable items
 --NOW INCLUDES: a new T0 module recycled-material
+--And Specimen SAP pts = 15
 --
---Last Modified: 2019/10/02
+--Last Modified: 2019/10/13
 ------------------------------------------------
 
+UPDATE entitydefaults
+SET options='#increase=n15'
+WHERE definitionname='def_sap_specimen_processing';
 
-
-USE [perpetuumsa]
-GO
 
 ----------------------------------------
 -- Add new material for recovery from t0 module recycling
@@ -108,32 +109,22 @@ CREATE TABLE #AMOUNTS_TABLE
 );
 
 INSERT INTO #NAME_TABLE (itemName, ctName, capsuleName) VALUES
-('def_specimen_sap_item_01', 'def_specimen_sap_item_01_dynamic_cprg', 'def_specimen_sap_item_01_CT_capsule'),
-('def_specimen_sap_item_02', 'def_specimen_sap_item_02_dynamic_cprg', 'def_specimen_sap_item_02_CT_capsule'),
-('def_specimen_sap_item_03', 'def_specimen_sap_item_03_dynamic_cprg', 'def_specimen_sap_item_03_CT_capsule'),
-('def_specimen_sap_item_04', 'def_specimen_sap_item_04_dynamic_cprg', 'def_specimen_sap_item_04_CT_capsule'),
-('def_specimen_sap_item_05', 'def_specimen_sap_item_05_dynamic_cprg', 'def_specimen_sap_item_05_CT_capsule'),
-('def_specimen_sap_item_06', 'def_specimen_sap_item_06_dynamic_cprg', 'def_specimen_sap_item_06_CT_capsule');
+('def_specimen_sap_item', 'def_specimen_sap_item_dynamic_cprg', 'def_specimen_sap_item_CT_capsule');
 
 
 INSERT INTO #MATERIAL_TABLE (itemName, mat01, mat02, mat03, mat04) VALUES
-('def_specimen_sap_item_01', 'def_titan', 'def_crude', 'def_liquizit', 'def_specimen_sap_item_flux'),
-('def_specimen_sap_item_02', 'def_silgium', 'def_stermonit', 'def_imentium', 'def_specimen_sap_item_flux'),
-('def_specimen_sap_item_03', 'def_helioptris', 'def_triandlus', 'def_prismocitae', 'def_specimen_sap_item_flux'),
-('def_specimen_sap_item_04', 'def_silgium', 'def_triandlus', 'def_prismocitae', 'def_specimen_sap_item_flux'),
-('def_specimen_sap_item_05', 'def_stermonit', 'def_helioptris', 'def_prismocitae', 'def_specimen_sap_item_flux'),
-('def_specimen_sap_item_06', 'def_imentium', 'def_helioptris', 'def_triandlus', 'def_specimen_sap_item_flux');
+('def_specimen_sap_item', 'def_titan', 'def_crude', 'def_liquizit', 'def_specimen_sap_item_flux');
 
 INSERT INTO #AMOUNTS_TABLE (matName, matAmount) VALUES
-('def_titan', 100000),
-('def_crude', 500000),
-('def_liquizit', 250000),
-('def_silgium', 200000),
-('def_stermonit', 200000),
-('def_imentium', 200000),
-('def_helioptris', 200000),
-('def_triandlus', 200000),
-('def_prismocitae', 200000),
+('def_titan', 50000),
+('def_crude', 200000),
+('def_liquizit', 100000),
+('def_silgium', 50000),
+('def_stermonit', 50000),
+('def_imentium', 50000),
+('def_helioptris', 50000),
+('def_triandlus', 50000),
+('def_prismocitae', 50000),
 ('def_specimen_sap_item_flux', 4);
 
 
@@ -194,14 +185,14 @@ BEGIN
 	BEGIN
 		INSERT INTO [dbo].[dynamiccalibrationtemplates] ([definition],[materialefficiency],[timeefficiency],[targetdefinition]) 
 		VALUES
-			(@ctDef,5,5,@itemDef);
+			(@ctDef,180,180,@itemDef);
 	END
 	ELSE
 	BEGIN
 		--maybe we try different efficiencies
 		UPDATE [dbo].[dynamiccalibrationtemplates] SET
-			materialefficiency=5,
-			timeefficiency=5
+			materialefficiency=180,
+			timeefficiency=180
 		WHERE definition=@ctDef;
 	END
 
@@ -223,7 +214,7 @@ BEGIN
 
 	PRINT N'7. INSERT ITEM TO SPECIMEN TABLE';
 	INSERT INTO [dbo].[siegeitems] (definition, minquantity, maxquantity) VALUES
-	(@itemDef, 1, 4);
+	(@itemDef, 2, 3);
 
 
 
@@ -286,14 +277,14 @@ IF NOT EXISTS (SELECT TOP 1 category FROM [perpetuumsa].[dbo].[productionduratio
 BEGIN
 	INSERT INTO [dbo].[productionduration]([category],[durationmodifier])
 	VALUES
-		(@categoryOfItem,0.5);
+		(@categoryOfItem,0.25);
 	PRINT N'INSERTED production duration for this category';
 END
 ELSE
 BEGIN
 	UPDATE [productionduration]
 	SET
-		durationmodifier = 0.1
+		durationmodifier = 0.25
 	WHERE category=@categoryOfItem;
 	PRINT N'updated production duration for this category';
 END
