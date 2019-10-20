@@ -350,13 +350,13 @@ VALUES
 	(@pelistalOutpost, @passiveSAP, @decoderLv7, 1, 1, 0, 49, 0.25),
 	(@pelistalOutpost, @passiveSAP, @decoderLv8, 1, 1, 0, 49, 0.15),
 	(@pelistalOutpost, @passiveSAP, @decoderLv9, 1, 1, 0, 49, 0.1),
-	(@pelistalOutpost, @passiveSAP, @pelistalOutpost, 2500, 3500, 0, 49, 1),
+	(@pelistalOutpost, @passiveSAP, @plasmaPelistal, 2500, 3500, 0, 49, 1),
 
 	(@thelodicaOutpost, @passiveSAP, @decoderLv6, 1, 1, 0, 49, 0.5),
 	(@thelodicaOutpost, @passiveSAP, @decoderLv7, 1, 1, 0, 49, 0.25),
 	(@thelodicaOutpost, @passiveSAP, @decoderLv8, 1, 1, 0, 49, 0.15),
 	(@thelodicaOutpost, @passiveSAP, @decoderLv9, 1, 1, 0, 49, 0.1),
-	(@thelodicaOutpost, @passiveSAP, @nuimqolOutpost, 2500, 3500, 0, 49, 1),
+	(@thelodicaOutpost, @passiveSAP, @plasmaThelodica, 2500, 3500, 0, 49, 1),
 --50-99
 	(@nuimqolOutpost, @passiveSAP, @decoderLv6, 1, 2, 50, 99, 0.5),
 	(@nuimqolOutpost, @passiveSAP, @decoderLv7, 1, 2, 50, 99, 0.25),
@@ -368,13 +368,13 @@ VALUES
 	(@pelistalOutpost, @passiveSAP, @decoderLv7, 1, 2, 50, 99, 0.25),
 	(@pelistalOutpost, @passiveSAP, @decoderLv8, 1, 2, 50, 99, 0.15),
 	(@pelistalOutpost, @passiveSAP, @decoderLv9, 1, 2, 50, 99, 0.1),
-	(@pelistalOutpost, @passiveSAP, @pelistalOutpost, 5000, 7000, 50, 99, 1),
+	(@pelistalOutpost, @passiveSAP, @plasmaPelistal, 5000, 7000, 50, 99, 1),
 
 	(@thelodicaOutpost, @passiveSAP, @decoderLv6, 1, 2, 50, 99, 0.5),
 	(@thelodicaOutpost, @passiveSAP, @decoderLv7, 1, 2, 50, 99, 0.25),
 	(@thelodicaOutpost, @passiveSAP, @decoderLv8, 1, 2, 50, 99, 0.15),
 	(@thelodicaOutpost, @passiveSAP, @decoderLv9, 1, 2, 50, 99, 0.1),
-	(@thelodicaOutpost, @passiveSAP, @nuimqolOutpost, 5000, 7000, 50, 99, 1),
+	(@thelodicaOutpost, @passiveSAP, @plasmaThelodica, 5000, 7000, 50, 99, 1),
 --100+
 	(@nuimqolOutpost, @passiveSAP, @decoderLv6, 1, 3, 100, 200, 0.5),
 	(@nuimqolOutpost, @passiveSAP, @decoderLv7, 1, 3, 100, 200, 0.25),
@@ -386,13 +386,13 @@ VALUES
 	(@pelistalOutpost, @passiveSAP, @decoderLv7, 1, 3, 100, 200, 0.25),
 	(@pelistalOutpost, @passiveSAP, @decoderLv8, 1, 3, 100, 200, 0.15),
 	(@pelistalOutpost, @passiveSAP, @decoderLv9, 1, 3, 100, 200, 0.1),
-	(@pelistalOutpost, @passiveSAP, @pelistalOutpost, 7500, 10500, 100, 200, 1),
+	(@pelistalOutpost, @passiveSAP, @plasmaPelistal, 7500, 10500, 100, 200, 1),
 
 	(@thelodicaOutpost, @passiveSAP, @decoderLv6, 1, 3, 100, 200, 0.5),
 	(@thelodicaOutpost, @passiveSAP, @decoderLv7, 1, 3, 100, 200, 0.25),
 	(@thelodicaOutpost, @passiveSAP, @decoderLv8, 1, 3, 100, 200, 0.15),
 	(@thelodicaOutpost, @passiveSAP, @decoderLv9, 1, 3, 100, 200, 0.1),
-	(@thelodicaOutpost, @passiveSAP, @nuimqolOutpost, 7500, 10500, 100, 200, 1),
+	(@thelodicaOutpost, @passiveSAP, @plasmaThelodica, 7500, 10500, 100, 200, 1),
 
 
 --SPECI
