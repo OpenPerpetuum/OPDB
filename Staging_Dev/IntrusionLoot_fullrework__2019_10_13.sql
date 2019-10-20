@@ -4,7 +4,7 @@ GO
 ----------------------------------------------------------------------
 --A full and complete rework of SAP Loot with Patch 13 SAP changes
 --See design documents for details
---Last Modified: 2019/10/13
+--Last Modified: 2019/10/20
 ----------------------------------------------------------------------
 
 PRINT N'FULL WIPE OF INSTRUSION LOOT';
