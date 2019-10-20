@@ -7,7 +7,7 @@ GO
 --NOW INCLUDES: a new T0 module recycled-material
 --And Specimen SAP pts = 15
 --
---Last Modified: 2019/10/13
+--Last Modified: 2019/10/20
 ------------------------------------------------
 
 UPDATE entitydefaults
@@ -108,7 +108,7 @@ INSERT INTO #AMOUNTS_TABLE (matName, matAmount) VALUES
 ('def_helioptris', 50000),
 ('def_triandlus', 50000),
 ('def_prismocitae', 50000),
-('def_specimen_sap_item_flux', 4);
+('def_specimen_sap_item_flux', 1);
 
 
 PRINT N'1. MAKE THE ITEM [entitydefaults]';
