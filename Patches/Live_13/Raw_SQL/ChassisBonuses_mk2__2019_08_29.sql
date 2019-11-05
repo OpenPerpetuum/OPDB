@@ -4,8 +4,8 @@ GO
 ---------------------------------------
 --MK2 Bonus Buff
 --Combats +1% dmg 
---Ewar +3 resists
---Date modified: 2019/08/29
+--Ewar +1% shield resist
+--Date modified: 2019/11/04
 ---------------------------------------
 PRINT N'Applying Mk2 Bonuses';
 DECLARE @definitionID int;
@@ -48,103 +48,31 @@ INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targe
 
 SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_cameleon_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_chemical' ORDER BY [name] DESC);
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'shield_absorbtion_modifier' ORDER BY [name] DESC);
  SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
 
 INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
-
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_cameleon_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_explosive' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
-
-INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
-
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_cameleon_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_kinetic' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
-
-INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
-
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_cameleon_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_thermal' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
-
-INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
+                VALUES (@definitionID, @extensionID, 0.01, '', @aggfieldID, 0);
 
 --Intakt
 
 SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_intakt_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_thermal' ORDER BY [name] DESC);
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'shield_absorbtion_modifier' ORDER BY [name] DESC);
  SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
 
 INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
-
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_intakt_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_chemical' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
-
-INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
-
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_intakt_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_explosive' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
-
-INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
-
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_intakt_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_kinetic' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
-
-INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
+                VALUES (@definitionID, @extensionID, 0.01, '', @aggfieldID, 0);
 
 --troiar
 
 SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_troiar_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_kinetic' ORDER BY [name] DESC);
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'shield_absorbtion_modifier' ORDER BY [name] DESC);
  SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
 
 INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
-
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_troiar_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_thermal' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
-
-INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
-
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_troiar_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_explosive' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
-
-INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
-
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_troiar_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_chemical' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
-
-INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
+                VALUES (@definitionID, @extensionID, 0.01, '', @aggfieldID, 0);
 
 --Arby
 
@@ -210,103 +138,31 @@ INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targe
 
 SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_vagabond_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_thermal' ORDER BY [name] DESC);
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'shield_absorbtion_modifier' ORDER BY [name] DESC);
  SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
 
 INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
-
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_vagabond_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_chemical' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
-
-INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
-
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_vagabond_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_explosive' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
-
-INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
-
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_vagabond_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_kinetic' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
-
-INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
+                VALUES (@definitionID, @extensionID, 0.01, '', @aggfieldID, 0);
 
 --zenith
 
 SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_zenith_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_kinetic' ORDER BY [name] DESC);
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'shield_absorbtion_modifier' ORDER BY [name] DESC);
  SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
 
 INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
-
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_zenith_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_thermal' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
-
-INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
-
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_zenith_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_explosive' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
-
-INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
-
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_zenith_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_chemical' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
-
-INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
+                VALUES (@definitionID, @extensionID, 0.01, '', @aggfieldID, 0);
 
 --Ictus
 
 SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_ictus_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_chemical' ORDER BY [name] DESC);
+SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'shield_absorbtion_modifier' ORDER BY [name] DESC);
  SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
 
 INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
-
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_ictus_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_explosive' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
-
-INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
-
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_ictus_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_kinetic' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
-
-INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
-
-SET @extensionID = (SELECT TOP 1 extensionid from dbo.extensions WHERE extensionname = 'ext_high_tech_specialist');
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_ictus_head_mk2' ORDER BY definition DESC);
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE[name] = 'resist_thermal' ORDER BY [name] DESC);
- SET @chassisbonusID = (SELECT TOP 1 id from chassisbonus WHERE[definition] = @definitionID AND [extension] = @extensionID AND [targetpropertyID] = @aggfieldID ORDER BY [definition], [extension], [targetpropertyID] DESC);
-
-INSERT INTO [dbo].[chassisbonus] ([definition],[extension],[bonus],[note],[targetpropertyID],[effectenhancer])
-                VALUES (@definitionID, @extensionID, 3, '', @aggfieldID, 0);
+                VALUES (@definitionID, @extensionID, 0.01, '', @aggfieldID, 0);
 
 --Mesmer
 
