@@ -288,7 +288,7 @@ BEGIN
 			spawnoriginY=@y+1,
 			spawnrangeMin=3,
 			spawnrangeMax=20,
-			respawnseconds=180,
+			respawnseconds=21600,
 			homerange=35,
 			behaviorType=1
 		WHERE id=@flockID;
@@ -300,7 +300,7 @@ BEGIN
 			INSERT INTO [dbo].[npcbossinfo]
 				([flockid],[respawnNoiseFactor],[lootSplitFlag],[outpostEID],[stabilityPts],[overrideRelations],[customDeathMessage],[customAggressMessage])
 			VALUES
-				(@flockID,0.15,1,@outpostEID,-2,1,'SAP Gaurd down!','Outpost Defenses engaged');
+				(@flockID,0.15,1,@outpostEID,-2,1,'SAP Guardian down!','Outpost Defenses engaged');
 		END
 		ELSE
 		BEGIN
@@ -311,7 +311,7 @@ BEGIN
 				outpostEID=@outpostEID,
 				stabilityPts=-2,
 				overrideRelations=1,
-				customDeathMessage='SAP Gaurd down!',
+				customDeathMessage='SAP Guardian down!',
 				customAggressMessage='Outpost Defenses engaged'
 			WHERE flockid=@flockID;
 		END
@@ -324,7 +324,7 @@ BEGIN
 			spawnoriginY=@y-1,
 			spawnrangeMin=3,
 			spawnrangeMax=20,
-			respawnseconds=180,
+			respawnseconds=21600,
 			homerange=300,
 			behaviorType=1
 		WHERE id=@flockID;
@@ -335,7 +335,7 @@ BEGIN
 			INSERT INTO [dbo].[npcbossinfo]
 				([flockid],[respawnNoiseFactor],[lootSplitFlag],[outpostEID],[stabilityPts],[overrideRelations],[customDeathMessage],[customAggressMessage])
 			VALUES
-				(@flockID,0.15,1,@outpostEID,-2,1,'Nia will have her revenge, Human','That terminal belongs to us!');
+				(@flockID,0.15,1,@outpostEID,2,1,'Nia will have her revenge, Human','That terminal belongs to us!');
 		END
 		ELSE
 		BEGIN
