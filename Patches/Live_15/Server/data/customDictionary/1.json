@@ -178,7 +178,7 @@
     "def_npc_goblin_lancer_name" : "Goblin Lancer",
     "def_boost_ep_t0" : "EP Gyorsító 1+ 1 óra",
     "def_npc_Hersh_PitBoss" : "6.Sz Szindikátusi Sziget Vezér",
-    "def_npc_Hersh_PitBoss_name" : "Pitboss Alpha"
+    "def_npc_Hersh_PitBoss_name" : "Pitboss Alpha",
     "def_npc_sap_guard_kara": "Támaszpont Védelmező",
     "def_npc_sap_guard_kara_name": "Outpost Guardian",
     "def_npc_sap_invade_kara": "Támaszpont Támadó",
