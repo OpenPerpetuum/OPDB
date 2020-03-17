@@ -15,9 +15,11 @@ END
 
 DROP TABLE IF EXISTS dbo.npcinterzonegroup;
 
-CREATE TABLE dbo.npcinterzonegroup(
+CREATE TABLE dbo.npcinterzonegroup (
 	id INT NOT NULL IDENTITY PRIMARY KEY,
-	name VARCHAR(64) NOT NULL
+	name VARCHAR(64) NOT NULL,
+	respawnTime int NOT NULL DEFAULT 86400,
+	respawnNoiseFactor float NOT NULL DEFAULT 0.15
 );
 
 
