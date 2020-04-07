@@ -51,8 +51,7 @@ INSERT INTO [dbo].[definitionconfig]
 
 PRINT N'5. Give bot skills -- ARKHE MK2 HAS NO ENABLER SKILLS RESULT WILL BE 0 rows affected';
 --Use existing bot (that was copied from entitydefault) for extensions
-INSERT INTO [dbo].[enablerextensions]
-           ([definition],[extensionid],[extensionlevel])
+INSERT INTO [dbo].[enablerextensions] ([definition],[extensionid],[extensionlevel])
      (SELECT (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=@botName), extensionid, extensionlevel FROM enablerextensions WHERE definition=(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_arkhe2_bot'));
 
 PRINT N'Create Packages for pre-alpha participant levels';
@@ -91,8 +90,8 @@ SET @packid = (SELECT TOP 1 id FROM packages WHERE name='opp-anniversary02');
 --TODO use variant of below for future gifting
 --This gift gives to all current accounts at patch-time
 PRINT N'Give everyone a gift! WARNING CURSOR AHEAD!';
-DECLARE @id int
-DECLARE @pass varchar(100)
+DECLARE @id int;
+DECLARE @pass varchar(100);
 
 DECLARE curse CURSOR FOR SELECT accountID FROM accounts
 OPEN curse
