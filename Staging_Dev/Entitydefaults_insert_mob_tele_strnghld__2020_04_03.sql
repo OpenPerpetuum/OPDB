@@ -33,13 +33,13 @@ END
 IF NOT EXISTS (SELECT definition FROM entitydefaults WHERE definitionname=@fieldDevName)
 BEGIN
 INSERT INTO [dbo].[entitydefaults] ([definitionname],[quantity],[attributeflags],[categoryflags],[options],[note],[enabled],[volume],[mass],[hidden],[health],[descriptiontoken],[purchasable],[tiertype],[tierlevel]) VALUES
-(@fieldDevName,1,12583936,17171064,'','Stronghold teleport field obj',1,4,8000,0,100,'def_mobile_teleport_stronghold_basic_desc',0,0,0);
+(@fieldDevName,1,12583936,33948280,'','Stronghold teleport field obj',1,4,8000,0,100,'def_mobile_teleport_stronghold_basic_desc',0,0,0);
 END
 ELSE
 BEGIN
 	UPDATE entitydefaults SET
 		attributeflags = 12583936,
-		categoryflags = 17171064,
+		categoryflags = 33948280,
 		note = 'Stronghold teleport field ob',
 		volume = 4,
 		mass = 8000
