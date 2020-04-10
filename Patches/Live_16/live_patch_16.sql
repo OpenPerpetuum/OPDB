@@ -169,7 +169,7 @@ BEGIN
 INSERT INTO [dbo].[itemshop]
            ([presetid],[targetdefinition],[targetamount],[tmcoin],[icscoin],[asicoin],[credit],[unicoin],[globallimit],[purchasecount],[standing])
      VALUES
-		   (@tmShops,@strongholdTeleDef,1,100,100,100,1000000,100,NULL,0,1);
+		   (@tmShops,@strongholdTeleDef,1,100,100,100,1000000,100,NULL,0,NULL);
 END
 ELSE
 BEGIN
@@ -179,7 +179,7 @@ BEGIN
 		asicoin=100,
 		credit=1000000,
 		unicoin=100,
-		standing=1
+		standing=NULL
 	WHERE presetid=@tmShops AND targetdefinition=@strongholdTeleDef;
 END
 
