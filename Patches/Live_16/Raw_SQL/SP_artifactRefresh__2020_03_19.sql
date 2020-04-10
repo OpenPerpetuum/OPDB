@@ -16,6 +16,3 @@ BEGIN
 END
 
 GO
-
-
-EXEC [opp].[artifactRefresh];

@@ -62,4 +62,30 @@ BEGIN
 	WHERE definition=(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = @capsuleName);
 END
 
+
+DECLARE @tmShops INT;
+DECLARE @strongholdTeleDef INT;
+SET @strongholdTeleDef = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = @capsuleName);
+
+SET @tmShops = (SELECT TOP 1 id FROM itemshoppresets WHERE name='tm_preset_pve');
+
+IF NOT EXISTS (SELECT [targetdefinition] FROM [itemshop] WHERE [targetdefinition]=@strongholdTeleDef)
+BEGIN
+INSERT INTO [dbo].[itemshop]
+           ([presetid],[targetdefinition],[targetamount],[tmcoin],[icscoin],[asicoin],[credit],[unicoin],[globallimit],[purchasecount],[standing])
+     VALUES
+		   (@tmShops,@strongholdTeleDef,1,100,100,100,1000000,100,NULL,0,1);
+END
+ELSE
+BEGIN
+	UPDATE [dbo].[itemshop] SET
+		tmcoin=100,
+		icscoin=100,
+		asicoin=100,
+		credit=1000000,
+		unicoin=100,
+		standing=1
+	WHERE presetid=@tmShops AND targetdefinition=@strongholdTeleDef;
+END
+
 GO
