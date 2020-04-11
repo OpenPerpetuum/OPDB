@@ -291,14 +291,14 @@ CREATE TABLE #NPCSTATS (
 );
 
 INSERT INTO #NPCSTATS (fieldName, value) VALUES
-('armor_max_modifier', 8.5),
+('armor_max_modifier', 9.5),
 ('armor_repair_amount_modifier', 12.5),
 ('armor_repair_cycle_time_modifier', 0.95),
 ('core_max_modifier', 15),
-('core_recharge_time_modifier', 0.9),
+('core_recharge_time_modifier', 0.85),
 ('cpu_max_modifier', 2.6),
 ('critical_hit_chance_modifier', 0.2),
-('damage_modifier', 3.1),
+('damage_modifier', 4.1),
 ('detection_strength_modifier',	25),
 ('ecm_strength_modifier', 2.1),
 ('falloff_modifier', 1.6),
@@ -307,14 +307,14 @@ INSERT INTO #NPCSTATS (fieldName, value) VALUES
 ('missile_cycle_time_modifier', 0.85),
 ('optimal_range_modifier', 4.1),
 ('powergrid_max_modifier', 2.1),
-('resist_chemical', 300),
-('resist_explosive', 300),
-('resist_kinetic', 300),
-('resist_thermal', 300),
+('resist_chemical', 900),
+('resist_explosive', 900),
+('resist_kinetic', 900),
+('resist_thermal', 900),
 ('speed_max_modifier', 0.9),
 ('turret_cycle_time_modifier', 0.85),
 ('received_repaired_modifier', 10),
-('sensor_strength_modifier', 15),
+('sensor_strength_modifier', 115),
 ('stealth_strength_modifier', -50);
 
 
