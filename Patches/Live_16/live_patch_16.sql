@@ -294,6 +294,8 @@ INSERT INTO #NPCSTATS (fieldName, value) VALUES
 ('armor_max_modifier', 9.5),
 ('armor_repair_amount_modifier', 12.5),
 ('armor_repair_cycle_time_modifier', 0.95),
+('blob_emission_modifier_modifier', 3.0),
+('blob_emission_radius_modifier', 1.5),
 ('core_max_modifier', 15),
 ('core_recharge_time_modifier', 0.85),
 ('cpu_max_modifier', 2.6),
