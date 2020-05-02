@@ -271,29 +271,27 @@ GO
 ---------------------------------------------
 
 DECLARE @fluxAmmo INT;
-DECLARE @epriAmmo INT;
+DECLARE @liqAmmo INT;
 DECLARE @indyTechTree INT;
 SET @indyTechTree = (SELECT TOP 1 id FROM techtreegroups WHERE name='indy');
-SET @epriAmmo = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_ammo_mining_epriton');
+SET @liqAmmo = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_ammo_mining_liquizit');
 SET @fluxAmmo = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_ammo_mining_fluxore');
 
 
 IF NOT EXISTS (SELECT TOP 1 [childdefinition] FROM techtree WHERE [childdefinition]=@fluxAmmo)
 BEGIN
 	INSERT INTO techtree ([parentdefinition],[childdefinition],[groupID],[x],[y]) VALUES
-	(@epriAmmo, @fluxAmmo, @indyTechTree, 4, 5);
+	(@liqAmmo, @fluxAmmo, @indyTechTree, 4, 5);
 END
 ELSE
 BEGIN
 	UPDATE techtree SET
-		parentdefinition=@epriAmmo,
+		parentdefinition=@liqAmmo,
 		groupID=@indyTechTree,
 		x=4,
 		y=5
 	WHERE childdefinition=@fluxAmmo;
 END
-
-select * from techtreepointtypes
 
 --Show and delete existing kernel costs
 SELECT * FROM techtreenodeprices where definition = @fluxAmmo;
