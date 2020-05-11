@@ -2,24 +2,41 @@ USE [perpetuumsa]
 GO
 
 --------------------------------------------------------------------
---Datamodel for NPC Ore spawns
---A presence is to spawn on some ore field when the field is depleted to particular percentages
---When the threshold is exceeded for that ore, that presence will spawn
+--Datamodel for NPC Reinforcements: A model for npc spawns that occur on particular set of conditional criteria
+--Each record is a presence and a threshold that join to potentially any other table by some targetId.
+--The reinforcementType determines the polymorphic behaviour of the record as it is loaded into the server.
+--The threshold allows for floating point numeric criteria to gate behaviours and determine percentages or other values to trigger a particular spawn.
 --
---Date modified: 2020/05/09
+--Date modified: 2020/05/10
 --------------------------------------------------------------------
 
-DROP TABLE IF EXISTS dbo.npcorespawn;
+DROP TABLE IF EXISTS dbo.npcreinforcementtypes;
 
-CREATE TABLE dbo.npcorespawn (
+CREATE TABLE dbo.npcreinforcementtypes (
 	id INT NOT NULL IDENTITY PRIMARY KEY,
-	materialType INT NOT NULL,
-	presenceId INT NOT NULL,
-	threshold float NOT NULL
+	name VARCHAR(64) NOT NULL
 );
 
 GO
 
+INSERT INTO dbo.npcreinforcementtypes (name) VALUES
+('minerals'),
+('boss');
+
+
+DROP TABLE IF EXISTS dbo.npcreinforcements;
+
+CREATE TABLE dbo.npcreinforcements (
+	id INT NOT NULL IDENTITY PRIMARY KEY,
+	reinforcementType INT NOT NULL,
+	targetId INT NOT NULL,
+	threshold float NOT NULL,
+	presenceId INT NOT NULL
+);
+
+GO
+--TODO make new npcs for waves!
+--
 --Just stuff to test
 --INSERT INTO npcpresence(name,topx,topy,bottomx,bottomy,note,spawnid,enabled,roaming,roamingrespawnseconds,presencetype,maxrandomflock,randomcenterx,randomcentery,randomradius,dynamiclifetime,isbodypull,isrespawnallowed,safebodypull,izgroupid)
 --SELECT 'test-dynamic-extended-'+name,topx,topy,bottomx,bottomy,note,spawnid,enabled,roaming,roamingrespawnseconds,9,maxrandomflock,randomcenterx,randomcentery,randomradius,dynamiclifetime,isbodypull,isrespawnallowed,safebodypull,null from npcpresence 
@@ -47,8 +64,11 @@ GO
 DECLARE @fluxOre INT;
 SET @fluxOre = (SELECT TOP 1 idx FROM minerals WHERE name = 'fluxore');
 
+DECLARE @reinforceType INT;
+SET @reinforceType = (SELECT TOP 1 id FROM npcreinforcementtypes WHERE name='minerals');
+
 --TODO build presences for this feature and use here
-INSERT INTO dbo.npcorespawn(materialType, presenceId, threshold) VALUES
-(@fluxOre, 1780, 0.33),
-(@fluxOre, 1781, 0.66),
-(@fluxOre, 1782, 0.99);
+INSERT INTO dbo.npcreinforcements(reinforcementType, targetId, threshold, presenceId) VALUES
+(@reinforceType, @fluxOre, 0.33, 1780),
+(@reinforceType, @fluxOre, 0.66, 1781),
+(@reinforceType, @fluxOre, 0.99, 1782);
