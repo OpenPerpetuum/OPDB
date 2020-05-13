@@ -10,9 +10,7 @@ GO
 --Insert mining ammo
 --Insert production and research for mining ammo
 --
---
---geoscanner results show def_<unknown_16>..TODO
---Last modified: 2020/05/01
+--Last modified: 2020/05/11
 ------------------------------------------------------------------
 
 
@@ -208,12 +206,12 @@ CREATE TABLE #MINERALCONFS
 	minThreshold FLOAT
 );
 INSERT INTO #MINERALCONFS (zoneName, materialName, maxNodes, maxTilesPerNode, totalAmountPerNode, minThreshold) VALUES
-('norhoop', 'fluxore', 6, 300, 50000000, 0.5),
-('domhalarn', 'fluxore', 6, 300, 50000000, 0.5),
-('hokkogaros', 'fluxore', 6, 300, 50000000, 0.5),
-('alsbale', 'fluxore', 10, 300, 50000000, 0.5),
-('novastrov', 'fluxore', 10, 300, 50000000, 0.5),
-('kentagura', 'fluxore', 10, 300, 50000000, 0.5);
+('norhoop', 'fluxore', 6, 300, 5000000, 0.5),
+('domhalarn', 'fluxore', 6, 300, 5000000, 0.5),
+('hokkogaros', 'fluxore', 6, 300, 5000000, 0.5),
+('alsbale', 'fluxore', 10, 300, 5000000, 0.5),
+('novastrov', 'fluxore', 10, 300, 5000000, 0.5),
+('kentagura', 'fluxore', 10, 300, 5000000, 0.5);
 
 PRINT N'UPDATE/INSERT mineralconfigs for fluxore';
 MERGE [dbo].[mineralconfigs] configs USING #MINERALCONFS conf
