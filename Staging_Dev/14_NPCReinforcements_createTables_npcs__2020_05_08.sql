@@ -7,6 +7,8 @@ GO
 --The reinforcementType determines the polymorphic behaviour of the record as it is loaded into the server.
 --The threshold allows for floating point numeric criteria to gate behaviours and determine percentages or other values to trigger a particular spawn.
 --
+--Requires Flux ore to be defined first!
+--
 --Date modified: 2020/05/13
 --------------------------------------------------------------------
 
@@ -40,6 +42,19 @@ GO
 --Just stuff to test
 PRINT N'JUST TEST PRESENCES/flocks -- TODO MAKE REAL NPCS'
 
+--Flocks have to be deleted before the presence on which they join
+DELETE FROM npcflock WHERE name in (
+'flux_ore_npc_wave_0',
+'flux_ore_npc_wave_1',
+'flux_ore_npc_wave_2',
+'flux_ore_npc_wave_3',
+'flux_ore_npc_wave_4',
+'flux_ore_npc_wave_5',
+'flux_ore_npc_wave_6',
+'flux_ore_npc_wave_7',
+'flux_ore_npc_wave_8',
+'flux_ore_npc_wave_9');
+
 DELETE FROM npcpresence WHERE name in (
 'flux_ore_npc_wave_0',
 'flux_ore_npc_wave_1',
@@ -65,17 +80,7 @@ VALUES
 ('flux_ore_npc_wave_8', 0, 0, 0, 0, 'fluxore npc wave 8 presence',10, 1, 0, 0, 9, NULL, NULL, NULL, NULL, NULL, 1, 0, 1, NULL),
 ('flux_ore_npc_wave_9', 0, 0, 0, 0, 'fluxore npc wave 9 presence',10, 1, 0, 0, 9, NULL, NULL, NULL, NULL, NULL, 1, 0, 1, NULL);
 
-DELETE FROM npcflock WHERE name in (
-'flux_ore_npc_wave_0',
-'flux_ore_npc_wave_1',
-'flux_ore_npc_wave_2',
-'flux_ore_npc_wave_3',
-'flux_ore_npc_wave_4',
-'flux_ore_npc_wave_5',
-'flux_ore_npc_wave_6',
-'flux_ore_npc_wave_7',
-'flux_ore_npc_wave_8',
-'flux_ore_npc_wave_9');
+
 --TODO make new npcs and more complex flocks for each presence
 INSERT INTO npcflock
 (name,presenceid,flockmembercount,definition,spawnoriginX,spawnoriginY,spawnrangeMin,spawnrangeMax,respawnseconds,totalspawncount,homerange,note,respawnmultiplierlow,enabled,iscallforhelp,behaviorType,npcSpecialType)
