@@ -232,7 +232,7 @@ INSERT INTO #MODSTATS (defName, fieldName, fieldValue) VALUES
 ('def_standard_large_core_booster', 'cpu_usage', 87.5),
 ('def_standard_large_core_booster', 'powergrid_usage', 375),
 ('def_standard_large_core_booster', 'core_usage', 0),
-('def_standard_large_core_booster', 'cycle_time', 6.05),
+('def_standard_large_core_booster', 'cycle_time', 6050),
 --
 ('def_named1_large_core_booster', 'cpu_usage', 80.5),
 ('def_named1_large_core_booster', 'powergrid_usage', 337.5),
