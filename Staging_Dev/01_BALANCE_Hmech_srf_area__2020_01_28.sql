@@ -8,18 +8,23 @@ GO
 --14->23 Syndicate Combats
 --14->23 Industrial
 --12->15 Glider
+--Last Modified: 2020/05/21
 ---------------------------------------------------------
 
 
-DROP TABLE IF EXISTS #CHASSIS
-CREATE TABLE #CHASSIS 
+DROP TABLE IF EXISTS #MODIFIERS;
+CREATE TABLE #MODIFIERS 
 (
 	defName varchar(100),
 	fieldName varchar(100),
 	fieldValue float,
 );
 
-INSERT INTO #CHASSIS (defName, fieldName, fieldValue) VALUES
+INSERT INTO #MODIFIERS (defName, fieldName, fieldValue) VALUES
+--Shields
+('def_named3_medium_shield_generator', 'shield_radius', 25),
+('def_named3_medium_shield_generator_pr', 'shield_radius', 25),
+--Hmechs
 ('def_gropho_chassis', 'signature_radius', 25),
 ('def_gropho_chassis_mk2', 'signature_radius', 25),
 ('def_gropho_chassis_pr', 'signature_radius', 25),
@@ -55,12 +60,12 @@ INSERT INTO #CHASSIS (defName, fieldName, fieldValue) VALUES
 ('def_symbiont_chassis_mk2', 'signature_radius', 23),
 ('def_symbiont_chassis_pr', 'signature_radius', 23);
 
-PRINT N'ABOUT TO MERGE SRF AREA UPDATES TO AGGREGATE VALUES FOR ALL HEAVY MECH STATS';
+PRINT N'ABOUT TO MERGE SRF AREA UPDATES TO AGGREGATE VALUES FOR ALL HEAVY MECH STATS (and medium t4 shield)';
 
 MERGE INTO
   aggregatevalues
 USING
-  #CHASSIS
+  #MODIFIERS
 ON
   field = (SELECT TOP 1 id FROM aggregatefields WHERE fieldName=name)
   AND
@@ -76,5 +81,5 @@ WHEN NOT MATCHED THEN
 
 
 PRINT N'MERGED!';
-DROP TABLE IF EXISTS #CHASSIS
+DROP TABLE IF EXISTS #MODIFIERS;
 GO
