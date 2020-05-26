@@ -250,7 +250,7 @@ CREATE TABLE #BOTSTATS
 )
 
 INSERT INTO #BOTSTATS (partDef, name, value) VALUES
-(@headDef, 'cpu_max', 730),
+(@headDef, 'cpu_max', 2190),
 (@headDef, 'locked_targets_max', 8),
 (@headDef, 'locking_range', 42.9),
 (@headDef, 'locking_time', 15000),
@@ -265,7 +265,7 @@ INSERT INTO #BOTSTATS (partDef, name, value) VALUES
 (@chassisDef, 'armor_max', 6000),
 (@chassisDef, 'core_max', 5900),
 (@chassisDef, 'core_recharge_time', 1200),
-(@chassisDef, 'powergrid_max', 2150),
+(@chassisDef, 'powergrid_max', 6450),
 (@chassisDef, 'resist_chemical', 30),
 (@chassisDef, 'resist_explosive', 150),
 (@chassisDef, 'resist_kinetic', 45),
