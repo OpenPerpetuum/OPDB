@@ -115,7 +115,7 @@ CREATE TABLE #WEPSTATS
 INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 ('def_standard_large_laser', 'cpu_usage', 62.5),
 ('def_standard_large_laser', 'powergrid_usage', 350),
-('def_standard_large_laser', 'core_usage', 18.9),
+('def_standard_large_laser', 'core_usage', 11.76),
 ('def_standard_large_laser', 'cycle_time', 5000),
 ('def_standard_large_laser', 'damage_modifier', 1.91),
 ('def_standard_large_laser', 'optimal_range', 22.5),
@@ -124,7 +124,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named1_large_laser', 'cpu_usage', 55),
 ('def_named1_large_laser', 'powergrid_usage', 315),
-('def_named1_large_laser', 'core_usage', 15.3),
+('def_named1_large_laser', 'core_usage', 9.52),
 ('def_named1_large_laser', 'cycle_time', 5000),
 ('def_named1_large_laser', 'damage_modifier', 1.91),
 ('def_named1_large_laser', 'optimal_range', 22.5),
@@ -133,7 +133,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named1_large_laser_pr', 'cpu_usage', 55),
 ('def_named1_large_laser_pr', 'powergrid_usage', 315),
-('def_named1_large_laser_pr', 'core_usage', 15.3),
+('def_named1_large_laser_pr', 'core_usage', 9.52),
 ('def_named1_large_laser_pr', 'cycle_time', 5000),
 ('def_named1_large_laser_pr', 'damage_modifier', 1.91),
 ('def_named1_large_laser_pr', 'optimal_range', 22.5),
@@ -142,7 +142,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named2_large_laser', 'cpu_usage', 70),
 ('def_named2_large_laser', 'powergrid_usage', 394),
-('def_named2_large_laser', 'core_usage', 18),
+('def_named2_large_laser', 'core_usage', 11.2),
 ('def_named2_large_laser', 'cycle_time', 4500),
 ('def_named2_large_laser', 'damage_modifier', 2.07),
 ('def_named2_large_laser', 'optimal_range', 23.5),
@@ -151,7 +151,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named2_large_laser_pr', 'cpu_usage', 70),
 ('def_named2_large_laser_pr', 'powergrid_usage', 394),
-('def_named2_large_laser_pr', 'core_usage', 18),
+('def_named2_large_laser_pr', 'core_usage', 11.2),
 ('def_named2_large_laser_pr', 'cycle_time', 4500),
 ('def_named2_large_laser_pr', 'damage_modifier', 2.07),
 ('def_named2_large_laser_pr', 'optimal_range', 23.5),
@@ -160,7 +160,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named3_large_laser', 'cpu_usage', 75),
 ('def_named3_large_laser', 'powergrid_usage', 437.5),
-('def_named3_large_laser', 'core_usage', 21.6),
+('def_named3_large_laser', 'core_usage', 13.44),
 ('def_named3_large_laser', 'cycle_time', 5000),
 ('def_named3_large_laser', 'damage_modifier', 2.40),
 ('def_named3_large_laser', 'optimal_range', 24),
@@ -169,7 +169,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named3_large_laser_pr', 'cpu_usage', 75),
 ('def_named3_large_laser_pr', 'powergrid_usage', 437.5),
-('def_named3_large_laser_pr', 'core_usage', 21.6),
+('def_named3_large_laser_pr', 'core_usage', 13.44),
 ('def_named3_large_laser_pr', 'cycle_time', 5000),
 ('def_named3_large_laser_pr', 'damage_modifier', 2.40),
 ('def_named3_large_laser_pr', 'optimal_range', 24),
@@ -178,7 +178,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 --
 ('def_longrange_standard_large_laser', 'cpu_usage', 75),
 ('def_longrange_standard_large_laser', 'powergrid_usage', 402.5),
-('def_longrange_standard_large_laser', 'core_usage', 22.5),
+('def_longrange_standard_large_laser', 'core_usage', 14),
 ('def_longrange_standard_large_laser', 'cycle_time', 6000),
 ('def_longrange_standard_large_laser', 'damage_modifier', 1.50),
 ('def_longrange_standard_large_laser', 'optimal_range', 50),
@@ -187,7 +187,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named1_longrange_large_laser', 'cpu_usage', 67.5),
 ('def_named1_longrange_large_laser', 'powergrid_usage', 367.5),
-('def_named1_longrange_large_laser', 'core_usage', 19.8),
+('def_named1_longrange_large_laser', 'core_usage', 12.32),
 ('def_named1_longrange_large_laser', 'cycle_time', 6000),
 ('def_named1_longrange_large_laser', 'damage_modifier', 1.50),
 ('def_named1_longrange_large_laser', 'optimal_range', 50),
@@ -196,7 +196,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named1_longrange_large_laser_pr', 'cpu_usage', 67.5),
 ('def_named1_longrange_large_laser_pr', 'powergrid_usage', 367.5),
-('def_named1_longrange_large_laser_pr', 'core_usage', 19.8),
+('def_named1_longrange_large_laser_pr', 'core_usage', 12.32),
 ('def_named1_longrange_large_laser_pr', 'cycle_time', 6000),
 ('def_named1_longrange_large_laser_pr', 'damage_modifier', 1.50),
 ('def_named1_longrange_large_laser_pr', 'optimal_range', 50),
@@ -205,7 +205,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named2_longrange_large_laser', 'cpu_usage', 80),
 ('def_named2_longrange_large_laser', 'powergrid_usage', 411),
-('def_named2_longrange_large_laser', 'core_usage', 23.6),
+('def_named2_longrange_large_laser', 'core_usage', 14.7),
 ('def_named2_longrange_large_laser', 'cycle_time', 6000),
 ('def_named2_longrange_large_laser', 'damage_modifier', 1.88),
 ('def_named2_longrange_large_laser', 'optimal_range', 51.5),
@@ -214,7 +214,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named2_longrange_large_laser_pr', 'cpu_usage', 80),
 ('def_named2_longrange_large_laser_pr', 'powergrid_usage', 411),
-('def_named2_longrange_large_laser_pr', 'core_usage', 23.6),
+('def_named2_longrange_large_laser_pr', 'core_usage', 14.7),
 ('def_named2_longrange_large_laser_pr', 'cycle_time', 6000),
 ('def_named2_longrange_large_laser_pr', 'damage_modifier', 1.88),
 ('def_named2_longrange_large_laser_pr', 'optimal_range', 51.5),
@@ -223,7 +223,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named3_longrange_large_laser', 'cpu_usage', 87.5),
 ('def_named3_longrange_large_laser', 'powergrid_usage', 437.5),
-('def_named3_longrange_large_laser', 'core_usage', 27),
+('def_named3_longrange_large_laser', 'core_usage', 16.8),
 ('def_named3_longrange_large_laser', 'cycle_time', 6000),
 ('def_named3_longrange_large_laser', 'damage_modifier', 1.95),
 ('def_named3_longrange_large_laser', 'optimal_range', 52.5),
@@ -232,7 +232,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named3_longrange_large_laser_pr', 'cpu_usage', 87.5),
 ('def_named3_longrange_large_laser_pr', 'powergrid_usage', 437.5),
-('def_named3_longrange_large_laser_pr', 'core_usage', 27),
+('def_named3_longrange_large_laser_pr', 'core_usage', 16.8),
 ('def_named3_longrange_large_laser_pr', 'cycle_time', 6000),
 ('def_named3_longrange_large_laser_pr', 'damage_modifier', 1.95),
 ('def_named3_longrange_large_laser_pr', 'optimal_range', 52.5),
@@ -241,7 +241,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 --
 ('def_standard_large_railgun', 'cpu_usage', 80),
 ('def_standard_large_railgun', 'powergrid_usage', 225),
-('def_standard_large_railgun', 'core_usage', 18.75),
+('def_standard_large_railgun', 'core_usage', 10.5),
 ('def_standard_large_railgun', 'cycle_time', 6000),
 ('def_standard_large_railgun', 'damage_modifier', 2.55),
 ('def_standard_large_railgun', 'optimal_range', 20),
@@ -250,7 +250,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named1_large_railgun', 'cpu_usage', 62.5),
 ('def_named1_large_railgun', 'powergrid_usage', 202.25),
-('def_named1_large_railgun', 'core_usage', 15),
+('def_named1_large_railgun', 'core_usage', 8.4),
 ('def_named1_large_railgun', 'cycle_time', 6000),
 ('def_named1_large_railgun', 'damage_modifier', 2.55),
 ('def_named1_large_railgun', 'optimal_range', 20),
@@ -259,7 +259,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named1_large_railgun_pr', 'cpu_usage', 62.5),
 ('def_named1_large_railgun_pr', 'powergrid_usage', 202.25),
-('def_named1_large_railgun_pr', 'core_usage', 15),
+('def_named1_large_railgun_pr', 'core_usage', 8.4),
 ('def_named1_large_railgun_pr', 'cycle_time', 6000),
 ('def_named1_large_railgun_pr', 'damage_modifier', 2.55),
 ('def_named1_large_railgun_pr', 'optimal_range', 20),
@@ -268,7 +268,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named2_large_railgun', 'cpu_usage', 87.5),
 ('def_named2_large_railgun', 'powergrid_usage', 247.5),
-('def_named2_large_railgun', 'core_usage', 18.75),
+('def_named2_large_railgun', 'core_usage', 10.5),
 ('def_named2_large_railgun', 'cycle_time', 6000),
 ('def_named2_large_railgun', 'damage_modifier', 3.0),
 ('def_named2_large_railgun', 'optimal_range', 21.5),
@@ -277,7 +277,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named2_large_railgun_pr', 'cpu_usage', 87.5),
 ('def_named2_large_railgun_pr', 'powergrid_usage', 247.5),
-('def_named2_large_railgun_pr', 'core_usage', 18.75),
+('def_named2_large_railgun_pr', 'core_usage', 10.5),
 ('def_named2_large_railgun_pr', 'cycle_time', 6000),
 ('def_named2_large_railgun_pr', 'damage_modifier', 3.0),
 ('def_named2_large_railgun_pr', 'optimal_range', 21.5),
@@ -286,7 +286,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named3_large_railgun', 'cpu_usage', 95),
 ('def_named3_large_railgun', 'powergrid_usage', 270),
-('def_named3_large_railgun', 'core_usage', 25),
+('def_named3_large_railgun', 'core_usage', 14),
 ('def_named3_large_railgun', 'cycle_time', 8000),
 ('def_named3_large_railgun', 'damage_modifier', 4.5),
 ('def_named3_large_railgun', 'optimal_range', 22.5),
@@ -295,7 +295,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named3_large_railgun_pr', 'cpu_usage', 95),
 ('def_named3_large_railgun_pr', 'powergrid_usage', 270),
-('def_named3_large_railgun_pr', 'core_usage', 25),
+('def_named3_large_railgun_pr', 'core_usage', 14),
 ('def_named3_large_railgun_pr', 'cycle_time', 8000),
 ('def_named3_large_railgun_pr', 'damage_modifier', 4.5),
 ('def_named3_large_railgun_pr', 'optimal_range', 22.5),
@@ -304,7 +304,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 --
 ('def_longrange_standard_large_railgun', 'cpu_usage', 100),
 ('def_longrange_standard_large_railgun', 'powergrid_usage', 277.5),
-('def_longrange_standard_large_railgun', 'core_usage', 33.75),
+('def_longrange_standard_large_railgun', 'core_usage', 18.9),
 ('def_longrange_standard_large_railgun', 'cycle_time', 10000),
 ('def_longrange_standard_large_railgun', 'damage_modifier', 3.0),
 ('def_longrange_standard_large_railgun', 'optimal_range', 44),
@@ -313,7 +313,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named1_longrange_large_railgun', 'cpu_usage', 90),
 ('def_named1_longrange_large_railgun', 'powergrid_usage', 277.5),
-('def_named1_longrange_large_railgun', 'core_usage', 31.25),
+('def_named1_longrange_large_railgun', 'core_usage', 17.5),
 ('def_named1_longrange_large_railgun', 'cycle_time', 10000),
 ('def_named1_longrange_large_railgun', 'damage_modifier', 3.0),
 ('def_named1_longrange_large_railgun', 'optimal_range', 44),
@@ -322,7 +322,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named1_longrange_large_railgun_pr', 'cpu_usage', 90),
 ('def_named1_longrange_large_railgun_pr', 'powergrid_usage', 277.5),
-('def_named1_longrange_large_railgun_pr', 'core_usage', 31.25),
+('def_named1_longrange_large_railgun_pr', 'core_usage', 17.5),
 ('def_named1_longrange_large_railgun_pr', 'cycle_time', 10000),
 ('def_named1_longrange_large_railgun_pr', 'damage_modifier', 3.0),
 ('def_named1_longrange_large_railgun_pr', 'optimal_range', 44),
@@ -331,7 +331,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named2_longrange_large_railgun', 'cpu_usage', 107.5),
 ('def_named2_longrange_large_railgun', 'powergrid_usage', 277.5),
-('def_named2_longrange_large_railgun', 'core_usage', 40),
+('def_named2_longrange_large_railgun', 'core_usage', 22.4),
 ('def_named2_longrange_large_railgun', 'cycle_time', 10000),
 ('def_named2_longrange_large_railgun', 'damage_modifier', 3.75),
 ('def_named2_longrange_large_railgun', 'optimal_range', 45),
@@ -340,7 +340,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named2_longrange_large_railgun_pr', 'cpu_usage', 107.5),
 ('def_named2_longrange_large_railgun_pr', 'powergrid_usage', 277.5),
-('def_named2_longrange_large_railgun_pr', 'core_usage', 40),
+('def_named2_longrange_large_railgun_pr', 'core_usage', 22.4),
 ('def_named2_longrange_large_railgun_pr', 'cycle_time', 10000),
 ('def_named2_longrange_large_railgun_pr', 'damage_modifier', 3.75),
 ('def_named2_longrange_large_railgun_pr', 'optimal_range', 45),
@@ -349,7 +349,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named3_longrange_large_railgun', 'cpu_usage', 112.5),
 ('def_named3_longrange_large_railgun', 'powergrid_usage', 300),
-('def_named3_longrange_large_railgun', 'core_usage', 45),
+('def_named3_longrange_large_railgun', 'core_usage', 25.2),
 ('def_named3_longrange_large_railgun', 'cycle_time', 10000),
 ('def_named3_longrange_large_railgun', 'damage_modifier', 4.05),
 ('def_named3_longrange_large_railgun', 'optimal_range', 46),
@@ -358,7 +358,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named3_longrange_large_railgun_pr', 'cpu_usage', 112.5),
 ('def_named3_longrange_large_railgun_pr', 'powergrid_usage', 300),
-('def_named3_longrange_large_railgun_pr', 'core_usage', 45),
+('def_named3_longrange_large_railgun_pr', 'core_usage', 25.2),
 ('def_named3_longrange_large_railgun_pr', 'cycle_time', 10000),
 ('def_named3_longrange_large_railgun_pr', 'damage_modifier', 4.05),
 ('def_named3_longrange_large_railgun_pr', 'optimal_range', 46),
@@ -367,28 +367,28 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 --
 ('def_standard_cruisemissile_launcher', 'cpu_usage', 100),
 ('def_standard_cruisemissile_launcher', 'powergrid_usage', 225),
-('def_standard_cruisemissile_launcher', 'core_usage', 16),
+('def_standard_cruisemissile_launcher', 'core_usage', 20),
 ('def_standard_cruisemissile_launcher', 'cycle_time', 14000),
 ('def_standard_cruisemissile_launcher', 'damage_modifier', 1.5),
 ('def_standard_cruisemissile_launcher', 'accuracy', 1),
 
 ('def_named1_cruisemissile_launcher', 'cpu_usage', 90),
 ('def_named1_cruisemissile_launcher', 'powergrid_usage', 202.5),
-('def_named1_cruisemissile_launcher', 'core_usage', 16),
+('def_named1_cruisemissile_launcher', 'core_usage', 20),
 ('def_named1_cruisemissile_launcher', 'cycle_time', 14000),
 ('def_named1_cruisemissile_launcher', 'damage_modifier', 1.5),
 ('def_named1_cruisemissile_launcher', 'accuracy', 1),
 
 ('def_named1_cruisemissile_launcher_pr', 'cpu_usage', 90),
 ('def_named1_cruisemissile_launcher_pr', 'powergrid_usage', 202.5),
-('def_named1_cruisemissile_launcher_pr', 'core_usage', 16),
+('def_named1_cruisemissile_launcher_pr', 'core_usage', 20),
 ('def_named1_cruisemissile_launcher_pr', 'cycle_time', 14000),
 ('def_named1_cruisemissile_launcher_pr', 'damage_modifier', 1.5),
 ('def_named1_cruisemissile_launcher_pr', 'accuracy', 1),
 
 ('def_named2_cruisemissile_launcher', 'cpu_usage', 105),
 ('def_named2_cruisemissile_launcher', 'powergrid_usage', 240),
-('def_named2_cruisemissile_launcher', 'core_usage', 16),
+('def_named2_cruisemissile_launcher', 'core_usage', 20),
 ('def_named2_cruisemissile_launcher', 'cycle_time', 12000),
 ('def_named2_cruisemissile_launcher', 'damage_modifier', 1.65),
 ('def_named2_cruisemissile_launcher', 'module_missile_range_modifier', 1.1),
@@ -396,7 +396,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named2_cruisemissile_launcher_pr', 'cpu_usage', 105),
 ('def_named2_cruisemissile_launcher_pr', 'powergrid_usage', 240),
-('def_named2_cruisemissile_launcher_pr', 'core_usage', 16),
+('def_named2_cruisemissile_launcher_pr', 'core_usage', 20),
 ('def_named2_cruisemissile_launcher_pr', 'cycle_time', 12000),
 ('def_named2_cruisemissile_launcher_pr', 'damage_modifier', 1.65),
 ('def_named2_cruisemissile_launcher_pr', 'module_missile_range_modifier', 1.1),
@@ -404,7 +404,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named3_cruisemissile_launcher', 'cpu_usage', 112.5),
 ('def_named3_cruisemissile_launcher', 'powergrid_usage', 255),
-('def_named3_cruisemissile_launcher', 'core_usage', 16),
+('def_named3_cruisemissile_launcher', 'core_usage', 20),
 ('def_named3_cruisemissile_launcher', 'cycle_time', 10500),
 ('def_named3_cruisemissile_launcher', 'damage_modifier', 1.8),
 ('def_named3_cruisemissile_launcher', 'module_missile_range_modifier', 1.2),
@@ -412,7 +412,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 
 ('def_named3_cruisemissile_launcher_pr', 'cpu_usage', 112.5),
 ('def_named3_cruisemissile_launcher_pr', 'powergrid_usage', 255),
-('def_named3_cruisemissile_launcher_pr', 'core_usage', 16),
+('def_named3_cruisemissile_launcher_pr', 'core_usage', 20),
 ('def_named3_cruisemissile_launcher_pr', 'cycle_time', 10500),
 ('def_named3_cruisemissile_launcher_pr', 'damage_modifier', 1.8),
 ('def_named3_cruisemissile_launcher_pr', 'module_missile_range_modifier', 1.2),
