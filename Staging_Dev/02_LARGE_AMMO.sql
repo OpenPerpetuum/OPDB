@@ -22,9 +22,11 @@ SET @missileFalloffMod = (SELECT TOP 1 id FROM aggregatefields WHERE name='missi
 IF NOT EXISTS (SELECT TOP 1 extensionid FROM extensions WHERE extensionname='ext_missile_falloff')
 BEGIN
 	PRINT N'INSERTING ext_missile_falloff';
-	INSERT INTO extensions (extensionname, category, rank, targetlearningattribute, learningattributeprimary, learningattributesecondary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit)
+	DECLARE @lastExtId int;
+	SET @lastExtId = (SELECT TOP 1 extensionid FROM extensions ORDER BY extensionid DESC);
+	INSERT INTO extensions (extensionid, extensionname, category, rank, targetlearningattribute, learningattributeprimary, learningattributesecondary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit)
 	VALUES
-	('ext_missile_falloff', 4, 4, NULL, 'attributeA', 'attributeB', 0.03, 'new falloff for missiles', 80000, 1, 'ext_missile_falloff_desc', @missileFalloffMod, 0, 0, 7);
+	(@lastExtId+1, 'ext_missile_falloff', 4, 4, NULL, 'attributeA', 'attributeB', 0.03, 'new falloff for missiles', 80000, 1, 'ext_missile_falloff_desc', @missileFalloffMod, 0, 0, 7);
 END
 
 IF NOT EXISTS (SELECT TOP 1 id FROM modulepropertymodifiers WHERE categoryflags=(SELECT TOP 1 value FROM categoryFlags WHERE name='cf_missiles')
