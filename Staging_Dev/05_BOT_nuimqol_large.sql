@@ -52,7 +52,7 @@ DECLARE @headMass int;
 DECLARE @chassisMass int;
 DECLARE @legMass int;
 SET @headMass = 3000;
-SET @chassisMass = 75000;
+SET @chassisMass = 60000;
 SET @legMass = 12000;
 
 
@@ -274,7 +274,7 @@ INSERT INTO #BOTSTATS (partDef, name, value) VALUES
 (@chassisDef, 'missile_miss', 0.9),
 (@chassisDef, 'reactor_radiation', 15),
 (@legDef, 'slope', 4),
-(@legDef, 'speed_max', 1.833);
+(@legDef, 'speed_max', 1.52777);
 
 PRINT N'DELETE BOT STATS';
 DELETE FROM aggregatevalues WHERE definition in (SELECT DISTINCT partDef FROM #BOTSTATS);
