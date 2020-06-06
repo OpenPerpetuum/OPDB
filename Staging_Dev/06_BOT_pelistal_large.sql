@@ -263,7 +263,7 @@ INSERT INTO #BOTSTATS (partDef, name, value) VALUES
 (@headDef, 'detection_strength', 55),
 (@headDef, 'stealth_strength', 55),
 (@chassisDef, 'ammo_reload_time', 15000),
-(@chassisDef, 'armor_max', 6500),
+(@chassisDef, 'armor_max', 7000),
 (@chassisDef, 'core_max', 5800),
 (@chassisDef, 'core_recharge_time', 1200),
 (@chassisDef, 'powergrid_max', 4920),
