@@ -251,7 +251,7 @@ CREATE TABLE #BOTSTATS
 
 INSERT INTO #BOTSTATS (partDef, name, value) VALUES
 (@headDef, 'cpu_max', 1512),
-(@headDef, 'locked_targets_max', 8),
+(@headDef, 'locked_targets_max', 2),
 (@headDef, 'locking_range', 48.1),
 (@headDef, 'locking_time', 15000),
 (@headDef, 'sensor_strength', 95),
