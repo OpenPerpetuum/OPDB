@@ -64,7 +64,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_fivepercent_argano','damage_modifier',0.6),
 ('def_npc_fivepercent_argano','missile_cycle_time_modifier',1.2),
 ('def_npc_fivepercent_argano','powergrid_max_modifier',2),
-('def_npc_fivepercent_argano','speed_max_modifier',0.55),
+('def_npc_fivepercent_argano','speed_max_modifier',0.6),
 ('def_npc_fivepercent_argano','turret_cycle_time_modifier',1.4),
 ('def_npc_fivepercent_argano','received_repaired_modifier',0.6),
 
@@ -78,7 +78,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_fivepercent_Laird','damage_modifier',0.6),
 ('def_npc_fivepercent_Laird','missile_cycle_time_modifier',1.2),
 ('def_npc_fivepercent_Laird','powergrid_max_modifier',2),
-('def_npc_fivepercent_Laird','speed_max_modifier',0.55),
+('def_npc_fivepercent_Laird','speed_max_modifier',0.6),
 ('def_npc_fivepercent_Laird','turret_cycle_time_modifier',1.4),
 ('def_npc_fivepercent_Laird','received_repaired_modifier',0.6),
 
@@ -92,7 +92,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_tenpercent_castel_rank1','damage_modifier',0.6),
 ('def_npc_tenpercent_castel_rank1','missile_cycle_time_modifier',1.2),
 ('def_npc_tenpercent_castel_rank1','powergrid_max_modifier',2),
-('def_npc_tenpercent_castel_rank1','speed_max_modifier',0.55),
+('def_npc_tenpercent_castel_rank1','speed_max_modifier',0.6),
 ('def_npc_tenpercent_castel_rank1','turret_cycle_time_modifier',1.4),
 ('def_npc_tenpercent_castel_rank1','received_repaired_modifier',0.6),
 
@@ -106,7 +106,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_tenpercent_yagel_rank1','damage_modifier',0.6),
 ('def_npc_tenpercent_yagel_rank1','missile_cycle_time_modifier',1.2),
 ('def_npc_tenpercent_yagel_rank1','powergrid_max_modifier',2),
-('def_npc_tenpercent_yagel_rank1','speed_max_modifier',0.55),
+('def_npc_tenpercent_yagel_rank1','speed_max_modifier',0.6),
 ('def_npc_tenpercent_yagel_rank1','turret_cycle_time_modifier',1.4),
 ('def_npc_tenpercent_yagel_rank1','received_repaired_modifier',0.6),
 
@@ -120,7 +120,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_tenpercent_prom_rank1','damage_modifier',0.6),
 ('def_npc_tenpercent_prom_rank1','missile_cycle_time_modifier',1.2),
 ('def_npc_tenpercent_prom_rank1','powergrid_max_modifier',2),
-('def_npc_tenpercent_prom_rank1','speed_max_modifier',0.55),
+('def_npc_tenpercent_prom_rank1','speed_max_modifier',0.6),
 ('def_npc_tenpercent_prom_rank1','turret_cycle_time_modifier',1.4),
 ('def_npc_tenpercent_prom_rank1','received_repaired_modifier',0.6),
 
@@ -205,7 +205,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_percent_arby_rank3','missile_cycle_time_modifier',0.9),
 ('def_npc_percent_arby_rank3','optimal_range_modifier',1.2),
 ('def_npc_percent_arby_rank3','powergrid_max_modifier',2),
-('def_npc_percent_arby_rank3','speed_max_modifier',0.65),
+('def_npc_percent_arby_rank3','speed_max_modifier',0.6),
 ('def_npc_percent_arby_rank3','turret_cycle_time_modifier',0.9),
 ('def_npc_percent_arby_rank3','received_repaired_modifier',1.1),
 
@@ -224,7 +224,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_percent_baph_rank3','missile_cycle_time_modifier',0.9),
 ('def_npc_percent_baph_rank3','optimal_range_modifier',1.2),
 ('def_npc_percent_baph_rank3','powergrid_max_modifier',2),
-('def_npc_percent_baph_rank3','speed_max_modifier',0.65),
+('def_npc_percent_baph_rank3','speed_max_modifier',0.6),
 ('def_npc_percent_baph_rank3','turret_cycle_time_modifier',0.9),
 ('def_npc_percent_baph_rank3','received_repaired_modifier',1.1),
 
@@ -243,7 +243,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_percent_wasp_rank3','missile_cycle_time_modifier',0.9),
 ('def_npc_percent_wasp_rank3','optimal_range_modifier',1.2),
 ('def_npc_percent_wasp_rank3','powergrid_max_modifier',2),
-('def_npc_percent_wasp_rank3','speed_max_modifier',0.65),
+('def_npc_percent_wasp_rank3','speed_max_modifier',0.6),
 ('def_npc_percent_wasp_rank3','turret_cycle_time_modifier',0.9),
 ('def_npc_percent_wasp_rank3','received_repaired_modifier',1.1),
 
@@ -262,7 +262,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_percent_wasp_rank4','missile_cycle_time_modifier',0.8),
 ('def_npc_percent_wasp_rank4','optimal_range_modifier',1.3),
 ('def_npc_percent_wasp_rank4','powergrid_max_modifier',2),
-('def_npc_percent_wasp_rank4','speed_max_modifier',0.7),
+('def_npc_percent_wasp_rank4','speed_max_modifier',0.6),
 ('def_npc_percent_wasp_rank4','turret_cycle_time_modifier',0.8),
 ('def_npc_percent_wasp_rank4','received_repaired_modifier',1.2),
 
@@ -281,7 +281,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_percent_baph_rank4','missile_cycle_time_modifier',0.8),
 ('def_npc_percent_baph_rank4','optimal_range_modifier',1.3),
 ('def_npc_percent_baph_rank4','powergrid_max_modifier',2),
-('def_npc_percent_baph_rank4','speed_max_modifier',0.7),
+('def_npc_percent_baph_rank4','speed_max_modifier',0.6),
 ('def_npc_percent_baph_rank4','turret_cycle_time_modifier',0.8),
 ('def_npc_percent_baph_rank4','received_repaired_modifier',1.2),
 
@@ -300,7 +300,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_percent_arby_rank4','missile_cycle_time_modifier',0.8),
 ('def_npc_percent_arby_rank4','optimal_range_modifier',1.3),
 ('def_npc_percent_arby_rank4','powergrid_max_modifier',2),
-('def_npc_percent_arby_rank4','speed_max_modifier',0.7),
+('def_npc_percent_arby_rank4','speed_max_modifier',0.6),
 ('def_npc_percent_arby_rank4','turret_cycle_time_modifier',0.8),
 ('def_npc_percent_arby_rank4','received_repaired_modifier',1.2),
 
@@ -319,7 +319,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_percent_kain_rank3','missile_cycle_time_modifier',0.9),
 ('def_npc_percent_kain_rank3','optimal_range_modifier',1.2),
 ('def_npc_percent_kain_rank3','powergrid_max_modifier',2),
-('def_npc_percent_kain_rank3','speed_max_modifier',0.75),
+('def_npc_percent_kain_rank3','speed_max_modifier',0.7),
 ('def_npc_percent_kain_rank3','turret_cycle_time_modifier',0.9),
 ('def_npc_percent_kain_rank3','received_repaired_modifier',1.1),
 
@@ -338,7 +338,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_percent_kain_rank4','missile_cycle_time_modifier',0.8),
 ('def_npc_percent_kain_rank4','optimal_range_modifier',1.3),
 ('def_npc_percent_kain_rank4','powergrid_max_modifier',2),
-('def_npc_percent_kain_rank4','speed_max_modifier',0.8),
+('def_npc_percent_kain_rank4','speed_max_modifier',0.7),
 ('def_npc_percent_kain_rank4','turret_cycle_time_modifier',0.8),
 ('def_npc_percent_kain_rank4','received_repaired_modifier',1.2),
 
@@ -357,7 +357,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_percent_kain_rank5','missile_cycle_time_modifier',0.7),
 ('def_npc_percent_kain_rank5','optimal_range_modifier',1.3),
 ('def_npc_percent_kain_rank5','powergrid_max_modifier',2),
-('def_npc_percent_kain_rank5','speed_max_modifier',0.85),
+('def_npc_percent_kain_rank5','speed_max_modifier',0.7),
 ('def_npc_percent_kain_rank5','turret_cycle_time_modifier',0.7),
 ('def_npc_percent_kain_rank5','received_repaired_modifier',1.3),
 
@@ -376,7 +376,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_percent_arty_rank5','missile_cycle_time_modifier',0.7),
 ('def_npc_percent_arty_rank5','optimal_range_modifier',1.3),
 ('def_npc_percent_arty_rank5','powergrid_max_modifier',2),
-('def_npc_percent_arty_rank5','speed_max_modifier',0.85),
+('def_npc_percent_arty_rank5','speed_max_modifier',0.7),
 ('def_npc_percent_arty_rank5','turret_cycle_time_modifier',0.7),
 ('def_npc_percent_arty_rank5','received_repaired_modifier',1.3),
 
@@ -395,7 +395,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_percent_arty_rank4','missile_cycle_time_modifier',0.8),
 ('def_npc_percent_arty_rank4','optimal_range_modifier',1.3),
 ('def_npc_percent_arty_rank4','powergrid_max_modifier',2),
-('def_npc_percent_arty_rank4','speed_max_modifier',0.8),
+('def_npc_percent_arty_rank4','speed_max_modifier',0.7),
 ('def_npc_percent_arty_rank4','turret_cycle_time_modifier',0.8),
 ('def_npc_percent_arty_rank4','received_repaired_modifier',1.2),
 
@@ -414,7 +414,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_percent_arty_rank3','missile_cycle_time_modifier',0.9),
 ('def_npc_percent_arty_rank3','optimal_range_modifier',1.2),
 ('def_npc_percent_arty_rank3','powergrid_max_modifier',2),
-('def_npc_percent_arty_rank3','speed_max_modifier',0.75),
+('def_npc_percent_arty_rank3','speed_max_modifier',0.7),
 ('def_npc_percent_arty_rank3','turret_cycle_time_modifier',0.9),
 ('def_npc_percent_arty_rank3','received_repaired_modifier',1.1),
 
@@ -433,7 +433,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_percent_tyro_rank3','missile_cycle_time_modifier',0.9),
 ('def_npc_percent_tyro_rank3','optimal_range_modifier',1.2),
 ('def_npc_percent_tyro_rank3','powergrid_max_modifier',2),
-('def_npc_percent_tyro_rank3','speed_max_modifier',0.75),
+('def_npc_percent_tyro_rank3','speed_max_modifier',0.7),
 ('def_npc_percent_tyro_rank3','turret_cycle_time_modifier',0.9),
 ('def_npc_percent_tyro_rank3','received_repaired_modifier',1.1),
 
@@ -452,7 +452,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_percent_tyro_rank4','missile_cycle_time_modifier',0.8),
 ('def_npc_percent_tyro_rank4','optimal_range_modifier',1.3),
 ('def_npc_percent_tyro_rank4','powergrid_max_modifier',2),
-('def_npc_percent_tyro_rank4','speed_max_modifier',0.8),
+('def_npc_percent_tyro_rank4','speed_max_modifier',0.7),
 ('def_npc_percent_tyro_rank4','turret_cycle_time_modifier',0.8),
 ('def_npc_percent_tyro_rank4','received_repaired_modifier',1.2),
 
@@ -471,7 +471,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_percent_tyro_rank5','missile_cycle_time_modifier',0.7),
 ('def_npc_percent_tyro_rank5','optimal_range_modifier',1.3),
 ('def_npc_percent_tyro_rank5','powergrid_max_modifier',2),
-('def_npc_percent_tyro_rank5','speed_max_modifier',0.85),
+('def_npc_percent_tyro_rank5','speed_max_modifier',0.7),
 ('def_npc_percent_tyro_rank5','turret_cycle_time_modifier',0.7),
 ('def_npc_percent_tyro_rank5','received_repaired_modifier',1.3),
 
@@ -490,7 +490,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_percent_gropho_rank5','missile_cycle_time_modifier',0.7),
 ('def_npc_percent_gropho_rank5','optimal_range_modifier',1.3),
 ('def_npc_percent_gropho_rank5','powergrid_max_modifier',2),
-('def_npc_percent_gropho_rank5','speed_max_modifier',0.95),
+('def_npc_percent_gropho_rank5','speed_max_modifier',0.9),
 ('def_npc_percent_gropho_rank5','turret_cycle_time_modifier',0.7),
 ('def_npc_percent_gropho_rank5','received_repaired_modifier',1.3),
 
@@ -547,7 +547,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_percent_seth_rank5','missile_cycle_time_modifier',0.7),
 ('def_npc_percent_seth_rank5','optimal_range_modifier',1.3),
 ('def_npc_percent_seth_rank5','powergrid_max_modifier',2),
-('def_npc_percent_seth_rank5','speed_max_modifier',0.95),
+('def_npc_percent_seth_rank5','speed_max_modifier',0.9),
 ('def_npc_percent_seth_rank5','turret_cycle_time_modifier',0.7),
 ('def_npc_percent_seth_rank5','received_repaired_modifier',1.3),
 
@@ -566,7 +566,7 @@ INSERT INTO #NPCMODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_percent_mesmer_rank5','missile_cycle_time_modifier',0.7),
 ('def_npc_percent_mesmer_rank5','optimal_range_modifier',1.3),
 ('def_npc_percent_mesmer_rank5','powergrid_max_modifier',2),
-('def_npc_percent_mesmer_rank5','speed_max_modifier',0.95),
+('def_npc_percent_mesmer_rank5','speed_max_modifier',0.9),
 ('def_npc_percent_mesmer_rank5','turret_cycle_time_modifier',0.7),
 ('def_npc_percent_mesmer_rank5','received_repaired_modifier',1.3),
 
