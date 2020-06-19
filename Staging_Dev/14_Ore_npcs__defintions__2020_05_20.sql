@@ -1122,13 +1122,13 @@ WHEN MATCHED THEN
 		mass = 0,
 		hidden = 0,
 		health = 100,
-		descriptiontoken = n.defName+'_desc',
+		descriptiontoken = 'def_npc_fluxspawn_generic_desc',
 		purchasable = 0,
 		tierlevel = 0,
 		tiertype = 0
 WHEN NOT MATCHED THEN
 	INSERT (definitionname,quantity,attributeflags,categoryflags,options,note,enabled,volume,mass,hidden,health,descriptiontoken,purchasable,tiertype,tierlevel)
-	VALUES (defName, 1, 1024, 911, '', '', 1, 0, 0, 0, 100, defName+'_desc', 0, 0, 0);
+	VALUES (defName, 1, 1024, 911, '', '', 1, 0, 0, 0, 100, 'def_npc_fluxspawn_generic_desc', 0, 0, 0);
 
 
 PRINT N'INSERT robottemplates FOR NPCS';
