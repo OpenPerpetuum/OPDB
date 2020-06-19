@@ -1,6 +1,47 @@
 USE [perpetuumsa]
 GO
 
+--New property modifier and skill for falloff
+DECLARE @missileFalloffMod int;
+
+IF NOT EXISTS (SELECT TOP 1 id FROM aggregatefields WHERE name='missile_falloff_modifier')
+BEGIN
+	PRINT N'INSERTING missile_falloff_modifier';
+	INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
+	('missile_falloff_modifier', 0, 'missile_falloff_modifier_unit', 100, -100, 6, 0, 1, 1, 'missile falloff mod');
+END
+
+IF NOT EXISTS (SELECT TOP 1 id FROM aggregatefields WHERE name='module_missile_falloff_modifier')
+BEGIN
+	PRINT N'INSERTING module_missile_falloff_modifier';
+	INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
+	('module_missile_falloff_modifier', 0, 'module_missile_falloff_modifier_unit', 100, -100, 6, 2, 1, 1, 'missile falloff mod on module');
+END
+
+SET @missileFalloffMod = (SELECT TOP 1 id FROM aggregatefields WHERE name='missile_falloff_modifier');
+IF NOT EXISTS (SELECT TOP 1 extensionid FROM extensions WHERE extensionname='ext_missile_falloff')
+BEGIN
+	PRINT N'INSERTING ext_missile_falloff';
+	DECLARE @lastExtId int;
+	SET @lastExtId = (SELECT TOP 1 extensionid FROM extensions ORDER BY extensionid DESC);
+	INSERT INTO extensions (extensionid, extensionname, category, rank, targetlearningattribute, learningattributeprimary, learningattributesecondary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit)
+	VALUES
+	(@lastExtId+1, 'ext_missile_falloff', 4, 4, NULL, 'attributeA', 'attributeB', 0.03, 'new falloff for missiles', 80000, 1, 'ext_missile_falloff_desc', @missileFalloffMod, 0, 0, 7);
+END
+
+IF NOT EXISTS (SELECT TOP 1 id FROM modulepropertymodifiers WHERE categoryflags=(SELECT TOP 1 value FROM categoryFlags WHERE name='cf_missiles')
+	AND basefield=(SELECT TOP 1 id FROM aggregatefields WHERE name='module_missile_falloff_modifier')
+	AND modifierfield=(SELECT TOP 1 id FROM aggregatefields WHERE name='missile_falloff_modifier'))
+BEGIN
+	PRINT N'INSERTING modulepropertymodifiers FOR cf_missiles module_missile_falloff_modifier missile_falloff_modifier';
+	INSERT INTO modulepropertymodifiers (categoryflags, basefield, modifierfield) VALUES
+	((SELECT TOP 1 value FROM categoryFlags WHERE name='cf_missiles'),
+	(SELECT TOP 1 id FROM aggregatefields WHERE name='module_missile_falloff_modifier'),
+	(SELECT TOP 1 id FROM aggregatefields WHERE name='missile_falloff_modifier'));
+END
+GO
+
+
 DROP TABLE IF EXISTS #AMMO
 CREATE TABLE #AMMO 
 (
@@ -35,34 +76,42 @@ INSERT INTO #AMMO (ammoName, fieldName, fieldValue) VALUES
 --
 ('def_ammo_cruisemissile_a', 'damage_kinetic', 67.5),
 ('def_ammo_cruisemissile_a', 'damage_explosive', 90),
-('def_ammo_cruisemissile_a', 'optimal_range', 20),
+('def_ammo_cruisemissile_a', 'optimal_range', 18),
+('def_ammo_cruisemissile_a', 'falloff', 3),
 ('def_ammo_cruisemissile_a', 'explosion_radius', 37.5),
 ('def_ammo_cruisemissile_b', 'damage_explosive', 90),
 ('def_ammo_cruisemissile_b', 'damage_chemical', 67.5),
-('def_ammo_cruisemissile_b', 'optimal_range', 20),
+('def_ammo_cruisemissile_b', 'optimal_range', 18),
+('def_ammo_cruisemissile_b', 'falloff', 3),
 ('def_ammo_cruisemissile_b', 'explosion_radius', 37.5),
 ('def_ammo_cruisemissile_c', 'damage_thermal', 67.5),
 ('def_ammo_cruisemissile_c', 'damage_explosive', 90),
-('def_ammo_cruisemissile_c', 'optimal_range', 20),
+('def_ammo_cruisemissile_c', 'optimal_range', 18),
+('def_ammo_cruisemissile_c', 'falloff', 3),
 ('def_ammo_cruisemissile_c', 'explosion_radius', 37.5),
 ('def_ammo_cruisemissile_d', 'damage_explosive', 180),
 ('def_ammo_cruisemissile_d', 'explosion_radius', 37.5),
-('def_ammo_cruisemissile_d', 'optimal_range', 20),
+('def_ammo_cruisemissile_d', 'optimal_range', 18),
+('def_ammo_cruisemissile_d', 'falloff', 3),
 --
 ('def_ammo_longrange_cruisemissile_a', 'damage_kinetic', 45),
 ('def_ammo_longrange_cruisemissile_a', 'damage_explosive', 60),
-('def_ammo_longrange_cruisemissile_a', 'optimal_range', 41.5),
+('def_ammo_longrange_cruisemissile_a', 'optimal_range', 35),
+('def_ammo_longrange_cruisemissile_a', 'falloff', 10),
 ('def_ammo_longrange_cruisemissile_a', 'explosion_radius', 39),
 ('def_ammo_longrange_cruisemissile_b', 'damage_explosive', 60),
 ('def_ammo_longrange_cruisemissile_b', 'damage_chemical', 45),
-('def_ammo_longrange_cruisemissile_b', 'optimal_range', 41.5),
+('def_ammo_longrange_cruisemissile_b', 'optimal_range', 35),
+('def_ammo_longrange_cruisemissile_b', 'falloff', 10),
 ('def_ammo_longrange_cruisemissile_b', 'explosion_radius', 39),
 ('def_ammo_longrange_cruisemissile_c', 'damage_thermal', 45),
 ('def_ammo_longrange_cruisemissile_c', 'damage_explosive', 60),
-('def_ammo_longrange_cruisemissile_c', 'optimal_range', 41.5),
+('def_ammo_longrange_cruisemissile_c', 'optimal_range', 35),
+('def_ammo_longrange_cruisemissile_c', 'falloff', 10),
 ('def_ammo_longrange_cruisemissile_c', 'explosion_radius', 39),
 ('def_ammo_longrange_cruisemissile_d', 'damage_explosive', 120),
-('def_ammo_longrange_cruisemissile_d', 'optimal_range', 41.5),
+('def_ammo_longrange_cruisemissile_d', 'optimal_range', 35),
+('def_ammo_longrange_cruisemissile_d', 'falloff', 10),
 ('def_ammo_longrange_cruisemissile_d', 'explosion_radius', 39);
 
 

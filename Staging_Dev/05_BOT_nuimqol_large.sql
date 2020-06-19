@@ -52,7 +52,7 @@ DECLARE @headMass int;
 DECLARE @chassisMass int;
 DECLARE @legMass int;
 SET @headMass = 3000;
-SET @chassisMass = 75000;
+SET @chassisMass = 60000;
 SET @legMass = 12000;
 
 
@@ -251,8 +251,8 @@ CREATE TABLE #BOTSTATS
 
 INSERT INTO #BOTSTATS (partDef, name, value) VALUES
 (@headDef, 'cpu_max', 1750),
-(@headDef, 'locked_targets_max', 8),
-(@headDef, 'locking_range', 42.9),
+(@headDef, 'locked_targets_max', 2),
+(@headDef, 'locking_range', 36),
 (@headDef, 'locking_time', 15000),
 (@headDef, 'sensor_strength', 95),
 (@headDef, 'blob_emission', 25),
@@ -262,7 +262,7 @@ INSERT INTO #BOTSTATS (partDef, name, value) VALUES
 (@headDef, 'detection_strength', 55),
 (@headDef, 'stealth_strength', 55),
 (@chassisDef, 'ammo_reload_time', 15000),
-(@chassisDef, 'armor_max', 6000),
+(@chassisDef, 'armor_max', 6300),
 (@chassisDef, 'core_max', 5900),
 (@chassisDef, 'core_recharge_time', 1200),
 (@chassisDef, 'powergrid_max', 5160),
@@ -274,7 +274,7 @@ INSERT INTO #BOTSTATS (partDef, name, value) VALUES
 (@chassisDef, 'missile_miss', 0.9),
 (@chassisDef, 'reactor_radiation', 15),
 (@legDef, 'slope', 4),
-(@legDef, 'speed_max', 1.833);
+(@legDef, 'speed_max', 1.52777);
 
 PRINT N'DELETE BOT STATS';
 DELETE FROM aggregatevalues WHERE definition in (SELECT DISTINCT partDef FROM #BOTSTATS);

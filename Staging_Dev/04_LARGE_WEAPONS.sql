@@ -369,28 +369,28 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 ('def_standard_cruisemissile_launcher', 'powergrid_usage', 225),
 ('def_standard_cruisemissile_launcher', 'core_usage', 20),
 ('def_standard_cruisemissile_launcher', 'cycle_time', 14000),
-('def_standard_cruisemissile_launcher', 'damage_modifier', 1.5),
+('def_standard_cruisemissile_launcher', 'damage_modifier', 1.3),
 ('def_standard_cruisemissile_launcher', 'accuracy', 1),
 
 ('def_named1_cruisemissile_launcher', 'cpu_usage', 90),
 ('def_named1_cruisemissile_launcher', 'powergrid_usage', 202.5),
 ('def_named1_cruisemissile_launcher', 'core_usage', 20),
 ('def_named1_cruisemissile_launcher', 'cycle_time', 14000),
-('def_named1_cruisemissile_launcher', 'damage_modifier', 1.5),
+('def_named1_cruisemissile_launcher', 'damage_modifier', 1.3),
 ('def_named1_cruisemissile_launcher', 'accuracy', 1),
 
 ('def_named1_cruisemissile_launcher_pr', 'cpu_usage', 90),
 ('def_named1_cruisemissile_launcher_pr', 'powergrid_usage', 202.5),
 ('def_named1_cruisemissile_launcher_pr', 'core_usage', 20),
 ('def_named1_cruisemissile_launcher_pr', 'cycle_time', 14000),
-('def_named1_cruisemissile_launcher_pr', 'damage_modifier', 1.5),
+('def_named1_cruisemissile_launcher_pr', 'damage_modifier', 1.3),
 ('def_named1_cruisemissile_launcher_pr', 'accuracy', 1),
 
 ('def_named2_cruisemissile_launcher', 'cpu_usage', 105),
 ('def_named2_cruisemissile_launcher', 'powergrid_usage', 240),
 ('def_named2_cruisemissile_launcher', 'core_usage', 20),
 ('def_named2_cruisemissile_launcher', 'cycle_time', 12000),
-('def_named2_cruisemissile_launcher', 'damage_modifier', 1.65),
+('def_named2_cruisemissile_launcher', 'damage_modifier', 1.4),
 ('def_named2_cruisemissile_launcher', 'module_missile_range_modifier', 1.1),
 ('def_named2_cruisemissile_launcher', 'accuracy', 1),
 
@@ -398,7 +398,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 ('def_named2_cruisemissile_launcher_pr', 'powergrid_usage', 240),
 ('def_named2_cruisemissile_launcher_pr', 'core_usage', 20),
 ('def_named2_cruisemissile_launcher_pr', 'cycle_time', 12000),
-('def_named2_cruisemissile_launcher_pr', 'damage_modifier', 1.65),
+('def_named2_cruisemissile_launcher_pr', 'damage_modifier', 1.4),
 ('def_named2_cruisemissile_launcher_pr', 'module_missile_range_modifier', 1.1),
 ('def_named2_cruisemissile_launcher_pr', 'accuracy', 1),
 
@@ -406,7 +406,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 ('def_named3_cruisemissile_launcher', 'powergrid_usage', 255),
 ('def_named3_cruisemissile_launcher', 'core_usage', 20),
 ('def_named3_cruisemissile_launcher', 'cycle_time', 10500),
-('def_named3_cruisemissile_launcher', 'damage_modifier', 1.8),
+('def_named3_cruisemissile_launcher', 'damage_modifier', 1.5),
 ('def_named3_cruisemissile_launcher', 'module_missile_range_modifier', 1.2),
 ('def_named3_cruisemissile_launcher', 'accuracy', 1),
 
@@ -414,7 +414,7 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 ('def_named3_cruisemissile_launcher_pr', 'powergrid_usage', 255),
 ('def_named3_cruisemissile_launcher_pr', 'core_usage', 20),
 ('def_named3_cruisemissile_launcher_pr', 'cycle_time', 10500),
-('def_named3_cruisemissile_launcher_pr', 'damage_modifier', 1.8),
+('def_named3_cruisemissile_launcher_pr', 'damage_modifier', 1.5),
 ('def_named3_cruisemissile_launcher_pr', 'module_missile_range_modifier', 1.2),
 ('def_named3_cruisemissile_launcher_pr', 'accuracy', 1);
 
