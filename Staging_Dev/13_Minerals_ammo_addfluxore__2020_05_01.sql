@@ -9,8 +9,9 @@ GO
 --Insert scanner ammos
 --Insert mining ammo
 --Insert production and research for mining ammo
+--2nd script to insert market orders for scanner ammos
 --
---Last modified: 2020/05/11
+--Last modified: 2020/06/21
 ------------------------------------------------------------------
 
 
@@ -384,3 +385,51 @@ SELECT
 FROM #AMMO_COMPS;
 DROP TABLE IF EXISTS #AMMO_COMPS;
 GO
+
+
+
+USE [perpetuumsa]
+GO
+
+------------------------------------
+--Flux ore scanner ammo NPC Market inf orders
+--
+--Date: 2020/06/21
+------------------------------------
+
+DECLARE @flux_directional INT;
+DECLARE @flux_tile INT;
+DECLARE @vendorid BIGINT;
+DECLARE @sellprice FLOAT;
+
+SET @sellprice = 45;
+
+SET @flux_directional = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_ammo_mining_probe_fluxore_direction');
+SET @flux_tile = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_ammo_mining_probe_fluxore_tile');
+
+--Should be empty on first run
+SELECT * FROM marketitems WHERE itemdefinition in (@flux_directional, @flux_tile) AND isvendoritem=1 AND quantity=-1;
+DELETE FROM marketitems WHERE itemdefinition in (@flux_directional, @flux_tile) AND isvendoritem=1 AND quantity=-1;
+
+
+--Declare cursor for vendors that also sell epri scanner charges
+DECLARE vendorCursor CURSOR
+FOR SELECT submittereid FROM marketitems WHERE
+	price=45 AND isvendoritem=1 AND
+	itemdefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_ammo_mining_probe_epriton_direction');
+
+OPEN vendorCursor;
+FETCH NEXT FROM vendorCursor INTO @vendorid;
+
+WHILE @@FETCH_STATUS = 0
+    BEGIN
+		EXEC dbo.addVendorSellItem @vendorid, @flux_directional, @sellprice, 0;
+		EXEC dbo.addVendorSellItem @vendorid, @flux_tile, @sellprice, 0;
+		FETCH NEXT FROM vendorCursor INTO @vendorid;
+    END;
+
+CLOSE vendorCursor;
+DEALLOCATE vendorCursor;
+
+GO
+
