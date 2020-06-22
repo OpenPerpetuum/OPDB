@@ -45,22 +45,27 @@ INSERT INTO #LARGEWEP (defName, attrFlags, catFlags, cargoVolume, massOfModule, 
 ('def_named2_longrange_large_railgun', 402128, 50595599, 1.5, 1300, 1, 3, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a #tier=$tierlevel_t3'),
 ('def_named3_longrange_large_railgun', 402128, 50595599, 1.5, 1430, 1, 4, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a #tier=$tierlevel_t4'),
 --PROTOTYPES
+('def_standard_large_laser_pr', 402128, 50398991, 1.5, 1000, 2, 1, '#moduleFlag=i111 #ammoCapacity=i3c #ammoType=L3020a #tier=$tierlevel_pr'),
 ('def_named1_large_laser_pr', 402128, 50398991, 1.5, 900, 2, 2, '#moduleFlag=i111 #ammoCapacity=i4b #ammoType=L3020a #tier=$tierlevel_t2_pr'),
 ('def_named2_large_laser_pr', 402128, 50398991, 1.5, 1000, 2, 3, '#moduleFlag=i111 #ammoCapacity=i4b #ammoType=L3020a #tier=$tierlevel_t3_pr'),
 ('def_named3_large_laser_pr', 402128, 50398991, 1.5, 1100, 2, 4, '#moduleFlag=i111 #ammoCapacity=i2d #ammoType=L3020a #tier=$tierlevel_t4_pr'),
 --
+('def_longrange_standard_large_laser_pr', 402128, 50398991, 1.5, 1300, 2, 1, '#moduleFlag=i111 #ammoCapacity=i3c #ammoType=L3020a #tier=$tierlevel_pr'),
 ('def_named1_longrange_large_laser_pr', 402128, 50398991, 1.5, 1170, 2, 2, '#moduleFlag=i111 #ammoCapacity=i3c #ammoType=L3020a #tier=$tierlevel_t2_pr'),
 ('def_named2_longrange_large_laser_pr', 402128, 50398991, 1.5, 1300, 2, 3, '#moduleFlag=i111 #ammoCapacity=i3c #ammoType=L3020a #tier=$tierlevel_t3_pr'),
 ('def_named3_longrange_large_laser_pr', 402128, 50398991, 1.5, 1430, 2, 4, '#moduleFlag=i111 #ammoCapacity=i3c #ammoType=L3020a #tier=$tierlevel_t4_pr'),
 --
+('def_standard_cruisemissile_launcher_pr', 402128, 50530063, 1.5, 1000, 2, 1, '#moduleFlag=i112 #ammoCapacity=i14 #ammoType=L3040a #tier=$tierlevel_pr'),
 ('def_named1_cruisemissile_launcher_pr', 402128, 50530063, 1.5, 900, 2, 2, '#moduleFlag=i112 #ammoCapacity=i14 #ammoType=L3040a #tier=$tierlevel_t2_pr'),
 ('def_named2_cruisemissile_launcher_pr', 402128, 50530063, 1.5, 1000, 2, 3, '#moduleFlag=i112 #ammoCapacity=i14 #ammoType=L3040a #tier=$tierlevel_t3_pr'),
 ('def_named3_cruisemissile_launcher_pr', 402128, 50530063, 1.5, 1100, 2, 4, '#moduleFlag=i112 #ammoCapacity=i14 #ammoType=L3040a #tier=$tierlevel_t4_pr'),
 --
+('def_standard_large_railgun_pr', 402128, 50595599, 1.5, 1000, 2, 1, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a #tier=$tierlevel_pr'),
 ('def_named1_large_railgun_pr', 402128, 50595599, 1.5, 900, 2, 2, '#moduleFlag=i111 #ammoCapacity=i1e #ammoType=L3010a #tier=$tierlevel_t2_pr'),
 ('def_named2_large_railgun_pr', 402128, 50595599, 1.5, 1000, 2, 3, '#moduleFlag=i111 #ammoCapacity=i1e #ammoType=L3010a #tier=$tierlevel_t3_pr'),
 ('def_named3_large_railgun_pr', 402128, 50595599, 1.5, 1100, 2, 4, '#moduleFlag=i111 #ammoCapacity=i14 #ammoType=L3010a #tier=$tierlevel_t4_pr'),
 --
+('def_longrange_standard_large_railgun_pr', 402128, 50595599, 1.5, 1300, 2, 1, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a #tier=$tierlevel_pr'),
 ('def_named1_longrange_large_railgun_pr', 402128, 50595599, 1.5, 1170, 2, 2, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a #tier=$tierlevel_t2_pr'),
 ('def_named2_longrange_large_railgun_pr', 402128, 50595599, 1.5, 1300, 2, 3, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a #tier=$tierlevel_t3_pr'),
 ('def_named3_longrange_large_railgun_pr', 402128, 50595599, 1.5, 1430, 2, 4, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a #tier=$tierlevel_t4_pr');
@@ -121,6 +126,15 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 ('def_standard_large_laser', 'optimal_range', 22.5),
 ('def_standard_large_laser', 'falloff', 10),
 ('def_standard_large_laser', 'accuracy', 34.5),
+
+('def_standard_large_laser_pr', 'cpu_usage', 62.5),
+('def_standard_large_laser_pr', 'powergrid_usage', 350),
+('def_standard_large_laser_pr', 'core_usage', 11.76),
+('def_standard_large_laser_pr', 'cycle_time', 5000),
+('def_standard_large_laser_pr', 'damage_modifier', 1.91),
+('def_standard_large_laser_pr', 'optimal_range', 22.5),
+('def_standard_large_laser_pr', 'falloff', 10),
+('def_standard_large_laser_pr', 'accuracy', 34.5),
 
 ('def_named1_large_laser', 'cpu_usage', 55),
 ('def_named1_large_laser', 'powergrid_usage', 315),
@@ -185,6 +199,15 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 ('def_longrange_standard_large_laser', 'falloff', 25),
 ('def_longrange_standard_large_laser', 'accuracy', 36),
 
+('def_longrange_standard_large_laser_pr', 'cpu_usage', 75),
+('def_longrange_standard_large_laser_pr', 'powergrid_usage', 402.5),
+('def_longrange_standard_large_laser_pr', 'core_usage', 14),
+('def_longrange_standard_large_laser_pr', 'cycle_time', 6000),
+('def_longrange_standard_large_laser_pr', 'damage_modifier', 1.50),
+('def_longrange_standard_large_laser_pr', 'optimal_range', 50),
+('def_longrange_standard_large_laser_pr', 'falloff', 25),
+('def_longrange_standard_large_laser_pr', 'accuracy', 36),
+
 ('def_named1_longrange_large_laser', 'cpu_usage', 67.5),
 ('def_named1_longrange_large_laser', 'powergrid_usage', 367.5),
 ('def_named1_longrange_large_laser', 'core_usage', 12.32),
@@ -247,6 +270,15 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 ('def_standard_large_railgun', 'optimal_range', 20),
 ('def_standard_large_railgun', 'falloff', 7.5),
 ('def_standard_large_railgun', 'accuracy', 40.5),
+
+('def_standard_large_railgun_pr', 'cpu_usage', 80),
+('def_standard_large_railgun_pr', 'powergrid_usage', 225),
+('def_standard_large_railgun_pr', 'core_usage', 10.5),
+('def_standard_large_railgun_pr', 'cycle_time', 6000),
+('def_standard_large_railgun_pr', 'damage_modifier', 2.55),
+('def_standard_large_railgun_pr', 'optimal_range', 20),
+('def_standard_large_railgun_pr', 'falloff', 7.5),
+('def_standard_large_railgun_pr', 'accuracy', 40.5),
 
 ('def_named1_large_railgun', 'cpu_usage', 62.5),
 ('def_named1_large_railgun', 'powergrid_usage', 202.25),
@@ -311,6 +343,15 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 ('def_longrange_standard_large_railgun', 'falloff', 22.5),
 ('def_longrange_standard_large_railgun', 'accuracy', 42),
 
+('def_longrange_standard_large_railgun_pr', 'cpu_usage', 100),
+('def_longrange_standard_large_railgun_pr', 'powergrid_usage', 277.5),
+('def_longrange_standard_large_railgun_pr', 'core_usage', 18.9),
+('def_longrange_standard_large_railgun_pr', 'cycle_time', 10000),
+('def_longrange_standard_large_railgun_pr', 'damage_modifier', 3.0),
+('def_longrange_standard_large_railgun_pr', 'optimal_range', 44),
+('def_longrange_standard_large_railgun_pr', 'falloff', 22.5),
+('def_longrange_standard_large_railgun_pr', 'accuracy', 42),
+
 ('def_named1_longrange_large_railgun', 'cpu_usage', 90),
 ('def_named1_longrange_large_railgun', 'powergrid_usage', 277.5),
 ('def_named1_longrange_large_railgun', 'core_usage', 17.5),
@@ -371,6 +412,13 @@ INSERT INTO #WEPSTATS (defName, fieldName, fieldValue) VALUES
 ('def_standard_cruisemissile_launcher', 'cycle_time', 14000),
 ('def_standard_cruisemissile_launcher', 'damage_modifier', 1.3),
 ('def_standard_cruisemissile_launcher', 'accuracy', 1),
+
+('def_standard_cruisemissile_launcher_pr', 'cpu_usage', 100),
+('def_standard_cruisemissile_launcher_pr', 'powergrid_usage', 225),
+('def_standard_cruisemissile_launcher_pr', 'core_usage', 20),
+('def_standard_cruisemissile_launcher_pr', 'cycle_time', 14000),
+('def_standard_cruisemissile_launcher_pr', 'damage_modifier', 1.3),
+('def_standard_cruisemissile_launcher_pr', 'accuracy', 1),
 
 ('def_named1_cruisemissile_launcher', 'cpu_usage', 90),
 ('def_named1_cruisemissile_launcher', 'powergrid_usage', 202.5),
@@ -523,22 +571,27 @@ CREATE TABLE #PROTOPAIRS
 );
 
 INSERT INTO #PROTOPAIRS (defName, protoDefName) VALUES
+('def_standard_large_laser','def_standard_large_laser_pr'),
 ('def_named1_large_laser','def_named1_large_laser_pr'),
 ('def_named2_large_laser','def_named2_large_laser_pr'),
 ('def_named3_large_laser','def_named3_large_laser_pr'),
 --
+('def_longrange_standard_large_laser','def_longrange_standard_large_laser_pr'),
 ('def_named1_longrange_large_laser','def_named1_longrange_large_laser_pr'),
 ('def_named2_longrange_large_laser','def_named2_longrange_large_laser_pr'),
 ('def_named3_longrange_large_laser','def_named3_longrange_large_laser_pr'),
 --
+('def_standard_cruisemissile_launcher','def_standard_cruisemissile_launcher_pr'),
 ('def_named1_cruisemissile_launcher','def_named1_cruisemissile_launcher_pr'),
 ('def_named2_cruisemissile_launcher','def_named2_cruisemissile_launcher_pr'),
 ('def_named3_cruisemissile_launcher','def_named3_cruisemissile_launcher_pr'),
 --
+('def_standard_large_railgun','def_standard_large_railgun_pr'),
 ('def_named1_large_railgun','def_named1_large_railgun_pr'),
 ('def_named2_large_railgun','def_named2_large_railgun_pr'),
 ('def_named3_large_railgun','def_named3_large_railgun_pr'),
 --
+('def_longrange_standard_large_railgun','def_longrange_standard_large_railgun_pr'),
 ('def_named1_longrange_large_railgun','def_named1_longrange_large_railgun_pr'),
 ('def_named2_longrange_large_railgun','def_named2_longrange_large_railgun_pr'),
 ('def_named3_longrange_large_railgun','def_named3_longrange_large_railgun_pr');
@@ -572,6 +625,11 @@ INSERT INTO #WEPCOMPONENTS (defName, commodityName, amount) VALUES
 ('def_standard_large_laser', 'def_axicoline', 150),
 ('def_standard_large_laser', 'def_polynucleit', 150),
 ('def_standard_large_laser', 'def_specimen_sap_item_flux', 10),
+
+('def_standard_large_laser_pr', 'def_titanium', 150),
+('def_standard_large_laser_pr', 'def_axicoline', 150),
+('def_standard_large_laser_pr', 'def_polynucleit', 150),
+('def_standard_large_laser_pr', 'def_specimen_sap_item_flux', 10),
 
 ('def_named1_large_laser', 'def_standard_large_laser', 1),
 ('def_named1_large_laser', 'def_robotshard_common_basic', 45),
@@ -639,6 +697,13 @@ INSERT INTO #WEPCOMPONENTS (defName, commodityName, amount) VALUES
 ('def_longrange_standard_large_laser', 'def_axicol', 75),
 ('def_longrange_standard_large_laser', 'def_prilumium', 75),
 ('def_longrange_standard_large_laser', 'def_specimen_sap_item_flux', 10),
+
+('def_longrange_standard_large_laser_pr', 'def_titanium', 150),
+('def_longrange_standard_large_laser_pr', 'def_axicoline', 150),
+('def_longrange_standard_large_laser_pr', 'def_polynucleit', 150),
+('def_longrange_standard_large_laser_pr', 'def_axicol', 75),
+('def_longrange_standard_large_laser_pr', 'def_prilumium', 75),
+('def_longrange_standard_large_laser_pr', 'def_specimen_sap_item_flux', 10),
 
 ('def_named1_longrange_large_laser', 'def_longrange_standard_large_laser', 1),
 ('def_named1_longrange_large_laser', 'def_robotshard_common_basic', 45),
@@ -717,6 +782,11 @@ INSERT INTO #WEPCOMPONENTS (defName, commodityName, amount) VALUES
 ('def_standard_large_railgun', 'def_polynitrocol', 150),
 ('def_standard_large_railgun', 'def_specimen_sap_item_flux', 10),
 
+('def_standard_large_railgun_pr', 'def_titanium', 150),
+('def_standard_large_railgun_pr', 'def_axicoline', 150),
+('def_standard_large_railgun_pr', 'def_polynitrocol', 150),
+('def_standard_large_railgun_pr', 'def_specimen_sap_item_flux', 10),
+
 ('def_named1_large_railgun', 'def_standard_large_railgun', 1),
 ('def_named1_large_railgun', 'def_robotshard_common_basic', 45),
 ('def_named1_large_railgun', 'def_robotshard_nuimqol_basic', 45),
@@ -783,6 +853,13 @@ INSERT INTO #WEPCOMPONENTS (defName, commodityName, amount) VALUES
 ('def_longrange_standard_large_railgun', 'def_axicol', 75),
 ('def_longrange_standard_large_railgun', 'def_chollonin', 75),
 ('def_longrange_standard_large_railgun', 'def_specimen_sap_item_flux', 10),
+
+('def_longrange_standard_large_railgun_pr', 'def_titanium', 150),
+('def_longrange_standard_large_railgun_pr', 'def_axicoline', 150),
+('def_longrange_standard_large_railgun_pr', 'def_polynitrocol', 150),
+('def_longrange_standard_large_railgun_pr', 'def_axicol', 75),
+('def_longrange_standard_large_railgun_pr', 'def_chollonin', 75),
+('def_longrange_standard_large_railgun_pr', 'def_specimen_sap_item_flux', 10),
 
 ('def_named1_longrange_large_railgun', 'def_longrange_standard_large_railgun', 1),
 ('def_named1_longrange_large_railgun', 'def_robotshard_common_basic', 45),
@@ -860,6 +937,11 @@ INSERT INTO #WEPCOMPONENTS (defName, commodityName, amount) VALUES
 ('def_standard_cruisemissile_launcher', 'def_axicoline', 150),
 ('def_standard_cruisemissile_launcher', 'def_phlobotil', 150),
 ('def_standard_cruisemissile_launcher', 'def_specimen_sap_item_flux', 10),
+
+('def_standard_cruisemissile_launcher_pr', 'def_titanium', 150),
+('def_standard_cruisemissile_launcher_pr', 'def_axicoline', 150),
+('def_standard_cruisemissile_launcher_pr', 'def_phlobotil', 150),
+('def_standard_cruisemissile_launcher_pr', 'def_specimen_sap_item_flux', 10),
 
 ('def_named1_cruisemissile_launcher', 'def_standard_cruisemissile_launcher', 1),
 ('def_named1_cruisemissile_launcher', 'def_robotshard_common_basic', 45),
@@ -1018,27 +1100,27 @@ CREATE TABLE #PROTO_TO_CT
 );
 
 INSERT INTO #PROTO_TO_CT (protoDefName, ctDefName, level) VALUES
-('def_standard_large_laser', 'def_standard_large_laser_cprg', 5),
+('def_standard_large_laser_pr', 'def_standard_large_laser_cprg', 5),
 ('def_named1_large_laser_pr', 'def_named1_large_laser_cprg', 6),
 ('def_named2_large_laser_pr', 'def_named2_large_laser_cprg', 7),
 ('def_named3_large_laser_pr', 'def_named3_large_laser_cprg', 8),
 --
-('def_longrange_standard_large_laser', 'def_longrange_standard_large_laser_cprg', 5),
+('def_longrange_standard_large_laser_pr', 'def_longrange_standard_large_laser_cprg', 5),
 ('def_named1_longrange_large_laser_pr', 'def_named1_longrange_large_laser_cprg', 6),
 ('def_named2_longrange_large_laser_pr', 'def_named2_longrange_large_laser_cprg', 7),
 ('def_named3_longrange_large_laser_pr', 'def_named3_longrange_large_laser_cprg', 8),
 --
-('def_standard_cruisemissile_launcher', 'def_standard_cruisemissile_launcher_cprg', 5),
+('def_standard_cruisemissile_launcher_pr', 'def_standard_cruisemissile_launcher_cprg', 5),
 ('def_named1_cruisemissile_launcher_pr', 'def_named1_cruisemissile_launcher_cprg', 6),
 ('def_named2_cruisemissile_launcher_pr', 'def_named2_cruisemissile_launcher_cprg', 7),
 ('def_named3_cruisemissile_launcher_pr', 'def_named3_cruisemissile_launcher_cprg', 8),
 --
-('def_standard_large_railgun', 'def_standard_large_railgun_cprg', 5),
+('def_standard_large_railgun_pr', 'def_standard_large_railgun_cprg', 5),
 ('def_named1_large_railgun_pr', 'def_named1_large_railgun_cprg', 6),
 ('def_named2_large_railgun_pr', 'def_named2_large_railgun_cprg', 7),
 ('def_named3_large_railgun_pr', 'def_named3_large_railgun_cprg', 8),
 --
-('def_longrange_standard_large_railgun', 'def_longrange_standard_large_railgun_cprg', 5),
+('def_longrange_standard_large_railgun_pr', 'def_longrange_standard_large_railgun_cprg', 5),
 ('def_named1_longrange_large_railgun_pr', 'def_named1_longrange_large_railgun_cprg', 6),
 ('def_named2_longrange_large_railgun_pr', 'def_named2_longrange_large_railgun_cprg', 7),
 ('def_named3_longrange_large_railgun_pr', 'def_named3_longrange_large_railgun_cprg', 8);

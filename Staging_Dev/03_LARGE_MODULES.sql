@@ -40,22 +40,27 @@ INSERT INTO #LARGEMODS (defName, attrFlags, catFlags, cargoVolume, massOfModule,
 ('def_named2_large_core_booster', 409620, 50922255, 2, 1600, 1, 3, '#moduleFlag=i20 #ammoCapacity=ia #ammoType=L70a #tier=$tierlevel_t3'),
 ('def_named3_large_core_booster', 409620, 50922255, 2, 1600, 1, 4, '#moduleFlag=i20 #ammoCapacity=ic #ammoType=L70a #tier=$tierlevel_t4'),
 --PROTOTYPES
+('def_standard_large_armor_plate_pr', 655360, 50397455, 4, 9000, 2, 1, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t1_pr'),
 ('def_named1_large_armor_plate_pr', 655360, 50397455, 4, 7200, 2, 2, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t2_pr'),
 ('def_named2_large_armor_plate_pr', 655360, 50397455, 4, 9000, 2, 3, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t3_pr'),
 ('def_named3_large_armor_plate_pr', 655360, 50397455, 4, 10050, 2, 4, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t4_pr'),
 --
+('def_standard_large_armor_repairer_pr', 147472, 50462991, 3, 1500, 2, 1, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t1_pr'),
 ('def_named1_large_armor_repairer_pr', 147472, 50462991, 3, 1350, 2, 2, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t2_pr'),
 ('def_named2_large_armor_repairer_pr', 147472, 50462991, 3, 1500, 2, 3, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t3_pr'),
 ('def_named3_large_armor_repairer_pr', 147472, 50462991, 3, 1600, 2, 4, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t4_pr'),
 --
+('def_standard_large_shield_generator_pr', 147736, 50397711, 1, 800, 2, 1, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t1_pr'),
 ('def_named1_large_shield_generator_pr', 147736, 50397711, 1, 720, 2, 2, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t2_pr'),
 ('def_named2_large_shield_generator_pr', 147736, 50397711, 1, 880, 2, 3, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t3_pr'),
 ('def_named3_large_shield_generator_pr', 147736, 50397711, 1, 940, 2, 4, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t4_pr'),
 --
+('def_standard_large_core_battery_pr', 655364, 50856719, 3, 3000, 2, 1, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t1_pr'),
 ('def_named1_large_core_battery_pr', 655364, 50856719, 3, 2700, 2, 2, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t2_pr'),
 ('def_named2_large_core_battery_pr', 655364, 50856719, 3, 3000, 2, 3, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t3_pr'),
 ('def_named3_large_core_battery_pr', 655364, 50856719, 3, 3000, 2, 4, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t4_pr'),
 --
+('def_standard_large_core_booster_pr', 409620, 50922255, 2, 1600, 2, 1, '#moduleFlag=i20 #ammoCapacity=ia #ammoType=L70a #tier=$tierlevel_t1_pr'),
 ('def_named1_large_core_booster_pr', 409620, 50922255, 2, 1440, 2, 2, '#moduleFlag=i20 #ammoCapacity=ia #ammoType=L70a #tier=$tierlevel_t2_pr'),
 ('def_named2_large_core_booster_pr', 409620, 50922255, 2, 1600, 2, 3, '#moduleFlag=i20 #ammoCapacity=ia #ammoType=L70a #tier=$tierlevel_t3_pr'),
 ('def_named3_large_core_booster_pr', 409620, 50922255, 2, 1600, 2, 4, '#moduleFlag=i20 #ammoCapacity=ic #ammoType=L70a #tier=$tierlevel_t4_pr');
@@ -73,6 +78,12 @@ INSERT INTO #MODSTATS (defName, fieldName, fieldValue) VALUES
 ('def_standard_large_armor_plate', 'armor_max', 4050),
 ('def_standard_large_armor_plate', 'signature_radius', 3),
 ('def_standard_large_armor_plate', 'massiveness', 0.144),
+
+('def_standard_large_armor_plate_pr', 'cpu_usage', 60),
+('def_standard_large_armor_plate_pr', 'powergrid_usage', 1050),
+('def_standard_large_armor_plate_pr', 'armor_max', 4050),
+('def_standard_large_armor_plate_pr', 'signature_radius', 3),
+('def_standard_large_armor_plate_pr', 'massiveness', 0.144),
 --
 ('def_named1_large_armor_plate', 'cpu_usage', 60),
 ('def_named1_large_armor_plate', 'powergrid_usage', 840),
@@ -115,6 +126,12 @@ INSERT INTO #MODSTATS (defName, fieldName, fieldValue) VALUES
 ('def_standard_large_armor_repairer', 'armor_repair_amount', 360),
 ('def_standard_large_armor_repairer', 'core_usage', 495),
 ('def_standard_large_armor_repairer', 'cycle_time', 15000),
+
+('def_standard_large_armor_repairer_pr', 'cpu_usage', 400),
+('def_standard_large_armor_repairer_pr', 'powergrid_usage', 1000),
+('def_standard_large_armor_repairer_pr', 'armor_repair_amount', 360),
+('def_standard_large_armor_repairer_pr', 'core_usage', 495),
+('def_standard_large_armor_repairer_pr', 'cycle_time', 15000),
 --
 ('def_named1_large_armor_repairer', 'cpu_usage', 360),
 ('def_named1_large_armor_repairer', 'powergrid_usage', 900),
@@ -158,6 +175,13 @@ INSERT INTO #MODSTATS (defName, fieldName, fieldValue) VALUES
 ('def_standard_large_shield_generator', 'shield_absorbtion', 1.9048),
 ('def_standard_large_shield_generator', 'shield_radius', 30),
 ('def_standard_large_shield_generator', 'cycle_time', 10000),
+
+('def_standard_large_shield_generator_pr', 'cpu_usage', 325),
+('def_standard_large_shield_generator_pr', 'powergrid_usage', 1250),
+('def_standard_large_shield_generator_pr', 'core_usage', 30),
+('def_standard_large_shield_generator_pr', 'shield_absorbtion', 1.9048),
+('def_standard_large_shield_generator_pr', 'shield_radius', 30),
+('def_standard_large_shield_generator_pr', 'cycle_time', 10000),
 --
 ('def_named1_large_shield_generator', 'cpu_usage', 300),
 ('def_named1_large_shield_generator', 'powergrid_usage', 1125),
@@ -204,6 +228,10 @@ INSERT INTO #MODSTATS (defName, fieldName, fieldValue) VALUES
 ('def_standard_large_core_battery', 'cpu_usage', 400),
 ('def_standard_large_core_battery', 'powergrid_usage', 840),
 ('def_standard_large_core_battery', 'core_max', 1125),
+
+('def_standard_large_core_battery_pr', 'cpu_usage', 400),
+('def_standard_large_core_battery_pr', 'powergrid_usage', 840),
+('def_standard_large_core_battery_pr', 'core_max', 1125),
 --
 ('def_named1_large_core_battery', 'cpu_usage', 360),
 ('def_named1_large_core_battery', 'powergrid_usage', 800),
@@ -233,6 +261,11 @@ INSERT INTO #MODSTATS (defName, fieldName, fieldValue) VALUES
 ('def_standard_large_core_booster', 'powergrid_usage', 1250),
 ('def_standard_large_core_booster', 'core_usage', 0),
 ('def_standard_large_core_booster', 'cycle_time', 6050),
+
+('def_standard_large_core_booster_pr', 'cpu_usage', 375),
+('def_standard_large_core_booster_pr', 'powergrid_usage', 1250),
+('def_standard_large_core_booster_pr', 'core_usage', 0),
+('def_standard_large_core_booster_pr', 'cycle_time', 6050),
 --
 ('def_named1_large_core_booster', 'cpu_usage', 345),
 ('def_named1_large_core_booster', 'powergrid_usage', 1125),
@@ -274,6 +307,7 @@ CREATE TABLE #ENABLESKILLS
 );
 INSERT INTO #ENABLESKILLS (modName, extName, level) VALUES
 ('def_standard_large_armor_plate', 'ext_mechanic', 3),
+('def_standard_large_armor_plate_pr', 'ext_mechanic', 3),
 ('def_named1_large_armor_plate', 'ext_mechanic', 3),
 ('def_named1_large_armor_plate_pr', 'ext_mechanic', 3),
 ('def_named2_large_armor_plate', 'ext_mechanic', 3),
@@ -282,6 +316,7 @@ INSERT INTO #ENABLESKILLS (modName, extName, level) VALUES
 ('def_named3_large_armor_plate_pr', 'ext_mechanic', 3),
 --
 ('def_standard_large_armor_repairer', 'ext_repair_systems', 3),
+('def_standard_large_armor_repairer_pr', 'ext_repair_systems', 3),
 ('def_named1_large_armor_repairer', 'ext_repair_systems', 3),
 ('def_named1_large_armor_repairer_pr', 'ext_repair_systems', 3),
 ('def_named2_large_armor_repairer', 'ext_repair_systems', 3),
@@ -290,6 +325,7 @@ INSERT INTO #ENABLESKILLS (modName, extName, level) VALUES
 ('def_named3_large_armor_repairer_pr', 'ext_repair_systems', 3),
 --
 ('def_standard_large_shield_generator', 'ext_shield_operation', 4),
+('def_standard_large_shield_generator_pr', 'ext_shield_operation', 4),
 ('def_named1_large_shield_generator', 'ext_shield_operation', 4),
 ('def_named1_large_shield_generator_pr', 'ext_shield_operation', 4),
 ('def_named2_large_shield_generator', 'ext_shield_operation', 4),
@@ -298,6 +334,7 @@ INSERT INTO #ENABLESKILLS (modName, extName, level) VALUES
 ('def_named3_large_shield_generator_pr', 'ext_shield_operation', 4),
 
 ('def_standard_large_shield_generator', 'ext_shield_upgrades', 3),
+('def_standard_large_shield_generator_pr', 'ext_shield_upgrades', 3),
 ('def_named1_large_shield_generator', 'ext_shield_upgrades', 3),
 ('def_named1_large_shield_generator_pr', 'ext_shield_upgrades', 3),
 ('def_named2_large_shield_generator', 'ext_shield_upgrades', 3),
@@ -306,6 +343,7 @@ INSERT INTO #ENABLESKILLS (modName, extName, level) VALUES
 ('def_named3_large_shield_generator_pr', 'ext_shield_upgrades', 3),
 --
 ('def_standard_large_core_battery', 'ext_core_management', 4),
+('def_standard_large_core_battery_pr', 'ext_core_management', 4),
 ('def_named1_large_core_battery', 'ext_core_management', 4),
 ('def_named1_large_core_battery_pr', 'ext_core_management', 4),
 ('def_named2_large_core_battery', 'ext_core_management', 4),
@@ -314,6 +352,7 @@ INSERT INTO #ENABLESKILLS (modName, extName, level) VALUES
 ('def_named3_large_core_battery_pr', 'ext_core_management', 4),
 --
 ('def_standard_large_core_booster', 'ext_engineering',5),
+('def_standard_large_core_booster_pr', 'ext_engineering',5),
 ('def_named1_large_core_booster', 'ext_engineering', 5),
 ('def_named1_large_core_booster_pr', 'ext_engineering', 5),
 ('def_named2_large_core_booster', 'ext_engineering', 5),
@@ -322,6 +361,7 @@ INSERT INTO #ENABLESKILLS (modName, extName, level) VALUES
 ('def_named3_large_core_booster_pr', 'ext_engineering', 5),
 
 ('def_standard_large_core_booster', 'ext_energy_systems_operation',3),
+('def_standard_large_core_booster_pr', 'ext_energy_systems_operation',3),
 ('def_named1_large_core_booster', 'ext_energy_systems_operation', 3),
 ('def_named1_large_core_booster_pr', 'ext_energy_systems_operation', 3),
 ('def_named2_large_core_booster', 'ext_energy_systems_operation', 3),
@@ -543,22 +583,27 @@ CREATE TABLE #PROTOPAIRS
 );
 
 INSERT INTO #PROTOPAIRS (defName, protoDefName) VALUES
+('def_standard_large_armor_plate','def_standard_large_armor_plate_pr'),
 ('def_named1_large_armor_plate','def_named1_large_armor_plate_pr'),
 ('def_named2_large_armor_plate','def_named2_large_armor_plate_pr'),
 ('def_named3_large_armor_plate','def_named3_large_armor_plate_pr'),
 --
+('def_standard_large_armor_repairer','def_standard_large_armor_repairer_pr'),
 ('def_named1_large_armor_repairer','def_named1_large_armor_repairer_pr'),
 ('def_named2_large_armor_repairer','def_named2_large_armor_repairer_pr'),
 ('def_named3_large_armor_repairer','def_named3_large_armor_repairer_pr'),
 --
+('def_standard_large_shield_generator','def_standard_large_shield_generator_pr'),
 ('def_named1_large_shield_generator','def_named1_large_shield_generator_pr'),
 ('def_named2_large_shield_generator','def_named2_large_shield_generator_pr'),
 ('def_named3_large_shield_generator','def_named3_large_shield_generator_pr'),
 --
+('def_standard_large_core_battery','def_standard_large_core_battery_pr'),
 ('def_named1_large_core_battery','def_named1_large_core_battery_pr'),
 ('def_named2_large_core_battery','def_named2_large_core_battery_pr'),
 ('def_named3_large_core_battery','def_named3_large_core_battery_pr'),
 --
+('def_standard_large_core_booster','def_standard_large_core_booster_pr'),
 ('def_named1_large_core_booster','def_named1_large_core_booster_pr'),
 ('def_named2_large_core_booster','def_named2_large_core_booster_pr'),
 ('def_named3_large_core_booster','def_named3_large_core_booster_pr');
@@ -592,6 +637,10 @@ INSERT INTO #MOD_COMPS (defName, commodityName, amount) VALUES
 ('def_standard_large_armor_plate', 'def_titanium', 750),
 ('def_standard_large_armor_plate', 'def_plasteosine', 1050),
 ('def_standard_large_armor_plate', 'def_specimen_sap_item_flux', 15),
+
+('def_standard_large_armor_plate_pr', 'def_titanium', 750),
+('def_standard_large_armor_plate_pr', 'def_plasteosine', 1050),
+('def_standard_large_armor_plate_pr', 'def_specimen_sap_item_flux', 15),
 --
 ('def_named1_large_armor_plate', 'def_standard_large_armor_plate', 1),
 ('def_named1_large_armor_plate', 'def_robotshard_common_basic', 90),
@@ -647,6 +696,13 @@ INSERT INTO #MOD_COMPS (defName, commodityName, amount) VALUES
 ('def_standard_large_armor_repairer', 'def_statichnol', 300),
 ('def_standard_large_armor_repairer', 'def_chollonin', 75),
 ('def_standard_large_armor_repairer', 'def_specimen_sap_item_flux', 10),
+
+('def_standard_large_armor_repairer_pr', 'def_titanium', 150),
+('def_standard_large_armor_repairer_pr', 'def_plasteosine', 300),
+('def_standard_large_armor_repairer_pr', 'def_axicol', 75),
+('def_standard_large_armor_repairer_pr', 'def_statichnol', 300),
+('def_standard_large_armor_repairer_pr', 'def_chollonin', 75),
+('def_standard_large_armor_repairer_pr', 'def_specimen_sap_item_flux', 10),
 --
 ('def_named1_large_armor_repairer', 'def_standard_large_armor_repairer', 1),
 ('def_named1_large_armor_repairer', 'def_robotshard_common_basic', 90),
@@ -714,6 +770,13 @@ INSERT INTO #MOD_COMPS (defName, commodityName, amount) VALUES
 ('def_standard_large_shield_generator', 'def_isopropentol', 600),
 ('def_standard_large_shield_generator', 'def_vitricyl', 300),
 ('def_standard_large_shield_generator', 'def_specimen_sap_item_flux', 25),
+
+('def_standard_large_shield_generator_pr', 'def_titanium', 300),
+('def_standard_large_shield_generator_pr', 'def_plasteosine', 600),
+('def_standard_large_shield_generator_pr', 'def_axicol', 300),
+('def_standard_large_shield_generator_pr', 'def_isopropentol', 600),
+('def_standard_large_shield_generator_pr', 'def_vitricyl', 300),
+('def_standard_large_shield_generator_pr', 'def_specimen_sap_item_flux', 25),
 --
 ('def_named1_large_shield_generator', 'def_standard_large_shield_generator', 1),
 ('def_named1_large_shield_generator', 'def_robotshard_common_basic', 90),
@@ -778,6 +841,10 @@ INSERT INTO #MOD_COMPS (defName, commodityName, amount) VALUES
 ('def_standard_large_core_battery', 'def_titanium', 300),
 ('def_standard_large_core_battery', 'def_axicol', 600),
 ('def_standard_large_core_battery', 'def_specimen_sap_item_flux', 10),
+
+('def_standard_large_core_battery_pr', 'def_titanium', 300),
+('def_standard_large_core_battery_pr', 'def_axicol', 600),
+('def_standard_large_core_battery_pr', 'def_specimen_sap_item_flux', 10),
 --
 ('def_named1_large_core_battery', 'def_standard_large_core_battery', 1),
 ('def_named1_large_core_battery', 'def_robotshard_common_basic', 90),
@@ -830,6 +897,10 @@ INSERT INTO #MOD_COMPS (defName, commodityName, amount) VALUES
 ('def_standard_large_core_booster', 'def_titanium', 300),
 ('def_standard_large_core_booster', 'def_axicol', 600),
 ('def_standard_large_core_booster', 'def_specimen_sap_item_flux', 5),
+
+('def_standard_large_core_booster_pr', 'def_titanium', 300),
+('def_standard_large_core_booster_pr', 'def_axicol', 600),
+('def_standard_large_core_booster_pr', 'def_specimen_sap_item_flux', 5),
 --
 ('def_named1_large_core_booster', 'def_standard_large_core_booster', 1),
 ('def_named1_large_core_booster', 'def_robotshard_common_basic', 90),
@@ -981,27 +1052,27 @@ CREATE TABLE #PROTO_TO_CT
 );
 
 INSERT INTO #PROTO_TO_CT (protoDefName, ctDefName, level) VALUES
-('def_standard_large_armor_plate', 'def_standard_large_armor_plate_cprg', 4),
+('def_standard_large_armor_plate_pr', 'def_standard_large_armor_plate_cprg', 4),
 ('def_named1_large_armor_plate_pr', 'def_named1_large_armor_plate_cprg', 5),
 ('def_named2_large_armor_plate_pr', 'def_named2_large_armor_plate_cprg', 6),
 ('def_named3_large_armor_plate_pr', 'def_named3_large_armor_plate_cprg', 7),
 --
-('def_standard_large_armor_repairer', 'def_standard_large_armor_repairer_cprg', 5),
+('def_standard_large_armor_repairer_pr', 'def_standard_large_armor_repairer_cprg', 5),
 ('def_named1_large_armor_repairer_pr', 'def_named1_large_armor_repairer_cprg', 6),
 ('def_named2_large_armor_repairer_pr', 'def_named2_large_armor_repairer_cprg', 7),
 ('def_named3_large_armor_repairer_pr', 'def_named3_large_armor_repairer_cprg', 8),
 --
-('def_standard_large_shield_generator', 'def_standard_large_shield_generator_cprg', 5),
+('def_standard_large_shield_generator_pr', 'def_standard_large_shield_generator_cprg', 5),
 ('def_named1_large_shield_generator_pr', 'def_named1_large_shield_generator_cprg', 6),
 ('def_named2_large_shield_generator_pr', 'def_named2_large_shield_generator_cprg', 7),
 ('def_named3_large_shield_generator_pr', 'def_named3_large_shield_generator_cprg', 8),
 --
-('def_standard_large_core_battery', 'def_standard_large_core_battery_cprg', 5),
+('def_standard_large_core_battery_pr', 'def_standard_large_core_battery_cprg', 5),
 ('def_named1_large_core_battery_pr', 'def_named1_large_core_battery_cprg', 6),
 ('def_named2_large_core_battery_pr', 'def_named2_large_core_battery_cprg', 7),
 ('def_named3_large_core_battery_pr', 'def_named3_large_core_battery_cprg', 8),
 --
-('def_standard_large_core_booster', 'def_standard_large_core_booster_cprg', 5),
+('def_standard_large_core_booster_pr', 'def_standard_large_core_booster_cprg', 5),
 ('def_named1_large_core_booster_pr', 'def_named1_large_core_booster_cprg', 6),
 ('def_named2_large_core_booster_pr', 'def_named2_large_core_booster_cprg', 7),
 ('def_named3_large_core_booster_pr', 'def_named3_large_core_booster_cprg', 8);
