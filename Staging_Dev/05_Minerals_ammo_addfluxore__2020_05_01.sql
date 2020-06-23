@@ -11,7 +11,7 @@ GO
 --Insert production and research for mining ammo
 --2nd script to insert market orders for scanner ammos
 --
---Last modified: 2020/06/21
+--Last modified: 2020/06/23
 ------------------------------------------------------------------
 
 
@@ -308,6 +308,76 @@ GO
 ---------------------------------------
 
 
+PRINT N'INSERTING PROTOTYPE AMMOS';
+DROP TABLE IF EXISTS #AMMO_PROTO_DEFS;
+CREATE TABLE #AMMO_PROTO_DEFS 
+(
+	defName varchar(100),
+	quantity int,
+	attrFlags bigint,
+	catFlags bigint,
+	genxyOptStr varchar(max),
+	note varchar(2048),
+	cargoVolume float,
+	massOfModule float,
+	description nvarchar(100),
+	techType int,
+	techLevel int
+);
+INSERT INTO #AMMO_PROTO_DEFS (defName, quantity, attrFlags, catFlags, genxyOptStr, note, cargoVolume, massOfModule, description, techType, techLevel) VALUES
+('def_ammo_mining_fluxore_pr',1,2147485696,1290,'mineral=$fluxore','',0.5,0.5,'def_ammo_mining_desc',NULL,NULL),
+('def_ammo_mining_gammaterial_pr',1,2147485696,1290,'mineral=$gammaterial','',0.5,0.5,'def_ammo_mining_desc',NULL,NULL);
+
+PRINT N'MERGE (INSERT/UPDATE) PROTO AMMO ENTITYDEFS';
+MERGE [dbo].[entitydefaults] def USING #AMMO_PROTO_DEFS ammo
+ON def.definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=ammo.defName)
+WHEN MATCHED
+    THEN UPDATE SET
+		quantity=ammo.quantity,
+		categoryflags=catFlags,
+		attributeflags=attrFlags,
+		volume=cargoVolume,
+		mass=massOfModule,
+		tiertype=techType,
+		tierlevel=techLevel,
+		options=genxyOptStr,
+		note=ammo.note,
+		enabled=1,
+		hidden=0,
+		purchasable=1,
+		health=100,
+		descriptiontoken=description
+WHEN NOT MATCHED
+    THEN INSERT (definitionname,quantity,attributeflags,categoryflags,options,note,enabled,volume,mass,hidden,health,descriptiontoken,purchasable,tiertype,tierlevel) VALUES
+	(defName,1,attrFlags,catFlags,genxyOptStr,note,1,cargoVolume,massOfModule,0,100,description,1,techType,techLevel);
+
+PRINT N'AMMO PROTOTYPE PAIRINGS';
+
+DROP TABLE IF EXISTS #PROTOPAIRS;
+CREATE TABLE #PROTOPAIRS
+(
+	defName varchar(100),
+	protoDefName varchar(100),
+);
+
+INSERT INTO #PROTOPAIRS (defName, protoDefName) VALUES
+('def_ammo_mining_fluxore','def_ammo_mining_fluxore_pr'),
+('def_ammo_mining_gammaterial','def_ammo_mining_gammaterial_pr');
+
+--DELETE and reinsert
+PRINT N'DELETE prototypes FOR ANY EXISTING LARGE WEP-PROTO PAIRS (0 results if first run)';
+SELECT * FROM prototypes WHERE definition in (SELECT definition FROM entitydefaults WHERE definitionname in (SELECT defName FROM #PROTOPAIRS));
+DELETE FROM prototypes WHERE definition in (SELECT definition FROM entitydefaults WHERE definitionname in (SELECT defName FROM #PROTOPAIRS));
+
+--INSERT
+PRINT N'INSERT prototypes FOR mining ammo PAIRS';
+INSERT INTO prototypes (definition, prototype)
+SELECT (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = defName), 
+	(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = protoDefName)
+FROM #PROTOPAIRS;
+DROP TABLE IF EXISTS #PROTOPAIRS;
+
+
 DECLARE @miningAmmoCTCategory BIGINT;
 SET @miningAmmoCTCategory = (SELECT TOP 1 value FROM categoryFlags WHERE name='cf_ammo_mining_calibration_programs');
 
@@ -353,7 +423,12 @@ DELETE FROM itemresearchlevels WHERE definition in (SELECT definition FROM entit
 
 PRINT N'INSERT itemresearchlevels FOR MOD CTS';
 INSERT INTO itemresearchlevels (definition, calibrationprogram, researchlevel, enabled) VALUES
-((SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_ammo_mining_fluxore'), 
+((SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_ammo_mining_fluxore_pr'), 
+(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_ammo_mining_fluxore_cprg'), 
+1, 1);
+
+INSERT INTO itemresearchlevels (definition, calibrationprogram, researchlevel, enabled) VALUES
+((SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_ammo_mining_gammaterial_pr'), 
 (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_ammo_mining_fluxore_cprg'), 
 1, 1);
 
@@ -369,7 +444,15 @@ INSERT INTO #AMMO_COMPS (defName, commodityName, amount) VALUES
 ('def_ammo_mining_fluxore', 'def_unimetal', 10),
 ('def_ammo_mining_fluxore', 'def_statichnol', 10),
 ('def_ammo_mining_fluxore', 'def_isopropentol', 10),
-('def_ammo_mining_fluxore', 'def_metachropin', 10);
+('def_ammo_mining_fluxore', 'def_metachropin', 10),
+
+('def_ammo_mining_fluxore_pr', 'def_unimetal', 10),
+('def_ammo_mining_fluxore_pr', 'def_statichnol', 10),
+('def_ammo_mining_fluxore_pr', 'def_isopropentol', 10),
+('def_ammo_mining_fluxore_pr', 'def_metachropin', 10),
+
+('def_ammo_mining_gammaterial_pr', 'def_unimetal', 15),
+('def_ammo_mining_gammaterial_pr', 'def_hydrobenol', 15);
 
 
 PRINT N'DELETE components FOR flux mining ammo (0 results if 1st run)';
@@ -384,6 +467,7 @@ SELECT
 	amount
 FROM #AMMO_COMPS;
 DROP TABLE IF EXISTS #AMMO_COMPS;
+DROP TABLE IF EXISTS #AMMO_PROTO_DEFS;
 GO
 
 
