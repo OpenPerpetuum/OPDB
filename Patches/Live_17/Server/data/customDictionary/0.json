@@ -401,7 +401,7 @@
 	"def_ammo_mining_probe_fluxore_direction": "Directional geoscanner charge (Flux Ore)",
 	"def_ammo_mining_fluxore": "Miner charge (flux ore)",
 	"def_ammo_mining_fluxore_pr": "Miner charge (flux ore) prototype",
-	"def_ammo_mining_gammaterial": "Miner charge (colixium) prototype",
+	"def_ammo_mining_gammaterial_pr": "Miner charge (colixium) prototype",
 	"def_ammo_mining_fluxore_cprg": "Miner charge (flux ore) CT",
 	"def_materialtype_unknown_16": "Flux Ore",
 	"def_felos_bot" : "Felos",
