@@ -97,10 +97,12 @@ WHEN MATCHED
 WHEN NOT MATCHED
     THEN INSERT (definitionname,quantity,attributeflags,categoryflags,options,note,enabled,volume,mass,hidden,health,descriptiontoken,purchasable,tiertype,tierlevel) VALUES
 	(defName,1,attrFlags,catFlags,genxyOptStr,note,1,cargoVolume,massOfModule,0,100,description,1,techType,techLevel);
+
+DROP TABLE IF EXISTS #AMMO_PROTO_DEFS;
 GO
 
 
-DROP TABLE IF EXISTS #AMMO
+DROP TABLE IF EXISTS #AMMO;
 CREATE TABLE #AMMO 
 (
 	ammoName varchar(100),
@@ -238,7 +240,7 @@ INSERT INTO #AMMO (ammoName, fieldName, fieldValue) VALUES
 ('def_ammo_longrange_cruisemissile_d_pr', 'explosion_radius', 39);
 
 
-DROP TABLE IF EXISTS #BEAMS
+DROP TABLE IF EXISTS #BEAMS;
 CREATE TABLE #BEAMS 
 (
 	ammoName varchar(100),
@@ -287,7 +289,7 @@ INSERT INTO #BEAMS (ammoName, beamName) VALUES
 ('def_ammo_longrange_cruisemissile_d_pr', 'cruisemissile_large');
 
 
-DROP TABLE IF EXISTS #ENABLESKILLS
+DROP TABLE IF EXISTS #ENABLESKILLS;
 CREATE TABLE #ENABLESKILLS 
 (
 	ammoName VARCHAR(100),

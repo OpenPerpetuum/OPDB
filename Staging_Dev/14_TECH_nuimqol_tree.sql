@@ -1,15 +1,23 @@
 USE [perpetuumsa]
 GO
 
+----------------------------------------------
+--NUIMQOL research tree changes
+--Full map of positions w/ new items
+--Costs of new items
+----------------------------------------------
+
+DECLARE @techGroupId INT;
+SET @techGroupId = (SELECT TOP 1 id FROM techtreegroups WHERE name='nuimqol');
 
 --Show what the tree for this tech group has, ordered in top-left to bottom-right
 --select 
 --	(select top 1 definitionname from entitydefaults where definition in (parentdefinition)),
 --	(select top 1 definitionname from entitydefaults where definition in (childdefinition)),
 --	x, y
---from techtree where groupID=3 order by y, x;
+--from techtree where groupID=@techGroupId order by y, x;
 
-
+PRINT N'NUIMQOL RESEARCH TREE';
 DROP TABLE IF EXISTS #TECHSLOTSNUIMQOL;
 CREATE TABLE #TECHSLOTSNUIMQOL
 (
@@ -173,7 +181,7 @@ WHEN NOT MATCHED
     THEN INSERT ([parentdefinition],[childdefinition],[groupID],[x],[y]) VALUES
 	(ISNULL((SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=s.preDefName), 0),
 	(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=s.defName),
-	3, s.x, s.y);
+	@techGroupId, s.x, s.y);
 
 
 

@@ -113,4 +113,5 @@ PRINT N'Add loot';
 INSERT INTO npcloot ([definition],[lootdefinition],[quantity],[probability],[repackaged],[dontdamage],[minquantity])
 SELECT @definitionID, (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=defName), maxQuantity, probability, repackaged, dontDmg, minQuantity FROM #NPCLOOTS;
 
+DROP TABLE IF EXISTS #NPCLOOTS;
 GO

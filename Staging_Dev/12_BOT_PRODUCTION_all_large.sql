@@ -64,7 +64,6 @@ BEGIN
 	INSERT INTO productionduration (category, durationmodifier) VALUES
 	(@destroBotCategory, 15);
 END
-DROP TABLE IF EXISTS #PROTOPAIRS;
 GO
 
 

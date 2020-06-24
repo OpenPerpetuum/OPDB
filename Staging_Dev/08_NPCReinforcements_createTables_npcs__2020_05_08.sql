@@ -332,4 +332,6 @@ INSERT INTO dbo.npcreinforcements (reinforcementType, targetId, threshold, prese
 (@reinforceType, @fluxOre, 0.9, (SELECT TOP 1 id FROM npcpresence WHERE NAME='flux_ore_npc_wave_8_nuimqol'), @novastrov),
 (@reinforceType, @fluxOre, 0.95, (SELECT TOP 1 id FROM npcpresence WHERE NAME='flux_ore_npc_wave_9_nuimqol'), @novastrov);
 
+
+DROP TABLE IF EXISTS #WAVES;
 GO
