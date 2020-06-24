@@ -9,8 +9,9 @@ GO
 --Insert scanner ammos
 --Insert mining ammo
 --Insert production and research for mining ammo
+--2nd script to insert market orders for scanner ammos
 --
---Last modified: 2020/05/11
+--Last modified: 2020/06/23
 ------------------------------------------------------------------
 
 
@@ -40,7 +41,7 @@ ELSE
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) 
 	VALUES 
-	('def_geoscan_document_fluxore', 1, 2048, 1685, '', '', 1, 0.1, 0.1, 0, 100, 'def_geoscan_document_desc', 0, NULL, NULL); 
+	('def_geoscan_document_fluxore', 1, 2048, 1685, '', '', 1, 0.1, 0.1, 0, 100, 'def_geoscan_document_desc', 1, NULL, NULL); 
 END
 
 PRINT N'ADD/UPDATE def_fluxore ON entitydefaults';
@@ -307,6 +308,76 @@ GO
 ---------------------------------------
 
 
+PRINT N'INSERTING PROTOTYPE AMMOS';
+DROP TABLE IF EXISTS #AMMO_PROTO_DEFS;
+CREATE TABLE #AMMO_PROTO_DEFS 
+(
+	defName varchar(100),
+	quantity int,
+	attrFlags bigint,
+	catFlags bigint,
+	genxyOptStr varchar(max),
+	note varchar(2048),
+	cargoVolume float,
+	massOfModule float,
+	description nvarchar(100),
+	techType int,
+	techLevel int
+);
+INSERT INTO #AMMO_PROTO_DEFS (defName, quantity, attrFlags, catFlags, genxyOptStr, note, cargoVolume, massOfModule, description, techType, techLevel) VALUES
+('def_ammo_mining_fluxore_pr',1,2147485696,1290,'mineral=$fluxore','',0.5,0.5,'def_ammo_mining_desc',NULL,NULL),
+('def_ammo_mining_gammaterial_pr',1,2147485696,1290,'mineral=$gammaterial','',0.5,0.5,'def_ammo_mining_desc',NULL,NULL);
+
+PRINT N'MERGE (INSERT/UPDATE) PROTO AMMO ENTITYDEFS';
+MERGE [dbo].[entitydefaults] def USING #AMMO_PROTO_DEFS ammo
+ON def.definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=ammo.defName)
+WHEN MATCHED
+    THEN UPDATE SET
+		quantity=ammo.quantity,
+		categoryflags=catFlags,
+		attributeflags=attrFlags,
+		volume=cargoVolume,
+		mass=massOfModule,
+		tiertype=techType,
+		tierlevel=techLevel,
+		options=genxyOptStr,
+		note=ammo.note,
+		enabled=1,
+		hidden=0,
+		purchasable=1,
+		health=100,
+		descriptiontoken=description
+WHEN NOT MATCHED
+    THEN INSERT (definitionname,quantity,attributeflags,categoryflags,options,note,enabled,volume,mass,hidden,health,descriptiontoken,purchasable,tiertype,tierlevel) VALUES
+	(defName,1,attrFlags,catFlags,genxyOptStr,note,1,cargoVolume,massOfModule,0,100,description,1,techType,techLevel);
+
+PRINT N'AMMO PROTOTYPE PAIRINGS';
+
+DROP TABLE IF EXISTS #PROTOPAIRS;
+CREATE TABLE #PROTOPAIRS
+(
+	defName varchar(100),
+	protoDefName varchar(100),
+);
+
+INSERT INTO #PROTOPAIRS (defName, protoDefName) VALUES
+('def_ammo_mining_fluxore','def_ammo_mining_fluxore_pr'),
+('def_ammo_mining_gammaterial','def_ammo_mining_gammaterial_pr');
+
+--DELETE and reinsert
+PRINT N'DELETE prototypes FOR ANY EXISTING LARGE WEP-PROTO PAIRS (0 results if first run)';
+SELECT * FROM prototypes WHERE definition in (SELECT definition FROM entitydefaults WHERE definitionname in (SELECT defName FROM #PROTOPAIRS));
+DELETE FROM prototypes WHERE definition in (SELECT definition FROM entitydefaults WHERE definitionname in (SELECT defName FROM #PROTOPAIRS));
+
+--INSERT
+PRINT N'INSERT prototypes FOR mining ammo PAIRS';
+INSERT INTO prototypes (definition, prototype)
+SELECT (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = defName), 
+	(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = protoDefName)
+FROM #PROTOPAIRS;
+DROP TABLE IF EXISTS #PROTOPAIRS;
+
+
 DECLARE @miningAmmoCTCategory BIGINT;
 SET @miningAmmoCTCategory = (SELECT TOP 1 value FROM categoryFlags WHERE name='cf_ammo_mining_calibration_programs');
 
@@ -347,13 +418,20 @@ INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency)
 SELECT (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_ammo_mining_fluxore_cprg'), 80, 80;
 
 PRINT N'DELETE itemresearchlevels FOR ANY EXISTING LARGE MOD CTS (0 results if 1st run)';
-SELECT * FROM itemresearchlevels WHERE definition in (SELECT definition FROM entitydefaults WHERE definitionname ='def_ammo_mining_fluxore');
-DELETE FROM itemresearchlevels WHERE definition in (SELECT definition FROM entitydefaults WHERE definitionname ='def_ammo_mining_fluxore');
+SELECT * FROM itemresearchlevels WHERE definition in (SELECT definition FROM entitydefaults WHERE definitionname ='def_ammo_mining_fluxore_pr');
+SELECT * FROM itemresearchlevels WHERE definition in (SELECT definition FROM entitydefaults WHERE definitionname ='def_ammo_mining_gammaterial_pr');
+DELETE FROM itemresearchlevels WHERE definition in (SELECT definition FROM entitydefaults WHERE definitionname ='def_ammo_mining_fluxore_pr');
+DELETE FROM itemresearchlevels WHERE definition in (SELECT definition FROM entitydefaults WHERE definitionname ='def_ammo_mining_gammaterial_pr');
 
-PRINT N'INSERT itemresearchlevels FOR MOD CTS';
+PRINT N'INSERT itemresearchlevels FOR ammo CTS';
 INSERT INTO itemresearchlevels (definition, calibrationprogram, researchlevel, enabled) VALUES
-((SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_ammo_mining_fluxore'), 
+((SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_ammo_mining_fluxore_pr'), 
 (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_ammo_mining_fluxore_cprg'), 
+1, 1);
+
+INSERT INTO itemresearchlevels (definition, calibrationprogram, researchlevel, enabled) VALUES
+((SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_ammo_mining_gammaterial_pr'), 
+(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_ammo_mining_gammaterial_cprg'), 
 1, 1);
 
 
@@ -368,7 +446,15 @@ INSERT INTO #AMMO_COMPS (defName, commodityName, amount) VALUES
 ('def_ammo_mining_fluxore', 'def_unimetal', 10),
 ('def_ammo_mining_fluxore', 'def_statichnol', 10),
 ('def_ammo_mining_fluxore', 'def_isopropentol', 10),
-('def_ammo_mining_fluxore', 'def_metachropin', 10);
+('def_ammo_mining_fluxore', 'def_metachropin', 10),
+
+('def_ammo_mining_fluxore_pr', 'def_unimetal', 10),
+('def_ammo_mining_fluxore_pr', 'def_statichnol', 10),
+('def_ammo_mining_fluxore_pr', 'def_isopropentol', 10),
+('def_ammo_mining_fluxore_pr', 'def_metachropin', 10),
+
+('def_ammo_mining_gammaterial_pr', 'def_unimetal', 15),
+('def_ammo_mining_gammaterial_pr', 'def_hydrobenol', 15);
 
 
 PRINT N'DELETE components FOR flux mining ammo (0 results if 1st run)';
@@ -383,4 +469,53 @@ SELECT
 	amount
 FROM #AMMO_COMPS;
 DROP TABLE IF EXISTS #AMMO_COMPS;
+DROP TABLE IF EXISTS #AMMO_PROTO_DEFS;
 GO
+
+
+
+USE [perpetuumsa]
+GO
+
+------------------------------------
+--Flux ore scanner ammo NPC Market inf orders
+--
+--Date: 2020/06/21
+------------------------------------
+
+DECLARE @flux_directional INT;
+DECLARE @flux_tile INT;
+DECLARE @vendorid BIGINT;
+DECLARE @sellprice FLOAT;
+
+SET @sellprice = 45;
+
+SET @flux_directional = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_ammo_mining_probe_fluxore_direction');
+SET @flux_tile = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_ammo_mining_probe_fluxore_tile');
+
+--Should be empty on first run
+SELECT * FROM marketitems WHERE itemdefinition in (@flux_directional, @flux_tile) AND isvendoritem=1 AND quantity=-1;
+DELETE FROM marketitems WHERE itemdefinition in (@flux_directional, @flux_tile) AND isvendoritem=1 AND quantity=-1;
+
+
+--Declare cursor for vendors that also sell epri scanner charges
+DECLARE vendorCursor CURSOR
+FOR SELECT submittereid FROM marketitems WHERE
+	price=45 AND isvendoritem=1 AND
+	itemdefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_ammo_mining_probe_epriton_direction');
+
+OPEN vendorCursor;
+FETCH NEXT FROM vendorCursor INTO @vendorid;
+
+WHILE @@FETCH_STATUS = 0
+    BEGIN
+		EXEC dbo.addVendorSellItem @vendorid, @flux_directional, @sellprice, 0;
+		EXEC dbo.addVendorSellItem @vendorid, @flux_tile, @sellprice, 0;
+		FETCH NEXT FROM vendorCursor INTO @vendorid;
+    END;
+
+CLOSE vendorCursor;
+DEALLOCATE vendorCursor;
+
+GO
+
