@@ -411,6 +411,13 @@
 	"def_onyx_bot" : "Onyx",
 	"def_onyx_bot_pr" : "Onyx prototype",
 
+	"def_felos_bot_desc": "'''Class:''' Destroyer specialized in magnetic weapons\n\n'''Faction:''' Nuimqol Union\n\nFollowing in the Mesmer design, this mammoth is so far the only suited for the large railguns.  This new profound increase in firepower leaves to rumbling slowly compared to its Nuimqol brethern.",
+	"def_felos_bot_pr_desc": "'''Class:''' Destroyer specialized in magnetic weapons\n\n'''Faction:''' Nuimqol Union\n\nFollowing in the Mesmer design, this mammoth is so far the only suited for the large railguns.  This new profound increase in firepower leaves to rumbling slowly compared to its Nuimqol brethern.",
+	"def_hydra_bot_desc": "'''Class:''' Destroyer specialized in missiles\n\n'''Faction:''' Pelistal Empire\n\nA new triumph of the Empire, the Hydra is a missile platform like none other.  Its large missile batteries make it extremely dangerous to large targets at all ranges.",
+	"def_hydra_bot_pr_desc": "'''Class:''' Destroyer specialized in missiles\n\n'''Faction:''' Pelistal Empire\n\nA new triumph of the Empire, the Hydra is a missile platform like none other.  Its large missile batteries make it extremely dangerous to large targets at all ranges.",
+	"def_onyx_bot_desc": "'''Class:''' Destroyer specialized in lasers\n\n'''Faction:''' Thelodica Clan\n\nThe Onyx probably generates the greatest heat signature as anything lifeform on Nia.  It melts Heavy Mech hulls, spewing laser-fire like lava from a wrathful vulcan diety.",
+	"def_onyx_bot_pr_desc": "'''Class:''' Destroyer specialized in lasers\n\n'''Faction:''' Thelodica Clan\n\nThe Onyx probably generates the greatest heat signature as anything lifeform on Nia.  It melts Heavy Mech hulls, spewing laser-fire like lava from a wrathful vulcan diety.",
+
 	"ext_large_laser": "Expert optics",
 	"cf_large_missile_ammo": "Large missiles",
 	"cf_large_missile_launchers": "Heavy missile launchers",
