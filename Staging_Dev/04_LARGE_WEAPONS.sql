@@ -65,7 +65,7 @@ INSERT INTO #LARGEWEP (defName, attrFlags, catFlags, cargoVolume, massOfModule, 
 ('def_named2_large_railgun_pr', 402128, 50595599, 1.5, 1000, 2, 3, '#moduleFlag=i111 #ammoCapacity=i1e #ammoType=L3010a #tier=$tierlevel_t3_pr'),
 ('def_named3_large_railgun_pr', 402128, 50595599, 1.5, 1100, 2, 4, '#moduleFlag=i111 #ammoCapacity=i14 #ammoType=L3010a #tier=$tierlevel_t4_pr'),
 --
-('def_longrange_standard_large_railgun_pr', 402128, 50595599, 1.5, 1300, NULL, NULL, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a #tier=$tierlevel_pr'),
+('def_longrange_standard_large_railgun_pr', 402128, 50595599, 1.5, 1300, NULL, NULL, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a'),
 ('def_named1_longrange_large_railgun_pr', 402128, 50595599, 1.5, 1170, 2, 2, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a #tier=$tierlevel_t2_pr'),
 ('def_named2_longrange_large_railgun_pr', 402128, 50595599, 1.5, 1300, 2, 3, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a #tier=$tierlevel_t3_pr'),
 ('def_named3_longrange_large_railgun_pr', 402128, 50595599, 1.5, 1430, 2, 4, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a #tier=$tierlevel_t4_pr');

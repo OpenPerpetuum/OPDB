@@ -164,10 +164,11 @@ BEGIN
 	UPDATE entitydefaults SET
 		attributeflags=0,
 		categoryflags = @largeBotCF,
-		options = '#head=i'+@headDefHex+'#chassis=i'+@chassisDefHex+'#leg=i'+@legDefHex+'#container=i14c',
+		options = '#head=i'+@headDefHex+'#chassis=i'+@chassisDefHex+'#leg=i'+@legDefHex+'#container=i14c #tier=$tierlevel_pr',
 		volume = 22.5,
 		mass = 0,
-		descriptiontoken = @PRbotName+'_desc'
+		descriptiontoken = @PRbotName+'_desc',
+		tiertype=2
 	WHERE definitionname=@PRbotName;
 END
 ELSE
@@ -175,7 +176,7 @@ BEGIN
 	SET IDENTITY_INSERT entitydefaults ON;
 	INSERT INTO entitydefaults (definition, definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) 
 	VALUES 
-	(@PRbotDef, @PRbotName, 1, 0, @largeBotCF, '#head=i'+@headDefHex+'#chassis=i'+@chassisDefHex+'#leg=i'+@legDefHex+'#container=i14c', '', 1, 22.5, 0, 0, 100, @PRbotName+'_desc', 1, 0, 0);
+	(@PRbotDef, @PRbotName, 1, 0, @largeBotCF, '#head=i'+@headDefHex+'#chassis=i'+@chassisDefHex+'#leg=i'+@legDefHex+'#container=i14c #tier=$tierlevel_pr', '', 1, 22.5, 0, 0, 100, @PRbotName+'_desc', 1, 2, 0);
 	SET IDENTITY_INSERT entitydefaults OFF;
 END
 
