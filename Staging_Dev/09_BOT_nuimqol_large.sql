@@ -35,18 +35,18 @@ DECLARE @tintColor VARCHAR(50);
 DECLARE @PRbotName varchar(100);
 DECLARE @PRbotDef int;
 
-SET @headName = 'def_hydra_bot_head';
-SET @headDef = 6000;
-SET @chassisName = 'def_hydra_bot_chassis';
-SET @chassisDef = 6001;
-SET @legName = 'def_hydra_bot_leg';
-SET @legDef = 6002;
-SET @botName = 'def_hydra_bot';
-SET @botDef = 6003;
-SET @tintColor ='#062A0D';
+SET @headName = 'def_felos_bot_head';
+SET @headDef = 6005;
+SET @chassisName = 'def_felos_bot_chassis';
+SET @chassisDef = 6006;
+SET @legName = 'def_felos_bot_leg';
+SET @legDef = 6007;
+SET @botName = 'def_felos_bot';
+SET @botDef = 6008;
+SET @tintColor ='#011D39';
 
-SET @PRbotName = 'def_hydra_bot_pr';
-SET @PRbotDef = 6004;
+SET @PRbotName = 'def_felos_bot_pr';
+SET @PRbotDef = 6009;
 
 DECLARE @headMass int;
 DECLARE @chassisMass int;
@@ -73,7 +73,7 @@ IF EXISTS (SELECT TOP 1 definition from dbo.entitydefaults WHERE definitionname=
 BEGIN
 	UPDATE entitydefaults SET
 		categoryflags = 328016,
-		options = '#height=f0.2#slotFlags=48,8,8,8,8',
+		options = '#height=f0.2#slotFlags=48,8,8,8',
 		volume = 3,
 		mass = @headMass
 	WHERE definitionname=@headName;
@@ -83,7 +83,7 @@ BEGIN
 	SET IDENTITY_INSERT entitydefaults ON;
 	INSERT INTO entitydefaults (definition, definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) 
 	VALUES 
-	(@headDef, @headName, 1, 1024, 328016, '#height=f0.2#slotFlags=48,8,8,8,8', '', 1, 3, @headMass, 1, 100, 'bot_head_desc', 0, 0, 0); 
+	(@headDef, @headName, 1, 1024, 328016, '#height=f0.2#slotFlags=48,8,8,8', '', 1, 3, @headMass, 1, 100, 'bot_head_desc', 0, 0, 0); 
 	SET IDENTITY_INSERT entitydefaults OFF;
 END
 
@@ -93,7 +93,7 @@ IF EXISTS (SELECT TOP 1 definition from dbo.entitydefaults WHERE definitionname=
 BEGIN
 	UPDATE entitydefaults SET
 		categoryflags = 328272,
-		options = '#height=f2#slotFlags=4112,112,112,112,112,112',
+		options = '#height=f2#slotFlags=4111,111,111,111,111,111',
 		volume = 20,
 		mass = @chassisMass
 	WHERE definitionname=@chassisName;
@@ -103,7 +103,7 @@ BEGIN
 	SET IDENTITY_INSERT entitydefaults ON;
 	INSERT INTO entitydefaults (definition, definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) 
 	VALUES 
-	(@chassisDef, @chassisName, 1, 1024, 328272, '#height=f2#slotFlags=4112,112,112,112,112,112', '', 1, 20, @chassisMass, 1, 100, 'bot_chassis_desc', 0, 0, 0); 
+	(@chassisDef, @chassisName, 1, 1024, 328272, '#height=f2#slotFlags=4111,111,111,111,111,111', '', 1, 20, @chassisMass, 1, 100, 'bot_chassis_desc', 0, 0, 0); 
 	SET IDENTITY_INSERT entitydefaults OFF;
 END
 
@@ -113,7 +113,7 @@ IF EXISTS (SELECT TOP 1 definition from dbo.entitydefaults WHERE definitionname=
 BEGIN
 	UPDATE entitydefaults SET
 		categoryflags = 328528,
-		options = '#height=f1.1#slotFlags=420,20,20,20',
+		options = '#height=f1.1#slotFlags=420,20,20,20,20',
 		volume = 20,
 		mass = @legMass
 	WHERE definitionname=@legName;
@@ -123,7 +123,7 @@ BEGIN
 	SET IDENTITY_INSERT entitydefaults ON;
 	INSERT INTO entitydefaults (definition, definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) 
 	VALUES 
-	(@legDef, @legName, 1, 1024, 328528, '#height=f1.1#slotFlags=420,20,20,20', '', 1, 20, @legMass, 1, 100, 'bot_leg_desc', 0, 0, 0); 
+	(@legDef, @legName, 1, 1024, 328528, '#height=f1.1#slotFlags=420,20,20,20,20', '', 1, 20, @legMass, 1, 100, 'bot_leg_desc', 0, 0, 0); 
 	SET IDENTITY_INSERT entitydefaults OFF;
 END
 
@@ -164,10 +164,11 @@ BEGIN
 	UPDATE entitydefaults SET
 		attributeflags=0,
 		categoryflags = @largeBotCF,
-		options = '#head=i'+@headDefHex+'#chassis=i'+@chassisDefHex+'#leg=i'+@legDefHex+'#container=i14c',
+		options = '#head=i'+@headDefHex+'#chassis=i'+@chassisDefHex+'#leg=i'+@legDefHex+'#container=i14c #tier=$tierlevel_pr',
 		volume = 22.5,
 		mass = 0,
-		descriptiontoken = @PRbotName+'_desc'
+		descriptiontoken = @PRbotName+'_desc',
+		tiertype=2
 	WHERE definitionname=@PRbotName;
 END
 ELSE
@@ -175,10 +176,9 @@ BEGIN
 	SET IDENTITY_INSERT entitydefaults ON;
 	INSERT INTO entitydefaults (definition, definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) 
 	VALUES 
-	(@PRbotDef, @PRbotName, 1, 0, @largeBotCF, '#head=i'+@headDefHex+'#chassis=i'+@chassisDefHex+'#leg=i'+@legDefHex+'#container=i14c', '', 1, 22.5, 0, 0, 100, @PRbotName+'_desc', 1, 0, 0);
+	(@PRbotDef, @PRbotName, 1, 0, @largeBotCF, '#head=i'+@headDefHex+'#chassis=i'+@chassisDefHex+'#leg=i'+@legDefHex+'#container=i14c #tier=$tierlevel_pr', '', 1, 22.5, 0, 0, 100, @PRbotName+'_desc', 1, 2, 0);
 	SET IDENTITY_INSERT entitydefaults OFF;
 END
-
 
 SET @botDef = (SELECT TOP 1 definition from dbo.entitydefaults WHERE definitionname=@botName);
 SET @botDefHex = (SELECT dbo.ToHex(@botDef));
@@ -251,9 +251,9 @@ CREATE TABLE #BOTSTATS
 )
 
 INSERT INTO #BOTSTATS (partDef, name, value) VALUES
-(@headDef, 'cpu_max', 2010),
+(@headDef, 'cpu_max', 1750),
 (@headDef, 'locked_targets_max', 2),
-(@headDef, 'locking_range', 37),
+(@headDef, 'locking_range', 36),
 (@headDef, 'locking_time', 15000),
 (@headDef, 'sensor_strength', 95),
 (@headDef, 'blob_emission', 25),
@@ -263,22 +263,23 @@ INSERT INTO #BOTSTATS (partDef, name, value) VALUES
 (@headDef, 'detection_strength', 55),
 (@headDef, 'stealth_strength', 55),
 (@chassisDef, 'ammo_reload_time', 15000),
-(@chassisDef, 'armor_max', 7000),
-(@chassisDef, 'core_max', 5800),
+(@chassisDef, 'armor_max', 6300),
+(@chassisDef, 'core_max', 5900),
 (@chassisDef, 'core_recharge_time', 1200),
-(@chassisDef, 'powergrid_max', 4920),
+(@chassisDef, 'powergrid_max', 5160),
 (@chassisDef, 'resist_chemical', 30),
-(@chassisDef, 'resist_explosive', 45),
-(@chassisDef, 'resist_kinetic', 10),
-(@chassisDef, 'resist_thermal', 150),
+(@chassisDef, 'resist_explosive', 150),
+(@chassisDef, 'resist_kinetic', 45),
+(@chassisDef, 'resist_thermal', 10),
 (@chassisDef, 'signature_radius', 30),
 (@chassisDef, 'missile_miss', 0.9),
 (@chassisDef, 'reactor_radiation', 15),
 (@legDef, 'slope', 4),
-(@legDef, 'speed_max', 1.38889);
+(@legDef, 'speed_max', 1.52777);
 
 PRINT N'DELETE BOT STATS';
 DELETE FROM aggregatevalues WHERE definition in (SELECT DISTINCT partDef FROM #BOTSTATS);
+
 
 PRINT N'INSERT BOT STATS';
 INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value])
@@ -296,7 +297,7 @@ SET @extensionName = 'ext_assault_unit_piloting';
 SET @extensionID = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname=@extensionName);
 
 DECLARE @factionPilotExt int;
-SET @factionPilotExt = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname='ext_pelistal_specialist');
+SET @factionPilotExt = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname='ext_nuimqol_specialist');
 
 DECLARE @combatSpecExt int;
 SET @combatSpecExt = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname='ext_combat_specialist');
@@ -305,22 +306,21 @@ SET @combatSpecExt = (SELECT TOP 1 extensionid FROM extensions WHERE extensionna
 PRINT N'UNHIDE ANY NEW EXTENSIONS USED FOR BOT BONUSES';
 UPDATE extensions SET active=1, hidden=0 WHERE extensionid=@extensionID;
 
-DROP TABLE IF EXISTS #BOTBONUSES
+DROP TABLE IF EXISTS #BOTBONUSES;
 CREATE TABLE #BOTBONUSES 
 (
 	partDef int,
 	extID int,
 	name varchar(100),
 	bonus float,
-)
+);
 INSERT INTO #BOTBONUSES (partDef, extID, name, bonus) VALUES
-(@chassisDef, @extensionID, 'cpu_usage_large_missile_modifier', 0.03),
-(@chassisDef, @extensionID, 'powergrid_usage_large_missile_modifier', 0.03),
-(@chassisDef, @extensionID, 'damage_large_missile_modifier', 0.05),
-(@chassisDef, @combatSpecExt, 'missile_cycle_time_modifier', 0.02),
-(@chassisDef, @combatSpecExt, 'locking_time_modifier', 0.03),
-(@chassisDef, @factionPilotExt, 'shield_absorbtion_modifier', 0.05);
-
+(@chassisDef, @extensionID, 'cpu_usage_large_railgun_modifier', 0.03),
+(@chassisDef, @extensionID, 'powergrid_usage_large_railgun_modifier', 0.03),
+(@chassisDef, @extensionID, 'damage_large_railgun_modifier', 0.05),
+(@chassisDef, @combatSpecExt, 'massiveness', 0.02),
+(@chassisDef, @combatSpecExt, 'core_usage_railgun_modifier', -0.02),
+(@chassisDef, @factionPilotExt, 'armor_repair_amount_modifier', 0.05);
 
 PRINT N'DELETE BOT BONUSES';
 DELETE FROM chassisbonus WHERE definition in (SELECT DISTINCT partDef FROM #BOTBONUSES);
@@ -370,5 +370,5 @@ END
 DROP TABLE IF EXISTS #BOTSTATS;
 DROP TABLE IF EXISTS #BOTBONUSES;
 SET NOEXEC OFF;
-PRINT N'LARGE PELISTAL BOT INSERT';
+PRINT N'LARGE NUIMQOL BOT INSERT';
 GO
