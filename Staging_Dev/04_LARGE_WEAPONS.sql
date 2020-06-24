@@ -45,27 +45,27 @@ INSERT INTO #LARGEWEP (defName, attrFlags, catFlags, cargoVolume, massOfModule, 
 ('def_named2_longrange_large_railgun', 402128, 50595599, 1.5, 1300, 1, 3, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a #tier=$tierlevel_t3'),
 ('def_named3_longrange_large_railgun', 402128, 50595599, 1.5, 1430, 1, 4, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a #tier=$tierlevel_t4'),
 --PROTOTYPES
-('def_standard_large_laser_pr', 402128, 50398991, 1.5, 1000, 2, 1, '#moduleFlag=i111 #ammoCapacity=i3c #ammoType=L3020a #tier=$tierlevel_pr'),
+('def_standard_large_laser_pr', 402128, 50398991, 1.5, 1000, NULL, NULL, '#moduleFlag=i111 #ammoCapacity=i3c #ammoType=L3020a'),
 ('def_named1_large_laser_pr', 402128, 50398991, 1.5, 900, 2, 2, '#moduleFlag=i111 #ammoCapacity=i4b #ammoType=L3020a #tier=$tierlevel_t2_pr'),
 ('def_named2_large_laser_pr', 402128, 50398991, 1.5, 1000, 2, 3, '#moduleFlag=i111 #ammoCapacity=i4b #ammoType=L3020a #tier=$tierlevel_t3_pr'),
 ('def_named3_large_laser_pr', 402128, 50398991, 1.5, 1100, 2, 4, '#moduleFlag=i111 #ammoCapacity=i2d #ammoType=L3020a #tier=$tierlevel_t4_pr'),
 --
-('def_longrange_standard_large_laser_pr', 402128, 50398991, 1.5, 1300, 2, 1, '#moduleFlag=i111 #ammoCapacity=i3c #ammoType=L3020a #tier=$tierlevel_pr'),
+('def_longrange_standard_large_laser_pr', 402128, 50398991, 1.5, 1300, NULL, NULL, '#moduleFlag=i111 #ammoCapacity=i3c #ammoType=L3020a'),
 ('def_named1_longrange_large_laser_pr', 402128, 50398991, 1.5, 1170, 2, 2, '#moduleFlag=i111 #ammoCapacity=i3c #ammoType=L3020a #tier=$tierlevel_t2_pr'),
 ('def_named2_longrange_large_laser_pr', 402128, 50398991, 1.5, 1300, 2, 3, '#moduleFlag=i111 #ammoCapacity=i3c #ammoType=L3020a #tier=$tierlevel_t3_pr'),
 ('def_named3_longrange_large_laser_pr', 402128, 50398991, 1.5, 1430, 2, 4, '#moduleFlag=i111 #ammoCapacity=i3c #ammoType=L3020a #tier=$tierlevel_t4_pr'),
 --
-('def_standard_cruisemissile_launcher_pr', 402128, 50530063, 1.5, 1000, 2, 1, '#moduleFlag=i112 #ammoCapacity=i14 #ammoType=L3040a #tier=$tierlevel_pr'),
+('def_standard_cruisemissile_launcher_pr', 402128, 50530063, 1.5, 1000, NULL, NULL, '#moduleFlag=i112 #ammoCapacity=i14 #ammoType=L3040a'),
 ('def_named1_cruisemissile_launcher_pr', 402128, 50530063, 1.5, 900, 2, 2, '#moduleFlag=i112 #ammoCapacity=i14 #ammoType=L3040a #tier=$tierlevel_t2_pr'),
 ('def_named2_cruisemissile_launcher_pr', 402128, 50530063, 1.5, 1000, 2, 3, '#moduleFlag=i112 #ammoCapacity=i14 #ammoType=L3040a #tier=$tierlevel_t3_pr'),
 ('def_named3_cruisemissile_launcher_pr', 402128, 50530063, 1.5, 1100, 2, 4, '#moduleFlag=i112 #ammoCapacity=i14 #ammoType=L3040a #tier=$tierlevel_t4_pr'),
 --
-('def_standard_large_railgun_pr', 402128, 50595599, 1.5, 1000, 2, 1, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a #tier=$tierlevel_pr'),
+('def_standard_large_railgun_pr', 402128, 50595599, 1.5, 1000, NULL, NULL, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a'),
 ('def_named1_large_railgun_pr', 402128, 50595599, 1.5, 900, 2, 2, '#moduleFlag=i111 #ammoCapacity=i1e #ammoType=L3010a #tier=$tierlevel_t2_pr'),
 ('def_named2_large_railgun_pr', 402128, 50595599, 1.5, 1000, 2, 3, '#moduleFlag=i111 #ammoCapacity=i1e #ammoType=L3010a #tier=$tierlevel_t3_pr'),
 ('def_named3_large_railgun_pr', 402128, 50595599, 1.5, 1100, 2, 4, '#moduleFlag=i111 #ammoCapacity=i14 #ammoType=L3010a #tier=$tierlevel_t4_pr'),
 --
-('def_longrange_standard_large_railgun_pr', 402128, 50595599, 1.5, 1300, 2, 1, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a #tier=$tierlevel_pr'),
+('def_longrange_standard_large_railgun_pr', 402128, 50595599, 1.5, 1300, NULL, NULL, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a #tier=$tierlevel_pr'),
 ('def_named1_longrange_large_railgun_pr', 402128, 50595599, 1.5, 1170, 2, 2, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a #tier=$tierlevel_t2_pr'),
 ('def_named2_longrange_large_railgun_pr', 402128, 50595599, 1.5, 1300, 2, 3, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a #tier=$tierlevel_t3_pr'),
 ('def_named3_longrange_large_railgun_pr', 402128, 50595599, 1.5, 1430, 2, 4, '#moduleFlag=i111 #ammoCapacity=i19 #ammoType=L3010a #tier=$tierlevel_t4_pr');

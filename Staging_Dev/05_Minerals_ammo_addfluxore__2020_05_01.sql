@@ -41,7 +41,7 @@ ELSE
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) 
 	VALUES 
-	('def_geoscan_document_fluxore', 1, 2048, 1685, '', '', 1, 0.1, 0.1, 0, 100, 'def_geoscan_document_desc', 0, NULL, NULL); 
+	('def_geoscan_document_fluxore', 1, 2048, 1685, '', '', 1, 0.1, 0.1, 0, 100, 'def_geoscan_document_desc', 1, NULL, NULL); 
 END
 
 PRINT N'ADD/UPDATE def_fluxore ON entitydefaults';
@@ -418,10 +418,12 @@ INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency)
 SELECT (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_ammo_mining_fluxore_cprg'), 80, 80;
 
 PRINT N'DELETE itemresearchlevels FOR ANY EXISTING LARGE MOD CTS (0 results if 1st run)';
-SELECT * FROM itemresearchlevels WHERE definition in (SELECT definition FROM entitydefaults WHERE definitionname ='def_ammo_mining_fluxore');
-DELETE FROM itemresearchlevels WHERE definition in (SELECT definition FROM entitydefaults WHERE definitionname ='def_ammo_mining_fluxore');
+SELECT * FROM itemresearchlevels WHERE definition in (SELECT definition FROM entitydefaults WHERE definitionname ='def_ammo_mining_fluxore_pr');
+SELECT * FROM itemresearchlevels WHERE definition in (SELECT definition FROM entitydefaults WHERE definitionname ='def_ammo_mining_gammaterial_pr');
+DELETE FROM itemresearchlevels WHERE definition in (SELECT definition FROM entitydefaults WHERE definitionname ='def_ammo_mining_fluxore_pr');
+DELETE FROM itemresearchlevels WHERE definition in (SELECT definition FROM entitydefaults WHERE definitionname ='def_ammo_mining_gammaterial_pr');
 
-PRINT N'INSERT itemresearchlevels FOR MOD CTS';
+PRINT N'INSERT itemresearchlevels FOR ammo CTS';
 INSERT INTO itemresearchlevels (definition, calibrationprogram, researchlevel, enabled) VALUES
 ((SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_ammo_mining_fluxore_pr'), 
 (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_ammo_mining_fluxore_cprg'), 
@@ -429,7 +431,7 @@ INSERT INTO itemresearchlevels (definition, calibrationprogram, researchlevel, e
 
 INSERT INTO itemresearchlevels (definition, calibrationprogram, researchlevel, enabled) VALUES
 ((SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_ammo_mining_gammaterial_pr'), 
-(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_ammo_mining_fluxore_cprg'), 
+(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_ammo_mining_gammaterial_cprg'), 
 1, 1);
 
 

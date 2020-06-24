@@ -40,27 +40,27 @@ INSERT INTO #LARGEMODS (defName, attrFlags, catFlags, cargoVolume, massOfModule,
 ('def_named2_large_core_booster', 409620, 50922255, 2, 1600, 1, 3, '#moduleFlag=i20 #ammoCapacity=ia #ammoType=L70a #tier=$tierlevel_t3'),
 ('def_named3_large_core_booster', 409620, 50922255, 2, 1600, 1, 4, '#moduleFlag=i20 #ammoCapacity=ic #ammoType=L70a #tier=$tierlevel_t4'),
 --PROTOTYPES
-('def_standard_large_armor_plate_pr', 655360, 50397455, 4, 9000, 2, 1, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t1_pr'),
+('def_standard_large_armor_plate_pr', 655360, 50397455, 4, 9000, NULL, NULL, '#moduleFlag=i20 #ammoCapacity=i0'),
 ('def_named1_large_armor_plate_pr', 655360, 50397455, 4, 7200, 2, 2, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t2_pr'),
 ('def_named2_large_armor_plate_pr', 655360, 50397455, 4, 9000, 2, 3, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t3_pr'),
 ('def_named3_large_armor_plate_pr', 655360, 50397455, 4, 10050, 2, 4, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t4_pr'),
 --
-('def_standard_large_armor_repairer_pr', 147472, 50462991, 3, 1500, 2, 1, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t1_pr'),
+('def_standard_large_armor_repairer_pr', 147472, 50462991, 3, 1500, NULL, NULL, '#moduleFlag=i20 #ammoCapacity=i0'),
 ('def_named1_large_armor_repairer_pr', 147472, 50462991, 3, 1350, 2, 2, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t2_pr'),
 ('def_named2_large_armor_repairer_pr', 147472, 50462991, 3, 1500, 2, 3, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t3_pr'),
 ('def_named3_large_armor_repairer_pr', 147472, 50462991, 3, 1600, 2, 4, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t4_pr'),
 --
-('def_standard_large_shield_generator_pr', 147736, 50397711, 1, 800, 2, 1, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t1_pr'),
+('def_standard_large_shield_generator_pr', 147736, 50397711, 1, 800, NULL, NULL, '#moduleFlag=i20 #ammoCapacity=i0'),
 ('def_named1_large_shield_generator_pr', 147736, 50397711, 1, 720, 2, 2, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t2_pr'),
 ('def_named2_large_shield_generator_pr', 147736, 50397711, 1, 880, 2, 3, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t3_pr'),
 ('def_named3_large_shield_generator_pr', 147736, 50397711, 1, 940, 2, 4, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t4_pr'),
 --
-('def_standard_large_core_battery_pr', 655364, 50856719, 3, 3000, 2, 1, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t1_pr'),
+('def_standard_large_core_battery_pr', 655364, 50856719, 3, 3000, NULL, NULL, '#moduleFlag=i20 #ammoCapacity=i0'),
 ('def_named1_large_core_battery_pr', 655364, 50856719, 3, 2700, 2, 2, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t2_pr'),
 ('def_named2_large_core_battery_pr', 655364, 50856719, 3, 3000, 2, 3, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t3_pr'),
 ('def_named3_large_core_battery_pr', 655364, 50856719, 3, 3000, 2, 4, '#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t4_pr'),
 --
-('def_standard_large_core_booster_pr', 409620, 50922255, 2, 1600, 2, 1, '#moduleFlag=i20 #ammoCapacity=ia #ammoType=L70a #tier=$tierlevel_t1_pr'),
+('def_standard_large_core_booster_pr', 409620, 50922255, 2, 1600, NULL, NULL, '#moduleFlag=i20 #ammoCapacity=ia #ammoType=L70a'),
 ('def_named1_large_core_booster_pr', 409620, 50922255, 2, 1440, 2, 2, '#moduleFlag=i20 #ammoCapacity=ia #ammoType=L70a #tier=$tierlevel_t2_pr'),
 ('def_named2_large_core_booster_pr', 409620, 50922255, 2, 1600, 2, 3, '#moduleFlag=i20 #ammoCapacity=ia #ammoType=L70a #tier=$tierlevel_t3_pr'),
 ('def_named3_large_core_booster_pr', 409620, 50922255, 2, 1600, 2, 4, '#moduleFlag=i20 #ammoCapacity=ic #ammoType=L70a #tier=$tierlevel_t4_pr');
