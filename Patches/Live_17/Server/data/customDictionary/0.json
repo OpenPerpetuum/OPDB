@@ -658,7 +658,7 @@
 	"damage_turret_modifier" : "Medium turret bonus",
 	"gang_effect_enhancer_speed_max_modifier" : "Velocity nexus bonus",
 	"projectile_falloff_modifier" : "Firearm falloff increase",
-	"cpu_usage_large_missle_modifier" : "CPU usage of large missile launchers",
+	"cpu_usage_large_missile_modifier" : "CPU usage of large missile launchers",
 	"damage_large_missile_modifier" : "Large missile damage",
 	"powergrid_usage_large_missile_modifier" : "Reactor usage of large missile launchers",
 	"cpu_usage_large_railgun_modifier" : "CPU usage of large magnetic weapons",
