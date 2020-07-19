@@ -41,7 +41,7 @@ ELSE
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) 
 	VALUES 
-	('def_geoscan_document_fluxore', 1, 2048, 1685, '', '', 1, 0.1, 0.1, 0, 100, 'def_geoscan_document_desc', 1, NULL, NULL); 
+	('def_geoscan_document_fluxore', 1, 2048, 1685, '', '', 1, 0.1, 0.1, 0, 100, 'def_geoscan_document_desc', 0, NULL, NULL); 
 END
 
 PRINT N'ADD/UPDATE def_fluxore ON entitydefaults';
@@ -69,7 +69,7 @@ ELSE
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) 
 	VALUES 
-	('def_fluxore', 1, 2048, 131348, '', '', 1, 0.0001, 0.01, 0, 100, 'def_fluxore_desc', 0, NULL, NULL); 
+	('def_fluxore', 1, 2048, 131348, '', '', 1, 0.0001, 0.01, 0, 100, 'def_fluxore_desc', 1, NULL, NULL); 
 END
 
 
