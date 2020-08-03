@@ -743,5 +743,6 @@
 	"def_npc_fluxspawn_generic_desc": "'''Aggressive Nian'''\n\nThese Nian lifeforms seem to be responding to the extraction of the Flux Ore and are defending these fields with vigor!\nThere must be something valuable they are protecting here...",
 
 	"def_stronghold_exit_rift": "Exit (home)",
+	"def_stronghold_exit_rift_name": "Exit (home)",
 	"def_stronghold_exit_rift_desc": "Use this Anomaly to go back to '''Hershfield Main Terminal'''."
 }
