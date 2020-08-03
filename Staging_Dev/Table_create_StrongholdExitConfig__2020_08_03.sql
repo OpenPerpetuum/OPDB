@@ -13,9 +13,9 @@ DROP TABLE IF EXISTS dbo.strongholdexitconfig;
 
 CREATE TABLE dbo.strongholdexitconfig (
 	id INT NOT NULL IDENTITY PRIMARY KEY,
-	zoneid INT,
-	x INT,
-	y INT
+	zoneid INT NOT NULL,
+	x INT NOT NULL,
+	y INT NOT NULL
 );
 
 INSERT strongholdexitconfig (zoneid, x, y) VALUES
