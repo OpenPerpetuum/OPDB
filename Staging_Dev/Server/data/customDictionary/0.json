@@ -414,6 +414,13 @@
 	"def_materialtype_unknown_16": "Flux Ore",
 	"def_felos_bot" : "Felos",
 	"def_felos_bot_pr" : "Felos prototype",
+	"def_felos_bot_cprg" : "Felos CT",
+	"def_hydra_bot" : "Hydra",
+	"def_hydra_bot_pr" : "Hydra prototype",
+	"def_hydra_bot_pr" : "Hydra CT",
+	"def_onyx_bot" : "Onyx",
+	"def_onyx_bot_pr" : "Onyx prototype",
+	"def_onyx_bot_pr" : "Onyx CT",
 	"def_hydra_bot" : "Hydra",
 	"def_hydra_bot_pr" : "Hydra prototype",
 	"def_onyx_bot" : "Onyx",
@@ -675,6 +682,7 @@
 	"module_missile_falloff_modifier_unit":"%",
 	"ext_missile_falloff":"Improved missile falloff",
 	"ext_missile_falloff_desc":"Each level of this extension raises the maximum range of missiles' falloff by an additional {%BONUS100%}%.",
+	"ext_cruise_missiles_desc":"Each level of this extension raises the firepower of heavy missile launchers by an additional {%BONUS100%}%.",
 
 	"def_npc_fivepercent_argano": "L1 Niani Light Industrial",
 	"def_npc_fivepercent_argano_name": "Niani Copper Prospector",
@@ -746,5 +754,11 @@
 	"Aggregate_unknown_661":"Toxic damage modifier",
 	"damage_toxic":"Toxic damage (plant only)",
 	"damage_toxic_unit":"points",
-	"damage_toxic_modifier_unit":"%"
+	"damage_toxic_modifier_unit":"%",
+
+	"accountregister_username": "Email Address:",
+
+	"def_stronghold_exit_rift": "Exit (home)",
+	"def_stronghold_exit_rift_name": "Exit (home)",
+	"def_stronghold_exit_rift_desc": "Use this Anomaly to go back to '''Hershfield Main Terminal'''."
 }
