@@ -750,6 +750,12 @@
 	"def_npc_tenpercent_yagel_rank2_name": "Niani 2nd Star Lookout",
 	"def_npc_fluxspawn_generic_desc": "'''Aggressive Nian'''\n\nThese Nian lifeforms seem to be responding to the extraction of the Flux Ore and are defending these fields with vigor!\nThere must be something valuable they are protecting here...",
 
+	"Aggregate_unknown_660":"Toxic damage (plant only)",
+	"Aggregate_unknown_661":"Toxic damage modifier",
+	"damage_toxic":"Toxic damage (plant only)",
+	"damage_toxic_unit":"points",
+	"damage_toxic_modifier_unit":"%",
+
 	"accountregister_username": "Email Address:",
 
 	"def_stronghold_exit_rift": "Exit (home)",
