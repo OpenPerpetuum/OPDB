@@ -60,10 +60,10 @@ CREATE TABLE #BONUS(
 );
 
 INSERT INTO #BONUS (chassisName, extName, bonusAmount, fieldName) VALUES
-('def_vektor_chassis', 'ext_syndicate_combat_specialist', 0.5, @toxicDamageName+'_modifier'),
-('def_locust_chassis', 'ext_syndicate_combat_specialist', 0.5, @toxicDamageName+'_modifier'),
-('def_echelon_chassis', 'ext_syndicate_combat_specialist', 0.5, @toxicDamageName+'_modifier'),
-('def_legatus_chassis', 'ext_syndicate_combat_specialist', 0.5, @toxicDamageName+'_modifier');
+('def_vektor_chassis', 'ext_syndicate_combat_specialist', 0.01, @toxicDamageName+'_modifier'),
+('def_locust_chassis', 'ext_syndicate_combat_specialist', 0.01, @toxicDamageName+'_modifier'),
+('def_echelon_chassis', 'ext_syndicate_combat_specialist', 0.01, @toxicDamageName+'_modifier'),
+('def_legatus_chassis', 'ext_syndicate_combat_specialist', 0.01, @toxicDamageName+'_modifier');
 
 
 DROP TABLE IF EXISTS #TOXICDMG;
@@ -73,22 +73,22 @@ CREATE TABLE #TOXICDMG(
 );
 
 INSERT INTO #TOXICDMG(ammoName, dmg) VALUES
-('def_ammo_large_projectile_a', 36),
-('def_ammo_large_projectile_b', 36),
-('def_ammo_large_projectile_c', 36),
-('def_ammo_large_projectile_d', 36),
-('def_ammo_medium_projectile_a', 24),
-('def_ammo_medium_projectile_b', 24),
-('def_ammo_medium_projectile_c', 24),
-('def_ammo_medium_projectile_d', 24),
-('def_ammo_medium_projectile_rewa', 24),
-('def_ammo_medium_projectile_rewb', 24),
-('def_ammo_small_projectile_a', 12),
-('def_ammo_small_projectile_b', 12),
-('def_ammo_small_projectile_c', 12),
-('def_ammo_small_projectile_d', 12),
-('def_ammo_small_projectile_rewa', 12),
-('def_ammo_small_projectile_rewb', 12);
+('def_ammo_large_projectile_a', 3),
+('def_ammo_large_projectile_b', 3),
+('def_ammo_large_projectile_c', 3),
+('def_ammo_large_projectile_d', 3),
+('def_ammo_medium_projectile_a', 2),
+('def_ammo_medium_projectile_b', 2),
+('def_ammo_medium_projectile_c', 2),
+('def_ammo_medium_projectile_d', 2),
+('def_ammo_medium_projectile_rewa', 2),
+('def_ammo_medium_projectile_rewb', 2),
+('def_ammo_small_projectile_a', 1),
+('def_ammo_small_projectile_b', 1),
+('def_ammo_small_projectile_c', 1),
+('def_ammo_small_projectile_d', 1),
+('def_ammo_small_projectile_rewa', 1),
+('def_ammo_small_projectile_rewb', 1);
 
 
 
@@ -99,10 +99,10 @@ CREATE TABLE #TOXICBOMB(
 );
 
 INSERT INTO #TOXICBOMB(bombName, dmg) VALUES
-('def_area_bomb', 1000),
-('def_area_bomb_capsule', 1000),
-('def_plant_bomb', 3000),
-('def_plant_bomb_capsule', 3000);
+('def_area_bomb', 10),
+('def_area_bomb_capsule', 10),
+('def_plant_bomb', 30),
+('def_plant_bomb_capsule', 30);
 
 
 

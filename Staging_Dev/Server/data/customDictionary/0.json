@@ -760,5 +760,11 @@
 
 	"def_stronghold_exit_rift": "Exit (home)",
 	"def_stronghold_exit_rift_name": "Exit (home)",
-	"def_stronghold_exit_rift_desc": "Use this Anomaly to go back to '''Hershfield Main Terminal'''."
+	"def_stronghold_exit_rift_desc": "Use this Anomaly to go back to '''Hershfield Main Terminal'''.",
+
+	"effect_alpha_bonus": "Alpha 1 Bonus",
+	"effect_alpha2_bonus": "Alpha 2 Bonus",
+	"effect_beta_bonus": "Beta 1 Bonus",
+	"effect_beta2_bonus": "Beta 2 Bonus"
+
 }
