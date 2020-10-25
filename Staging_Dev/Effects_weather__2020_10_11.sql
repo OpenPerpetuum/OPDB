@@ -18,9 +18,9 @@ DECLARE @effectBadWeatherId INT;
 SET @effectCatName = 'effcat_weather_effects';
 SET @effectGoodWeatherName = 'effect_weather_good';
 SET @effectBadWeatherName = 'effect_weather_bad';
-SET @effCatPower =45;
-SET @effectGoodWeatherId =107;
-SET @effectBadWeatherId =108;
+SET @effCatPower = 45;
+SET @effectGoodWeatherId = 107;
+SET @effectBadWeatherId = 108;
 IF EXISTS (SELECT TOP 1 flag FROM effectcategories WHERE name=@effectCatName)
 BEGIN
 	UPDATE effectcategories SET
@@ -89,10 +89,7 @@ DELETE FROM effectdefaultmodifiers WHERE effectid=(SELECT TOP 1 id FROM effects 
 DELETE FROM effectdefaultmodifiers WHERE effectid=(SELECT TOP 1 id FROM effects WHERE name=@effectGoodWeatherName);
 
 INSERT INTO effectdefaultmodifiers (effectid, field, value) VALUES
-((SELECT TOP 1 id FROM effects WHERE name=@effectBadWeatherName),(SELECT TOP 1 id FROM aggregatefields WHERE name = 'effect_detection_strength_modifier'), -5),
-((SELECT TOP 1 id FROM effects WHERE name=@effectBadWeatherName),(SELECT TOP 1 id FROM aggregatefields WHERE name = 'effect_blob_emission_radius_modifier'), 2),
-((SELECT TOP 1 id FROM effects WHERE name=@effectBadWeatherName),(SELECT TOP 1 id FROM aggregatefields WHERE name = 'effect_blob_emission_modifier'), 20),
+((SELECT TOP 1 id FROM effects WHERE name=@effectBadWeatherName),(SELECT TOP 1 id FROM aggregatefields WHERE name = 'effect_detection_strength_modifier'), -2),
 ((SELECT TOP 1 id FROM effects WHERE name=@effectGoodWeatherName),(SELECT TOP 1 id FROM aggregatefields WHERE name = 'effect_detection_strength_modifier'), 2);
-
 
 GO
