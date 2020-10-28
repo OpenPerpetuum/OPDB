@@ -46,3 +46,21 @@ WHEN NOT MATCHED THEN
 PRINT N'MERGED!';
 DROP TABLE IF EXISTS #MODIFIERS;
 GO
+
+
+
+USE [perpetuumsa]
+GO
+
+----------------------------------------
+-- Shield radius field, increase display units 0->1
+--
+-- Date modified: 2020/10/27
+----------------------------------------
+
+
+UPDATE aggregatefields SET 
+	digits=1
+WHERE name='shield_radius';
+
+GO
