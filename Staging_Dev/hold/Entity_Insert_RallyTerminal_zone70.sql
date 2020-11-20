@@ -8,6 +8,12 @@ GO
 -- Date Modified: 2020/11/18
 ----------------------------------
 
+IF NOT EXISTS (SELECT TOP 1 id FROM zones WHERE id=70)
+BEGIN
+	PRINT N'ZONE 70 NOT FOUND -- NOT EXECUTING INSERTS!!';
+	SET NOEXEC ON;
+END
+
 -- Parameters
 DECLARE @terminalZone AS INT = 70;
 DECLARE @terminalName AS VARCHAR(128) = 'fieldTerminal_z'+CAST(@terminalZone AS VARCHAR(24))+'_n00';
@@ -51,4 +57,5 @@ BEGIN
 	PRINT N'NO INSERTIONS MADE!!!';
 END
 
+SET NOEXEC OFF;
 GO
