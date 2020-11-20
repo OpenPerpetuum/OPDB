@@ -770,5 +770,10 @@
 	"def_field_terminal_rally": "Rally Field terminal",
 	"error_MissionNotAvailable": "There are no missions available here.",
 
-	"zone_strghld_70_short": "SH70"
+	"zone_strghld_70_short": "SH70",
+
+	"effect_weather_good": "Good weather bonus",
+	"effect_weather_bad": "Bad weather bonus",
+	"effect_daytime_day": "Day bonus",
+	"effect_daytime_night": "Night bonus"
 }
