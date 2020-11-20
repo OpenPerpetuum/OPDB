@@ -770,5 +770,12 @@
 	"def_field_terminal_rally": "Rally Field terminal",
 	"error_MissionNotAvailable": "There are no missions available here.",
 
-	"zone_strghld_70_short": "SH70"
+	"zone_strghld_70_short": "SH70",
+
+	"def_ammo_medium_projectile_t_CT_capsule": "Medium Toxic bullet CT Capsule",
+	"def_ammo_small_projectile_t_CT_capsule": "Small Toxic bullet CT Capsule",
+	"def_ammo_medium_projectile_t_cprg": "Medium Toxic bullet CT",
+	"def_ammo_small_projectile_t_cprg": "Small Toxic bullet CT",
+	"def_ammo_medium_projectile_t": "Medium Toxic bullet",
+	"def_ammo_small_projectile_t": "Small Toxic bullet"
 }
