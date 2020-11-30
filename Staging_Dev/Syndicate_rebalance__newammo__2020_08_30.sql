@@ -69,15 +69,15 @@ CREATE TABLE #AMMOCOMPONENTS(
 );
 INSERT INTO #AMMOCOMPONENTS (defName, compDefName, amount) VALUES
 ('def_ammo_small_projectile_t','def_titanium',100),
-('def_ammo_small_projectile_t','def_phlobotil',50),
-('def_ammo_small_projectile_t','def_polynucleit',50),
-('def_ammo_small_projectile_t','def_polynitrocol',50),
+('def_ammo_small_projectile_t','def_phlobotil',100),
+('def_ammo_small_projectile_t','def_polynucleit',100),
+('def_ammo_small_projectile_t','def_polynitrocol',100),
 ('def_ammo_small_projectile_t','def_axicoline',100),
 
 ('def_ammo_medium_projectile_t','def_titanium',200),
-('def_ammo_medium_projectile_t','def_phlobotil',100),
-('def_ammo_medium_projectile_t','def_polynucleit',100),
-('def_ammo_medium_projectile_t','def_polynitrocol',100),
+('def_ammo_medium_projectile_t','def_phlobotil',200),
+('def_ammo_medium_projectile_t','def_polynucleit',200),
+('def_ammo_medium_projectile_t','def_polynitrocol',200),
 ('def_ammo_medium_projectile_t','def_axicoline',200);
 
 
@@ -89,8 +89,8 @@ CREATE TABLE #SHOPENTRIES
 	nicPrice int
 );
 INSERT INTO #SHOPENTRIES (defName, tokenPrice, nicPrice) VALUES
-('def_ammo_small_projectile_t_CT_capsule', 10, 250000),
-('def_ammo_medium_projectile_t_CT_capsule', 40, 1000000);
+('def_ammo_small_projectile_t_CT_capsule', 20, 1000000),
+('def_ammo_medium_projectile_t_CT_capsule', 100, 5000000);
 
 DROP TABLE IF EXISTS #TOXICDMG;
 CREATE TABLE #TOXICDMG(
