@@ -7,7 +7,7 @@ GO
 -- Updates toxic dmg on existing ammo and bombs
 -- Updates syndicate bot stats
 -- Updates syndicate bot bonuses
--- Last Modified: 2020/08/30
+-- Last Modified: 2020/11/29
 --------------------------------------------------
 
 DECLARE @toxicDamageName VARCHAR(100);
@@ -119,13 +119,16 @@ INSERT INTO #TOXICDMG(ammoName, dmg) VALUES
 DROP TABLE IF EXISTS #TOXICBOMB;
 CREATE TABLE #TOXICBOMB(
 	bombName VARCHAR(100),
-	dmg INT
+	toxicDmg INT,
+	chemicalDmg INT,
+	explosionRange INT,
+	volume FLOAT
 );
-INSERT INTO #TOXICBOMB(bombName, dmg) VALUES
-('def_area_bomb', 100),
-('def_area_bomb_capsule', 100),
-('def_plant_bomb', 500),
-('def_plant_bomb_capsule', 500);
+INSERT INTO #TOXICBOMB(bombName, toxicDmg, chemicalDmg, explosionRange, volume) VALUES
+('def_area_bomb', 1000, 3500, 13, 1),
+('def_area_bomb_capsule', 1000, 3500, 15, 7.5),
+('def_plant_bomb', 2000, 1000, 13, 1),
+('def_plant_bomb_capsule', 2000, 1000, 15, 4);
 
 
 DROP TABLE IF EXISTS #STATS;
@@ -425,12 +428,27 @@ WHEN NOT MATCHED
 	t.dmg);
 
 
-PRINT N'INSERT/UPDATE definitionconfig FOR BOMBS';
+PRINT N'UPDATE definitionconfig FOR BOMBS';
 MERGE definitionconfig c USING #TOXICBOMB t
 ON c.definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=t.bombName)
 WHEN MATCHED
     THEN UPDATE SET
-		c.damage_toxic = t.dmg;
+		c.damage_toxic = t.toxicDmg,
+		c.damage_chemical = t.chemicalDmg,
+		c.item_work_range = t.explosionRange;
+
+PRINT N'UPDATE entitydefaults FOR BOMBS';
+MERGE entitydefaults d USING #TOXICBOMB t
+ON d.definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=t.bombName)
+WHEN MATCHED
+    THEN UPDATE SET
+		d.volume = t.volume;
+
+PRINT N'UPDATE npc-market sellorders for plant bomb';
+UPDATE marketitems SET
+	price=300000
+WHERE itemdefinition=(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_plant_bomb_capsule') AND
+isvendoritem=1 AND isSell=1;
 
 
 PRINT N'DELETE/RE-INSERT beamassignment FOR NEW TOXIC AMMO';
