@@ -254,12 +254,12 @@ INSERT INTO #STATS (defName, fieldName, value) VALUES
 ('def_named2_longrange_medium_autocannon_pr','optimal_range',23.5),
 
 ('def_named3_longrange_medium_autocannon','cycle_time',9000),
-('def_named3_longrange_medium_autocannon','damage_modifier',2.65),
+('def_named3_longrange_medium_autocannon','damage_modifier',2.70),
 ('def_named3_longrange_medium_autocannon','falloff',32.0),
 ('def_named3_longrange_medium_autocannon','optimal_range',24.0),
 
 ('def_named3_longrange_medium_autocannon_pr','cycle_time',9000),
-('def_named3_longrange_medium_autocannon_pr','damage_modifier',2.65),
+('def_named3_longrange_medium_autocannon_pr','damage_modifier',2.70),
 ('def_named3_longrange_medium_autocannon_pr','falloff',32.0),
 ('def_named3_longrange_medium_autocannon_pr','optimal_range',24.0),
 --NEW AMMO
