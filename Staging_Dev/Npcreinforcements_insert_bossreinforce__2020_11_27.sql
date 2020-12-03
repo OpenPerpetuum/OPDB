@@ -4,7 +4,7 @@ GO
 ------------------------------------------
 -- NPCReinforcements for existing bosses
 --
--- Date modified: 2020/11/29
+-- Date modified: 2020/12/02
 ------------------------------------------
 
 PRINT N'ADD/UPDATE npcreinforcements FOR NPC BOSSES';
@@ -22,29 +22,6 @@ CREATE TABLE #WAVES (
 );
 
 INSERT INTO #WAVES (targetFlockName, presenceName, npcDefName, numInFlock, behaviorType, thresh) VALUES
---Bonnie RR boss NV
-('Rough_Rider_Leader', 'reinforce_rrboss_nv_wave_0', 'def_npc_RoughRider_Scout', 1, 1, 0.25),
-('Rough_Rider_Leader', 'reinforce_rrboss_nv_wave_1', 'def_npc_RoughRider_Scout', 1, 1, 0.55),
---Factional NV Bosses
-('def_npc_Imperial_Infantry', 'reinforce_tmboss_nv_wave_0', 'def_npc_castel_scout_rank1', 1, 1, 0.5),
-('def_npc_Tribal_Member', 'reinforce_icsboss_nv_wave_0', 'def_npc_yagel_scout_rank1', 1, 1, 0.5),
-('def_npc_Sacrist_Convert', 'reinforce_asiboss_nv_wave_0', 'def_npc_prometheus_scout_rank1', 1, 1, 0.5),
---Hersh Factional Bosses
-('hersh_GreenBoss', 'reinforce_tmboss_hersh_wave_0', 'def_npc_troiar_ewjammer_rank3', 1, 1, 0.33),
-('hersh_GreenBoss', 'reinforce_tmboss_hersh_wave_1', 'def_npc_troiar_ewjammer_rank3', 2, 1, 0.66),
-
-('Blue_Hersh_mech_boss', 'reinforce_icsboss_hersh_wave_0', 'def_npc_cameleon_ewjammer_rank3', 1, 1, 0.33),
-('Blue_Hersh_mech_boss', 'reinforce_icsboss_hersh_wave_1', 'def_npc_cameleon_ewjammer_rank3', 2, 1, 0.66),
-
-('hersh_yellow_boss', 'reinforce_asiboss_hersh_wave_0', 'def_npc_intakt_ewjammer_rank3', 1, 1, 0.33),
-('hersh_yellow_boss', 'reinforce_asiboss_hersh_wave_1', 'def_npc_intakt_ewjammer_rank3', 2, 1, 0.66),
---One-eye RR boss Hersh
-('Hersh_RR_1', 'reinforce_rrboss_hersh_wave_0', 'def_npc_RoughRider_Scout', 2, 1, 0.33),
-('Hersh_RR_1', 'reinforce_rrboss_hersh_wave_0', 'def_npc_RoughRider_Cavalry', 1, 1, 0.33),
-('Hersh_RR_1', 'reinforce_rrboss_hersh_wave_1', 'def_npc_RoughRider_Scout', 2, 1, 0.66),
-('Hersh_RR_1', 'reinforce_rrboss_hersh_wave_1', 'def_npc_RoughRider_Cavalry', 2, 1, 0.66),
-('Hersh_RR_1', 'reinforce_rrboss_hersh_wave_1', 'def_npc_callisto_buccaneer_rank2', 1, 1, 0.66),
-
 --Hersh Pitboss
 ('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_0', 'def_npc_argano_basic_rank3', 1, 1, 0.1),
 ('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_0', 'def_npc_laird_basic_rank3', 1, 1, 0.1),
@@ -149,7 +126,7 @@ FROM #WAVES;
 INSERT INTO npcflock
 	(name,presenceid,flockmembercount,definition,spawnoriginX,spawnoriginY,spawnrangeMin,spawnrangeMax,respawnseconds,totalspawncount,homerange,note,respawnmultiplierlow,enabled,iscallforhelp,behaviorType,npcSpecialType)
 SELECT 
-	presenceName+npcDefName, (SELECT id FROM npcpresence WHERE name=presenceName), numInFlock, (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=npcDefName), 0, 0, 0, 10, 0, 1, 35, presenceName+npcDefName, 0.5, 1, 1, behaviorType, 0
+	presenceName+npcDefName, (SELECT id FROM npcpresence WHERE name=presenceName), numInFlock, (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=npcDefName), 0, 0, 0, 10, 0, 1, 55, presenceName+npcDefName, 0.5, 1, 1, behaviorType, 0
 FROM #WAVES;
 
 INSERT INTO dbo.npcreinforcements
