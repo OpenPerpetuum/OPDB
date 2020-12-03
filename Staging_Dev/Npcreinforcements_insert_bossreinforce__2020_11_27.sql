@@ -33,16 +33,16 @@ INSERT INTO #WAVES (targetFlockName, presenceName, npcDefName, numInFlock, behav
 ('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_1', 'def_npc_locust_firstmate_rank3', 1, 1, 0.25),
 ('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_1', 'def_npc_vektor_swab_rank3', 1, 1, 0.25),
 
-('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_2', 'def_npc_sequer_basic_rank4', 2, 1, 0.5),
-('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_2', 'def_npc_termis_basic_rank3', 1, 1, 0.5),
-('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_2', 'def_npc_gargoyle_basic_rank3', 1, 1, 0.5),
-('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_2', 'def_npc_locust_firstmate_rank3', 2, 1, 0.5),
+('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_2', 'def_npc_sequer_basic_rank4', 2, 1, 0.4),
+('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_2', 'def_npc_termis_basic_rank3', 1, 1, 0.4),
+('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_2', 'def_npc_gargoyle_basic_rank3', 1, 1, 0.4),
+('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_2', 'def_npc_locust_firstmate_rank3', 2, 1, 0.4),
 
-('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_3', 'def_npc_sequer_basic_rank4', 2, 1, 0.75),
-('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_3', 'def_npc_termis_basic_rank4', 2, 1, 0.75),
-('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_3', 'def_npc_gargoyle_basic_rank4', 2, 1, 0.75),
-('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_3', 'def_npc_locust_firstmate_rank4', 2, 1, 0.75),
-('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_3', 'def_npc_callisto_buccaneer_rank2', 1, 1, 0.75),
+('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_3', 'def_npc_sequer_basic_rank4', 2, 1, 0.65),
+('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_3', 'def_npc_termis_basic_rank4', 2, 1, 0.65),
+('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_3', 'def_npc_gargoyle_basic_rank4', 2, 1, 0.65),
+('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_3', 'def_npc_locust_firstmate_rank4', 2, 1, 0.65),
+('Hersh_Pit_Boss', 'reinforce_pitboss_hersh_wave_3', 'def_npc_callisto_buccaneer_rank2', 1, 1, 0.65),
 
 --Dom Pitboss
 ('Domhalarn_Pitboss_flock_boss', 'reinforce_pitboss_dom_wave_0', 'def_npc_argano_basic_rank4', 1, 1, 0.1),
@@ -53,15 +53,15 @@ INSERT INTO #WAVES (targetFlockName, presenceName, npcDefName, numInFlock, behav
 ('Domhalarn_Pitboss_flock_boss', 'reinforce_pitboss_dom_wave_1', 'def_npc_arbalest_interceptor_rank4', 1, 1, 0.25),
 ('Domhalarn_Pitboss_flock_boss', 'reinforce_pitboss_dom_wave_1', 'def_npc_yagel_dps_rank4', 1, 1, 0.25),
 
-('Domhalarn_Pitboss_flock_boss', 'reinforce_pitboss_dom_wave_2', 'def_npc_cameleon_ewjammer_rank4', 2, 1, 0.5),
-('Domhalarn_Pitboss_flock_boss', 'reinforce_pitboss_dom_wave_2', 'def_npc_arbalest_interceptor_rank4', 1, 1, 0.5),
-('Domhalarn_Pitboss_flock_boss', 'reinforce_pitboss_dom_wave_2', 'def_npc_yagel_dps_rank4', 2, 1, 0.5),
-('Domhalarn_Pitboss_flock_boss', 'reinforce_pitboss_dom_wave_2', 'def_npc_kain_ew_rank4', 1, 1, 0.5),
+('Domhalarn_Pitboss_flock_boss', 'reinforce_pitboss_dom_wave_2', 'def_npc_cameleon_ewjammer_rank4', 2, 1, 0.4),
+('Domhalarn_Pitboss_flock_boss', 'reinforce_pitboss_dom_wave_2', 'def_npc_arbalest_interceptor_rank4', 1, 1, 0.4),
+('Domhalarn_Pitboss_flock_boss', 'reinforce_pitboss_dom_wave_2', 'def_npc_yagel_dps_rank4', 2, 1, 0.4),
+('Domhalarn_Pitboss_flock_boss', 'reinforce_pitboss_dom_wave_2', 'def_npc_kain_ew_rank4', 1, 1, 0.4),
 
-('Domhalarn_Pitboss_flock_boss', 'reinforce_pitboss_dom_wave_3', 'def_npc_cameleon_ewjammer_rank5', 2, 1, 0.75),
-('Domhalarn_Pitboss_flock_boss', 'reinforce_pitboss_dom_wave_3', 'def_npc_arbalest_interceptor_rank5', 2, 1, 0.75),
-('Domhalarn_Pitboss_flock_boss', 'reinforce_pitboss_dom_wave_3', 'def_npc_vagabond_jammer_rank4', 1, 1, 0.75),
-('Domhalarn_Pitboss_flock_boss', 'reinforce_pitboss_dom_wave_3', 'def_npc_kain_dps_rank5', 2, 1, 0.75),
+('Domhalarn_Pitboss_flock_boss', 'reinforce_pitboss_dom_wave_3', 'def_npc_cameleon_ewjammer_rank5', 2, 1, 0.65),
+('Domhalarn_Pitboss_flock_boss', 'reinforce_pitboss_dom_wave_3', 'def_npc_arbalest_interceptor_rank5', 2, 1, 0.65),
+('Domhalarn_Pitboss_flock_boss', 'reinforce_pitboss_dom_wave_3', 'def_npc_vagabond_jammer_rank4', 1, 1, 0.65),
+('Domhalarn_Pitboss_flock_boss', 'reinforce_pitboss_dom_wave_3', 'def_npc_kain_dps_rank5', 2, 1, 0.65),
 
 --Hokk Pitboss
 ('Hokkogaros_Pitboss_flock_boss', 'reinforce_pitboss_hokk_wave_0', 'def_npc_argano_basic_rank4', 1, 1, 0.1),
@@ -72,15 +72,15 @@ INSERT INTO #WAVES (targetFlockName, presenceName, npcDefName, numInFlock, behav
 ('Hokkogaros_Pitboss_flock_boss', 'reinforce_pitboss_hokk_wave_1', 'def_npc_baphomet_interceptor_rank4', 1, 1, 0.25),
 ('Hokkogaros_Pitboss_flock_boss', 'reinforce_pitboss_hokk_wave_1', 'def_npc_prometheus_dps_rank4', 1, 1, 0.25),
 
-('Hokkogaros_Pitboss_flock_boss', 'reinforce_pitboss_hokk_wave_2', 'def_npc_intakt_ewjammer_rank4', 2, 1, 0.5),
-('Hokkogaros_Pitboss_flock_boss', 'reinforce_pitboss_hokk_wave_2', 'def_npc_baphomet_interceptor_rank4', 1, 1, 0.5),
-('Hokkogaros_Pitboss_flock_boss', 'reinforce_pitboss_hokk_wave_2', 'def_npc_prometheus_dps_rank4', 2, 1, 0.5),
-('Hokkogaros_Pitboss_flock_boss', 'reinforce_pitboss_hokk_wave_2', 'def_npc_artemis_ew_rank4', 1, 1, 0.5),
+('Hokkogaros_Pitboss_flock_boss', 'reinforce_pitboss_hokk_wave_2', 'def_npc_intakt_ewjammer_rank4', 2, 1, 0.4),
+('Hokkogaros_Pitboss_flock_boss', 'reinforce_pitboss_hokk_wave_2', 'def_npc_baphomet_interceptor_rank4', 1, 1, 0.4),
+('Hokkogaros_Pitboss_flock_boss', 'reinforce_pitboss_hokk_wave_2', 'def_npc_prometheus_dps_rank4', 2, 1, 0.4),
+('Hokkogaros_Pitboss_flock_boss', 'reinforce_pitboss_hokk_wave_2', 'def_npc_artemis_ew_rank4', 1, 1, 0.4),
 
-('Hokkogaros_Pitboss_flock_boss', 'reinforce_pitboss_hokk_wave_3', 'def_npc_intakt_ewjammer_rank5', 2, 1, 0.75),
-('Hokkogaros_Pitboss_flock_boss', 'reinforce_pitboss_hokk_wave_3', 'def_npc_baphomet_interceptor_rank5', 2, 1, 0.75),
-('Hokkogaros_Pitboss_flock_boss', 'reinforce_pitboss_hokk_wave_3', 'def_npc_zenith_jammer_rank4', 1, 1, 0.75),
-('Hokkogaros_Pitboss_flock_boss', 'reinforce_pitboss_hokk_wave_3', 'def_npc_artemis_dps_rank5', 2, 1, 0.75),
+('Hokkogaros_Pitboss_flock_boss', 'reinforce_pitboss_hokk_wave_3', 'def_npc_intakt_ewjammer_rank5', 2, 1, 0.65),
+('Hokkogaros_Pitboss_flock_boss', 'reinforce_pitboss_hokk_wave_3', 'def_npc_baphomet_interceptor_rank5', 2, 1, 0.65),
+('Hokkogaros_Pitboss_flock_boss', 'reinforce_pitboss_hokk_wave_3', 'def_npc_zenith_jammer_rank4', 1, 1, 0.65),
+('Hokkogaros_Pitboss_flock_boss', 'reinforce_pitboss_hokk_wave_3', 'def_npc_artemis_dps_rank5', 2, 1, 0.65),
 
 --Nor Pitboss
 ('Norhoop_Pitboss_flock_boss', 'reinforce_pitboss_hoop_wave_0', 'def_npc_argano_basic_rank4', 1, 1, 0.1),
@@ -91,15 +91,15 @@ INSERT INTO #WAVES (targetFlockName, presenceName, npcDefName, numInFlock, behav
 ('Norhoop_Pitboss_flock_boss', 'reinforce_pitboss_hoop_wave_1', 'def_npc_waspish_interceptor_rank4', 1, 1, 0.25),
 ('Norhoop_Pitboss_flock_boss', 'reinforce_pitboss_hoop_wave_1', 'def_npc_castel_dps_rank4', 1, 1, 0.25),
 
-('Norhoop_Pitboss_flock_boss', 'reinforce_pitboss_hoop_wave_2', 'def_npc_troiar_ewjammer_rank4', 2, 1, 0.5),
-('Norhoop_Pitboss_flock_boss', 'reinforce_pitboss_hoop_wave_2', 'def_npc_waspish_interceptor_rank4', 1, 1, 0.5),
-('Norhoop_Pitboss_flock_boss', 'reinforce_pitboss_hoop_wave_2', 'def_npc_castel_dps_rank4', 2, 1, 0.5),
-('Norhoop_Pitboss_flock_boss', 'reinforce_pitboss_hoop_wave_2', 'def_npc_tyrannos_ew_rank4', 1, 1, 0.5),
+('Norhoop_Pitboss_flock_boss', 'reinforce_pitboss_hoop_wave_2', 'def_npc_troiar_ewjammer_rank4', 2, 1, 0.4),
+('Norhoop_Pitboss_flock_boss', 'reinforce_pitboss_hoop_wave_2', 'def_npc_waspish_interceptor_rank4', 1, 1, 0.4),
+('Norhoop_Pitboss_flock_boss', 'reinforce_pitboss_hoop_wave_2', 'def_npc_castel_dps_rank4', 2, 1, 0.4),
+('Norhoop_Pitboss_flock_boss', 'reinforce_pitboss_hoop_wave_2', 'def_npc_tyrannos_ew_rank4', 1, 1, 0.4),
 
-('Norhoop_Pitboss_flock_boss', 'reinforce_pitboss_hoop_wave_3', 'def_npc_troiar_ewjammer_rank5', 2, 1, 0.75),
-('Norhoop_Pitboss_flock_boss', 'reinforce_pitboss_hoop_wave_3', 'def_npc_waspish_interceptor_rank4', 2, 1, 0.75),
-('Norhoop_Pitboss_flock_boss', 'reinforce_pitboss_hoop_wave_3', 'def_npc_ictus_jammer_rank4', 1, 1, 0.75),
-('Norhoop_Pitboss_flock_boss', 'reinforce_pitboss_hoop_wave_3', 'def_npc_tyrannos_dps_rank5', 2, 1, 0.75),
+('Norhoop_Pitboss_flock_boss', 'reinforce_pitboss_hoop_wave_3', 'def_npc_troiar_ewjammer_rank5', 2, 1, 0.65),
+('Norhoop_Pitboss_flock_boss', 'reinforce_pitboss_hoop_wave_3', 'def_npc_waspish_interceptor_rank4', 2, 1, 0.65),
+('Norhoop_Pitboss_flock_boss', 'reinforce_pitboss_hoop_wave_3', 'def_npc_ictus_jammer_rank4', 1, 1, 0.65),
+('Norhoop_Pitboss_flock_boss', 'reinforce_pitboss_hoop_wave_3', 'def_npc_tyrannos_dps_rank5', 2, 1, 0.65),
 
 --Omega Stronghold Bosses
 ('tyrannos_protector', 'reinforce_strnghld1_tyrannos_wave_0', 'def_npc_troiar_ewjammer_rank5', 1, 2, 0.25),
