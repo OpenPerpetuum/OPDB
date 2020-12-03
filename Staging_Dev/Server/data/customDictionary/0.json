@@ -779,5 +779,12 @@
 	"effect_day_clear": "Clear-day bonus",
 	"effect_day_overcast": "Cloudy-day bonus",
 	"effect_night_clear": "Clear-night bonus",
-	"effect_night_overcast": "Cloudy-night bonus"
+	"effect_night_overcast": "Cloudy-night bonus",
+
+	"def_ammo_medium_projectile_t_CT_capsule": "Medium Toxic bullet CT Capsule",
+	"def_ammo_small_projectile_t_CT_capsule": "Small Toxic bullet CT Capsule",
+	"def_ammo_medium_projectile_t_cprg": "Medium Toxic bullet CT",
+	"def_ammo_small_projectile_t_cprg": "Small Toxic bullet CT",
+	"def_ammo_medium_projectile_t": "Medium Toxic bullet",
+	"def_ammo_small_projectile_t": "Small Toxic bullet"
 }
