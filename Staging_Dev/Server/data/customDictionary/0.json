@@ -772,8 +772,12 @@
 
 	"zone_strghld_70_short": "SH70",
 
-	"effect_weather_good": "Good weather bonus",
+	"effect_weather_good": "Clear weather bonus",
 	"effect_weather_bad": "Bad weather bonus",
-	"effect_daytime_day": "Day bonus",
-	"effect_daytime_night": "Night bonus"
+	"effect_day": "Day bonus",
+	"effect_night": "Night bonus",
+	"effect_day_clear": "Clear-day bonus",
+	"effect_day_overcast": "Cloudy-day bonus",
+	"effect_night_clear": "Clear-night bonus",
+	"effect_night_overcast": "Cloudy-night bonus"
 }
