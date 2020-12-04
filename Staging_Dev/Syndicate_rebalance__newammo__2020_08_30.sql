@@ -7,7 +7,7 @@ GO
 -- Updates toxic dmg on existing ammo and bombs
 -- Updates syndicate bot stats
 -- Updates syndicate bot bonuses
--- Last Modified: 2020/12/01
+-- Last Modified: 2020/12/03
 --------------------------------------------------
 
 DECLARE @toxicDamageName VARCHAR(100);
@@ -244,12 +244,12 @@ INSERT INTO #STATS (defName, fieldName, value) VALUES
 ('def_named1_longrange_medium_autocannon_pr','optimal_range',22),
 
 ('def_named2_longrange_medium_autocannon','cycle_time',6000),
-('def_named2_longrange_medium_autocannon','damage_modifier',1.70),
+('def_named2_longrange_medium_autocannon','damage_modifier',1.60),
 ('def_named2_longrange_medium_autocannon','falloff',31.0),
 ('def_named2_longrange_medium_autocannon','optimal_range',23.5),
 
 ('def_named2_longrange_medium_autocannon_pr','cycle_time',6000),
-('def_named2_longrange_medium_autocannon_pr','damage_modifier',1.70),
+('def_named2_longrange_medium_autocannon_pr','damage_modifier',1.60),
 ('def_named2_longrange_medium_autocannon_pr','falloff',31.0),
 ('def_named2_longrange_medium_autocannon_pr','optimal_range',23.5),
 
