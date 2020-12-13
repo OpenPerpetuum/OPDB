@@ -7,7 +7,7 @@ GO
 -- Updates toxic dmg on existing ammo and bombs
 -- Updates syndicate bot stats
 -- Updates syndicate bot bonuses
--- Last Modified: 2020/12/01
+-- Last Modified: 2020/12/12
 --------------------------------------------------
 
 DECLARE @toxicDamageName VARCHAR(100);
@@ -98,22 +98,22 @@ CREATE TABLE #TOXICDMG(
 	dmg INT
 );
 INSERT INTO #TOXICDMG(ammoName, dmg) VALUES
-('def_ammo_large_projectile_a', 18),
-('def_ammo_large_projectile_b', 18),
-('def_ammo_large_projectile_c', 18),
-('def_ammo_large_projectile_d', 18),
-('def_ammo_medium_projectile_a', 12),
-('def_ammo_medium_projectile_b', 12),
-('def_ammo_medium_projectile_c', 12),
-('def_ammo_medium_projectile_d', 12),
-('def_ammo_medium_projectile_rewa', 12),
-('def_ammo_medium_projectile_rewb', 12),
-('def_ammo_small_projectile_a', 6),
-('def_ammo_small_projectile_b', 6),
-('def_ammo_small_projectile_c', 6),
-('def_ammo_small_projectile_d', 6),
-('def_ammo_small_projectile_rewa', 6),
-('def_ammo_small_projectile_rewb', 6);
+('def_ammo_large_projectile_a', 9),
+('def_ammo_large_projectile_b', 9),
+('def_ammo_large_projectile_c', 9),
+('def_ammo_large_projectile_d', 9),
+('def_ammo_medium_projectile_a', 6),
+('def_ammo_medium_projectile_b', 6),
+('def_ammo_medium_projectile_c', 6),
+('def_ammo_medium_projectile_d', 6),
+('def_ammo_medium_projectile_rewa', 6),
+('def_ammo_medium_projectile_rewb', 6),
+('def_ammo_small_projectile_a', 3),
+('def_ammo_small_projectile_b', 3),
+('def_ammo_small_projectile_c', 3),
+('def_ammo_small_projectile_d', 3),
+('def_ammo_small_projectile_rewa', 3),
+('def_ammo_small_projectile_rewb', 3);
 
 
 DROP TABLE IF EXISTS #TOXICBOMB;
@@ -244,12 +244,12 @@ INSERT INTO #STATS (defName, fieldName, value) VALUES
 ('def_named1_longrange_medium_autocannon_pr','optimal_range',22),
 
 ('def_named2_longrange_medium_autocannon','cycle_time',6000),
-('def_named2_longrange_medium_autocannon','damage_modifier',1.70),
+('def_named2_longrange_medium_autocannon','damage_modifier',1.60),
 ('def_named2_longrange_medium_autocannon','falloff',31.0),
 ('def_named2_longrange_medium_autocannon','optimal_range',23.5),
 
 ('def_named2_longrange_medium_autocannon_pr','cycle_time',6000),
-('def_named2_longrange_medium_autocannon_pr','damage_modifier',1.70),
+('def_named2_longrange_medium_autocannon_pr','damage_modifier',1.60),
 ('def_named2_longrange_medium_autocannon_pr','falloff',31.0),
 ('def_named2_longrange_medium_autocannon_pr','optimal_range',23.5),
 
@@ -263,11 +263,17 @@ INSERT INTO #STATS (defName, fieldName, value) VALUES
 ('def_named3_longrange_medium_autocannon_pr','falloff',32.0),
 ('def_named3_longrange_medium_autocannon_pr','optimal_range',24.0),
 --NEW AMMO
-('def_ammo_small_projectile_t','damage_chemical',12),
-('def_ammo_small_projectile_t',@toxicDamageName,24),
+('def_ammo_small_projectile_t','damage_chemical',6),
+('def_ammo_small_projectile_t','damage_explosive',1),
+('def_ammo_small_projectile_t','damage_kinetic',1),
+('def_ammo_small_projectile_t','damage_thermal',1),
+('def_ammo_small_projectile_t',@toxicDamageName,20),
 
-('def_ammo_medium_projectile_t','damage_chemical',24),
-('def_ammo_medium_projectile_t',@toxicDamageName,48);
+('def_ammo_medium_projectile_t','damage_chemical',12),
+('def_ammo_medium_projectile_t','damage_explosive',2),
+('def_ammo_medium_projectile_t','damage_kinetic',2),
+('def_ammo_medium_projectile_t','damage_thermal',2),
+('def_ammo_medium_projectile_t',@toxicDamageName,40);
 
 
 DROP TABLE IF EXISTS #BONUS;

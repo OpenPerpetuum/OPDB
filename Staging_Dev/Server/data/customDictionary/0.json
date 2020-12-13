@@ -781,10 +781,14 @@
 	"effect_night_clear": "Clear-night bonus",
 	"effect_night_overcast": "Cloudy-night bonus",
 
-	"def_ammo_medium_projectile_t_CT_capsule": "Medium Toxic bullet CT Capsule",
-	"def_ammo_small_projectile_t_CT_capsule": "Small Toxic bullet CT Capsule",
-	"def_ammo_medium_projectile_t_cprg": "Medium Toxic bullet CT",
-	"def_ammo_small_projectile_t_cprg": "Small Toxic bullet CT",
-	"def_ammo_medium_projectile_t": "Medium Toxic bullet",
-	"def_ammo_small_projectile_t": "Small Toxic bullet"
+	"def_ammo_medium_projectile_t_CT_capsule": "Medium 'Machete' bullet CT Capsule",
+	"def_ammo_small_projectile_t_CT_capsule": "Small 'Machete' bullet CT Capsule",
+	"def_ammo_medium_projectile_t_cprg": "Medium 'Machete' bullet CT",
+	"def_ammo_small_projectile_t_cprg": "Small 'Machete' bullet CT",
+	"def_ammo_medium_projectile_t": "Medium 'Machete' bullet",
+	"def_ammo_small_projectile_t": "Small 'Machete' bullet",
+
+	"def_ammo_medium_projectile_t_CT_capsule_desc":"Medium 'Machete' bullet CT Capsule\n\nThis item can be sold on the Market!\n\nRight-click, '''Activate''' to open and access the CT within.  Note: this is irreversible, and the CT can not be sold via Market orders, only by trades.",
+	"def_ammo_small_projectile_t_CT_capsule_desc":"Small 'Machete' bullet CT Capsule\n\nThis item can be sold on the Market!\n\nRight-click, '''Activate''' to open and access the CT within.  Note: this is irreversible, and the CT can not be sold via Market orders, only by trades.",
+	"def_ammo_projectile_t_desc": "This bullet design was provided by the Syndicate to assist Agents with taming the wild growth of the Nian landscape.  It also seems to have similar degenerative effects on the Defensive Wall Units."
 }
