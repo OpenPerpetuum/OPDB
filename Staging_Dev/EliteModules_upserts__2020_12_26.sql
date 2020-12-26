@@ -214,8 +214,8 @@ INSERT INTO #CT_RELATE (defName, ctName, capName) VALUES
 ('def_elitet2_70_small_armor_repairer', 'def_elitet2_70_small_armor_repairer_cprg', 'def_elitet2_70_small_armor_repairer_CT_capsule'),
 ('def_elitet4_70_small_armor_repairer', 'def_elitet4_70_small_armor_repairer_cprg', 'def_elitet4_70_small_armor_repairer_CT_capsule'),
 
-('def_elitet2_70_medium_armor_repairer', 'def_elitet2_70_small_armor_repairer_cprg', 'def_elitet2_70_medium_armor_repairer_CT_capsule'),
-('def_elitet4_70_medium_armor_repairer', 'def_elitet4_70_small_armor_repairer_cprg', 'def_elitet4_70_medium_armor_repairer_CT_capsule'),
+('def_elitet2_70_medium_armor_repairer', 'def_elitet2_70_medium_armor_repairer_cprg', 'def_elitet2_70_medium_armor_repairer_CT_capsule'),
+('def_elitet4_70_medium_armor_repairer', 'def_elitet4_70_medium_armor_repairer_cprg', 'def_elitet4_70_medium_armor_repairer_CT_capsule'),
 
 ('def_elitet2_70_small_shield_generator', 'def_elitet2_70_small_shield_generator_cprg', 'def_elitet2_70_small_shield_generator_CT_capsule'),
 ('def_elitet4_70_small_shield_generator', 'def_elitet4_70_small_shield_generator_cprg', 'def_elitet4_70_small_shield_generator_CT_capsule'),
@@ -223,8 +223,8 @@ INSERT INTO #CT_RELATE (defName, ctName, capName) VALUES
 ('def_elitet2_70_medium_shield_generator', 'def_elitet2_70_medium_shield_generator_cprg', 'def_elitet2_70_medium_shield_generator_CT_capsule'),
 ('def_elitet4_70_medium_shield_generator', 'def_elitet4_70_medium_shield_generator_cprg', 'def_elitet4_70_medium_shield_generator_CT_capsule'),
 
-('def_elitet2_70_sensor_booster', 'def_elitet2_70_small_armor_repairer_cprg', 'def_elitet2_70_small_armor_repairer_CT_capsule'),
-('def_elitet4_70_sensor_booster', 'def_elitet4_70_small_armor_repairer_cprg', 'def_elitet4_70_small_armor_repairer_CT_capsule'),
+('def_elitet2_70_sensor_booster', 'def_elitet2_70_sensor_booster_cprg', 'def_elitet2_70_sensor_booster_CT_capsule'),
+('def_elitet4_70_sensor_booster', 'def_elitet4_70_sensor_booster_cprg', 'def_elitet4_70_sensor_booster_CT_capsule'),
 
 ('def_elitet2_70_webber', 'def_elitet2_70_webber_cprg', 'def_elitet2_70_webber_CT_capsule'),
 ('def_elitet4_70_webber', 'def_elitet4_70_webber_cprg', 'def_elitet4_70_webber_CT_capsule'),
