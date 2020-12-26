@@ -13,6 +13,16 @@ DECLARE @ewCTCategory AS BIGINT = (SELECT TOP 1 value FROM categoryFlags WHERE n
 DECLARE @highTierCommodity AS BIGINT = (SELECT TOP 1 value FROM categoryFlags WHERE name='cf_hightier_commodities');
 
 DECLARE @tmShops AS INT = (SELECT TOP 1 id FROM itemshoppresets WHERE name='tm_preset_pve');
+DECLARE @t2smallpriceNIC AS INT = 150000;
+DECLARE @t4smallpriceNIC AS INT = 200000;
+DECLARE @t2medpriceNIC AS INT = 300000;
+DECLARE @t4medpriceNIC AS INT = 400000;
+
+DECLARE @t2smallpriceTOK AS INT = 15;
+DECLARE @t4smallpriceTOK AS INT = 20;
+DECLARE @t2medpriceTOK AS INT = 30;
+DECLARE @t4medpriceTOK AS INT = 40;
+
 
 DROP TABLE IF EXISTS #ENTITYDEF;
 CREATE TABLE #ENTITYDEF 
@@ -146,16 +156,22 @@ INSERT INTO #CTS_CAPSULES (def, defName, attrFlags, catFlags, genxyOptStr, cargo
 (5993,'def_elitet2_70_tracking_upgrade_CT_capsule',2052,1179,'#tier=$tierlevel_t2+',0.1,0.1,3,2),
 (5994,'def_elitet4_70_tracking_upgrade_CT_capsule',2052,1179,'#tier=$tierlevel_t4+',0.1,0.1,3,4);
 
+DROP TABLE IF EXISTS #MATERIALDEF;
+CREATE TABLE #MATERIALDEF 
+(
+	def INT,
+	defName varchar(100),
+	attrFlags bigint,
+	catFlags bigint,
+	genxyOptStr varchar(max),
+	cargoVolume float,
+	massOfModule float,
+	techType int,
+	techLevel int,
+);
+INSERT INTO #MATERIALDEF (def, defName, attrFlags, catFlags, genxyOptStr, cargoVolume, massOfModule, techType, techLevel) VALUES
+(5995,'def_material_boss_z70',2048,@highTierCommodity,NULL,0.01,0.5,NULL,NULL);
 
-DECLARE @t2smallpriceNIC AS INT = 150000;
-DECLARE @t4smallpriceNIC AS INT = 200000;
-DECLARE @t2medpriceNIC AS INT = 300000;
-DECLARE @t4medpriceNIC AS INT = 400000;
-
-DECLARE @t2smallpriceTOK AS INT = 15;
-DECLARE @t4smallpriceTOK AS INT = 20;
-DECLARE @t2medpriceTOK AS INT = 30;
-DECLARE @t4medpriceTOK AS INT = 40;
 
 DROP TABLE IF EXISTS #SHOPENTRIES;
 CREATE TABLE #SHOPENTRIES
@@ -185,23 +201,6 @@ INSERT INTO #SHOPENTRIES (defName, tokenPrice, nicPrice) VALUES
 ('def_elitet4_70_medium_core_booster',@t4medpriceTOK,@t4medpriceNIC),
 ('def_elitet2_70_tracking_upgrade',@t2medpriceTOK,@t2medpriceNIC),
 ('def_elitet4_70_tracking_upgrade',@t4medpriceTOK,@t4medpriceNIC);
-
-
-DROP TABLE IF EXISTS #MATERIALDEF;
-CREATE TABLE #MATERIALDEF 
-(
-	def INT,
-	defName varchar(100),
-	attrFlags bigint,
-	catFlags bigint,
-	genxyOptStr varchar(max),
-	cargoVolume float,
-	massOfModule float,
-	techType int,
-	techLevel int,
-);
-INSERT INTO #MATERIALDEF (def, defName, attrFlags, catFlags, genxyOptStr, cargoVolume, massOfModule, techType, techLevel) VALUES
-(5995,'def_material_boss_z70',2048,@highTierCommodity,NULL,0.01,0.5,NULL,NULL);
 
 
 DROP TABLE IF EXISTS #CT_RELATE;
