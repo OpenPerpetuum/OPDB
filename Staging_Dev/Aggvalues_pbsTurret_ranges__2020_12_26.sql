@@ -2,7 +2,7 @@ USE perpetuumsa
 GO
 ----------------------------------------------------------
 -- Gamma turret weapon balance
--- Date modified: 2020/12/26
+-- Date modified: 2020/12/27
 ----------------------------------------------------------
 PRINT N'updating PBS turret module ranges';
 DROP TABLE IF EXISTS #STATS;
@@ -23,11 +23,11 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_turret_railgun', 'falloff', 50),
 ('def_turret_energy_neutralizer', 'optimal_range', 50),--90
 ('def_turret_energy_neutralizer', 'falloff', 70),--0
-('def_turret_webber', 'optimal_range', 60),--90
+('def_turret_webber', 'optimal_range', 70),--90
 ('def_turret_webber', 'falloff', 30),--0
-('def_turret_sensor_jammer', 'optimal_range', 60),--90
+('def_turret_sensor_jammer', 'optimal_range', 70),--90
 ('def_turret_sensor_jammer', 'falloff', 30),--0
-('def_turret_sensor_dampener', 'optimal_range', 75),--90
+('def_turret_sensor_dampener', 'optimal_range', 80),--90
 ('def_turret_sensor_dampener', 'falloff', 50);--0
 
 MERGE [dbo].[aggregatevalues] v USING #STATS s
