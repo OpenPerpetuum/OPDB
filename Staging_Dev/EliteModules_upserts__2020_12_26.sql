@@ -4,7 +4,7 @@ GO
 --------------------------------------------
 -- ELITE MODULES for Stronghold zone 70 boss
 -- a lot
--- Date modified: 2020/12/26
+-- Date modified: 2020/12/27
 --------------------------------------------
 
 DECLARE @armorCTCategory  AS BIGINT = (SELECT TOP 1 value FROM categoryFlags WHERE name='cf_armor_calibration_programs');
@@ -37,6 +37,7 @@ CREATE TABLE #ENTITYDEF
 	techType int,
 	techLevel int,
 );
+
 INSERT INTO #ENTITYDEF (def, defName, attrFlags, catFlags, genxyOptStr, cargoVolume, massOfModule, techType, techLevel) VALUES
 (5935,'def_elitet2_70_small_armor_repairer',49168,16908559,'#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t2+',1,168.75,3,2),
 (5936,'def_elitet4_70_small_armor_repairer',49168,16908559,'#moduleFlag=i20 #ammoCapacity=i0 #tier=$tierlevel_t4+',1,250,3,4),
@@ -241,7 +242,6 @@ INSERT INTO #CT_RELATE (defName, ctName, capName) VALUES
 ('def_elitet2_70_tracking_upgrade', 'def_elitet2_70_tracking_upgrade_cprg', 'def_elitet2_70_tracking_upgrade_CT_capsule'),
 ('def_elitet4_70_tracking_upgrade', 'def_elitet4_70_tracking_upgrade_cprg', 'def_elitet4_70_tracking_upgrade_CT_capsule');
 
-
 DROP TABLE IF EXISTS #STATS;
 CREATE TABLE #STATS(
 	defName varchar(100),
@@ -344,12 +344,18 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet4_70_webber','powergrid_usage',16),
 ('def_elitet4_70_webber','effect_massivness_speed_max_modifier',0.55),
 
-('def_elitet2_70_eccm','damage_modifier',1.05),--5% damage (all types)
+('def_elitet2_70_eccm','damage_laser_modifier',0.05),--5% damage (all types)
+('def_elitet2_70_eccm','damage_missile_modifier',0.05),
+('def_elitet2_70_eccm','damage_projectile_modifier',0.05),
+('def_elitet2_70_eccm','damage_railgun_modifier',0.05),
 ('def_elitet2_70_eccm','cpu_usage',20),
 ('def_elitet2_70_eccm','powergrid_usage',13),
 ('def_elitet2_70_eccm','sensor_strength_modifier',60),
 
-('def_elitet4_70_eccm','damage_modifier',1.07),--7% damage (all types)
+('def_elitet4_70_eccm','damage_laser_modifier',0.07),--7% damage (all types)
+('def_elitet4_70_eccm','damage_missile_modifier',0.07),
+('def_elitet4_70_eccm','damage_projectile_modifier',0.07),
+('def_elitet4_70_eccm','damage_railgun_modifier',0.07),
 ('def_elitet4_70_eccm','cpu_usage',27),
 ('def_elitet4_70_eccm','powergrid_usage',17),
 ('def_elitet4_70_eccm','sensor_strength_modifier',75),
@@ -378,12 +384,18 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet4_70_medium_core_booster','cycle_time',9000),
 ('def_elitet4_70_medium_core_booster','powergrid_usage',300),
 
-('def_elitet2_70_tracking_upgrade','damage_modifier',1.05),--5% damage (all types)
+('def_elitet2_70_tracking_upgrade','damage_laser_modifier',0.05),--5% damage (all types)
+('def_elitet2_70_tracking_upgrade','damage_missile_modifier',0.05),
+('def_elitet2_70_tracking_upgrade','damage_projectile_modifier',0.05),
+('def_elitet2_70_tracking_upgrade','damage_railgun_modifier',0.05),
 ('def_elitet2_70_tracking_upgrade','cpu_usage',31),
 ('def_elitet2_70_tracking_upgrade','optimal_range_modifier',1.12),
 ('def_elitet2_70_tracking_upgrade','powergrid_usage',86),
 
-('def_elitet4_70_tracking_upgrade','damage_modifier',1.07),--7% damage (all types)
+('def_elitet4_70_tracking_upgrade','damage_laser_modifier',0.07),--7% damage (all types)
+('def_elitet4_70_tracking_upgrade','damage_missile_modifier',0.07),
+('def_elitet4_70_tracking_upgrade','damage_projectile_modifier',0.07),
+('def_elitet4_70_tracking_upgrade','damage_railgun_modifier',0.07),
 ('def_elitet4_70_tracking_upgrade','cpu_usage',40),
 ('def_elitet4_70_tracking_upgrade','optimal_range_modifier',1.15),
 ('def_elitet4_70_tracking_upgrade','powergrid_usage',125);
@@ -570,7 +582,8 @@ WHEN NOT MATCHED
 SET IDENTITY_INSERT [dbo].[entitydefaults] OFF;
 PRINT N'[entitydefaults] insert/updates done - identity insert off';
 
-
+PRINT N'DELETE [aggregatevalues] (0 if first run)';
+DELETE FROM aggregatevalues WHERE definition in (SELECT definition FROM entitydefaults WHERE definitionname in (SELECT DISTINCT defName FROM #STATS));
 PRINT N'UPSERT [aggregatevalues]';
 MERGE [dbo].[aggregatevalues] v USING #STATS s
 ON v.definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=s.defName) AND
