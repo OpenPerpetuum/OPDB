@@ -14,7 +14,7 @@ CREATE TABLE #STATS
 );
 INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_turret_laser', 'optimal_range', 85),--90
-('def_turret_laser', 'falloff', 60),--30
+('def_turret_laser', 'falloff', 70),--30
 ('def_ammo_longrange_missile_pbs_turret', 'optimal_range', 75), --75
 ('def_ammo_longrange_missile_pbs_turret', 'falloff', 35), --0
 ('def_turret_missile_launcher', 'module_missile_range_modifier', 1), --1.2
@@ -24,11 +24,11 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_turret_energy_neutralizer', 'optimal_range', 50),--90
 ('def_turret_energy_neutralizer', 'falloff', 70),--0
 ('def_turret_webber', 'optimal_range', 70),--90
-('def_turret_webber', 'falloff', 30),--0
-('def_turret_sensor_jammer', 'optimal_range', 70),--90
-('def_turret_sensor_jammer', 'falloff', 30),--0
-('def_turret_sensor_dampener', 'optimal_range', 80),--90
-('def_turret_sensor_dampener', 'falloff', 50);--0
+('def_turret_webber', 'falloff', 20),--0
+('def_turret_sensor_jammer', 'optimal_range', 50),--90
+('def_turret_sensor_jammer', 'falloff', 100),--0
+('def_turret_sensor_dampener', 'optimal_range', 70),--90
+('def_turret_sensor_dampener', 'falloff', 20);--0
 
 MERGE [dbo].[aggregatevalues] v USING #STATS s
 ON v.definition = (SELECT TOP 1 definition FROM entitydefaults WHERE s.defName=definitionname) AND
