@@ -5,7 +5,7 @@ GO
 -- Add falloff and falloff modifiers to Ewar/Enwar modules
 -- Falloff add to "turret" type modules
 -- modulepropertymodifiers added if missing
--- Date modified: 2020/12/22
+-- Date modified: 2020/12/29
 ----------------------------------------------------------
 
 PRINT N'ADD FALLOFF MODIFIERS TO E(N)WAR MODULES';
@@ -21,10 +21,7 @@ INSERT INTO #MOD_PROPS (categoryName, baseFieldName, modFieldName) VALUES
 ('cf_energy_vampires', 'falloff', 'falloff_modifier'),
 ('cf_sensor_jammers', 'falloff', 'falloff_modifier'),
 ('cf_sensor_dampeners', 'falloff', 'falloff_modifier'),
-('cf_webber', 'falloff', 'falloff_modifier'),
-('cf_weapons', 'falloff', 'falloff_modifier'),
-('cf_weapons', 'optimal_range', 'optimal_range_modifier');
-
+('cf_webber', 'falloff', 'falloff_modifier');
 
 --insert [modulepropertymodifiers] entries
 PRINT N'0 if already run';

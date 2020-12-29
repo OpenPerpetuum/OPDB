@@ -2,7 +2,7 @@ USE perpetuumsa
 GO
 ----------------------------------------------------------
 -- Gamma turret weapon balance
--- Date modified: 2020/12/28
+-- Date modified: 2020/12/29
 ----------------------------------------------------------
 PRINT N'updating PBS turret module ranges';
 DROP TABLE IF EXISTS #STATS;
