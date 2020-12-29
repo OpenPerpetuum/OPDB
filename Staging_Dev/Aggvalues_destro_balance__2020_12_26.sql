@@ -36,13 +36,21 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_named3_longrange_large_laser', 'optimal_range', 46.5),--was 52.5
 ('def_named3_longrange_large_laser_pr', 'optimal_range', 46.5),
 
+('def_longrange_standard_large_railgun', 'optimal_range', 46), --was 44
 ('def_longrange_standard_large_railgun', 'falloff', 25.5),--was 22.5
+('def_longrange_standard_large_railgun_pr', 'optimal_range', 46),
 ('def_longrange_standard_large_railgun_pr', 'falloff', 25.5),
+('def_named1_longrange_large_railgun', 'optimal_range', 46),--was 44
 ('def_named1_longrange_large_railgun', 'falloff', 25.5),--was 22.5
+('def_named1_longrange_large_railgun_pr', 'optimal_range', 46),
 ('def_named1_longrange_large_railgun_pr', 'falloff', 25.5),
+('def_named2_longrange_large_railgun', 'optimal_range', 47),--was 45
 ('def_named2_longrange_large_railgun', 'falloff', 24),--was 21
+('def_named2_longrange_large_railgun_pr', 'optimal_range', 47),
 ('def_named2_longrange_large_railgun_pr', 'falloff', 24),
+('def_named3_longrange_large_railgun', 'optimal_range', 48),--was 46
 ('def_named3_longrange_large_railgun', 'falloff', 24),--was 21
+('def_named3_longrange_large_railgun_pr', 'optimal_range', 48),
 ('def_named3_longrange_large_railgun_pr', 'falloff', 24),
 
 ('def_ammo_longrange_cruisemissile_a', 'falloff', 15),--was 10
@@ -71,3 +79,8 @@ WHEN NOT MATCHED
 PRINT N'DESTRO STAT UPDATES complete';
 DROP TABLE IF EXISTS #STATS;
 GO
+
+
+
+
+

@@ -2,7 +2,7 @@ USE perpetuumsa
 GO
 ----------------------------------------------------------
 -- Gamma turret weapon balance
--- Date modified: 2020/12/27
+-- Date modified: 2020/12/28
 ----------------------------------------------------------
 PRINT N'updating PBS turret module ranges';
 DROP TABLE IF EXISTS #STATS;
@@ -13,21 +13,21 @@ CREATE TABLE #STATS
 	fieldValue float,
 );
 INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
-('def_turret_laser', 'optimal_range', 85),--90
-('def_turret_laser', 'falloff', 70),--30
-('def_ammo_longrange_missile_pbs_turret', 'optimal_range', 75), --75
-('def_ammo_longrange_missile_pbs_turret', 'falloff', 35), --0
+('def_turret_laser', 'optimal_range', 80),--90
+('def_turret_laser', 'falloff', 60),--30
+('def_ammo_longrange_missile_pbs_turret', 'optimal_range', 80), --75
+('def_ammo_longrange_missile_pbs_turret', 'falloff', 40), --0
 ('def_turret_missile_launcher', 'module_missile_range_modifier', 1), --1.2
 ('def_turret_missile_launcher', 'module_missile_falloff_modifier', 1), --N/A
-('def_turret_railgun', 'optimal_range', 65),--90
+('def_turret_railgun', 'optimal_range', 80),--90
 ('def_turret_railgun', 'falloff', 50),
-('def_turret_energy_neutralizer', 'optimal_range', 50),--90
-('def_turret_energy_neutralizer', 'falloff', 70),--0
-('def_turret_webber', 'optimal_range', 70),--90
+('def_turret_energy_neutralizer', 'optimal_range', 60),--90
+('def_turret_energy_neutralizer', 'falloff', 40),--0
+('def_turret_webber', 'optimal_range', 80),--90
 ('def_turret_webber', 'falloff', 20),--0
-('def_turret_sensor_jammer', 'optimal_range', 50),--90
-('def_turret_sensor_jammer', 'falloff', 100),--0
-('def_turret_sensor_dampener', 'optimal_range', 70),--90
+('def_turret_sensor_jammer', 'optimal_range', 80),--90
+('def_turret_sensor_jammer', 'falloff', 60),--0
+('def_turret_sensor_dampener', 'optimal_range', 80),--90
 ('def_turret_sensor_dampener', 'falloff', 20);--0
 
 MERGE [dbo].[aggregatevalues] v USING #STATS s

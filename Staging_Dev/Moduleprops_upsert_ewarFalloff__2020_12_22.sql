@@ -21,11 +21,13 @@ INSERT INTO #MOD_PROPS (categoryName, baseFieldName, modFieldName) VALUES
 ('cf_energy_vampires', 'falloff', 'falloff_modifier'),
 ('cf_sensor_jammers', 'falloff', 'falloff_modifier'),
 ('cf_sensor_dampeners', 'falloff', 'falloff_modifier'),
-('cf_webber', 'falloff', 'falloff_modifier');
+('cf_webber', 'falloff', 'falloff_modifier'),
+('cf_weapons', 'falloff', 'falloff_modifier'),
+('cf_weapons', 'optimal_range', 'optimal_range_modifier');
 
 
 --insert [modulepropertymodifiers] entries
-PRINT N'6 rows if new, 0 if already run';
+PRINT N'0 if already run';
 MERGE [dbo].[modulepropertymodifiers] m USING #MOD_PROPS t
 ON m.categoryflags = (SELECT TOP 1 value FROM categoryflags WHERE name=t.categoryName) AND
 m.basefield=(SELECT TOP 1 id FROM aggregatefields WHERE name=t.baseFieldName) AND
