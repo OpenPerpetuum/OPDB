@@ -16,11 +16,22 @@ CREATE TABLE #STATS(
 	fieldValue float,
 );
 INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
+('def_felos_bot_head', 'detection_strength', 60),--was 55
+('def_felos_bot_head', 'stealth_strength', 80),--was 55
+('def_felos_bot_head', 'sensor_strength', 95),--was 95
 ('def_felos_bot_head', 'locked_targets_max', 3),--was 2
-('def_hydra_bot_head', 'locked_targets_max', 3),
-('def_onyx_bot_head', 'locked_targets_max', 3),
 ('def_felos_bot_head', 'locking_range', 35),--was 36
+
+('def_hydra_bot_head', 'detection_strength', 60),--was 55
+('def_hydra_bot_head', 'stealth_strength', 65),--was 55
+('def_hydra_bot_head', 'sensor_strength', 110),--was 95
+('def_hydra_bot_head', 'locked_targets_max', 3),--was 2
 ('def_hydra_bot_head', 'locking_range', 36),--was 37
+
+('def_onyx_bot_head', 'detection_strength', 60),--was 55
+('def_onyx_bot_head', 'stealth_strength', 65),--was 55
+('def_onyx_bot_head', 'sensor_strength', 95),--was 95
+('def_onyx_bot_head', 'locked_targets_max', 3),--was 2
 ('def_onyx_bot_head', 'locking_range', 37),--was 40
 
 ('def_seth_head', 'locking_range', 35),--was 37
@@ -79,8 +90,3 @@ WHEN NOT MATCHED
 PRINT N'DESTRO STAT UPDATES complete';
 DROP TABLE IF EXISTS #STATS;
 GO
-
-
-
-
-
