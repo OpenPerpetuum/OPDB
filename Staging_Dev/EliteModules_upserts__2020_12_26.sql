@@ -4,7 +4,7 @@ GO
 --------------------------------------------
 -- ELITE MODULES for Stronghold zone 70 boss
 -- a lot
--- Date modified: 2020/12/27
+-- Date modified: 2021/01/12
 --------------------------------------------
 
 DECLARE @armorCTCategory  AS BIGINT = (SELECT TOP 1 value FROM categoryFlags WHERE name='cf_armor_calibration_programs');
@@ -182,26 +182,26 @@ CREATE TABLE #SHOPENTRIES
 	nicPrice int
 );
 INSERT INTO #SHOPENTRIES (defName, tokenPrice, nicPrice) VALUES
-('def_elitet2_70_small_armor_repairer',@t2smallpriceTOK,@t2smallpriceNIC),
-('def_elitet4_70_small_armor_repairer',@t4smallpriceTOK,@t4smallpriceNIC),
-('def_elitet2_70_medium_armor_repairer',@t2medpriceTOK,@t2medpriceNIC),
-('def_elitet4_70_medium_armor_repairer',@t4medpriceTOK,@t4medpriceNIC),
-('def_elitet2_70_small_shield_generator',@t2smallpriceTOK,@t2smallpriceNIC),
-('def_elitet4_70_small_shield_generator',@t4smallpriceTOK,@t4smallpriceNIC),
-('def_elitet2_70_medium_shield_generator',@t2medpriceTOK,@t2medpriceNIC),
-('def_elitet4_70_medium_shield_generator',@t4medpriceTOK,@t4medpriceNIC),
-('def_elitet2_70_sensor_booster',@t2medpriceTOK,@t2medpriceNIC),
-('def_elitet4_70_sensor_booster',@t4medpriceTOK,@t4medpriceNIC),
-('def_elitet2_70_webber',@t2medpriceTOK,@t2medpriceNIC),
-('def_elitet4_70_webber',@t4medpriceTOK,@t4medpriceNIC),
-('def_elitet2_70_eccm',@t2medpriceTOK,@t2medpriceNIC),
-('def_elitet4_70_eccm',@t4medpriceTOK,@t4medpriceNIC),
-('def_elitet2_70_small_core_booster',@t2smallpriceTOK,@t2smallpriceNIC),
-('def_elitet4_70_small_core_booster',@t4medpriceTOK,@t4smallpriceNIC),
-('def_elitet2_70_medium_core_booster',@t2medpriceTOK,@t2medpriceNIC),
-('def_elitet4_70_medium_core_booster',@t4medpriceTOK,@t4medpriceNIC),
-('def_elitet2_70_tracking_upgrade',@t2medpriceTOK,@t2medpriceNIC),
-('def_elitet4_70_tracking_upgrade',@t4medpriceTOK,@t4medpriceNIC);
+('def_elitet2_70_small_armor_repairer_CT_capsule',@t2smallpriceTOK,@t2smallpriceNIC),
+('def_elitet4_70_small_armor_repairer_CT_capsule',@t4smallpriceTOK,@t4smallpriceNIC),
+('def_elitet2_70_medium_armor_repairer_CT_capsule',@t2medpriceTOK,@t2medpriceNIC),
+('def_elitet4_70_medium_armor_repairer_CT_capsule',@t4medpriceTOK,@t4medpriceNIC),
+('def_elitet2_70_small_shield_generator_CT_capsule',@t2smallpriceTOK,@t2smallpriceNIC),
+('def_elitet4_70_small_shield_generator_CT_capsule',@t4smallpriceTOK,@t4smallpriceNIC),
+('def_elitet2_70_medium_shield_generator_CT_capsule',@t2medpriceTOK,@t2medpriceNIC),
+('def_elitet4_70_medium_shield_generator_CT_capsule',@t4medpriceTOK,@t4medpriceNIC),
+('def_elitet2_70_sensor_booster_CT_capsule',@t2medpriceTOK,@t2medpriceNIC),
+('def_elitet4_70_sensor_booster_CT_capsule',@t4medpriceTOK,@t4medpriceNIC),
+('def_elitet2_70_webber_CT_capsule',@t2medpriceTOK,@t2medpriceNIC),
+('def_elitet4_70_webber_CT_capsule',@t4medpriceTOK,@t4medpriceNIC),
+('def_elitet2_70_eccm_CT_capsule',@t2medpriceTOK,@t2medpriceNIC),
+('def_elitet4_70_eccm_CT_capsule',@t4medpriceTOK,@t4medpriceNIC),
+('def_elitet2_70_small_core_booster_CT_capsule',@t2smallpriceTOK,@t2smallpriceNIC),
+('def_elitet4_70_small_core_booster_CT_capsule',@t4medpriceTOK,@t4smallpriceNIC),
+('def_elitet2_70_medium_core_booster_CT_capsule',@t2medpriceTOK,@t2medpriceNIC),
+('def_elitet4_70_medium_core_booster_CT_capsule',@t4medpriceTOK,@t4medpriceNIC),
+('def_elitet2_70_tracking_upgrade_CT_capsule',@t2medpriceTOK,@t2medpriceNIC),
+('def_elitet4_70_tracking_upgrade_CT_capsule',@t4medpriceTOK,@t4medpriceNIC);
 
 
 DROP TABLE IF EXISTS #CT_RELATE;
