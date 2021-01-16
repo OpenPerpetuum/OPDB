@@ -13,15 +13,15 @@ DECLARE @ewCTCategory AS BIGINT = (SELECT TOP 1 value FROM categoryFlags WHERE n
 DECLARE @highTierCommodity AS BIGINT = (SELECT TOP 1 value FROM categoryFlags WHERE name='cf_hightier_commodities');
 
 DECLARE @tmShops AS INT = (SELECT TOP 1 id FROM itemshoppresets WHERE name='tm_preset_pve');
-DECLARE @t2smallpriceNIC AS INT = 150000;
-DECLARE @t4smallpriceNIC AS INT = 200000;
-DECLARE @t2medpriceNIC AS INT = 300000;
-DECLARE @t4medpriceNIC AS INT = 400000;
+DECLARE @t2smallpriceNIC AS INT = 600000;
+DECLARE @t4smallpriceNIC AS INT = 800000;
+DECLARE @t2medpriceNIC AS INT = 1200000;
+DECLARE @t4medpriceNIC AS INT = 1600000;
 
-DECLARE @t2smallpriceTOK AS INT = 15;
-DECLARE @t4smallpriceTOK AS INT = 20;
-DECLARE @t2medpriceTOK AS INT = 30;
-DECLARE @t4medpriceTOK AS INT = 40;
+DECLARE @t2smallpriceTOK AS INT = 30;
+DECLARE @t4smallpriceTOK AS INT = 40;
+DECLARE @t2medpriceTOK AS INT = 60;
+DECLARE @t4medpriceTOK AS INT = 80;
 
 
 DROP TABLE IF EXISTS #ENTITYDEF;
