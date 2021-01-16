@@ -4,13 +4,12 @@ GO
 --------------------------------------------
 -- ELITE MODULES for Stronghold zone 70 boss
 -- a lot
--- Date modified: 2021/01/12
+-- Date modified: 2021/01/16
 --------------------------------------------
 
-DECLARE @armorCTCategory  AS BIGINT = (SELECT TOP 1 value FROM categoryFlags WHERE name='cf_armor_calibration_programs');
-DECLARE @engineeringCTCategory AS BIGINT = (SELECT TOP 1 value FROM categoryFlags WHERE name='cf_engineering_calibration_programs');
-DECLARE @ewCTCategory AS BIGINT = (SELECT TOP 1 value FROM categoryFlags WHERE name='cf_ew_calibration_programs');--ew and electronics
 DECLARE @highTierCommodity AS BIGINT = (SELECT TOP 1 value FROM categoryFlags WHERE name='cf_hightier_commodities');
+
+DECLARE @dynamicCtCategory AS BIGINT = (SELECT TOP 1 value FROM categoryFlags WHERE name='cf_dynamic_cprg');--For ct capsule defined cts
 
 DECLARE @tmShops AS INT = (SELECT TOP 1 id FROM itemshoppresets WHERE name='tm_preset_pve');
 DECLARE @t2smallpriceNIC AS INT = 600000;
@@ -83,35 +82,35 @@ CREATE TABLE #CTS
 	techLevel int,
 );
 INSERT INTO #CTS (def, defName, attrFlags, catFlags, genxyOptStr, cargoVolume, massOfModule, techType, techLevel) VALUES
-(5955,'def_elitet2_70_small_armor_repairer_cprg',1024,@armorCTCategory,'#tier=$tierlevel_t2+',0.01,0.1,3,2),
-(5956,'def_elitet4_70_small_armor_repairer_cprg',1024,@armorCTCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(5955,'def_elitet2_70_small_armor_repairer_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t2+',0.01,0.1,3,2),
+(5956,'def_elitet4_70_small_armor_repairer_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
 
-(5957,'def_elitet2_70_medium_armor_repairer_cprg',1024,@armorCTCategory,'#tier=$tierlevel_t2+',0.01,0.1,3,2),
-(5958,'def_elitet4_70_medium_armor_repairer_cprg',1024,@armorCTCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(5957,'def_elitet2_70_medium_armor_repairer_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t2+',0.01,0.1,3,2),
+(5958,'def_elitet4_70_medium_armor_repairer_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
 
-(5959,'def_elitet2_70_small_shield_generator_cprg',1024,@engineeringCTCategory,'#tier=$tierlevel_t2+',0.01,0.1,3,2),
-(5960,'def_elitet4_70_small_shield_generator_cprg',1024,@engineeringCTCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(5959,'def_elitet2_70_small_shield_generator_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t2+',0.01,0.1,3,2),
+(5960,'def_elitet4_70_small_shield_generator_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
 
-(5961,'def_elitet2_70_medium_shield_generator_cprg',1024,@engineeringCTCategory,'#tier=$tierlevel_t2+',0.01,0.1,3,2),
-(5962,'def_elitet4_70_medium_shield_generator_cprg',1024,@engineeringCTCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(5961,'def_elitet2_70_medium_shield_generator_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t2+',0.01,0.1,3,2),
+(5962,'def_elitet4_70_medium_shield_generator_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
 
-(5963,'def_elitet2_70_sensor_booster_cprg',1024,@ewCTCategory,'#tier=$tierlevel_t2+',0.01,0.1,3,2),
-(5964,'def_elitet4_70_sensor_booster_cprg',1024,@ewCTCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(5963,'def_elitet2_70_sensor_booster_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t2+',0.01,0.1,3,2),
+(5964,'def_elitet4_70_sensor_booster_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
 
-(5965,'def_elitet2_70_webber_cprg',1024,@ewCTCategory,'#tier=$tierlevel_t2+',0.01,0.1,3,2),
-(5966,'def_elitet4_70_webber_cprg',1024,@ewCTCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(5965,'def_elitet2_70_webber_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t2+',0.01,0.1,3,2),
+(5966,'def_elitet4_70_webber_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
 
-(5967,'def_elitet2_70_eccm_cprg',1024,@ewCTCategory,'#tier=$tierlevel_t2+',0.01,0.1,3,2),
-(5968,'def_elitet4_70_eccm_cprg',1024,@ewCTCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(5967,'def_elitet2_70_eccm_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t2+',0.01,0.1,3,2),
+(5968,'def_elitet4_70_eccm_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
 
-(5969,'def_elitet2_70_small_core_booster_cprg',1024,@engineeringCTCategory,'#tier=$tierlevel_t2+',0.01,0.1,3,2),
-(5970,'def_elitet4_70_small_core_booster_cprg',1024,@engineeringCTCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(5969,'def_elitet2_70_small_core_booster_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t2+',0.01,0.1,3,2),
+(5970,'def_elitet4_70_small_core_booster_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
 
-(5971,'def_elitet2_70_medium_core_booster_cprg',1024,@engineeringCTCategory,'#tier=$tierlevel_t2+',0.01,0.1,3,2),
-(5972,'def_elitet4_70_medium_core_booster_cprg',1024,@engineeringCTCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(5971,'def_elitet2_70_medium_core_booster_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t2+',0.01,0.1,3,2),
+(5972,'def_elitet4_70_medium_core_booster_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
 
-(5973,'def_elitet2_70_tracking_upgrade_cprg',1024,@ewCTCategory,'#tier=$tierlevel_t2+',0.01,0.1,3,2),
-(5974,'def_elitet4_70_tracking_upgrade_cprg',1024,@ewCTCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4);
+(5973,'def_elitet2_70_tracking_upgrade_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t2+',0.01,0.1,3,2),
+(5974,'def_elitet4_70_tracking_upgrade_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4);
 
 DROP TABLE IF EXISTS #CTS_CAPSULES;
 CREATE TABLE #CTS_CAPSULES 
@@ -534,10 +533,10 @@ WHEN MATCHED
 		enabled=1,
 		hidden=0,
 		purchasable=1,
-		descriptiontoken=defName+'_desc'
+		descriptiontoken='calibration_program_desc'
 WHEN NOT MATCHED
     THEN INSERT (definition, definitionname,quantity,attributeflags,categoryflags,options,note,enabled,volume,mass,hidden,health,descriptiontoken,purchasable,tiertype,tierlevel) VALUES
-	(def,defName,1,attrFlags,catFlags,genxyOptStr,'elite module',1,cargoVolume,massOfModule,0,100,defName+'_desc',1,techType,techLevel);
+	(def,defName,1,attrFlags,catFlags,genxyOptStr,'elite module',1,cargoVolume,massOfModule,0,100,'calibration_program_desc',1,techType,techLevel);
 
 PRINT N'UPSERT  ct capsules into [entitydefaults]';
 MERGE [dbo].[entitydefaults] e USING #CTS_CAPSULES d
@@ -554,10 +553,10 @@ WHEN MATCHED
 		enabled=1,
 		hidden=0,
 		purchasable=1,
-		descriptiontoken=defName+'_desc'
+		descriptiontoken='elite_ct_capsule_desc'
 WHEN NOT MATCHED
     THEN INSERT (definition, definitionname,quantity,attributeflags,categoryflags,options,note,enabled,volume,mass,hidden,health,descriptiontoken,purchasable,tiertype,tierlevel) VALUES
-	(def,defName,1,attrFlags,catFlags,genxyOptStr,'elite module',1,cargoVolume,massOfModule,0,100,defName+'_desc',1,techType,techLevel);
+	(def,defName,1,attrFlags,catFlags,genxyOptStr,'elite module',1,cargoVolume,massOfModule,0,100,'elite_ct_capsule_desc',1,techType,techLevel);
 
 PRINT N'UPSERT  new boss material into [entitydefaults]';
 MERGE [dbo].[entitydefaults] e USING #MATERIALDEF d
