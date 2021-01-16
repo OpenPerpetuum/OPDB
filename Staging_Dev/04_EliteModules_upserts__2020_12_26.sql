@@ -326,7 +326,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet4_70_sensor_booster','effect_sensor_booster_locking_time_modifier',0.7),
 ('def_elitet4_70_sensor_booster','powergrid_usage',9),
 
-('def_elitet2_70_webber','locking_time_modifier',0.93),--7% lock time
+('def_elitet2_70_webber','locking_time_modifier',0.895),--10.5% lock time
 ('def_elitet2_70_webber','core_usage',13),
 ('def_elitet2_70_webber','cpu_usage',39),
 ('def_elitet2_70_webber','cycle_time',5000),
@@ -335,7 +335,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet2_70_webber','powergrid_usage',13),
 ('def_elitet2_70_webber','effect_massivness_speed_max_modifier',0.625),
 
-('def_elitet4_70_webber','locking_time_modifier',0.9),--10% lock time
+('def_elitet4_70_webber','locking_time_modifier',0.85),--15% lock time
 ('def_elitet4_70_webber','core_usage',20),
 ('def_elitet4_70_webber','cpu_usage',50),
 ('def_elitet4_70_webber','cycle_time',5000),
