@@ -3,16 +3,19 @@ GO
 
 --------------------------------------------------------------------------
 -- Stronghold zone 70 npc layout and config
--- Date: 2020/12/30
+-- Date: 2021/01/17
 --------------------------------------------------------------------------
 
 DECLARE @zoneID AS INT = 70;
 DECLARE @spawnID AS INT = (SELECT TOP 1 spawnid FROM zones WHERE id=@zoneID);
 DECLARE @prefix AS VARCHAR(64) = 'sh' + CONVERT(VARCHAR(10), @zoneId);
-DECLARE @bossRespawnTime AS INT = 7200; --TODO Not final respawn rate, only for test
-DECLARE @respawnTime AS INT = 3600; --TODO Not final respawn rate, only for test
-DECLARE @trashRespawnTime AS INT = 600; --trash respawn time
-DECLARE @behaviourType AS INT = 2; --TODO 2 for red (1 for orange while spot testing)
+DECLARE @bossRespawnTime AS INT = 518400; --6 days
+DECLARE @baseRespawnTime AS INT = 500000; --5.75 days
+DECLARE @respawnTime AS INT = 518400; --6 days as default
+DECLARE @sideQuestRespawnTime AS INT = 86400; --1 day
+DECLARE @turretRespawnTime AS INT = 86400; --1 day
+DECLARE @trashRespawnTime AS INT = 600; --10m
+DECLARE @behaviourType AS INT = 2; --2=red aggressive
 
 DROP TABLE IF EXISTS #PRESENCES;
 CREATE TABLE #PRESENCES(
@@ -55,7 +58,6 @@ INSERT INTO #FLOCKS (presName, defName, numMembers, x, y, homeRange) VALUES
 (@prefix + '_base_pres','def_npc_pbs_e_emitter_rank1',1,119,126,0),
 (@prefix + '_base_pres','def_npc_pbs_e_emitter_rank1',1,114,131,0),
 (@prefix + '_base_pres','def_npc_pbs_e_emitter_rank1',1,90,191,0),
---(@prefix + '_base_pres','def_npc_pbs_e_emitter_rank1',1,24,35,0),
 (@prefix + '_base_pres','def_npc_pbs_e_transfer_rank1',1,135,145,0),
 (@prefix + '_base_pres','def_npc_pbs_e_transfer_rank1',1,133,147,0),
 (@prefix + '_base_pres','def_npc_pbs_e_transfer_rank1',1,77,122,0),
@@ -77,45 +79,6 @@ INSERT INTO #FLOCKS (presName, defName, numMembers, x, y, homeRange) VALUES
 (@prefix + '_base_pres','def_npc_pbs_reactor_rank1',1,145,148,0),
 (@prefix + '_base_pres','def_npc_pbs_reactor_rank1',1,109,170,0),
 (@prefix + '_base_pres','def_npc_pbs_reactor_rank1',1,198,167,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_em_rank1',1,114,138,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_em_rank1',1,124,84,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_em_rank1',1,90,205,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_em_rank1',1,201,94,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_em_rank1',1,195,182,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_em_rank1',1,212,151,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_ew_rank1',1,125,126,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_ew_rank1',1,64,99,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_ew_rank1',1,170,145,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_ew_rank1',1,198,74,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_ew_rank1',1,62,108,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_ew_rank1',1,17,41,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_ew_rank1',1,30,28,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_ew_rank1',1,63,209,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_ew_rank1',1,175,139,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_ew_rank1',1,144,177,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_ew_rank1',1,108,205,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_ew_rank1',1,186,175,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_ew_rank1',1,206,144,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_laser_rank1',1,108,145,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_laser_rank1',1,133,119,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_laser_rank1',1,72,134,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_laser_rank1',1,178,136,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_laser_rank1',1,200,84,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_laser_rank1',1,72,211,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_laser_rank1',1,149,172,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_laser_rank1',1,101,207,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_laser_rank1',1,200,175,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_laser_rank1',1,207,161,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_missile_rank1',1,120,132,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_missile_rank1',1,90,75,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_missile_rank1',1,83,212,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_missile_rank1',1,193,101,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_missile_rank1',1,172,142,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_missile_rank1',1,131,107,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_missile_rank1',1,96,142,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_missile_rank1',1,137,183,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_missile_rank1',1,116,200,0),
---(@prefix + '_base_pres','def_npc_pbs_turret_missile_rank1',1,200,154,0),
 
 (@prefix + '_base_pres','def_npc_pbs_turret_ew_rank1',1,24,35,0),
 (@prefix + '_base_pres','def_npc_pbs_turret_missile_rank1',1,63,100,0),
@@ -225,6 +188,24 @@ UPDATE npcflock SET
 	respawnseconds=@trashRespawnTime
 WHERE presenceid=(SELECT TOP 1 id FROM npcpresence WHERE name=@prefix + '_trash_pres');
 
+UPDATE npcflock SET
+	respawnseconds=@sideQuestRespawnTime
+WHERE presenceid=(SELECT TOP 1 id FROM npcpresence WHERE name=@prefix + '_north_pres');
+
+UPDATE npcflock SET
+	respawnseconds=@sideQuestRespawnTime
+WHERE presenceid=(SELECT TOP 1 id FROM npcpresence WHERE name=@prefix + '_south_pres');
+
+UPDATE npcflock SET
+	respawnseconds=@baseRespawnTime
+WHERE presenceid=(SELECT TOP 1 id FROM npcpresence WHERE name=@prefix + '_base_pres');
+
+UPDATE npcflock SET
+	respawnseconds=@turretRespawnTime
+WHERE definition in (SELECT definition FROM entitydefaults WHERE definitionname IN
+	('def_npc_pbs_turret_laser_rank1', 'def_npc_pbs_turret_em_rank1', 'def_npc_pbs_turret_missile_rank1', 'def_npc_pbs_turret_ew_rank1')) 
+AND presenceid=(SELECT TOP 1 id FROM npcpresence WHERE name=@prefix + '_base_pres');
+
 PRINT N'UPDATING BASE FLOCKS AS BOSS TYPE';
 UPDATE npcflock SET
 	npcSpecialType=1
@@ -244,18 +225,19 @@ DECLARE @bossDef AS INT = (SELECT TOP 1 definition FROM entitydefaults WHERE def
 DECLARE @bossFlockId AS INT = (SELECT TOP 1 id FROM npcflock WHERE definition = @bossDef);
 
 UPDATE npcflock SET
-	npcSpecialType=1
+	npcSpecialType=1,
+	respawnseconds=@bossRespawnTime
 WHERE id=@bossFlockId;
 PRINT N'INSERT/UPDATE NPCBOSSINFO FOR main boss flock';
 IF NOT EXISTS (SELECT TOP 1 id FROM npcbossinfo WHERE flockid=@bossFlockId)
 BEGIN
 	INSERT INTO npcbossinfo (flockid, respawnNoiseFactor, lootSplitFlag, outpostEID, stabilityPts, overrideRelations, customDeathMessage, customAggressMessage) VALUES
-	(@bossFlockId, 0.05, 1, NULL, NULL, 0, 'We will return, human.  Your time on our world will end soon.', NULL);
+	(@bossFlockId, 0.15, 1, NULL, NULL, 0, 'We will return, human.  Your time on our world will end soon.', NULL);
 END
 ELSE
 BEGIN
 	UPDATE npcbossinfo SET
-		respawnNoiseFactor = 0.05,
+		respawnNoiseFactor = 0.15,
 		lootSplitFlag = 1,
 		customAggressMessage = NULL,
 		customDeathMessage = 'We will return, human.  Your time on our world will end soon.'
@@ -273,15 +255,15 @@ PRINT N'INSERT/UPDATE NPCBOSSINFO FOR MINI boss A flock';
 IF NOT EXISTS (SELECT TOP 1 id FROM npcbossinfo WHERE flockid=@bossFlockId)
 BEGIN
 	INSERT INTO npcbossinfo (flockid, respawnNoiseFactor, lootSplitFlag, outpostEID, stabilityPts, overrideRelations, customDeathMessage, customAggressMessage) VALUES
-	(@bossFlockId, 0.05, 1, NULL, NULL, 0, 'We will return, human.  Your time on our world will end soon.', NULL);
+	(@bossFlockId, 0.05, 1, NULL, NULL, 0, 'Vile human, you know little of this world and our attunement to its energies - your efforts will be in vain!', 'HUMAN, your exploitation of our world''s energy ends NOW!');
 END
 ELSE
 BEGIN
 	UPDATE npcbossinfo SET
 		respawnNoiseFactor = 0.05,
 		lootSplitFlag = 1,
-		customAggressMessage = NULL,
-		customDeathMessage = 'We will return, human.  Your time on our world will end soon.'
+		customAggressMessage = 'HUMAN, your exploitation of our world''s energy ends NOW!',
+		customDeathMessage = 'Vile human, you know little of this world and our attunement to its energies - your efforts will be in vain!'
 	WHERE flockid = @bossFlockId;
 END
 
@@ -296,15 +278,15 @@ PRINT N'INSERT/UPDATE NPCBOSSINFO FOR MINI boss B flock';
 IF NOT EXISTS (SELECT TOP 1 id FROM npcbossinfo WHERE flockid=@bossFlockId)
 BEGIN
 	INSERT INTO npcbossinfo (flockid, respawnNoiseFactor, lootSplitFlag, outpostEID, stabilityPts, overrideRelations, customDeathMessage, customAggressMessage) VALUES
-	(@bossFlockId, 0.05, 1, NULL, NULL, 0, 'We will return, human.  Your time on our world will end soon.', NULL);
+	(@bossFlockId, 0.05, 1, NULL, NULL, 0, 'The Commandant will see to it that you and your kind will leave this world - forever!', 'Back to mining little ones, I will deal with these intruders..');
 END
 ELSE
 BEGIN
 	UPDATE npcbossinfo SET
 		respawnNoiseFactor = 0.05,
 		lootSplitFlag = 1,
-		customAggressMessage = NULL,
-		customDeathMessage = 'We will return, human.  Your time on our world will end soon.'
+		customAggressMessage = 'Back to mining little ones, I will deal with these intruders..',
+		customDeathMessage = 'The Commandant will see to it that you and your kind will leave this world - forever!'
 	WHERE flockid = @bossFlockId;
 END
 
