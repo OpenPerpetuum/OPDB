@@ -836,10 +836,10 @@
 	"def_npc_sh70_mainboss_name":"The Commandant",
 	"def_npc_sh70_mainboss_desc":"'''The Commandant'''\nAt the heart of this heavily fortified base is a particularly intelliegent Nian, able to summon a staggering number of Niani-jumpers that appear to be staged from outposts like this one...",
 
-	"def_mobile_teleport_stronghold_level_02_capsule":"Stronghold Teleport: Niani Forward Base",
-	"def_mobile_teleport_stronghold_level_02_capsule_desc":"This mobile teleport will take you to the Stronghold: Niani Forward Base.\n\n To leave any Stronghold: find the '''Teleport Anomaly''' near the location you landed and use it to jump back to Syndicate territory.",
-	"def_mobile_teleport_stronghold_level_02":"Stronghold Teleport: Niani Forward Base",
-	"def_mobile_teleport_stronghold_level_02_desc":"This mobile teleport will take you to the Stronghold: Niani Forward Base.\n\n To leave any Stronghold: find the '''Teleport Anomaly''' near the location you landed and use it to jump back to Syndicate territory.",
+	"def_mobile_teleport_stronghold_level_02_capsule":"Stronghold Teleport: The Sentinel",
+	"def_mobile_teleport_stronghold_level_02_capsule_desc":"This mobile teleport will take you to the Stronghold: The Sentinel.\n\n To leave any Stronghold: find the '''Teleport Anomaly''' near the location you landed and use it to jump back to Syndicate territory.",
+	"def_mobile_teleport_stronghold_level_02":"Stronghold Teleport: The Sentinel",
+	"def_mobile_teleport_stronghold_level_02_desc":"This mobile teleport will take you to the Stronghold: The Sentinel.\n\n To leave any Stronghold: find the '''Teleport Anomaly''' near the location you landed and use it to jump back to Syndicate territory.",
 
 	"def_elitet2_70_small_armor_repairer":"Commandant's optimized small armor repairer",
 	"def_elitet4_70_small_armor_repairer":"Commandant's enhanced small armor repairer",
