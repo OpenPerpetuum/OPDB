@@ -83,7 +83,7 @@ SET @enabled =1;
 SET @spawnId = (SELECT TOP 1 id FROM npcspawn WHERE name=@spawnName);
 SET @plantRuleset = @zoneId;
 SET @protected =1;
-SET @raceId =0;
+SET @raceId = 1;
 SET @width = @size;
 SET @height = @size;
 SET @terraformable =0;

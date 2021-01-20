@@ -4,7 +4,7 @@ GO
 --------------------------------------------
 -- ELITE MODULES for Stronghold zone 70 boss
 -- a lot
--- Date modified: 2021/01/16
+-- Date modified: 2021/01/19
 --------------------------------------------
 
 DECLARE @highTierCommodity AS BIGINT = (SELECT TOP 1 value FROM categoryFlags WHERE name='cf_hightier_commodities');
@@ -59,10 +59,10 @@ INSERT INTO #ENTITYDEF (def, defName, attrFlags, catFlags, genxyOptStr, cargoVol
 (5947,'def_elitet2_70_eccm',524288,263439,'#moduleFlag=i8 #ammoCapacity=i0 #tier=$tierlevel_t2+',0.5,67.5,3,2),
 (5948,'def_elitet4_70_eccm',524288,263439,'#moduleFlag=i8 #ammoCapacity=i0 #tier=$tierlevel_t4+',0.5,100,3,4),
 
-(5949,'def_elitet2_70_small_core_booster',311316,17367823,'#moduleFlag=i20 #ammoCapacity=ic #ammoType=L70a #tier=$tierlevel_t2+',0.5,67.5,3,2),
+(5949,'def_elitet2_70_small_core_booster',311316,17367823,'#moduleFlag=i20 #ammoCapacity=if #ammoType=L70a #tier=$tierlevel_t2+',0.5,67.5,3,2),
 (5950,'def_elitet4_70_small_core_booster',311316,17367823,'#moduleFlag=i20 #ammoCapacity=ic #ammoType=L70a #tier=$tierlevel_t4+',0.5,100,3,4),
 
-(5951,'def_elitet2_70_medium_core_booster',344084,34145039,'#moduleFlag=i20 #ammoCapacity=ic #ammoType=L70a #tier=$tierlevel_t2+',1,135,3,2),
+(5951,'def_elitet2_70_medium_core_booster',344084,34145039,'#moduleFlag=i20 #ammoCapacity=if #ammoType=L70a #tier=$tierlevel_t2+',1,135,3,2),
 (5952,'def_elitet4_70_medium_core_booster',344084,34145039,'#moduleFlag=i20 #ammoCapacity=ic #ammoType=L70a #tier=$tierlevel_t4+',1,200,3,4),
 
 (5953,'def_elitet2_70_tracking_upgrade',524288,459791,'#moduleFlag=i8 #ammoCapacity=i0 #tier=$tierlevel_t2+',0.1,33.75,3,2),
@@ -436,61 +436,61 @@ CREATE TABLE #INDY
 	amount INT
 );
 INSERT INTO #INDY (defName, commodityName, amount) VALUES
-('def_elitet2_70_small_armor_repairer','def_named3_small_armor_repairer',1),
+('def_elitet2_70_small_armor_repairer','def_named1_small_armor_repairer',1),
 ('def_elitet2_70_small_armor_repairer','def_material_boss_z70',150),
 
 ('def_elitet4_70_small_armor_repairer','def_named3_small_armor_repairer',1),
 ('def_elitet4_70_small_armor_repairer','def_material_boss_z70',200),
 
-('def_elitet2_70_medium_armor_repairer','def_named3_medium_armor_repairer',1),
+('def_elitet2_70_medium_armor_repairer','def_named1_medium_armor_repairer',1),
 ('def_elitet2_70_medium_armor_repairer','def_material_boss_z70',300),
 
 ('def_elitet4_70_medium_armor_repairer','def_named3_medium_armor_repairer',1),
 ('def_elitet4_70_medium_armor_repairer','def_material_boss_z70',400),
 
-('def_elitet2_70_small_shield_generator','def_named3_small_shield_generator',1),
+('def_elitet2_70_small_shield_generator','def_named1_small_shield_generator',1),
 ('def_elitet2_70_small_shield_generator','def_material_boss_z70',150),
 
 ('def_elitet4_70_small_shield_generator','def_named3_small_shield_generator',1),
 ('def_elitet4_70_small_shield_generator','def_material_boss_z70',200),
 
-('def_elitet2_70_medium_shield_generator','def_named3_medium_shield_generator',1),
+('def_elitet2_70_medium_shield_generator','def_named1_medium_shield_generator',1),
 ('def_elitet2_70_medium_shield_generator','def_material_boss_z70',300),
 
 ('def_elitet4_70_medium_shield_generator','def_named3_medium_shield_generator',1),
 ('def_elitet4_70_medium_shield_generator','def_material_boss_z70',400),
 
-('def_elitet2_70_sensor_booster','def_named3_sensor_booster',1),
+('def_elitet2_70_sensor_booster','def_named1_sensor_booster',1),
 ('def_elitet2_70_sensor_booster','def_material_boss_z70',300),
 
 ('def_elitet4_70_sensor_booster','def_named3_sensor_booster',1),
 ('def_elitet4_70_sensor_booster','def_material_boss_z70',400),
 
-('def_elitet2_70_webber','def_named3_webber',1),
+('def_elitet2_70_webber','def_named1_webber',1),
 ('def_elitet2_70_webber','def_material_boss_z70',300),
 
 ('def_elitet4_70_webber','def_named3_webber',1),
 ('def_elitet4_70_webber','def_material_boss_z70',400),
 
-('def_elitet2_70_eccm','def_named3_eccm',1),
+('def_elitet2_70_eccm','def_named1_eccm',1),
 ('def_elitet2_70_eccm','def_material_boss_z70',300),
 
 ('def_elitet4_70_eccm','def_named3_eccm',1),
 ('def_elitet4_70_eccm','def_material_boss_z70',400),
 
-('def_elitet2_70_small_core_booster','def_named3_small_core_booster',1),
+('def_elitet2_70_small_core_booster','def_named1_small_core_booster',1),
 ('def_elitet2_70_small_core_booster','def_material_boss_z70',150),
 
 ('def_elitet4_70_small_core_booster','def_named3_small_core_booster',1),
 ('def_elitet4_70_small_core_booster','def_material_boss_z70',200),
 
-('def_elitet2_70_medium_core_booster','def_named3_medium_core_booster',1),
+('def_elitet2_70_medium_core_booster','def_named1_medium_core_booster',1),
 ('def_elitet2_70_medium_core_booster','def_material_boss_z70',300),
 
 ('def_elitet4_70_medium_core_booster','def_named3_medium_core_booster',1),
 ('def_elitet4_70_medium_core_booster','def_material_boss_z70',400),
 
-('def_elitet2_70_tracking_upgrade','def_named3_tracking_upgrade',1),
+('def_elitet2_70_tracking_upgrade','def_named1_tracking_upgrade',1),
 ('def_elitet2_70_tracking_upgrade','def_material_boss_z70',300),
 
 ('def_elitet4_70_tracking_upgrade','def_named3_tracking_upgrade',1),
