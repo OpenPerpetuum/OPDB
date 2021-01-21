@@ -5,7 +5,7 @@ GO
 -- Inserts entitydefaults for: robot components and npc defs of npc-pbs
 -- Insert aggregatevalues for stats and npc modifier/bonuses
 -- Insert robottemplates and relations
--- Date: 2020/12/29
+-- Date: 2021/01/20
 --------------------------------------------------------------------------
 
 DECLARE @compDesc VARCHAR(MAX);
@@ -100,7 +100,7 @@ INSERT INTO #TEMPLATES (tempName, botName, headName, chassisName, legName, inven
 ('def_npc_pbs_turret_missile_template', 'def_pbs_turret_bot', 'def_npcpbs_turret_head', 'def_npcpbs_turret_chassis', 'def_npcpbs_turret_leg', 'def_robot_inventory_daidalos',
 '#headModules=[]#chassisModules=[|m0=[|definition=i1300|slot=i1|ammoDefinition=i143a|ammoQuantity=i14]|m1=[|definition=i1300|slot=i2|ammoDefinition=i143a|ammoQuantity=i14]]#legModules=[|m0=[|definition=i14|slot=i1]]'),
 ('def_npc_pbs_turret_ew_template', 'def_pbs_turret_bot', 'def_npcpbs_turret_head', 'def_npcpbs_turret_chassis', 'def_npcpbs_turret_leg', 'def_robot_inventory_daidalos',
-'#headModules=[|m0=[|definition=i1370|slot=i1]|m1=[|definition=i1371|slot=i2]|m2=[|definition=i33|slot=i3]|m3=[|definition=i1371|slot=i4]|m4=[|definition=i1372|slot=i5]]#chassisModules=[|m0=[|definition=i136f|slot=i1]|m1=[|definition=i136f|slot=i2]]#legModules=[|m0=[|definition=i14|slot=i1]]'),
+'#headModules=[|m0=[|definition=i1370|slot=i1]|m1=[|definition=i1371|slot=i2]|m2=[|definition=i1372|slot=i3]|m3=[|definition=i1371|slot=i4]|m4=[|definition=i1372|slot=i5]]#chassisModules=[|m0=[|definition=i136f|slot=i1]|m1=[|definition=i136f|slot=i2]]#legModules=[|m0=[|definition=i14|slot=i1]]'),
 ('def_npc_pbs_reactor_template', 'def_pbs_turret_bot', 'def_npcpbs_invis_head', 'def_npcpbs_invis_chassis', 'def_npcpbs_reactor_leg', 'def_robot_inventory_daidalos',
 '#headModules=[]#chassisModules=[]#legModules=[|m0=[|definition=i12|slot=i1]]'),
 ('def_npc_pbs_e_emitter_template', 'def_pbs_turret_bot', 'def_npcpbs_invis_head', 'def_npcpbs_invis_chassis', 'def_npcpbs_e_transmitter_leg', 'def_robot_inventory_daidalos',
