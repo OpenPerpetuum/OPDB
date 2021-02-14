@@ -9,12 +9,12 @@ GO
 DECLARE @zoneID AS INT = 70;
 DECLARE @spawnID AS INT = (SELECT TOP 1 spawnid FROM zones WHERE id=@zoneID);
 DECLARE @prefix AS VARCHAR(64) = 'sh' + CONVERT(VARCHAR(10), @zoneId);
-DECLARE @bossRespawnTime AS INT = 518400; --6 days
-DECLARE @baseRespawnTime AS INT = 500000; --5.75 days
-DECLARE @respawnTime AS INT = 518400; --6 days as default
-DECLARE @sideQuestRespawnTime AS INT = 86400; --1 day
+DECLARE @bossRespawnTime AS INT = 548640; --6.35 days
+DECLARE @baseRespawnTime AS INT = 518400; --6 days
+DECLARE @respawnTime AS INT = 548640; --6.35 days as default
+DECLARE @sideQuestRespawnTime AS INT = 104400; --29hrs
 DECLARE @turretRespawnTime AS INT = 86400; --1 day
-DECLARE @trashRespawnTime AS INT = 600; --10m
+DECLARE @trashRespawnTime AS INT = 400; --6.67m
 DECLARE @behaviourType AS INT = 2; --2=red aggressive
 
 DROP TABLE IF EXISTS #PRESENCES;
@@ -41,14 +41,8 @@ INSERT INTO #FLOCKS (presName, defName, numMembers, x, y, homeRange) VALUES
 (@prefix + '_base_pres','def_npc_sh70_mainboss',1,94,108,35),
 
 (@prefix + '_base_pres','def_npc_pbs_base_medium_rank1',1,86,100,0),
-(@prefix + '_base_pres','def_npc_prometheus_interceptor_rank5',2,100,105,90),
-(@prefix + '_base_pres','def_npc_yagel_interceptor_rank5',2,105,105,90),
-(@prefix + '_base_pres','def_npc_castel_interceptor_rank5',2,105,100,90),
 (@prefix + '_base_pres','def_npc_pbs_control_tower_rank1',1,295,90,0),
 (@prefix + '_base_pres','def_npc_pbs_control_tower_rank1',1,191,164,0),
-(@prefix + '_base_pres','def_npc_prometheus_interceptor_rank5',2,300,95,55),
-(@prefix + '_base_pres','def_npc_yagel_interceptor_rank5',2,295,100,55),
-(@prefix + '_base_pres','def_npc_castel_interceptor_rank5',2,300,100,55),
 (@prefix + '_base_pres','def_npc_pbs_e_battery_rank1',1,156,146,0),
 (@prefix + '_base_pres','def_npc_pbs_e_battery_rank1',1,148,139,0),
 (@prefix + '_base_pres','def_npc_pbs_e_emitter_rank1',1,179,130,0),
@@ -147,17 +141,25 @@ INSERT INTO #FLOCKS (presName, defName, numMembers, x, y, homeRange) VALUES
 (@prefix + '_north_pres','def_npc_seth_guard',1,428,120,50),
 (@prefix + '_north_pres','def_npc_mesmer_guard',1,428,120,50),
 
-(@prefix + '_trash_pres','def_npc_tyrannos_dps_rank3',1,230,155,60),
-(@prefix + '_trash_pres','def_npc_baphomet_dps_rank4',1,230,155,60),
-(@prefix + '_trash_pres','def_npc_yagel_dps_rank5',2,230,155,60),
+(@prefix + '_trash_pres','def_npc_prometheus_interceptor_rank5',2,100,105,90),
+(@prefix + '_trash_pres','def_npc_yagel_interceptor_rank5',2,105,105,90),
+(@prefix + '_trash_pres','def_npc_castel_interceptor_rank5',2,105,100,90),
 
-(@prefix + '_trash_pres','def_npc_kain_dps_rank3',1,267,88,60),
-(@prefix + '_trash_pres','def_npc_waspish_dps_rank4',1,267,88,60),
-(@prefix + '_trash_pres','def_npc_prometheus_dps_rank5',2,267,88,60),
+(@prefix + '_trash_pres','def_npc_prometheus_interceptor_rank5',2,300,95,55),
+(@prefix + '_trash_pres','def_npc_yagel_interceptor_rank5',2,295,100,55),
+(@prefix + '_trash_pres','def_npc_castel_interceptor_rank5',2,300,100,55),
 
-(@prefix + '_trash_pres','def_npc_artemis_dps_rank3',1,108,246,60),
-(@prefix + '_trash_pres','def_npc_arbalest_dps_rank4',1,108,246,60),
-(@prefix + '_trash_pres','def_npc_castel_dps_rank5',2,108,246,60);
+(@prefix + '_trash_pres','def_npc_tyrannos_dps_rank3',1,230,155,75),
+(@prefix + '_trash_pres','def_npc_baphomet_dps_rank4',1,230,155,75),
+(@prefix + '_trash_pres','def_npc_yagel_dps_rank5',2,230,155,75),
+
+(@prefix + '_trash_pres','def_npc_kain_dps_rank3',1,267,88,75),
+(@prefix + '_trash_pres','def_npc_waspish_dps_rank4',1,267,88,75),
+(@prefix + '_trash_pres','def_npc_prometheus_dps_rank5',2,267,88,75),
+
+(@prefix + '_trash_pres','def_npc_artemis_dps_rank3',1,108,246,75),
+(@prefix + '_trash_pres','def_npc_arbalest_dps_rank4',1,108,246,75),
+(@prefix + '_trash_pres','def_npc_castel_dps_rank5',2,108,246,75);
 
 
 PRINT N'CLEARING NPC SPAWN (0 if 1st run)';
