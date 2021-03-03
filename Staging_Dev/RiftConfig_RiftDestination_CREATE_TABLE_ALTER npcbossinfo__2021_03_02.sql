@@ -16,8 +16,7 @@ CREATE TABLE [dbo].[riftconfigs] (
 	name VARCHAR(100) NOT NULL,
 	destinationGroupId INT,
 	lifespanSeconds INT,
-	maxUses INT,
-	onlyOne BIT NOT NULL DEFAULT 1
+	maxUses INT
 );
 PRINT N'DROP/CREATE [dbo].[riftdestinations]';
 DROP TABLE IF EXISTS [dbo].[riftdestinations];
@@ -49,9 +48,9 @@ INSERT INTO [dbo].[riftdestinations] (groupId, zoneId, x, y, weight) VALUES
 (72, 72, 218, 29, 1);
 
 PRINT N'INSERT INTO [dbo].[riftconfigs]';
-INSERT INTO [dbo].[riftconfigs] (name, destinationGroupId, lifespanSeconds, maxUses, onlyOne) VALUES 
-('stronghold_z71_entry', 71, 120, 1, 1),
-('stronghold_z72_entry', 72, 120, 1, 1);
+INSERT INTO [dbo].[riftconfigs] (name, destinationGroupId, lifespanSeconds, maxUses) VALUES 
+('stronghold_z71_entry', 71, 120, 1),
+('stronghold_z72_entry', 72, 120, 1);
 
 
 PRINT N'UPDATE npcbossinfo for boss entry riftconfigs';
