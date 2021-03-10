@@ -937,6 +937,9 @@
 	"def_npc_sh70_miniboss_b_name":"The Prospector",
 	"def_npc_sh70_miniboss_b_desc":"Primarily tasked with overseeing the mining operation, it appears it is equipped with counter-siege weaponry and is keenly aware it is protecting a vital route to the base.",
 
+	"cf_datashards":"Datashards",
+	"cf_ep_boosters":"EP Boosters",
+	"cf_paints":"Robot Paints",
 	"cf_lottery_items":"OPP Special Items",
 	"cf_ct_capsules":"CT capsules",
 	"cf_ct_capsules_ammo":"Ammo CT capsules",
