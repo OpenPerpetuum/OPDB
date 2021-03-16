@@ -2,7 +2,7 @@ USE [perpetuumsa]
 GO
 
 ------------------------------------------------
--- Market NPC sell/buy order updates for Syndicates
+-- Market NPC sell/buy order updates for Nian bots
 -- Lights/assault bots
 -- Date modified: 2021/03/15
 ------------------------------------------------
