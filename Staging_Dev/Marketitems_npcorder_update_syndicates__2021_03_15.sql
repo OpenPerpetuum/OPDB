@@ -1,12 +1,18 @@
 USE [perpetuumsa]
 GO
 
+------------------------------------------------
+-- Market NPC sell/buy order updates for Syndicates
+-- Lights/assault bots
+-- Date modified: 2021/03/15
+------------------------------------------------
+
+
 DECLARE @ikarusMarketPrice AS FLOAT = 552000;
 DECLARE @vektorMarketPrice AS FLOAT = 817000;
 DECLARE @locustMarketPrice AS FLOAT = 2211000;
 DECLARE @cronusMarketPrice AS FLOAT = 2616000;
 DECLARE @hermesMarketPrice AS FLOAT = 2604000;
-
 
 DECLARE @vektorDef AS INT = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_vektor_bot');
 DECLARE @helixDef AS INT = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_helix_bot');
@@ -75,3 +81,7 @@ UPDATE marketitems SET
 	price=@hermesMarketPrice/10
 WHERE duration=0 AND isSell=0 AND quantity=-1 AND isvendoritem=1 AND
 itemdefinition=@hermesDef;
+
+GO
+
+
