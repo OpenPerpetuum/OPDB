@@ -3,7 +3,7 @@ GO
 
 ------------------------------------------------------
 -- Syndicate shop orders for syndicate bot cost updates
--- Date modified: 03/15/2021
+-- Date modified: 03/17/2021
 ------------------------------------------------------
 
 DECLARE @vektorDef AS INT = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_vektor_bot');
@@ -21,10 +21,10 @@ DECLARE @metisDef AS INT = (SELECT TOP 1 definition FROM entitydefaults WHERE de
 DROP TABLE IF EXISTS #SYNSHOP;
 CREATE TABLE #SYNSHOP(
 	def INT,
-	nic INT,
-	tokens INT
+	tokens INT,
+	nic INT
 );
-INSERT INTO #SYNSHOP (def, nic, tokens) VALUES
+INSERT INTO #SYNSHOP (def, tokens, nic) VALUES
 (@vektorDef, 80, 490000),
 (@helixDef, 230, 1380000),
 (@locustDef, 220, 1330000),
