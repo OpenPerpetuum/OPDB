@@ -937,5 +937,33 @@
 	"def_npc_sh70_miniboss_b_name":"The Prospector",
 	"def_npc_sh70_miniboss_b_desc":"Primarily tasked with overseeing the mining operation, it appears it is equipped with counter-siege weaponry and is keenly aware it is protecting a vital route to the base.",
 
+	"cf_datashards":"Datashards",
+	"cf_ep_boosters":"EP Boosters",
+	"cf_paints":"Robot Paints",
+	"cf_lottery_items":"OPP Special Items",
+	"cf_ct_capsules":"CT capsules",
+	"cf_ct_capsules_ammo":"Ammo CT capsules",
+	"cf_ct_capsules_ammo_laser":"Energy cell CT capsules",
+	"cf_ct_capsules_ammo_missile":"Missile CT capsules",
+	"cf_ct_capsules_ammo_projectile":"Bullet CT capsules",
+	"cf_ct_capsules_ammo_railgun":"Slug CT capsules",
+	"cf_ct_capsules_equipment":"Equipment CT capsules",
+	"cf_ct_capsules_equipment_armor":"Armor CT capsules",
+	"cf_ct_capsules_equipment_electronics":"Electronics CT capsules",
+	"cf_ct_capsules_equipment_engineering":"Engineering CT capsules",
+	"cf_ct_capsules_equipment_ewar":"Electronic warfare CT capsules",
+	"cf_ct_capsules_equipment_industrial":"Industrial CT capsules",
+	"cf_ct_capsules_equipment_nexus":"NEXUS CT capsules",
+	"cf_ct_capsules_equipment_shield":"Shield CT capsules",
+	"cf_ct_capsules_equipment_weapons":"Weapon CT capsules",
+	"cf_ct_capsules_misc":"Misc item CT capsules",
+	"cf_ct_capsules_robot":"Robot CT capsules",
+	"cf_ct_capsules_robot_industrial":"Industrial robot CT capsules",
+	"cf_ct_capsules_robot_nuimqol":"Nuimqol robot CT capsules",
+	"cf_ct_capsules_robot_pelistal":"Pelistal robot CT capsules",
+	"cf_ct_capsules_robot_syndicate":"Syndicate robot CT capsules",
+	"cf_ct_capsules_robot_thelodica":"Thelodica robot CT capsules",
+
 	"ErrorMessages_unknown_666": "Robot too big for this action"
+
 }
