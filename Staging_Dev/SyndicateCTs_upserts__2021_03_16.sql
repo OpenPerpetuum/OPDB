@@ -30,7 +30,7 @@ CREATE TABLE #ENTITYDEF (
 	techLevel int,
 );
 INSERT INTO #ENTITYDEF (def, defName, attrFlags, catFlags, genxyOptStr, cargoVolume, massOfModule, techType, techLevel) VALUES
-(5999,'def_plant_alpha_goo',2048,@primaryCommodity,'',0.005,0.45,NULL,NULL);
+(191,'def_biotichrin',2048,@primaryCommodity,'',0.005,0.55,NULL,NULL);
 
 DROP TABLE IF EXISTS #CTS;
 CREATE TABLE #CTS (
@@ -127,10 +127,10 @@ CREATE TABLE #INDY (
 	amount INT
 );
 INSERT INTO #INDY (defName, commodityName, amount) VALUES
-('def_plant_alpha_goo', 'def_helioptris', 25),
-('def_plant_alpha_goo', 'def_triandlus', 25),
-('def_plant_alpha_goo', 'def_prismocitae', 25),
-('def_plant_alpha_goo', 'def_crude', 25),
+('def_biotichrin', 'def_helioptris', 25),
+('def_biotichrin', 'def_triandlus', 25),
+('def_biotichrin', 'def_prismocitae', 25),
+('def_biotichrin', 'def_crude', 25),
 
 ('def_vektor_bot', 'def_titanium', 560),
 ('def_vektor_bot', 'def_axicol', 80),
@@ -139,7 +139,7 @@ INSERT INTO #INDY (defName, commodityName, amount) VALUES
 ('def_vektor_bot', 'def_isopropentol', 110),
 ('def_vektor_bot', 'def_metachropin', 110),
 ('def_vektor_bot', 'def_statichnol', 110),
-('def_vektor_bot', 'def_plant_alpha_goo', 175),
+('def_vektor_bot', 'def_biotichrin', 175),
 
 ('def_helix_bot', 'def_titanium', 750),
 ('def_helix_bot', 'def_axicol', 380),
@@ -149,7 +149,7 @@ INSERT INTO #INDY (defName, commodityName, amount) VALUES
 ('def_helix_bot', 'def_chollonin', 340),
 ('def_helix_bot', 'def_prilumium', 340),
 ('def_helix_bot', 'def_espitium', 380),
-('def_helix_bot', 'def_plant_alpha_goo', 250),
+('def_helix_bot', 'def_biotichrin', 250),
 
 ('def_locust_bot', 'def_titanium', 750),
 ('def_locust_bot', 'def_axicol', 190),
@@ -158,7 +158,7 @@ INSERT INTO #INDY (defName, commodityName, amount) VALUES
 ('def_locust_bot', 'def_isopropentol', 440),
 ('def_locust_bot', 'def_metachropin', 440),
 ('def_locust_bot', 'def_statichnol', 440),
-('def_locust_bot', 'def_plant_alpha_goo', 350),
+('def_locust_bot', 'def_biotichrin', 350),
 
 ('def_echelon_bot', 'def_titanium', 2250),
 ('def_echelon_bot', 'def_axicol', 190),
@@ -170,7 +170,7 @@ INSERT INTO #INDY (defName, commodityName, amount) VALUES
 ('def_echelon_bot', 'def_hydrobenol', 750),
 ('def_echelon_bot', 'def_espitium', 190),
 ('def_echelon_bot', 'def_alligior', 380),
-('def_echelon_bot', 'def_plant_alpha_goo', 700),
+('def_echelon_bot', 'def_biotichrin', 700),
 
 ('def_callisto_bot', 'def_titanium', 750),
 ('def_callisto_bot', 'def_axicol', 1130),
@@ -183,7 +183,7 @@ INSERT INTO #INDY (defName, commodityName, amount) VALUES
 ('def_callisto_bot', 'def_espitium', 1130),
 ('def_callisto_bot', 'def_alligior', 190),
 ('def_callisto_bot', 'def_unimetal', 560),
-('def_callisto_bot', 'def_plant_alpha_goo', 700),
+('def_callisto_bot', 'def_biotichrin', 700),
 
 ('def_legatus_bot', 'def_phlobotil', 2250),
 ('def_legatus_bot', 'def_polynucleit', 2250),
@@ -192,23 +192,23 @@ INSERT INTO #INDY (defName, commodityName, amount) VALUES
 ('def_legatus_bot', 'def_espitium', 380),
 ('def_legatus_bot', 'def_alligior', 3750),
 ('def_legatus_bot', 'def_unimetal', 3750),
-('def_legatus_bot', 'def_plant_alpha_goo', 3000),
+('def_legatus_bot', 'def_biotichrin', 3000),
 
 ('def_ikarus_bot', 'def_titanium', 560),
 ('def_ikarus_bot', 'def_axicol', 230),
 ('def_ikarus_bot', 'def_plasteosine', 380),
-('def_ikarus_bot', 'def_plant_alpha_goo', 50),
+('def_ikarus_bot', 'def_biotichrin', 50),
 
 ('def_cronus_bot', 'def_titanium', 2250),
 ('def_cronus_bot', 'def_axicol', 380),
 ('def_cronus_bot', 'def_plasteosine', 1130),
-('def_cronus_bot', 'def_plant_alpha_goo', 800),
+('def_cronus_bot', 'def_biotichrin', 800),
 
 ('def_hermes_bot', 'def_titanium', 750),
 ('def_hermes_bot', 'def_axicol', 190),
 ('def_hermes_bot', 'def_axicoline', 750),
 ('def_hermes_bot', 'def_plasteosine', 380),
-('def_hermes_bot', 'def_plant_alpha_goo', 2500),
+('def_hermes_bot', 'def_biotichrin', 2500),
 
 ('def_daidalos_bot', 'def_titanium', 3000),
 ('def_daidalos_bot', 'def_axicol', 560),
@@ -216,7 +216,7 @@ INSERT INTO #INDY (defName, commodityName, amount) VALUES
 ('def_daidalos_bot', 'def_espitium', 750),
 ('def_daidalos_bot', 'def_alligior', 1880),
 ('def_daidalos_bot', 'def_unimetal', 3750),
-('def_daidalos_bot', 'def_plant_alpha_goo', 2750),
+('def_daidalos_bot', 'def_biotichrin', 2750),
 
 ('def_metis_bot', 'def_titanium', 6250),
 ('def_metis_bot', 'def_axicol', 630),
@@ -224,7 +224,7 @@ INSERT INTO #INDY (defName, commodityName, amount) VALUES
 ('def_metis_bot', 'def_espitium', 630),
 ('def_metis_bot', 'def_alligior', 3130),
 ('def_metis_bot', 'def_unimetal', 6250),
-('def_metis_bot', 'def_plant_alpha_goo', 3000);
+('def_metis_bot', 'def_biotichrin', 3000);
 
 DROP TABLE IF EXISTS #PRODSTATS;
 CREATE TABLE #PRODSTATS (
