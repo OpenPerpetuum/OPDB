@@ -4,9 +4,13 @@ GO
 ------------------------------------------------
 -- Market NPC sell/buy order updates for Nian bots
 -- Lights/assault bots
--- Date modified: 2021/03/15
+-- Date modified: 2021/03/21
 ------------------------------------------------
 
+--Training market - dont touch
+DECLARE @trainingMarketEid AS BIGINT = (SELECT TOP 1 eid FROM entities
+WHERE parent=(SELECT TOP 1 eid FROM entities WHERE ename='base_training') AND
+definition=(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_public_market'));
 
 DECLARE @lightIndyPrice AS FLOAT = 684000;
 DECLARE @lightCombatPrice AS FLOAT = 867000;
@@ -28,47 +32,45 @@ DECLARE @sequerDef AS INT = (SELECT TOP 1 definition FROM entitydefaults WHERE d
 PRINT N'NPC MARKET ORDERS FOR LIGHT INDY';
 UPDATE marketitems SET
 	price=@lightIndyPrice
-WHERE duration=0 AND isSell=1 AND quantity=-1 AND isvendoritem=1 AND
+WHERE duration=0 AND isSell=1 AND quantity=-1 AND isvendoritem=1 AND marketeid<>@trainingMarketEid AND
 itemdefinition IN (@arganoDef, @lairdDef);
 
 UPDATE marketitems SET
 	price=@lightIndyPrice/10
-WHERE duration=0 AND isSell=0 AND quantity=-1 AND isvendoritem=1 AND
+WHERE duration=0 AND isSell=0 AND quantity=-1 AND isvendoritem=1 AND marketeid<>@trainingMarketEid AND
 itemdefinition IN (@arganoDef, @lairdDef);
 
 PRINT N'NPC MARKET ORDERS FOR LIGHT COMBAT';
 UPDATE marketitems SET
 	price=@lightCombatPrice
-WHERE duration=0 AND isSell=1 AND quantity=-1 AND isvendoritem=1 AND
+WHERE duration=0 AND isSell=1 AND quantity=-1 AND isvendoritem=1 AND marketeid<>@trainingMarketEid AND
 itemdefinition IN (@castelDef, @yagelDef, @prometheusDef);
 
 UPDATE marketitems SET
 	price=@lightCombatPrice/10
-WHERE duration=0 AND isSell=0 AND quantity=-1 AND isvendoritem=1 AND
+WHERE duration=0 AND isSell=0 AND quantity=-1 AND isvendoritem=1 AND marketeid<>@trainingMarketEid AND
 itemdefinition IN (@castelDef, @yagelDef, @prometheusDef);
 
 PRINT N'NPC MARKET ORDERS FOR INDY ASSAULT';
 UPDATE marketitems SET
 	price=@assaultIndyPrice
-WHERE duration=0 AND isSell=1 AND quantity=-1 AND isvendoritem=1 AND
+WHERE duration=0 AND isSell=1 AND quantity=-1 AND isvendoritem=1 AND marketeid<>@trainingMarketEid AND
 itemdefinition=@sequerDef;
 
 UPDATE marketitems SET
 	price=@assaultIndyPrice/10
-WHERE duration=0 AND isSell=0 AND quantity=-1 AND isvendoritem=1 AND
+WHERE duration=0 AND isSell=0 AND quantity=-1 AND isvendoritem=1 AND marketeid<>@trainingMarketEid AND
 itemdefinition=@sequerDef;
 
 PRINT N'NPC MARKET ORDERS FOR COMBAT ASSAULT';
 UPDATE marketitems SET
 	price=@assaultCombatPrice
-WHERE duration=0 AND isSell=1 AND quantity=-1 AND isvendoritem=1 AND
+WHERE duration=0 AND isSell=1 AND quantity=-1 AND isvendoritem=1 AND marketeid<>@trainingMarketEid AND
 itemdefinition IN (@arbalestDef, @baphometDef, @waspishDef);
 
 UPDATE marketitems SET
 	price=@assaultCombatPrice/10
-WHERE duration=0 AND isSell=0 AND quantity=-1 AND isvendoritem=1 AND
+WHERE duration=0 AND isSell=0 AND quantity=-1 AND isvendoritem=1 AND marketeid<>@trainingMarketEid AND
 itemdefinition IN (@arbalestDef, @baphometDef, @waspishDef);
 
 GO
-
-

@@ -4,9 +4,13 @@ GO
 ------------------------------------------------
 -- Market NPC sell/buy order updates for Syndicates
 -- Lights/assault bots
--- Date modified: 2021/03/15
+-- Date modified: 2021/03/21
 ------------------------------------------------
 
+--Training market - dont touch
+DECLARE @trainingMarketEid AS BIGINT = (SELECT TOP 1 eid FROM entities
+WHERE parent=(SELECT TOP 1 eid FROM entities WHERE ename='base_training') AND
+definition=(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_public_market'));
 
 DECLARE @ikarusMarketPrice AS FLOAT = 552000;
 DECLARE @vektorMarketPrice AS FLOAT = 817000;
@@ -30,58 +34,56 @@ DECLARE @metisDef AS INT = (SELECT TOP 1 definition FROM entitydefaults WHERE de
 PRINT N'NPC MARKET ORDERS FOR IKARUS';
 UPDATE marketitems SET
 	price=@ikarusMarketPrice
-WHERE duration=0 AND isSell=1 AND quantity=-1 AND isvendoritem=1 AND
+WHERE duration=0 AND isSell=1 AND quantity=-1 AND isvendoritem=1 AND marketeid<>@trainingMarketEid AND
 itemdefinition=@ikarusDef;
 
 UPDATE marketitems SET
 	price=@ikarusMarketPrice/10
-WHERE duration=0 AND isSell=0 AND quantity=-1 AND isvendoritem=1 AND
+WHERE duration=0 AND isSell=0 AND quantity=-1 AND isvendoritem=1 AND marketeid<>@trainingMarketEid AND
 itemdefinition=@ikarusDef;
 
 PRINT N'NPC MARKET ORDERS FOR VEKTOR';
 UPDATE marketitems SET
 	price=@vektorMarketPrice
-WHERE duration=0 AND isSell=1 AND quantity=-1 AND isvendoritem=1 AND
+WHERE duration=0 AND isSell=1 AND quantity=-1 AND isvendoritem=1 AND marketeid<>@trainingMarketEid AND
 itemdefinition=@vektorDef;
 
 UPDATE marketitems SET
 	price=@vektorMarketPrice/10
-WHERE duration=0 AND isSell=0 AND quantity=-1 AND isvendoritem=1 AND
+WHERE duration=0 AND isSell=0 AND quantity=-1 AND isvendoritem=1 AND marketeid<>@trainingMarketEid AND
 itemdefinition=@vektorDef;
 
 PRINT N'NPC MARKET ORDERS FOR LOCUST';
 UPDATE marketitems SET
 	price=@locustMarketPrice
-WHERE duration=0 AND isSell=1 AND quantity=-1 AND isvendoritem=1 AND
+WHERE duration=0 AND isSell=1 AND quantity=-1 AND isvendoritem=1 AND marketeid<>@trainingMarketEid AND
 itemdefinition=@locustDef;
 
 UPDATE marketitems SET
 	price=@locustMarketPrice/10
-WHERE duration=0 AND isSell=0 AND quantity=-1 AND isvendoritem=1 AND
+WHERE duration=0 AND isSell=0 AND quantity=-1 AND isvendoritem=1 AND marketeid<>@trainingMarketEid AND
 itemdefinition=@locustDef;
 
 PRINT N'NPC MARKET ORDERS FOR CRONUS';
 UPDATE marketitems SET
 	price=@cronusMarketPrice
-WHERE duration=0 AND isSell=1 AND quantity=-1 AND isvendoritem=1 AND
+WHERE duration=0 AND isSell=1 AND quantity=-1 AND isvendoritem=1 AND marketeid<>@trainingMarketEid AND
 itemdefinition=@cronusDef;
 
 UPDATE marketitems SET
 	price=@cronusMarketPrice/10
-WHERE duration=0 AND isSell=0 AND quantity=-1 AND isvendoritem=1 AND
+WHERE duration=0 AND isSell=0 AND quantity=-1 AND isvendoritem=1 AND marketeid<>@trainingMarketEid AND
 itemdefinition=@cronusDef;
 
 PRINT N'NPC MARKET ORDERS FOR HERMES';
 UPDATE marketitems SET
 	price=@hermesMarketPrice
-WHERE duration=0 AND isSell=1 AND quantity=-1 AND isvendoritem=1 AND
+WHERE duration=0 AND isSell=1 AND quantity=-1 AND isvendoritem=1 AND marketeid<>@trainingMarketEid AND
 itemdefinition=@hermesDef;
 
 UPDATE marketitems SET
 	price=@hermesMarketPrice/10
-WHERE duration=0 AND isSell=0 AND quantity=-1 AND isvendoritem=1 AND
+WHERE duration=0 AND isSell=0 AND quantity=-1 AND isvendoritem=1 AND marketeid<>@trainingMarketEid AND
 itemdefinition=@hermesDef;
 
 GO
-
-
