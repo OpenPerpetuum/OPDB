@@ -962,5 +962,8 @@
 	"cf_ct_capsules_robot_nuimqol":"Nuimqol robot CT capsules",
 	"cf_ct_capsules_robot_pelistal":"Pelistal robot CT capsules",
 	"cf_ct_capsules_robot_syndicate":"Syndicate robot CT capsules",
-	"cf_ct_capsules_robot_thelodica":"Thelodica robot CT capsules"
+	"cf_ct_capsules_robot_thelodica":"Thelodica robot CT capsules",
+
+	"ErrorMessages_unknown_666": "Robot too big for this action"
+
 }
