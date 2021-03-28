@@ -56,7 +56,7 @@ INSERT INTO #ENTITYDEF (def, defName, attrFlags, catFlags, genxyOptStr, cargoVol
 (6052,'def_elitet2_72_damage_mod_projectile',524292,33883919,'#moduleFlag=i8 #tier=$tierlevel_t2+',0.5,125,3,2),
 (6053,'def_elitet4_72_damage_mod_projectile',524292,33883919,'#moduleFlag=i8 #tier=$tierlevel_t4+',0.5,125,3,4),
 --LWF
-(6054,'def_elitet2_72_mass_reductor',524320,327951,'#moduleFlag=i20 #tier=$tierlevel_t2+',0.5,2,3,2),
+(6054,'def_elitet2_72_mass_reductor',524320,327951,'#moduleFlag=i20 #tier=$tierlevel_t2+',0.5,1.5,3,2),
 (6055,'def_elitet4_72_mass_reductor',524320,327951,'#moduleFlag=i20 #tier=$tierlevel_t4+',0.5,2,3,4),
 --evasive
 (6056,'def_elitet2_71_maneuvering_upgrade',524300,656143,'#moduleFlag=i20 #tier=$tierlevel_t2+',0.5,17,3,2),
@@ -291,7 +291,6 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet4_71_medium_shield_generator','shield_absorbtion',2),
 ('def_elitet4_71_medium_shield_generator','shield_radius',25),
 
-
 ('def_elitet2_71_maneuvering_upgrade','armor_max_modifier',1.03), -- 3% armor hp
 ('def_elitet2_71_maneuvering_upgrade','cpu_usage',19),
 ('def_elitet2_71_maneuvering_upgrade','powergrid_usage',21),
@@ -303,6 +302,19 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet4_71_maneuvering_upgrade','powergrid_usage',28),
 ('def_elitet4_71_maneuvering_upgrade','signature_radius',-1.15),
 ('def_elitet4_71_maneuvering_upgrade','massiveness',0.075),
+
+('def_elitet2_72_mass_reductor','signature_radius',-0.2), -- -0.2m
+('def_elitet2_72_mass_reductor','cpu_usage',5),
+('def_elitet2_72_mass_reductor','powergrid_usage',2),
+('def_elitet2_72_mass_reductor','speed_max_modifier',1.19),
+('def_elitet2_72_mass_reductor','massiveness',-0.2),
+
+('def_elitet4_72_mass_reductor','signature_radius',-0.3), -- -0.3m
+('def_elitet4_72_mass_reductor','cpu_usage',7),
+('def_elitet4_72_mass_reductor','powergrid_usage',3),
+('def_elitet4_72_mass_reductor','speed_max_modifier',1.25),
+('def_elitet4_72_mass_reductor','massiveness',-0.25),
+
 
 
 DROP TABLE IF EXISTS #SKILLS;
