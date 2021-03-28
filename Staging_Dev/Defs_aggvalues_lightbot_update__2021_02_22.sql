@@ -5,7 +5,7 @@ GO
 -- Light bot rebalance
 -- Speed/mass, locking range, some reactor
 -- EW mass added to be consistent at fitted velocity
--- Date modified: 2021/02/22
+-- Date modified: 2021/03/28
 ---------------------------------------------------
 
 DROP TABLE IF EXISTS #CHASSIS_DEFS;
@@ -27,19 +27,19 @@ INSERT INTO #CHASSIS_DEFS (defName, chassisMass) VALUES
 ('def_yagel_chassis_mk2', 8250),
 ('def_prometheus_chassis_mk2', 8250),
 
-('def_helix_chassis', 5600),
+('def_helix_chassis', 5900),
 
-('def_troiar_chassis', 4830),
-('def_cameleon_chassis', 4500),
-('def_intakt_chassis', 4500),
+('def_troiar_chassis', 5095),
+('def_cameleon_chassis', 4750),
+('def_intakt_chassis', 4750),
 
-('def_troiar_chassis_pr', 4830),
-('def_cameleon_chassis_pr', 4500),
-('def_intakt_chassis_pr', 4500),
+('def_troiar_chassis_pr', 5095),
+('def_cameleon_chassis_pr', 4750),
+('def_intakt_chassis_pr', 4750),
 
-('def_troiar_chassis_mk2', 5800),
-('def_cameleon_chassis_mk2', 5400),
-('def_intakt_chassis_mk2', 5400);
+('def_troiar_chassis_mk2', 6100),
+('def_cameleon_chassis_mk2', 5700),
+('def_intakt_chassis_mk2', 5700);
 
 DROP TABLE IF EXISTS #AGG_VALS;
 CREATE TABLE #AGG_VALS(
