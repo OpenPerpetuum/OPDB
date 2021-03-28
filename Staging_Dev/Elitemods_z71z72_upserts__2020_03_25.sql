@@ -59,7 +59,7 @@ INSERT INTO #ENTITYDEF (def, defName, attrFlags, catFlags, genxyOptStr, cargoVol
 (6054,'def_elitet2_72_mass_reductor',524320,327951,'#moduleFlag=i20 #tier=$tierlevel_t2+',0.5,2,3,2),
 (6055,'def_elitet4_72_mass_reductor',524320,327951,'#moduleFlag=i20 #tier=$tierlevel_t4+',0.5,2,3,4),
 --evasive
-(6056,'def_elitet2_71_maneuvering_upgrade',524300,656143,'#moduleFlag=i20 #tier=$tierlevel_t2+',0.5,35,3,2),
+(6056,'def_elitet2_71_maneuvering_upgrade',524300,656143,'#moduleFlag=i20 #tier=$tierlevel_t2+',0.5,17,3,2),
 (6057,'def_elitet4_71_maneuvering_upgrade',524300,656143,'#moduleFlag=i20 #tier=$tierlevel_t4+',0.5,35,3,4);
 
 
@@ -259,7 +259,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet4_72_medium_armor_repairer','cycle_time',12000),
 ('def_elitet4_72_medium_armor_repairer','powergrid_usage',110),
 
-('def_elitet2_71_small_shield_generator','core_recharge_time_modifier',0.97),--3% accum recharge
+('def_elitet2_71_small_shield_generator','signature_radius',-0.2),-- -0.2m srf area
 ('def_elitet2_71_small_shield_generator','core_usage',1),
 ('def_elitet2_71_small_shield_generator','cpu_usage',38),
 ('def_elitet2_71_small_shield_generator','cycle_time',2250),
@@ -267,7 +267,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet2_71_small_shield_generator','shield_absorbtion',2.1277),--47% ap ratio
 ('def_elitet2_71_small_shield_generator','shield_radius',5),
 
-('def_elitet4_71_small_shield_generator','core_recharge_time_modifier',0.95),--5% accum recharge
+('def_elitet4_71_small_shield_generator','signature_radius',-0.3),-- -0.3m srf area
 ('def_elitet4_71_small_shield_generator','core_usage',1),
 ('def_elitet4_71_small_shield_generator','cpu_usage',50),
 ('def_elitet4_71_small_shield_generator','cycle_time',2000),
@@ -275,7 +275,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet4_71_small_shield_generator','shield_absorbtion',2),
 ('def_elitet4_71_small_shield_generator','shield_radius',6),
 
-('def_elitet2_71_medium_shield_generator','core_recharge_time_modifier',0.975),--2.5% accum recharge
+('def_elitet2_71_medium_shield_generator','signature_radius',-0.4), -- -0.4m srf area
 ('def_elitet2_71_medium_shield_generator','core_usage',12.5),
 ('def_elitet2_71_medium_shield_generator','cpu_usage',57),
 ('def_elitet2_71_medium_shield_generator','cycle_time',7000),
@@ -283,7 +283,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet2_71_medium_shield_generator','shield_absorbtion',2.1277),
 ('def_elitet2_71_medium_shield_generator','shield_radius',12),
 
-('def_elitet4_71_medium_shield_generator','core_recharge_time_modifier',0.96),--4% accum recharge
+('def_elitet4_71_medium_shield_generator','signature_radius',-0.6), -- -0.6m srf area
 ('def_elitet4_71_medium_shield_generator','core_usage',12.5),
 ('def_elitet4_71_medium_shield_generator','cpu_usage',70),
 ('def_elitet4_71_medium_shield_generator','cycle_time',6500),
@@ -291,6 +291,18 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet4_71_medium_shield_generator','shield_absorbtion',2),
 ('def_elitet4_71_medium_shield_generator','shield_radius',25),
 
+
+('def_elitet2_71_maneuvering_upgrade','armor_max_modifier',1.03), -- 3% armor hp
+('def_elitet2_71_maneuvering_upgrade','cpu_usage',19),
+('def_elitet2_71_maneuvering_upgrade','powergrid_usage',21),
+('def_elitet2_71_maneuvering_upgrade','signature_radius',-1.00),
+('def_elitet2_71_maneuvering_upgrade','massiveness',0.05),
+
+('def_elitet4_71_maneuvering_upgrade','armor_max_modifier',1.05), -- 3% armor hp
+('def_elitet4_71_maneuvering_upgrade','cpu_usage',29),
+('def_elitet4_71_maneuvering_upgrade','powergrid_usage',28),
+('def_elitet4_71_maneuvering_upgrade','signature_radius',-1.15),
+('def_elitet4_71_maneuvering_upgrade','massiveness',0.075),
 
 
 DROP TABLE IF EXISTS #SKILLS;
