@@ -1,10 +1,10 @@
 USE [perpetuumsa]
 GO
-SET NOEXEC ON;
+
 --------------------------------------------
 -- ELITE MODULES for Stronghold zone 71 and 72 bosses
 -- a lot
--- Date modified: 2021/03/25
+-- Date modified: 2021/03/28
 --------------------------------------------
 
 DECLARE @dataShardCat AS BIGINT = (SELECT TOP 1 value FROM categoryFlags WHERE name='cf_datashards');
@@ -335,8 +335,8 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet2_72_damage_mod_projectile','powergrid_usage',4),
 ('def_elitet2_72_damage_mod_projectile','damage_projectile_modifier',0.19),
 
-('def_elitet2_72_damage_mod_projectile','projectile_optimal_range_modifier',1.025), -- 2.5% optimal
-('def_elitet2_72_damage_mod_projectile','projectile_falloff_modifier',1.05),--5% falloff
+('def_elitet4_72_damage_mod_projectile','projectile_optimal_range_modifier',1.025), -- 2.5% optimal
+('def_elitet4_72_damage_mod_projectile','projectile_falloff_modifier',1.05),--5% falloff
 ('def_elitet4_72_damage_mod_projectile','cpu_usage',16),
 ('def_elitet4_72_damage_mod_projectile','powergrid_usage',5),
 ('def_elitet4_72_damage_mod_projectile','damage_projectile_modifier',0.25);
@@ -357,18 +357,14 @@ INSERT INTO #SKILLS (defName, extName, extLevel) VALUES
 ('def_elitet4_71_small_shield_generator','ext_shield_operation',7),
 ('def_elitet2_71_medium_shield_generator','ext_shield_upgrades',6),
 ('def_elitet4_71_medium_shield_generator','ext_shield_upgrades',7),
---
 ('def_elitet2_71_mining_probe_module', 'ext_electronics', 6),
 ('def_elitet4_71_mining_probe_module', 'ext_electronics', 7),
-
 ('def_elitet2_72_damage_mod_projectile', 'ext_weapon_cpu_upgrade', 6),
 ('def_elitet4_72_damage_mod_projectile', 'ext_weapon_cpu_upgrade', 7),
---no skill?
-('def_elitet2_72_mass_reductor', 'TODOSKILLNAME', 1),
-('def_elitet4_72_mass_reductor', 'TODOSKILLNAME', 1),
---no enabled skill?
-('def_elitet2_71_maneuvering_upgrade', 'TODOSKILLNAME', 1),
-('def_elitet4_71_maneuvering_upgrade', 'TODOSKILLNAME', 1);
+('def_elitet2_72_mass_reductor', 'ext_mechanic', 6),
+('def_elitet4_72_mass_reductor', 'ext_mechanic', 7),
+('def_elitet2_71_maneuvering_upgrade', 'ext_mechanic', 6),
+('def_elitet4_71_maneuvering_upgrade', 'ext_mechanic', 7);
 
 
 DROP TABLE IF EXISTS #INDY;
@@ -379,65 +375,53 @@ CREATE TABLE #INDY
 	amount INT
 );
 INSERT INTO #INDY (defName, commodityName, amount) VALUES
-('def_elitet2_70_small_armor_repairer','def_named1_small_armor_repairer',1),
-('def_elitet2_70_small_armor_repairer','def_material_boss_z70',150),
+('def_elitet2_72_small_armor_repairer','def_named1_small_armor_repairer',1),
+('def_elitet2_72_small_armor_repairer','def_material_boss_z72',150),
 
-('def_elitet4_70_small_armor_repairer','def_named3_small_armor_repairer',1),
-('def_elitet4_70_small_armor_repairer','def_material_boss_z70',200),
+('def_elitet4_72_small_armor_repairer','def_named3_small_armor_repairer',1),
+('def_elitet4_72_small_armor_repairer','def_material_boss_z72',200),
 
-('def_elitet2_70_medium_armor_repairer','def_named1_medium_armor_repairer',1),
-('def_elitet2_70_medium_armor_repairer','def_material_boss_z70',300),
+('def_elitet2_72_medium_armor_repairer','def_named1_medium_armor_repairer',1),
+('def_elitet2_72_medium_armor_repairer','def_material_boss_z72',300),
 
-('def_elitet4_70_medium_armor_repairer','def_named3_medium_armor_repairer',1),
-('def_elitet4_70_medium_armor_repairer','def_material_boss_z70',400),
+('def_elitet4_72_medium_armor_repairer','def_named3_medium_armor_repairer',1),
+('def_elitet4_72_medium_armor_repairer','def_material_boss_z72',400),
 
-('def_elitet2_70_small_shield_generator','def_named1_small_shield_generator',1),
-('def_elitet2_70_small_shield_generator','def_material_boss_z70',150),
+('def_elitet2_71_small_shield_generator','def_named1_small_shield_generator',1),
+('def_elitet2_71_small_shield_generator','def_material_boss_z71',150),
 
-('def_elitet4_70_small_shield_generator','def_named3_small_shield_generator',1),
-('def_elitet4_70_small_shield_generator','def_material_boss_z70',200),
+('def_elitet4_71_small_shield_generator','def_named3_small_shield_generator',1),
+('def_elitet4_71_small_shield_generator','def_material_boss_z71',200),
 
-('def_elitet2_70_medium_shield_generator','def_named1_medium_shield_generator',1),
-('def_elitet2_70_medium_shield_generator','def_material_boss_z70',300),
+('def_elitet2_71_medium_shield_generator','def_named1_medium_shield_generator',1),
+('def_elitet2_71_medium_shield_generator','def_material_boss_z71',300),
 
-('def_elitet4_70_medium_shield_generator','def_named3_medium_shield_generator',1),
-('def_elitet4_70_medium_shield_generator','def_material_boss_z70',400),
+('def_elitet4_71_medium_shield_generator','def_named3_medium_shield_generator',1),
+('def_elitet4_71_medium_shield_generator','def_material_boss_z71',400),
 
-('def_elitet2_70_sensor_booster','def_named1_sensor_booster',1),
-('def_elitet2_70_sensor_booster','def_material_boss_z70',300),
+('def_elitet2_71_mining_probe_module','def_named1_mining_probe_module',1),
+('def_elitet2_71_mining_probe_module','def_material_boss_z71',300),
 
-('def_elitet4_70_sensor_booster','def_named3_sensor_booster',1),
-('def_elitet4_70_sensor_booster','def_material_boss_z70',400),
+('def_elitet4_71_mining_probe_module','def_named3_mining_probe_module',1),
+('def_elitet4_71_mining_probe_module','def_material_boss_z71',400),
 
-('def_elitet2_70_webber','def_named1_webber',1),
-('def_elitet2_70_webber','def_material_boss_z70',300),
+('def_elitet2_72_damage_mod_projectile','def_named1_damage_mod_projectile',1),
+('def_elitet2_72_damage_mod_projectile','def_material_boss_z72',300),
 
-('def_elitet4_70_webber','def_named3_webber',1),
-('def_elitet4_70_webber','def_material_boss_z70',400),
+('def_elitet4_72_damage_mod_projectile','def_named3_damage_mod_projectile',1),
+('def_elitet4_72_damage_mod_projectile','def_material_boss_z72',400),
 
-('def_elitet2_70_eccm','def_named1_eccm',1),
-('def_elitet2_70_eccm','def_material_boss_z70',300),
+('def_elitet2_72_mass_reductor','def_named1_mass_reductor',1),
+('def_elitet2_72_mass_reductor','def_material_boss_z72',300),
 
-('def_elitet4_70_eccm','def_named3_eccm',1),
-('def_elitet4_70_eccm','def_material_boss_z70',400),
+('def_elitet4_72_mass_reductor','def_named3_mass_reductor',1),
+('def_elitet4_72_mass_reductor','def_material_boss_z72',400),
 
-('def_elitet2_70_small_core_booster','def_named1_small_core_booster',1),
-('def_elitet2_70_small_core_booster','def_material_boss_z70',150),
+('def_elitet2_71_maneuvering_upgrade','def_named1_maneuvering_upgrade',1),
+('def_elitet2_71_maneuvering_upgrade','def_material_boss_z71',300),
 
-('def_elitet4_70_small_core_booster','def_named3_small_core_booster',1),
-('def_elitet4_70_small_core_booster','def_material_boss_z70',200),
-
-('def_elitet2_70_medium_core_booster','def_named1_medium_core_booster',1),
-('def_elitet2_70_medium_core_booster','def_material_boss_z70',300),
-
-('def_elitet4_70_medium_core_booster','def_named3_medium_core_booster',1),
-('def_elitet4_70_medium_core_booster','def_material_boss_z70',400),
-
-('def_elitet2_70_tracking_upgrade','def_named1_tracking_upgrade',1),
-('def_elitet2_70_tracking_upgrade','def_material_boss_z70',300),
-
-('def_elitet4_70_tracking_upgrade','def_named3_tracking_upgrade',1),
-('def_elitet4_70_tracking_upgrade','def_material_boss_z70',400);
+('def_elitet4_71_maneuvering_upgrade','def_named3_maneuvering_upgrade',1),
+('def_elitet4_71_maneuvering_upgrade','def_material_boss_z71',400);
 
 
 PRINT N'UPSERT [entitydefaults] identity insert ON';
@@ -479,7 +463,7 @@ WHEN MATCHED
 		descriptiontoken='calibration_program_desc'
 WHEN NOT MATCHED
     THEN INSERT (definition, definitionname,quantity,attributeflags,categoryflags,options,note,enabled,volume,mass,hidden,health,descriptiontoken,purchasable,tiertype,tierlevel) VALUES
-	(def,defName,1,attrFlags,catFlags,genxyOptStr,'elite module',1,cargoVolume,massOfModule,0,100,'calibration_program_desc',1,techType,techLevel);
+	(def,defName,1,attrFlags,catFlags,genxyOptStr,'elite module ct',1,cargoVolume,massOfModule,0,100,'calibration_program_desc',1,techType,techLevel);
 
 PRINT N'UPSERT  ct capsules into [entitydefaults]';
 MERGE [dbo].[entitydefaults] e USING #CTS_CAPSULES d
@@ -499,7 +483,7 @@ WHEN MATCHED
 		descriptiontoken='elite_ct_capsule_desc'
 WHEN NOT MATCHED
     THEN INSERT (definition, definitionname,quantity,attributeflags,categoryflags,options,note,enabled,volume,mass,hidden,health,descriptiontoken,purchasable,tiertype,tierlevel) VALUES
-	(def,defName,1,attrFlags,catFlags,genxyOptStr,'elite module',1,cargoVolume,massOfModule,0,100,'elite_ct_capsule_desc',1,techType,techLevel);
+	(def,defName,1,attrFlags,catFlags,genxyOptStr,'elite module ct capsule',1,cargoVolume,massOfModule,0,100,'elite_ct_capsule_desc',1,techType,techLevel);
 
 PRINT N'UPSERT  new boss material into [entitydefaults]';
 MERGE [dbo].[entitydefaults] e USING #MATERIALDEF d
@@ -519,7 +503,7 @@ WHEN MATCHED
 		descriptiontoken=defName+'_desc'
 WHEN NOT MATCHED
     THEN INSERT (definition, definitionname,quantity,attributeflags,categoryflags,options,note,enabled,volume,mass,hidden,health,descriptiontoken,purchasable,tiertype,tierlevel) VALUES
-	(def,defName,1,attrFlags,catFlags,genxyOptStr,'elite module',1,cargoVolume,massOfModule,0,100,defName+'_desc',1,techType,techLevel);
+	(def,defName,1,attrFlags,catFlags,genxyOptStr,'elite module material',1,cargoVolume,massOfModule,0,100,defName+'_desc',1,techType,techLevel);
 
 SET IDENTITY_INSERT [dbo].[entitydefaults] OFF;
 PRINT N'[entitydefaults] insert/updates done - identity insert off';
