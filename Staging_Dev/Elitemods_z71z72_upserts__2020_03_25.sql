@@ -339,9 +339,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet2_72_damage_mod_projectile','projectile_falloff_modifier',1.05),--5% falloff
 ('def_elitet4_72_damage_mod_projectile','cpu_usage',16),
 ('def_elitet4_72_damage_mod_projectile','powergrid_usage',5),
-('def_elitet4_72_damage_mod_projectile','damage_projectile_modifier',0.25),
-
-
+('def_elitet4_72_damage_mod_projectile','damage_projectile_modifier',0.25);
 
 
 DROP TABLE IF EXISTS #SKILLS;
@@ -351,26 +349,27 @@ CREATE TABLE #SKILLS (
 	extLevel float,
 );
 INSERT INTO #SKILLS (defName, extName, extLevel) VALUES
-('def_elitet2_70_small_armor_repairer','ext_repair_systems',6),
-('def_elitet4_70_small_armor_repairer','ext_repair_systems',7),
-('def_elitet2_70_medium_armor_repairer','ext_repair_systems',6),
-('def_elitet4_70_medium_armor_repairer','ext_repair_systems',7),
-('def_elitet2_70_small_shield_generator','ext_shield_operation',6),
-('def_elitet4_70_small_shield_generator','ext_shield_operation',7),
-('def_elitet2_70_medium_shield_generator','ext_shield_upgrades',6),
-('def_elitet4_70_medium_shield_generator','ext_shield_upgrades',7),
-('def_elitet2_70_sensor_booster','ext_electronics',6),
-('def_elitet4_70_sensor_booster','ext_electronics',7),
-('def_elitet2_70_webber','ext_propulsion_disabling',6),
-('def_elitet4_70_webber','ext_propulsion_disabling',7),
-('def_elitet2_70_eccm','ext_electronic_warfare',6),
-('def_elitet4_70_eccm','ext_electronic_warfare',7),
-('def_elitet2_70_small_core_booster','ext_core_management',6),
-('def_elitet4_70_small_core_booster','ext_core_management',7),
-('def_elitet2_70_medium_core_booster','ext_core_management',6),
-('def_elitet4_70_medium_core_booster','ext_core_management',7),
-('def_elitet2_70_tracking_upgrade','ext_long_range_targeting',6),
-('def_elitet4_70_tracking_upgrade','ext_long_range_targeting',7);
+('def_elitet2_72_small_armor_repairer','ext_repair_systems',6),
+('def_elitet4_72_small_armor_repairer','ext_repair_systems',7),
+('def_elitet2_72_medium_armor_repairer','ext_repair_systems',6),
+('def_elitet4_72_medium_armor_repairer','ext_repair_systems',7),
+('def_elitet2_71_small_shield_generator','ext_shield_operation',6),
+('def_elitet4_71_small_shield_generator','ext_shield_operation',7),
+('def_elitet2_71_medium_shield_generator','ext_shield_upgrades',6),
+('def_elitet4_71_medium_shield_generator','ext_shield_upgrades',7),
+--
+('def_elitet2_71_mining_probe_module', 'ext_electronics', 6),
+('def_elitet4_71_mining_probe_module', 'ext_electronics', 7),
+
+('def_elitet2_72_damage_mod_projectile', 'ext_weapon_cpu_upgrade', 6),
+('def_elitet4_72_damage_mod_projectile', 'ext_weapon_cpu_upgrade', 7),
+--no skill?
+('def_elitet2_72_mass_reductor', 'TODOSKILLNAME', 1),
+('def_elitet4_72_mass_reductor', 'TODOSKILLNAME', 1),
+--no enabled skill?
+('def_elitet2_71_maneuvering_upgrade', 'TODOSKILLNAME', 1),
+('def_elitet4_71_maneuvering_upgrade', 'TODOSKILLNAME', 1);
+
 
 DROP TABLE IF EXISTS #INDY;
 CREATE TABLE #INDY
