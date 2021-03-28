@@ -231,28 +231,28 @@ CREATE TABLE #STATS(
 );
 INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 
-('def_elitet2_72_small_armor_repairer','armor_max',175),--hp
+('def_elitet2_72_small_armor_repairer','armor_max',110),--hp
 ('def_elitet2_72_small_armor_repairer','armor_repair_amount',65),
 ('def_elitet2_72_small_armor_repairer','core_usage',54),
 ('def_elitet2_72_small_armor_repairer','cpu_usage',29),
 ('def_elitet2_72_small_armor_repairer','cycle_time',13500),
 ('def_elitet2_72_small_armor_repairer','powergrid_usage',17),
 
-('def_elitet4_72_small_armor_repairer','armor_max',225),--hp
+('def_elitet4_72_small_armor_repairer','armor_max',180),--hp
 ('def_elitet4_72_small_armor_repairer','armor_repair_amount',75),
 ('def_elitet4_72_small_armor_repairer','core_usage',70),
 ('def_elitet4_72_small_armor_repairer','cpu_usage',40),
 ('def_elitet4_72_small_armor_repairer','cycle_time',12000),
 ('def_elitet4_72_small_armor_repairer','powergrid_usage',27),
 
-('def_elitet2_72_medium_armor_repairer','armor_max',575),--hp
+('def_elitet2_72_medium_armor_repairer','armor_max',245),--hp
 ('def_elitet2_72_medium_armor_repairer','armor_repair_amount',200),
 ('def_elitet2_72_medium_armor_repairer','core_usage',278),
 ('def_elitet2_72_medium_armor_repairer','cpu_usage',43),
 ('def_elitet2_72_medium_armor_repairer','cycle_time',13500),
 ('def_elitet2_72_medium_armor_repairer','powergrid_usage',87),
 
-('def_elitet4_72_medium_armor_repairer','armor_max',675),--hp
+('def_elitet4_72_medium_armor_repairer','armor_max',405),--hp
 ('def_elitet4_72_medium_armor_repairer','armor_repair_amount',230),
 ('def_elitet4_72_medium_armor_repairer','core_usage',330),
 ('def_elitet4_72_medium_armor_repairer','cpu_usage',55),
@@ -291,13 +291,13 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet4_71_medium_shield_generator','shield_absorbtion',2),
 ('def_elitet4_71_medium_shield_generator','shield_radius',25),
 
-('def_elitet2_71_maneuvering_upgrade','armor_max_modifier',1.03), -- 3% armor hp
+('def_elitet2_71_maneuvering_upgrade','armor_max',110), -- hp+
 ('def_elitet2_71_maneuvering_upgrade','cpu_usage',19),
 ('def_elitet2_71_maneuvering_upgrade','powergrid_usage',21),
 ('def_elitet2_71_maneuvering_upgrade','signature_radius',-1.00),
 ('def_elitet2_71_maneuvering_upgrade','massiveness',0.05),
 
-('def_elitet4_71_maneuvering_upgrade','armor_max_modifier',1.05), -- 3% armor hp
+('def_elitet4_71_maneuvering_upgrade','armor_max',180), -- hp+
 ('def_elitet4_71_maneuvering_upgrade','cpu_usage',29),
 ('def_elitet4_71_maneuvering_upgrade','powergrid_usage',28),
 ('def_elitet4_71_maneuvering_upgrade','signature_radius',-1.15),
