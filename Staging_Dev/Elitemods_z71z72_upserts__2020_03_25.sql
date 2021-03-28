@@ -50,7 +50,7 @@ INSERT INTO #ENTITYDEF (def, defName, attrFlags, catFlags, genxyOptStr, cargoVol
 (6048,'def_elitet2_71_medium_shield_generator',82200,33620495,'#moduleFlag=i20#tier=$tierlevel_t2+',0.5,270,3,2),
 (6049,'def_elitet4_71_medium_shield_generator',82200,33620495,'#moduleFlag=i20#tier=$tierlevel_t4+',0.5,470,3,4),
 --geoscanner
-(6050,'def_elitet2_71_mining_probe_module',2359320,329231,'#moduleFlag=i8 #ammoCapacity=ia #ammoType=L90a #tier=$tierlevel_t2+',0.5,200,3,2),
+(6050,'def_elitet2_71_mining_probe_module',2359320,329231,'#moduleFlag=i8 #ammoCapacity=ia #ammoType=L90a #tier=$tierlevel_t2+',0.5,135,3,2),
 (6051,'def_elitet4_71_mining_probe_module',2359320,329231,'#moduleFlag=i8 #ammoCapacity=ia #ammoType=L90a #tier=$tierlevel_t4+',0.5,200,3,4),
 
 (6052,'def_elitet2_72_damage_mod_projectile',524292,33883919,'#moduleFlag=i8 #tier=$tierlevel_t2+',0.5,125,3,2),
@@ -314,6 +314,20 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet4_72_mass_reductor','powergrid_usage',3),
 ('def_elitet4_72_mass_reductor','speed_max_modifier',1.25),
 ('def_elitet4_72_mass_reductor','massiveness',-0.25),
+
+('def_elitet2_71_mining_probe_module','stealth_strength',10), -- 10 masking
+('def_elitet2_71_mining_probe_module','core_usage',45),
+('def_elitet2_71_mining_probe_module','cpu_usage',38),
+('def_elitet2_71_mining_probe_module','cycle_time',15000),
+('def_elitet2_71_mining_probe_module','powergrid_usage',43),
+('def_elitet2_71_mining_probe_module','mining_probe_accuracy',0.6),
+
+('def_elitet4_71_mining_probe_module','stealth_strength',17.5), -- 10 masking
+('def_elitet4_71_mining_probe_module','core_usage',90),
+('def_elitet4_71_mining_probe_module','cpu_usage',60),
+('def_elitet4_71_mining_probe_module','cycle_time',10000),
+('def_elitet4_71_mining_probe_module','powergrid_usage',53),
+('def_elitet4_71_mining_probe_module','mining_probe_accuracy',0.7),
 
 
 
