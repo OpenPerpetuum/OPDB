@@ -3,7 +3,7 @@ GO
 ------------------------------------
 -- Mission reward tweak, again
 --
--- Date modified: 2021/03/24
+-- Date modified: 2021/03/27
 ------------------------------------
 
 DROP TABLE IF EXISTS #REWARDS;
@@ -15,14 +15,14 @@ INSERT INTO #REWARDS(name, reward) VALUES
 ('loot_item',55),
 ('kill_definition',55),
 ('scan_mineral',175),--was 200
-('drill_mineral',4200),
+('drill_mineral',4000),--was4200
 ('submit_item',220),
 ('use_switch',55),
 ('find_artifact',175),--was 200
 ('use_itemsupply',275),
 ('massproduce',550),
 ('research',550),
-('harvest_plant',1100),
+('harvest_plant',1000),--was 1100
 ('pop_npc',15),
 ('lock_unit',55);
 
