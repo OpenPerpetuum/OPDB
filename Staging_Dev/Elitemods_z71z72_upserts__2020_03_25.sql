@@ -53,7 +53,7 @@ INSERT INTO #ENTITYDEF (def, defName, attrFlags, catFlags, genxyOptStr, cargoVol
 (6050,'def_elitet2_71_mining_probe_module',2359320,329231,'#moduleFlag=i8 #ammoCapacity=ia #ammoType=L90a #tier=$tierlevel_t2+',0.5,135,3,2),
 (6051,'def_elitet4_71_mining_probe_module',2359320,329231,'#moduleFlag=i8 #ammoCapacity=ia #ammoType=L90a #tier=$tierlevel_t4+',0.5,200,3,4),
 
-(6052,'def_elitet2_72_damage_mod_projectile',524292,33883919,'#moduleFlag=i8 #tier=$tierlevel_t2+',0.5,125,3,2),
+(6052,'def_elitet2_72_damage_mod_projectile',524292,33883919,'#moduleFlag=i8 #tier=$tierlevel_t2+',0.5,75,3,2),
 (6053,'def_elitet4_72_damage_mod_projectile',524292,33883919,'#moduleFlag=i8 #tier=$tierlevel_t4+',0.5,125,3,4),
 --LWF
 (6054,'def_elitet2_72_mass_reductor',524320,327951,'#moduleFlag=i20 #tier=$tierlevel_t2+',0.5,1.5,3,2),
@@ -322,12 +322,25 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet2_71_mining_probe_module','powergrid_usage',43),
 ('def_elitet2_71_mining_probe_module','mining_probe_accuracy',0.6),
 
-('def_elitet4_71_mining_probe_module','stealth_strength',17.5), -- 10 masking
+('def_elitet4_71_mining_probe_module','stealth_strength',17.5), -- 17.5 masking
 ('def_elitet4_71_mining_probe_module','core_usage',90),
 ('def_elitet4_71_mining_probe_module','cpu_usage',60),
 ('def_elitet4_71_mining_probe_module','cycle_time',10000),
 ('def_elitet4_71_mining_probe_module','powergrid_usage',53),
 ('def_elitet4_71_mining_probe_module','mining_probe_accuracy',0.7),
+
+('def_elitet2_72_damage_mod_projectile','projectile_optimal_range_modifier',1.015), -- 1.5% optimal
+('def_elitet2_72_damage_mod_projectile','projectile_falloff_modifier',1.03), --3% falloff
+('def_elitet2_72_damage_mod_projectile','cpu_usage',13),
+('def_elitet2_72_damage_mod_projectile','powergrid_usage',4),
+('def_elitet2_72_damage_mod_projectile','damage_projectile_modifier',0.19),
+
+('def_elitet2_72_damage_mod_projectile','projectile_optimal_range_modifier',1.025), -- 2.5% optimal
+('def_elitet2_72_damage_mod_projectile','projectile_falloff_modifier',1.05),--5% falloff
+('def_elitet4_72_damage_mod_projectile','cpu_usage',16),
+('def_elitet4_72_damage_mod_projectile','powergrid_usage',5),
+('def_elitet4_72_damage_mod_projectile','damage_projectile_modifier',0.25),
+
 
 
 
