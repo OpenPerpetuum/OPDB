@@ -89,17 +89,18 @@ CREATE TABLE #SHOPENTRIES (
 	nicPrice int
 );
 INSERT INTO #SHOPENTRIES (defName, tokenPrice, nicPrice) VALUES
-('def_vektor_bot_CT_capsule',25,50000),
-('def_helix_bot_CT_capsule',110,150000),
-('def_locust_bot_CT_capsule',75,150000),
-('def_echelon_bot_CT_capsule',300,450000),
-('def_callisto_bot_CT_capsule',450,750000),
-('def_legatus_bot_CT_capsule',1330,2500000),
-('def_ikarus_bot_CT_capsule',10,25000),
-('def_cronus_bot_CT_capsule',100,150000),
-('def_hermes_bot_CT_capsule',100,175000),
-('def_daidalos_bot_CT_capsule',330,1000000),
-('def_metis_bot_CT_capsule',1750,3500000);
+--Editted for 15pt/5-run values
+('def_vektor_bot_CT_capsule',125,250000),
+('def_helix_bot_CT_capsule',550,750000),
+('def_locust_bot_CT_capsule',375,750000),
+('def_echelon_bot_CT_capsule',1500,2250000),
+('def_callisto_bot_CT_capsule',2250,3750000),
+('def_legatus_bot_CT_capsule',6650,12500000),
+('def_ikarus_bot_CT_capsule',50,125000),
+('def_cronus_bot_CT_capsule',500,750000),
+('def_hermes_bot_CT_capsule',500,875000),
+('def_daidalos_bot_CT_capsule',1650,5000000),
+('def_metis_bot_CT_capsule',8750,17500000);
 
 DROP TABLE IF EXISTS #CT_RELATE;
 CREATE TABLE #CT_RELATE (
@@ -314,13 +315,13 @@ MERGE [dbo].[dynamiccalibrationtemplates] t USING #CT_RELATE c
 ON t.definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=c.ctName)
 WHEN MATCHED
     THEN UPDATE SET
-		materialefficiency=1,
-		timeefficiency=1,
+		materialefficiency=15,
+		timeefficiency=15,
 		targetdefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=c.defName)
 WHEN NOT MATCHED
     THEN INSERT (definition, materialefficiency, timeefficiency, targetdefinition) VALUES
 	((SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=c.ctName),
-	1,1,
+	15,15,
 	(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=c.defName));
 
 PRINT N'UPSERT [calibrationtemplateitems]';
