@@ -154,7 +154,7 @@ INSERT INTO #BOSSINFO (flockName, respawnNoise, aggMsg, deathMsg) VALUES
 ('RR_Boss_72_GRP4', 0.1, 'I may have one eye, but I can see you are fixin for a fight.', 'You fool! Dont you know the Syndicate is using you to ... *explodes*');
 
 
-
+DECLARE @behaviourType AS INT = 2; --aggressive
 DROP TABLE IF EXISTS #WAVES;
 CREATE TABLE #WAVES (
 	targetFlockName VARCHAR(100),
@@ -202,6 +202,7 @@ DELETE FROM robottemplates WHERE name IN (SELECT templateName FROM #ED WHERE tem
 DELETE FROM npcbossinfo WHERE flockid IN (SELECT id FROM npcflock WHERE name IN (SELECT flockName FROM #BOSSINFO));
 DELETE FROM npcflock WHERE name IN (SELECT flockName FROM #FLOCKS);
 DELETE FROM npcpresence WHERE name IN (SELECT presName FROM #PRES);
+DELETE FROM npcloot WHERE definition IN (SELECT definition FROM entitydefaults WHERE definitionname IN (SELECT defName FROM #ED));
 DELETE FROM entitydefaults WHERE definitionname IN (SELECT defName FROM #ED);
 
 
