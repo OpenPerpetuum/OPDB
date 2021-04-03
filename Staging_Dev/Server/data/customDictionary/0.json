@@ -966,14 +966,6 @@
 
 	"ErrorMessages_unknown_666": "Robot too big for this action",
 
-	"def_npc_Zone71_WilliamHBonnie":"L2 Boss Mech Syndicate",
-	"def_npc_Zone71_WilliamHBonnie_name":"'William H. Bonnie'",
-	"def_npc_Helix_BossGuard":"L2 Light Ewar Syndicate",
-	"def_npc_Helix_BossGuard_name":"'William H. Bonnie'",
-	"def_npc_Zone72_One_Eye_Josef":"L3 Boss Mech Syndicate",
-	"def_npc_Zone72_One_Eye_Josef_name":"''One-Eyed Josef'",
-	"def_npc_Rough_Rider_Death_Dealer":"L3 Combat Mech Syndicate",
-	"def_npc_Rough_Rider_Death_Dealer_name":"Rough Rider Munitions Expert",
 
 	"def_rift_targetted_portal":"Teleportation Rift",
 	"def_rift_targetted_portal_desc":"A portal seems to have formed in the wake of some teleportation of a Nian, or in the use of some Niani Tech.  You can jump through and attempt to ride the teleport-wake, but it is unclear where that will lead you to.\n''Beware what awaits you on the other side, Agent.''",
@@ -1012,6 +1004,29 @@
 	"def_cronus_bot_CT_capsule_desc":"Cronus 15pt CT Capsule\n\nRight-click, '''Activate''' to open and access the CT within.",
 	"def_hermes_bot_CT_capsule_desc":"Hermes 15pt CT Capsule\n\nRight-click, '''Activate''' to open and access the CT within.",
 	"def_daidalos_bot_CT_capsule_desc":"Daidalos 15pt CT Capsule\n\nRight-click, '''Activate''' to open and access the CT within.",
-	"def_metis_bot_CT_capsule_desc":"Metis 15pt CT Capsule\n\nRight-click, '''Activate''' to open and access the CT within."
+	"def_metis_bot_CT_capsule_desc":"Metis 15pt CT Capsule\n\nRight-click, '''Activate''' to open and access the CT within.",
+
+	"def_npc_Zone71_WilliamHBonnie":"L2 Boss Mech Syndicate",
+	"def_npc_Zone71_WilliamHBonnie_name":"'William H. Bonnie'",
+	"def_npc_Helix_BossGuard":"L2 Light Ewar Syndicate",
+	"def_npc_Helix_BossGuard_name":"'Rough Rider' Scrambler",
+	"def_npc_Zone72_One_Eye_Josef":"L3 Boss Mech Syndicate",
+	"def_npc_Zone72_One_Eye_Josef_name":"'One-Eyed Josef'",
+	"def_npc_Rough_Rider_Death_Dealer":"L3 Combat Mech Syndicate",
+	"def_npc_Rough_Rider_Death_Dealer_name":"'Rough Rider' Munitions Expert",
+
+	"def_material_boss_z71":"Datashard of William H. Bonnie",
+	"def_material_boss_z71_desc":"'''Rare Material'''\n\nThis datashard was extracted from '''William H. Bonnie's'' wreckage and offers unique enhancements when used to produce '''Augmented Modules'''",
+
+	"def_material_boss_z72":"Datashard of One-Eyed Josef",
+	"def_material_boss_z72_desc":"'''Rare Material'''\n\nThis datashard was extracted from '''One-Eyed Josef's'' wreckage and offers unique enhancements when used to produce '''Augmented Modules'''",
+
+	"zone_strghld_71": "Stronghold: Bonnie's Research Facility",
+	"zone_strghld_72": "Stronghold: Rough Rider Command Outpost",
+
+	"def_rift_targetted_portal":"Teleportation Rift",
+	"def_rift_targetted_portal_desc":"A portal seems to have formed in the wake of some teleportation of a Nian, or in the use of some Niani Tech.\nIt may only support some '''limited size/class and number of robots''' jumping through and could '''collapse at any moment!'''\nYou can jump through and attempt to ride the teleport-wake, but it is unclear where that will lead you to.\n''Beware what awaits you on the other side, Agent.''",
+	"def_biotichrin_desc":"This unusual compound is produced in the unusual soup of HDT and the harvestable plants found on Nia.  The Syndicate discovered this compound during one of their many catastrophic HDT spills.  They were happy to take advantage of the disaster to lay claim to a major technological breakthrough, quickly incorporating it into their products despite not reviewing any of the material-interaction reports from the lab.",
+
 
 }
