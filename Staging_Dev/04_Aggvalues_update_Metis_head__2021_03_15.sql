@@ -29,3 +29,35 @@ WHEN MATCHED
 
 DROP TABLE IF EXISTS #AGG_VALS;
 PRINT N'UPDATED METIS BOT STATS';
+GO
+
+USE [perpetuumsa]
+GO
+----------------------------------
+-- Metis Bonus reversed bug
+-- Date modified: 2021/03/31
+----------------------------------
+
+DROP TABLE IF EXISTS #BONUS;
+CREATE TABLE #BONUS(
+	defName VARCHAR(100),
+	bonusField VARCHAR(100),
+	bonusSkill VARCHAR(100),
+	bonusAmount FLOAT
+);
+INSERT INTO #BONUS (defName, bonusField, bonusSkill, bonusAmount) VALUES
+('def_metis_head', 'reactor_radiation_modifier', 'ext_indy_role_specialist', -0.05);
+
+PRINT N'UPDATE [chassisbonus]';
+MERGE [dbo].[chassisbonus] a USING #BONUS v
+ON a.definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=v.defName) AND
+a.targetpropertyID = (SELECT TOP 1 id FROM aggregatefields WHERE name=v.bonusField) AND
+a.extension = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname=v.bonusSkill)
+WHEN MATCHED
+    THEN UPDATE SET
+		bonus=v.bonusAmount;
+
+
+DROP TABLE IF EXISTS #BONUS;
+PRINT N'UPDATED METIS BOT Bonuses';
+GO

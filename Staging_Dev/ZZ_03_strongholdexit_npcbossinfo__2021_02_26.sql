@@ -4,7 +4,7 @@ GO
 ------------------------------------------------
 -- Zone 71-72 Stronghold Exit anom configs
 --
--- Date: 2/26/2021
+-- Date: 2021/03/30
 ------------------------------------------------
 PRINT N'CONFIGURE STRONGHOND ZONE 71, 72 ENTRANCE AND EXITS';
 
@@ -16,7 +16,9 @@ CREATE TABLE #EXITS(
 	y INT
 );
 INSERT INTO #EXITS (zoneid, x, y) VALUES
+(71, 20, 175),
 (71, 211, 119),
+(72, 219, 28),
 (72, 89, 185);
 
 PRINT N'DELETE AND REINSERT FOR ZONES (71,72)';

@@ -5,7 +5,7 @@ GO
 -- Light bot rebalance
 -- Speed/mass, locking range, some reactor
 -- EW mass added to be consistent at fitted velocity
--- Date modified: 2021/03/28
+-- Date modified: 2021/03/31
 ---------------------------------------------------
 
 DROP TABLE IF EXISTS #CHASSIS_DEFS;
@@ -14,32 +14,32 @@ CREATE TABLE #CHASSIS_DEFS(
 	chassisMass float
 );
 INSERT INTO #CHASSIS_DEFS (defName, chassisMass) VALUES
-('def_vektor_chassis', 8000),
-('def_castel_chassis', 6500),
-('def_yagel_chassis', 6750),
-('def_prometheus_chassis', 6750),
+('def_vektor_chassis', 8400),
+('def_castel_chassis', 6840),
+('def_yagel_chassis', 7100),
+('def_prometheus_chassis', 7100),
 
-('def_castel_chassis_pr', 6500),
-('def_yagel_chassis_pr', 6750),
-('def_prometheus_chassis_pr', 6750),
+('def_castel_chassis_pr', 6840),
+('def_yagel_chassis_pr', 7100),
+('def_prometheus_chassis_pr', 7100),
 
-('def_castel_chassis_mk2', 7900),
-('def_yagel_chassis_mk2', 8250),
-('def_prometheus_chassis_mk2', 8250),
+('def_castel_chassis_mk2', 9900),
+('def_yagel_chassis_mk2', 10250),
+('def_prometheus_chassis_mk2', 10250),
 
-('def_helix_chassis', 5900),
+('def_helix_chassis', 6200),
 
-('def_troiar_chassis', 5095),
-('def_cameleon_chassis', 4750),
-('def_intakt_chassis', 4750),
+('def_troiar_chassis', 5360),
+('def_cameleon_chassis', 5000),
+('def_intakt_chassis', 5000),
 
-('def_troiar_chassis_pr', 5095),
-('def_cameleon_chassis_pr', 4750),
-('def_intakt_chassis_pr', 4750),
+('def_troiar_chassis_pr', 5360),
+('def_cameleon_chassis_pr', 5000),
+('def_intakt_chassis_pr', 5000),
 
-('def_troiar_chassis_mk2', 6100),
-('def_cameleon_chassis_mk2', 5700),
-('def_intakt_chassis_mk2', 5700);
+('def_troiar_chassis_mk2', 7100),
+('def_cameleon_chassis_mk2', 6700),
+('def_intakt_chassis_mk2', 6700);
 
 DROP TABLE IF EXISTS #AGG_VALS;
 CREATE TABLE #AGG_VALS(
