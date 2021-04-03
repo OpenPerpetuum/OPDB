@@ -35,7 +35,7 @@ USE [perpetuumsa]
 GO
 ----------------------------------
 -- Metis Bonus reversed bug
--- Date modified: 2021/03/31
+-- Date modified: 2021/04/03
 ----------------------------------
 
 DROP TABLE IF EXISTS #BONUS;
@@ -46,7 +46,7 @@ CREATE TABLE #BONUS(
 	bonusAmount FLOAT
 );
 INSERT INTO #BONUS (defName, bonusField, bonusSkill, bonusAmount) VALUES
-('def_metis_head', 'reactor_radiation_modifier', 'ext_indy_role_specialist', -0.05);
+('def_metis_head', 'reactor_radiation_modifier', 'ext_indy_role_specialist', -0.03);
 
 PRINT N'UPDATE [chassisbonus]';
 MERGE [dbo].[chassisbonus] a USING #BONUS v
