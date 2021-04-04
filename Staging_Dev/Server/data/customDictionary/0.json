@@ -666,6 +666,9 @@
 	"damage_turret_modifier" : "Medium turret bonus",
 	"gang_effect_enhancer_speed_max_modifier" : "Velocity nexus bonus",
 	"projectile_falloff_modifier" : "Firearm falloff increase",
+	"projectile_falloff_modifier_unit" : "%",
+	"projectile_optimal_range_modifier" : "Firearm optimal range increase",
+	"projectile_optimal_range_modifier_unit" : "%",
 	"cpu_usage_large_missile_modifier" : "CPU usage of large missile launchers",
 	"damage_large_missile_modifier" : "Large missile damage",
 	"powergrid_usage_large_missile_modifier" : "Reactor usage of large missile launchers",
@@ -1033,6 +1036,8 @@
 	"zone_strghld_71": "Stronghold: Bonnie's Research Facility",
 	"zone_strghld_72": "Stronghold: Rough Rider Command Outpost",
 
+	"projectile_falloff_modifier_unit"
+
 	"def_elitet2_72_small_armor_repairer":"Josef's optimized small armor repairer",
 	"def_elitet4_72_small_armor_repairer":"Josef's enhanced small armor repairer",
 	"def_elitet2_72_medium_armor_repairer":"Josef's optimized medium armor repairer",
@@ -1049,7 +1054,6 @@
 	"def_elitet4_72_mass_reductor":"Josef's enhanced lightweight frame",
 	"def_elitet2_71_maneuvering_upgrade":"Bonnie's optimized evasive module",
 	"def_elitet4_71_maneuvering_upgrade":"Bonnie's enhanced evasive module",
-
 
 	"def_elitet2_72_small_armor_repairer_cprg":"Josef's optimized small armor repairer CT",
 	"def_elitet4_72_small_armor_repairer_cprg":"Josef's enhanced small armor repairer CT",
