@@ -1,6 +1,11 @@
 USE [perpetuumsa]
 GO
 
+----------------------------------------------
+-- Market NPC buy orders for raw materials
+-- Public alpha and beta terminal markets only
+-- Date modified: 2021/04/03
+----------------------------------------------
 
 DROP TABLE IF EXISTS #ALPHA_ORE_BUYS;
 CREATE TABLE #ALPHA_ORE_BUYS(
@@ -93,4 +98,56 @@ WHERE
 	(SELECT TOP 1 definition FROM entities WHERE eid=ze.eid) IN (SELECT definition FROM @MAIN_TERMINAL_DEFS) AND 
 	e.definition=@MARKET_DEF AND z.protected=0 AND zonetype=2; --beta
 
+DECLARE @VENDOR_DEF AS INT = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_public_vendor');
+
+DECLARE @ALPHA_MARKETS_AND_VENDOR TABLE (market BIGINT, vendor BIGINT);
+INSERT INTO @ALPHA_MARKETS_AND_VENDOR (market, vendor)
+SELECT m.eid market, v.eid vendor FROM entities v
+JOIN entities m ON m.parent=v.parent AND v.definition=@VENDOR_DEF AND m.eid IN (SELECT eid FROM @ALPHA_MARKETS);
+
+DECLARE @BETA_MARKETS_AND_VENDOR TABLE (market BIGINT, vendor BIGINT);
+INSERT INTO @BETA_MARKETS_AND_VENDOR (market, vendor)
+SELECT m.eid market, v.eid vendor FROM entities v
+JOIN entities m ON m.parent=v.parent AND v.definition=@VENDOR_DEF AND m.eid IN (SELECT eid FROM @BETA_PUBLIC_MARKETS);
+
+DECLARE @ALPHA_ORDERS TABLE (marketEid BIGINT, itemDef INT, vendorEid BIGINT, price FLOAT);
+INSERT INTO @ALPHA_ORDERS (marketEid, itemDef, vendorEid, price)
+SELECT market,
+ (select definition from entitydefaults where definitionname=defName), 
+ vendor, price
+FROM @ALPHA_MARKETS_AND_VENDOR m
+JOIN #ALPHA_ORE_BUYS o ON 1=1;
+
+DECLARE @BETA_ORDERS TABLE (marketEid BIGINT, itemDef INT, vendorEid BIGINT, price FLOAT);
+INSERT INTO @BETA_ORDERS (marketEid, itemDef, vendorEid, price)
+SELECT market,
+ (select definition from entitydefaults where definitionname=defName), 
+ vendor, price
+FROM @BETA_MARKETS_AND_VENDOR m
+JOIN #BETA_PUBLIC_ORE_BUYS o ON 1=1;
+
 PRINT N'UPSERT MARKET ORDERS FOR EACH MARKET';
+MERGE [dbo].[marketitems] m USING @ALPHA_ORDERS o
+ON m.marketeid = o.marketEid AND
+m.itemdefinition = o.itemDef AND
+m.submittereid = o.vendorEid AND
+m.isSell=0 AND m.isVendorItem=1 AND m.duration=0 AND m.quantity=-1
+WHEN MATCHED
+    THEN UPDATE SET
+		price = o.price
+WHEN NOT MATCHED
+    THEN INSERT (marketeid, itemdefinition, submittereid, duration, isSell, price, quantity, usecorporationwallet, isvendoritem) VALUES
+	(o.marketEid, o.itemDef, o.vendorEid, 0, 0, o.price, -1, 0, 1);
+
+MERGE [dbo].[marketitems] m USING @BETA_ORDERS o
+ON m.marketeid = o.marketEid AND
+m.itemdefinition = o.itemDef AND
+m.submittereid = o.vendorEid AND
+m.isSell=0 AND m.isVendorItem=1 AND m.duration=0 AND m.quantity=-1
+WHEN MATCHED
+    THEN UPDATE SET
+		price = o.price
+WHEN NOT MATCHED
+    THEN INSERT (marketeid, itemdefinition, submittereid, duration, isSell, price, quantity, usecorporationwallet, isvendoritem) VALUES
+	(o.marketEid, o.itemDef, o.vendorEid, 0, 0, o.price, -1, 0, 1);
+GO
