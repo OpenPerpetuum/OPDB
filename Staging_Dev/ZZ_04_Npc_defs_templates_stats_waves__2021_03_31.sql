@@ -40,7 +40,7 @@ CREATE TABLE #NPC_MODS (
 );
 
 INSERT INTO #NPC_MODS (defName, fieldName, fieldValue) VALUES
-('def_npc_Zone71_WilliamHBonnie','armor_max_modifier',5.5),
+('def_npc_Zone71_WilliamHBonnie','armor_max_modifier',10),
 ('def_npc_Zone71_WilliamHBonnie','core_max_modifier',2.5),
 ('def_npc_Zone71_WilliamHBonnie','cpu_max_modifier',2),
 ('def_npc_Zone71_WilliamHBonnie','damage_modifier',0.25),
@@ -64,7 +64,7 @@ INSERT INTO #NPC_MODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_Helix_BossGuard','resist_kinetic',200),
 ('def_npc_Helix_BossGuard','resist_thermal',200),
 ('def_npc_Helix_BossGuard','received_repaired_modifier',0.1),
-('def_npc_Zone72_One_Eye_Josef','armor_max_modifier',5.5),
+('def_npc_Zone72_One_Eye_Josef','armor_max_modifier',10),
 ('def_npc_Zone72_One_Eye_Josef','core_max_modifier',2.5),
 ('def_npc_Zone72_One_Eye_Josef','core_recharge_time_modifier',1),
 ('def_npc_Zone72_One_Eye_Josef','cpu_max_modifier',2),
