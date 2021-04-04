@@ -29,7 +29,7 @@ INSERT INTO #ALPHA_ORE_BUYS (defName, price) VALUES
 ('def_prismocitae', 0.80),
 ('def_helioptris', 0.80),
 ('def_triandlus', 0.80),
-('def_electroplant_fruit', 3.2);
+('def_electroplant_fruit', 2.4);
 
 INSERT INTO #BETA_PUBLIC_ORE_BUYS (defName, price) VALUES
 ('def_crude', 0.12),
@@ -42,7 +42,7 @@ INSERT INTO #BETA_PUBLIC_ORE_BUYS (defName, price) VALUES
 ('def_prismocitae', 0.96),
 ('def_helioptris', 0.96),
 ('def_triandlus', 0.96);
---('def_electroplant_fruit', 3.84);
+--('def_electroplant_fruit', 2.88);
 
 ----MAIN terminals, alpha and beta
 --'def_public_docking_base_nuimqol',
