@@ -975,6 +975,9 @@
 	"ErrorMessages_unknown_666": "Robot too big for this action",
 	"error_RelayIsClosedForPublic": "The Open Perpetuum Server is currently in Maintence-Mode! Please check back in a few minutes or message the OPP Devs on discord at: https://discord.gg/e4gH9Ff",
 
+	"def_anniversarkhe_year3_bot": "AnniversArkhe-Year3",
+	"def_anniversarkhe_year3_bot_desc": "This robot was specially gifted to all accounts active within the 3rd year of Open Perpetuum's Live server.\n\n'''ACQUIRE PERPETUUM'''",
+
 	"def_rift_targetted_portal":"Teleportation Rift",
 	"def_rift_targetted_portal_desc":"A portal seems to have formed in the wake of some teleportation of a Nian, or in the use of some Niani Tech.\nIt may only support some '''limited size/class and number of robots''' jumping through and could '''collapse at any moment!'''\nYou can jump through and attempt to ride the teleport-wake, but it is unclear where that will lead you to.\n''Beware what awaits you on the other side, Agent.''",
 	"def_biotichrin_desc":"The Syndicate discovered this compound during one of their many catastrophic HDT spills.  They were happy to take advantage of the disaster to lay claim to a major technological breakthrough, quickly incorporating it into their products despite not reviewing any of the material-interaction reports from the lab.",
