@@ -796,7 +796,7 @@
 
 	"zone_strghld_70_short": "STL",
 	"tp_zone_strnghld_70": "Stronghold Entrance: The Sentinel (Non-pvp)",
-	"zone_strghld_70": "Stronghold: The Sentinel",
+	"zone_strghld_70": "SH: The Sentinel",
 
 	"def_npc_pbs_turret_laser_rank1":"Nian Turret",
 	"def_npc_pbs_turret_em_rank1":"Nian Turret",
@@ -1033,10 +1033,8 @@
 	"def_material_boss_z72":"Datashard of One-Eyed Josef",
 	"def_material_boss_z72_desc":"'''Rare Material'''\n\nThis datashard was extracted from '''One-Eyed Josef's'' wreckage and offers unique enhancements when used to produce '''Augmented Modules'''",
 
-	"zone_strghld_71": "Stronghold: Bonnie's Research Facility",
-	"zone_strghld_72": "Stronghold: Rough Rider Command Outpost",
-
-	"projectile_falloff_modifier_unit"
+	"zone_strghld_71": "SH: Bonnie's Hideout",
+	"zone_strghld_72": "SH: RR Command Outpost",
 
 	"def_elitet2_72_small_armor_repairer":"Josef's optimized small armor repairer",
 	"def_elitet4_72_small_armor_repairer":"Josef's enhanced small armor repairer",
