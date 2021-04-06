@@ -36,11 +36,11 @@ DROP TABLE IF EXISTS #NPC_MODS;
 CREATE TABLE #NPC_MODS (
 	defName VARCHAR(128),
 	fieldName VARCHAR(128),
-	fieldValue FLOAT
+	val FLOAT
 );
 
-INSERT INTO #NPC_MODS (defName, fieldName, fieldValue) VALUES
-('def_npc_Zone71_WilliamHBonnie','armor_max_modifier',10),
+INSERT INTO #NPC_MODS (defName, fieldName, val) VALUES
+('def_npc_Zone71_WilliamHBonnie','armor_max_modifier',3),
 ('def_npc_Zone71_WilliamHBonnie','core_max_modifier',2.5),
 ('def_npc_Zone71_WilliamHBonnie','cpu_max_modifier',2),
 ('def_npc_Zone71_WilliamHBonnie','damage_modifier',0.25),
@@ -64,7 +64,7 @@ INSERT INTO #NPC_MODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_Helix_BossGuard','resist_kinetic',200),
 ('def_npc_Helix_BossGuard','resist_thermal',200),
 ('def_npc_Helix_BossGuard','received_repaired_modifier',0.1),
-('def_npc_Zone72_One_Eye_Josef','armor_max_modifier',10),
+('def_npc_Zone72_One_Eye_Josef','armor_max_modifier',3),
 ('def_npc_Zone72_One_Eye_Josef','core_max_modifier',2.5),
 ('def_npc_Zone72_One_Eye_Josef','core_recharge_time_modifier',1),
 ('def_npc_Zone72_One_Eye_Josef','cpu_max_modifier',2),
@@ -211,6 +211,21 @@ SET IDENTITY_INSERT dbo.entitydefaults ON;
 INSERT INTO entitydefaults (definition,definitionname,quantity,attributeflags,categoryflags,options,note,enabled,volume,mass,hidden,health,descriptiontoken,purchasable,tiertype,tierlevel) 
 SELECT def, defName, 1, 1024, 911, NULL, defName, 1, 0, 0, 0, 100, defName+'_desc', 0, 0, 0 FROM #ED;
 SET IDENTITY_INSERT dbo.entitydefaults OFF;
+
+PRINT N'DELETE ALL AGG-VALS FOR THESE NPC DEFS';
+DELETE FROM aggregatevalues WHERE definition IN (
+	SELECT DISTINCT definition FROM entitydefaults WHERE definitionname IN (
+		SELECT DISTINCT defName FROM #NPC_MODS
+	)
+);
+
+PRINT N'RE-INSERT ALL AGG-VALS FOR THESE NPC DEFS';
+INSERT INTO aggregatevalues (definition, field, value)
+SELECT
+	(SELECT TOP 1 definition FROM entitydefaults WHERE defName=definitionname),
+	(SELECT TOP 1 id FROM aggregatefields WHERE name=fieldName),
+	val
+FROM #NPC_MODS;
 
 INSERT INTO dbo.robottemplates (name, description, note)
 SELECT templateName, template, defName+' template' FROM #ED WHERE template IS NOT NULL;
