@@ -643,7 +643,7 @@ MERGE [dbo].[entitydefaults] e USING #HIDE d
 ON e.definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=d.defName)
 WHEN MATCHED
     THEN UPDATE SET
-		enabled=0,
+		enabled=1,
 		hidden=1;
 
 PRINT N'all t4+ for z71-2 hidden';
