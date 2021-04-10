@@ -2564,7 +2564,6 @@ INSERT INTO #NPC_MODS (defName, fieldName, val) VALUES
 ('def_npc_Zone71_WilliamHBonnie','powergrid_max_modifier',2),
 ('def_npc_Zone71_WilliamHBonnie','speed_max_modifier',0.5),
 ('def_npc_Zone71_WilliamHBonnie','turret_cycle_time_modifier',0.75),
-('def_npc_Zone71_WilliamHBonnie','received_repaired_modifier',0.1),
 ('def_npc_Helix_BossGuard','armor_max_modifier',1.25),
 ('def_npc_Helix_BossGuard','core_max_modifier',2),
 ('def_npc_Helix_BossGuard','core_recharge_time_modifier',0.5),
@@ -2575,11 +2574,6 @@ INSERT INTO #NPC_MODS (defName, fieldName, val) VALUES
 ('def_npc_Helix_BossGuard','locking_time_modifier',0.75),
 ('def_npc_Helix_BossGuard','optimal_range_modifier',1.25),
 ('def_npc_Helix_BossGuard','powergrid_max_modifier',2),
-('def_npc_Helix_BossGuard','resist_chemical',200),
-('def_npc_Helix_BossGuard','resist_explosive',200),
-('def_npc_Helix_BossGuard','resist_kinetic',200),
-('def_npc_Helix_BossGuard','resist_thermal',200),
-('def_npc_Helix_BossGuard','received_repaired_modifier',0.1),
 ('def_npc_Zone72_One_Eye_Josef','armor_max_modifier',3),
 ('def_npc_Zone72_One_Eye_Josef','core_max_modifier',2.5),
 ('def_npc_Zone72_One_Eye_Josef','core_recharge_time_modifier',1),
@@ -2592,7 +2586,6 @@ INSERT INTO #NPC_MODS (defName, fieldName, val) VALUES
 ('def_npc_Zone72_One_Eye_Josef','optimal_range_modifier',1.5),
 ('def_npc_Zone72_One_Eye_Josef','powergrid_max_modifier',2),
 ('def_npc_Zone72_One_Eye_Josef','turret_cycle_time_modifier',1),
-('def_npc_Zone72_One_Eye_Josef','received_repaired_modifier',0.1),
 ('def_npc_Rough_Rider_Death_Dealer','armor_max_modifier',1.25),
 ('def_npc_Rough_Rider_Death_Dealer','armor_repair_amount_modifier',0.25),
 ('def_npc_Rough_Rider_Death_Dealer','cpu_max_modifier',2),
@@ -2637,22 +2630,22 @@ CREATE TABLE #FLOCKS(
 );
 
 INSERT INTO #FLOCKS (flockName, presName, npcName, flockCount, x, y, sMin, sMax, respawnSeconds, homeRange) VALUES
-('RR_Light_71_GRP1', 'pres_z71_grp1', 'def_npc_RoughRider_Scout', 2, 112, 192, 1, 5, 900, 35),
-('RR_Assault_71_GRP1', 'pres_z71_grp1', 'def_npc_RoughRider_Cavalry', 2, 112, 192, 1, 5, 900, 35),
-('RR_Light_71_GRP2', 'pres_z71_grp2', 'def_npc_RoughRider_Scout', 2, 139, 141, 1, 5, 900, 35),
-('RR_Assault_71_GRP3', 'pres_z71_grp3', 'def_npc_RoughRider_Cavalry', 2, 169, 75, 1, 5, 900, 35),
+('RR_Light_71_GRP1', 'pres_z71_grp1', 'def_npc_RoughRider_Scout', 1, 112, 192, 1, 5, 900, 35),
+('RR_Assault_71_GRP1', 'pres_z71_grp1', 'def_npc_RoughRider_Cavalry', 1, 112, 192, 1, 5, 900, 35),
+('RR_Light_71_GRP2', 'pres_z71_grp2', 'def_npc_RoughRider_Scout', 1, 139, 141, 1, 5, 900, 35),
+('RR_Assault_71_GRP3', 'pres_z71_grp3', 'def_npc_RoughRider_Cavalry', 1, 169, 75, 1, 5, 900, 35),
 ('RR_Boss_71_GRP4', 'pres_z71_grp4', 'def_npc_Zone71_WilliamHBonnie', 1, 209, 116, 1, 5, 5400, 55),
-('RR_Lewar_71_GRP4', 'pres_z71_grp4', 'def_npc_Helix_BossGuard', 1, 208, 116, 1, 5, 900, 55),
-('RR_Assault_71_GRP4', 'pres_z71_grp4', 'def_npc_RoughRider_Cavalry', 2, 208, 116, 1, 5, 900, 45),
+('RR_Lewar_71_GRP4', 'pres_z71_grp4', 'def_npc_Helix_BossGuard', 2, 208, 116, 1, 5, 900, 55),
+('RR_Assault_71_GRP4', 'pres_z71_grp4', 'def_npc_RoughRider_Cavalry', 1, 208, 116, 1, 5, 900, 45),
 
-('RR_Light_72_GRP1', 'pres_z72_grp1', 'def_npc_RoughRider_Scout', 2, 133, 75, 1, 5, 900, 45),
-('RR_Assault_72_GRP2', 'pres_z72_grp2', 'def_npc_RoughRider_Cavalry', 2, 53, 80, 1, 5, 900, 45),
+('RR_Light_72_GRP1', 'pres_z72_grp1', 'def_npc_RoughRider_Scout', 1, 133, 75, 1, 5, 900, 45),
+('RR_Assault_72_GRP2', 'pres_z72_grp2', 'def_npc_RoughRider_Cavalry', 1, 53, 80, 1, 5, 900, 45),
 ('RR_Mech_72_GRP2', 'pres_z72_grp2', 'def_npc_Rough_Rider_Death_Dealer', 1, 53, 80, 1, 5, 900, 45),
 ('RR_Mech_72_GRP3', 'pres_z72_grp4', 'def_npc_Rough_Rider_Death_Dealer', 1, 58, 130, 1, 5, 900, 45),
 ('RR_Boss_72_GRP4', 'pres_z72_grp4', 'def_npc_Zone72_One_Eye_Josef', 1, 86, 179, 1, 5, 5400, 45),
 ('RR_Mech_72_GRP5', 'pres_z72_grp4', 'def_npc_Rough_Rider_Death_Dealer', 1, 86, 179, 1, 5, 900, 45),
-('RR_Lewar_72_GRP5', 'pres_z72_grp4', 'def_npc_Helix_BossGuard', 2, 86, 179, 1, 5, 900, 55),
-('RR_Light_72_GRP5', 'pres_z72_grp5', 'def_npc_Rough_Rider_Death_Dealer', 2, 161, 95, 1, 5, 900, 45),
+('RR_Lewar_72_GRP5', 'pres_z72_grp4', 'def_npc_Helix_BossGuard', 1, 86, 179, 1, 5, 900, 55),
+('RR_Light_72_GRP5', 'pres_z72_grp5', 'def_npc_Rough_Rider_Death_Dealer', 1, 161, 95, 1, 5, 900, 45),
 ('IMHM_HM_72_GRP6', 'pres_z72_grp6', 'def_npc_riveler_basic_rank5', 1, 208, 180, 1, 5, 900, 45),
 ('RR_Lewar_72_GRP6', 'pres_z72_grp6', 'def_npc_Helix_BossGuard', 2, 208, 180, 1, 5, 900, 55),
 ('IHM_HM_72_GRP6', 'pres_z72_grp6', 'def_npc_scarab_basic_rank5', 1, 208, 180, 1, 5, 900, 45);
@@ -2683,11 +2676,11 @@ INSERT INTO #WAVES (targetFlockName, presenceName, npcDefName, numInFlock, thres
 --Stronghold 71 boss waves
 ('RR_Boss_71_GRP4', 'reinforce_stronghold_miniboss_a_z71_wave_0', 'def_npc_RoughRider_Scout', 1, 0.05),
 
-('RR_Boss_71_GRP4', 'reinforce_stronghold_miniboss_a_z71_wave_1', 'def_npc_RoughRider_Scout', 2, 0.25),
+('RR_Boss_71_GRP4', 'reinforce_stronghold_miniboss_a_z71_wave_1', 'def_npc_RoughRider_Scout', 1, 0.25),
 ('RR_Boss_71_GRP4', 'reinforce_stronghold_miniboss_a_z71_wave_1', 'def_npc_RoughRider_Cavalry', 1, 0.25),
 
-('RR_Boss_71_GRP4', 'reinforce_stronghold_miniboss_a_z71_wave_2', 'def_npc_RoughRider_Scout', 2, 0.55),
-('RR_Boss_71_GRP4', 'reinforce_stronghold_miniboss_a_z71_wave_2', 'def_npc_RoughRider_Cavalry', 2, 0.55),
+('RR_Boss_71_GRP4', 'reinforce_stronghold_miniboss_a_z71_wave_2', 'def_npc_RoughRider_Scout', 1, 0.55),
+('RR_Boss_71_GRP4', 'reinforce_stronghold_miniboss_a_z71_wave_2', 'def_npc_RoughRider_Cavalry', 1, 0.55),
 ('RR_Boss_71_GRP4', 'reinforce_stronghold_miniboss_a_z71_wave_2', 'def_npc_Helix_BossGuard', 1, 0.55),
 
 ('RR_Boss_71_GRP4', 'reinforce_stronghold_miniboss_a_z71_wave_3', 'def_npc_Helix_BossGuard', 2, 0.75),
@@ -2695,10 +2688,10 @@ INSERT INTO #WAVES (targetFlockName, presenceName, npcDefName, numInFlock, thres
 --Stronghold 72 boss waves
 ('RR_Boss_72_GRP4', 'reinforce_stronghold_miniboss_a_z72_wave_0', 'def_npc_RoughRider_Cavalry', 1, 0.05),
 
-('RR_Boss_72_GRP4', 'reinforce_stronghold_miniboss_a_z72_wave_1', 'def_npc_RoughRider_Cavalry', 2, 0.25),
+('RR_Boss_72_GRP4', 'reinforce_stronghold_miniboss_a_z72_wave_1', 'def_npc_RoughRider_Cavalry', 1, 0.25),
 ('RR_Boss_72_GRP4', 'reinforce_stronghold_miniboss_a_z72_wave_1', 'def_npc_Helix_BossGuard', 1, 0.25),
 
-('RR_Boss_72_GRP4', 'reinforce_stronghold_miniboss_a_z72_wave_2', 'def_npc_RoughRider_Cavalry', 2, 0.55),
+('RR_Boss_72_GRP4', 'reinforce_stronghold_miniboss_a_z72_wave_2', 'def_npc_RoughRider_Cavalry', 1, 0.55),
 ('RR_Boss_72_GRP4', 'reinforce_stronghold_miniboss_a_z72_wave_2', 'def_npc_Helix_BossGuard', 2, 0.55),
 ('RR_Boss_72_GRP4', 'reinforce_stronghold_miniboss_a_z72_wave_2', 'def_npc_Rough_Rider_Death_Dealer', 1, 0.55),
 
@@ -3508,10 +3501,10 @@ INSERT INTO #LOOT (npcName, lootName, minQuantity, maxQuantity, probability) VAL
 ('def_npc_Zone71_WilliamHBonnie','def_robotshard_common_basic',50,100,1),
 ('def_npc_Zone71_WilliamHBonnie','def_robotshard_common_advanced',25,75,1),
 ('def_npc_Zone71_WilliamHBonnie','def_robotshard_common_expert',1,50,1),
-('def_npc_Zone71_WilliamHBonnie','def_common_reactor_plasma',5000,9000,1),
+('def_npc_Zone71_WilliamHBonnie','def_common_reactor_plasma',9000,10000,1),
 ('def_npc_Zone71_WilliamHBonnie','def_kernel_common',2500,3000,1),
-('def_npc_Zone71_WilliamHBonnie','def_kernel_hitech',500,900,1),
-('def_npc_Zone71_WilliamHBonnie','def_boost_ep_t0',1,1,0.1),
+('def_npc_Zone71_WilliamHBonnie','def_kernel_hitech',500,600,1),
+('def_npc_Zone71_WilliamHBonnie','def_boost_ep_t0',1,1,0.25),
 
 ('def_npc_Zone72_One_Eye_Josef','def_ammo_medium_projectile_a',1000,2000,0.5),
 ('def_npc_Zone72_One_Eye_Josef','def_ammo_medium_projectile_b',1000,2000,0.5),
@@ -3534,10 +3527,10 @@ INSERT INTO #LOOT (npcName, lootName, minQuantity, maxQuantity, probability) VAL
 ('def_npc_Zone72_One_Eye_Josef','def_robotshard_common_basic',100,200,1),
 ('def_npc_Zone72_One_Eye_Josef','def_robotshard_common_advanced',50,150,1),
 ('def_npc_Zone72_One_Eye_Josef','def_robotshard_common_expert',1,100,1),
-('def_npc_Zone72_One_Eye_Josef','def_common_reactor_plasma',700,1100,1),
-('def_npc_Zone72_One_Eye_Josef','def_kernel_common',2500,3000,1),
-('def_npc_Zone72_One_Eye_Josef','def_kernel_hitech',500,1000,1),
-('def_npc_Zone72_One_Eye_Josef','def_boost_ep_t0',1,1,0.1),
+('def_npc_Zone72_One_Eye_Josef','def_common_reactor_plasma',12000,15000,1),
+('def_npc_Zone72_One_Eye_Josef','def_kernel_common',3000,3500,1),
+('def_npc_Zone72_One_Eye_Josef','def_kernel_hitech',500,600,1),
+('def_npc_Zone72_One_Eye_Josef','def_boost_ep_t0',1,1,0.25),
 
 ('def_npc_Helix_BossGuard','def_named1_cpu_upgrade',1,1,0.1),
 ('def_npc_Helix_BossGuard','def_named2_cpu_upgrade',1,1,0.02),
@@ -3547,7 +3540,7 @@ INSERT INTO #LOOT (npcName, lootName, minQuantity, maxQuantity, probability) VAL
 ('def_npc_Helix_BossGuard','def_robotshard_common_basic',10,15,1),
 ('def_npc_Helix_BossGuard','def_robotshard_common_advanced',5,10,1),
 ('def_npc_Helix_BossGuard','def_robotshard_common_expert',2,8,1),
-('def_npc_Helix_BossGuard','def_common_reactor_plasma',50,75,1),
+('def_npc_Helix_BossGuard','def_common_reactor_plasma',75,99,1),
 ('def_npc_Helix_BossGuard','def_kernel_common',100,150,1),
 
 ('def_npc_Rough_Rider_Death_Dealer','def_named1_powergrid_upgrades',1,1,0.1),
@@ -3557,7 +3550,7 @@ INSERT INTO #LOOT (npcName, lootName, minQuantity, maxQuantity, probability) VAL
 ('def_npc_Rough_Rider_Death_Dealer','def_robotshard_common_basic',15,20,1),
 ('def_npc_Rough_Rider_Death_Dealer','def_robotshard_common_advanced',10,15,1),
 ('def_npc_Rough_Rider_Death_Dealer','def_robotshard_common_expert',5,10,1),
-('def_npc_Rough_Rider_Death_Dealer','def_common_reactor_plasma',75,100,1),
+('def_npc_Rough_Rider_Death_Dealer','def_common_reactor_plasma',125,155,1),
 ('def_npc_Rough_Rider_Death_Dealer','def_kernel_common',150,200,1);
 
 PRINT N'DELETE ALL LOOT TO BE REINSERTED (0 if new)';

@@ -39,10 +39,10 @@ INSERT INTO #LOOT (npcName, lootName, minQuantity, maxQuantity, probability) VAL
 ('def_npc_Zone71_WilliamHBonnie','def_robotshard_common_basic',50,100,1),
 ('def_npc_Zone71_WilliamHBonnie','def_robotshard_common_advanced',25,75,1),
 ('def_npc_Zone71_WilliamHBonnie','def_robotshard_common_expert',1,50,1),
-('def_npc_Zone71_WilliamHBonnie','def_common_reactor_plasma',5000,9000,1),
+('def_npc_Zone71_WilliamHBonnie','def_common_reactor_plasma',9000,10000,1),
 ('def_npc_Zone71_WilliamHBonnie','def_kernel_common',2500,3000,1),
-('def_npc_Zone71_WilliamHBonnie','def_kernel_hitech',500,900,1),
-('def_npc_Zone71_WilliamHBonnie','def_boost_ep_t0',1,1,0.1),
+('def_npc_Zone71_WilliamHBonnie','def_kernel_hitech',500,600,1),
+('def_npc_Zone71_WilliamHBonnie','def_boost_ep_t0',1,1,0.25),
 
 ('def_npc_Zone72_One_Eye_Josef','def_ammo_medium_projectile_a',1000,2000,0.5),
 ('def_npc_Zone72_One_Eye_Josef','def_ammo_medium_projectile_b',1000,2000,0.5),
@@ -65,10 +65,10 @@ INSERT INTO #LOOT (npcName, lootName, minQuantity, maxQuantity, probability) VAL
 ('def_npc_Zone72_One_Eye_Josef','def_robotshard_common_basic',100,200,1),
 ('def_npc_Zone72_One_Eye_Josef','def_robotshard_common_advanced',50,150,1),
 ('def_npc_Zone72_One_Eye_Josef','def_robotshard_common_expert',1,100,1),
-('def_npc_Zone72_One_Eye_Josef','def_common_reactor_plasma',700,1100,1),
-('def_npc_Zone72_One_Eye_Josef','def_kernel_common',2500,3000,1),
-('def_npc_Zone72_One_Eye_Josef','def_kernel_hitech',500,1000,1),
-('def_npc_Zone72_One_Eye_Josef','def_boost_ep_t0',1,1,0.1),
+('def_npc_Zone72_One_Eye_Josef','def_common_reactor_plasma',12000,15000,1),
+('def_npc_Zone72_One_Eye_Josef','def_kernel_common',3000,3500,1),
+('def_npc_Zone72_One_Eye_Josef','def_kernel_hitech',500,600,1),
+('def_npc_Zone72_One_Eye_Josef','def_boost_ep_t0',1,1,0.25),
 
 ('def_npc_Helix_BossGuard','def_named1_cpu_upgrade',1,1,0.1),
 ('def_npc_Helix_BossGuard','def_named2_cpu_upgrade',1,1,0.02),
@@ -78,7 +78,7 @@ INSERT INTO #LOOT (npcName, lootName, minQuantity, maxQuantity, probability) VAL
 ('def_npc_Helix_BossGuard','def_robotshard_common_basic',10,15,1),
 ('def_npc_Helix_BossGuard','def_robotshard_common_advanced',5,10,1),
 ('def_npc_Helix_BossGuard','def_robotshard_common_expert',2,8,1),
-('def_npc_Helix_BossGuard','def_common_reactor_plasma',50,75,1),
+('def_npc_Helix_BossGuard','def_common_reactor_plasma',75,99,1),
 ('def_npc_Helix_BossGuard','def_kernel_common',100,150,1),
 
 ('def_npc_Rough_Rider_Death_Dealer','def_named1_powergrid_upgrades',1,1,0.1),
@@ -88,7 +88,7 @@ INSERT INTO #LOOT (npcName, lootName, minQuantity, maxQuantity, probability) VAL
 ('def_npc_Rough_Rider_Death_Dealer','def_robotshard_common_basic',15,20,1),
 ('def_npc_Rough_Rider_Death_Dealer','def_robotshard_common_advanced',10,15,1),
 ('def_npc_Rough_Rider_Death_Dealer','def_robotshard_common_expert',5,10,1),
-('def_npc_Rough_Rider_Death_Dealer','def_common_reactor_plasma',75,100,1),
+('def_npc_Rough_Rider_Death_Dealer','def_common_reactor_plasma',125,155,1),
 ('def_npc_Rough_Rider_Death_Dealer','def_kernel_common',150,200,1);
 
 PRINT N'DELETE ALL LOOT TO BE REINSERTED (0 if new)';
