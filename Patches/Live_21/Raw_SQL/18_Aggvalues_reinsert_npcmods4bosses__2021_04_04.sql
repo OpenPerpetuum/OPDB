@@ -58,7 +58,7 @@ INSERT INTO #NPC_MODS(defName, fieldName, val) VALUES
 ('def_npc_Sacrist_Convert','received_repaired_modifier',0.1),
 ('def_npc_Sacrist_Convert','stealth_strength_modifier',-25),
 
-('def_npc_Sacrist_Mythic','armor_max_modifier',3),
+('def_npc_Sacrist_Mythic','armor_max_modifier',2.5),
 ('def_npc_Sacrist_Mythic','core_max_modifier',2),
 ('def_npc_Sacrist_Mythic','core_recharge_time_modifier',1),
 ('def_npc_Sacrist_Mythic','cpu_max_modifier',2),
@@ -73,7 +73,7 @@ INSERT INTO #NPC_MODS(defName, fieldName, val) VALUES
 ('def_npc_Sacrist_Mythic','received_repaired_modifier',0.1),
 ('def_npc_Sacrist_Mythic','stealth_strength_modifier',-25),
 
-('def_npc_clan_griffin','armor_max_modifier',3),
+('def_npc_clan_griffin','armor_max_modifier',2.5),
 ('def_npc_clan_griffin','core_max_modifier',2),
 ('def_npc_clan_griffin','core_recharge_time_modifier',1),
 ('def_npc_clan_griffin','cpu_max_modifier',2),
@@ -88,7 +88,7 @@ INSERT INTO #NPC_MODS(defName, fieldName, val) VALUES
 ('def_npc_clan_griffin','received_repaired_modifier',0.1),
 ('def_npc_clan_griffin','stealth_strength_modifier',-25),
 
-('def_npc_tribal_weaver','armor_max_modifier',3),
+('def_npc_tribal_weaver','armor_max_modifier',2.5),
 ('def_npc_tribal_weaver','core_max_modifier',2),
 ('def_npc_tribal_weaver','core_recharge_time_modifier',1),
 ('def_npc_tribal_weaver','cpu_max_modifier',2),

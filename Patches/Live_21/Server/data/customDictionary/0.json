@@ -49,7 +49,7 @@
 	"def_npc_WilliamHBonnie_desc":"'William H. Bonnie' - a former Syndicate scientist, joined a rogue faction known as the 'Rough Riders' after uncovering some internal documents of the Syndicate.  He made off with a lot of research, the fruits of which may still be on his robot.",
 	"def_npc_RoughRider_Scout":"L1 Light Combat RR Scout",
 	"def_npc_RoughRider_Scout_name":"'Rough Rider' Scout",
-	"def_npc_RoughRider_Scout_desc":"A forward scout for a particularly troublesome rebel faction call the 'Rough Riders'",
+	"def_npc_RoughRider_Scout_desc":"A forward scout for a particularly troublesome rebel faction called the 'Rough Riders'",
 	"def_npc_RoughRider_Cavalry":"L1 Assault RR Scout",
 	"def_npc_RoughRider_Cavalry_name":"'Rough Rider' Cavalry",
 	"def_npc_RoughRider_Cavalry_desc":"A better armed light squad member of the 'Rough Riders'",
@@ -770,7 +770,7 @@
 
 	"def_stronghold_exit_rift": "Exit (home)",
 	"def_stronghold_exit_rift_name": "Exit (home)",
-	"def_stronghold_exit_rift_desc": "Use this Anomaly to go back to '''Hershfield Main Terminal'''.",
+	"def_stronghold_exit_rift_desc": "Use this Anomaly to go back home.",
 
 	"effect_alpha_bonus": "Alpha 1 Bonus",
 	"effect_alpha2_bonus": "Alpha 2 Bonus",

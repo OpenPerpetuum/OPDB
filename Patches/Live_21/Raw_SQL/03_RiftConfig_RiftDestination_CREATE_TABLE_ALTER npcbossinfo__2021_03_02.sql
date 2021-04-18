@@ -147,8 +147,8 @@ INSERT INTO [dbo].[riftdestinations] (groupId, zoneId, x, y, weight) VALUES
 
 PRINT N'INSERT INTO [dbo].[riftconfigs]';
 INSERT INTO [dbo].[riftconfigs] (name, destinationGroupId, lifespanSeconds, maxUses, categoryExclusionGroupId) VALUES 
-('stronghold_z71_entry', 71, 90, 9, (SELECT TOP 1 id FROM categorygroupsnames WHERE name='destroMech')),
-('stronghold_z72_entry', 72, 90, 9, (SELECT TOP 1 id FROM categorygroupsnames WHERE name='destro'));
+('stronghold_z71_entry', 71, 600, 9, (SELECT TOP 1 id FROM categorygroupsnames WHERE name='destroMech')),
+('stronghold_z72_entry', 72, 600, 9, (SELECT TOP 1 id FROM categorygroupsnames WHERE name='destro'));
 
 PRINT N'UPDATE npcbossinfo for boss entry riftconfigs';
 PRINT N'Boss for 71 entrance config';

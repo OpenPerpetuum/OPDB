@@ -30,12 +30,13 @@ GO
 -- ZZ_04_Npc_defs_templates_stats_waves__2021_03_31.sql
 -- ZZ_05_Elitemods_z71z72_upserts__2020_03_25.sql
 -- ZZ_06_npcloot_z71_72__2021_03_31.sql
--- ZZ_71_DECOR_IMPORT_zone71_2021_03_31.sql
--- ZZ_72_DECOR_IMPORT_zone72_2021_03_31.sql
+-- ZZ_71_DECOR_IMPORT_zone71_2021_04_10.sql
+-- ZZ_72_DECOR_IMPORT_zone72_2021_04_10.sql
+-- ZZ_73_StrghldExitConfigs_newcol__2021_04_10.sql
+-- ZZ_74_EntityDefaults_fragVol_update__2021_04_10.sql
 --
--- Date modified: 2021/04/05
+-- Date modified: 2021/04/10
 ----------------------------------------------------------------------------
-
 
 
 PRINT N'01_Entitydef_targRift_insert__2021_02_19.sql';
@@ -441,8 +442,8 @@ INSERT INTO [dbo].[riftdestinations] (groupId, zoneId, x, y, weight) VALUES
 
 PRINT N'INSERT INTO [dbo].[riftconfigs]';
 INSERT INTO [dbo].[riftconfigs] (name, destinationGroupId, lifespanSeconds, maxUses, categoryExclusionGroupId) VALUES 
-('stronghold_z71_entry', 71, 90, 9, (SELECT TOP 1 id FROM categorygroupsnames WHERE name='destroMech')),
-('stronghold_z72_entry', 72, 90, 9, (SELECT TOP 1 id FROM categorygroupsnames WHERE name='destro'));
+('stronghold_z71_entry', 71, 600, 9, (SELECT TOP 1 id FROM categorygroupsnames WHERE name='destroMech')),
+('stronghold_z72_entry', 72, 600, 9, (SELECT TOP 1 id FROM categorygroupsnames WHERE name='destro'));
 
 PRINT N'UPDATE npcbossinfo for boss entry riftconfigs';
 PRINT N'Boss for 71 entrance config';
@@ -1838,7 +1839,7 @@ INSERT INTO #NPC_MODS(defName, fieldName, val) VALUES
 ('def_npc_Sacrist_Convert','received_repaired_modifier',0.1),
 ('def_npc_Sacrist_Convert','stealth_strength_modifier',-25),
 
-('def_npc_Sacrist_Mythic','armor_max_modifier',3),
+('def_npc_Sacrist_Mythic','armor_max_modifier',2.5),
 ('def_npc_Sacrist_Mythic','core_max_modifier',2),
 ('def_npc_Sacrist_Mythic','core_recharge_time_modifier',1),
 ('def_npc_Sacrist_Mythic','cpu_max_modifier',2),
@@ -1853,7 +1854,7 @@ INSERT INTO #NPC_MODS(defName, fieldName, val) VALUES
 ('def_npc_Sacrist_Mythic','received_repaired_modifier',0.1),
 ('def_npc_Sacrist_Mythic','stealth_strength_modifier',-25),
 
-('def_npc_clan_griffin','armor_max_modifier',3),
+('def_npc_clan_griffin','armor_max_modifier',2.5),
 ('def_npc_clan_griffin','core_max_modifier',2),
 ('def_npc_clan_griffin','core_recharge_time_modifier',1),
 ('def_npc_clan_griffin','cpu_max_modifier',2),
@@ -1868,7 +1869,7 @@ INSERT INTO #NPC_MODS(defName, fieldName, val) VALUES
 ('def_npc_clan_griffin','received_repaired_modifier',0.1),
 ('def_npc_clan_griffin','stealth_strength_modifier',-25),
 
-('def_npc_tribal_weaver','armor_max_modifier',3),
+('def_npc_tribal_weaver','armor_max_modifier',2.5),
 ('def_npc_tribal_weaver','core_max_modifier',2),
 ('def_npc_tribal_weaver','core_recharge_time_modifier',1),
 ('def_npc_tribal_weaver','cpu_max_modifier',2),
@@ -2552,11 +2553,11 @@ DROP TABLE IF EXISTS #NPC_MODS;
 CREATE TABLE #NPC_MODS (
 	defName VARCHAR(128),
 	fieldName VARCHAR(128),
-	fieldValue FLOAT
+	val FLOAT
 );
 
-INSERT INTO #NPC_MODS (defName, fieldName, fieldValue) VALUES
-('def_npc_Zone71_WilliamHBonnie','armor_max_modifier',10),
+INSERT INTO #NPC_MODS (defName, fieldName, val) VALUES
+('def_npc_Zone71_WilliamHBonnie','armor_max_modifier',3),
 ('def_npc_Zone71_WilliamHBonnie','core_max_modifier',2.5),
 ('def_npc_Zone71_WilliamHBonnie','cpu_max_modifier',2),
 ('def_npc_Zone71_WilliamHBonnie','damage_modifier',0.25),
@@ -2564,7 +2565,6 @@ INSERT INTO #NPC_MODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_Zone71_WilliamHBonnie','powergrid_max_modifier',2),
 ('def_npc_Zone71_WilliamHBonnie','speed_max_modifier',0.5),
 ('def_npc_Zone71_WilliamHBonnie','turret_cycle_time_modifier',0.75),
-('def_npc_Zone71_WilliamHBonnie','received_repaired_modifier',0.1),
 ('def_npc_Helix_BossGuard','armor_max_modifier',1.25),
 ('def_npc_Helix_BossGuard','core_max_modifier',2),
 ('def_npc_Helix_BossGuard','core_recharge_time_modifier',0.5),
@@ -2575,12 +2575,7 @@ INSERT INTO #NPC_MODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_Helix_BossGuard','locking_time_modifier',0.75),
 ('def_npc_Helix_BossGuard','optimal_range_modifier',1.25),
 ('def_npc_Helix_BossGuard','powergrid_max_modifier',2),
-('def_npc_Helix_BossGuard','resist_chemical',200),
-('def_npc_Helix_BossGuard','resist_explosive',200),
-('def_npc_Helix_BossGuard','resist_kinetic',200),
-('def_npc_Helix_BossGuard','resist_thermal',200),
-('def_npc_Helix_BossGuard','received_repaired_modifier',0.1),
-('def_npc_Zone72_One_Eye_Josef','armor_max_modifier',10),
+('def_npc_Zone72_One_Eye_Josef','armor_max_modifier',3),
 ('def_npc_Zone72_One_Eye_Josef','core_max_modifier',2.5),
 ('def_npc_Zone72_One_Eye_Josef','core_recharge_time_modifier',1),
 ('def_npc_Zone72_One_Eye_Josef','cpu_max_modifier',2),
@@ -2592,7 +2587,6 @@ INSERT INTO #NPC_MODS (defName, fieldName, fieldValue) VALUES
 ('def_npc_Zone72_One_Eye_Josef','optimal_range_modifier',1.5),
 ('def_npc_Zone72_One_Eye_Josef','powergrid_max_modifier',2),
 ('def_npc_Zone72_One_Eye_Josef','turret_cycle_time_modifier',1),
-('def_npc_Zone72_One_Eye_Josef','received_repaired_modifier',0.1),
 ('def_npc_Rough_Rider_Death_Dealer','armor_max_modifier',1.25),
 ('def_npc_Rough_Rider_Death_Dealer','armor_repair_amount_modifier',0.25),
 ('def_npc_Rough_Rider_Death_Dealer','cpu_max_modifier',2),
@@ -2637,22 +2631,22 @@ CREATE TABLE #FLOCKS(
 );
 
 INSERT INTO #FLOCKS (flockName, presName, npcName, flockCount, x, y, sMin, sMax, respawnSeconds, homeRange) VALUES
-('RR_Light_71_GRP1', 'pres_z71_grp1', 'def_npc_RoughRider_Scout', 2, 112, 192, 1, 5, 900, 35),
-('RR_Assault_71_GRP1', 'pres_z71_grp1', 'def_npc_RoughRider_Cavalry', 2, 112, 192, 1, 5, 900, 35),
-('RR_Light_71_GRP2', 'pres_z71_grp2', 'def_npc_RoughRider_Scout', 2, 139, 141, 1, 5, 900, 35),
-('RR_Assault_71_GRP3', 'pres_z71_grp3', 'def_npc_RoughRider_Cavalry', 2, 169, 75, 1, 5, 900, 35),
+('RR_Light_71_GRP1', 'pres_z71_grp1', 'def_npc_RoughRider_Scout', 1, 112, 192, 1, 5, 900, 35),
+('RR_Assault_71_GRP1', 'pres_z71_grp1', 'def_npc_RoughRider_Cavalry', 1, 112, 192, 1, 5, 900, 35),
+('RR_Light_71_GRP2', 'pres_z71_grp2', 'def_npc_RoughRider_Scout', 1, 139, 141, 1, 5, 900, 35),
+('RR_Assault_71_GRP3', 'pres_z71_grp3', 'def_npc_RoughRider_Cavalry', 1, 169, 75, 1, 5, 900, 35),
 ('RR_Boss_71_GRP4', 'pres_z71_grp4', 'def_npc_Zone71_WilliamHBonnie', 1, 209, 116, 1, 5, 5400, 55),
-('RR_Lewar_71_GRP4', 'pres_z71_grp4', 'def_npc_Helix_BossGuard', 1, 208, 116, 1, 5, 900, 55),
-('RR_Assault_71_GRP4', 'pres_z71_grp4', 'def_npc_RoughRider_Cavalry', 2, 208, 116, 1, 5, 900, 45),
+('RR_Lewar_71_GRP4', 'pres_z71_grp4', 'def_npc_Helix_BossGuard', 2, 208, 116, 1, 5, 900, 55),
+('RR_Assault_71_GRP4', 'pres_z71_grp4', 'def_npc_RoughRider_Cavalry', 1, 208, 116, 1, 5, 900, 45),
 
-('RR_Light_72_GRP1', 'pres_z72_grp1', 'def_npc_RoughRider_Scout', 2, 133, 75, 1, 5, 900, 45),
-('RR_Assault_72_GRP2', 'pres_z72_grp2', 'def_npc_RoughRider_Cavalry', 2, 53, 80, 1, 5, 900, 45),
+('RR_Light_72_GRP1', 'pres_z72_grp1', 'def_npc_RoughRider_Scout', 1, 133, 75, 1, 5, 900, 45),
+('RR_Assault_72_GRP2', 'pres_z72_grp2', 'def_npc_RoughRider_Cavalry', 1, 53, 80, 1, 5, 900, 45),
 ('RR_Mech_72_GRP2', 'pres_z72_grp2', 'def_npc_Rough_Rider_Death_Dealer', 1, 53, 80, 1, 5, 900, 45),
 ('RR_Mech_72_GRP3', 'pres_z72_grp4', 'def_npc_Rough_Rider_Death_Dealer', 1, 58, 130, 1, 5, 900, 45),
 ('RR_Boss_72_GRP4', 'pres_z72_grp4', 'def_npc_Zone72_One_Eye_Josef', 1, 86, 179, 1, 5, 5400, 45),
 ('RR_Mech_72_GRP5', 'pres_z72_grp4', 'def_npc_Rough_Rider_Death_Dealer', 1, 86, 179, 1, 5, 900, 45),
-('RR_Lewar_72_GRP5', 'pres_z72_grp4', 'def_npc_Helix_BossGuard', 2, 86, 179, 1, 5, 900, 55),
-('RR_Light_72_GRP5', 'pres_z72_grp5', 'def_npc_Rough_Rider_Death_Dealer', 2, 161, 95, 1, 5, 900, 45),
+('RR_Lewar_72_GRP5', 'pres_z72_grp4', 'def_npc_Helix_BossGuard', 1, 86, 179, 1, 5, 900, 55),
+('RR_Light_72_GRP5', 'pres_z72_grp5', 'def_npc_Rough_Rider_Death_Dealer', 1, 161, 95, 1, 5, 900, 45),
 ('IMHM_HM_72_GRP6', 'pres_z72_grp6', 'def_npc_riveler_basic_rank5', 1, 208, 180, 1, 5, 900, 45),
 ('RR_Lewar_72_GRP6', 'pres_z72_grp6', 'def_npc_Helix_BossGuard', 2, 208, 180, 1, 5, 900, 55),
 ('IHM_HM_72_GRP6', 'pres_z72_grp6', 'def_npc_scarab_basic_rank5', 1, 208, 180, 1, 5, 900, 45);
@@ -2683,11 +2677,11 @@ INSERT INTO #WAVES (targetFlockName, presenceName, npcDefName, numInFlock, thres
 --Stronghold 71 boss waves
 ('RR_Boss_71_GRP4', 'reinforce_stronghold_miniboss_a_z71_wave_0', 'def_npc_RoughRider_Scout', 1, 0.05),
 
-('RR_Boss_71_GRP4', 'reinforce_stronghold_miniboss_a_z71_wave_1', 'def_npc_RoughRider_Scout', 2, 0.25),
+('RR_Boss_71_GRP4', 'reinforce_stronghold_miniboss_a_z71_wave_1', 'def_npc_RoughRider_Scout', 1, 0.25),
 ('RR_Boss_71_GRP4', 'reinforce_stronghold_miniboss_a_z71_wave_1', 'def_npc_RoughRider_Cavalry', 1, 0.25),
 
-('RR_Boss_71_GRP4', 'reinforce_stronghold_miniboss_a_z71_wave_2', 'def_npc_RoughRider_Scout', 2, 0.55),
-('RR_Boss_71_GRP4', 'reinforce_stronghold_miniboss_a_z71_wave_2', 'def_npc_RoughRider_Cavalry', 2, 0.55),
+('RR_Boss_71_GRP4', 'reinforce_stronghold_miniboss_a_z71_wave_2', 'def_npc_RoughRider_Scout', 1, 0.55),
+('RR_Boss_71_GRP4', 'reinforce_stronghold_miniboss_a_z71_wave_2', 'def_npc_RoughRider_Cavalry', 1, 0.55),
 ('RR_Boss_71_GRP4', 'reinforce_stronghold_miniboss_a_z71_wave_2', 'def_npc_Helix_BossGuard', 1, 0.55),
 
 ('RR_Boss_71_GRP4', 'reinforce_stronghold_miniboss_a_z71_wave_3', 'def_npc_Helix_BossGuard', 2, 0.75),
@@ -2695,10 +2689,10 @@ INSERT INTO #WAVES (targetFlockName, presenceName, npcDefName, numInFlock, thres
 --Stronghold 72 boss waves
 ('RR_Boss_72_GRP4', 'reinforce_stronghold_miniboss_a_z72_wave_0', 'def_npc_RoughRider_Cavalry', 1, 0.05),
 
-('RR_Boss_72_GRP4', 'reinforce_stronghold_miniboss_a_z72_wave_1', 'def_npc_RoughRider_Cavalry', 2, 0.25),
+('RR_Boss_72_GRP4', 'reinforce_stronghold_miniboss_a_z72_wave_1', 'def_npc_RoughRider_Cavalry', 1, 0.25),
 ('RR_Boss_72_GRP4', 'reinforce_stronghold_miniboss_a_z72_wave_1', 'def_npc_Helix_BossGuard', 1, 0.25),
 
-('RR_Boss_72_GRP4', 'reinforce_stronghold_miniboss_a_z72_wave_2', 'def_npc_RoughRider_Cavalry', 2, 0.55),
+('RR_Boss_72_GRP4', 'reinforce_stronghold_miniboss_a_z72_wave_2', 'def_npc_RoughRider_Cavalry', 1, 0.55),
 ('RR_Boss_72_GRP4', 'reinforce_stronghold_miniboss_a_z72_wave_2', 'def_npc_Helix_BossGuard', 2, 0.55),
 ('RR_Boss_72_GRP4', 'reinforce_stronghold_miniboss_a_z72_wave_2', 'def_npc_Rough_Rider_Death_Dealer', 1, 0.55),
 
@@ -2727,6 +2721,21 @@ SET IDENTITY_INSERT dbo.entitydefaults ON;
 INSERT INTO entitydefaults (definition,definitionname,quantity,attributeflags,categoryflags,options,note,enabled,volume,mass,hidden,health,descriptiontoken,purchasable,tiertype,tierlevel) 
 SELECT def, defName, 1, 1024, 911, NULL, defName, 1, 0, 0, 0, 100, defName+'_desc', 0, 0, 0 FROM #ED;
 SET IDENTITY_INSERT dbo.entitydefaults OFF;
+
+PRINT N'DELETE ALL AGG-VALS FOR THESE NPC DEFS';
+DELETE FROM aggregatevalues WHERE definition IN (
+	SELECT DISTINCT definition FROM entitydefaults WHERE definitionname IN (
+		SELECT DISTINCT defName FROM #NPC_MODS
+	)
+);
+
+PRINT N'RE-INSERT ALL AGG-VALS FOR THESE NPC DEFS';
+INSERT INTO aggregatevalues (definition, field, value)
+SELECT
+	(SELECT TOP 1 definition FROM entitydefaults WHERE defName=definitionname),
+	(SELECT TOP 1 id FROM aggregatefields WHERE name=fieldName),
+	val
+FROM #NPC_MODS;
 
 INSERT INTO dbo.robottemplates (name, description, note)
 SELECT templateName, template, defName+' template' FROM #ED WHERE template IS NOT NULL;
@@ -3493,10 +3502,10 @@ INSERT INTO #LOOT (npcName, lootName, minQuantity, maxQuantity, probability) VAL
 ('def_npc_Zone71_WilliamHBonnie','def_robotshard_common_basic',50,100,1),
 ('def_npc_Zone71_WilliamHBonnie','def_robotshard_common_advanced',25,75,1),
 ('def_npc_Zone71_WilliamHBonnie','def_robotshard_common_expert',1,50,1),
-('def_npc_Zone71_WilliamHBonnie','def_common_reactor_plasma',5000,9000,1),
+('def_npc_Zone71_WilliamHBonnie','def_common_reactor_plasma',9000,10000,1),
 ('def_npc_Zone71_WilliamHBonnie','def_kernel_common',2500,3000,1),
-('def_npc_Zone71_WilliamHBonnie','def_kernel_hitech',500,900,1),
-('def_npc_Zone71_WilliamHBonnie','def_boost_ep_t0',1,1,0.1),
+('def_npc_Zone71_WilliamHBonnie','def_kernel_hitech',500,600,1),
+('def_npc_Zone71_WilliamHBonnie','def_boost_ep_t0',1,1,0.25),
 
 ('def_npc_Zone72_One_Eye_Josef','def_ammo_medium_projectile_a',1000,2000,0.5),
 ('def_npc_Zone72_One_Eye_Josef','def_ammo_medium_projectile_b',1000,2000,0.5),
@@ -3519,10 +3528,10 @@ INSERT INTO #LOOT (npcName, lootName, minQuantity, maxQuantity, probability) VAL
 ('def_npc_Zone72_One_Eye_Josef','def_robotshard_common_basic',100,200,1),
 ('def_npc_Zone72_One_Eye_Josef','def_robotshard_common_advanced',50,150,1),
 ('def_npc_Zone72_One_Eye_Josef','def_robotshard_common_expert',1,100,1),
-('def_npc_Zone72_One_Eye_Josef','def_common_reactor_plasma',700,1100,1),
-('def_npc_Zone72_One_Eye_Josef','def_kernel_common',2500,3000,1),
-('def_npc_Zone72_One_Eye_Josef','def_kernel_hitech',500,1000,1),
-('def_npc_Zone72_One_Eye_Josef','def_boost_ep_t0',1,1,0.1),
+('def_npc_Zone72_One_Eye_Josef','def_common_reactor_plasma',12000,15000,1),
+('def_npc_Zone72_One_Eye_Josef','def_kernel_common',3000,3500,1),
+('def_npc_Zone72_One_Eye_Josef','def_kernel_hitech',500,600,1),
+('def_npc_Zone72_One_Eye_Josef','def_boost_ep_t0',1,1,0.25),
 
 ('def_npc_Helix_BossGuard','def_named1_cpu_upgrade',1,1,0.1),
 ('def_npc_Helix_BossGuard','def_named2_cpu_upgrade',1,1,0.02),
@@ -3532,7 +3541,7 @@ INSERT INTO #LOOT (npcName, lootName, minQuantity, maxQuantity, probability) VAL
 ('def_npc_Helix_BossGuard','def_robotshard_common_basic',10,15,1),
 ('def_npc_Helix_BossGuard','def_robotshard_common_advanced',5,10,1),
 ('def_npc_Helix_BossGuard','def_robotshard_common_expert',2,8,1),
-('def_npc_Helix_BossGuard','def_common_reactor_plasma',50,75,1),
+('def_npc_Helix_BossGuard','def_common_reactor_plasma',75,99,1),
 ('def_npc_Helix_BossGuard','def_kernel_common',100,150,1),
 
 ('def_npc_Rough_Rider_Death_Dealer','def_named1_powergrid_upgrades',1,1,0.1),
@@ -3542,7 +3551,7 @@ INSERT INTO #LOOT (npcName, lootName, minQuantity, maxQuantity, probability) VAL
 ('def_npc_Rough_Rider_Death_Dealer','def_robotshard_common_basic',15,20,1),
 ('def_npc_Rough_Rider_Death_Dealer','def_robotshard_common_advanced',10,15,1),
 ('def_npc_Rough_Rider_Death_Dealer','def_robotshard_common_expert',5,10,1),
-('def_npc_Rough_Rider_Death_Dealer','def_common_reactor_plasma',75,100,1),
+('def_npc_Rough_Rider_Death_Dealer','def_common_reactor_plasma',125,155,1),
 ('def_npc_Rough_Rider_Death_Dealer','def_kernel_common',150,200,1);
 
 PRINT N'DELETE ALL LOOT TO BE REINSERTED (0 if new)';
@@ -3674,7 +3683,6 @@ INSERT INTO decor (definition, quaternionx, quaterniony, quaternionz, quaternion
 (3309,0,0.147809,0,0.989016,72,44110,38346,7701,1,1,0,1,1),
 (3309,0,0.382683,0,0.923879,72,38862,35160,7355,1,1,0,1,1),
 (3715,0,-0.414694,0,0.909961,72,36379,34004,7891,1,1,0,1,1),
-(3720,0,-0.390731,0,0.920505,72,34754,34725,7946,1,1,0,1,1),
 (2799,0,0.358368,0,0.93358,72,35988,35473,6495,1,1,0,1,1),
 (2799,0.029148,0.928071,0.013273,-0.371025,72,33716,33339,6430,1,1,0,1,1),
 (3310,0,-0.422618,0,0.906308,72,42337,28190,8626,1,1,0,1,1),
@@ -3709,8 +3717,6 @@ INSERT INTO decor (definition, quaternionx, quaterniony, quaternionz, quaternion
 (3337,0,0,0,1,72,50962,27029,8550,1,1,0,1,1),
 (2802,0,0,0,1,72,50938,26128,8889,1,1,0,1,1),
 (2760,0,-0.069756,0,0.997564,72,52301,42796,5164,1,1,0,1,1),
-(3309,0,-0.75471,0,0.65606,72,42353,43195,8183,1,1,0,1,1),
-(3309,0,0.649448,0,0.760406,72,42003,40847,8190,1,1,0,1,1),
 (3293,0,0,0,1,72,54912,27264,6340,1,1,0,1,1),
 (3312,0,0.803857,0,0.594823,72,57393,17107,4915,2,1,0,1,1),
 (3312,0,0.700909,0,0.71325,72,56192,26240,4889,2,1,0,1,1),
@@ -3733,11 +3739,145 @@ INSERT INTO decor (definition, quaternionx, quaterniony, quaternionz, quaternion
 (3498,0,-0.366501,0,-0.930417,72,33520,28935,6452,1,1,0,1,1),
 (2755,0,-0.406736,0,0.913545,72,36056,29482,6342,1,1,0,1,1),
 (1137,0,0.34202,0,0.939692,72,21856,41401,7180,0.5,1,0,1,1),
+(1146,0,0,0,1,72,57728,44928,3866,1,1,0,1,1),
+(3720,0,-0.390731,0,0.920505,72,34754,34725,7946,1,1,0,1,1),
 (3719,0,0.737278,0,-0.67559,72,48786,38112,6020,1,1,0,1,1),
-(1146,0,0,0,1,72,57728,44928,3866,1,1,0,1,1);
+(3309,0,0.649448,0,0.760406,72,42003,40847,8190,1,1,0,1,1),
+(3309,0,-0.75471,0,0.65606,72,42337,43195,8183,1,1,0,1,1),
+(3309,0,-0.414693,0,0.909961,72,19664,42764,7956,1,1,0,1,1);
 --END REPLACE
 
 GO
+
+
+PRINT N'ZZ_73_StrghldExitConfigs_newcol__2021_04_10.sql';
+USE [perpetuumsa]
+GO
+
+-------------------------------------------------
+-- All stronghold exits now get a RiftConfig to set their destinations
+-- new rift configs for all stronghold exits
+-- update strongholdexits with new config ids
+-- Date: 2021/04/10
+-------------------------------------------------
+
+PRINT N'ALTER [dbo].[strongholdexitconfig]';
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[perpetuumsa].[dbo].[strongholdexitconfig]')
+	AND name = 'riftConfigId')
+BEGIN
+	PRINT N'ADDING COL riftConfigId';
+	ALTER TABLE [perpetuumsa].[dbo].strongholdexitconfig ADD
+		riftConfigId INT NULL;
+END
+GO
+
+
+USE [perpetuumsa]
+GO
+
+DROP TABLE IF EXISTS #CONFIGS;
+CREATE TABLE #CONFIGS(
+	name VARCHAR(100),
+	groupId INT,
+	zoneId INT,
+	x INT,
+	y INT,
+	w FLOAT
+);
+INSERT INTO #CONFIGS (name, groupId, zoneId, x, y, w) VALUES
+('stronghold_default_exit', 1, 8, 970, 810, 1),
+('stronghold_z71_exit', 2, 0, 1750, 850, 1),
+('stronghold_z72_exit', 3, 8, 1970, 1830, 1),
+('stronghold_z71_exit_boss', 4, 0, 1100, 865, 1),
+('stronghold_z72_exit_boss', 5, 8, 971, 811, 1);
+
+DROP TABLE IF EXISTS #EXITS;
+CREATE TABLE #EXITS(
+	zoneid INT,
+	x INT,
+	y INT,
+	configName VARCHAR(100)
+);
+INSERT INTO #EXITS (zoneid, x, y, configName) VALUES
+(71, 20, 175, 'stronghold_z71_exit'),
+(71, 211, 119, 'stronghold_z71_exit_boss'),
+(72, 219, 28, 'stronghold_z72_exit'),
+(72, 89, 185, 'stronghold_z72_exit_boss');
+
+DELETE FROM riftdestinations WHERE groupId IN (SELECT destinationGroupId from riftconfigs WHERE name IN (SELECT name FROM #CONFIGS));
+DELETE FROM riftconfigs WHERE name IN (SELECT name FROM #CONFIGS);
+
+PRINT N'INSERT INTO [dbo].[riftdestinations]';
+INSERT INTO [dbo].[riftdestinations] (groupId, zoneId, x, y, weight)
+	SELECT groupId, zoneId, x, y, w
+	FROM #CONFIGS;
+
+PRINT N'INSERT INTO [dbo].[riftconfigs]';
+INSERT INTO [dbo].[riftconfigs] (name, destinationGroupId)
+	SELECT name, groupId
+	FROM #CONFIGS;
+
+
+PRINT N'UPDATE strongholdexitconfig for boss entry riftconfigs';
+PRINT N'Strongholds 16 and 70 all go to hershfield default exit destination';
+UPDATE strongholdexitconfig SET
+	riftConfigId = (SELECT TOP 1 id FROM [dbo].[riftconfigs] WHERE name='stronghold_default_exit')
+WHERE zoneid=16 OR zoneid=70;
+
+
+PRINT N'DELETE AND REINSERT FOR ZONES (71,72)';
+DELETE FROM strongholdexitconfig WHERE zoneid IN (SELECT DISTINCT zoneid FROM #EXITS);
+INSERT INTO strongholdexitconfig (zoneid, x, y, riftConfigId)
+SELECT zoneid, x, y, (SELECT TOP 1 id FROM riftconfigs WHERE name=configName)
+FROM #EXITS;
+
+
+DROP TABLE IF EXISTS #CONFIGS;
+DROP TABLE IF EXISTS #EXITS;
+GO
+
+
+
+PRINT N'ZZ_74_EntityDefaults_fragVol_update__2021_04_10.sql';
+USE [perpetuumsa]
+GO
+
+---------------------------------------------
+-- Reduce volume of Fragments by 50%
+-- Date Modified: 2021/04/10
+---------------------------------------------
+
+PRINT N'SET FRAGMENT ENTITYDEFAULT VOLUMES';
+DROP TABLE IF EXISTS #FRAGS;
+CREATE TABLE #FRAGS(
+	defName VARCHAR(100),
+	vol FLOAT
+);
+INSERT INTO #FRAGS (defName, vol) VALUES
+('def_robotshard_common_basic',0.005),
+('def_robotshard_common_advanced',0.01),
+('def_robotshard_common_expert',0.015),
+('def_robotshard_thelodica_basic',0.005),
+('def_robotshard_thelodica_advanced',0.01),
+('def_robotshard_thelodica_expert',0.015),
+('def_robotshard_nuimqol_basic',0.005),
+('def_robotshard_nuimqol_advanced',0.01),
+('def_robotshard_nuimqol_expert',0.015),
+('def_robotshard_pelistal_basic',0.005),
+('def_robotshard_pelistal_advanced',0.01),
+('def_robotshard_pelistal_expert',0.015);
+
+PRINT N'MERGE/UPDATE ON FRAGS';
+MERGE [dbo].[entitydefaults] e USING #FRAGS f
+ON e.definitionname=f.defName
+WHEN MATCHED
+    THEN UPDATE SET
+	volume = f.vol;
+
+PRINT N'DONE WITH FRAG VOLUMES';
+DROP TABLE IF EXISTS #FRAGS;
+GO
+
 
 
 PRINT N'PATCH 21 APPLIED';
