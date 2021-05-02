@@ -1114,8 +1114,8 @@
 	"def_elitet4_71_maneuvering_upgrade_desc":"'''Augmented Module: This module has enhancements provided by a powerful Nian's remnants'''\n\nWhen applied, the evasive module can adjust the position of the armor plates on the robotic chassis in order to deflect some of the incoming damage. The result is a slightly reduced surface hit size.\nOnly one evasive module can be equipped at a time.",
 
 
-	"ext_flux_mining_expert":"Extensive flux mining",
-	"ext_flux_mining_expert_desc":"Each level of this extension raises the amount of exploited '''Flux Ore''' in each cycle by an additional {%BONUS100%}%",
+	"ext_flux_miner_expert":"Extensive flux mining",
+	"ext_flux_miner_expert_desc":"Each level of this extension raises the amount of exploited '''Flux Ore''' in each cycle by an additional {%BONUS100%}%",
 	"ext_flux_mining_buffer_expert":"Intensive flux mining",
 	"ext_flux_mining_buffer_expert_desc":"Each level of this extension reduces the cycle time of '''Flux Ore''' exploitation by an additional {%BONUS100%}%",
 }
