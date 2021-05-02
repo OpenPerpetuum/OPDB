@@ -15,6 +15,8 @@ DECLARE @miningCycleFieldID AS INT = 663;
 DECLARE @miningCycleFieldName AS VARCHAR(100) = 'mining_cycle_time_flux_modifier';
 DECLARE @miningCycleSkillName AS VARCHAR(100) = 'ext_flux_mining_buffer_expert';
 
+DECLARE @lastExtId AS INT = (SELECT TOP 1 extensionid FROM extensions ORDER BY extensionid DESC);
+
 IF NOT EXISTS (SELECT TOP 1 id FROM dbo.aggregatefields WHERE name = @miningAmountFieldName)
 BEGIN
 PRINT N'INSERTING '+@miningAmountFieldName;
@@ -27,8 +29,8 @@ END
 IF NOT EXISTS (SELECT TOP 1 extensionid FROM dbo.extensions WHERE extensionname = @miningAmountSkillName)
 BEGIN
 	PRINT N'INSERTING extensions '+@miningAmountSkillName;
-	INSERT INTO dbo.extensions(extensionname, category, rank, targetlearningattribute, learningattributeprimary, learningattributesecondary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
-	(@miningAmountSkillName, 15, 7, NULL, 'attributeC', 'attributeB', 0.03, 'Flux mining skill', 245000, 1, @miningAmountSkillName+'_desc', @miningAmountFieldID, 0, 0, 7);
+	INSERT INTO dbo.extensions(extensionid, extensionname, category, rank, targetlearningattribute, learningattributeprimary, learningattributesecondary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
+	(@lastExtId+1, @miningAmountSkillName, 15, 7, NULL, 'attributeC', 'attributeB', 0.03, 'Flux mining skill', 245000, 1, @miningAmountSkillName+'_desc', @miningAmountFieldID, 0, 0, 7);
 END
 
 
@@ -45,8 +47,9 @@ END
 IF NOT EXISTS (SELECT TOP 1 extensionid FROM dbo.extensions WHERE extensionname = @miningCycleSkillName)
 BEGIN
 	PRINT N'INSERTING extensions '+@miningCycleSkillName;
-	INSERT INTO dbo.extensions(extensionname, category, rank, targetlearningattribute, learningattributeprimary, learningattributesecondary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
-	(@miningCycleSkillName, 15, 7, NULL, 'attributeC', 'attributeB', 0.01, 'Flux mining skill', 245000, 1, @miningCycleSkillName+'_desc', @miningCycleFieldID, 0, 0, 7);
+	SET @lastExtId = (SELECT TOP 1 extensionid FROM extensions ORDER BY extensionid DESC);
+	INSERT INTO dbo.extensions(extensionid, extensionname, category, rank, targetlearningattribute, learningattributeprimary, learningattributesecondary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
+	(@lastExtId+1, @miningCycleSkillName, 15, 7, NULL, 'attributeC', 'attributeB', 0.01, 'Flux mining skill', 245000, 1, @miningCycleSkillName+'_desc', @miningCycleFieldID, 0, 0, 7);
 END
 
 
@@ -60,11 +63,11 @@ INSERT INTO #EXT_REQS (extName, reqExtName, reqExtLevel) VALUES
 (@miningAmountSkillName, 'ext_epriton_miner_expert', 5),
 (@miningCycleSkillName, 'ext_epriton_mining_buffer_expert', 5);
 
-SELECT * FROM extensionprerequire WHERE 
-	extensionid=(SELECT extensionid FROM extensions WHERE extensionname in (SELECT DISTINCT extName FROM #EXT_REQS));
+--SELECT * FROM extensionprerequire WHERE 
+--	extensionid IN (SELECT extensionid FROM extensions WHERE extensionname in (SELECT DISTINCT extName FROM #EXT_REQS));
 
 DELETE FROM extensionprerequire WHERE 
-	extensionid=(SELECT extensionid FROM extensions WHERE extensionname in (SELECT DISTINCT extName FROM #EXT_REQS));
+	extensionid IN (SELECT extensionid FROM extensions WHERE extensionname in (SELECT DISTINCT extName FROM #EXT_REQS));
 
 INSERT INTO extensionprerequire (extensionid, requiredextension, requiredlevel)
 SELECT 
