@@ -1113,5 +1113,5 @@
 	"def_elitet2_71_maneuvering_upgrade_desc":"'''Augmented Module: This module has enhancements provided by a powerful Nian's remnants'''\n\nWhen applied, the evasive module can adjust the position of the armor plates on the robotic chassis in order to deflect some of the incoming damage. The result is a slightly reduced surface hit size.\nOnly one evasive module can be equipped at a time.",
 	"def_elitet4_71_maneuvering_upgrade_desc":"'''Augmented Module: This module has enhancements provided by a powerful Nian's remnants'''\n\nWhen applied, the evasive module can adjust the position of the armor plates on the robotic chassis in order to deflect some of the incoming damage. The result is a slightly reduced surface hit size.\nOnly one evasive module can be equipped at a time.",
 
-	"effect_stronghold_despawn_timer": "Stronghold expiry timer",
+	"effect_stronghold_despawn_timer": "Stronghold time limit",
 }
