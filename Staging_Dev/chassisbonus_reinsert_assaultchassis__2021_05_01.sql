@@ -48,9 +48,9 @@ INSERT INTO #BONUS (defName, fieldName, extName, bonusAmount) VALUES
 ('def_baphomet_chassis_pr','damage_medium_laser_modifier','ext_lightarmored_unit_piloting',0.05),
 ('def_baphomet_chassis_pr','damage_small_laser_modifier','ext_lightarmored_unit_piloting',0.05),
 
-('def_baphomet_chassis_mk2','core_usage_laser_modifier','ext_lightarmored_unit_piloting',-0.03),
-('def_baphomet_chassis_mk2','damage_medium_laser_modifier','ext_lightarmored_unit_piloting',0.05),
-('def_baphomet_chassis_mk2','damage_small_laser_modifier','ext_lightarmored_unit_piloting',0.05),
+('def_baphomet_mk2_chassis','core_usage_laser_modifier','ext_lightarmored_unit_piloting',-0.03),
+('def_baphomet_mk2_chassis','damage_medium_laser_modifier','ext_lightarmored_unit_piloting',0.05),
+('def_baphomet_mk2_chassis','damage_small_laser_modifier','ext_lightarmored_unit_piloting',0.05),
 
 ('def_daidalos_chassis','damage_medium_projectile_modifier','ext_heavyarmored_unit_piloting',0.1),
 ('def_daidalos_chassis','damage_small_projectile_modifier','ext_heavyarmored_unit_piloting',0.1),
