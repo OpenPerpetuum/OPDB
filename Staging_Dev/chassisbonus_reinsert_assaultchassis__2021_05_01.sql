@@ -5,7 +5,7 @@ GO
 -- Assault bonus bug
 -- Flat weapon type damage bonus is linear, the size specific is the desired bonus type
 -- Add small/medium so both receive bonus as intended
--- Date Modified: 2021/05/01
+-- Date Modified: 2021/05/05
 -------------------------------------------------------
 
 DROP TABLE IF EXISTS #BONUS;
@@ -28,20 +28,35 @@ INSERT INTO #BONUS (defName, fieldName, extName, bonusAmount) VALUES
 ('def_waspish_chassis_pr','damage_small_missile_modifier','ext_lightarmored_unit_piloting',0.05),
 ('def_waspish_chassis_pr','missile_cycle_time_modifier','ext_lightarmored_unit_piloting',0.02),
 
-('def_arbalest_chassis','damage_medium_missile_modifier','ext_lightarmored_unit_piloting',0.05),
-('def_arbalest_chassis','damage_small_missile_modifier','ext_lightarmored_unit_piloting',0.05),
 ('def_arbalest_chassis','damage_medium_railgun_modifier','ext_lightarmored_unit_piloting',0.05),
 ('def_arbalest_chassis','damage_small_railgun_modifier','ext_lightarmored_unit_piloting',0.05),
+('def_arbalest_chassis','damage_small_missile_modifier','ext_lightarmored_unit_piloting',0.05),
 
-('def_arbalest_chassis_mk2','damage_medium_missile_modifier','ext_lightarmored_unit_piloting',0.05),
-('def_arbalest_chassis_mk2','damage_small_missile_modifier','ext_lightarmored_unit_piloting',0.05),
 ('def_arbalest_chassis_mk2','damage_medium_railgun_modifier','ext_lightarmored_unit_piloting',0.05),
 ('def_arbalest_chassis_mk2','damage_small_railgun_modifier','ext_lightarmored_unit_piloting',0.05),
+('def_arbalest_chassis_mk2','damage_small_missile_modifier','ext_lightarmored_unit_piloting',0.05),
 
-('def_arbalest_chassis_pr','damage_medium_missile_modifier','ext_lightarmored_unit_piloting',0.05),
-('def_arbalest_chassis_pr','damage_small_missile_modifier','ext_lightarmored_unit_piloting',0.05),
 ('def_arbalest_chassis_pr','damage_medium_railgun_modifier','ext_lightarmored_unit_piloting',0.05),
 ('def_arbalest_chassis_pr','damage_small_railgun_modifier','ext_lightarmored_unit_piloting',0.05),
+('def_arbalest_chassis_pr','damage_small_missile_modifier','ext_lightarmored_unit_piloting',0.05),
+
+('def_baphomet_chassis','core_usage_laser_modifier','ext_lightarmored_unit_piloting',-0.03),
+('def_baphomet_chassis','damage_medium_laser_modifier','ext_lightarmored_unit_piloting',0.05),
+('def_baphomet_chassis','damage_small_laser_modifier','ext_lightarmored_unit_piloting',0.05),
+
+('def_baphomet_chassis_pr','core_usage_laser_modifier','ext_lightarmored_unit_piloting',-0.03),
+('def_baphomet_chassis_pr','damage_medium_laser_modifier','ext_lightarmored_unit_piloting',0.05),
+('def_baphomet_chassis_pr','damage_small_laser_modifier','ext_lightarmored_unit_piloting',0.05),
+
+('def_baphomet_chassis_mk2','core_usage_laser_modifier','ext_lightarmored_unit_piloting',-0.03),
+('def_baphomet_chassis_mk2','damage_medium_laser_modifier','ext_lightarmored_unit_piloting',0.05),
+('def_baphomet_chassis_mk2','damage_small_laser_modifier','ext_lightarmored_unit_piloting',0.05),
+
+('def_daidalos_chassis','damage_medium_projectile_modifier','ext_heavyarmored_unit_piloting',0.1),
+('def_daidalos_chassis','damage_small_projectile_modifier','ext_heavyarmored_unit_piloting',0.1),
+
+('def_hermes_chassis','damage_medium_projectile_modifier','ext_lightarmored_unit_piloting',0.03),
+('def_hermes_chassis','damage_small_projectile_modifier','ext_lightarmored_unit_piloting',0.03),
 
 ('def_locust_chassis','damage_medium_projectile_modifier','ext_lightarmored_unit_piloting',0.03),
 ('def_locust_chassis','damage_small_projectile_modifier','ext_lightarmored_unit_piloting',0.03),
