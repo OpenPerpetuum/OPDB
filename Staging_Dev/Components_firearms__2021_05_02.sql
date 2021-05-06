@@ -4,7 +4,7 @@ GO
 --------------------------------------------------
 -- Firearm production, reduce titanium = levels of other modules
 --
--- Date modified: 2021/05/02
+-- Date modified: 2021/05/05
 --------------------------------------------------
 
 PRINT N'Firearm production adjustments';
@@ -26,7 +26,7 @@ INSERT INTO #COMPS (defName, compName, amount) VALUES
 ('def_longrange_standard_medium_autocannon','def_titanium',100),
 ('def_named1_longrange_medium_autocannon','def_titanium',100),
 ('def_named2_longrange_medium_autocannon','def_titanium',100),
-('def_named3_longrange_medium_autocannon','def_titanium',200),
+('def_named3_longrange_medium_autocannon','def_titanium',100),
 ('def_named1_small_autocannon_pr','def_titanium',50),
 ('def_named2_small_autocannon_pr','def_titanium',50),
 ('def_named3_small_autocannon_pr','def_titanium',50),
