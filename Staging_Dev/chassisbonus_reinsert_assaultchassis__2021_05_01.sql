@@ -72,7 +72,7 @@ DELETE FROM chassisbonus WHERE definition IN
 	(SELECT definition FROM entitydefaults WHERE definitionname IN 
 		(SELECT DISTINCT defName FROM #BONUS));
 
-PRINT N'INSERT CHASSIS BONUSES (25 rows affected)';
+PRINT N'INSERT CHASSIS BONUSES (35 rows affected)';
 INSERT INTO chassisbonus (definition, extension, bonus, note, targetpropertyID, effectenhancer)
 SELECT 
 	(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=defName),
