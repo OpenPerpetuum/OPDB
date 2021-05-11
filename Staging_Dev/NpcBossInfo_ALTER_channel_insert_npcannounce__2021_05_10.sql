@@ -1,6 +1,14 @@
 USE [perpetuumsa]
 GO
 
+-------------------------------------------------
+-- Boss announcer features
+-- Add column to npcbossinfo
+-- Insert new channel for reporting
+-- Update select bossinfos with flag value
+-- Date modified: 2021/05/10
+-------------------------------------------------
+
 PRINT N'ALTER [dbo].[npcbossinfo]';
 IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[perpetuumsa].[dbo].[npcbossinfo]')
 	AND name = 'isAnnounced')
