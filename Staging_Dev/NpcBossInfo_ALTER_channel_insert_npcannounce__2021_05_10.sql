@@ -6,7 +6,7 @@ GO
 -- Add column to npcbossinfo
 -- Insert new channel for reporting
 -- Update select bossinfos with flag value
--- Date modified: 2021/05/15
+-- Date modified: 2021/05/17
 -------------------------------------------------
 
 PRINT N'ALTER [dbo].[npcbossinfo]';
@@ -29,6 +29,15 @@ BEGIN
 	PRINT N'INSERT INTO channels '+@chanName;
 	INSERT INTO channels (name, password, topic, type) VALUES
 	(@chanName, NULL, '', 1);
+END
+ELSE
+BEGIN
+	PRINT N'UPDATE channels '+@chanName;
+	UPDATE channels SET
+		password=NULL,
+		topic='',
+		type=1
+	WHERE name=@chanName;
 END
 
 DECLARE @oppChar AS INT = (SELECT TOP 1 characterID FROM characters WHERE nick='[OPP] Announcer');
