@@ -26,7 +26,7 @@ INSERT INTO #STATS (defName, fieldName, val) VALUES
 ('def_rift_targetted_portal','stealth_strength',25);
 
 PRINT N'DELETE aggregatevalues TO BE REPLACED (0 rows affected)<-1ST RUN';
-DELETE FROM chassisbonus WHERE definition IN 
+DELETE FROM aggregatevalues WHERE definition IN 
 	(SELECT definition FROM entitydefaults WHERE definitionname IN 
 		(SELECT DISTINCT defName FROM #STATS));
 
