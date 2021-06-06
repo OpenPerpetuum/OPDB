@@ -21,6 +21,7 @@ echo Restoring original database state
 %StartAndWait% %SqlCmd% "%TOOLS_DIR%\restore_DB_to_original_state.sql"
 
 :: Apply the patches in order
+call:applyPatch Pre_Alpha_0 prealpha_patch_0.sql
 call:applyPatch Pre_Alpha_1 prealpha_patch_1.sql Server
 call:applyPatch Pre_Alpha_2 prealpha_patch_2.sql Server
 call:applyPatch Pre_Alpha_3 prealpha_patch_3.sql
