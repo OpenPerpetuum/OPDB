@@ -1120,6 +1120,7 @@
 
 	"effect_stronghold_despawn_timer": "Stronghold time limit",
 
+	"ErrorMessages_unknown_667": "Structure tech level too high for this island",
 
 	"def_pbs_reactor_small_capsule_pr": "Standard reactor foundation prototype",
 	"def_pbs_reactor_medium_capsule_pr": "Advanced reactor foundation prototype",
