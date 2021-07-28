@@ -383,6 +383,149 @@ INSERT INTO #GAMMAZONEPREP (zId, zPrefix, zSize, x, y, raceID, tier) VALUES
 (139, 'zone_gamma_z', 2048, -5150, -17674, 3, 2),
 (140, 'zone_gamma_z', 2048, -13165, -17804, 3, 3);
 
+DROP TABLE IF EXISTS #GAMMAORES;
+CREATE TABLE #GAMMAORES(
+	raceID INT,
+	tier INT,
+	mineralName VARCHAR(100),
+	maxFields INT,
+	maxTilesPerField INT,
+	totalAmountPerField INT
+);
+INSERT INTO #GAMMAORES(raceID, tier, mineralName, maxFields, maxTilesPerField, totalAmountPerField) VALUES
+(1, 0, 'titan', 10, 600, 225000000),
+(1, 0, 'crude', 2, 600, 225000000),
+--(1, 0, 'stermonit', 6, 600, 225000000),
+(1, 0, 'imentium', 6, 600, 225000000),
+(1, 0, 'liquizit', 2, 600, 225000000),
+(1, 0, 'epriton', 2, 300, 50000000),
+(1, 0, 'silgium', 6, 600, 225000000),
+--(1, 0, 'gammaterial', 3, 50, 10000000),
+--(1, 0, 'energymineral', 9, 200, 12000000),
+(1, 0, 'fluxore', 2, 200, 5000000),
+
+(2, 0, 'titan', 10, 600, 225000000),
+(2, 0, 'crude', 2, 600, 225000000),
+(2, 0, 'stermonit', 6, 600, 225000000),
+(2, 0, 'imentium', 6, 600, 225000000),
+(2, 0, 'liquizit', 2, 600, 225000000),
+(2, 0, 'epriton', 2, 300, 50000000),
+--(2, 0, 'silgium', 6, 600, 225000000),
+--(2, 0, 'gammaterial', 3, 50, 10000000),
+--(2, 0, 'energymineral', 9, 200, 12000000),
+(2, 0, 'fluxore', 2, 200, 5000000),
+
+(3, 0, 'titan', 10, 600, 225000000),
+(3, 0, 'crude', 2, 600, 225000000),
+(3, 0, 'stermonit', 6, 600, 225000000),
+--(3, 0, 'imentium', 6, 600, 225000000),
+(3, 0, 'liquizit', 2, 600, 225000000),
+(3, 0, 'epriton', 2, 300, 50000000),
+(3, 0, 'silgium', 6, 600, 225000000),
+--(3, 0, 'gammaterial', 3, 50, 10000000),
+--(3, 0, 'energymineral', 9, 200, 12000000),
+(3, 0, 'fluxore', 2, 200, 5000000),
+
+(1, 1, 'titan', 8, 600, 175000000),
+(1, 1, 'crude', 1, 600, 175000000),
+--(1, 1, 'stermonit', 5, 600, 175000000),
+(1, 1, 'imentium', 5, 600, 175000000),
+(1, 1, 'liquizit', 1, 600, 175000000),
+--(1, 1, 'epriton', 2, 300, 50000000),
+(1, 1, 'silgium', 5, 600, 175000000),
+(1, 1, 'gammaterial', 3, 50, 10000000),
+(1, 1, 'energymineral', 9, 200, 12000000),
+--(1, 1, 'fluxore', 2, 200, 5000000),
+
+(2, 1, 'titan', 8, 600, 175000000),
+(2, 1, 'crude', 1, 600, 175000000),
+(2, 1, 'stermonit', 5, 600, 175000000),
+(2, 1, 'imentium', 5, 600, 175000000),
+(2, 1, 'liquizit', 1, 600, 175000000),
+--(2, 1, 'epriton', 2, 300, 50000000),
+--(2, 1, 'silgium', 5, 600, 175000000),
+(2, 1, 'gammaterial', 3, 50, 10000000),
+(2, 1, 'energymineral', 9, 200, 12000000),
+--(2, 1, 'fluxore', 2, 200, 5000000),
+
+(3, 1, 'titan', 8, 600, 175000000),
+(3, 1, 'crude', 1, 600, 175000000),
+(3, 1, 'stermonit', 5, 600, 175000000),
+--(3, 1, 'imentium', 5, 600, 175000000),
+(3, 1, 'liquizit', 1, 600, 175000000),
+--(3, 1, 'epriton', 2, 300, 50000000),
+(3, 1, 'silgium', 5, 600, 175000000),
+(3, 1, 'gammaterial', 3, 50, 10000000),
+(3, 1, 'energymineral', 9, 200, 12000000),
+--(3, 1, 'fluxore', 2, 200, 5000000),
+
+(1, 2, 'titan', 6, 600, 125000000),
+(1, 2, 'crude', 1, 600, 125000000),
+--(1, 2, 'stermonit', 4, 600, 125000000),
+(1, 2, 'imentium', 4, 600, 125000000),
+(1, 2, 'liquizit', 1, 600, 125000000),
+--(1, 2, 'epriton', 2, 300, 50000000),
+(1, 2, 'silgium', 4, 600, 125000000),
+(1, 2, 'gammaterial', 2, 50, 10000000),
+(1, 2, 'energymineral', 12, 200, 24000000),
+--(1, 2, 'fluxore', 2, 200, 5000000),
+
+(2, 2, 'titan', 6, 600, 125000000),
+(2, 2, 'crude', 1, 600, 125000000),
+(2, 2, 'stermonit', 4, 600, 125000000),
+(2, 2, 'imentium', 4, 600, 125000000),
+(2, 2, 'liquizit', 1, 600, 125000000),
+--(2, 2, 'epriton', 2, 300, 50000000),
+--(2, 2, 'silgium', 4, 600, 125000000),
+(2, 2, 'gammaterial', 2, 50, 10000000),
+(2, 2, 'energymineral', 12, 200, 24000000),
+--(2, 2, 'fluxore', 2, 200, 5000000),
+
+(3, 2, 'titan', 6, 600, 125000000),
+(3, 2, 'crude', 1, 600, 125000000),
+(3, 2, 'stermonit', 4, 600, 125000000),
+--(3, 2, 'imentium', 4, 600, 125000000),
+(3, 2, 'liquizit', 1, 600, 125000000),
+--(3, 2, 'epriton', 2, 300, 50000000),
+(3, 2, 'silgium', 4, 600, 125000000),
+(3, 2, 'gammaterial', 2, 50, 10000000),
+(3, 2, 'energymineral', 12, 200, 24000000),
+--(3, 2, 'fluxore', 2, 200, 5000000),
+
+(1, 3, 'titan', 5, 600, 100000000),
+(1, 3, 'crude', 1, 600, 100000000),
+--(1, 3, 'stermonit', 3, 600, 100000000),
+(1, 3, 'imentium', 3, 600, 100000000),
+(1, 3, 'liquizit', 1, 600, 100000000),
+--(1, 3, 'epriton', 2, 300, 50000000),
+(1, 3, 'silgium', 3, 600, 100000000),
+(1, 3, 'gammaterial', 1, 50, 10000000),
+(1, 3, 'energymineral', 15, 200, 36000000),
+--(1, 3, 'fluxore', 2, 200, 5000000),
+
+(2, 3, 'titan', 5, 600, 100000000),
+(2, 3, 'crude', 1, 600, 100000000),
+(2, 3, 'stermonit', 3, 600, 100000000),
+(2, 3, 'imentium', 3, 600, 100000000),
+(2, 3, 'liquizit', 1, 600, 100000000),
+--(2, 3, 'epriton', 2, 300, 50000000),
+--(2, 3, 'silgium', 3, 600, 100000000),
+(2, 3, 'gammaterial', 1, 50, 10000000),
+(2, 3, 'energymineral', 15, 200, 36000000),
+--(2, 3, 'fluxore', 2, 200, 5000000),
+
+(3, 3, 'titan', 5, 600, 100000000),
+(3, 3, 'crude', 1, 600, 100000000),
+(3, 3, 'stermonit', 3, 600, 100000000),
+--(3, 3, 'imentium', 3, 600, 100000000),
+(3, 3, 'liquizit', 1, 600, 100000000),
+--(3, 3, 'epriton', 2, 300, 50000000),
+(3, 3, 'silgium', 3, 600, 100000000),
+(3, 3, 'gammaterial', 1, 50, 10000000),
+(3, 3, 'energymineral', 15, 200, 36000000);
+--(3, 3, 'fluxore', 2, 200, 5000000);
+
+
 PRINT N'CLEAR PLANT RULES';
 SELECT * FROM plantrules WHERE rulesetid IN (SELECT DISTINCT ruleSetID FROM #GAMMAPLANTS);
 DELETE FROM plantrules WHERE rulesetid IN (SELECT DISTINCT ruleSetID FROM #GAMMAPLANTS);
@@ -457,7 +600,7 @@ DELETE FROM zones WHERE id IN (SELECT zId FROM #GAMMAZONEPREP);
 
 INSERT INTO [dbo].[zones]
         ([id],[x],[y],[name],[description],[note],[fertility],[zoneplugin],[zoneip],[zoneport],[isinstance],[enabled],[spawnid],[plantruleset]
-		,[protected],[raceid],[width],[height],[terraformable],[zonetype],[sparkcost],[maxdockingbase],[sleeping],[plantaltitudescale],[host],[active])
+		,[protected],[raceid],[width],[height],[terraformable],[zonetype],[sparkcost],[maxdockingbase],[sleeping],[plantaltitudescale],[host],[active],[pbsTechLimit])
 SELECT
 	g.zId,
 	g.x,
@@ -484,7 +627,8 @@ SELECT
 	0,--[sleeping]
 	1,--[plantaltitudescale]
 	'genxyHost-01',--[host]
-	1--[active]
+	1,--[active],
+	CASE WHEN g.tier > 0 THEN g.tier ELSE 0 END AS pbsTechLimit--[pbsTechLimit]
 FROM #GAMMAZONEPREP AS g;
 
 SELECT * FROM zoneriftsconfig WHERE zoneid IN (SELECT zId FROM #GAMMAZONEPREP);
@@ -496,4 +640,24 @@ INSERT INTO zoneriftsconfig (zoneid, maxrifts, maxlevel)
 INSERT INTO zoneriftsconfig (zoneid, maxrifts, maxlevel)
 	SELECT zId, 0, 0 FROM #GAMMAZONEPREP WHERE zId NOT IN (SELECT zoneid FROM zoneriftsconfig);
 
+SELECT * FROM mineralconfigs WHERE zoneid IN (SELECT zId FROM #GAMMAZONEPREP);
+DELETE FROM mineralconfigs WHERE zoneid IN (SELECT zId FROM #GAMMAZONEPREP);
+
+
+INSERT INTO mineralconfigs (zoneid, materialtype, maxnodes, maxtilespernode, totalamountpernode, minthreshold)
+	SELECT 
+		z.zId,
+		(select top 1 idx from minerals where name=o.mineralName) as matId,
+		o.maxFields,
+		o.maxTilesPerField,
+		o.totalAmountPerField,
+		0.5
+	 FROM #GAMMAZONEPREP z JOIN #GAMMAORES o on o.tier=z.tier AND o.raceID=z.raceID
+	 order by z.zId, matId;
+
+
+DROP TABLE IF EXISTS #FACTIONPLANTMAP;
+DROP TABLE IF EXISTS #GAMMAPLANTS;
+DROP TABLE IF EXISTS #GAMMAORES;
+DROP TABLE IF EXISTS #GAMMAZONEPREP;
 GO
