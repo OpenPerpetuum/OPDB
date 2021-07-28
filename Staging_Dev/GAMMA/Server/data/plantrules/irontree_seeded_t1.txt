@@ -1,0 +1,3 @@
+source=$irontree_lo.txt
+fruitAmount=n75
+playerSeeded=n1

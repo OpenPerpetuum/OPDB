@@ -1,0 +1,2 @@
+source=$rustbush_lo.txt
+fruitAmount=n150

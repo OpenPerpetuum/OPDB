@@ -1,0 +1,3 @@
+source=$electroplant_lo_beta.txt
+fruitAmount=n50
+playerSeeded=n0
