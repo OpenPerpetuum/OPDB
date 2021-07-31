@@ -52,7 +52,7 @@ call:applyPatch Live_19 live_patch_19.sql Server
 call:applyPatch Live_20 live_patch_20.sql Server
 call:applyPatch Live_21 live_patch_21.sql Server
 call:applyPatch Live_22 live_patch_22.sql Server
-call:applyPatch Live_22 live_patch_23.sql
+call:applyPatch Live_23 live_patch_23.sql
 
 echo.
 echo Setting up the tool admin account..
