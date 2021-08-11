@@ -525,6 +525,11 @@ INSERT INTO #GAMMAORES(raceID, tier, mineralName, maxFields, maxTilesPerField, t
 (3, 3, 'energymineral', 15, 200, 36000000);
 --(3, 3, 'fluxore', 2, 200, 5000000);
 
+PRINT N'CLEAR teleportdescriptions';
+DELETE FROM teleportdescriptions WHERE sourcezone in (SELECT zId FROM #GAMMAZONEPREP) OR targetzone in (SELECT zId FROM #GAMMAZONEPREP);
+DELETE FROM zoneentities WHERE zoneID in (SELECT zId FROM #GAMMAZONEPREP);
+DELETE FROM zoneuserentities WHERE zoneID in (SELECT zId FROM #GAMMAZONEPREP);
+
 
 PRINT N'CLEAR PLANT RULES';
 SELECT * FROM plantrules WHERE rulesetid IN (SELECT DISTINCT ruleSetID FROM #GAMMAPLANTS);
@@ -562,8 +567,10 @@ DELETE FROM npcpresence WHERE spawnid IN (
 );
 
 PRINT N'CLEAR SPAWN';
-SELECT * FROM npcspawn WHERE id IN (SELECT spawnid FROM zones WHERE id IN (SELECT zId FROM #GAMMAZONEPREP));
-DELETE FROM npcspawn WHERE id IN (SELECT spawnid FROM zones WHERE id IN (SELECT zId FROM #GAMMAZONEPREP));
+SELECT * FROM npcspawn WHERE name IN (SELECT 'zone_gamma_' + CONVERT(varchar(10), zId) + '_spawn' FROM #GAMMAZONEPREP);
+DELETE FROM npcspawn WHERE name IN (SELECT 'zone_gamma_' + CONVERT(varchar(10), zId) + '_spawn' FROM #GAMMAZONEPREP);
+PRINT N'CLEAR zones';
+DELETE FROM zones WHERE id IN (SELECT zId FROM #GAMMAZONEPREP);
 
 PRINT N'INSERT SPAWN';
 INSERT INTO [dbo].[npcspawn] ([name],[description],[note])
@@ -595,8 +602,6 @@ WHEN NOT MATCHED
 	THEN INSERT (storage_name,eid) VALUES 
 		('es_zone_'+CONVERT(varchar(10), zId)+'_storage', (SELECT TOP 1 eid FROM entities WHERE ename='es_zone_'+CONVERT(varchar(10), zId)+'_storage'));
 
-SELECT * FROM zones WHERE id IN (SELECT zId FROM #GAMMAZONEPREP);
-DELETE FROM zones WHERE id IN (SELECT zId FROM #GAMMAZONEPREP); 
 
 INSERT INTO [dbo].[zones]
         ([id],[x],[y],[name],[description],[note],[fertility],[zoneplugin],[zoneip],[zoneport],[isinstance],[enabled],[spawnid],[plantruleset]
