@@ -183,7 +183,7 @@ VALUES
 ('Zone_110_T0_Numiqol_Roamer_03',7,7,2040,2040,'Zone_110_T0_Numiqol_Roamer_03',63,1,0,14400,5,0,0,0,0,0,1,1,1,NULL),
 ('Zone_110_T0_Numiqol_Roamer_04',7,7,2040,2040,'Zone_110_T0_Numiqol_Roamer_03',63,1,0,14400,5,0,0,0,0,0,1,1,1,NULL),
 ('Zone_110_T0_Numiqol_Roamer_05',7,7,2040,2040,'Zone_110_T0_Numiqol_Roamer_03',63,1,0,14400,5,0,0,0,0,0,1,1,1,NULL),
-('Zone_110_T0_Numiqol_Roamer_06',1000,1000,1010,1010,'Zone_110_T0_Numiqol_Roamer_06',63,1,0,28800,0,0,0,0,0,0,1,1,1,NULL);
+('Zone_110_T0_Numiqol_Roamer_06',7,7,2040,2040,'Zone_110_T0_Numiqol_Roamer_06',63,1,0,28800,0,0,0,0,0,0,1,1,1,NULL);
 
 CREATE TABLE #FLOCKS(
 	[name] [varchar](128) NOT NULL,

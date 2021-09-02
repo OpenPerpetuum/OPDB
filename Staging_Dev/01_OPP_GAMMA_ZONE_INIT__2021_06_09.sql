@@ -1,6 +1,17 @@
 USE [perpetuumsa]
 GO
 
+-----------------------------------
+-- Gamma zone inits and basic configs
+-- This file sets the zone records
+-- plants, minerals, and (empty) spawns
+-- 
+-- Date modified: 2021/09/02
+-----------------------------------
+
+
+
+
 DROP TABLE IF EXISTS #GAMMAPLANTS;
 CREATE TABLE #GAMMAPLANTS(
 	ruleSetID INT,
@@ -337,11 +348,11 @@ CREATE TABLE #GAMMAZONEPREP(
 );
 INSERT INTO #GAMMAZONEPREP (zId, zPrefix, zSize, x, y, raceID, tier) VALUES
 --Tc islands
-(100, 'zone_gamma_tc_z', 256, 7988, -34302, 1, -1),
+(100, 'zone_gamma_tc_z', 256, 8488, -33302, 1, -1),
 (101, 'zone_gamma_tc_z', 256, -374, -40237, 1, -1),
-(102, 'zone_gamma_tc_z', 256, -9082, -34128, 3, -1),
+(102, 'zone_gamma_tc_z', 256, -9582, -34128, 3, -1),
 (103, 'zone_gamma_tc_z', 256, -10035, -24034, 3, -1),
-(104, 'zone_gamma_tc_z', 256, 1447, -18626, 2, -1),
+(104, 'zone_gamma_tc_z', 256, 1447, -17026, 2, -1),
 (105, 'zone_gamma_tc_z', 256, 13275, -23435, 2, -1),
 
 --Phase1
@@ -525,10 +536,10 @@ INSERT INTO #GAMMAORES(raceID, tier, mineralName, maxFields, maxTilesPerField, t
 (3, 3, 'energymineral', 15, 200, 36000000);
 --(3, 3, 'fluxore', 2, 200, 5000000);
 
-PRINT N'CLEAR teleportdescriptions';
-DELETE FROM teleportdescriptions WHERE sourcezone in (SELECT zId FROM #GAMMAZONEPREP) OR targetzone in (SELECT zId FROM #GAMMAZONEPREP);
-DELETE FROM zoneentities WHERE zoneID in (SELECT zId FROM #GAMMAZONEPREP);
-DELETE FROM zoneuserentities WHERE zoneID in (SELECT zId FROM #GAMMAZONEPREP);
+--PRINT N'CLEAR teleportdescriptions';
+--DELETE FROM teleportdescriptions WHERE sourcezone in (SELECT zId FROM #GAMMAZONEPREP) OR targetzone in (SELECT zId FROM #GAMMAZONEPREP);
+--DELETE FROM zoneentities WHERE zoneID in (SELECT zId FROM #GAMMAZONEPREP);
+--DELETE FROM zoneuserentities WHERE zoneID in (SELECT zId FROM #GAMMAZONEPREP);
 
 
 PRINT N'CLEAR PLANT RULES';
@@ -570,7 +581,7 @@ PRINT N'CLEAR SPAWN';
 SELECT * FROM npcspawn WHERE name IN (SELECT 'zone_gamma_' + CONVERT(varchar(10), zId) + '_spawn' FROM #GAMMAZONEPREP);
 DELETE FROM npcspawn WHERE name IN (SELECT 'zone_gamma_' + CONVERT(varchar(10), zId) + '_spawn' FROM #GAMMAZONEPREP);
 PRINT N'CLEAR zones';
-DELETE FROM zones WHERE id IN (SELECT zId FROM #GAMMAZONEPREP);
+--DELETE FROM zones WHERE id IN (SELECT zId FROM #GAMMAZONEPREP);
 
 PRINT N'INSERT SPAWN';
 INSERT INTO [dbo].[npcspawn] ([name],[description],[note])
@@ -603,11 +614,42 @@ WHEN NOT MATCHED
 		('es_zone_'+CONVERT(varchar(10), zId)+'_storage', (SELECT TOP 1 eid FROM entities WHERE ename='es_zone_'+CONVERT(varchar(10), zId)+'_storage'));
 
 
-INSERT INTO [dbo].[zones]
-        ([id],[x],[y],[name],[description],[note],[fertility],[zoneplugin],[zoneip],[zoneport],[isinstance],[enabled],[spawnid],[plantruleset]
+MERGE [dbo].[zones] AS z
+USING #GAMMAZONEPREP AS g
+ON g.zId=z.id
+WHEN MATCHED THEN
+	UPDATE SET
+		x=g.x,
+		y=g.y,
+		name=g.zPrefix+CONVERT(varchar(10), g.zId),
+		description=g.zPrefix+CONVERT(varchar(10), g.zId)+'_desc',
+		note='gamma tier '+CONVERT(varchar(10), g.tier),
+		fertility=20,
+		zoneplugin='zone_'+CONVERT(varchar(10), g.zId),
+		zoneip='109.236.88.106',
+		zoneport=18800+g.zId,
+		isinstance=0,
+		enabled=1,
+		spawnid=(SELECT TOP 1 id FROM npcspawn WHERE name='zone_gamma_' + CONVERT(varchar(10), g.zId) + '_spawn'),
+		plantruleset=(SELECT TOP 1 f.ruleID FROM #FACTIONPLANTMAP AS f WHERE f.raceID=g.raceID AND f.tierLevel=g.tier),
+		protected=0,
+		raceid=g.raceID,
+		width=g.zSize,
+		height=g.zSize,
+		terraformable=CASE WHEN g.tier > 0 THEN 1 ELSE 0 END,
+		zonetype=2,
+		sparkcost=3,
+		maxdockingbase=CASE WHEN g.tier > 0 THEN 2 ELSE 0 END,
+		sleeping=0,
+		plantaltitudescale=1,
+		host='genxyHost-01',
+		active=1,
+		pbsTechLimit=CASE WHEN g.tier > 0 THEN g.tier ELSE 0 END
+WHEN NOT MATCHED THEN 
+	INSERT ([id],[x],[y],[name],[description],[note],[fertility],[zoneplugin],[zoneip],[zoneport],[isinstance],[enabled],[spawnid],[plantruleset]
 		,[protected],[raceid],[width],[height],[terraformable],[zonetype],[sparkcost],[maxdockingbase],[sleeping],[plantaltitudescale],[host],[active],[pbsTechLimit])
-SELECT
-	g.zId,
+VALUES
+	(g.zId,
 	g.x,
 	g.y, 
 	g.zPrefix+CONVERT(varchar(10), g.zId),--[name]
@@ -625,16 +667,50 @@ SELECT
 	g.raceID,--[raceid]
 	g.zSize,--[width]
 	g.zSize,--[height]
-	CASE WHEN g.tier > 0 THEN 1 ELSE 0 END AS terraformable,--[terraformable]--Set to 0 to disable erosion to altitude edits
+	CASE WHEN g.tier > 0 THEN 1 ELSE 0 END,--[terraformable]--Set to 0 to disable erosion to altitude edits
 	2,--[zonetype]
 	3,--[sparkcost]
-	2,--[maxdockingbase]
+	CASE WHEN g.tier > 0 THEN 2 ELSE 0 END, --[maxdockingbase] 
 	0,--[sleeping]
 	1,--[plantaltitudescale]
 	'genxyHost-01',--[host]
 	1,--[active],
-	CASE WHEN g.tier > 0 THEN g.tier ELSE 0 END AS pbsTechLimit--[pbsTechLimit]
-FROM #GAMMAZONEPREP AS g;
+	CASE WHEN g.tier > 0 THEN g.tier ELSE 0 END--[pbsTechLimit]
+);
+
+--OLD DELETE/REINSERT LOGIC - TEST MERGE
+--INSERT INTO [dbo].[zones]
+--        ([id],[x],[y],[name],[description],[note],[fertility],[zoneplugin],[zoneip],[zoneport],[isinstance],[enabled],[spawnid],[plantruleset]
+--		,[protected],[raceid],[width],[height],[terraformable],[zonetype],[sparkcost],[maxdockingbase],[sleeping],[plantaltitudescale],[host],[active],[pbsTechLimit])
+--SELECT
+--	g.zId,
+--	g.x,
+--	g.y, 
+--	g.zPrefix+CONVERT(varchar(10), g.zId),--[name]
+--	g.zPrefix+CONVERT(varchar(10), g.zId)+'_desc',--[description]
+--	'gamma tier '+CONVERT(varchar(10), g.tier),--[note]
+--	20,--[fertility]
+--	'zone_'+CONVERT(varchar(10), g.zId),--[zoneplugin]
+--	'109.236.88.106',--[zoneip]
+--	18800+g.zId,--[zoneport]
+--	0,--[isinstance]
+--	1,--[enabled]
+--	(SELECT TOP 1 id FROM npcspawn WHERE name='zone_gamma_' + CONVERT(varchar(10), g.zId) + '_spawn'),--[spawnid]
+--	(SELECT TOP 1 f.ruleID FROM #FACTIONPLANTMAP AS f WHERE f.raceID=g.raceID AND f.tierLevel=g.tier),--[plantruleset]
+--	0,--[protected]
+--	g.raceID,--[raceid]
+--	g.zSize,--[width]
+--	g.zSize,--[height]
+--	CASE WHEN g.tier > 0 THEN 1 ELSE 0 END AS terraformable,--[terraformable]--Set to 0 to disable erosion to altitude edits
+--	2,--[zonetype]
+--	3,--[sparkcost]
+--	CASE WHEN g.tier > 0 THEN 2 ELSE 0 END AS maxdockingbase, --[maxdockingbase] 
+--	0,--[sleeping]
+--	1,--[plantaltitudescale]
+--	'genxyHost-01',--[host]
+--	1,--[active],
+--	CASE WHEN g.tier > 0 THEN g.tier ELSE 0 END AS pbsTechLimit--[pbsTechLimit]
+--FROM #GAMMAZONEPREP AS g;
 
 SELECT * FROM zoneriftsconfig WHERE zoneid IN (SELECT zId FROM #GAMMAZONEPREP);
 DELETE FROM zoneriftsconfig WHERE zoneid IN (SELECT zId FROM #GAMMAZONEPREP);
@@ -644,6 +720,9 @@ INSERT INTO zoneriftsconfig (zoneid, maxrifts, maxlevel)
 
 INSERT INTO zoneriftsconfig (zoneid, maxrifts, maxlevel)
 	SELECT zId, 0, 0 FROM #GAMMAZONEPREP WHERE zId NOT IN (SELECT zoneid FROM zoneriftsconfig);
+
+SELECT * FROM mineralnodes WHERE zoneid IN (SELECT zId FROM #GAMMAZONEPREP);
+DELETE FROM mineralnodes WHERE zoneid IN (SELECT zId FROM #GAMMAZONEPREP);
 
 SELECT * FROM mineralconfigs WHERE zoneid IN (SELECT zId FROM #GAMMAZONEPREP);
 DELETE FROM mineralconfigs WHERE zoneid IN (SELECT zId FROM #GAMMAZONEPREP);
