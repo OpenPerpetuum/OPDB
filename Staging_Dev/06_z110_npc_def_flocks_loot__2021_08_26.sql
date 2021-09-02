@@ -1,8 +1,10 @@
 USE [perpetuumsa]
 GO
 
+DECLARE @ZONE_ID_VALUE AS INT = 110;
+DECLARE @ZONE_ID AS VARCHAR(12) = CONVERT(VARCHAR(12), @ZONE_ID_VALUE);
 DECLARE @BOSS_NAME AS VARCHAR(128) = 'def_npc_Gamma_Numiquol_Pitboss';
-DECLARE @SPAWN_ID AS INT = (SELECT TOP 1 spawnid FROM zones WHERE id=110)
+DECLARE @SPAWN_ID AS INT = (SELECT TOP 1 spawnid FROM zones WHERE id=@ZONE_ID_VALUE);
 
 DROP TABLE IF EXISTS #PRES;
 DROP TABLE IF EXISTS #FLOCKS;
@@ -160,7 +162,6 @@ CREATE TABLE #PRES(
 	[topy] [int] NOT NULL,
 	[bottomx] [int] NOT NULL,
 	[bottomy] [int] NOT NULL,
-	[note] [nvarchar](2000) NULL,
 	[spawnid] [int] NULL,
 	[enabled] [bit] NOT NULL,
 	[roaming] [bit] NOT NULL,
@@ -176,14 +177,17 @@ CREATE TABLE #PRES(
 	[safebodypull] [bit] NOT NULL,
 	[izgroupid] [int] NULL
 );
-INSERT INTO #PRES (name, topx, topy, bottomx, bottomy, note, spawnid, enabled, roaming, roamingrespawnseconds, presencetype, maxrandomflock, randomcenterx, randomcentery, randomradius, dynamiclifetime, isbodypull, isrespawnallowed, safebodypull, izgroupid)
+INSERT INTO #PRES (name, topx, topy, bottomx, bottomy, spawnid, enabled, roaming, roamingrespawnseconds, presencetype, maxrandomflock, randomcenterx, randomcentery, randomradius, dynamiclifetime, isbodypull, isrespawnallowed, safebodypull, izgroupid)
 VALUES
-('Zone_110_T0_Numiqol_Roamer_01',7,7,2040,2040,'Zone_110_T0_Numiqol_Roamer_01',63,1,0,14400,5,0,0,0,0,0,1,1,1,NULL),
-('Zone_110_T0_Numiqol_Roamer_02',7,7,2040,2040,'Zone_110_T0_Numiqol_Roamer_02',63,1,0,14400,5,0,0,0,0,0,1,1,1,NULL),
-('Zone_110_T0_Numiqol_Roamer_03',7,7,2040,2040,'Zone_110_T0_Numiqol_Roamer_03',63,1,0,14400,5,0,0,0,0,0,1,1,1,NULL),
-('Zone_110_T0_Numiqol_Roamer_04',7,7,2040,2040,'Zone_110_T0_Numiqol_Roamer_03',63,1,0,14400,5,0,0,0,0,0,1,1,1,NULL),
-('Zone_110_T0_Numiqol_Roamer_05',7,7,2040,2040,'Zone_110_T0_Numiqol_Roamer_03',63,1,0,14400,5,0,0,0,0,0,1,1,1,NULL),
-('Zone_110_T0_Numiqol_Roamer_06',7,7,2040,2040,'Zone_110_T0_Numiqol_Roamer_06',63,1,0,28800,0,0,0,0,0,0,1,1,1,NULL);
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_01',7,7,2040,2040,@SPAWN_ID,1,0,14400,5,0,0,0,0,0,1,1,1,NULL),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_02',7,7,2040,2040,@SPAWN_ID,1,0,14400,5,0,0,0,0,0,1,1,1,NULL),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_03',7,7,2040,2040,@SPAWN_ID,1,0,14400,5,0,0,0,0,0,1,1,1,NULL),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_04',7,7,2040,2040,@SPAWN_ID,1,0,14400,5,0,0,0,0,0,1,1,1,NULL),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_05',7,7,2040,2040,@SPAWN_ID,1,0,14400,5,0,0,0,0,0,1,1,1,NULL),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Static_06',7,7,2040,2040,@SPAWN_ID,1,0,28800,0,0,0,0,0,0,1,1,1,NULL),--STATIC BOSS PRES
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_07',7,7,2040,2040,@SPAWN_ID,1,0,14400,5,0,0,0,0,0,1,1,1,NULL),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_08',7,7,2040,2040,@SPAWN_ID,1,0,14400,5,0,0,0,0,0,1,1,1,NULL);
+
 
 CREATE TABLE #FLOCKS(
 	[name] [varchar](128) NOT NULL,
@@ -197,39 +201,47 @@ CREATE TABLE #FLOCKS(
 	[respawnseconds] [int] NOT NULL,
 	[totalspawncount] [int] NOT NULL,
 	[homerange] [int] NOT NULL,
-	[note] [nvarchar](2000) NULL,
 	[respawnmultiplierlow] [float] NOT NULL,
 	[enabled] [bit] NOT NULL,
 	[iscallforhelp] [bit] NOT NULL,
 	[behaviorType] [int] NOT NULL,
 	[npcSpecialType] [int] NOT NULL,
 );
-INSERT INTO #FLOCKS (name, presenceName, definitionName, flockmembercount, spawnoriginX, spawnoriginY, spawnrangeMin, spawnrangeMax, respawnseconds, totalspawncount, homerange, note, respawnmultiplierlow, enabled, iscallforhelp, behaviorType, npcSpecialType)
+INSERT INTO #FLOCKS (name, presenceName, definitionName, flockmembercount, spawnoriginX, spawnoriginY, spawnrangeMin, spawnrangeMax, respawnseconds, totalspawncount, homerange, respawnmultiplierlow, enabled, iscallforhelp, behaviorType, npcSpecialType)
 VALUES
-('Zone_110_T0_Numiqol_Roamer_01_Kain','Zone_110_T0_Numiqol_Roamer_01','def_npc_kain_rank5_elite',2,1381,599,2,5,14400,0,50,'Zone_110_T0_Numiqol_Roamer_01_Kain',1,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_01_Arbalest','Zone_110_T0_Numiqol_Roamer_01','def_npc_arbalest_rank3_elite',3,1381,599,2,5,14400,0,50,'Zone_110_T0_Numiqol_Roamer_01_Arbalest',1,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_01_Mesmer','Zone_110_T0_Numiqol_Roamer_01','def_npc_mesmer_rank5_elite',1,1381,599,2,5,14400,0,50,'Zone_110_T0_Numiqol_Roamer_01_Mesmer',1,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_01_Vagabond','Zone_110_T0_Numiqol_Roamer_01','def_npc_vagabond_jammer_rank5',1,1381,599,2,5,14400,0,50,'Zone_110_T0_Numiqol_Roamer_01_Vagabond',1,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_01_Lithus','Zone_110_T0_Numiqol_Roamer_01','def_npc_lithus_basic_rank5',2,1381,599,2,5,14400,0,50,'Zone_110_T0_Numiqol_Roamer_01_Lithus',1,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_02_Yagel','Zone_110_T0_Numiqol_Roamer_02','def_npc_yagel_dps_rank5',2,1381,599,2,5,14400,0,50,'Zone_110_T0_Numiqol_Roamer_02_Yagel',1,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_02_Cam','Zone_110_T0_Numiqol_Roamer_02','def_npc_cameleon_ewjammer_rank5',1,1381,599,2,5,14400,0,50,'Zone_110_T0_Numiqol_Roamer_02_Cam',1,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_02_Arbalest','Zone_110_T0_Numiqol_Roamer_02','def_npc_arbalest_rank3_elite',3,1381,599,2,5,14400,0,50,'Zone_110_T0_Numiqol_Roamer_02_Arbalest',1,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_02_Sequer','Zone_110_T0_Numiqol_Roamer_02','def_npc_sequer_basic_rank5',2,1381,599,2,5,14400,0,50,'Zone_110_T0_Numiqol_Roamer_02_Sequer',1,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_02_Kain','Zone_110_T0_Numiqol_Roamer_02','def_npc_kain_rank5_elite',1,1381,599,2,5,14400,0,50,'Zone_110_T0_Numiqol_Roamer_02_Kain',1,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_03_Lithus','Zone_110_T0_Numiqol_Roamer_03','def_npc_lithus_basic_rank5',3,997,719,0,2,14400,0,50,'Zone_110_T0_Numiqol_Roamer_03_Lithus',0,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_03_Scarab','Zone_110_T0_Numiqol_Roamer_03','def_npc_scarab_basic_rank5',2,997,719,0,2,14400,0,50,'Zone_110_T0_Numiqol_Roamer_03_Scarab',0,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_03_Sequer','Zone_110_T0_Numiqol_Roamer_03','def_npc_sequer_basic_rank5',4,997,719,0,2,14400,0,50,'Zone_110_T0_Numiqol_Roamer_03_Sequer',0,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_03_Mesmer','Zone_110_T0_Numiqol_Roamer_03','def_npc_mesmer_rank5_elite',2,997,719,0,2,14400,0,50,'Zone_110_T0_Numiqol_Roamer_03_Mesmer',0,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_03_Vagabond','Zone_110_T0_Numiqol_Roamer_03','def_npc_vagabond_jammer_rank5',1,997,719,0,2,14400,0,50,'Zone_110_T0_Numiqol_Roamer_03_Vagabond',0,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_04_Arbalest','Zone_110_T0_Numiqol_Roamer_04','def_npc_roaming_arbalest_alpha',2,754,1584,2,5,14400,0,50,'Zone_110_T0_Numiqol_Roamer_04_Arbalest',1,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_04_Mesmer','Zone_110_T0_Numiqol_Roamer_04','def_npc_roaming_mesmer_beta',1,754,1584,2,5,14400,0,50,'Zone_110_T0_Numiqol_Roamer_04_Mesmer',1,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_04_Kain','Zone_110_T0_Numiqol_Roamer_04','def_npc_roaming_kain_alpha',2,754,1584,2,5,14400,0,50,'Zone_110_T0_Numiqol_Roamer_04_Kain',1,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_05_Arbalest','Zone_110_T0_Numiqol_Roamer_05','def_npc_roaming_arbalest_alpha',3,519,1377,2,5,14400,0,50,'Zone_110_T0_Numiqol_Roamer_05_Arbalest',1,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_05_Kain','Zone_110_T0_Numiqol_Roamer_05','def_npc_roaming_kain_beta',2,519,1377,2,5,14400,0,50,'Zone_110_T0_Numiqol_Roamer_05_Kain',1,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_06_pitboss','Zone_110_T0_Numiqol_Roamer_06','def_npc_Gamma_Numiquol_Pitboss',1,1003,1011,2,5,28800,0,50,'Zone_110_T0_Numiqol_Roamer_06_pitboss',1,1,1,2,1),
-('Zone_110_T0_Numiqol_Roamer_06_Mesmer','Zone_110_T0_Numiqol_Roamer_06','def_npc_mesmer_guard',2,1003,1011,2,5,28800,0,50,'Zone_110_T0_Numiqol_Roamer_06_mesmer',1,1,1,2,0),
-('Zone_110_T0_Numiqol_Roamer_06_kain','Zone_110_T0_Numiqol_Roamer_06','def_npc_kain_guard',2,1003,1011,2,5,28800,0,50,'Zone_110_T0_Numiqol_Roamer_06_kain',1,1,1,2,0);
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_01_Kain','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_01','def_npc_kain_rank5_elite',2,1381,599,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_01_Arbalest','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_01','def_npc_arbalest_rank3_elite',3,1381,599,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_01_Mesmer','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_01','def_npc_mesmer_rank5_elite',1,1381,599,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_01_Vagabond','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_01','def_npc_vagabond_jammer_rank5',1,1381,599,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_01_Lithus','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_01','def_npc_lithus_basic_rank5',2,1381,599,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_02_Yagel','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_02','def_npc_yagel_dps_rank5',2,1381,599,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_02_Cam','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_02','def_npc_cameleon_ewjammer_rank5',1,1381,599,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_02_Arbalest','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_02','def_npc_arbalest_rank3_elite',3,1381,599,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_02_Sequer','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_02','def_npc_sequer_basic_rank5',2,1381,599,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_02_Kain','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_02','def_npc_kain_rank5_elite',1,1381,599,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_03_Lithus','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_03','def_npc_lithus_basic_rank5',3,997,719,0,2,14400,0,50,0,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_03_Scarab','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_03','def_npc_scarab_basic_rank5',2,997,719,0,2,14400,0,50,0,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_03_Sequer','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_03','def_npc_sequer_basic_rank5',4,997,719,0,2,14400,0,50,0,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_03_Mesmer','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_03','def_npc_mesmer_rank5_elite',2,997,719,0,2,14400,0,50,0,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_03_Vagabond','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_03','def_npc_vagabond_jammer_rank5',1,997,719,0,2,14400,0,50,0,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_04_Arbalest','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_04','def_npc_roaming_arbalest_alpha',2,754,1584,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_04_Mesmer','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_04','def_npc_roaming_mesmer_beta',1,754,1584,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_04_Kain','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_04','def_npc_roaming_kain_alpha',2,754,1584,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_05_Arbalest','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_05','def_npc_roaming_arbalest_alpha',3,519,1377,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_05_Kain','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_05','def_npc_roaming_kain_beta',2,519,1377,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_06_pitboss','Zone_'+@ZONE_ID+'_T0_Numiqol_Static_06','def_npc_Gamma_Numiquol_Pitboss',1,1003,1011,2,5,28800,0,50,1,1,1,2,1),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_06_Mesmer','Zone_'+@ZONE_ID+'_T0_Numiqol_Static_06','def_npc_mesmer_guard',2,1003,1011,2,5,28800,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_06_kain','Zone_'+@ZONE_ID+'_T0_Numiqol_Static_06','def_npc_kain_guard',2,1003,1011,2,5,28800,0,50,1,1,1,2,0),
 
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_07_Yagel_elite','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_07','def_npc_yagel_rank1_elite',2,1003,1011,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_07_Came','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_07','def_npc_cameleon_interceptor_rank5',2,1003,1011,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_07_Arba','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_07','def_npc_arbalest_interceptor_rank5',2,1003,1011,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_07_Arba_niani','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_07','def_npc_percent_arby_rank4',2,1003,1011,2,5,14400,0,50,1,1,1,2,0),
+
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_08_Yagel','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_08','def_npc_yagel_scout_rank5',3,1003,1011,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_08_Arba','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_08','def_npc_arbalest_interceptor_rank5',3,1003,1011,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_08_Vaga','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_08','def_npc_vagabond_jammer_rank5',2,1003,1011,2,5,14400,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_08_Arba_mini','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_08','def_npc_arbalest_miniboss_rank1',2,1003,1011,2,5,14400,0,50,1,1,1,2,0);
 
 --SELECT * FROM npcbossinfo WHERE flockid IN (SELECT id FROM npcflock WHERE presenceid IN (SELECT id FROM npcpresence WHERE spawnid=@SPAWN_ID);
 --SELECT * FROM npcflock WHERE presenceid IN (SELECT id FROM npcpresence WHERE spawnid=@SPAWN_ID);
@@ -286,7 +298,7 @@ FROM #NPCLOOTS;
 
 INSERT INTO npcpresence ([name],[topx],[topy],[bottomx],[bottomy],[note],[spawnid],[enabled],[roaming],[roamingrespawnseconds],[presencetype],[maxrandomflock],[randomcenterx],[randomcentery],[randomradius],[dynamiclifetime],[isbodypull],[isrespawnallowed],[safebodypull],[izgroupid])
 SELECT 
-	name, topx, topy, bottomx, bottomy, note, spawnid, enabled, roaming, roamingrespawnseconds, presencetype, maxrandomflock, randomcenterx, randomcentery, randomradius, dynamiclifetime, isbodypull, isrespawnallowed, safebodypull, izgroupid
+	name, topx, topy, bottomx, bottomy, name, spawnid, enabled, roaming, roamingrespawnseconds, presencetype, maxrandomflock, randomcenterx, randomcentery, randomradius, dynamiclifetime, isbodypull, isrespawnallowed, safebodypull, izgroupid
 FROM #PRES;
 
 
@@ -296,13 +308,62 @@ SELECT
 	f.name, (SELECT TOP 1 id FROM npcpresence WHERE name=f.presenceName),
 	f.flockmembercount, (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=f.definitionName),
 	f.spawnoriginX, f.spawnoriginY, f.spawnrangeMin, f.spawnrangeMax, f.respawnseconds, f.totalspawncount,
-	f.homerange, f.note, f.respawnmultiplierlow, f.enabled, f.iscallforhelp, f.behaviorType, f.npcSpecialType
+	f.homerange, f.name, f.respawnmultiplierlow, f.enabled, f.iscallforhelp, f.behaviorType, f.npcSpecialType
 FROM #FLOCKS f;
 
 INSERT INTO npcbossinfo(flockid, respawnNoiseFactor, lootSplitFlag, overrideRelations, customAggressMessage, customDeathMessage, isAnnounced) VALUES
 ((SELECT TOP 1 id FROM npcflock WHERE definition=(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=@BOSS_NAME)),
-0.15, 1, 0, 'GET REKT NOOB', 'Whatever, Im not bitter', 1);
+0.15, 1, 0, 'This file was last editted 9/2/2021', 'oh noes i ded', 1);
 
+
+DECLARE @reinforceType AS INT = (SELECT TOP 1 id FROM npcreinforcementtypes WHERE name='boss');
+DECLARE @BOSSFLOCKNAME VARCHAR(128) = (SELECT TOP 1 name FROM npcflock WHERE definition=(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=@BOSS_NAME));
+
+DROP TABLE IF EXISTS #WAVES;
+CREATE TABLE #WAVES (
+	targetFlockName VARCHAR(100),
+	presenceName VARCHAR(100),
+	npcDefName VARCHAR(100),
+	numInFlock INT,
+	thresh FLOAT
+);
+INSERT INTO #WAVES (targetFlockName, presenceName, npcDefName, numInFlock, thresh) VALUES
+(@BOSSFLOCKNAME, 'reinforce_gamma_nuimqol_pitboss_wave_0', 'def_npc_cameleon_miniboss_rank3', 4, 0.15),
+(@BOSSFLOCKNAME, 'reinforce_gamma_nuimqol_pitboss_wave_0', 'def_npc_vagabond_miniboss_rank3', 3, 0.15),
+(@BOSSFLOCKNAME, 'reinforce_gamma_nuimqol_pitboss_wave_0', 'def_npc_kain_rank5_elite', 2, 0.15),
+
+(@BOSSFLOCKNAME, 'reinforce_gamma_nuimqol_pitboss_wave_1', 'def_npc_vagabond_miniboss_rank3', 4, 0.45),
+(@BOSSFLOCKNAME, 'reinforce_gamma_nuimqol_pitboss_wave_1', 'def_npc_kain_rank5_elite', 2, 0.45),
+(@BOSSFLOCKNAME, 'reinforce_gamma_nuimqol_pitboss_wave_1', 'def_npc_mesmer_rank5_elite', 2, 0.45),
+
+(@BOSSFLOCKNAME, 'reinforce_gamma_nuimqol_pitboss_wave_2', 'def_npc_percent_mesmer_rank5 ', 6, 0.70),
+(@BOSSFLOCKNAME, 'reinforce_gamma_nuimqol_pitboss_wave_2', 'def_npc_pbs_turret_ew_rank1', 1, 0.70);
+
+PRINT N'DELETE npcflock, npcpresence, npcreinforcements IF EXISTS where data in temp table';
+DELETE FROM npcflock WHERE presenceid in (SELECT id FROM npcpresence WHERE name in (SELECT DISTINCT presenceName FROM #WAVES));
+DELETE FROM npcpresence WHERE name in (SELECT DISTINCT presenceName FROM #WAVES);
+DELETE FROM npcreinforcements WHERE targetId in (SELECT id FROM npcflock WHERE name IN (SELECT DISTINCT targetFlockName from #WAVES));
+
+PRINT N'INSERT npcflock, npcpresence, npcreinforcements FROM temp table';
+INSERT INTO npcpresence 
+	(name,topx,topy,bottomx,bottomy,note,spawnid,enabled,roaming,roamingrespawnseconds,presencetype,maxrandomflock,randomcenterx,randomcentery,randomradius,dynamiclifetime,isbodypull,isrespawnallowed,safebodypull,izgroupid)
+SELECT DISTINCT 
+	presenceName, 0, 0, 0, 0, presenceName, 10, 1, 0, 0, 9, NULL, NULL, NULL, NULL, NULL, 1, 0, 1, NULL
+FROM #WAVES;
+
+INSERT INTO npcflock
+	(name,presenceid,flockmembercount,definition,spawnoriginX,spawnoriginY,spawnrangeMin,spawnrangeMax,respawnseconds,totalspawncount,homerange,note,respawnmultiplierlow,enabled,iscallforhelp,behaviorType,npcSpecialType)
+SELECT 
+	presenceName+npcDefName, (SELECT id FROM npcpresence WHERE name=presenceName), numInFlock, (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=npcDefName), 0, 0, 0, 10, 0, 1, 55, presenceName+npcDefName, 0.5, 1, 1, 2, 0
+FROM #WAVES;
+
+INSERT INTO dbo.npcreinforcements
+	(reinforcementType, targetId, threshold, presenceId, zoneId)
+SELECT
+	@reinforceType, (SELECT TOP 1 id FROM npcflock WHERE name=targetFlockName), thresh, (SELECT TOP 1 id FROM npcpresence WHERE name=presenceName), NULL
+FROM #WAVES;
+
+DROP TABLE IF EXISTS #WAVES;
 DROP TABLE IF EXISTS #PRES;
 DROP TABLE IF EXISTS #FLOCKS;
 DROP TABLE IF EXISTS #NPCDEFS;
