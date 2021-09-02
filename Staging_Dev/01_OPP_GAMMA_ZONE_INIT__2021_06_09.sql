@@ -348,11 +348,11 @@ CREATE TABLE #GAMMAZONEPREP(
 );
 INSERT INTO #GAMMAZONEPREP (zId, zPrefix, zSize, x, y, raceID, tier) VALUES
 --Tc islands
-(100, 'zone_gamma_tc_z', 256, 8488, -33302, 1, -1),
-(101, 'zone_gamma_tc_z', 256, -374, -40237, 1, -1),
-(102, 'zone_gamma_tc_z', 256, -9582, -34128, 3, -1),
-(103, 'zone_gamma_tc_z', 256, -10035, -24034, 3, -1),
-(104, 'zone_gamma_tc_z', 256, 1447, -17026, 2, -1),
+(100, 'zone_gamma_tc_z', 256, 9488, -31302, 1, -1),
+(101, 'zone_gamma_tc_z', 256, 774, -36237, 1, -1),
+(102, 'zone_gamma_tc_z', 256, -9582, -32128, 3, -1),
+(103, 'zone_gamma_tc_z', 256, -9035, -23034, 3, -1),
+(104, 'zone_gamma_tc_z', 256, 1647, -16026, 2, -1),
 (105, 'zone_gamma_tc_z', 256, 13275, -23435, 2, -1),
 
 --Phase1
@@ -389,7 +389,7 @@ INSERT INTO #GAMMAZONEPREP (zId, zPrefix, zSize, x, y, raceID, tier) VALUES
 (134, 'zone_gamma_z', 2048, 14259, -17761, 2, 3),
 (135, 'zone_gamma_z', 2048, 8973, -19147, 2, 2),
 (136, 'zone_gamma_z', 2048, 10360, -13298, 2, 2),
-(137, 'zone_gamma_z', 2048, 3428, -13688, 3, 1),
+(137, 'zone_gamma_z', 2048, 3428, -11688, 3, 1),
 (138, 'zone_gamma_z', 2048, -4674, -14078, 3, 2),
 (139, 'zone_gamma_z', 2048, -5150, -17674, 3, 2),
 (140, 'zone_gamma_z', 2048, -13165, -17804, 3, 3);
