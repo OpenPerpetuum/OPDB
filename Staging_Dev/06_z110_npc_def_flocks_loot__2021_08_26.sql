@@ -213,10 +213,10 @@ INSERT INTO #NPCLOOTS(defName, lootName, minQuantity, maxQuantity, probability, 
 (@MINI_BOSS_NAME,'def_research_kit_9',2,2,0.75,1,1),
 (@MINI_BOSS_NAME,'def_research_kit_8',2,3,0.9,1,1),
 (@MINI_BOSS_NAME,'def_robotshard_common_advanced',500,1500,1,1,1),
-(@MINI_BOSS_NAME,'def_robotshard_common_basic',500,1000,1,1,1),
+(@MINI_BOSS_NAME,'def_robotshard_common_basic',500,1500,1,1,1),
 (@MINI_BOSS_NAME,'def_robotshard_common_expert',500,500,1,1,1),
 (@MINI_BOSS_NAME,'def_robotshard_nuimqol_advanced',500,1500,1,1,1),
-(@MINI_BOSS_NAME,'def_robotshard_nuimqol_basic',500,1000,1,1,1),
+(@MINI_BOSS_NAME,'def_robotshard_nuimqol_basic',500,1500,1,1,1),
 (@MINI_BOSS_NAME,'def_robotshard_nuimqol_expert',500,500,1,1,1);
 
 
