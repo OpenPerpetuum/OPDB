@@ -309,7 +309,7 @@ VALUES
 ('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_08_Vaga','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_08','def_npc_vagabond_jammer_rank5',2,1003,1011,2,5,14400,0,50,1,1,1,2,0),
 ('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_08_Arba_mini','Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_08','def_npc_arbalest_miniboss_rank1',2,1003,1011,2,5,14400,0,50,1,1,1,2,0),
 
-('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_09_miniboss','Zone_'+@ZONE_ID+'_T0_Numiqol_RoamerMiniBoss_09',@MINI_BOSS_NAME,2,1003,1011,2,5,20000,0,50,1,1,1,2,0),
+('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_09_miniboss','Zone_'+@ZONE_ID+'_T0_Numiqol_RoamerMiniBoss_09',@MINI_BOSS_NAME,1,1003,1011,2,5,20000,0,50,1,1,1,2,0),
 ('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_09_Kain_elite','Zone_'+@ZONE_ID+'_T0_Numiqol_RoamerMiniBoss_09','def_npc_kain_rank5_elite',2,1003,1011,2,5,20000,0,50,1,1,1,2,0),
 ('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_09_Came_mini','Zone_'+@ZONE_ID+'_T0_Numiqol_RoamerMiniBoss_09','def_npc_cameleon_miniboss_rank2',2,1003,1011,2,5,20000,0,50,1,1,1,2,0);
 
