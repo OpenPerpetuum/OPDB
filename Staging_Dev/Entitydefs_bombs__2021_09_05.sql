@@ -32,8 +32,8 @@ INSERT INTO #BOMB_DEFS
 VALUES
 (6090, 'def_wall_bomb_a', 1, 536871936, 131986, '#height=f2.50', 'anti-wall bomb', 1, 1, 1, 0, 100, 'def_wall_bomb_a_desc', 0, 1, 1),
 (6091, 'def_wall_bomb_a_capsule', 1, 25167872, 2200, '', 'anti-wall bomb', 1, 2.0, 2500, 0, 100, 'def_wall_bomb_a_desc', 1, 1, 1),
-(6092, 'def_wall_bomb_b', 1, 536871936, 131986, '#height=f2.50', 'anti-wall bomb', 1, 1, 1, 0, 100, 'def_wall_bomb_b_desc', 0, 1, 1),
-(6093, 'def_wall_bomb_b_capsule', 1, 25167872, 2200, '', 'anti-wall bomb', 1, 2.0, 2500, 0, 100, 'def_wall_bomb_b_desc', 1, 1, 1);
+(6092, 'def_wall_bomb_b', 1, 536871936, 131986, '#height=f2.50', 'anti-wall bomb', 1, 1, 1, 0, 100, 'def_wall_bomb_b_desc', 0, 1, 2),
+(6093, 'def_wall_bomb_b_capsule', 1, 25167872, 2200, '', 'anti-wall bomb', 1, 2.0, 2500, 0, 100, 'def_wall_bomb_b_desc', 1, 1, 2);
 
 DROP TABLE IF EXISTS #BOMB_CONF;
 CREATE TABLE #BOMB_CONF(

@@ -1123,4 +1123,11 @@
 	"ErrorMessages_unknown_667": "Structure tech level too high for this island",
 	"ErrorMessages_unknown_668": "There is a field device too close by",
 
+	"def_wall_bomb_a": "Anti-Wall explosive device",
+	"def_wall_bomb_a_capsule": "Anti-Wall explosive device",
+	"def_wall_bomb_b": "Stealth Anti-Wall explosive device",
+	"def_wall_bomb_b_capsule": "Stealth Anti-Wall explosive device",
+	"def_wall_bomb_a_desc": "'''A bomb designed for destroying walls in a small area'''\n\nThe Syndicate have been made aware of some ''impediments'' to their agents from fully exploiting the lands of the outer Beta regions.\nTo ameliorate the situation, the Syndicate has provided this curious device.\n\nThis device, when activated, will ''decompile'' nearby walls and plants to assist in Agent movement.",
+	"def_wall_bomb_b_desc": "'''A bomb designed for destroying walls in a small area'''\n\nSyndicate Laboratories have improved upon their first ''impediment remover'' with this new variant, claiming a much smaller chance of detection at high ranges.  Though to maintain this it does take a bit longer to kick off the fireworks.\n\nWhen asked about this delay, lab staff responded:\n\n''You want fast bomb? We give you fast bomb. You want sneaky bomb? We give you sneaky bomb. You want fast-sneaky bomb?  We think customer should ask less questions of scientists that make bomb...'' - Syndicate Labs Representative",
+
 }
