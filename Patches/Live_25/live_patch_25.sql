@@ -305,6 +305,31 @@ DROP TABLE IF EXISTS #BOMB_CONF;
 DROP TABLE IF EXISTS #BOMB_DEFS;
 GO
 
+--Training reward insertion for new bomb
+USE [perpetuumsa]
+GO
+
+
+-------------------------
+-- Training rewards insert 
+-- Date modified: 2021/09/07
+-------------------------
+PRINT N'INSERT BOMB INTO TRAINING REWARDS';
+DECLARE @BOMB_DEF AS INT = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_wall_bomb_a_capsule');
+
+PRINT N'SELECT/DELETE WHERE BOMB_DEF EXISTS (0 results on 1st run)';
+SELECT * FROM trainingrewards WHERE definition=@BOMB_DEF;
+DELETE FROM trainingrewards WHERE definition=@BOMB_DEF;
+
+PRINT N'INSERTING BOMB INTO TRAINING REWARDS';
+INSERT INTO trainingrewards (level, definition, quantity, robottemplateid, raceid) VALUES
+(4, @BOMB_DEF, 1, NULL, 1),
+(4, @BOMB_DEF, 1, NULL, 2),
+(4, @BOMB_DEF, 1, NULL, 3),
+(4, @BOMB_DEF, 1, NULL, 5);
+
+PRINT N'Bombs for all new players that complete the tutorial';
+GO
 
 
 
