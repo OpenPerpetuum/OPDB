@@ -19,6 +19,7 @@ DROP TABLE IF EXISTS #NPCDEFS;
 DROP TABLE IF EXISTS #NPCMODS;
 DROP TABLE IF EXISTS #NPCLOOTS;
 
+DROP TABLE IF EXISTS #NPCDEFS;
 CREATE TABLE #NPCDEFS(
 	def int,
 	defName varchar(128),
@@ -35,6 +36,7 @@ INSERT INTO #NPCDEFS(def, defName, templateName, templateDescription, templateNo
 '#robot=id5#head=i82#chassis=i83#leg=i84#container=i14c#headModules=[|m0=[|definition=i424|slot=i1]|m1=[|definition=i424|slot=i2]|m2=[|definition=i424|slot=i3]|m3=[|definition=i424|slot=i4]|m4=[|definition=i31|slot=i5]]#chassisModules=[|m0=[|definition=i43|slot=i1|ammoDefinition=i982|ammoQuantity=i64]|m1=[|definition=i43|slot=i2|ammoDefinition=i982|ammoQuantity=i64]|m2=[|definition=i43|slot=i3|ammoDefinition=i982|ammoQuantity=i64]|m3=[|definition=i43|slot=i4|ammoDefinition=i982|ammoQuantity=i64]|m4=[|definition=i43|slot=i5|ammoDefinition=i982|ammoQuantity=i64]|m5=[|definition=i43|slot=i6|ammoDefinition=i982|ammoQuantity=i64]|m6=[|definition=i0|slot=i7]]#legModules=[|m0=[|definition=i286|slot=i1]|m1=[|definition=i286|slot=i2]|m2=[|definition=i289|slot=i3|ammoDefinition=i298|ammoQuantity=ia]|m3=[|definition=i13|slot=i4]|m4=[|definition=i13|slot=i5]|m5=[|definition=i13|slot=i6]]',
 'Gamma_numiquol_miniboss',350);
 
+DROP TABLE IF EXISTS #NPCMODS;
 CREATE TABLE #NPCMODS(
 	defName varchar(128),
 	fieldName varchar(128),
@@ -93,7 +95,7 @@ INSERT INTO #NPCMODS(defName, fieldName, val) VALUES
 (@MINI_BOSS_NAME,'detection_strength_modifier',50),
 (@MINI_BOSS_NAME,'missile_falloff_modifier',5.5);
 
-
+DROP TABLE IF EXISTS #NPCLOOTS;
 CREATE TABLE #NPCLOOTS(
 	defName varchar(128),
 	lootName varchar(128),
@@ -220,7 +222,7 @@ INSERT INTO #NPCLOOTS(defName, lootName, minQuantity, maxQuantity, probability, 
 (@MINI_BOSS_NAME,'def_robotshard_nuimqol_expert',500,500,1,1,1);
 
 
-
+DROP TABLE IF EXISTS #PRES;
 CREATE TABLE #PRES(
 	[name] [varchar](128) NOT NULL,
 	[topx] [int] NOT NULL,
@@ -254,7 +256,7 @@ VALUES
 ('Zone_'+@ZONE_ID+'_T0_Numiqol_Roamer_08',7,7,2040,2040,@SPAWN_ID,1,0,14400,5,0,0,0,0,0,1,1,1,NULL),
 ('Zone_'+@ZONE_ID+'_T0_Numiqol_RoamerMiniBoss_09',7,7,2040,2040,@SPAWN_ID,1,0,20000,5,0,0,0,0,0,1,1,1,NULL);
 
-
+DROP TABLE IF EXISTS #FLOCKS;
 CREATE TABLE #FLOCKS(
 	[name] [varchar](128) NOT NULL,
 	presenceName [varchar](128) NOT NULL,
