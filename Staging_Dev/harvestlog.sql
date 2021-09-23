@@ -7,6 +7,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+DROP TABLE IF EXISTS [dbo].[harvestlog]
+GO
 
 CREATE TABLE [dbo].[harvestlog](
 	[eventtime] [smalldatetime] NOT NULL,
