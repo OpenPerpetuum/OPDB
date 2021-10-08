@@ -8,6 +8,7 @@ GO
 -- TODO: define T1/2/3 variants w/ faction variations? (needs design)
 -------------------------------------
 
+DECLARE @PRES_TYPE AS INT = 12;
 DECLARE @PRES_LIFETIME AS INT = 60*10;
 DECLARE @GROWTH_CYCLE AS INT = 60*1;
 DECLARE @SPAWN_ID AS INT = (select top 1 spawnid from zones where id=106);
@@ -39,13 +40,14 @@ INSERT INTO #PRES (name, topx, topy, bottomx, bottomy,spawnid, enabled, roaming,
 	presencetype, maxrandomflock, randomcenterx, randomcentery, randomradius, dynamiclifetime, isbodypull,
 	isrespawnallowed, safebodypull, izgroupid, growthseconds)
 VALUES
-	('npc_escalation_flocks_holder',999,999,1049,1049,10,0,0,0,11,NULL,NULL,NULL,NULL,NULL,1,0,1,NULL,@PRES_LIFETIME),
-	('zone_106_npc_base_pres_01_TEST',40,40,2000,2000,@SPAWN_ID,1,0,0,11,NULL,NULL,NULL,NULL,@PRES_LIFETIME,1,1,1,NULL,@GROWTH_CYCLE),
-	('zone_106_npc_base_pres_02_TEST',40,40,2000,2000,@SPAWN_ID,1,0,0,11,NULL,NULL,NULL,NULL,@PRES_LIFETIME,1,1,1,NULL,@GROWTH_CYCLE),
-	('zone_106_npc_base_pres_03_TEST',40,40,2000,2000,@SPAWN_ID,1,0,0,11,NULL,NULL,NULL,NULL,@PRES_LIFETIME,1,1,1,NULL,@GROWTH_CYCLE),
-	('zone_106_npc_base_pres_04_TEST',40,40,2000,2000,@SPAWN_ID,1,0,0,11,NULL,NULL,NULL,NULL,@PRES_LIFETIME,1,1,1,NULL,@GROWTH_CYCLE),
-	('zone_106_npc_base_pres_05_TEST',40,40,2000,2000,@SPAWN_ID,1,0,0,11,NULL,NULL,NULL,NULL,@PRES_LIFETIME,1,1,1,NULL,@GROWTH_CYCLE);
+	('npc_escalation_flocks_holder',999,999,1049,1049,10,0,0,0,@PRES_TYPE,NULL,NULL,NULL,NULL,NULL,1,0,1,NULL,@PRES_LIFETIME),
+	('zone_106_npc_base_pres_01_TEST',40,40,2000,2000,@SPAWN_ID,1,0,@PRES_LIFETIME,@PRES_TYPE,NULL,NULL,NULL,NULL,@PRES_LIFETIME,1,1,1,NULL,@GROWTH_CYCLE),
+	('zone_106_npc_base_pres_02_TEST',40,40,2000,2000,@SPAWN_ID,1,0,@PRES_LIFETIME,@PRES_TYPE,NULL,NULL,NULL,NULL,@PRES_LIFETIME,1,1,1,NULL,@GROWTH_CYCLE),
+	('zone_106_npc_base_pres_03_TEST',40,40,2000,2000,@SPAWN_ID,1,0,@PRES_LIFETIME,@PRES_TYPE,NULL,NULL,NULL,NULL,@PRES_LIFETIME,1,1,1,NULL,@GROWTH_CYCLE),
+	('zone_106_npc_base_pres_04_TEST',40,40,2000,2000,@SPAWN_ID,1,0,@PRES_LIFETIME,@PRES_TYPE,NULL,NULL,NULL,NULL,@PRES_LIFETIME,1,1,1,NULL,@GROWTH_CYCLE),
+	('zone_106_npc_base_pres_05_TEST',40,40,2000,2000,@SPAWN_ID,1,0,@PRES_LIFETIME,@PRES_TYPE,NULL,NULL,NULL,NULL,@PRES_LIFETIME,1,1,1,NULL,@GROWTH_CYCLE);
 
+DELETE FROM npcescalactions WHERE presenceid IN (SELECT id FROM npcpresence WHERE name IN (SELECT DISTINCT name FROM #PRES));
 DELETE FROM npcflock WHERE presenceid IN (SELECT id FROM npcpresence WHERE name IN (SELECT DISTINCT name FROM #PRES));
 DELETE FROM npcpresence WHERE name IN (SELECT DISTINCT name FROM #PRES);
 
@@ -145,6 +147,8 @@ SELECT
 	flockName, @HOLDER_PRES, numInFlock, (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=npcDefName),
 	0, 0, 3*level+1, 5*level+1, 0, 1, 55, 'escalation flock test', 1, 1, 1, 2, 0
 FROM #LEVELS;
+
+
 
 INSERT INTO npcescalactions (presenceId, flockId, level, chance)
 SELECT

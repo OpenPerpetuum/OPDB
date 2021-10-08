@@ -1450,6 +1450,9 @@
 	"def_pbs_highwaynode_medium_capsule_pr":"Advanced accelerator strip foundation prototype",
 	"def_pbs_highwaynode_large_capsule_pr":"Hi-tech accelerator strip foundation prototype",
 
+	"error_MaxDockingBasePerZonePerCorporationReached":"Only 2 main terminals allowed per corporation on one island",
+	"error_MaxDockingBasePerZoneReached":"Only 2 main terminals can be placed on one island.",
+	"ErrorMessages_unknown_669":"A Nian Presence nearby is interfering with your ability to place structures here",
 
 	"def_npc_Gamma_Numiquol_Pitboss":"L10 Nuimqol WorldBoss",
 	"def_npc_Gamma_Numiquol_Pitboss_name":"Niani Centurion Overseer",
