@@ -1456,8 +1456,19 @@
 
 	"def_npc_Gamma_Numiquol_Pitboss":"L10 Nuimqol WorldBoss",
 	"def_npc_Gamma_Numiquol_Pitboss_name":"Niani Centurion Overseer",
-	"def_npc_Gamma_Numiquol_Pitboss_desc":"Deep in the lands of Gamma we find the resistance of Nians now in full force.  This Nuimqol Overseer is tasked with protecting these lands for future nian invasion."
+	"def_npc_Gamma_Numiquol_Pitboss_desc":"Deep in the lands of Gamma we find the resistance of Nians now in full force.  This Nuimqol Overseer is tasked with protecting these lands for future nian invasion.",
 
 
+	"effect_gamma_t0": "Gamma Tier 0",
+	"effect_gamma_t1": "Gamma Tier 1",
+	"effect_gamma_t2": "Gamma Tier 2",
+	"effect_gamma_t3": "Gamma Tier 3",
+	"effect_gamma_tc": "Gamma Connector",
+
+	"pbs_tech_limit": "Max Structure Tech Level",
+	"pbs_tech_limit_unit": "Tech",
+
+	"pvp_no_teleport": "No teleporting with PVP flag",
+	"pvp_no_teleport_unit": "",
 
 }
