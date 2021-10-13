@@ -1,4 +1,4 @@
 source=$electroplant_lo_beta.txt
-fruitAmount=n50
+fruitAmount=n200
 playerSeeded=n0
 allowedTerrainTypes=N1,2,5,6,9,10,19
