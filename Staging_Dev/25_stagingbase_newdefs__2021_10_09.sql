@@ -1,8 +1,6 @@
 USE [perpetuumsa]
 GO
 
-select * from entitydefaults
-
 
 -----------------------------------------------
 -- Expiring PBS base "staging base"

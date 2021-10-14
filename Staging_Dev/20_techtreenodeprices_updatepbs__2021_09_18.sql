@@ -5,7 +5,7 @@ GO
 -- PBS Research tree costs
 --
 --
--- Date modified: 2021/09/18
+-- Date modified: 2021/10/13
 -------------------------------------------------
 
 DROP TABLE IF EXISTS #KERNELCOSTS;
@@ -15,7 +15,12 @@ CREATE TABLE #KERNELCOSTS(
 	cost INT
 );
 INSERT INTO #KERNELCOSTS (defName, kernelType, cost) VALUES
-('def_construction_module_ammo_normal','hitech',5000),
+('def_construction_module_ammo_t1','hitech',5000),
+('def_construction_module_ammo_t1','industrial',5000),
+('def_construction_module_ammo_t2','hitech',10000),
+('def_construction_module_ammo_t2','industrial',10000),
+('def_construction_module_ammo_t3','hitech',20000),
+('def_construction_module_ammo_t3','industrial',20000),
 ('def_reactor_booster_a','hitech',10000),
 ('def_reactor_booster_b','hitech',25000),
 ('def_reactor_booster_c','hitech',75000),

@@ -21,6 +21,18 @@ INSERT INTO #ENTITYDEFS (def, defName, attrFlags, catFlags, cargoVolume, massOfM
 (6111,'def_reactor_booster_c', 2052, 916, 10, 15000, NULL, 'def_reactor_booster_a_desc', 1, 3);
 
 
+DROP TABLE IF EXISTS #TREE;
+CREATE TABLE #TREE(
+	defName varchar(100),
+	parentDefName varchar(100) null,
+	x int,
+	y int
+);
+INSERT INTO #TREE(defName, parentDefName, x, y) VALUES
+('def_reactor_booster_a', 'def_pbs_reactor_small_capsule', 2, 2),
+('def_reactor_booster_b', 'def_reactor_booster_a', 3, 1),
+('def_reactor_booster_c', 'def_reactor_booster_b', 4, 0);
+
 DROP TABLE IF EXISTS #CORE;
 CREATE TABLE #CORE
 (
@@ -86,7 +98,7 @@ WHEN MATCHED
 		descriptiontoken=description
 WHEN NOT MATCHED
     THEN INSERT (definition, definitionname,quantity,attributeflags,categoryflags,options,note,enabled,volume,mass,hidden,health,descriptiontoken,purchasable,tiertype,tierlevel) VALUES
-	(def, defName, 1, attrFlags, catFlags, genxyOptStr, 'Reactor fuel rods', 1 ,cargoVolume, massOfModule, 0, 100, description, 0, tierType, tierLevel);
+	(def, defName, 1, attrFlags, catFlags, genxyOptStr, 'Reactor fuel rods', 1 ,cargoVolume, massOfModule, 0, 100, description, 1, tierType, tierLevel);
 SET IDENTITY_INSERT [dbo].[entitydefaults] OFF;
 
 
@@ -113,6 +125,25 @@ WHEN NOT MATCHED
 	m.amount);
 
 
+PRINT N'MERGING tech tree';
+MERGE INTO techtree t USING #TREE r
+ON t.childdefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=r.defName)
+WHEN MATCHED
+    THEN UPDATE SET
+		t.groupID = 7,
+		t.x = r.x,
+		t.y = r.y,
+		t.parentdefinition = COALESCE((SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=r.parentDefName), 0)
+WHEN NOT MATCHED
+    THEN INSERT (parentdefinition, childdefinition, groupID, x, y)
+	VALUES
+	(COALESCE((SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=r.parentDefName), 0),
+	(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=r.defName),
+	7,r.x,r.y);
+
+
+
+DROP TABLE IF EXISTS #TREE;
 DROP TABLE IF EXISTS #MATS;
 DROP TABLE IF EXISTS #CORE;
 DROP TABLE IF EXISTS #ENTITYDEFS;
