@@ -1,6 +1,14 @@
 USE [perpetuumsa]
 GO
 
+--------------------------------------------------
+-- New Fuel items
+-- TODO: reactor b/c need CT and production table stuff
+--
+-------------------------------------------------
+
+
+
 DROP TABLE IF EXISTS #ENTITYDEFS;
 CREATE TABLE #ENTITYDEFS
 (
