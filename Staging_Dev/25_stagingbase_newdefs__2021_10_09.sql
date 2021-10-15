@@ -5,7 +5,6 @@ GO
 -----------------------------------------------
 -- Expiring PBS base "staging base"
 -- Adds a set of definitions, configs, stats, and components
--- TODO: research, CT, prototype, related bits, market seed?
 -- 
 -- Date modified: 2021/10/11 
 -----------------------------------------------
@@ -15,7 +14,7 @@ DECLARE @DEF AS INT = 6613;
 DECLARE @DEF_OBJ AS INT = 6614;
 DECLARE @DEF_CAP AS INT = 6615;
 
-DECLARE @ENV_STR AS VARCHAR(MAX) = (SELECT TOP 1 descriptionstring from environmentdescription WHERE definition=(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_pbs_docking_base_small'));
+DECLARE @ENV_STR AS VARCHAR(MAX) = (SELECT TOP 1 descriptionstring FROM environmentdescription WHERE definition=(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_pbs_docking_base_small'));
 
 
 DROP TABLE IF EXISTS #DEFS;
@@ -48,7 +47,7 @@ VALUES
 1, 1, 1, 0, 100, @DEF_NAME+'_desc', 0, 1, 0),
 
 (@DEF_CAP, @DEF_NAME+'_capsule', 1, 2172651520, 410, '#tier=$tierlevel_t0', 'Staging base!',
-1, 200, 200000, 0, 100, @DEF_NAME+'_desc', 1, 1, 0);
+1, 150, 200000, 0, 100, @DEF_NAME+'_desc', 1, 1, 0);
 
 
 DROP TABLE IF EXISTS #CONFIGS;
@@ -81,9 +80,9 @@ INSERT INTO #CONFIGS
  [inconnections],[outconnections],[reinforcecountermax],[bandwidthusage],[bandwidthcapacity],[tint]
 ,[typeexclusiverange],[network_node_range],[hitsize],[note])
 VALUES
-(@DEF_CAP, @DEF_OBJ, NULL, 30000, 330, NULL, 6, 0, 100, 5, 0, 0, 0, 0, 0, NULL, 100, 0, 7.071, 'capsule->object staging base'),
-(@DEF_OBJ, @DEF, 1, NULL, 330, 5000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '#000000', NULL, NULL, NULL, 'object->base staging'),
-(@DEF, NULL, NULL, 30000, 330, NULL, 6, 0, 100, 5, 0, 0, 0, 0, 0, '#820028', 100, 0, 7.071, 'staging base');
+(@DEF_CAP, @DEF_OBJ, NULL, 30000, 168, NULL, 6, 0, 100, 5, 0, 0, 1, 0, 0, NULL, 200, 0, 7.071, 'capsule->object staging base'),
+(@DEF_OBJ, @DEF, 1, NULL, 168, 5000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '#000000', NULL, NULL, NULL, 'object->base staging'),
+(@DEF, NULL, NULL, 30000, 168, NULL, 6, 0, 100, 5, 0, 0, 1, 0, 0, '#820028', 200, 0, 7.071, 'staging base');
 
 
 DROP TABLE IF EXISTS #VALS;
@@ -93,44 +92,44 @@ CREATE TABLE #VALS(
 	fieldvalue float
 );
 INSERT INTO #VALS(defname, fieldname, fieldvalue) VALUES
-(@DEF_NAME,'armor_max',500000),
+(@DEF_NAME,'armor_max',250000),
 (@DEF_NAME,'resist_chemical',50),
 (@DEF_NAME,'resist_explosive',50),
 (@DEF_NAME,'resist_kinetic',50),
 (@DEF_NAME,'resist_thermal',50),
 (@DEF_NAME,'signature_radius',100),
-(@DEF_NAME,'stealth_strength',75),
-(@DEF_NAME+'_capsule','armor_max',500000),
+(@DEF_NAME,'stealth_strength',80),
+(@DEF_NAME+'_capsule','armor_max',250000),
 (@DEF_NAME+'_capsule','resist_chemical',50),
 (@DEF_NAME+'_capsule','resist_explosive',50),
 (@DEF_NAME+'_capsule','resist_kinetic',50),
 (@DEF_NAME+'_capsule','resist_thermal',50),
 (@DEF_NAME+'_capsule','signature_radius',100),
-(@DEF_NAME+'_capsule','stealth_strength',75),
+(@DEF_NAME+'_capsule','stealth_strength',80),
 (@DEF_NAME+'_object','armor_max',5000),
 (@DEF_NAME+'_object','resist_chemical',50),
 (@DEF_NAME+'_object','resist_explosive',50),
 (@DEF_NAME+'_object','resist_kinetic',50),
 (@DEF_NAME+'_object','resist_thermal',50),
 (@DEF_NAME+'_object','signature_radius',5),
-(@DEF_NAME+'_object','stealth_strength',155);
+(@DEF_NAME+'_object','stealth_strength',120);
 
 
-DROP TABLE IF EXISTS #COMPS;
-CREATE TABLE #COMPS(
-	defname varchar(100),
-	compname varchar(100),
-	compval int
-);
-INSERT INTO #COMPS(defname, compname, compval) VALUES
-(@DEF_NAME+'_capsule','def_titanium',20000),
-(@DEF_NAME+'_capsule','def_plasteosine',7500),
-(@DEF_NAME+'_capsule','def_alligior',7500),
-(@DEF_NAME+'_capsule','def_hydrobenol',2000),
-(@DEF_NAME+'_capsule','def_espitium',5000),
-(@DEF_NAME+'_capsule','def_unimetal',20000),
-(@DEF_NAME+'_capsule','def_axicol',5000),
-(@DEF_NAME+'_capsule','def_axicoline',2000);
+--DROP TABLE IF EXISTS #COMPS;
+--CREATE TABLE #COMPS(
+--	defname varchar(100),
+--	compname varchar(100),
+--	compval int
+--);
+--INSERT INTO #COMPS(defname, compname, compval) VALUES
+--(@DEF_NAME+'_capsule','def_titanium',2000),
+--(@DEF_NAME+'_capsule','def_plasteosine',750),
+--(@DEF_NAME+'_capsule','def_alligior',750),
+--(@DEF_NAME+'_capsule','def_hydrobenol',200),
+--(@DEF_NAME+'_capsule','def_espitium',500),
+--(@DEF_NAME+'_capsule','def_unimetal',2000),
+--(@DEF_NAME+'_capsule','def_axicol',500),
+--(@DEF_NAME+'_capsule','def_axicoline',200);
 
 
 
@@ -206,11 +205,11 @@ DELETE FROM aggregatevalues WHERE definition IN (
 	)
 );
 
-DELETE FROM components WHERE definition IN (
-	SELECT definition FROM entitydefaults WHERE definitionname IN (
-		SELECT DISTINCT defname FROM #COMPS
-	)
-); 
+--DELETE FROM components WHERE definition IN (
+--	SELECT definition FROM entitydefaults WHERE definitionname IN (
+--		SELECT DISTINCT defname FROM #COMPS
+--	)
+--); 
 
 
 PRINT N'UPSERT [aggregatevalues]';
@@ -226,19 +225,19 @@ WHEN NOT MATCHED
 	(SELECT TOP 1 id FROM aggregatefields WHERE name=p.fieldname),
 	p.fieldvalue);
 
-PRINT N'UPSERT [components]';
-MERGE [dbo].[components] c USING #COMPS p
-ON c.definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=p.defname) AND 
-c.componentdefinition=(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=p.compname)
-WHEN MATCHED
-    THEN UPDATE SET
-		componentdefinition = (SELECT TOP 1 id FROM entitydefaults WHERE definitionname=p.compname),
-		componentamount = p.compval
-WHEN NOT MATCHED
-    THEN INSERT (definition, componentdefinition, componentamount) VALUES
-	((SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=p.defname),
-	(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=p.compname),
-	p.compval);
+--PRINT N'UPSERT [components]';
+--MERGE [dbo].[components] c USING #COMPS p
+--ON c.definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=p.defname) AND 
+--c.componentdefinition=(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=p.compname)
+--WHEN MATCHED
+--    THEN UPDATE SET
+--		componentdefinition = (SELECT TOP 1 id FROM entitydefaults WHERE definitionname=p.compname),
+--		componentamount = p.compval
+--WHEN NOT MATCHED
+--    THEN INSERT (definition, componentdefinition, componentamount) VALUES
+--	((SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=p.defname),
+--	(SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=p.compname),
+--	p.compval);
 
 
 DELETE FROM environmentdescription WHERE definition=@DEF;
