@@ -4,7 +4,7 @@ GO
 -----------------------------------------------
 -- Gamma teleport network holy f...
 --
--- Date modified: 2021/08/08
+-- Date modified: 2021/10/17
 -----------------------------------------------
 
 PRINT N'BUILDING TELEPORT NETWORK';
@@ -27,37 +27,37 @@ CREATE TABLE #CONNECTIONS(
 	targetColName VARCHAR(100)
 );
 INSERT INTO #CONNECTIONS (sourceColName, targetColName) VALUES
-('teleport_column_tmpvp_7','tpc_z100'),
-('tpc_z100','teleport_column_tmpvp_7'),
+('teleport_column_tmpvp_4','tpc_z100'),
+('tpc_z100','teleport_column_tmpvp_4'),
 ('tpc_z100','tpc_z130_SW'),
 ('tpc_z100','tpc_z112_NE'),
 ('tpc_z100','tpc_z113_S'),
 
-('teleport_column_tm2_uiria_Z','tpc_z101'),
-('tpc_z101','teleport_column_tm2_uiria_Z'),
+('teleport_column_initia_sw','tpc_z101'),
+('tpc_z101','teleport_column_initia_sw'),
 ('tpc_z101','tpc_z113_N'),
 ('tpc_z101','tpc_z115_E'),
 
-('teleport_column_asipvp_7','tpc_z102'),
-('tpc_z102','teleport_column_asipvp_7'),
+('teleport_column_asipvp_5','tpc_z102'),
+('tpc_z102','teleport_column_asipvp_5'),
 ('tpc_z102','tpc_z120_SE'),
 ('tpc_z102','tpc_z115_W'),
 ('tpc_z102','tpc_z116_N'),
 
-('tp_zone_4_11','tpc_z103'),
-('tpc_z103','tp_zone_4_11'),
+('teleport_column_asi2_vougar','tpc_z103'),
+('tpc_z103','teleport_column_asi2_vougar'),
 ('tpc_z103','tpc_z116_S'),
 ('tpc_z103','tpc_z117_E'),
 ('tpc_z103','tpc_z109_N'),
 
-('teleport_column_icspvp_1','tpc_z104'),
-('tpc_z104','teleport_column_icspvp_1'),
+('teleport_column_icspvp_2','tpc_z104'),
+('tpc_z104','teleport_column_icspvp_2'),
 ('tpc_z104','tpc_z137_N'),
 ('tpc_z104','tpc_z109_S'),
 ('tpc_z104','tpc_z111_W'),
 
-('teleport_column_ics2_vsehovski_Z','tpc_z105'),
-('tpc_z105','teleport_column_ics2_vsehovski_Z'),
+('teleport_column_ics2_vsehovski','tpc_z105'),
+('tpc_z105','teleport_column_ics2_vsehovski'),
 ('tpc_z105','tpc_z132_SW'),
 ('tpc_z105','tpc_z112_SE'),
 ('tpc_z105','tpc_z111_E'),
@@ -381,7 +381,7 @@ SELECT eid, def, NULL, NULL, 100, ename, 1, 0, '#enabled=i1' FROM #TELES;
 
 PRINT N'INSERT zoneentities';
 INSERT INTO zoneentities (zoneID, eid, definition, owner, ename, x, y, z, orientation, enabled, note, runtime, synckey)
-SELECT zoneid, eid, NULL, NULL, ename, x, y, 0, 0, 1, 'tpcol', 0, synckey FROM #TELES;
+SELECT zoneid, eid, NULL, NULL, ename, x+0.5, y+0.5, 0, 0, 1, 'tpcol', 0, synckey FROM #TELES;
 
 
 PRINT N'INSERT *EXISTING* TELEPORT ENTITIES INTO #TELES (AFTER DELETE/INSERT CALLS USING #TELES)';

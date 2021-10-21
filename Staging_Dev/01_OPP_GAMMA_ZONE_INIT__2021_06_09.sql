@@ -624,7 +624,7 @@ WHEN MATCHED THEN
 		name=g.zPrefix+CONVERT(varchar(10), g.zId),
 		description=g.zPrefix+CONVERT(varchar(10), g.zId)+'_desc',
 		note='gamma tier '+CONVERT(varchar(10), g.tier),
-		fertility=20,
+		fertility=15,
 		zoneplugin='zone_'+CONVERT(varchar(10), g.zId),
 		zoneip='109.236.88.106',
 		zoneport=18800+g.zId,
@@ -655,7 +655,7 @@ VALUES
 	g.zPrefix+CONVERT(varchar(10), g.zId),--[name]
 	g.zPrefix+CONVERT(varchar(10), g.zId)+'_desc',--[description]
 	'gamma tier '+CONVERT(varchar(10), g.tier),--[note]
-	20,--[fertility]
+	15,--[fertility]
 	'zone_'+CONVERT(varchar(10), g.zId),--[zoneplugin]
 	'109.236.88.106',--[zoneip]
 	18800+g.zId,--[zoneport]
