@@ -3,7 +3,7 @@ GO
 ---------------------------------
 -- GAMMA RELICS
 -- Contributors: Ghroom
--- Date Modified: 2021/10/09
+-- Date Modified: 2021/10/20
 ---------------------------------
 PRINT N'Configure and insert gamma relics';
 DROP TABLE IF EXISTS #TMPRELICTYPE;
@@ -123,11 +123,11 @@ VALUES
 ('T3','relic_level2_pelistal_beta2',30),
 ('T3','relic_level3_pelistal_beta2',20),
 ('T3','relic_level4_pelistal_gamma',10),
-('TC','relic_level4_neutral_gamma',20),
-('TC','relic_level4_indy_gamma',20),
-('TC','relic_level4_numiqol_gamma',20),
-('TC','relic_level4_pelistal_gamma',20),
-('TC','relic_level4_thelodica_gamma',20);
+('TC','relic_level2_neutral_beta2',20),
+('TC','relic_level2_indy_beta2',20),
+('TC','relic_level2_numiqol_beta2',20),
+('TC','relic_level2_pelistal_beta2',20),
+('TC','relic_level2_thelodica_beta2',20);
 
 DROP TABLE IF EXISTS #CONFIG;
 CREATE TABLE #CONFIG(
