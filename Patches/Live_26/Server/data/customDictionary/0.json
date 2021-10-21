@@ -1370,7 +1370,6 @@
 	"tpc_z140_E":"Mitaka E",
 	"tpc_z140_S":"Mitaka S",
 
-
 	"def_pbs_reactor_small_capsule_pr":"Standard reactor foundation prototype",
 	"def_pbs_core_transmitter_small_capsule_pr":"Standard energy transmitter node foundation prototype",
 	"def_pbs_docking_base_small_capsule_pr":"Standard main terminal foundation prototype",
@@ -1458,10 +1457,6 @@
 	"ErrorMessages_unknown_672":"Maximum number of Staging Bases on this island reached!",
 	"ErrorMessages_unknown_673":"Maximum number of Staging Bases for your Corporation on this island reached!",
 	"error_TeleportIsTooClose":"Teleport is too close!",
-
-	"def_npc_Gamma_Numiquol_Pitboss":"L10 Nuimqol WorldBoss",
-	"def_npc_Gamma_Numiquol_Pitboss_name":"Niani Centurion Overseer",
-	"def_npc_Gamma_Numiquol_Pitboss_desc":"Deep in the lands of Gamma we find the resistance of Nians now in full force.  This Nuimqol Overseer is tasked with protecting these lands for future nian invasion.",
 
 	"effect_gamma_t0": "Gamma Tier 0",
 	"effect_gamma_t1": "Gamma Tier 1",

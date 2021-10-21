@@ -5,7 +5,6 @@ GO
 -- Zone effects for Tiered Gamma islands
 --
 -- Date modified: 9/3/2021
---TODO new aggfields for pbstechlimit and no-teleport-with-pvp 
 -----------------------------------------
 
 DROP TABLE IF EXISTS #FIELDS;
