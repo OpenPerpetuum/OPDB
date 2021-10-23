@@ -2049,7 +2049,7 @@ CREATE TABLE #CONFIG(
 	respawnRate int
 );
 INSERT INTO #CONFIG(tier, maxSpawn, respawnRate) VALUES
-(-1, 1, 10800),
+(-1, 0, 10800),
 (0, 18, 10800),
 (1, 9, 10800),
 (2, 9, 10800),
