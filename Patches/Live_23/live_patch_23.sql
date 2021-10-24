@@ -96,6 +96,7 @@ SET @lootdefinitionID = (SELECT TOP 1 definition from entitydefaults WHERE [defi
 SET @npclootID = (SELECT TOP 1 id from npcloot WHERE definition = @definitionID AND lootdefinition = @lootdefinitionID  ORDER BY definition, lootdefinition DESC);
 UPDATE npcloot SET [definition]=@definitionID, [lootdefinition]=@lootdefinitionID, [quantity]=35, [probability]=1, [repackaged]=0, [dontdamage]=0, [minquantity]=15 WHERE [id]=@npclootID;
 
+
 PRINT N'DONE UPDATING SHARD LOOT ON ZONE 70-71-72 BOSS LOOTS';
 GO
 

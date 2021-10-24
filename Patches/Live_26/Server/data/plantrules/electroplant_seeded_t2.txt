@@ -1,0 +1,3 @@
+source=$electroplant_hi.txt
+fruitAmount=n100
+playerSeeded=n1

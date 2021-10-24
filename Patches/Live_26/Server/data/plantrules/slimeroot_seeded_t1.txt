@@ -1,0 +1,3 @@
+source=$slimeroot_lo.txt
+fruitAmount=n75
+playerSeeded=n1

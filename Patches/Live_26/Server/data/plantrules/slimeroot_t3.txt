@@ -1,0 +1,2 @@
+source=$slimeroot_lo.txt
+fruitAmount=n100

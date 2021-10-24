@@ -1,0 +1,2 @@
+source=$irontree_lo.txt
+fruitAmount=n125
