@@ -1572,9 +1572,9 @@ SELECT 'gamma_Helix_Armor' as name, CONCAT(
 UNION ALL
 SELECT 'gamma_Onyx_Mammoth' as name, CONCAT(
 '#robot=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_onyx_bot'),
-'#head=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_onyx_head'),
-'#chassis=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_onyx_chassis'),
-'#leg=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_onyx_leg'),
+'#head=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_onyx_bot_head'),
+'#chassis=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_onyx_bot_chassis'),
+'#leg=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_onyx_bot_leg'),
 '#headModules=[',
 '|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_tracking_upgrade'), '|slot=i1',']',
 '|m1=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_tracking_upgrade'), '|slot=i2',']',
@@ -1600,9 +1600,9 @@ SELECT 'gamma_Onyx_Mammoth' as name, CONCAT(
 UNION ALL
 SELECT 'gamma_Hydra_Mammoth' as name, CONCAT(
 '#robot=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_hydra_bot'),
-'#head=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_hydra_head'),
-'#chassis=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_hydra_chassis'),
-'#leg=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_hydra_leg'),
+'#head=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_hydra_bot_head'),
+'#chassis=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_hydra_bot_chassis'),
+'#leg=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_hydra_bot_leg'),
 '#headModules=[',
 '|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_tracking_upgrade'), '|slot=i1',']',
 '|m1=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_tracking_upgrade'), '|slot=i2',']',
@@ -1628,9 +1628,9 @@ SELECT 'gamma_Hydra_Mammoth' as name, CONCAT(
 UNION ALL
 SELECT 'gamma_Felos_Mammoth' as name, CONCAT(
 '#robot=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_felos_bot'),
-'#head=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_felos_head'),
-'#chassis=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_felos_chassis'),
-'#leg=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_felos_leg'),
+'#head=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_felos_bot_head'),
+'#chassis=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_felos_bot_chassis'),
+'#leg=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_felos_bot_leg'),
 '#headModules=[',
 '|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_tracking_upgrade'), '|slot=i1',']',
 '|m1=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_armor_repairer_upgrade'), '|slot=i2',']',
@@ -2112,9 +2112,9 @@ SELECT 'gamma_Legatus_Boss' as name, CONCAT(
 UNION ALL
 SELECT 'gamma_Onyx_Thelodica' as name, CONCAT(
 '#robot=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_onyx_bot'),
-'#head=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_onyx_head'),
-'#chassis=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_onyx_chassis'),
-'#leg=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_onyx_leg'),
+'#head=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_onyx_bot_head'),
+'#chassis=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_onyx_bot_chassis'),
+'#leg=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_onyx_bot_leg'),
 '#headModules=[',
 '|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_standard_blob_emission_modulator'), '|slot=i1','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_blob_emission_ammo_b'), '|ammoQuantity=i', (SELECT dbo.ToHex(10)),']',
 '|m1=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_armor_repairer_upgrade'), '|slot=i2',']',
@@ -2140,9 +2140,9 @@ SELECT 'gamma_Onyx_Thelodica' as name, CONCAT(
 UNION ALL
 SELECT 'gamma_Hydra_Pelistal' as name, CONCAT(
 '#robot=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_hydra_bot'),
-'#head=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_hydra_head'),
-'#chassis=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_hydra_chassis'),
-'#leg=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_hydra_leg'),
+'#head=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_hydra_bot_head'),
+'#chassis=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_hydra_bot_chassis'),
+'#leg=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_hydra_bot_leg'),
 '#headModules=[',
 '|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_tracking_upgrade'), '|slot=i1',']',
 '|m1=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_tracking_upgrade'), '|slot=i2',']',
@@ -2168,9 +2168,9 @@ SELECT 'gamma_Hydra_Pelistal' as name, CONCAT(
 UNION ALL
 SELECT 'gamma_Felos_Nuimqol' as name, CONCAT(
 '#robot=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_felos_bot'),
-'#head=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_felos_head'),
-'#chassis=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_felos_chassis'),
-'#leg=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_felos_leg'),
+'#head=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_felos_bot_head'),
+'#chassis=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_felos_bot_chassis'),
+'#leg=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_felos_bot_leg'),
 '#headModules=[',
 '|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_standard_blob_emission_modulator'), '|slot=i1','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_blob_emission_ammo_b'), '|ammoQuantity=i', (SELECT dbo.ToHex(0)),']',
 '|m1=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_armor_repairer_upgrade'), '|slot=i2',']',
@@ -2198,7 +2198,7 @@ SELECT 'gamma_Apollo_Syndicate' as name, CONCAT(
 '#robot=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_onyx_bot'),
 '#head=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_gargoyle_head'),
 '#chassis=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_mesmer_chassis'),
-'#leg=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_onyx_leg'),
+'#leg=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_onyx_bot_leg'),
 '#headModules=[',
 '|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_standard_blob_emission_modulator'), '|slot=i1','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_blob_emission_ammo_b'), '|ammoQuantity=i', (SELECT dbo.ToHex(10)),']',
 '|m1=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_armor_repairer_upgrade'), '|slot=i2',']',
