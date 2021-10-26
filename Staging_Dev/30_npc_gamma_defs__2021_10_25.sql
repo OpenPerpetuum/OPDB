@@ -3440,10 +3440,6 @@ DELETE FROM dbo.robottemplates WHERE name IN (SELECT name FROM #TMPBOTTEMPLATE);
 DELETE FROM dbo.aggregatevalues WHERE definition in (SELECT definition FROM dbo.entitydefaults WHERE definitionname IN (SELECT DISTINCT(definitionname) FROM #TMPENTITYDEF));
 DELETE FROM dbo.entitydefaults WHERE definitionname IN (SELECT DISTINCT(definitionname) FROM #TMPENTITYDEF);
 
---INSERT INTO dbo.entitydefaults(definitionname,quantity,attributeflags,categoryflags,options,note,enabled,volume,mass,hidden,health,descriptiontoken,purchasable)
---SELECT definitionname,quantity,attributeflags,categoryflags,options,note,enabled,volume,mass,hidden,health,descriptiontoken,purchasable FROM #TMPENTITYDEF
---;
-
 PRINT N'UPSERT [entitydefaults]';
 SET IDENTITY_INSERT entitydefaults ON;
 MERGE [dbo].[entitydefaults] d USING #TMPENTITYDEF p
