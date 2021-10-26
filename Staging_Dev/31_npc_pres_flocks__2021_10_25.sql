@@ -3,11 +3,32 @@ GO
 
 DECLARE @respawnTime AS INT = 7200;
 
+DROP TABLE IF EXISTS #ZONES_BY_TIER_AND_FACTION;
+CREATE TABLE #ZONES_BY_TIER_AND_FACTION(
+	zoneId INT NOT NULL,
+	zonetier INT NOT NULL,
+	zonefaction varchar(128) NOT NULL
+);
+INSERT INTO #ZONES_BY_TIER_AND_FACTION(zoneId, zonetier, zonefaction)
+SELECT
+	id,
+	pbsTechLimit,
+	CASE raceid
+		WHEN 1 THEN 'Pelistal' 
+		WHEN 2 THEN 'Nuimqol' 
+		WHEN 3 THEN 'Thelodica' 
+	END
+FROM zones WHERE id > 105 AND name not like 'zone_gamma_tc_%'
+AND id != 110;
+
+INSERT INTO #ZONES_BY_TIER_AND_FACTION(zoneId, zonetier, zonefaction)
+SELECT 110, 0, 'Syndicate';
+
+
 DROP TABLE IF EXISTS #TMPNPCPRESENCE;
 CREATE TABLE #TMPNPCPRESENCE
 (
-	presencename varchar(128) NULL, --used to keep the general name, to join later with npcflocks
-	name varchar(128) NOT NULL,
+	name varchar(128) NOT NULL, --the FULL name
 	topx int NOT NULL DEFAULT 40,
 	topy int NOT NULL DEFAULT 40,
 	bottomx int NOT NULL DEFAULT 2000,
@@ -35,7 +56,7 @@ CREATE TABLE #TMPNPC
 (
 	zonetier INT NOT NULL,
 	zonefaction varchar(128) NOT NULL,
-	name varchar(128) NULL,
+	fullName varchar(128) NULL, --the fully qualified name based on zone logic
 	presencename varchar(100) NOT NULL, --temp field used to gather presence id later
 	defname varchar(100) NOT NULL, --temp field used to gather definition id later
 	flockmembercount int NULL --number of npc
@@ -92,12 +113,12 @@ VALUES
 (0,'Nuimqol','courier_01','def_npc_gamma_sequer_advanced_courier',2),
 (0,'Nuimqol','courier_02','def_npc_gamma_yagel_advanced_courier',1),
 (0,'Nuimqol','courier_02','def_npc_gamma_hermes_advanced_courier',1),
-(0,'Nuimqol','miniboss_01','def_npc_gamma_mesmer_advanced_miniboss',1),
-(0,'Nuimqol','miniboss_01','def_npc_gamma_vagabond_shield_l7',2),
-(0,'Nuimqol','miniboss_01','def_npc_gamma_kain_dps_l7',2),
-(0,'Nuimqol','pitboss_01','def_npc_gamma_felos_nuimqol_pitboss',1),
-(0,'Nuimqol','pitboss_01','def_npc_mesmer_miniboss_rank3',2),
-(0,'Nuimqol','pitboss_01','def_npc_vagabond_miniboss_rank3',2),
+--(0,'Nuimqol','miniboss_01','def_npc_gamma_mesmer_advanced_miniboss',1),
+--(0,'Nuimqol','miniboss_01','def_npc_gamma_vagabond_shield_l7',2),
+--(0,'Nuimqol','miniboss_01','def_npc_gamma_kain_dps_l7',2),
+--(0,'Nuimqol','pitboss_01','def_npc_gamma_felos_nuimqol_pitboss',1),
+--(0,'Nuimqol','pitboss_01','def_npc_mesmer_miniboss_rank3',2),
+--(0,'Nuimqol','pitboss_01','def_npc_vagabond_miniboss_rank3',2),
 (0,'Thelodica','roamer_01','def_npc_gamma_artemis_dps_l7',3),
 (0,'Thelodica','roamer_01','def_npc_gamma_zenith_shield_l7',2),
 (0,'Thelodica','roamer_01','def_npc_gamma_intakt_shield_l7',2),
@@ -148,12 +169,12 @@ VALUES
 (0,'Thelodica','courier_01','def_npc_gamma_sequer_advanced_courier',2),
 (0,'Thelodica','courier_02','def_npc_gamma_prometheus_advanced_courier',1),
 (0,'Thelodica','courier_02','def_npc_gamma_hermes_advanced_courier',1),
-(0,'Thelodica','miniboss_01','def_npc_gamma_seth_advanced_miniboss',1),
-(0,'Thelodica','miniboss_01','def_npc_gamma_zenith_shield_l7',2),
-(0,'Thelodica','miniboss_01','def_npc_gamma_artemis_dps_l7',2),
-(0,'Thelodica','pitboss_01','def_npc_gamma_onyx_thelodica_pitboss',1),
-(0,'Thelodica','pitboss_01','def_npc_seth_miniboss_rank3',2),
-(0,'Thelodica','pitboss_01','def_npc_zenith_miniboss_rank3',2),
+--(0,'Thelodica','miniboss_01','def_npc_gamma_seth_advanced_miniboss',1),
+--(0,'Thelodica','miniboss_01','def_npc_gamma_zenith_shield_l7',2),
+--(0,'Thelodica','miniboss_01','def_npc_gamma_artemis_dps_l7',2),
+--(0,'Thelodica','pitboss_01','def_npc_gamma_onyx_thelodica_pitboss',1),
+--(0,'Thelodica','pitboss_01','def_npc_seth_miniboss_rank3',2),
+--(0,'Thelodica','pitboss_01','def_npc_zenith_miniboss_rank3',2),
 (0,'Pelistal','roamer_01','def_npc_gamma_tyrannos_dps_l7',3),
 (0,'Pelistal','roamer_01','def_npc_gamma_ictus_shield_l7',2),
 (0,'Pelistal','roamer_01','def_npc_gamma_troiar_shield_l7',2),
@@ -204,12 +225,12 @@ VALUES
 (0,'Pelistal','courier_01','def_npc_gamma_sequer_advanced_courier',2),
 (0,'Pelistal','courier_02','def_npc_gamma_castel_advanced_courier',1),
 (0,'Pelistal','courier_02','def_npc_gamma_hermes_advanced_courier',1),
-(0,'Pelistal','miniboss_01','def_npc_gamma_gropho_advanced_miniboss',1),
-(0,'Pelistal','miniboss_01','def_npc_gamma_ictus_shield_l7',2),
-(0,'Pelistal','miniboss_01','def_npc_gamma_tyrannos_dps_l7',2),
-(0,'Pelistal','pitboss_01','def_npc_gamma_onyx_thelodica_pitboss',1),
-(0,'Pelistal','pitboss_01','def_npc_gropho_miniboss_rank3',2),
-(0,'Pelistal','pitboss_01','def_npc_ictus_miniboss_rank3',2),
+--(0,'Pelistal','miniboss_01','def_npc_gamma_gropho_advanced_miniboss',1),
+--(0,'Pelistal','miniboss_01','def_npc_gamma_ictus_shield_l7',2),
+--(0,'Pelistal','miniboss_01','def_npc_gamma_tyrannos_dps_l7',2),
+--(0,'Pelistal','pitboss_01','def_npc_gamma_onyx_thelodica_pitboss',1),
+--(0,'Pelistal','pitboss_01','def_npc_gropho_miniboss_rank3',2),
+--(0,'Pelistal','pitboss_01','def_npc_ictus_miniboss_rank3',2),
 (0,'Syndicate','roamer_01','def_npc_gamma_legatus_dps_l7',2),
 (0,'Syndicate','roamer_01','def_npc_gamma_echelon_dps_l7',3),
 (0,'Syndicate','roamer_01','def_npc_gamma_callisto_shield_l7',2),
@@ -257,12 +278,12 @@ VALUES
 (0,'Syndicate','courier_01','def_npc_gamma_ikarus_advanced_courier',6),
 (0,'Syndicate','courier_02','def_npc_gamma_vektor_advanced_courier',1),
 (0,'Syndicate','courier_02','def_npc_gamma_hermes_advanced_courier',1),
-(0,'Syndicate','miniboss_01','def_npc_gamma_legatus_advanced_miniboss',1),
-(0,'Syndicate','miniboss_01','def_npc_gamma_callisto_shield_l7',2),
-(0,'Syndicate','miniboss_01','def_npc_gamma_echelon_dps_l7',2),
-(0,'Syndicate','pitboss_01','def_npc_gamma_apollo_syndicate_syn_pitboss',1),
-(0,'Syndicate','pitboss_01','def_npc_gamma_legatus_advanced_observer',2),
-(0,'Syndicate','pitboss_01','def_npc_gamma_callisto_advanced_observer',2),
+--(0,'Syndicate','miniboss_01','def_npc_gamma_legatus_advanced_miniboss',1),
+--(0,'Syndicate','miniboss_01','def_npc_gamma_callisto_shield_l7',2),
+--(0,'Syndicate','miniboss_01','def_npc_gamma_echelon_dps_l7',2),
+--(0,'Syndicate','pitboss_01','def_npc_gamma_apollo_syndicate_syn_pitboss',1),
+--(0,'Syndicate','pitboss_01','def_npc_gamma_legatus_advanced_observer',2),
+--(0,'Syndicate','pitboss_01','def_npc_gamma_callisto_advanced_observer',2),
 (3,'Nuimqol','roamer_01','def_npc_gamma_kain_dps_l5',3),
 (3,'Nuimqol','roamer_01','def_npc_gamma_vagabond_shield_l5',2),
 (3,'Nuimqol','roamer_01','def_npc_gamma_cameleon_shield_l5',1),
@@ -307,7 +328,7 @@ VALUES
 (3,'Nuimqol','courier_01','def_npc_gamma_arbalest_advanced_courier',1),
 (3,'Nuimqol','courier_01','def_npc_gamma_cameleon_advanced_courier',2),
 (3,'Nuimqol','courier_01','def_npc_gamma_sequer_advanced_courier',1),
-(2,'Pelistal','roamer_01','def_npc_gamma_kain_dps_l4',2),
+(2,'Nuimqol','roamer_01','def_npc_gamma_kain_dps_l4',2),
 (2,'Nuimqol','roamer_01','def_npc_gamma_mesmer_dps_l4',1),
 (2,'Nuimqol','roamer_01','def_npc_gamma_arbalest_dps_l4',3),
 (2,'Nuimqol','roamer_01','def_npc_gamma_cameleon_shield_l4',3),
@@ -656,36 +677,25 @@ VALUES
 ;
 
 
-DROP TABLE IF EXISTS #PRES;
-CREATE TABLE #PRES
-(	
-	presencename varchar(128) NOT NULL, -- unique name created from name and zone id
-	name varchar(128) NULL,
-	roamingrespawnseconds int NULL,
-	spawnid int NULL
+DROP TABLE IF EXISTS #NPC_PRES_AND_FLOCK_BY_ZONE;
+CREATE TABLE #NPC_PRES_AND_FLOCK_BY_ZONE
+(
+	zoneId INT NOT NULL,
+	fullName varchar(128) NULL, --the fully qualified name based on zone logic
+	defname varchar(100) NOT NULL, --temp field used to gather definition id later
+	flockmembercount int NULL --number of npc
 );
+INSERT INTO #NPC_PRES_AND_FLOCK_BY_ZONE(zoneId, fullName, defname, flockmembercount)
+SELECT z.zoneId, CONCAT(t.presencename, '_z', z.zoneId), t.defname, t.flockmembercount
+FROM #TMPNPC t
+INNER JOIN #ZONES_BY_TIER_AND_FACTION z ON z.zonefaction=t.zonefaction AND z.zonetier=t.zonetier;
 
-INSERT INTO #PRES (presencename, roamingrespawnseconds)
-SELECT DISTINCT presencename, @respawnTime FROM #TMPNPC;
 
+INSERT INTO #TMPNPCPRESENCE (name, spawnid, roamingrespawnseconds)
+SELECT 
+	DISTINCT fullName, (SELECT TOP 1 spawnid FROM zones WHERE id=zoneId), @respawnTime
+FROM #NPC_PRES_AND_FLOCK_BY_ZONE;
 
-WITH tmp(id, spawnid, raceid,pbsTechLimit)
-AS
-	(SELECT z.id, z.spawnid, z.raceid, z.pbsTechLimit
-	FROM dbo.zones z	
-	WHERE z.id > 105 and z.name not like 'zone_gamma_tc_%'
-	) 
-INSERT INTO #TMPNPCPRESENCE (presencename,name, roamingrespawnseconds, spawnid)
-SELECT p.presencename, CONCAT(p.presencename,'_z',tmp.id) as name, p.roamingrespawnseconds, tmp.spawnid
-FROM #PRES p
- INNER JOIN (SELECT DISTINCT zonetier,zonefaction,presencename FROM #TMPNPC) npc ON npc.presencename = p.presencename
-LEFT JOIN TMP ON tmp.raceid = CASE LOWER(npc.zonefaction) 
-									WHEN  'pelistal' THEN 1
-									WHEN  'nuimqol' THEN 2
-									WHEN  'thelodica' THEN 3
-								END
-					AND tmp.pbsTechLimit = npc.zonetier
-;
 
 PRINT N'DELETE AND REINSERT FLOCKS AND PRESENCES';
 
@@ -730,17 +740,14 @@ CREATE TABLE #TMPNPCFLOCK
 );
 INSERT INTO #TMPNPCFLOCK (name, presenceid, flockmembercount, definition, defname, note, respawnseconds)
 SELECT
-	CONCAT(p.name,REPLACE(npc.defname,'def_npc_gamma','')) as name,
-	(SELECT TOP 1 n.id FROM dbo.npcpresence n WHERE n.name = p.name) AS presenceid,
-	npc.flockmembercount,
-	(SELECT TOP 1 e.definition FROM dbo.entitydefaults e WHERE npc.defname = e.definitionname) as definition,
-	npc.defname,
+	CONCAT(p.fullName, REPLACE(p.defname,'def_npc_gamma','')) as name,
+	(SELECT TOP 1 n.id FROM dbo.npcpresence n WHERE n.name = p.fullName) AS presenceid,
+	p.flockmembercount,
+	(SELECT TOP 1 e.definition FROM dbo.entitydefaults e WHERE p.defname = e.definitionname) as definition,
+	p.defname,
 	'gamma npc' as note,
-	pr.roamingrespawnseconds as respawnseconds
-FROM #TMPNPC npc
-INNER JOIN #TMPNPCPRESENCE p ON p.presencename = npc.presencename
-INNER JOIN #PRES pr ON pr.presencename = npc.presencename
-;
+	@respawnTime as respawnseconds
+FROM #NPC_PRES_AND_FLOCK_BY_ZONE p;
 
 DELETE FROM dbo.npcflock WHERE name IN (SELECT distinct name from #TMPNPCFLOCK)
 
@@ -751,10 +758,10 @@ SELECT name,presenceid,flockmembercount,definition,spawnoriginX,spawnoriginY,spa
 FROM #TMPNPCFLOCK
 ;
 
-
-DROP TABLE IF EXISTS #PRES;
 DROP TABLE IF EXISTS #TMPNPCPRESENCE;
 DROP TABLE IF EXISTS #TMPNPCFLOCK;
 DROP TABLE IF EXISTS #TMPNPC;
+DROP TABLE IF EXISTS #NPC_PRES_AND_FLOCK_BY_ZONE;
+DROP TABLE IF EXISTS #ZONES_BY_TIER_AND_FACTION;
 
 GO
