@@ -134,31 +134,31 @@ CREATE TABLE #CTS_CAPSULES
 	techLevel int,
 );
 INSERT INTO #CTS_CAPSULES (def, defName, attrFlags, catFlags, genxyOptStr, cargoVolume, massOfModule, techType, techLevel) VALUES
-(6233,'def_elitet4_gamma_small_autocannon_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
-(6234,'def_elitet4_gamma_medium_autocannon_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
-(6235,'def_elitet4_gamma_longrange_medium_autocannon_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6234,'def_elitet4_gamma_small_autocannon_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6235,'def_elitet4_gamma_medium_autocannon_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6236,'def_elitet4_gamma_longrange_medium_autocannon_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
 
-(6236,'def_elitet4_gamma_small_laser_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
-(6237,'def_elitet4_gamma_medium_laser_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
-(6238,'def_elitet4_gamma_longrange_medium_laser_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6237,'def_elitet4_gamma_small_laser_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6238,'def_elitet4_gamma_medium_laser_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6239,'def_elitet4_gamma_longrange_medium_laser_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
 
-(6239,'def_elitet4_gamma_small_railgun_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
-(6240,'def_elitet4_gamma_medium_railgun_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
-(6241,'def_elitet4_gamma_longrange_medium_railgun_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6240,'def_elitet4_gamma_small_railgun_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6241,'def_elitet4_gamma_medium_railgun_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6242,'def_elitet4_gamma_longrange_medium_railgun_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
 
-(6242,'def_elitet4_gamma_rocket_launcher_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
-(6243,'def_elitet4_gamma_missile_launcher_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6243,'def_elitet4_gamma_rocket_launcher_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6244,'def_elitet4_gamma_missile_launcher_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
 
-(6244,'def_elitet4_gamma_small_driller_CT_capsule',2052,@IndyCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
-(6245,'def_elitet4_gamma_medium_driller_CT_capsule',2052,@IndyCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6245,'def_elitet4_gamma_small_driller_CT_capsule',2052,@IndyCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6246,'def_elitet4_gamma_medium_driller_CT_capsule',2052,@IndyCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
 
-(6246,'def_elitet4_gamma_small_harvester_CT_capsule',2052,@IndyCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
-(6247,'def_elitet4_gamma_medium_harvester_CT_capsule',2052,@IndyCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4);
+(6247,'def_elitet4_gamma_small_harvester_CT_capsule',2052,@IndyCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6248,'def_elitet4_gamma_medium_harvester_CT_capsule',2052,@IndyCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4);
 
 DROP TABLE IF EXISTS #SHOPENTRIES;
 CREATE TABLE #SHOPENTRIES
 (
-	defName varchar(100),
+	defName varchar(256),
 	nicPrice int,
 	unitokenPrice int null,
 	thelodicatokenPrice int null,
@@ -591,6 +591,7 @@ WHEN NOT MATCHED
 PRINT N'UPSERT [itemshop]';
 MERGE [dbo].[itemshop] shop USING #SHOPENTRIES e
 ON shop.targetdefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=e.defName)
+AND presetid = @tmShops
 WHEN MATCHED
     THEN UPDATE SET
 		presetid=@tmShops,
