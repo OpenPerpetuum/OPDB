@@ -23,6 +23,25 @@ DECLARE @t2medpriceTOK AS INT = 60;
 DECLARE @t4medpriceTOK AS INT = 80;
 
 
+DROP TABLE IF EXISTS #MATERIALDEF;
+CREATE TABLE #MATERIALDEF 
+(
+	def INT,
+	defName varchar(100),
+	attrFlags bigint,
+	catFlags bigint,
+	genxyOptStr varchar(max),
+	cargoVolume float,
+	massOfModule float,
+	techType int,
+	techLevel int,
+);
+INSERT INTO #MATERIALDEF (def, defName, attrFlags, catFlags, genxyOptStr, cargoVolume, massOfModule, techType, techLevel) VALUES
+(6200,'def_material_boss_gamma_thelodica',2048,@dataShardCat,NULL,0.01,0.5,NULL,NULL),
+(6201,'def_material_boss_gamma_pelistal',2048,@dataShardCat,NULL,0.01,0.5,NULL,NULL),
+(6202,'def_material_boss_gamma_nuimqol',2048,@dataShardCat,NULL,0.01,0.5,NULL,NULL),
+(6203,'def_material_boss_gamma_syndicate',2048,@dataShardCat,NULL,0.01,0.5,NULL,NULL);
+
 DROP TABLE IF EXISTS #ENTITYDEF;
 CREATE TABLE #ENTITYDEF 
 (
@@ -38,26 +57,26 @@ CREATE TABLE #ENTITYDEF
 );
 INSERT INTO #ENTITYDEF (def, defName, attrFlags, catFlags, genxyOptStr, cargoVolume, massOfModule, techType, techLevel) VALUES
 
-(6602,'def_elitet4_gamma_small_autocannon',303824,4362209039,'#moduleFlag=i51#ammoCapacity=ic8#ammoType=L1030a#tier=$tierlevel_t4+',0.6,275,3,4),
-(6603,'def_elitet4_gamma_medium_autocannon',336592,8657176335,'#moduleFlag=i91#ammoCapacity=ic8#ammoType=L2030a#tier=$tierlevel_t4+',1.2,550,3,4),
-(6604,'def_elitet4_gamma_longrange_medium_autocannon',336592,8657176335,'#moduleFlag=i91#ammoCapacity=i96#ammoType=L2030a#tier=$tierlevel_t4+',1.2,715,3,4),
+(6204,'def_elitet4_gamma_small_autocannon',303824,4362209039,'#moduleFlag=i51#ammoCapacity=ic8#ammoType=L1030a#tier=$tierlevel_t4+',0.6,275,3,4),
+(6205,'def_elitet4_gamma_medium_autocannon',336592,8657176335,'#moduleFlag=i91#ammoCapacity=ic8#ammoType=L2030a#tier=$tierlevel_t4+',1.2,550,3,4),
+(6206,'def_elitet4_gamma_longrange_medium_autocannon',336592,8657176335,'#moduleFlag=i91#ammoCapacity=i96#ammoType=L2030a#tier=$tierlevel_t4+',1.2,715,3,4),
 
-(6605,'def_elitet4_gamma_small_laser',303824,16844559,'#moduleFlag=i51#ammoCapacity=i5a#ammoType=L1020a#tier=$tierlevel_t4+',0.5,275,3,4),
-(6606,'def_elitet4_gamma_medium_laser',336592,33621775,'#moduleFlag=i91#ammoCapacity=i5a#ammoType=L2020a#tier=$tierlevel_t4+',1,550,3,4),
-(6607,'def_elitet4_gamma_longrange_medium_laser',336592,33621775,'#moduleFlag=i91#ammoCapacity=i78#ammoType=L2020a#tier=$tierlevel_t4+',1,715,3,4),
+(6207,'def_elitet4_gamma_small_laser',303824,16844559,'#moduleFlag=i51#ammoCapacity=i5a#ammoType=L1020a#tier=$tierlevel_t4+',0.5,275,3,4),
+(6208,'def_elitet4_gamma_medium_laser',336592,33621775,'#moduleFlag=i91#ammoCapacity=i5a#ammoType=L2020a#tier=$tierlevel_t4+',1,550,3,4),
+(6209,'def_elitet4_gamma_longrange_medium_laser',336592,33621775,'#moduleFlag=i91#ammoCapacity=i78#ammoType=L2020a#tier=$tierlevel_t4+',1,715,3,4),
 
-(6608,'def_elitet4_gamma_small_railgun',303824,17041167,'#moduleFlag=i51#ammoCapacity=i2d#ammoType=L1010a#tier=$tierlevel_t4+',0.5,275,3,4),
-(6609,'def_elitet4_gamma_medium_railgun',336592,33818383,'#moduleFlag=i91#ammoCapacity=i14#ammoType=L2010a#tier=$tierlevel_t4+',1,550,3,4),
-(6610,'def_elitet4_gamma_longrange_medium_railgun',336592,33818383,'#moduleFlag=i91#ammoCapacity=i32#ammoType=L2010a#tier=$tierlevel_t4+',1,715,3,4),
+(6210,'def_elitet4_gamma_small_railgun',303824,17041167,'#moduleFlag=i51#ammoCapacity=i2d#ammoType=L1010a#tier=$tierlevel_t4+',0.5,275,3,4),
+(6211,'def_elitet4_gamma_medium_railgun',336592,33818383,'#moduleFlag=i91#ammoCapacity=i14#ammoType=L2010a#tier=$tierlevel_t4+',1,550,3,4),
+(6212,'def_elitet4_gamma_longrange_medium_railgun',336592,33818383,'#moduleFlag=i91#ammoCapacity=i32#ammoType=L2010a#tier=$tierlevel_t4+',1,715,3,4),
 
-(6611,'def_elitet4_gamma_rocket_launcher',303824,16975631,'#moduleFlag=i52#ammoCapacity=i1e#ammoType=L1040a#tier=$tierlevel_t4+',1,275,3,4),
-(6612,'def_elitet4_gamma_missile_launcher',336592,33752847,'#moduleFlag=i92#ammoCapacity=i1e#ammoType=L2040a #tier=$tierlevel_t4+',2,550,3,4),
+(6213,'def_elitet4_gamma_rocket_launcher',303824,16975631,'#moduleFlag=i52#ammoCapacity=i1e#ammoType=L1040a#tier=$tierlevel_t4+',1,275,3,4),
+(6214,'def_elitet4_gamma_missile_launcher',336592,33752847,'#moduleFlag=i92#ammoCapacity=i1e#ammoType=L2040a #tier=$tierlevel_t4+',2,550,3,4),
 
-(6611,'def_elitet4_gamma_small_driller',294928,16844303,'#moduleFlag=i250#ammoCapacity=i2d#ammoType=L50a#tier=$tierlevel_t4+',1,400,3,4),
-(6612,'def_elitet4_gamma_medium_driller',327696,33621519,'#moduleFlag=i290#ammoCapacity=i2d#ammoType=L50a#tier=$tierlevel_t4+',1.5,1000,3,4),
+(6215,'def_elitet4_gamma_small_driller',294928,16844303,'#moduleFlag=i250#ammoCapacity=i2d#ammoType=L50a#tier=$tierlevel_t4+',1,400,3,4),
+(6216,'def_elitet4_gamma_medium_driller',327696,33621519,'#moduleFlag=i290#ammoCapacity=i2d#ammoType=L50a#tier=$tierlevel_t4+',1.5,1000,3,4),
 
-(6611,'def_elitet4_gamma_small_harvester',294928,17171983,'#moduleFlag=i250#ammoCapacity=i2d#ammoType=La0a#tier=$tierlevel_t4+',1,400,3,4),
-(6612,'def_elitet4_gamma_medium_harvester',327696,33949199,'#moduleFlag=i290#ammoCapacity=i2d#ammoType=La0a#tier=$tierlevel_t4+',1.5,1000,3,4);
+(6217,'def_elitet4_gamma_small_harvester',294928,17171983,'#moduleFlag=i250#ammoCapacity=i2d#ammoType=La0a#tier=$tierlevel_t4+',1,400,3,4),
+(6218,'def_elitet4_gamma_medium_harvester',327696,33949199,'#moduleFlag=i290#ammoCapacity=i2d#ammoType=La0a#tier=$tierlevel_t4+',1.5,1000,3,4);
 
 
 DROP TABLE IF EXISTS #CTS;
@@ -74,26 +93,26 @@ CREATE TABLE #CTS
 	techLevel int,
 );
 INSERT INTO #CTS (def, defName, attrFlags, catFlags, genxyOptStr, cargoVolume, massOfModule, techType, techLevel) VALUES
-(6592,'def_elitet4_gamma_small_autocannon_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
-(6593,'def_elitet4_gamma_medium_autocannon_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
-(6594,'def_elitet4_gamma_longrange_medium_autocannon_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(6219,'def_elitet4_gamma_small_autocannon_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(6220,'def_elitet4_gamma_medium_autocannon_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(6221,'def_elitet4_gamma_longrange_medium_autocannon_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
 
-(6595,'def_elitet4_gamma_small_laser_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
-(6596,'def_elitet4_gamma_medium_laser_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
-(6597,'def_elitet4_gamma_longrange_medium_laser_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(6222,'def_elitet4_gamma_small_laser_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(6223,'def_elitet4_gamma_medium_laser_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(6224,'def_elitet4_gamma_longrange_medium_laser_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
 
-(6598,'def_elitet4_gamma_small_railgun_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
-(6599,'def_elitet4_gamma_medium_railgun_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
-(6600,'def_elitet4_gamma_longrange_medium_railgun_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(6225,'def_elitet4_gamma_small_railgun_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(6226,'def_elitet4_gamma_medium_railgun_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(6227,'def_elitet4_gamma_longrange_medium_railgun_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
 
-(6601,'def_elitet4_gamma_rocket_launcher_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
-(6602,'def_elitet4_gamma_missile_launcher_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(6228,'def_elitet4_gamma_rocket_launcher_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(6229,'def_elitet4_gamma_missile_launcher_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
 
-(6601,'def_elitet4_gamma_small_driller_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
-(6602,'def_elitet4_gamma_medium_driller_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(6230,'def_elitet4_gamma_small_driller_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(6231,'def_elitet4_gamma_medium_driller_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
 
-(6601,'def_elitet4_gamma_small_harvester_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
-(6602,'def_elitet4_gamma_medium_harvester_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4);
+(6232,'def_elitet4_gamma_small_harvester_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4),
+(6233,'def_elitet4_gamma_medium_harvester_cprg',1024,@dynamicCtCategory,'#tier=$tierlevel_t4+',0.01,0.1,3,4);
 
 
 
@@ -115,48 +134,26 @@ CREATE TABLE #CTS_CAPSULES
 	techLevel int,
 );
 INSERT INTO #CTS_CAPSULES (def, defName, attrFlags, catFlags, genxyOptStr, cargoVolume, massOfModule, techType, techLevel) VALUES
-(6592,'def_elitet4_gamma_small_autocannon_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
-(6593,'def_elitet4_gamma_medium_autocannon_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
-(6594,'def_elitet4_gamma_longrange_medium_autocannon_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6233,'def_elitet4_gamma_small_autocannon_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6234,'def_elitet4_gamma_medium_autocannon_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6235,'def_elitet4_gamma_longrange_medium_autocannon_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
 
-(6595,'def_elitet4_gamma_small_laser_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
-(6596,'def_elitet4_gamma_medium_laser_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
-(6597,'def_elitet4_gamma_longrange_medium_laser_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6236,'def_elitet4_gamma_small_laser_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6237,'def_elitet4_gamma_medium_laser_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6238,'def_elitet4_gamma_longrange_medium_laser_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
 
-(6598,'def_elitet4_gamma_small_railgun_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
-(6599,'def_elitet4_gamma_medium_railgun_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
-(6600,'def_elitet4_gamma_longrange_medium_railgun_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6239,'def_elitet4_gamma_small_railgun_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6240,'def_elitet4_gamma_medium_railgun_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6241,'def_elitet4_gamma_longrange_medium_railgun_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
 
-(6601,'def_elitet4_gamma_rocket_launcher_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
-(6602,'def_elitet4_gamma_missile_launcher_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6242,'def_elitet4_gamma_rocket_launcher_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6243,'def_elitet4_gamma_missile_launcher_CT_capsule',2052,@WeaponCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
 
-(6601,'def_elitet4_gamma_small_driller_CT_capsule',2052,@IndyCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
-(6602,'def_elitet4_gamma_medium_driller_CT_capsule',2052,@IndyCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6244,'def_elitet4_gamma_small_driller_CT_capsule',2052,@IndyCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6245,'def_elitet4_gamma_medium_driller_CT_capsule',2052,@IndyCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
 
-(6601,'def_elitet4_gamma_small_harvester_CT_capsule',2052,@IndyCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
-(6602,'def_elitet4_gamma_medium_harvester_CT_capsule',2052,@IndyCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4);
-
-
-
-DROP TABLE IF EXISTS #MATERIALDEF;
-CREATE TABLE #MATERIALDEF 
-(
-	def INT,
-	defName varchar(100),
-	attrFlags bigint,
-	catFlags bigint,
-	genxyOptStr varchar(max),
-	cargoVolume float,
-	massOfModule float,
-	techType int,
-	techLevel int,
-);
-INSERT INTO #MATERIALDEF (def, defName, attrFlags, catFlags, genxyOptStr, cargoVolume, massOfModule, techType, techLevel) VALUES
-(6040,'def_material_boss_gamma_thelodica',2048,@dataShardCat,NULL,0.01,0.5,NULL,NULL),
-(6040,'def_material_boss_gamma_pelistal',2048,@dataShardCat,NULL,0.01,0.5,NULL,NULL),
-(6040,'def_material_boss_gamma_nuimqol',2048,@dataShardCat,NULL,0.01,0.5,NULL,NULL),
-(6040,'def_material_boss_gamma_syndicate',2048,@dataShardCat,NULL,0.01,0.5,NULL,NULL);
-
+(6246,'def_elitet4_gamma_small_harvester_CT_capsule',2052,@IndyCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4),
+(6247,'def_elitet4_gamma_medium_harvester_CT_capsule',2052,@IndyCTCapsule,'#tier=$tierlevel_t4+',0.1,0.1,3,4);
 
 DROP TABLE IF EXISTS #SHOPENTRIES;
 CREATE TABLE #SHOPENTRIES
