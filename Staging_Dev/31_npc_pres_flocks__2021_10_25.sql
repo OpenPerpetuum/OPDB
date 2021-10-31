@@ -284,6 +284,7 @@ VALUES
 --(0,'Syndicate','pitboss_01','def_npc_gamma_apollo_syndicate_syn_pitboss',1),
 --(0,'Syndicate','pitboss_01','def_npc_gamma_legatus_advanced_observer',2),
 --(0,'Syndicate','pitboss_01','def_npc_gamma_callisto_advanced_observer',2),
+
 (3,'Nuimqol','roamer_01','def_npc_gamma_kain_dps_l5',3),
 (3,'Nuimqol','roamer_01','def_npc_gamma_vagabond_shield_l5',2),
 (3,'Nuimqol','roamer_01','def_npc_gamma_cameleon_shield_l5',1),
@@ -328,7 +329,8 @@ VALUES
 (3,'Nuimqol','courier_01','def_npc_gamma_arbalest_advanced_courier',1),
 (3,'Nuimqol','courier_01','def_npc_gamma_cameleon_advanced_courier',2),
 (3,'Nuimqol','courier_01','def_npc_gamma_sequer_advanced_courier',1),
-(2,'Nuimqol','roamer_01','def_npc_gamma_kain_dps_l4',2),
+
+(2,'Pelistal','roamer_01','def_npc_gamma_kain_dps_l4',2),
 (2,'Nuimqol','roamer_01','def_npc_gamma_mesmer_dps_l4',1),
 (2,'Nuimqol','roamer_01','def_npc_gamma_arbalest_dps_l4',3),
 (2,'Nuimqol','roamer_01','def_npc_gamma_cameleon_shield_l4',3),
@@ -370,6 +372,7 @@ VALUES
 (2,'Nuimqol','courier_01','def_npc_gamma_arbalest_advanced_courier',1),
 (2,'Nuimqol','courier_01','def_npc_gamma_cameleon_advanced_courier',1),
 (2,'Nuimqol','courier_01','def_npc_gamma_sequer_advanced_courier',1),
+
 (1,'Nuimqol','roamer_01','def_npc_gamma_kain_dps_l3',2),
 (1,'Nuimqol','roamer_01','def_npc_gamma_arbalest_dps_l3',4),
 (1,'Nuimqol','roamer_01','def_npc_gamma_cameleon_shield_l3',3),
@@ -414,6 +417,7 @@ VALUES
 (1,'Nuimqol','courier_01','def_npc_gamma_arbalest_advanced_courier',1),
 (1,'Nuimqol','courier_01','def_npc_gamma_yagel_advanced_courier',1),
 (1,'Nuimqol','courier_01','def_npc_gamma_ikarus_advanced_courier',2),
+
 (3,'Thelodica','roamer_01','def_npc_gamma_artemis_dps_l5',3),
 (3,'Thelodica','roamer_01','def_npc_gamma_zenith_shield_l5',2),
 (3,'Thelodica','roamer_01','def_npc_gamma_intakt_shield_l5',1),
@@ -458,6 +462,7 @@ VALUES
 (3,'Thelodica','courier_01','def_npc_gamma_baphomet_advanced_courier',1),
 (3,'Thelodica','courier_01','def_npc_gamma_intakt_advanced_courier',2),
 (3,'Thelodica','courier_01','def_npc_gamma_sequer_advanced_courier',1),
+
 (2,'Thelodica','roamer_01','def_npc_gamma_artemis_dps_l4',2),
 (2,'Thelodica','roamer_01','def_npc_gamma_seth_dps_l4',1),
 (2,'Thelodica','roamer_01','def_npc_gamma_baphomet_dps_l4',3),
@@ -500,6 +505,7 @@ VALUES
 (2,'Thelodica','courier_01','def_npc_gamma_baphomet_advanced_courier',1),
 (2,'Thelodica','courier_01','def_npc_gamma_intakt_advanced_courier',1),
 (2,'Thelodica','courier_01','def_npc_gamma_sequer_advanced_courier',1),
+
 (1,'Thelodica','roamer_01','def_npc_gamma_artemis_dps_l3',2),
 (1,'Thelodica','roamer_01','def_npc_gamma_baphomet_dps_l3',4),
 (1,'Thelodica','roamer_01','def_npc_gamma_intakt_shield_l3',3),
@@ -544,6 +550,7 @@ VALUES
 (1,'Thelodica','courier_01','def_npc_gamma_baphomet_advanced_courier',1),
 (1,'Thelodica','courier_01','def_npc_gamma_prometheus_advanced_courier',1),
 (1,'Thelodica','courier_01','def_npc_gamma_ikarus_advanced_courier',2),
+
 (3,'Pelistal','roamer_01','def_npc_gamma_tyrannos_dps_l5',3),
 (3,'Pelistal','roamer_01','def_npc_gamma_ictus_shield_l5',2),
 (3,'Pelistal','roamer_01','def_npc_gamma_troiar_shield_l5',1),
@@ -588,10 +595,11 @@ VALUES
 (3,'Pelistal','courier_01','def_npc_gamma_waspish_advanced_courier',1),
 (3,'Pelistal','courier_01','def_npc_gamma_troiar_advanced_courier',2),
 (3,'Pelistal','courier_01','def_npc_gamma_sequer_advanced_courier',1),
+
 (2,'Pelistal','roamer_01','def_npc_gamma_tyrannos_dps_l4',2),
 (2,'Pelistal','roamer_01','def_npc_gamma_gropho_dps_l4',1),
 (2,'Pelistal','roamer_01','def_npc_gamma_waspish_dps_l4',3),
-(2,'Pelistal','roamer_01','def_npc_gamma_cameleon_shield_l4',3),
+(2,'Pelistal','roamer_01','def_npc_gamma_troiar_shield_l4',3),
 (2,'Pelistal','roamer_02','def_npc_gamma_sequer_basic_lindy',2),
 (2,'Pelistal','roamer_02','def_npc_gamma_termis_basic_lindy',2),
 (2,'Pelistal','roamer_02','def_npc_gamma_gargoyle_basic_lindy',2),
@@ -610,14 +618,14 @@ VALUES
 (2,'Pelistal','roamer_05','def_npc_gamma_castel_dps_l4',3),
 (2,'Pelistal','roamer_06','def_npc_gamma_castel_speed_l4',2),
 (2,'Pelistal','roamer_06','def_npc_gamma_waspish_speed_l4',3),
-(2,'Pelistal','roamer_06','def_npc_gamma_cameleon_shield_l4',2),
+(2,'Pelistal','roamer_06','def_npc_gamma_troiar_shield_l4',2),
 (2,'Pelistal','roamer_06','def_npc_gamma_tyrannos_dps_l4',3),
 (2,'Pelistal','roamer_07','def_npc_gamma_castel_speed_l4',2),
-(2,'Pelistal','roamer_07','def_npc_gamma_cameleon_shield_l4',2),
+(2,'Pelistal','roamer_07','def_npc_gamma_troiar_shield_l4',2),
 (2,'Pelistal','roamer_07','def_npc_gamma_waspish_dps_l4',2),
 (2,'Pelistal','roamer_08','def_npc_gamma_gropho_dps_l4',2),
 (2,'Pelistal','roamer_08','def_npc_gamma_tyrannos_dps_l4',5),
-(2,'Pelistal','roamer_08','def_npc_gamma_cameleon_armor_l4',3),
+(2,'Pelistal','roamer_08','def_npc_gamma_troiar_armor_l4',3),
 (2,'Pelistal','roamer_08','def_npc_gamma_castel_dps_l4',2),
 (2,'Pelistal','roamer_09','def_npc_gamma_sequer_basic_lindy',1),
 (2,'Pelistal','roamer_09','def_npc_gamma_laird_basic_lindy',3),
@@ -628,18 +636,19 @@ VALUES
 (2,'Pelistal','observer_02','def_npc_gamma_tyrannos_advanced_observer',1),
 (2,'Pelistal','observer_02','def_npc_gamma_ictus_advanced_observer',1),
 (2,'Pelistal','courier_01','def_npc_gamma_waspish_advanced_courier',1),
-(2,'Pelistal','courier_01','def_npc_gamma_cameleon_advanced_courier',1),
+(2,'Pelistal','courier_01','def_npc_gamma_troiar_advanced_courier',1),
 (2,'Pelistal','courier_01','def_npc_gamma_sequer_advanced_courier',1),
+
 (1,'Pelistal','roamer_01','def_npc_gamma_tyrannos_dps_l3',2),
 (1,'Pelistal','roamer_01','def_npc_gamma_waspish_dps_l3',4),
-(1,'Pelistal','roamer_01','def_npc_gamma_cameleon_shield_l3',3),
+(1,'Pelistal','roamer_01','def_npc_gamma_troiar_shield_l3',3),
 (1,'Pelistal','roamer_02','def_npc_gamma_sequer_basic_lindy',1),
 (1,'Pelistal','roamer_02','def_npc_gamma_argano_basic_lindy',6),
 (1,'Pelistal','roamer_02','def_npc_gamma_laird_basic_lindy',6),
 (1,'Pelistal','roamer_02','def_npc_gamma_gropho_tank_l3',1),
 (1,'Pelistal','roamer_02','def_npc_gamma_tyrannos_tank_l3',3),
 (1,'Pelistal','roamer_02','def_npc_gamma_ictus_armor_l3',1),
-(1,'Pelistal','roamer_02','def_npc_gamma_cameleon_armor_l3',2),
+(1,'Pelistal','roamer_02','def_npc_gamma_troiar_armor_l3',2),
 (1,'Pelistal','roamer_02','def_npc_gamma_castel_speed_l3',2),
 (1,'Pelistal','roamer_03','def_npc_gamma_waspish_dps_l3',4),
 (1,'Pelistal','roamer_03','def_npc_gamma_ictus_armor_l3',2),
@@ -649,18 +658,18 @@ VALUES
 (1,'Pelistal','roamer_04','def_npc_gamma_waspish_speed_l3',4),
 (1,'Pelistal','roamer_05','def_npc_gamma_tyrannos_dps_l3',3),
 (1,'Pelistal','roamer_05','def_npc_gamma_ictus_armor_l3',1),
-(1,'Pelistal','roamer_05','def_npc_gamma_cameleon_armor_l3',1),
+(1,'Pelistal','roamer_05','def_npc_gamma_troiar_armor_l3',1),
 (1,'Pelistal','roamer_05','def_npc_gamma_castel_dps_l3',3),
 (1,'Pelistal','roamer_06','def_npc_gamma_castel_speed_l3',3),
 (1,'Pelistal','roamer_06','def_npc_gamma_waspish_speed_l3',4),
-(1,'Pelistal','roamer_06','def_npc_gamma_cameleon_shield_l3',2),
+(1,'Pelistal','roamer_06','def_npc_gamma_troiar_shield_l3',2),
 (1,'Pelistal','roamer_06','def_npc_gamma_tyrannos_dps_l3',3),
 (1,'Pelistal','roamer_07','def_npc_gamma_castel_speed_l3',2),
-(1,'Pelistal','roamer_07','def_npc_gamma_cameleon_shield_l3',2),
+(1,'Pelistal','roamer_07','def_npc_gamma_troiar_shield_l3',2),
 (1,'Pelistal','roamer_07','def_npc_gamma_waspish_dps_l3',2),
 (1,'Pelistal','roamer_08','def_npc_gamma_gropho_dps_l3',2),
 (1,'Pelistal','roamer_08','def_npc_gamma_tyrannos_dps_l3',5),
-(1,'Pelistal','roamer_08','def_npc_gamma_cameleon_armor_l3',2),
+(1,'Pelistal','roamer_08','def_npc_gamma_troiar_armor_l3',2),
 (1,'Pelistal','roamer_08','def_npc_gamma_castel_dps_l3',3),
 (1,'Pelistal','roamer_09','def_npc_gamma_sequer_basic_lindy',1),
 (1,'Pelistal','roamer_09','def_npc_gamma_laird_basic_lindy',3),
@@ -738,7 +747,7 @@ CREATE TABLE #TMPNPCFLOCK
 	behaviorType int NOT NULL DEFAULT 2, --2=red
 	npcSpecialType int NOT NULL DEFAULT 0
 );
-INSERT INTO #TMPNPCFLOCK (name, presenceid, flockmembercount, definition, defname, note, respawnseconds)
+INSERT INTO #TMPNPCFLOCK (name, presenceid, flockmembercount, definition, defname, note, respawnseconds, behaviorType)
 SELECT
 	CONCAT(p.fullName, REPLACE(p.defname,'def_npc_gamma','')) as name,
 	(SELECT TOP 1 n.id FROM dbo.npcpresence n WHERE n.name = p.fullName) AS presenceid,
@@ -746,7 +755,8 @@ SELECT
 	(SELECT TOP 1 e.definition FROM dbo.entitydefaults e WHERE p.defname = e.definitionname) as definition,
 	p.defname,
 	'gamma npc' as note,
-	@respawnTime as respawnseconds
+	@respawnTime as respawnseconds,
+	CASE WHEN p.fullname like '%courier%' THEN 1 ELSE 2 END as behaviorType --Couriers orange
 FROM #NPC_PRES_AND_FLOCK_BY_ZONE p;
 
 DELETE FROM dbo.npcflock WHERE name IN (SELECT distinct name from #TMPNPCFLOCK)
