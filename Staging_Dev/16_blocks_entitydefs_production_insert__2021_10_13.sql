@@ -79,7 +79,7 @@ CREATE TABLE #DEFS
 	techLevel int
 );
 INSERT INTO #DEFS (def, defName, description, genxy, quantity, attrFlags, catFlags, cargoVolume, massOfModule, purchasable, techType, techLevel) VALUES
-(6624, @PREFIX+'_t0', @PREFIX+'_t0_desc','#tier=$tierlevel_t0', 10, 2147485696, 69898, 0.3, 1000, 1, 1, 0),
+(6624, @PREFIX+'_t0', @PREFIX+'_t0_desc','#tier=$tierlevel_t0', 10, 2147485696, 69898, 3.0, 1000, 1, 1, 0),
 (6625, @PREFIX+'_t1', @PREFIX+'_t1_desc','#tier=$tierlevel_t1', 10, 2147485696, 69898, 0.15, 1000, 1, 1, 1),
 (6626, @PREFIX+'_t2', @PREFIX+'_t2_desc','#tier=$tierlevel_t2', 10, 2147485696, 69898, 0.15, 1000, 1, 1, 2),
 (6627, @PREFIX+'_t3', @PREFIX+'_t3_desc','#tier=$tierlevel_t3', 10, 2147485696, 69898, 0.15, 1000, 1, 1, 3),
