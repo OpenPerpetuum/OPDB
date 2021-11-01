@@ -1470,8 +1470,18 @@
 	"pvp_no_teleport": "No teleporting with PVP flag",
 	"pvp_no_teleport_unit": "",
 
-	"def_reactor_booster_b":"Energy storage cell v2",
-	"def_reactor_booster_c":"Energy storage cell v3",
+	"def_reactor_booster_a":"Energy Storage Cell",
+	"def_reactor_booster_b":"Advanced Energy Storage Cell",
+	"def_reactor_booster_c":"Hi-tech Energy Storage Cell",
+
+	"def_reactor_booster_a_pr":"Energy Storage Cell prototype",
+	"def_reactor_booster_b_pr":"Advanced Energy Storage Cell prototype",
+	"def_reactor_booster_c_pr":"Hi-tech Energy Storage Cell prototype",
+
+	"def_reactor_booster_a_cprg":"Energy Storage Cell CT",
+	"def_reactor_booster_b_cprg":"Advanced Energy Storage Cell CT",
+	"def_reactor_booster_c_cprg":"Hi-tech Energy Storage Cell CT",
+
 	"def_pbs_expiring_docking_base":"Syn-tec staging terminal",
 	"def_pbs_expiring_docking_base_object":"Syn-Tec staging terminal foundation",
 	"def_pbs_expiring_docking_base_capsule":"Syn-Tec staging terminal foundation",
