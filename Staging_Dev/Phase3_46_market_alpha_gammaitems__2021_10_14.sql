@@ -4,7 +4,7 @@ GO
 ---------------------------------------
 -- NPC ALPHA MARKET SELLS for gamma items
 -- Staging base, T0 blocks, decon, mods etc.
--- Date modified: 2021/10/14
+-- Date modified: 2021/11/01
 ---------------------------------------
 
 
@@ -14,8 +14,8 @@ CREATE TABLE #SELLS(
 	price FLOAT
 );
 INSERT INTO #SELLS (defName, price) VALUES
-('def_construction_module_ammo_t0', 200000),
-('def_pbs_expiring_docking_base', 15000000),
+('def_construction_module_ammo_t0', 100000),
+('def_pbs_expiring_docking_base', 25000000),
 ('def_ammo_terraform',7500),
 ('def_pbs_construction_module',500000),
 ('def_terraform_multi_module',500000),
