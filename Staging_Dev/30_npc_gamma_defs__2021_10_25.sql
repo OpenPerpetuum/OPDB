@@ -2976,7 +2976,7 @@ INSERT INTO #TMPAGGVALBYLVL(tiers,name,measure) VALUES
 ('courier','locking_range_modifier',2),
 ('courier','locking_time_modifier',0.6),
 ('courier','missile_cycle_time_modifier',0.55),
-('courier','optimal_range_modifier',1),
+('courier','optimal_range_modifier',1.5),
 ('courier','powergrid_max_modifier',2),
 ('courier','resist_chemical',50),
 ('courier','resist_explosive',50),
