@@ -1,7 +1,9 @@
 USE [perpetuumsa]
 GO
 
-DECLARE @respawnTime AS INT = 7200;
+DECLARE @respawnTime AS INT = (2*60*60);--2 HOURS
+DECLARE @courierRespawnTime AS INT = (4*60*60);--4 HOURS
+DECLARE @observerRespawnTime AS INT = (5*60*60);--5 HOURS
 
 DROP TABLE IF EXISTS #ZONES_BY_TIER_AND_FACTION;
 CREATE TABLE #ZONES_BY_TIER_AND_FACTION(
@@ -113,12 +115,7 @@ VALUES
 (0,'Nuimqol','courier_01','def_npc_gamma_sequer_advanced_courier',2),
 (0,'Nuimqol','courier_02','def_npc_gamma_yagel_advanced_courier',1),
 (0,'Nuimqol','courier_02','def_npc_gamma_hermes_advanced_courier',1),
---(0,'Nuimqol','miniboss_01','def_npc_gamma_mesmer_advanced_miniboss',1),
---(0,'Nuimqol','miniboss_01','def_npc_gamma_vagabond_shield_l7',2),
---(0,'Nuimqol','miniboss_01','def_npc_gamma_kain_dps_l7',2),
---(0,'Nuimqol','pitboss_01','def_npc_gamma_felos_nuimqol_pitboss',1),
---(0,'Nuimqol','pitboss_01','def_npc_mesmer_miniboss_rank3',2),
---(0,'Nuimqol','pitboss_01','def_npc_vagabond_miniboss_rank3',2),
+
 (0,'Thelodica','roamer_01','def_npc_gamma_artemis_dps_l7',3),
 (0,'Thelodica','roamer_01','def_npc_gamma_zenith_shield_l7',2),
 (0,'Thelodica','roamer_01','def_npc_gamma_intakt_shield_l7',2),
@@ -169,12 +166,7 @@ VALUES
 (0,'Thelodica','courier_01','def_npc_gamma_sequer_advanced_courier',2),
 (0,'Thelodica','courier_02','def_npc_gamma_prometheus_advanced_courier',1),
 (0,'Thelodica','courier_02','def_npc_gamma_hermes_advanced_courier',1),
---(0,'Thelodica','miniboss_01','def_npc_gamma_seth_advanced_miniboss',1),
---(0,'Thelodica','miniboss_01','def_npc_gamma_zenith_shield_l7',2),
---(0,'Thelodica','miniboss_01','def_npc_gamma_artemis_dps_l7',2),
---(0,'Thelodica','pitboss_01','def_npc_gamma_onyx_thelodica_pitboss',1),
---(0,'Thelodica','pitboss_01','def_npc_seth_miniboss_rank3',2),
---(0,'Thelodica','pitboss_01','def_npc_zenith_miniboss_rank3',2),
+
 (0,'Pelistal','roamer_01','def_npc_gamma_tyrannos_dps_l7',3),
 (0,'Pelistal','roamer_01','def_npc_gamma_ictus_shield_l7',2),
 (0,'Pelistal','roamer_01','def_npc_gamma_troiar_shield_l7',2),
@@ -225,12 +217,7 @@ VALUES
 (0,'Pelistal','courier_01','def_npc_gamma_sequer_advanced_courier',2),
 (0,'Pelistal','courier_02','def_npc_gamma_castel_advanced_courier',1),
 (0,'Pelistal','courier_02','def_npc_gamma_hermes_advanced_courier',1),
---(0,'Pelistal','miniboss_01','def_npc_gamma_gropho_advanced_miniboss',1),
---(0,'Pelistal','miniboss_01','def_npc_gamma_ictus_shield_l7',2),
---(0,'Pelistal','miniboss_01','def_npc_gamma_tyrannos_dps_l7',2),
---(0,'Pelistal','pitboss_01','def_npc_gamma_onyx_thelodica_pitboss',1),
---(0,'Pelistal','pitboss_01','def_npc_gropho_miniboss_rank3',2),
---(0,'Pelistal','pitboss_01','def_npc_ictus_miniboss_rank3',2),
+
 (0,'Syndicate','roamer_01','def_npc_gamma_legatus_dps_l7',2),
 (0,'Syndicate','roamer_01','def_npc_gamma_echelon_dps_l7',3),
 (0,'Syndicate','roamer_01','def_npc_gamma_callisto_shield_l7',2),
@@ -278,12 +265,7 @@ VALUES
 (0,'Syndicate','courier_01','def_npc_gamma_ikarus_advanced_courier',6),
 (0,'Syndicate','courier_02','def_npc_gamma_vektor_advanced_courier',1),
 (0,'Syndicate','courier_02','def_npc_gamma_hermes_advanced_courier',1),
---(0,'Syndicate','miniboss_01','def_npc_gamma_legatus_advanced_miniboss',1),
---(0,'Syndicate','miniboss_01','def_npc_gamma_callisto_shield_l7',2),
---(0,'Syndicate','miniboss_01','def_npc_gamma_echelon_dps_l7',2),
---(0,'Syndicate','pitboss_01','def_npc_gamma_apollo_syndicate_syn_pitboss',1),
---(0,'Syndicate','pitboss_01','def_npc_gamma_legatus_advanced_observer',2),
---(0,'Syndicate','pitboss_01','def_npc_gamma_callisto_advanced_observer',2),
+
 
 (3,'Nuimqol','roamer_01','def_npc_gamma_kain_dps_l5',3),
 (3,'Nuimqol','roamer_01','def_npc_gamma_vagabond_shield_l5',2),
@@ -702,7 +684,13 @@ INNER JOIN #ZONES_BY_TIER_AND_FACTION z ON z.zonefaction=t.zonefaction AND z.zon
 
 INSERT INTO #TMPNPCPRESENCE (name, spawnid, roamingrespawnseconds)
 SELECT 
-	DISTINCT fullName, (SELECT TOP 1 spawnid FROM zones WHERE id=zoneId), @respawnTime
+	DISTINCT fullName,
+	(SELECT TOP 1 spawnid FROM zones WHERE id=zoneId),
+	CASE
+		WHEN fullname like '%courier%' THEN @courierRespawnTime
+		WHEN fullname like '%observer%' THEN @observerRespawnTime
+		ELSE @respawnTime
+	END as roamingrespawnseconds
 FROM #NPC_PRES_AND_FLOCK_BY_ZONE;
 
 
@@ -755,7 +743,11 @@ SELECT
 	(SELECT TOP 1 e.definition FROM dbo.entitydefaults e WHERE p.defname = e.definitionname) as definition,
 	p.defname,
 	'gamma npc' as note,
-	@respawnTime as respawnseconds,
+	CASE
+		WHEN p.fullname like '%courier%' THEN @courierRespawnTime
+		WHEN p.fullname like '%observer%' THEN @observerRespawnTime
+		ELSE @respawnTime
+	END as respawnseconds,
 	CASE WHEN p.fullname like '%courier%' THEN 1 ELSE 2 END as behaviorType --Couriers orange
 FROM #NPC_PRES_AND_FLOCK_BY_ZONE p;
 
