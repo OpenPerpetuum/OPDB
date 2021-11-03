@@ -224,7 +224,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet4_gamma_small_laser','core_usage',4.8),
 ('def_elitet4_gamma_small_laser','cpu_usage',22),
 ('def_elitet4_gamma_small_laser','cycle_time',3500),
-('def_elitet4_gamma_small_laser','damage_modifier',1.155),--115.5%
+('def_elitet4_gamma_small_laser','damage_modifier',1.175),--117.50%
 ('def_elitet4_gamma_small_laser','falloff',10),
 ('def_elitet4_gamma_small_laser','optimal_range',16.5),
 ('def_elitet4_gamma_small_laser','powergrid_usage',44),
@@ -234,7 +234,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet4_gamma_medium_laser','core_usage',19.2),
 ('def_elitet4_gamma_medium_laser','cpu_usage',30),
 ('def_elitet4_gamma_medium_laser','cycle_time',5000),
-('def_elitet4_gamma_medium_laser','damage_modifier',1.68),--168.00%
+('def_elitet4_gamma_medium_laser','damage_modifier',1.70),--170.00%
 ('def_elitet4_gamma_medium_laser','falloff',10),
 ('def_elitet4_gamma_medium_laser','optimal_range',19),
 ('def_elitet4_gamma_medium_laser','powergrid_usage',250),
@@ -244,7 +244,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet4_gamma_small_autocannon','core_usage',1),
 ('def_elitet4_gamma_small_autocannon','cpu_usage',7),
 ('def_elitet4_gamma_small_autocannon','cycle_time',2500),
-('def_elitet4_gamma_small_autocannon','damage_modifier',1.155),--115.50%
+('def_elitet4_gamma_small_autocannon','damage_modifier',1.175),--117.50%
 ('def_elitet4_gamma_small_autocannon','falloff',15),
 ('def_elitet4_gamma_small_autocannon','optimal_range',8.5),
 ('def_elitet4_gamma_small_autocannon','powergrid_usage',18),
@@ -254,7 +254,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet4_gamma_medium_autocannon','core_usage',2),
 ('def_elitet4_gamma_medium_autocannon','cpu_usage',13),
 ('def_elitet4_gamma_medium_autocannon','cycle_time',3000),
-('def_elitet4_gamma_medium_autocannon','damage_modifier',1.4175),--141.75%
+('def_elitet4_gamma_medium_autocannon','damage_modifier',1.425),--142.50%
 ('def_elitet4_gamma_medium_autocannon','falloff',18.5),
 ('def_elitet4_gamma_medium_autocannon','optimal_range',15),
 ('def_elitet4_gamma_medium_autocannon','powergrid_usage',140),
@@ -272,7 +272,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet4_gamma_missile_launcher','core_usage',2),
 ('def_elitet4_gamma_missile_launcher','cpu_usage',45),
 ('def_elitet4_gamma_missile_launcher','cycle_time',10500),
-('def_elitet4_gamma_missile_launcher','damage_modifier',1.05),--105.00%
+('def_elitet4_gamma_missile_launcher','damage_modifier',1.10),--110.00%
 ('def_elitet4_gamma_missile_launcher','powergrid_usage',170),
 ('def_elitet4_gamma_missile_launcher','module_missile_range_modifier',1.2),
 
@@ -280,7 +280,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet4_gamma_small_railgun','core_usage',5),
 ('def_elitet4_gamma_small_railgun','cpu_usage',30),
 ('def_elitet4_gamma_small_railgun','cycle_time',6000),
-('def_elitet4_gamma_small_railgun','damage_modifier',2.1),--210.00%
+('def_elitet4_gamma_small_railgun','damage_modifier',2.20),--220.00%
 ('def_elitet4_gamma_small_railgun','falloff',6),
 ('def_elitet4_gamma_small_railgun','optimal_range',13.5),
 ('def_elitet4_gamma_small_railgun','powergrid_usage',37),
@@ -290,7 +290,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet4_gamma_medium_railgun','core_usage',20),
 ('def_elitet4_gamma_medium_railgun','cpu_usage',38),
 ('def_elitet4_gamma_medium_railgun','cycle_time',8000),
-('def_elitet4_gamma_medium_railgun','damage_modifier',3.15),--315.00%
+('def_elitet4_gamma_medium_railgun','damage_modifier',3.25),--325.00%
 ('def_elitet4_gamma_medium_railgun','falloff',6),
 ('def_elitet4_gamma_medium_railgun','optimal_range',17.5),
 ('def_elitet4_gamma_medium_railgun','powergrid_usage',180),
@@ -300,7 +300,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet4_gamma_longrange_medium_railgun','core_usage',29),
 ('def_elitet4_gamma_longrange_medium_railgun','cpu_usage',45),
 ('def_elitet4_gamma_longrange_medium_railgun','cycle_time',10000),
-('def_elitet4_gamma_longrange_medium_railgun','damage_modifier',2.835),--283.50%
+('def_elitet4_gamma_longrange_medium_railgun','damage_modifier',2.95),--295.00%
 ('def_elitet4_gamma_longrange_medium_railgun','falloff',6),
 ('def_elitet4_gamma_longrange_medium_railgun','optimal_range',31),
 ('def_elitet4_gamma_longrange_medium_railgun','powergrid_usage',200),
@@ -310,7 +310,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet4_gamma_longrange_medium_laser','core_usage',24),
 ('def_elitet4_gamma_longrange_medium_laser','cpu_usage',35),
 ('def_elitet4_gamma_longrange_medium_laser','cycle_time',6000),
-('def_elitet4_gamma_longrange_medium_laser','damage_modifier',1.365),--136.50%
+('def_elitet4_gamma_longrange_medium_laser','damage_modifier',1.40),--140.00%
 ('def_elitet4_gamma_longrange_medium_laser','falloff',10),
 ('def_elitet4_gamma_longrange_medium_laser','optimal_range',37.5),
 ('def_elitet4_gamma_longrange_medium_laser','powergrid_usage',250),
@@ -320,7 +320,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_elitet4_gamma_longrange_medium_autocannon','core_usage',2),
 ('def_elitet4_gamma_longrange_medium_autocannon','cpu_usage',14),
 ('def_elitet4_gamma_longrange_medium_autocannon','cycle_time',9000),
-('def_elitet4_gamma_longrange_medium_autocannon','damage_modifier',2.835),--283.50%
+('def_elitet4_gamma_longrange_medium_autocannon','damage_modifier',2.85),--285.00%
 ('def_elitet4_gamma_longrange_medium_autocannon','falloff',32),
 ('def_elitet4_gamma_longrange_medium_autocannon','optimal_range',24),
 ('def_elitet4_gamma_longrange_medium_autocannon','powergrid_usage',150),
@@ -328,25 +328,25 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 
 ('def_elitet4_gamma_small_driller','core_usage',22),
 ('def_elitet4_gamma_small_driller','cpu_usage',45),
-('def_elitet4_gamma_small_driller','cycle_time',11880),--11.88
+('def_elitet4_gamma_small_driller','cycle_time',11750),--11.75
 ('def_elitet4_gamma_small_driller','optimal_range',3.5),
 ('def_elitet4_gamma_small_driller','powergrid_usage',33),
 
 ('def_elitet4_gamma_medium_driller','core_usage',65),
 ('def_elitet4_gamma_medium_driller','cpu_usage',55),
-('def_elitet4_gamma_medium_driller','cycle_time',9500),--9.50
+('def_elitet4_gamma_medium_driller','cycle_time',9400),--9.40
 ('def_elitet4_gamma_medium_driller','optimal_range',4),
 ('def_elitet4_gamma_medium_driller','powergrid_usage',170),
 
 ('def_elitet4_gamma_small_harvester','core_usage',22),
 ('def_elitet4_gamma_small_harvester','cpu_usage',44),
-('def_elitet4_gamma_small_harvester','cycle_time',11880),--11.88
+('def_elitet4_gamma_small_harvester','cycle_time',11750),--11.75
 ('def_elitet4_gamma_small_harvester','optimal_range',3.5),
 ('def_elitet4_gamma_small_harvester','powergrid_usage',33),
 
 ('def_elitet4_gamma_medium_harvester','core_usage',65),
 ('def_elitet4_gamma_medium_harvester','cpu_usage',55),
-('def_elitet4_gamma_medium_harvester','cycle_time',9500),--9.50
+('def_elitet4_gamma_medium_harvester','cycle_time',9400),--9.40
 ('def_elitet4_gamma_medium_harvester','optimal_range',4),
 ('def_elitet4_gamma_medium_harvester','powergrid_usage',165);
 
