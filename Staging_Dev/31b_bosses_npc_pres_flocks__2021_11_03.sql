@@ -272,7 +272,7 @@ CREATE TABLE #TMPNPCFLOCK
 	spawnrangeMax int NOT NULL DEFAULT 15,
 	respawnseconds int NOT NULL DEFAULT 1*24*60*60,
 	totalspawncount int NOT NULL DEFAULT 0,	--set to 0 to allow respawning or something idk
-	homerange int NOT NULL DEFAULT 55,
+	homerange int NOT NULL DEFAULT 99,
 	note nvarchar(2000) NULL,
 	respawnmultiplierlow float NULL DEFAULT 0.9,
 	enabled bit NOT NULL DEFAULT 1,
