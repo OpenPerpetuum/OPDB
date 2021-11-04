@@ -2,7 +2,7 @@ USE [perpetuumsa]
 GO
 
 DECLARE @respawnTime AS INT = (2*60*60);--2 HOURS
-DECLARE @courierRespawnTime AS INT = (4*60*60);--4 HOURS
+DECLARE @courierRespawnTime AS INT = (5*60*60);--5 HOURS
 DECLARE @observerRespawnTime AS INT = (5*60*60);--5 HOURS
 
 DROP TABLE IF EXISTS #ZONES_BY_TIER_AND_FACTION;
@@ -111,8 +111,8 @@ VALUES
 (0,'Nuimqol','observer_02','def_npc_gamma_kain_advanced_observer',2),
 (0,'Nuimqol','observer_02','def_npc_gamma_vagabond_advanced_observer',1),
 (0,'Nuimqol','courier_01','def_npc_gamma_arbalest_advanced_courier',2),
-(0,'Nuimqol','courier_01','def_npc_gamma_cameleon_advanced_courier',2),
-(0,'Nuimqol','courier_01','def_npc_gamma_sequer_advanced_courier',2),
+(0,'Nuimqol','courier_01','def_npc_gamma_cameleon_advanced_courier',1),
+(0,'Nuimqol','courier_01','def_npc_gamma_sequer_advanced_courier',3),
 (0,'Nuimqol','courier_02','def_npc_gamma_yagel_advanced_courier',1),
 (0,'Nuimqol','courier_02','def_npc_gamma_hermes_advanced_courier',1),
 
@@ -162,8 +162,8 @@ VALUES
 (0,'Thelodica','observer_02','def_npc_gamma_artemis_advanced_observer',2),
 (0,'Thelodica','observer_02','def_npc_gamma_zenith_advanced_observer',1),
 (0,'Thelodica','courier_01','def_npc_gamma_baphomet_advanced_courier',2),
-(0,'Thelodica','courier_01','def_npc_gamma_intakt_advanced_courier',2),
-(0,'Thelodica','courier_01','def_npc_gamma_sequer_advanced_courier',2),
+(0,'Thelodica','courier_01','def_npc_gamma_intakt_advanced_courier',1),
+(0,'Thelodica','courier_01','def_npc_gamma_sequer_advanced_courier',3),
 (0,'Thelodica','courier_02','def_npc_gamma_prometheus_advanced_courier',1),
 (0,'Thelodica','courier_02','def_npc_gamma_hermes_advanced_courier',1),
 
@@ -213,8 +213,8 @@ VALUES
 (0,'Pelistal','observer_02','def_npc_gamma_tyrannos_advanced_observer',2),
 (0,'Pelistal','observer_02','def_npc_gamma_ictus_advanced_observer',1),
 (0,'Pelistal','courier_01','def_npc_gamma_waspish_advanced_courier',2),
-(0,'Pelistal','courier_01','def_npc_gamma_troiar_advanced_courier',2),
-(0,'Pelistal','courier_01','def_npc_gamma_sequer_advanced_courier',2),
+(0,'Pelistal','courier_01','def_npc_gamma_troiar_advanced_courier',1),
+(0,'Pelistal','courier_01','def_npc_gamma_sequer_advanced_courier',3),
 (0,'Pelistal','courier_02','def_npc_gamma_castel_advanced_courier',1),
 (0,'Pelistal','courier_02','def_npc_gamma_hermes_advanced_courier',1),
 
@@ -261,8 +261,8 @@ VALUES
 (0,'Syndicate','observer_02','def_npc_gamma_echelon_advanced_observer',2),
 (0,'Syndicate','observer_02','def_npc_gamma_callisto_advanced_observer',1),
 (0,'Syndicate','courier_01','def_npc_gamma_locust_advanced_courier',2),
-(0,'Syndicate','courier_01','def_npc_gamma_helix_advanced_courier',2),
-(0,'Syndicate','courier_01','def_npc_gamma_ikarus_advanced_courier',6),
+(0,'Syndicate','courier_01','def_npc_gamma_helix_advanced_courier',1),
+(0,'Syndicate','courier_01','def_npc_gamma_ikarus_advanced_courier',4),
 (0,'Syndicate','courier_02','def_npc_gamma_vektor_advanced_courier',1),
 (0,'Syndicate','courier_02','def_npc_gamma_hermes_advanced_courier',1),
 
@@ -309,10 +309,13 @@ VALUES
 (3,'Nuimqol','observer_02','def_npc_gamma_kain_advanced_observer',1),
 (3,'Nuimqol','observer_02','def_npc_gamma_vagabond_advanced_observer',1),
 (3,'Nuimqol','courier_01','def_npc_gamma_arbalest_advanced_courier',1),
-(3,'Nuimqol','courier_01','def_npc_gamma_cameleon_advanced_courier',2),
+(3,'Nuimqol','courier_01','def_npc_gamma_yagel_advanced_courier',2),
 (3,'Nuimqol','courier_01','def_npc_gamma_sequer_advanced_courier',1),
+(3,'Nuimqol','courier_01','def_npc_gamma_ikarus_advanced_courier',1),
+(3,'Nuimqol','courier_02','def_npc_gamma_cameleon_advanced_courier',1),
+(3,'Nuimqol','courier_02','def_npc_gamma_hermes_advanced_courier',1),
 
-(2,'Pelistal','roamer_01','def_npc_gamma_kain_dps_l4',2),
+(2,'Nuimqol','roamer_01','def_npc_gamma_kain_dps_l4',2),
 (2,'Nuimqol','roamer_01','def_npc_gamma_mesmer_dps_l4',1),
 (2,'Nuimqol','roamer_01','def_npc_gamma_arbalest_dps_l4',3),
 (2,'Nuimqol','roamer_01','def_npc_gamma_cameleon_shield_l4',3),
@@ -353,7 +356,9 @@ VALUES
 (2,'Nuimqol','observer_02','def_npc_gamma_vagabond_advanced_observer',1),
 (2,'Nuimqol','courier_01','def_npc_gamma_arbalest_advanced_courier',1),
 (2,'Nuimqol','courier_01','def_npc_gamma_cameleon_advanced_courier',1),
-(2,'Nuimqol','courier_01','def_npc_gamma_sequer_advanced_courier',1),
+(2,'Nuimqol','courier_01','def_npc_gamma_sequer_advanced_courier',2),
+(2,'Nuimqol','courier_02','def_npc_gamma_yagel_advanced_courier',2),
+(2,'Nuimqol','courier_02','def_npc_gamma_ikarus_advanced_courier',1),
 
 (1,'Nuimqol','roamer_01','def_npc_gamma_kain_dps_l3',2),
 (1,'Nuimqol','roamer_01','def_npc_gamma_arbalest_dps_l3',4),
@@ -397,8 +402,9 @@ VALUES
 (1,'Nuimqol','observer_02','def_npc_gamma_kain_advanced_observer',1),
 (1,'Nuimqol','observer_02','def_npc_gamma_vagabond_advanced_observer',1),
 (1,'Nuimqol','courier_01','def_npc_gamma_arbalest_advanced_courier',1),
-(1,'Nuimqol','courier_01','def_npc_gamma_yagel_advanced_courier',1),
 (1,'Nuimqol','courier_01','def_npc_gamma_ikarus_advanced_courier',2),
+(1,'Nuimqol','courier_02','def_npc_gamma_yagel_advanced_courier',1),
+(1,'Nuimqol','courier_02','def_npc_gamma_ikarus_advanced_courier',1),
 
 (3,'Thelodica','roamer_01','def_npc_gamma_artemis_dps_l5',3),
 (3,'Thelodica','roamer_01','def_npc_gamma_zenith_shield_l5',2),
@@ -442,8 +448,11 @@ VALUES
 (3,'Thelodica','observer_02','def_npc_gamma_artemis_advanced_observer',1),
 (3,'Thelodica','observer_02','def_npc_gamma_zenith_advanced_observer',1),
 (3,'Thelodica','courier_01','def_npc_gamma_baphomet_advanced_courier',1),
-(3,'Thelodica','courier_01','def_npc_gamma_intakt_advanced_courier',2),
+(3,'Thelodica','courier_01','def_npc_gamma_prometheus_advanced_courier',2),
 (3,'Thelodica','courier_01','def_npc_gamma_sequer_advanced_courier',1),
+(3,'Thelodica','courier_01','def_npc_gamma_ikarus_advanced_courier',1),
+(3,'Thelodica','courier_02','def_npc_gamma_intakt_advanced_courier',1),
+(3,'Thelodica','courier_02','def_npc_gamma_hermes_advanced_courier',1),
 
 (2,'Thelodica','roamer_01','def_npc_gamma_artemis_dps_l4',2),
 (2,'Thelodica','roamer_01','def_npc_gamma_seth_dps_l4',1),
@@ -486,7 +495,9 @@ VALUES
 (2,'Thelodica','observer_02','def_npc_gamma_zenith_advanced_observer',1),
 (2,'Thelodica','courier_01','def_npc_gamma_baphomet_advanced_courier',1),
 (2,'Thelodica','courier_01','def_npc_gamma_intakt_advanced_courier',1),
-(2,'Thelodica','courier_01','def_npc_gamma_sequer_advanced_courier',1),
+(2,'Thelodica','courier_01','def_npc_gamma_sequer_advanced_courier',2),
+(2,'Thelodica','courier_02','def_npc_gamma_prometheus_advanced_courier',2),
+(2,'Thelodica','courier_02','def_npc_gamma_ikarus_advanced_courier',1),
 
 (1,'Thelodica','roamer_01','def_npc_gamma_artemis_dps_l3',2),
 (1,'Thelodica','roamer_01','def_npc_gamma_baphomet_dps_l3',4),
@@ -530,8 +541,9 @@ VALUES
 (1,'Thelodica','observer_02','def_npc_gamma_artemis_advanced_observer',1),
 (1,'Thelodica','observer_02','def_npc_gamma_zenith_advanced_observer',1),
 (1,'Thelodica','courier_01','def_npc_gamma_baphomet_advanced_courier',1),
-(1,'Thelodica','courier_01','def_npc_gamma_prometheus_advanced_courier',1),
 (1,'Thelodica','courier_01','def_npc_gamma_ikarus_advanced_courier',2),
+(1,'Thelodica','courier_02','def_npc_gamma_prometheus_advanced_courier',1),
+(1,'Thelodica','courier_02','def_npc_gamma_ikarus_advanced_courier',1),
 
 (3,'Pelistal','roamer_01','def_npc_gamma_tyrannos_dps_l5',3),
 (3,'Pelistal','roamer_01','def_npc_gamma_ictus_shield_l5',2),
@@ -575,8 +587,11 @@ VALUES
 (3,'Pelistal','observer_02','def_npc_gamma_tyrannos_advanced_observer',1),
 (3,'Pelistal','observer_02','def_npc_gamma_ictus_advanced_observer',1),
 (3,'Pelistal','courier_01','def_npc_gamma_waspish_advanced_courier',1),
-(3,'Pelistal','courier_01','def_npc_gamma_troiar_advanced_courier',2),
+(3,'Pelistal','courier_01','def_npc_gamma_castel_advanced_courier',2),
 (3,'Pelistal','courier_01','def_npc_gamma_sequer_advanced_courier',1),
+(3,'Pelistal','courier_01','def_npc_gamma_ikarus_advanced_courier',1),
+(3,'Pelistal','courier_02','def_npc_gamma_troiar_advanced_courier',1),
+(3,'Pelistal','courier_02','def_npc_gamma_hermes_advanced_courier',1),
 
 (2,'Pelistal','roamer_01','def_npc_gamma_tyrannos_dps_l4',2),
 (2,'Pelistal','roamer_01','def_npc_gamma_gropho_dps_l4',1),
@@ -619,7 +634,9 @@ VALUES
 (2,'Pelistal','observer_02','def_npc_gamma_ictus_advanced_observer',1),
 (2,'Pelistal','courier_01','def_npc_gamma_waspish_advanced_courier',1),
 (2,'Pelistal','courier_01','def_npc_gamma_troiar_advanced_courier',1),
-(2,'Pelistal','courier_01','def_npc_gamma_sequer_advanced_courier',1),
+(2,'Pelistal','courier_01','def_npc_gamma_sequer_advanced_courier',2),
+(2,'Pelistal','courier_02','def_npc_gamma_castel_advanced_courier',2),
+(2,'Pelistal','courier_02','def_npc_gamma_ikarus_advanced_courier',1),
 
 (1,'Pelistal','roamer_01','def_npc_gamma_tyrannos_dps_l3',2),
 (1,'Pelistal','roamer_01','def_npc_gamma_waspish_dps_l3',4),
@@ -663,8 +680,9 @@ VALUES
 (1,'Pelistal','observer_02','def_npc_gamma_tyrannos_advanced_observer',1),
 (1,'Pelistal','observer_02','def_npc_gamma_ictus_advanced_observer',1),
 (1,'Pelistal','courier_01','def_npc_gamma_waspish_advanced_courier',1),
-(1,'Pelistal','courier_01','def_npc_gamma_castel_advanced_courier',1),
-(1,'Pelistal','courier_01','def_npc_gamma_ikarus_advanced_courier',2)
+(1,'Pelistal','courier_01','def_npc_gamma_ikarus_advanced_courier',2),
+(1,'Pelistal','courier_02','def_npc_gamma_castel_advanced_courier',1),
+(1,'Pelistal','courier_02','def_npc_gamma_ikarus_advanced_courier',1)
 ;
 
 

@@ -39,13 +39,13 @@ CREATE TABLE #BOSS_CONFIGS(
 	isAnnounced bit default 1,
 );
 INSERT INTO #BOSS_CONFIGS (bossName, customAggressMessage, customDeathMessage) VALUES
-('def_npc_gamma_mesmer_advanced_miniboss', '', ''),
+('def_npc_gamma_mesmer_boss_miniboss', '', ''),
 ('def_npc_gamma_felos_nuimqol_pitboss', '', ''),
-('def_npc_gamma_seth_advanced_miniboss', '', ''),
+('def_npc_gamma_seth_boss_miniboss', '', ''),
 ('def_npc_gamma_onyx_thelodica_pitboss', '', ''),
-('def_npc_gamma_gropho_advanced_miniboss', '', ''),
+('def_npc_gamma_gropho_boss_miniboss', '', ''),
 ('def_npc_gamma_hydra_pelistal_pitboss', '', ''),
-('def_npc_gamma_legatus_advanced_miniboss', '', ''),
+('def_npc_gamma_legatus_boss_miniboss', '', ''),
 ('def_npc_gamma_apollo_syndicate_syn_pitboss', '', '');
 
 
@@ -58,13 +58,13 @@ CREATE TABLE #WAVES (
 	thresh FLOAT
 );
 INSERT INTO #WAVES (targetFlockName, presenceName, npcDefName, numInFlock, thresh) VALUES
-('miniboss_01_z131_mesmer_advanced_miniboss', 'reinforce_miniboss_01_z131_wave0', 'def_npc_gamma_kain_dps_l6', 2, 0.2),
-('miniboss_01_z131_mesmer_advanced_miniboss', 'reinforce_miniboss_01_z131_wave0', 'def_npc_gamma_cameleon_shield_l6', 2, 0.2),
-('miniboss_01_z131_mesmer_advanced_miniboss', 'reinforce_miniboss_01_z131_wave1', 'def_npc_gamma_kain_tank_l7', 3, 0.35),
-('miniboss_01_z131_mesmer_advanced_miniboss', 'reinforce_miniboss_01_z131_wave1', 'def_npc_gamma_vagabond_armor_l7', 3, 0.35),
-('miniboss_01_z131_mesmer_advanced_miniboss', 'reinforce_miniboss_01_z131_wave2', 'def_npc_gamma_mesmer_dps_l7', 2, 0.5),
-('miniboss_01_z131_mesmer_advanced_miniboss', 'reinforce_miniboss_01_z131_wave2', 'def_npc_gamma_vagabond_armor_l7', 2, 0.5),
-('miniboss_01_z131_mesmer_advanced_miniboss', 'reinforce_miniboss_01_z131_wave2', 'def_npc_gamma_cameleon_shield_l7', 2, 0.5),
+('miniboss_01_z131_mesmer_boss_miniboss', 'reinforce_miniboss_01_z131_wave0', 'def_npc_gamma_kain_dps_l6', 2, 0.2),
+('miniboss_01_z131_mesmer_boss_miniboss', 'reinforce_miniboss_01_z131_wave0', 'def_npc_gamma_cameleon_shield_l6', 2, 0.2),
+('miniboss_01_z131_mesmer_boss_miniboss', 'reinforce_miniboss_01_z131_wave1', 'def_npc_gamma_kain_tank_l7', 3, 0.35),
+('miniboss_01_z131_mesmer_boss_miniboss', 'reinforce_miniboss_01_z131_wave1', 'def_npc_gamma_vagabond_armor_l7', 3, 0.35),
+('miniboss_01_z131_mesmer_boss_miniboss', 'reinforce_miniboss_01_z131_wave2', 'def_npc_gamma_mesmer_dps_l7', 2, 0.5),
+('miniboss_01_z131_mesmer_boss_miniboss', 'reinforce_miniboss_01_z131_wave2', 'def_npc_gamma_vagabond_armor_l7', 2, 0.5),
+('miniboss_01_z131_mesmer_boss_miniboss', 'reinforce_miniboss_01_z131_wave2', 'def_npc_gamma_cameleon_shield_l7', 2, 0.5),
 
 ('pitboss_01_z131_felos_nuimqol_pitboss', 'reinforce_pitboss_01_z131_wave0', 'def_npc_gamma_mesmer_dps_l7', 2, 0.2),
 ('pitboss_01_z131_felos_nuimqol_pitboss', 'reinforce_pitboss_01_z131_wave0', 'def_npc_gamma_cameleon_shield_l7', 2, 0.2),
@@ -75,13 +75,13 @@ INSERT INTO #WAVES (targetFlockName, presenceName, npcDefName, numInFlock, thres
 ('pitboss_01_z131_felos_nuimqol_pitboss', 'reinforce_pitboss_01_z131_wave2', 'def_npc_gamma_mesmer_dps_l7', 2, 0.6),
 ('pitboss_01_z131_felos_nuimqol_pitboss', 'reinforce_pitboss_01_z131_wave2', 'def_npc_pbs_turret_ew_rank1', 1, 0.6),
 
-('miniboss_01_z119_seth_advanced_miniboss', 'reinforce_miniboss_01_z119_wave0', 'def_npc_gamma_artemis_dps_l6', 2, 0.3),
-('miniboss_01_z119_seth_advanced_miniboss', 'reinforce_miniboss_01_z119_wave0', 'def_npc_gamma_intakt_shield_l6', 2, 0.3),
-('miniboss_01_z119_seth_advanced_miniboss', 'reinforce_miniboss_01_z119_wave1', 'def_npc_gamma_artemis_tank_l7', 3, 0.5),
-('miniboss_01_z119_seth_advanced_miniboss', 'reinforce_miniboss_01_z119_wave1', 'def_npc_gamma_zenith_armor_l7', 3, 0.5),
-('miniboss_01_z119_seth_advanced_miniboss', 'reinforce_miniboss_01_z119_wave2', 'def_npc_gamma_seth_dps_l7', 2, 0.7),
-('miniboss_01_z119_seth_advanced_miniboss', 'reinforce_miniboss_01_z119_wave2', 'def_npc_gamma_zenith_armor_l7', 2, 0.7),
-('miniboss_01_z119_seth_advanced_miniboss', 'reinforce_miniboss_01_z119_wave2', 'def_npc_gamma_intakt_shield_l7', 2, 0.7),
+('miniboss_01_z119_seth_boss_miniboss', 'reinforce_miniboss_01_z119_wave0', 'def_npc_gamma_artemis_dps_l6', 2, 0.3),
+('miniboss_01_z119_seth_boss_miniboss', 'reinforce_miniboss_01_z119_wave0', 'def_npc_gamma_intakt_shield_l6', 2, 0.3),
+('miniboss_01_z119_seth_boss_miniboss', 'reinforce_miniboss_01_z119_wave1', 'def_npc_gamma_artemis_tank_l7', 3, 0.5),
+('miniboss_01_z119_seth_boss_miniboss', 'reinforce_miniboss_01_z119_wave1', 'def_npc_gamma_zenith_armor_l7', 3, 0.5),
+('miniboss_01_z119_seth_boss_miniboss', 'reinforce_miniboss_01_z119_wave2', 'def_npc_gamma_seth_dps_l7', 2, 0.7),
+('miniboss_01_z119_seth_boss_miniboss', 'reinforce_miniboss_01_z119_wave2', 'def_npc_gamma_zenith_armor_l7', 2, 0.7),
+('miniboss_01_z119_seth_boss_miniboss', 'reinforce_miniboss_01_z119_wave2', 'def_npc_gamma_intakt_shield_l7', 2, 0.7),
 
 ('pitboss_01_z119_onyx_thelodica_pitboss', 'reinforce_miniboss_01_z119_wave0', 'def_npc_gamma_seth_dps_l7', 2, 0.2),
 ('pitboss_01_z119_onyx_thelodica_pitboss', 'reinforce_miniboss_01_z119_wave0', 'def_npc_gamma_intakt_shield_l7', 2, 0.2),
@@ -92,13 +92,13 @@ INSERT INTO #WAVES (targetFlockName, presenceName, npcDefName, numInFlock, thres
 ('pitboss_01_z119_onyx_thelodica_pitboss', 'reinforce_miniboss_01_z119_wave2', 'def_npc_gamma_seth_dps_l7', 2, 0.6),
 ('pitboss_01_z119_onyx_thelodica_pitboss', 'reinforce_miniboss_01_z119_wave2', 'def_npc_pbs_turret_ew_rank1', 1, 0.6),
 
-('miniboss_01_z114_gropho_advanced_miniboss', 'reinforce_miniboss_01_z114_wave0', 'def_npc_gamma_tyrannos_dps_l6', 2, 0.5),
-('miniboss_01_z114_gropho_advanced_miniboss', 'reinforce_miniboss_01_z114_wave0', 'def_npc_gamma_troiar_shield_l6', 2, 0.5),
-('miniboss_01_z114_gropho_advanced_miniboss', 'reinforce_miniboss_01_z114_wave1', 'def_npc_gamma_tyrannos_tank_l7', 3, 0.7),
-('miniboss_01_z114_gropho_advanced_miniboss', 'reinforce_miniboss_01_z114_wave1', 'def_npc_gamma_ictus_armor_l7', 3, 0.7),
-('miniboss_01_z114_gropho_advanced_miniboss', 'reinforce_miniboss_01_z114_wave2', 'def_npc_gamma_gropho_dps_l7', 2, 0.8),
-('miniboss_01_z114_gropho_advanced_miniboss', 'reinforce_miniboss_01_z114_wave2', 'def_npc_gamma_ictus_armor_l7', 2, 0.8),
-('miniboss_01_z114_gropho_advanced_miniboss', 'reinforce_miniboss_01_z114_wave2', 'def_npc_gamma_troiar_shield_l7', 2, 0.8),
+('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave0', 'def_npc_gamma_tyrannos_dps_l6', 2, 0.5),
+('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave0', 'def_npc_gamma_troiar_shield_l6', 2, 0.5),
+('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave1', 'def_npc_gamma_tyrannos_tank_l7', 3, 0.7),
+('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave1', 'def_npc_gamma_ictus_armor_l7', 3, 0.7),
+('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave2', 'def_npc_gamma_gropho_dps_l7', 2, 0.8),
+('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave2', 'def_npc_gamma_ictus_armor_l7', 2, 0.8),
+('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave2', 'def_npc_gamma_troiar_shield_l7', 2, 0.8),
 
 ('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_miniboss_01_z114_wave0', 'def_npc_gamma_gropho_dps_l7', 2, 0.5),
 ('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_miniboss_01_z114_wave0', 'def_npc_gamma_troiar_shield_l7', 2, 0.5),
@@ -109,13 +109,13 @@ INSERT INTO #WAVES (targetFlockName, presenceName, npcDefName, numInFlock, thres
 ('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_miniboss_01_z114_wave2', 'def_npc_gamma_gropho_dps_l7', 2, 0.8),
 ('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_miniboss_01_z114_wave2', 'def_npc_pbs_turret_ew_rank1', 1, 0.8),
 
-('miniboss_01_z110_legatus_advanced_miniboss', 'reinforce_miniboss_01_z110_wave0', 'def_npc_gamma_echelon_dps_l6', 2, 0.3),
-('miniboss_01_z110_legatus_advanced_miniboss', 'reinforce_miniboss_01_z110_wave0', 'def_npc_gamma_helix_shield_l6', 2, 0.3),
-('miniboss_01_z110_legatus_advanced_miniboss', 'reinforce_miniboss_01_z110_wave1', 'def_npc_gamma_echelon_tank_l7', 3, 0.5),
-('miniboss_01_z110_legatus_advanced_miniboss', 'reinforce_miniboss_01_z110_wave1', 'def_npc_gamma_callisto_armor_l7', 3, 0.5),
-('miniboss_01_z110_legatus_advanced_miniboss', 'reinforce_miniboss_01_z110_wave2', 'def_npc_gamma_legatus_dps_l7', 2, 0.7),
-('miniboss_01_z110_legatus_advanced_miniboss', 'reinforce_miniboss_01_z110_wave2', 'def_npc_gamma_callisto_armor_l7', 2, 0.7),
-('miniboss_01_z110_legatus_advanced_miniboss', 'reinforce_miniboss_01_z110_wave2', 'def_npc_gamma_helix_shield_l7', 2, 0.7),
+('miniboss_01_z110_legatus_boss_miniboss', 'reinforce_miniboss_01_z110_wave0', 'def_npc_gamma_echelon_dps_l6', 2, 0.3),
+('miniboss_01_z110_legatus_boss_miniboss', 'reinforce_miniboss_01_z110_wave0', 'def_npc_gamma_helix_shield_l6', 2, 0.3),
+('miniboss_01_z110_legatus_boss_miniboss', 'reinforce_miniboss_01_z110_wave1', 'def_npc_gamma_echelon_tank_l7', 3, 0.5),
+('miniboss_01_z110_legatus_boss_miniboss', 'reinforce_miniboss_01_z110_wave1', 'def_npc_gamma_callisto_armor_l7', 3, 0.5),
+('miniboss_01_z110_legatus_boss_miniboss', 'reinforce_miniboss_01_z110_wave2', 'def_npc_gamma_legatus_dps_l7', 2, 0.7),
+('miniboss_01_z110_legatus_boss_miniboss', 'reinforce_miniboss_01_z110_wave2', 'def_npc_gamma_callisto_armor_l7', 2, 0.7),
+('miniboss_01_z110_legatus_boss_miniboss', 'reinforce_miniboss_01_z110_wave2', 'def_npc_gamma_helix_shield_l7', 2, 0.7),
 
 ('pitboss_01_z110_apollo_syndicate_syn_pitboss', 'reinforce_miniboss_01_z110_wave0', 'def_npc_gamma_legatus_dps_l7', 2, 0.2),
 ('pitboss_01_z110_apollo_syndicate_syn_pitboss', 'reinforce_miniboss_01_z110_wave0', 'def_npc_gamma_helix_shield_l7', 2, 0.2),
@@ -188,28 +188,28 @@ CREATE TABLE #TMPNPC
 INSERT INTO #TMPNPC (zonetier,zonefaction,presencename,defname,flockmembercount)
 VALUES
 
-(0,'Nuimqol','miniboss_01','def_npc_gamma_mesmer_advanced_miniboss',1),
+(0,'Nuimqol','miniboss_01','def_npc_gamma_mesmer_boss_miniboss',1),
 (0,'Nuimqol','miniboss_01','def_npc_gamma_vagabond_shield_l7',2),
 (0,'Nuimqol','miniboss_01','def_npc_gamma_kain_dps_l7',2),
 (0,'Nuimqol','pitboss_01','def_npc_gamma_felos_nuimqol_pitboss',1),
 (0,'Nuimqol','pitboss_01','def_npc_mesmer_miniboss_rank3',2),
 (0,'Nuimqol','pitboss_01','def_npc_vagabond_miniboss_rank3',2),
 
-(0,'Thelodica','miniboss_01','def_npc_gamma_seth_advanced_miniboss',1),
+(0,'Thelodica','miniboss_01','def_npc_gamma_seth_boss_miniboss',1),
 (0,'Thelodica','miniboss_01','def_npc_gamma_zenith_shield_l7',2),
 (0,'Thelodica','miniboss_01','def_npc_gamma_artemis_dps_l7',2),
 (0,'Thelodica','pitboss_01','def_npc_gamma_onyx_thelodica_pitboss',1),
 (0,'Thelodica','pitboss_01','def_npc_seth_miniboss_rank3',2),
 (0,'Thelodica','pitboss_01','def_npc_zenith_miniboss_rank3',2),
 
-(0,'Pelistal','miniboss_01','def_npc_gamma_gropho_advanced_miniboss',1),
+(0,'Pelistal','miniboss_01','def_npc_gamma_gropho_boss_miniboss',1),
 (0,'Pelistal','miniboss_01','def_npc_gamma_ictus_shield_l7',2),
 (0,'Pelistal','miniboss_01','def_npc_gamma_tyrannos_dps_l7',2),
 (0,'Pelistal','pitboss_01','def_npc_gamma_hydra_pelistal_pitboss',1),
 (0,'Pelistal','pitboss_01','def_npc_gropho_miniboss_rank3',2),
 (0,'Pelistal','pitboss_01','def_npc_ictus_miniboss_rank3',2),
 
-(0,'Syndicate','miniboss_01','def_npc_gamma_legatus_advanced_miniboss',1),
+(0,'Syndicate','miniboss_01','def_npc_gamma_legatus_boss_miniboss',1),
 (0,'Syndicate','miniboss_01','def_npc_gamma_callisto_shield_l7',2),
 (0,'Syndicate','miniboss_01','def_npc_gamma_echelon_dps_l7',2),
 (0,'Syndicate','pitboss_01','def_npc_gamma_apollo_syndicate_syn_pitboss',1),
