@@ -113,8 +113,8 @@ INSERT INTO #EP_BY_LEVEL_AND_CLASS (levelName, className, ep) VALUES
 ('l3', 'light', 12);
 
 PRINT N'UPDATING KILLEP ON THESE RELATIONS:';
-select * from robottemplaterelation
-where definition in (select def from #NPCS_BY_FACTION_BY_LEVEL);
+--select * from robottemplaterelation
+--where definition in (select def from #NPCS_BY_FACTION_BY_LEVEL);
 
 MERGE [dbo].[robottemplaterelation] r USING #NPCS_BY_FACTION_BY_LEVEL n
 ON r.definition = n.def
