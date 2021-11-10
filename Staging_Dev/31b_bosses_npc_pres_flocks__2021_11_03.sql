@@ -19,13 +19,20 @@ DROP TABLE IF EXISTS #BOSS_LOCATIONS;
 CREATE TABLE #BOSS_LOCATIONS(
 	zoneid int,
 	x int,
-	y int
+	y int,
+	minibossLocation bit default 0
 );
 INSERT INTO #BOSS_LOCATIONS(zoneid, x, y) VALUES
 (110, 1005, 1010),
 (114, 966, 930),
 (119, 1150, 990),
 (131, 1020, 975);
+
+INSERT INTO #BOSS_LOCATIONS(zoneid, x, y, minibossLocation) VALUES
+(110, 980, 670, 1),
+(114, 720, 1370, 1),
+(119, 1430, 1350, 1),
+(131, 830, 1280, 1);
 
 
 DROP TABLE IF EXISTS #BOSS_CONFIGS;
@@ -92,23 +99,24 @@ INSERT INTO #WAVES (targetFlockName, presenceName, npcDefName, numInFlock, thres
 ('pitboss_01_z119_onyx_thelodica_pitboss', 'reinforce_pitboss_01_z119_wave2', 'def_npc_gamma_seth_dps_l7', 2, 0.6),
 ('pitboss_01_z119_onyx_thelodica_pitboss', 'reinforce_pitboss_01_z119_wave2', 'def_npc_pbs_turret_ew_rank1', 1, 0.6),
 
-('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave0', 'def_npc_gamma_tyrannos_dps_l5', 4, 0.45),
-('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave0', 'def_npc_gamma_troiar_shield_l6', 4, 0.45),
-('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave1', 'def_npc_gamma_tyrannos_tank_l6', 4, 0.65),
-('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave1', 'def_npc_gamma_ictus_shield_l6', 3, 0.65),
-('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave2', 'def_npc_gamma_gropho_dps_l6', 2, 0.8),
-('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave2', 'def_npc_gamma_ictus_armor_l6', 2, 0.8),
-('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave2', 'def_npc_gamma_tyrannos_tank_l6', 2, 0.8),
-('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave2', 'def_npc_gropho_miniboss_rank3', 1, 0.8),
+('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave0', 'def_npc_gamma_tyrannos_dps_l5', 4, 0.15),
+('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave0', 'def_npc_gamma_troiar_shield_l6', 4, 0.15),
+('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave1', 'def_npc_gamma_tyrannos_tank_l6', 4, 0.35),
+('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave1', 'def_npc_gamma_ictus_shield_l6', 3, 0.35),
+('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave2', 'def_npc_gamma_gropho_dps_l6', 2, 0.65),
+('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave2', 'def_npc_gamma_ictus_shield_l6', 3, 0.65),
+('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave2', 'def_npc_gamma_tyrannos_tank_l6', 2, 0.65),
+('miniboss_01_z114_gropho_boss_miniboss', 'reinforce_miniboss_01_z114_wave2', 'def_npc_gropho_miniboss_rank3', 1, 0.65),
 
-('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_pitboss_01_z114_wave0', 'def_npc_gamma_gropho_dps_l7', 2, 0.45),
-('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_pitboss_01_z114_wave0', 'def_npc_gamma_troiar_shield_l7', 2, 0.45),
-('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_pitboss_01_z114_wave1', 'def_npc_gamma_gropho_dps_l7', 3, 0.65),
-('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_pitboss_01_z114_wave1', 'def_npc_gamma_ictus_armor_l7', 3, 0.65),
-('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_pitboss_01_z114_wave1', 'def_npc_gamma_troiar_shield_l6', 2, 0.65),
-('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_pitboss_01_z114_wave2', 'def_npc_gropho_miniboss_rank3', 2, 0.8),
-('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_pitboss_01_z114_wave2', 'def_npc_gamma_gropho_dps_l7', 2, 0.8),
-('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_pitboss_01_z114_wave2', 'def_npc_pbs_turret_ew_rank1', 1, 0.8),
+('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_pitboss_01_z114_wave0', 'def_npc_gamma_tyrannos_dps_l5', 6, 0.15),
+('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_pitboss_01_z114_wave0', 'def_npc_gamma_troiar_shield_l7', 8, 0.15),
+('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_pitboss_01_z114_wave0', 'def_npc_gropho_miniboss_rank3', 2, 0.15),
+('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_pitboss_01_z114_wave1', 'def_npc_gamma_tyrannos_tank_l7', 6, 0.35),
+('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_pitboss_01_z114_wave1', 'def_npc_pbs_turret_ew_level0', 2, 0.35),
+('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_pitboss_01_z114_wave1', 'def_npc_gropho_miniboss_rank3', 2, 0.65),
+('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_pitboss_01_z114_wave2', 'def_npc_gropho_miniboss_rank3', 3, 0.65),
+('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_pitboss_01_z114_wave2', 'def_npc_gamma_ictus_shield_l7', 6, 0.65),
+('pitboss_01_z114_hydra_pelistal_pitboss', 'reinforce_pitboss_01_z114_wave2', 'def_npc_pbs_turret_missile_rank1', 2, 0.65),
 
 ('miniboss_01_z110_legatus_boss_miniboss', 'reinforce_miniboss_01_z110_wave0', 'def_npc_gamma_echelon_dps_l6', 2, 0.3),
 ('miniboss_01_z110_legatus_boss_miniboss', 'reinforce_miniboss_01_z110_wave0', 'def_npc_gamma_helix_shield_l6', 2, 0.3),
@@ -300,7 +308,7 @@ SELECT
 	2 as behaviorType,
 	CASE WHEN p.defname in (select bossName from #BOSS_CONFIGS) THEN 1 ELSE 0 END as npcSpecialType --isboss?
 FROM #NPC_PRES_AND_FLOCK_BY_ZONE p
-JOIN #BOSS_LOCATIONS z ON z.zoneid=p.zoneId;
+JOIN #BOSS_LOCATIONS z ON z.zoneid=p.zoneId AND z.minibossLocation=CASE WHEN p.fullname like '%miniboss%' THEN 1 ELSE 0 END;
 
 
 
