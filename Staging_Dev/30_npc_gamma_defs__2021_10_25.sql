@@ -5,7 +5,7 @@ GO
 -- Define ALL THE NPCS for gamma
 -- Except npc base stuff ;)
 -- Contributor: Ghroom
--- Date Modified: 2021/10/25
+-- Date Modified: 2021/11/14
 ---------------------------------
 
 DROP TABLE IF EXISTS #TMPBOTTEMPLATE;
@@ -848,8 +848,8 @@ SELECT 'gamma_Ictus_Shield' as name, CONCAT(
 '#headModules=[',
 '|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_shield_hardener'), '|slot=i1',']',
 '|m1=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_tracking_upgrade'), '|slot=i2',']',
-'|m2=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_chassis_scanner'), '|slot=i3',']',
-'|m3=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_cpu_upgrade'), '|slot=i4',']',
+'|m2=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_shield_hardener'), '|slot=i3',']',
+'|m3=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_sensor_booster'), '|slot=i4',']',
 ']',
 '#chassisModules=[',
 '|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_medium_energy_vampire'), '|slot=i1',']',
@@ -859,7 +859,7 @@ SELECT 'gamma_Ictus_Shield' as name, CONCAT(
 '#legModules=[',
 '|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_medium_shield_generator'), '|slot=i1',']',
 '|m1=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_energy_warfare_upgrade'), '|slot=i2',']',
-'|m2=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_small_armor_repairer'), '|slot=i3',']',
+'|m2=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_medium_armor_plate'), '|slot=i3',']',
 '|m3=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_mass_reductor'), '|slot=i4',']',
 ']')
  as description,'Shield, LWF, Enwar' as note
@@ -871,7 +871,7 @@ SELECT 'gamma_Ictus_Armor' as name, CONCAT(
 '#leg=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ictus_leg'),
 '#headModules=[',
 '|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_target_painter'), '|slot=i1',']',
-'|m1=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_cpu_upgrade'), '|slot=i2',']',
+'|m1=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_sensor_booster'), '|slot=i2',']',
 '|m2=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_damage_mod_missile'), '|slot=i3',']',
 '|m3=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_damage_mod_missile'), '|slot=i4',']',
 ']',
@@ -1123,8 +1123,6 @@ SELECT 'gamma_Yagel_DPS' as name, CONCAT(
 '|m1=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_small_railgun'), '|slot=i2','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_small_railgun_d'), '|ammoQuantity=i', (SELECT dbo.ToHex(20)),']',
 '|m2=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_small_railgun'), '|slot=i3','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_small_railgun_d'), '|ammoQuantity=i', (SELECT dbo.ToHex(20)),']',
 '|m3=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_small_railgun'), '|slot=i4','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_small_railgun_d'), '|ammoQuantity=i', (SELECT dbo.ToHex(20)),']',
-'|m4=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_small_railgun'), '|slot=i5','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_small_railgun_d'), '|ammoQuantity=i', (SELECT dbo.ToHex(20)),']',
-'|m5=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_rocket_launcher'), '|slot=i6','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_rocket_a'), '|ammoQuantity=i', (SELECT dbo.ToHex(20)),']',
 ']',
 '#legModules=[',
 '|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_small_armor_repairer'), '|slot=i1',']',
@@ -1149,8 +1147,6 @@ SELECT 'gamma_Yagel_Speed' as name, CONCAT(
 '|m1=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_small_railgun'), '|slot=i2','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_small_railgun_a'), '|ammoQuantity=i', (SELECT dbo.ToHex(50)),']',
 '|m2=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_small_railgun'), '|slot=i3','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_small_railgun_a'), '|ammoQuantity=i', (SELECT dbo.ToHex(50)),']',
 '|m3=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_small_railgun'), '|slot=i4','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_small_railgun_a'), '|ammoQuantity=i', (SELECT dbo.ToHex(50)),']',
-'|m4=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_small_railgun'), '|slot=i5','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_small_railgun_a'), '|ammoQuantity=i', (SELECT dbo.ToHex(50)),']',
-'|m5=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_rocket_launcher'), '|slot=i6','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_rocket_a'), '|ammoQuantity=i', (SELECT dbo.ToHex(20)),']',
 ']',
 '#legModules=[',
 '|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_small_armor_repairer'), '|slot=i1',']',
@@ -2125,12 +2121,12 @@ SELECT 'gamma_Onyx_Thelodica' as name, CONCAT(
 '|m3=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_tracking_upgrade'), '|slot=i4',']',
 ']',
 '#chassisModules=[',
-'|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_large_laser'), '|slot=i1','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_large_lasercrystal_b'), '|ammoQuantity=i', (SELECT dbo.ToHex(50)),']',
-'|m1=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_large_laser'), '|slot=i2','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_large_lasercrystal_b'), '|ammoQuantity=i', (SELECT dbo.ToHex(50)),']',
-'|m2=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_large_laser'), '|slot=i3','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_large_lasercrystal_b'), '|ammoQuantity=i', (SELECT dbo.ToHex(50)),']',
-'|m3=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_large_laser'), '|slot=i4','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_large_lasercrystal_b'), '|ammoQuantity=i', (SELECT dbo.ToHex(50)),']',
-'|m4=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_large_laser'), '|slot=i5','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_large_lasercrystal_b'), '|ammoQuantity=i', (SELECT dbo.ToHex(50)),']',
-'|m5=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_large_laser'), '|slot=i6','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_large_lasercrystal_b'), '|ammoQuantity=i', (SELECT dbo.ToHex(50)),']',
+'|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_longrange_large_laser'), '|slot=i1','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_large_lasercrystal_b'), '|ammoQuantity=i', (SELECT dbo.ToHex(50)),']',
+'|m1=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_longrange_large_laser'), '|slot=i2','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_large_lasercrystal_b'), '|ammoQuantity=i', (SELECT dbo.ToHex(50)),']',
+'|m2=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_longrange_large_laser'), '|slot=i3','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_large_lasercrystal_b'), '|ammoQuantity=i', (SELECT dbo.ToHex(50)),']',
+'|m3=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_longrange_large_laser'), '|slot=i4','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_large_lasercrystal_b'), '|ammoQuantity=i', (SELECT dbo.ToHex(50)),']',
+'|m4=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_longrange_large_laser'), '|slot=i5','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_large_lasercrystal_b'), '|ammoQuantity=i', (SELECT dbo.ToHex(50)),']',
+'|m5=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_longrange_large_laser'), '|slot=i6','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_large_lasercrystal_b'), '|ammoQuantity=i', (SELECT dbo.ToHex(50)),']',
 ']',
 '#legModules=[',
 '|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_large_armor_plate'), '|slot=i1',']',
@@ -2164,8 +2160,8 @@ SELECT 'gamma_Hydra_Pelistal' as name, CONCAT(
 '#legModules=[',
 '|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_large_shield_generator'), '|slot=i1',']',
 '|m1=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_large_armor_repairer'), '|slot=i2',']',
-'|m2=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_resistant_plating'), '|slot=i3',']',
-'|m3=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_thrm_armor_hardener'), '|slot=i4',']',
+'|m2=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_medium_armor_plate'), '|slot=i3',']',
+'|m3=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_large_core_booster'), '|slot=i4','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_corebooster_ammo'), '|ammoQuantity=i', (SELECT dbo.ToHex(10)),']',
 ']')
  as description,'Pitboss, Shield, DPS, Destro' as note
 UNION ALL
@@ -2175,7 +2171,7 @@ SELECT 'gamma_Felos_Nuimqol' as name, CONCAT(
 '#chassis=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_felos_bot_chassis'),
 '#leg=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_felos_bot_leg'),
 '#headModules=[',
-'|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_standard_blob_emission_modulator'), '|slot=i1','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_blob_emission_ammo_b'), '|ammoQuantity=i', (SELECT dbo.ToHex(0)),']',
+'|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_standard_blob_emission_modulator'), '|slot=i1','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_blob_emission_ammo_b'), '|ammoQuantity=i', (SELECT dbo.ToHex(10)),']',
 '|m1=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_armor_repairer_upgrade'), '|slot=i2',']',
 '|m2=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_armor_repairer_upgrade'), '|slot=i3',']',
 '|m3=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_tracking_upgrade'), '|slot=i4',']',
@@ -2189,11 +2185,11 @@ SELECT 'gamma_Felos_Nuimqol' as name, CONCAT(
 '|m5=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_longrange_large_railgun'), '|slot=i6','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_ammo_large_railgun_a'), '|ammoQuantity=i', (SELECT dbo.ToHex(50)),']',
 ']',
 '#legModules=[',
-'|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_large_core_booster'), '|slot=i1','|ammoDefinition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_corebooster_ammo'), '|ammoQuantity=i', (SELECT dbo.ToHex(10)),']',
+'|m0=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_large_armor_repairer'), '|slot=i1',']',
 '|m1=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_large_armor_repairer'), '|slot=i2',']',
 '|m2=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_resistant_plating'), '|slot=i3',']',
-'|m3=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_exp_armor_hardener'), '|slot=i4',']',
-'|m4=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_large_armor_repairer'), '|slot=i5',']',
+'|m3=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_explosive_kers'), '|slot=i4',']',
+'|m4=[|definition=i', (SELECT TOP 1 dbo.ToHex(definition) FROM entitydefaults WHERE definitionname='def_named3_medium_armor_repairer'), '|slot=i5',']',
 ']')
  as description,'Pitboss, Armor, DPS, Destro, Repair' as note
 UNION ALL
@@ -2631,7 +2627,7 @@ INSERT INTO #TMPAGGVALBYLVL(tiers,name,measure) VALUES
 ('lindy','stealth_strength_modifier',NULL),
 ('lindy','detection_strength_modifier',NULL),
 ('lindy','missile_falloff_modifier',NULL),
-('lindy','blob_emission_radius_modifier',0.5),
+('lindy','blob_emission_radius_modifier',0.4),
 ('lindy','blob_emission_modifier_modifier',1.5),
 ('lindy','reactor_radiation_modifier',1.2),
 ('lindy','massiveness',-0.1),
@@ -2669,8 +2665,8 @@ INSERT INTO #TMPAGGVALBYLVL(tiers,name,measure) VALUES
 ('L3','stealth_strength_modifier',NULL),
 ('L3','detection_strength_modifier',NULL),
 ('L3','missile_falloff_modifier',NULL),
-('L3','blob_emission_radius_modifier',0.5),
-('L3','blob_emission_modifier_modifier',0.8),
+('L3','blob_emission_radius_modifier',0.4),
+('L3','blob_emission_modifier_modifier',1.0),
 ('L3','reactor_radiation_modifier',NULL),
 ('L3','massiveness',NULL),
 --
@@ -2707,8 +2703,8 @@ INSERT INTO #TMPAGGVALBYLVL(tiers,name,measure) VALUES
 ('L4','stealth_strength_modifier',NULL),
 ('L4','detection_strength_modifier',NULL),
 ('L4','missile_falloff_modifier',NULL),
-('L4','blob_emission_radius_modifier',0.5),
-('L4','blob_emission_modifier_modifier',0.9),
+('L4','blob_emission_radius_modifier',0.4),
+('L4','blob_emission_modifier_modifier',1.25),
 ('L4','reactor_radiation_modifier',NULL),
 ('L4','massiveness',NULL),
 --
@@ -2745,8 +2741,8 @@ INSERT INTO #TMPAGGVALBYLVL(tiers,name,measure) VALUES
 ('L5','stealth_strength_modifier',NULL),
 ('L5','detection_strength_modifier',NULL),
 ('L5','missile_falloff_modifier',NULL),
-('L5','blob_emission_radius_modifier',0.75),
-('L5','blob_emission_modifier_modifier',1),
+('L5','blob_emission_radius_modifier',0.4),
+('L5','blob_emission_modifier_modifier',1.5),
 ('L5','reactor_radiation_modifier',NULL),
 ('L5','massiveness',NULL),
 --
@@ -2783,8 +2779,8 @@ INSERT INTO #TMPAGGVALBYLVL(tiers,name,measure) VALUES
 ('L6','stealth_strength_modifier',NULL),
 ('L6','detection_strength_modifier',NULL),
 ('L6','missile_falloff_modifier',NULL),
-('L6','blob_emission_radius_modifier',0.75),
-('L6','blob_emission_modifier_modifier',1),
+('L6','blob_emission_radius_modifier',0.3),
+('L6','blob_emission_modifier_modifier',2),
 ('L6','reactor_radiation_modifier',NULL),
 ('L6','massiveness',NULL),
 --
@@ -2821,8 +2817,8 @@ INSERT INTO #TMPAGGVALBYLVL(tiers,name,measure) VALUES
 ('L7','stealth_strength_modifier',NULL),
 ('L7','detection_strength_modifier',NULL),
 ('L7','missile_falloff_modifier',NULL),
-('L7','blob_emission_radius_modifier',1),
-('L7','blob_emission_modifier_modifier',1),
+('L7','blob_emission_radius_modifier',0.3),
+('L7','blob_emission_modifier_modifier',2.5),
 ('L7','reactor_radiation_modifier',NULL),
 ('L7','massiveness',NULL),
 --
@@ -2856,8 +2852,8 @@ INSERT INTO #TMPAGGVALBYLVL(tiers,name,measure) VALUES
 ('destro','stealth_strength_modifier',NULL),
 ('destro','detection_strength_modifier',25),
 ('destro','missile_falloff_modifier',NULL),
-('destro','blob_emission_radius_modifier',0.75),
-('destro','blob_emission_modifier_modifier',1),
+('destro','blob_emission_radius_modifier',0.3),
+('destro','blob_emission_modifier_modifier',2),
 ('destro','reactor_radiation_modifier',0.65),
 ('destro','massiveness',NULL),
 --
@@ -2893,8 +2889,8 @@ INSERT INTO #TMPAGGVALBYLVL(tiers,name,measure) VALUES
 ('observer','stealth_strength_modifier',NULL),
 ('observer','detection_strength_modifier',NULL),
 ('observer','missile_falloff_modifier',NULL),
-('observer','blob_emission_radius_modifier',1),
-('observer','blob_emission_modifier_modifier',1.5),
+('observer','blob_emission_radius_modifier',0.2),
+('observer','blob_emission_modifier_modifier',2.5),
 ('observer','reactor_radiation_modifier',NULL),
 ('observer','massiveness',NULL),
 --
@@ -2929,8 +2925,8 @@ INSERT INTO #TMPAGGVALBYLVL(tiers,name,measure) VALUES
 ('miniboss','stealth_strength_modifier',-20),
 ('miniboss','detection_strength_modifier',50),
 ('miniboss','missile_falloff_modifier',5.5),
-('miniboss','blob_emission_radius_modifier',1),
-('miniboss','blob_emission_modifier_modifier',1.5),
+('miniboss','blob_emission_radius_modifier',0.3),
+('miniboss','blob_emission_modifier_modifier',3),
 ('miniboss','reactor_radiation_modifier',0.65),
 ('miniboss','massiveness',NULL),
 
@@ -2951,7 +2947,7 @@ INSERT INTO #TMPAGGVALBYLVL(tiers,name,measure) VALUES
 ('pitboss','locked_targets_max_bonus',10),
 ('pitboss','locking_range_modifier',7),
 ('pitboss','locking_time_modifier',1.0),
-('pitboss','missile_cycle_time_modifier',0.65),
+('pitboss','missile_cycle_time_modifier',0.45),
 ('pitboss','optimal_range_modifier',4.5),
 ('pitboss','powergrid_max_modifier',4),
 ('pitboss','resist_chemical',500),
@@ -2965,8 +2961,8 @@ INSERT INTO #TMPAGGVALBYLVL(tiers,name,measure) VALUES
 ('pitboss','stealth_strength_modifier',-10),
 ('pitboss','detection_strength_modifier',30),
 ('pitboss','missile_falloff_modifier',2.5),
-('pitboss','blob_emission_radius_modifier',1.5),
-('pitboss','blob_emission_modifier_modifier',3),
+('pitboss','blob_emission_radius_modifier',0.3),
+('pitboss','blob_emission_modifier_modifier',4),
 ('pitboss','reactor_radiation_modifier',0.5),
 ('pitboss','massiveness',NULL),
 --
@@ -3003,8 +2999,8 @@ INSERT INTO #TMPAGGVALBYLVL(tiers,name,measure) VALUES
 ('courier','stealth_strength_modifier',20),
 ('courier','detection_strength_modifier',NULL),
 ('courier','missile_falloff_modifier',NULL),
-('courier','blob_emission_radius_modifier',1),
-('courier','blob_emission_modifier_modifier',1.5),
+('courier','blob_emission_radius_modifier',0.3),
+('courier','blob_emission_modifier_modifier',2.5),
 ('courier','reactor_radiation_modifier',0.75),
 ('courier','massiveness',NULL),
 --
@@ -3016,7 +3012,7 @@ INSERT INTO #TMPAGGVALBYLVL(tiers,name,measure) VALUES
 ('syn_pitboss','cpu_max_modifier',2.5),
 ('syn_pitboss','shield_absorbtion_modifier',2),
 ('syn_pitboss','critical_hit_chance_modifier',0.2),
-('syn_pitboss','damage_modifier',16.5),
+('syn_pitboss','damage_modifier',10.0),
 ('syn_pitboss','ecm_strength_modifier',3),
 ('syn_pitboss','energy_neutralized_amount_modifier',2),
 ('syn_pitboss','ew_optimal_range_modifier',3),
@@ -3038,8 +3034,8 @@ INSERT INTO #TMPAGGVALBYLVL(tiers,name,measure) VALUES
 ('syn_pitboss','stealth_strength_modifier',-20),
 ('syn_pitboss','detection_strength_modifier',30),
 ('syn_pitboss','missile_falloff_modifier',2.5),
-('syn_pitboss','blob_emission_radius_modifier',1.5),
-('syn_pitboss','blob_emission_modifier_modifier',3),
+('syn_pitboss','blob_emission_radius_modifier',0.3),
+('syn_pitboss','blob_emission_modifier_modifier',4),
 ('syn_pitboss','reactor_radiation_modifier',1.2),
 ('syn_pitboss','massiveness',NULL)
 -- get field id from AGGREGATEFIELDS
