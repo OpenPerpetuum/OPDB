@@ -4,14 +4,16 @@ GO
 -------------------------------------
 -- Define new NPC Turrets
 --
--- Date modifified: 2021/09/18
+-- Date modifified: 2021/11/17
 -- TODO: define T1/2/3 variants (needs design)
 -------------------------------------
 
 PRINT N'NEW NPC DEFINTIONS 6094-6109';
 
-
-DECLARE @armor_max AS FLOAT = 1.0;
+DECLARE @armor_max_level0 AS FLOAT = 0.5;
+DECLARE @armor_max_level1 AS FLOAT = 0.75;
+DECLARE @armor_max_level2 AS FLOAT = 0.9;
+DECLARE @armor_max_level3 AS FLOAT = 1.0;
 
 DECLARE @resist_level0 AS INT = 50;
 DECLARE @resist_level1 AS INT = 75;
@@ -22,14 +24,14 @@ DECLARE @peakResistMod AS FLOAT = 1.5;
 DECLARE @turretLockRangeMod AS FLOAT = 1.5;
 
 DECLARE @turretFalloffMod AS FLOAT = 2.0;
-DECLARE @turretOptimalMod_level0 AS FLOAT = 0.5;
-DECLARE @turretOptimalMod_level1 AS FLOAT = 0.9;
-DECLARE @turretOptimalMod_level2 AS FLOAT = 1.0;
+DECLARE @turretOptimalMod_level0 AS FLOAT = 0.65;
+DECLARE @turretOptimalMod_level1 AS FLOAT = 0.85;
+DECLARE @turretOptimalMod_level2 AS FLOAT = 1.05;
 DECLARE @turretOptimalMod_level3 AS FLOAT = 1.25;
 
-DECLARE @turretDamageMod_level0 AS FLOAT = 0.25;
-DECLARE @turretDamageMod_level1 AS FLOAT = 0.5;
-DECLARE @turretDamageMod_level2 AS FLOAT = 0.75;
+DECLARE @turretDamageMod_level0 AS FLOAT = 0.5;
+DECLARE @turretDamageMod_level1 AS FLOAT = 0.65;
+DECLARE @turretDamageMod_level2 AS FLOAT = 0.8;
 DECLARE @turretDamageMod_level3 AS FLOAT = 1.0;
 
 DECLARE @turretRepAmountMod_level0 AS FLOAT = 1.0;
@@ -112,7 +114,7 @@ CREATE TABLE #STATS
 INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_npc_pbs_base_small_rank1', 'stealth_strength_modifier', -90), --JUST FOR TESTING
 
-('def_npc_pbs_turret_laser_level0', 'armor_max_modifier', @armor_max),
+('def_npc_pbs_turret_laser_level0', 'armor_max_modifier', @armor_max_level0),
 ('def_npc_pbs_turret_laser_level0', 'armor_repair_amount_modifier', @turretRepAmountMod_level0),
 ('def_npc_pbs_turret_laser_level0', 'armor_repair_cycle_time_modifier', @turretRepRateMod),
 ('def_npc_pbs_turret_laser_level0', 'core_max_modifier',2),
@@ -131,7 +133,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_npc_pbs_turret_laser_level0', 'turret_cycle_time_modifier', 1.1),
 ('def_npc_pbs_turret_laser_level0', 'received_repaired_modifier', 1.1),
 --
-('def_npc_pbs_turret_em_level0', 'armor_max_modifier', 1.05),
+('def_npc_pbs_turret_em_level0', 'armor_max_modifier', @armor_max_level0),
 ('def_npc_pbs_turret_em_level0', 'armor_repair_amount_modifier', @turretRepAmountMod_level0),
 ('def_npc_pbs_turret_em_level0', 'armor_repair_cycle_time_modifier', @turretRepRateMod),
 ('def_npc_pbs_turret_em_level0', 'core_max_modifier',2),
@@ -150,7 +152,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_npc_pbs_turret_em_level0', 'turret_cycle_time_modifier', 1.1),
 ('def_npc_pbs_turret_em_level0', 'received_repaired_modifier', 1.1),
 --
-('def_npc_pbs_turret_missile_level0', 'armor_max_modifier', 1.05),
+('def_npc_pbs_turret_missile_level0', 'armor_max_modifier', @armor_max_level0),
 ('def_npc_pbs_turret_missile_level0', 'armor_repair_amount_modifier', @turretRepAmountMod_level0),
 ('def_npc_pbs_turret_missile_level0', 'armor_repair_cycle_time_modifier', @turretRepRateMod),
 ('def_npc_pbs_turret_missile_level0', 'core_max_modifier',2),
@@ -170,7 +172,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_npc_pbs_turret_missile_level0', 'turret_cycle_time_modifier', 1.1),
 ('def_npc_pbs_turret_missile_level0', 'received_repaired_modifier', 1.1),
 --
-('def_npc_pbs_turret_ew_level0', 'armor_max_modifier', 1.05),
+('def_npc_pbs_turret_ew_level0', 'armor_max_modifier', @armor_max_level0),
 ('def_npc_pbs_turret_ew_level0', 'armor_repair_amount_modifier', @turretRepAmountMod_level0),
 ('def_npc_pbs_turret_ew_level0', 'armor_repair_cycle_time_modifier', @turretRepRateMod),
 ('def_npc_pbs_turret_ew_level0', 'core_max_modifier',2),
@@ -191,7 +193,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_npc_pbs_turret_ew_level0', 'received_repaired_modifier', 1.1);
 
 INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
-('def_npc_pbs_turret_laser_level1', 'armor_max_modifier', @armor_max),
+('def_npc_pbs_turret_laser_level1', 'armor_max_modifier', @armor_max_level1),
 ('def_npc_pbs_turret_laser_level1', 'armor_repair_amount_modifier', @turretRepAmountMod_level1),
 ('def_npc_pbs_turret_laser_level1', 'armor_repair_cycle_time_modifier', @turretRepRateMod),
 ('def_npc_pbs_turret_laser_level1', 'core_max_modifier',2),
@@ -210,7 +212,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_npc_pbs_turret_laser_level1', 'turret_cycle_time_modifier', 1.1),
 ('def_npc_pbs_turret_laser_level1', 'received_repaired_modifier', 1.1),
 --
-('def_npc_pbs_turret_em_level1', 'armor_max_modifier', 1.05),
+('def_npc_pbs_turret_em_level1', 'armor_max_modifier', @armor_max_level1),
 ('def_npc_pbs_turret_em_level1', 'armor_repair_amount_modifier', @turretRepAmountMod_level1),
 ('def_npc_pbs_turret_em_level1', 'armor_repair_cycle_time_modifier', @turretRepRateMod),
 ('def_npc_pbs_turret_em_level1', 'core_max_modifier',2),
@@ -229,7 +231,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_npc_pbs_turret_em_level1', 'turret_cycle_time_modifier', 1.1),
 ('def_npc_pbs_turret_em_level1', 'received_repaired_modifier', 1.1),
 --
-('def_npc_pbs_turret_missile_level1', 'armor_max_modifier', 1.05),
+('def_npc_pbs_turret_missile_level1', 'armor_max_modifier', @armor_max_level1),
 ('def_npc_pbs_turret_missile_level1', 'armor_repair_amount_modifier', @turretRepAmountMod_level1),
 ('def_npc_pbs_turret_missile_level1', 'armor_repair_cycle_time_modifier', @turretRepRateMod),
 ('def_npc_pbs_turret_missile_level1', 'core_max_modifier',2),
@@ -249,7 +251,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_npc_pbs_turret_missile_level1', 'turret_cycle_time_modifier', 1.1),
 ('def_npc_pbs_turret_missile_level1', 'received_repaired_modifier', 1.1),
 --
-('def_npc_pbs_turret_ew_level1', 'armor_max_modifier', 1.05),
+('def_npc_pbs_turret_ew_level1', 'armor_max_modifier', @armor_max_level1),
 ('def_npc_pbs_turret_ew_level1', 'armor_repair_amount_modifier', @turretRepAmountMod_level1),
 ('def_npc_pbs_turret_ew_level1', 'armor_repair_cycle_time_modifier', @turretRepRateMod),
 ('def_npc_pbs_turret_ew_level1', 'core_max_modifier',2),
@@ -270,7 +272,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_npc_pbs_turret_ew_level1', 'received_repaired_modifier', 1.1);
 
 INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
-('def_npc_pbs_turret_laser_level2', 'armor_max_modifier', @armor_max),
+('def_npc_pbs_turret_laser_level2', 'armor_max_modifier', @armor_max_level2),
 ('def_npc_pbs_turret_laser_level2', 'armor_repair_amount_modifier', @turretRepAmountMod_level2),
 ('def_npc_pbs_turret_laser_level2', 'armor_repair_cycle_time_modifier', @turretRepRateMod),
 ('def_npc_pbs_turret_laser_level2', 'core_max_modifier',2),
@@ -289,7 +291,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_npc_pbs_turret_laser_level2', 'turret_cycle_time_modifier', 1.1),
 ('def_npc_pbs_turret_laser_level2', 'received_repaired_modifier', 1.1),
 --
-('def_npc_pbs_turret_em_level2', 'armor_max_modifier', 1.05),
+('def_npc_pbs_turret_em_level2', 'armor_max_modifier', @armor_max_level2),
 ('def_npc_pbs_turret_em_level2', 'armor_repair_amount_modifier', @turretRepAmountMod_level2),
 ('def_npc_pbs_turret_em_level2', 'armor_repair_cycle_time_modifier', @turretRepRateMod),
 ('def_npc_pbs_turret_em_level2', 'core_max_modifier',2),
@@ -308,7 +310,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_npc_pbs_turret_em_level2', 'turret_cycle_time_modifier', 1.1),
 ('def_npc_pbs_turret_em_level2', 'received_repaired_modifier', 1.1),
 --
-('def_npc_pbs_turret_missile_level2', 'armor_max_modifier', 1.05),
+('def_npc_pbs_turret_missile_level2', 'armor_max_modifier', @armor_max_level2),
 ('def_npc_pbs_turret_missile_level2', 'armor_repair_amount_modifier', @turretRepAmountMod_level2),
 ('def_npc_pbs_turret_missile_level2', 'armor_repair_cycle_time_modifier', @turretRepRateMod),
 ('def_npc_pbs_turret_missile_level2', 'core_max_modifier',2),
@@ -328,7 +330,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_npc_pbs_turret_missile_level2', 'turret_cycle_time_modifier', 1.1),
 ('def_npc_pbs_turret_missile_level2', 'received_repaired_modifier', 1.1),
 --
-('def_npc_pbs_turret_ew_level2', 'armor_max_modifier', 1.05),
+('def_npc_pbs_turret_ew_level2', 'armor_max_modifier', @armor_max_level2),
 ('def_npc_pbs_turret_ew_level2', 'armor_repair_amount_modifier', @turretRepAmountMod_level2),
 ('def_npc_pbs_turret_ew_level2', 'armor_repair_cycle_time_modifier', @turretRepRateMod),
 ('def_npc_pbs_turret_ew_level2', 'core_max_modifier',2),
@@ -350,7 +352,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 
 
 INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
-('def_npc_pbs_turret_laser_level3', 'armor_max_modifier', @armor_max),
+('def_npc_pbs_turret_laser_level3', 'armor_max_modifier', @armor_max_level3),
 ('def_npc_pbs_turret_laser_level3', 'armor_repair_amount_modifier', @turretRepAmountMod_level3),
 ('def_npc_pbs_turret_laser_level3', 'armor_repair_cycle_time_modifier', @turretRepRateMod),
 ('def_npc_pbs_turret_laser_level3', 'core_max_modifier',2),
@@ -369,7 +371,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_npc_pbs_turret_laser_level3', 'turret_cycle_time_modifier', 1.1),
 ('def_npc_pbs_turret_laser_level3', 'received_repaired_modifier', 1.1),
 --
-('def_npc_pbs_turret_em_level3', 'armor_max_modifier', 1.05),
+('def_npc_pbs_turret_em_level3', 'armor_max_modifier', @armor_max_level3),
 ('def_npc_pbs_turret_em_level3', 'armor_repair_amount_modifier', @turretRepAmountMod_level3),
 ('def_npc_pbs_turret_em_level3', 'armor_repair_cycle_time_modifier', @turretRepRateMod),
 ('def_npc_pbs_turret_em_level3', 'core_max_modifier',2),
@@ -388,7 +390,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_npc_pbs_turret_em_level3', 'turret_cycle_time_modifier', 1.1),
 ('def_npc_pbs_turret_em_level3', 'received_repaired_modifier', 1.1),
 --
-('def_npc_pbs_turret_missile_level3', 'armor_max_modifier', 1.05),
+('def_npc_pbs_turret_missile_level3', 'armor_max_modifier', @armor_max_level3),
 ('def_npc_pbs_turret_missile_level3', 'armor_repair_amount_modifier', @turretRepAmountMod_level3),
 ('def_npc_pbs_turret_missile_level3', 'armor_repair_cycle_time_modifier', @turretRepRateMod),
 ('def_npc_pbs_turret_missile_level3', 'core_max_modifier',2),
@@ -408,7 +410,7 @@ INSERT INTO #STATS (defName, fieldName, fieldValue) VALUES
 ('def_npc_pbs_turret_missile_level3', 'turret_cycle_time_modifier', 1.1),
 ('def_npc_pbs_turret_missile_level3', 'received_repaired_modifier', 1.1),
 --
-('def_npc_pbs_turret_ew_level3', 'armor_max_modifier', 1.05),
+('def_npc_pbs_turret_ew_level3', 'armor_max_modifier', @armor_max_level3),
 ('def_npc_pbs_turret_ew_level3', 'armor_repair_amount_modifier', @turretRepAmountMod_level3),
 ('def_npc_pbs_turret_ew_level3', 'armor_repair_cycle_time_modifier', @turretRepRateMod),
 ('def_npc_pbs_turret_ew_level3', 'core_max_modifier',2),

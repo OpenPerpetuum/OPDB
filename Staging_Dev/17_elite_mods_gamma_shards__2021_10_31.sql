@@ -4,7 +4,7 @@ GO
 --------------------------------------------
 -- ELITE MODULES for GAMMA HOLY F
 -- a lot
--- Date modified: 2021/10/31
+-- Date modified: 2021/11/17
 --------------------------------------------
 
 DECLARE @dataShardCat AS BIGINT = (SELECT TOP 1 value FROM categoryFlags WHERE name='cf_datashards');
@@ -37,10 +37,10 @@ CREATE TABLE #MATERIALDEF
 	techLevel int,
 );
 INSERT INTO #MATERIALDEF (def, defName, attrFlags, catFlags, genxyOptStr, cargoVolume, massOfModule, techType, techLevel) VALUES
-(6200,'def_material_boss_gamma_thelodica',2048,@dataShardCat,NULL,0.01,0.5,NULL,NULL),
-(6201,'def_material_boss_gamma_pelistal',2048,@dataShardCat,NULL,0.01,0.5,NULL,NULL),
-(6202,'def_material_boss_gamma_nuimqol',2048,@dataShardCat,NULL,0.01,0.5,NULL,NULL),
-(6203,'def_material_boss_gamma_syndicate',2048,@dataShardCat,NULL,0.01,0.5,NULL,NULL);
+(6200,'def_material_boss_gamma_thelodica',2048,@dataShardCat,NULL,0.002,0.25,NULL,NULL),
+(6201,'def_material_boss_gamma_pelistal',2048,@dataShardCat,NULL,0.002,0.25,NULL,NULL),
+(6202,'def_material_boss_gamma_nuimqol',2048,@dataShardCat,NULL,0.002,0.25,NULL,NULL),
+(6203,'def_material_boss_gamma_syndicate',2048,@dataShardCat,NULL,0.002,0.25,NULL,NULL);
 
 DROP TABLE IF EXISTS #ENTITYDEF;
 CREATE TABLE #ENTITYDEF 

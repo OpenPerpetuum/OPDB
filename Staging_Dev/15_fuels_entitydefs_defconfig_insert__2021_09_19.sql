@@ -3,7 +3,7 @@ GO
 
 --------------------------------------------------
 -- New Fuel items
--- Date modified: 2021/11/1
+-- Date modified: 2021/11/16
 -------------------------------------------------
 
 DECLARE @PREFIX AS VARCHAR(128) = 'def_reactor_booster_';
@@ -156,6 +156,7 @@ INSERT INTO #MATS (defName, componentDefName, amount) VALUES
 (@PREFIX+'c', 'def_prilumium', 1125),
 (@PREFIX+'c', 'def_espitium', 1125),
 (@PREFIX+'c', 'def_unimetal', 225),
+(@PREFIX+'c', 'def_specimen_sap_item_flux', 20),
 (@PREFIX+'c', 'def_gamma_energyblock', 75),
 
 (@PREFIX+'c_pr', 'def_titanium', 225),
@@ -165,6 +166,7 @@ INSERT INTO #MATS (defName, componentDefName, amount) VALUES
 (@PREFIX+'c_pr', 'def_prilumium', 1125),
 (@PREFIX+'c_pr', 'def_espitium', 1125),
 (@PREFIX+'c_pr', 'def_unimetal', 225),
+(@PREFIX+'c_pr', 'def_specimen_sap_item_flux', 20),
 (@PREFIX+'c_pr', 'def_gamma_energyblock', 75);
 
 DROP TABLE IF EXISTS #PROTOPAIRS;
@@ -203,8 +205,8 @@ WHEN MATCHED
 		attributeflags=attrFlags,
 		volume=cargoVolume,
 		mass=massOfModule,
-		tiertype=NULL,
-		tierlevel=NULL,
+		tiertype=d2.tierType,
+		tierlevel=d2.tierLevel,
 		options=genxyOptStr,
 		enabled=1,
 		hidden=0,
