@@ -5,7 +5,6 @@ GO
 -- Define new NPC Turrets
 --
 -- Date modifified: 2021/11/17
--- TODO: define T1/2/3 variants (needs design)
 -------------------------------------
 
 PRINT N'NEW NPC DEFINTIONS 6094-6109';

@@ -30,4 +30,6 @@ WHEN MATCHED THEN
 		x=m.x,
 		y=m.y;
 
+
+DROP TABLE IF EXISTS #ZONEMAP;
 GO

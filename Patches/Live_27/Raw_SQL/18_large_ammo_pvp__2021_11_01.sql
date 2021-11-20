@@ -114,7 +114,7 @@ WHEN NOT MATCHED
 	s.fieldValue);
 
 
-SELECT * FROM beamassignment WHERE definition in (SELECT entitydefaults.definition FROM entitydefaults WHERE definitionname in (SELECT DISTINCT ammoName FROM #BEAMS));
+--SELECT * FROM beamassignment WHERE definition in (SELECT entitydefaults.definition FROM entitydefaults WHERE definitionname in (SELECT DISTINCT ammoName FROM #BEAMS));
 DELETE FROM beamassignment WHERE definition in (SELECT entitydefaults.definition FROM entitydefaults WHERE definitionname in (SELECT DISTINCT ammoName FROM #BEAMS));
 
 INSERT INTO beamassignment (definition, beam)
@@ -126,5 +126,5 @@ FROM #BEAMS
 
 DROP TABLE IF EXISTS #BEAMS;
 DROP TABLE IF EXISTS #STATS;
-DROP TABLE IF EXISTS #ENTITYDEFS
+DROP TABLE IF EXISTS #ENTITYDEFS;
 GO
