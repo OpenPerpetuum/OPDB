@@ -1496,7 +1496,7 @@
 	"def_construction_module_ammo_t2_cprg":"T2 construction block CT",
 	"def_construction_module_ammo_t3_cprg":"T3 construction block CT",
 
-	"def_pbs_expiring_docking_base_desc":"The Syn-tec Staging Terminal offers agents an affordable, accessible stepping stone into corporate operations on Gamma Islands.\n\nStaging terminals are '''temporary''' and will self-dstruct after 1 week.\nStaging terminals may only be anchored in 'Red Zones' where other terminals can not.\nThey also do not offer any capability to build a base around this terminal.  Please use a Main Terminal Foundation for your more permanent Gamma Base ambitions.",
+	"def_pbs_expiring_docking_base_desc":"The Syn-tec Staging Terminal offers agents an affordable, accessible stepping stone into corporate operations on Gamma Islands.\n\nStaging terminals are '''temporary''' and will self-destruct after 1 week.\nStaging terminals may only be anchored in 'Red Zones' where other terminals can not.\nThey also do not offer any capability to build a base around this terminal.  Please use a Main Terminal Foundation for your more permanent Gamma Base ambitions.",
 	"def_construction_module_ammo_t0_desc":"'''Construction block'''\n\nThis block can be used on T0 Gamma structures.",
 	"def_construction_module_ammo_t1_desc":"'''Construction block'''\n\nThis block can be used on T1 or lesser tech Gamma structures.",
 	"def_construction_module_ammo_t2_desc":"'''Construction block'''\n\nThis block can be used on T2 or lesser tech Gamma structures.",

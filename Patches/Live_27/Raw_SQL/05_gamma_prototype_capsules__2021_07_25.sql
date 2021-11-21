@@ -8,6 +8,8 @@ GO
 -- Date Modified: 2021/07/25
 ------------------------------------------------------------------------
 
+DECLARE @HIDDEN AS BIT = 1;
+DECLARE @PURCHASABLE AS BIT = 0;
 
 PRINT N'Create PBS prototype capsules to be the research target, reverse engineer to CT, to produce non-prototype capsules (originals)';
 DECLARE @PbsCapCat AS BIGINT = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_pbs_capsules');
@@ -42,7 +44,7 @@ INSERT INTO #PBS_PR_CAP_DEFS
 [enabled],[volume],[mass],[hidden],[health],[descriptiontoken],[purchasable],[tiertype],[tierlevel])
 SELECT
 	d.definition+@DEF_OFFSET, d.definitionname+'_pr', d.quantity, @StackableOnly, d.categoryflags, d.options+'_pr', 'PBS CAPSULE PROTOTYPE DEF',
-	1, d.volume, d.mass, 0, d.health, d.descriptiontoken, 1, 2, d.tierlevel FROM entitydefaults d
+	1, d.volume, d.mass, @HIDDEN, d.health, d.descriptiontoken, @PURCHASABLE, 2, d.tierlevel FROM entitydefaults d
 WHERE (d.categoryflags & CAST(dbo.GetCFMask(@PbsCapCat)as BIGINT) = @PbsCapCat) AND d.definition < 6000 AND d.tiertype=1
 ORDER BY d.definition;
 

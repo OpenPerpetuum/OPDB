@@ -4,9 +4,15 @@ GO
 ---------------------------------------
 -- NPC ALPHA MARKET SELLS for gamma items
 -- Staging base, T0 blocks, decon, mods etc.
--- Date modified: 2021/11/01
+-- Date modified: 2021/11/20
 ---------------------------------------
 
+DECLARE @T0_AMMO_NAME AS VARCHAR(128) = 'def_construction_module_ammo_t0';
+DECLARE @STAGING_BASE_NAME AS VARCHAR(128) = 'def_pbs_expiring_docking_base_capsule';
+DECLARE @TERRAFORM_AMMO_NAME AS VARCHAR(128) = 'def_ammo_terraform';
+DECLARE @CONSTRUCTION_MOD_NAME AS VARCHAR(128) = 'def_pbs_construction_module';
+DECLARE @TERRAFORM_MOD_NAME AS VARCHAR(128) = 'def_terraform_multi_module';
+DECLARE @DECONSTRUCTION_AMMO_NAME AS VARCHAR(128) = 'def_construction_module_ammo_deconstruct';
 
 DROP TABLE IF EXISTS #SELLS;
 CREATE TABLE #SELLS(
@@ -14,12 +20,16 @@ CREATE TABLE #SELLS(
 	price FLOAT
 );
 INSERT INTO #SELLS (defName, price) VALUES
-('def_construction_module_ammo_t0', 100000),
-('def_pbs_expiring_docking_base', 25000000),
-('def_ammo_terraform',7500),
-('def_pbs_construction_module',500000),
-('def_terraform_multi_module',500000),
-('def_construction_module_ammo_deconstruct', 10000);
+(@T0_AMMO_NAME, 100000),
+(@STAGING_BASE_NAME, 25000000),
+(@TERRAFORM_AMMO_NAME,10000),
+(@CONSTRUCTION_MOD_NAME,500000),
+(@TERRAFORM_MOD_NAME,500000),
+(@DECONSTRUCTION_AMMO_NAME, 10000);
+
+UPDATE entitydefaults SET
+	enabled=1, hidden=0, purchasable=1
+WHERE definitionname IN (SELECT defName FROM #SELLS);
 
 
 PRINT N'SELECT TERMINAL DEFINITIONS';
@@ -73,13 +83,21 @@ MERGE [dbo].[marketitems] m USING @ALPHA_ORDERS o
 ON m.marketeid = o.marketEid AND
 m.itemdefinition = o.itemDef AND
 m.submittereid = o.vendorEid AND
-m.isSell=0 AND m.isVendorItem=1 AND m.duration=0 AND m.quantity=-1
+m.isSell=1 AND m.isVendorItem=1 AND m.duration=0 AND m.quantity=-1
 WHEN MATCHED
     THEN UPDATE SET
 		price = o.price
 WHEN NOT MATCHED
     THEN INSERT (marketeid, itemdefinition, submittereid, duration, isSell, price, quantity, usecorporationwallet, isvendoritem) VALUES
 	(o.marketEid, o.itemDef, o.vendorEid, 0, 1, o.price, -1, 0, 1);
+
+
+MERGE [dbo].[marketitems] m USING #SELLS o
+ON m.itemdefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE o.defName=definitionname) AND
+m.isSell=1 AND m.isVendorItem=1 AND m.duration=0 AND m.quantity=-1
+WHEN MATCHED
+    THEN UPDATE SET
+		price = o.price;
 
 PRINT N'ALPHA ORDERS FOR GAMMA SEEDED';
 GO
