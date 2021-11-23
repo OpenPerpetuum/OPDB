@@ -24,6 +24,8 @@ GO
 --34_update_robottemplaterelations_ep__2021_11_02.sql
 --35_update_robottemplaterelations_ep_part2__2021_11_04.sql
 --46_market_alpha_gammaitems__2021_10_14.sql
+--50_npcmods_aggvalues_update_sentinelturrets__2021_11_21.sql
+--51_npcloots_update_strghld_shards__2021_11_21.sql
 -------------------------------------------------------------
 
 
@@ -3187,7 +3189,7 @@ GO
 ------------------------------------------
 -- T0 speed effect add
 --
--- Date modified: 2021/11/07
+-- Date modified: 2021/11/21
 ------------------------------------------
 
 DECLARE @T0_EFFECT_NAME  AS VARCHAR(100) = 'effect_gamma_t0';
@@ -3203,8 +3205,11 @@ CREATE TABLE #EFFECTMODS
 INSERT INTO #EFFECTMODS (effId, fieldName, fieldValue) VALUES
 (@T0_EFFECT_ID, 'effect_mining_amount_modifier', 1.75),
 (@T0_EFFECT_ID, 'effect_harvesting_amount_modifier', 1.75),
-(@T0_EFFECT_ID, 'speed_max', 0.14),
+(@T0_EFFECT_ID, 'effect_speed_highway_modifier', 0.14),
 (@T0_EFFECT_ID, 'pbs_tech_limit', 0);
+
+PRINT N'DELETING AND REINSERTING MODIFIERS FOR T0 ZONE EFFECT';
+DELETE FROM [effectdefaultmodifiers] WHERE effectid=@T0_EFFECT_ID;
 
 MERGE [dbo].[effectdefaultmodifiers] m USING #EFFECTMODS e
 ON m.effectid = e.effId AND m.field=(SELECT TOP 1 id FROM aggregatefields WHERE name=e.fieldName)
@@ -3216,7 +3221,8 @@ WHEN MATCHED
 WHEN NOT MATCHED
 	THEN INSERT (effectid, field, value) VALUES
 		(e.effId, (SELECT TOP 1 id FROM aggregatefields WHERE name=e.fieldName), e.fieldValue);
-		
+
+PRINT N'DONE';		
 GO
 
 
@@ -10440,6 +10446,79 @@ WHEN MATCHED
 
 PRINT N'ALPHA ORDERS FOR GAMMA SEEDED';
 GO
+
+
+PRINT N'50_npcmods_aggvalues_update_sentinelturrets__2021_11_21.sql';
+USE [perpetuumsa]
+GO
+
+----------------------------------------
+-- Reduce Sentinel turret armor max
+--
+-- Date modified: 2021/11/21
+----------------------------------------
+
+PRINT N'Reducing armor max mod from 1.05->0.85 on sentinel npc turrets';
+DROP TABLE IF EXISTS #TURRETSTAT;
+CREATE TABLE #TURRETSTAT(
+	npcName VARCHAR(128),
+	fieldName VARCHAR(128),
+	modifier FLOAT
+);
+INSERT INTO #TURRETSTAT (npcName, fieldName, modifier) VALUES
+('def_npc_pbs_turret_em_rank1', 'armor_max_modifier', 0.85),
+('def_npc_pbs_turret_ew_rank1', 'armor_max_modifier', 0.85),
+('def_npc_pbs_turret_missile_rank1', 'armor_max_modifier', 0.85),
+('def_npc_pbs_turret_laser_rank1', 'armor_max_modifier', 0.85);
+
+
+MERGE INTO [dbo].[aggregatevalues] v USING #TURRETSTAT s
+ON v.definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=s.npcName) AND
+v.field = (SELECT TOP 1 id FROM aggregatefields WHERE name=s.fieldName)
+WHEN MATCHED
+    THEN UPDATE SET
+		v.value=s.modifier;
+
+PRINT N'Done';
+GO
+
+
+PRINT N'51_npcloots_update_strghld_shards__2021_11_21.sql';
+USE [perpetuumsa]
+GO
+
+----------------------------------------
+-- Update stronghold shard loot drop rate
+--
+-- Date modified: 2021/11/21
+----------------------------------------
+
+PRINT N'Increasing shard loot drop rate on all strongholds';
+DROP TABLE IF EXISTS #SHARDLOOT;
+CREATE TABLE #SHARDLOOT(
+	npcName VARCHAR(128),
+	lootName VARCHAR(128),
+	minQuant INT,
+	maxQuant INT
+);
+INSERT INTO #SHARDLOOT (npcName, lootName, minQuant, maxQuant) VALUES
+('def_npc_sh70_mainboss', 'def_material_boss_z70', 19000, 21000),
+('def_npc_sh70_miniboss_a', 'def_material_boss_z70', 110, 190),
+('def_npc_sh70_miniboss_b', 'def_material_boss_z70', 110, 190),
+('def_npc_Zone71_WilliamHBonnie', 'def_material_boss_z71', 40, 60),
+('def_npc_Zone72_One_Eye_Josef', 'def_material_boss_z72', 40, 60);
+
+MERGE INTO [dbo].[npcloot] l USING #SHARDLOOT s
+ON l.definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=s.npcName) AND
+l.lootdefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=s.lootName)
+WHEN MATCHED
+    THEN UPDATE SET
+		l.minquantity=s.minQuant,
+		l.quantity=s.maxQuant;
+
+PRINT N'Done';
+GO
+
 
 
 

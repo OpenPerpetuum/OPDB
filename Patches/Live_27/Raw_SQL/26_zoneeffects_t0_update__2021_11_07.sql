@@ -4,7 +4,7 @@ GO
 ------------------------------------------
 -- T0 speed effect add
 --
--- Date modified: 2021/11/07
+-- Date modified: 2021/11/21
 ------------------------------------------
 
 DECLARE @T0_EFFECT_NAME  AS VARCHAR(100) = 'effect_gamma_t0';
@@ -20,8 +20,11 @@ CREATE TABLE #EFFECTMODS
 INSERT INTO #EFFECTMODS (effId, fieldName, fieldValue) VALUES
 (@T0_EFFECT_ID, 'effect_mining_amount_modifier', 1.75),
 (@T0_EFFECT_ID, 'effect_harvesting_amount_modifier', 1.75),
-(@T0_EFFECT_ID, 'speed_max', 0.14),
+(@T0_EFFECT_ID, 'effect_speed_highway_modifier', 0.14),
 (@T0_EFFECT_ID, 'pbs_tech_limit', 0);
+
+PRINT N'DELETING AND REINSERTING MODIFIERS FOR T0 ZONE EFFECT';
+DELETE FROM [effectdefaultmodifiers] WHERE effectid=@T0_EFFECT_ID;
 
 MERGE [dbo].[effectdefaultmodifiers] m USING #EFFECTMODS e
 ON m.effectid = e.effId AND m.field=(SELECT TOP 1 id FROM aggregatefields WHERE name=e.fieldName)
@@ -33,5 +36,6 @@ WHEN MATCHED
 WHEN NOT MATCHED
 	THEN INSERT (effectid, field, value) VALUES
 		(e.effId, (SELECT TOP 1 id FROM aggregatefields WHERE name=e.fieldName), e.fieldValue);
-		
+
+PRINT N'DONE';		
 GO
