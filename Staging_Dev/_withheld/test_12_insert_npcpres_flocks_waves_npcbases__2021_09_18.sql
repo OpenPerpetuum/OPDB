@@ -40,7 +40,7 @@ INSERT INTO #PRES (name, topx, topy, bottomx, bottomy,spawnid, enabled, roaming,
 	presencetype, maxrandomflock, randomcenterx, randomcentery, randomradius, dynamiclifetime, isbodypull,
 	isrespawnallowed, safebodypull, izgroupid, growthseconds)
 VALUES
-	('npc_escalation_flocks_holder',999,999,1049,1049,10,0,0,0,@PRES_TYPE,NULL,NULL,NULL,NULL,NULL,1,0,1,NULL,@PRES_LIFETIME),
+	('npc_escalation_flocks_holder',999,999,1049,1049,10,0,0,@PRES_LIFETIME,@PRES_TYPE,NULL,NULL,NULL,NULL,@PRES_LIFETIME,1,0,1,NULL,@PRES_LIFETIME),
 	('zone_106_npc_base_pres_01_TEST',40,40,2000,2000,@SPAWN_ID,1,0,@PRES_LIFETIME,@PRES_TYPE,NULL,NULL,NULL,NULL,@PRES_LIFETIME,1,0,1,NULL,@GROWTH_CYCLE),
 	('zone_106_npc_base_pres_02_TEST',40,40,2000,2000,@SPAWN_ID,1,0,@PRES_LIFETIME,@PRES_TYPE,NULL,NULL,NULL,NULL,@PRES_LIFETIME,1,0,1,NULL,@GROWTH_CYCLE),
 	('zone_106_npc_base_pres_03_TEST',40,40,2000,2000,@SPAWN_ID,1,0,@PRES_LIFETIME,@PRES_TYPE,NULL,NULL,NULL,NULL,@PRES_LIFETIME,1,0,1,NULL,@GROWTH_CYCLE),
@@ -142,10 +142,12 @@ DELETE FROM npcflock WHERE name in (SELECT DISTINCT flockName FROM #LEVELS);
 
 INSERT INTO npcflock
 	(name,presenceid,flockmembercount,definition,
-	spawnoriginX,spawnoriginY,spawnrangeMin,spawnrangeMax,respawnseconds,totalspawncount,homerange,note,respawnmultiplierlow,enabled,iscallforhelp,behaviorType,npcSpecialType)
+	spawnoriginX,spawnoriginY,spawnrangeMin,spawnrangeMax,respawnseconds,
+	totalspawncount,homerange,note,respawnmultiplierlow,enabled,iscallforhelp,behaviorType,npcSpecialType)
 SELECT 
 	flockName, @HOLDER_PRES, numInFlock, (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=npcDefName),
-	0, 0, 3*level+1, 5*level+1, @PRES_LIFETIME*2, 1, 55, 'escalation flock test', 1, 1, 1, 2, 0
+	0, 0, 3*level+1, 5*level+1, @PRES_LIFETIME*2,
+	1, 55, 'escalation flock test', 1, 1, 1, 2, 0
 FROM #LEVELS;
 
 
