@@ -3,7 +3,7 @@ GO
 
 -----------------------------------------------
 -- All other Base Stats
--- Just in case someone wants to change everything and make things hard
+-- 
 -- Date modified: 2021/12/04
 -----------------------------------------------
 
