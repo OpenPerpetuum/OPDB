@@ -4,7 +4,7 @@ GO
 ----------------------------------------
 -- Turret stats
 --
--- Date Modified: 2021/12/03
+-- Date Modified: 2021/12/11
 ----------------------------------------
 
 PRINT N'Define all stats and modifiers by tech and turret type';
@@ -50,9 +50,9 @@ INSERT INTO #STATS_BY_TECH (tech, fieldName, modValue) VALUES
 (2, 'stealth_strength', 90),
 (3, 'stealth_strength', 80),
 
-(1, 'locking_range', 135),
-(2, 'locking_range', 142.5),
-(3, 'locking_range', 150),
+(1, 'locking_range_modifier', 1.35),
+(2, 'locking_range_modifier', 1.425),
+(3, 'locking_range_modifier', 1.50),
 
 (1,'damage_modifier', 0.4),
 (2,'damage_modifier', 0.6),
@@ -77,6 +77,14 @@ INSERT INTO #STATS_BY_TECH (tech, fieldName, modValue) VALUES
 (1,'falloff_modifier',1.6),
 (2,'falloff_modifier',1.8),
 (3,'falloff_modifier',2.0),
+
+(1,'missile_falloff_modifier',1.6),
+(2,'missile_falloff_modifier',1.8),
+(3,'missile_falloff_modifier',2.0),
+
+(1,'turret_fallof_modifier',1.6),
+(2,'turret_fallof_modifier',1.8),
+(3,'turret_fallof_modifier',2.0),
 
 (1,'core_max',2500),
 (2,'core_max',2500),
