@@ -38,11 +38,11 @@ INSERT INTO #PBS_CONFIGS (definition,
 cycle_time, constructionradius, transmitradius, constructionlevelmax, blockingradius,
 chargeamount, inconnections, outconnections, coreconsumption, corekickstartthreshold, bandwidthusage, hitsize) VALUES
 ((SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_pbs_armor_repairer_large'),
-30000, 2, 35, 100, 2, 18000, 2, 5, 60, 0.7, 300, 2.8284),
+30000, 2, 35, 100, 2, 13500, 2, 5, 60, 0.7, 300, 2.8284),
 ((SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_pbs_armor_repairer_medium'),
-30000, 2, 35, 75, 2, 15000, 2, 4, 55, 0.7, 250, 2.8284),
+30000, 2, 35, 75, 2, 12378, 2, 4, 55, 0.7, 250, 2.8284),
 ((SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_pbs_armor_repairer_small'),
-30000, 2, 35, 50, 1, 12000, 2, 3, 50, 0.7, 200, 1.4142);
+30000, 2, 35, 50, 1, 11250, 2, 3, 50, 0.7, 200, 1.4142);
 
 PRINT N'AURA EMITTERS';
 INSERT INTO #PBS_CONFIGS (definition,
@@ -115,9 +115,9 @@ cycle_time, constructionradius, transmitradius, constructionlevelmax, blockingra
 inconnections, outconnections, productionupgradeamount, coreconsumption, 
 corekickstartthreshold, bandwidthusage, hitsize) VALUES
 ((SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_pbs_production_upgrade_large'),
-30000, 1, 45, 40, 1, 2, 1, 50, 60, 0.65, 150, 1.4142),
+30000, 1, 45, 40, 1, 2, 1, 80, 60, 0.65, 150, 1.4142),
 ((SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_pbs_production_upgrade_medium'),
-30000, 1, 45, 30, 1, 2, 1, 40, 55, 0.65, 125, 1.4142),
+30000, 1, 45, 30, 1, 2, 1, 50, 55, 0.65, 125, 1.4142),
 ((SELECT TOP 1 definition FROM entitydefaults WHERE definitionname='def_pbs_production_upgrade_small'),
 30000, 1, 45, 20, 1, 2, 1, 30, 50, 0.65, 100, 1.4142);
 
@@ -221,7 +221,7 @@ cycle_time, constructionradius, transmitradius, constructionlevelmax, blockingra
 inconnections, outconnections, coreconsumption, corekickstartthreshold, bandwidthusage,
 hitsize, productionlevel)
 SELECT (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=defName),
-30000, 7, 45, 500, 6, 6, 1, 600, 0.65, 1500, 8.4852, 125
+30000, 7, 45, 500, 6, 6, 1, 600, 0.65, 1500, 8.4852, 200
 FROM #FACILITY_BY_TECH WHERE tech=3;
 
 INSERT INTO #PBS_CONFIGS (definition,
@@ -229,7 +229,7 @@ cycle_time, constructionradius, transmitradius, constructionlevelmax, blockingra
 inconnections, outconnections, coreconsumption, corekickstartthreshold, bandwidthusage,
 hitsize, productionlevel)
 SELECT (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=defName),
-30000, 7, 45, 375, 5, 5, 1, 550, 0.65, 1250, 7.071, 100
+30000, 7, 45, 375, 5, 5, 1, 550, 0.65, 1250, 7.071, 165
 FROM #FACILITY_BY_TECH WHERE tech=2;
 
 INSERT INTO #PBS_CONFIGS (definition,
@@ -237,7 +237,7 @@ cycle_time, constructionradius, transmitradius, constructionlevelmax, blockingra
 inconnections, outconnections, coreconsumption, corekickstartthreshold, bandwidthusage,
 hitsize, productionlevel)
 SELECT (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname=defName),
-30000, 7, 45, 250, 4, 4, 1, 500, 0.65, 1000, 5.6568, 50
+30000, 7, 45, 250, 4, 4, 1, 500, 0.65, 1000, 5.6568, 130
 FROM #FACILITY_BY_TECH WHERE tech=1;
 
 
