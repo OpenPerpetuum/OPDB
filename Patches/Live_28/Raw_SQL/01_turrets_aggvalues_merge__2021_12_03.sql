@@ -4,8 +4,7 @@ GO
 ----------------------------------------
 -- Turret stats
 -- Made a distiction for EW turrets
--- fixed sensor strength
--- Date Modified: 2032/04/123
+-- Date Modified: 2022/04/15
 ----------------------------------------
 
 PRINT N'Define all stats and modifiers by tech and turret type';
