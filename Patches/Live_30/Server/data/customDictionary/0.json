@@ -2180,5 +2180,5 @@
 	"ErrorMessages_unknown_674": "You cannot use RESPEC token more than once in a month."
 	"cf_spark_teleport_devices": "Spark Teleport Devices",
 	"def_spark_teleport_device_hersh": "Spark Teleport Device (Hershfield)",
-	"def_spark_teleport_device_hersh_desc": "Spark teleport devices are used to instantly transfer agent's spark from one base terminal into another. Previous attempts to achieve that were often causing multiple catastrofic failures in piloted robots, and program was temporary stopped.". After additional research, Syndicate scientists created special devices hardcoded to exact locations  which, potentially, could resolve disturbance in forcefields allowing agents to safe-travel at least in some locations.\n\nThis device is hardcoded to Hershfield."
+	"def_spark_teleport_device_hersh_desc": "Spark teleport devices are used to instantly transfer agent's spark from one base terminal into another. Previous attempts to achieve that were often causing multiple catastrofic failures in piloted robots, and program was temporary stopped. After additional research, Syndicate scientists created special devices hardcoded to exact locations  which, potentially, could resolve disturbance in forcefields allowing agents to safe-travel at least in some locations.\n\nThis device is hardcoded to Hershfield."
 }
