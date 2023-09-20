@@ -5,7 +5,3 @@ UPDATE entitydefaults Set definitionname='def_metis_leg', quantity=1, attributef
                 note='', enabled=1, volume=20, mass=15000, hidden=1, health=100, descriptiontoken='bot_leg_desc', purchasable=0, tiertype=0, 
                 tierlevel=0 where definition=@definitionID;
 
-DECLARE @aggvalueID int;
-DECLARE @aggfieldID int;
-
-
