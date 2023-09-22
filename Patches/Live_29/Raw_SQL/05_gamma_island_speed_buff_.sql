@@ -18,7 +18,10 @@ CREATE TABLE #EFFECTMODS
 	fieldValue FLOAT
 );
 INSERT INTO #EFFECTMODS (effId, fieldName, fieldValue) VALUES
-(@T0_EFFECT_ID, 'effect_speed_highway_modifier', 0.5)
+(@T0_EFFECT_ID, 'effect_speed_highway_modifier', 0.5),
+(@T0_EFFECT_ID, 'effect_mining_amount_modifier', 1.75),
+(@T0_EFFECT_ID, 'effect_harvesting_amount_modifier', 1.75),
+(@T0_EFFECT_ID, 'pbs_tech_limit', 0);
 
 PRINT N'DELETING AND REINSERTING MODIFIERS FOR T0 ZONE EFFECT';
 DELETE FROM [effectdefaultmodifiers] WHERE effectid=@T0_EFFECT_ID;
@@ -53,7 +56,10 @@ CREATE TABLE #EFFECTMODS
 	fieldValue FLOAT
 );
 INSERT INTO #EFFECTMODS (effId, fieldName, fieldValue) VALUES
-(@T0_EFFECT_ID, 'effect_speed_highway_modifier', 0.35)
+(@T0_EFFECT_ID, 'effect_speed_highway_modifier', 0.35),
+(@T0_EFFECT_ID, 'effect_mining_amount_modifier', 1.30),
+(@T0_EFFECT_ID, 'effect_harvesting_amount_modifier', 1.30),
+(@T0_EFFECT_ID, 'pbs_tech_limit', 1);
 
 PRINT N'DELETING AND REINSERTING MODIFIERS FOR T0 ZONE EFFECT';
 DELETE FROM [effectdefaultmodifiers] WHERE effectid=@T0_EFFECT_ID;
@@ -88,7 +94,10 @@ CREATE TABLE #EFFECTMODS
 	fieldValue FLOAT
 );
 INSERT INTO #EFFECTMODS (effId, fieldName, fieldValue) VALUES
-(@T0_EFFECT_ID, 'effect_speed_highway_modifier', 0.25)
+(@T0_EFFECT_ID, 'effect_speed_highway_modifier', 0.25),
+(@T0_EFFECT_ID, 'effect_mining_amount_modifier', 1.30),
+(@T0_EFFECT_ID, 'effect_harvesting_amount_modifier', 1.30),
+(@T0_EFFECT_ID, 'pbs_tech_limit', 2);
 
 PRINT N'DELETING AND REINSERTING MODIFIERS FOR T0 ZONE EFFECT';
 DELETE FROM [effectdefaultmodifiers] WHERE effectid=@T0_EFFECT_ID;
@@ -123,7 +132,10 @@ CREATE TABLE #EFFECTMODS
 	fieldValue FLOAT
 );
 INSERT INTO #EFFECTMODS (effId, fieldName, fieldValue) VALUES
-(@T0_EFFECT_ID, 'effect_speed_highway_modifier', 0.15)
+(@T0_EFFECT_ID, 'effect_speed_highway_modifier', 0.15),
+(@T0_EFFECT_ID, 'effect_mining_amount_modifier', 1.30),
+(@T0_EFFECT_ID, 'effect_harvesting_amount_modifier', 1.30),
+(@T0_EFFECT_ID, 'pbs_tech_limit', 3);
 
 PRINT N'DELETING AND REINSERTING MODIFIERS FOR T0 ZONE EFFECT';
 DELETE FROM [effectdefaultmodifiers] WHERE effectid=@T0_EFFECT_ID;
