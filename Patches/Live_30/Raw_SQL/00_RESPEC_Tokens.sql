@@ -1,8 +1,3 @@
-USE [perpetuumsa]
-GO
-
-PRINT N'00_RESPEC_Tokens.sql';
-
 ---- New category for RESPEC Tokens ----
 
 INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
@@ -34,7 +29,4 @@ GO
 
 ALTER TABLE dbo.characters ADD LastRespec datetime NULL
 	
-GO
-
-PRINT N'PATCH 30 COMPLETE';
 GO
