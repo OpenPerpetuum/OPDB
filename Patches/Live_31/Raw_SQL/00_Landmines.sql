@@ -1,58 +1,72 @@
+---- Add new aggregate fields for Landmines and detection range
+
+INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
+('trigger_mass', 0, 'mass_unit', 1, 0, 0, 0, NULL, NULL, NULL),
+('mine_detection_range', 1, 'mine_detection_range_unit', 10, 0, 3, 0, 1, 1, NULL),
+('mine_detection_range_modifier', 0, 'mine_detection_range_modifier_unit', 100, -100, 3, 0, 1, 1, NULL),
+('effect_mine_detection_range_modifier', 0, 'effect_mine_detection_range_modifier_unit', 100, -100, 3, 0, 1, 1, NULL),
+('effect_enhancer_mine_detection_range_modifier', 0, 'effect_enhancer_mine_detection_range_modifier_unit', 100, -100, 3, 0, 1, 1, NULL)
+
+GO
+
 ---- Landmines category ----
 
 INSERT INTO categoryFlags (value, name, note, hidden, isunique) VALUES
 (263314, 'cf_landmines', 'Landmines', 0, 0)
 
----- Light landmines subcategory ----
+-- Light landmines subcategory --
 INSERT INTO categoryFlags (value, name, note, hidden, isunique) VALUES
 (17040530, 'cf_light_landmines', 'Light landmines', 0, 0)
 
----- Medium landmines subcategory ----
+-- Medium landmines subcategory --
 
 INSERT INTO categoryFlags (value, name, note, hidden, isunique) VALUES
 (33817746, 'cf_medium_landmines', 'Medium landmines', 0, 0)
 
----- Heavy landmines subcategory ----
+-- Heavy landmines subcategory --
 
 INSERT INTO categoryFlags (value, name, note, hidden, isunique) VALUES
 (50594962, 'cf_heavy_landmines', 'Heavy landmines', 0, 0)
 
 GO
 
----- Light landmine (deployed) ----
+---- Landmines definitions ----
+
+-- Light landmine (deployed) --
 
 INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 ('def_light_landmine', 1, 1024, 17040530, '#triggerMass=n10000', NULL, 1, 1.5, 1000, 0, 100, 'def_light_landmine_desc', 0, 0, 0)
 
----- Light landmine (capsule) ----
+-- Light landmine (capsule) --
 INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 ('def_light_landmine_capsule', 1, 25167872, 3480, NULL, NULL, 1, 1.5, 1000, 0, 100, 'def_light_landmine_capsule_desc', 1, 0, 0)
 
----- Medium landmine (deployed) ----
+-- Medium landmine (deployed) --
 INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 ('def_medium_landmine', 1, 1024, 33817746, '#triggerMass=n20000', NULL, 1, 1.5, 1000, 0, 100, 'def_medium_landmine_desc', 0, 0, 0)
 
----- Medium landmine (capsule) ----
+-- Medium landmine (capsule) --
 INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 ('def_medium_landmine_capsule', 1, 25167872, 3480, NULL, NULL, 1, 1.5, 1000, 0, 100, 'def_medium_landmine_capsule_desc', 1, 0, 0)
 
----- Heavy landmine (deployed) ----
-
+-- Heavy landmine (deployed) --
 INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 ('def_heavy_landmine', 1, 1024, 50594962, '#triggerMass=n30000', NULL, 1, 1.5, 1000, 0, 100, 'def_heavy_landmine_desc', 0, 0, 0)
 
----- Heavy landmine (capsule) ----
+-- Heavy landmine (capsule) --
 
 INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 ('def_heavy_landmine_capsule', 1, 25167872, 3480, NULL, NULL, 1, 1.5, 1000, 0, 100, 'def_heavy_landmine_capsule_desc', 1, 0, 0)
 
 GO
 
+---- Landmines attributes ----
+
 DECLARE @definitionID int;
 DECLARE @aggvalueID int;
 DECLARE @aggfieldID int;
 
-------------------- Light Mines -------------------
+-- Light landmines --
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_light_landmine' ORDER BY definition DESC);
 
@@ -92,7 +106,7 @@ SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'trigger_
 SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
 INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 10000);
 
-------------------- Medium Mines -------------------
+-- Medium landmines --
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_medium_landmine' ORDER BY definition DESC);
 
@@ -132,7 +146,7 @@ SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'trigger_
 SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @definitionID AND [field]=@aggfieldID ORDER BY definition DESC);
 INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, 20000);
 
-------------------- Heavy Mines -------------------
+-- Heavy landmines --
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_heavy_landmine' ORDER BY definition DESC);
 
@@ -278,7 +292,7 @@ INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@defi
 
 GO
 
----- Link landmine capsules with landmines
+---- Link landmine capsules with landmines ----
 
 DECLARE @lightMine INT
 DECLARE @lightMineCapsule INT
@@ -301,16 +315,6 @@ INSERT INTO definitionconfig (definition, targetdefinition) VALUES
 (@mediumMineCapsule, @mediumMine),
 (@heavyMine, NULL),
 (@heavyMineCapsule, @heavyMine)
-
-GO
-
----- Add new aggregate fields for Landmines detection range
-
-INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
-('mine_detection_range', 1, 'mine_detection_range_unit', 10, 0, 3, 0, 1, 1, NULL),
-('mine_detection_range_modifier', 0, 'mine_detection_range_modifier_unit', 100, -100, 3, 0, 1, 1, NULL),
-('effect_mine_detection_range_modifier', 0, 'effect_mine_detection_range_modifier_unit', 100, -100, 3, 0, 1, 1, NULL),
-('effect_enhancer_mine_detection_range_modifier', 0, 'effect_enhancer_mine_detection_range_modifier_unit', 100, -100, 3, 0, 1, 1, NULL)
 
 GO
 
@@ -381,13 +385,13 @@ DECLARE @categoryFlags int
 SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_landmine_detectors')
 
 INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-('def_standard_landmine_detector', 1, 16656, 983823, '#moduleFlag=i410#tier=$tierlevel_t1', NULL, 1, 0.5, 1000, 0, 100, 'def_standard_landmine_detector_desc', 1, 1, 1)
-('def_named1_landmine_detector', 1, 16656, @categoryFlags, '#moduleFlag=i410#tier=$tierlevel_t2', NULL, 1, 1.5, 1000, 0, 100, 'def_named_landmine_detector', 1, 1, 2),
-('def_named1_landmine_detector_pr', 1, 16656, @categoryFlags, '#moduleFlag=i410#tier=$tierlevel_t2', NULL, 1, 1.5, 1000, 0, 100, 'def_named_landmine_detector', 1, 2, 2),
-('def_named2_landmine_detector', 1, 16656, @categoryFlags, '#moduleFlag=i410#tier=$tierlevel_t3', NULL, 1, 1.5, 1000, 0, 100, 'def_named_landmine_detector', 1, 1, 3),
-('def_named2_landmine_detector_pr', 1, 16656, @categoryFlags, '#moduleFlag=i410#tier=$tierlevel_t3', NULL, 1, 1.5, 1000, 0, 100, 'def_named_landmine_detector', 1, 2, 3),
-('def_named3_landmine_detector', 1, 16656, @categoryFlags, '#moduleFlag=i410#tier=$tierlevel_t4', NULL, 1, 1.5, 1000, 0, 100, 'def_named_landmine_detector', 1, 1, 4),
-('def_named3_landmine_detector_pr', 1, 16656, @categoryFlags, '#moduleFlag=i410#tier=$tierlevel_t4', NULL, 1, 1.5, 1000, 0, 100, 'def_named_landmine_detector', 1, 2, 4)
+('def_standart_landmine_detector', 1, 16656, @categoryFlags, '#moduleFlag=i410#tier=$tierlevel_t1', NULL, 1, 0.5, 1000, 0, 100, 'def_standart_landmine_detector_desc', 1, 1, 1),
+('def_named1_landmine_detector', 1, 16656, @categoryFlags, '#moduleFlag=i410#tier=$tierlevel_t2', NULL, 1, 1.5, 900, 0, 100, 'def_named_landmine_detector_desc', 1, 1, 2),
+('def_named1_landmine_detector_pr', 1, 16656, @categoryFlags, '#moduleFlag=i410#tier=$tierlevel_t2_pr', NULL, 1, 1.5, 800, 0, 100, 'def_named_landmine_detector_desc', 1, 2, 2),
+('def_named2_landmine_detector', 1, 16656, @categoryFlags, '#moduleFlag=i410#tier=$tierlevel_t3', NULL, 1, 1.5, 1000, 0, 1100, 'def_named_landmine_detector_desc', 1, 1, 3),
+('def_named2_landmine_detector_pr', 1, 16656, @categoryFlags, '#moduleFlag=i410#tier=$tierlevel_t3_pr', NULL, 1, 1.5, 1000, 0, 100, 'def_named_landmine_detector_desc', 1, 2, 3),
+('def_named3_landmine_detector', 1, 16656, @categoryFlags, '#moduleFlag=i410#tier=$tierlevel_t4', NULL, 1, 1.5, 1200, 0, 100, 'def_named_landmine_detector_desc', 1, 1, 4),
+('def_named3_landmine_detector_pr', 1, 16656, @categoryFlags, '#moduleFlag=i410#tier=$tierlevel_t4_pr', NULL, 1, 1.5, 1100, 0, 100, 'def_named_landmine_detector_desc', 1, 2, 4)
 
 SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_engineering_calibration_programs')
 
@@ -414,7 +418,7 @@ SET @cycle_time_field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cycl
 SET @powergrid_usage_field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'powergrid_usage')
 SET @effect_mine_detection_range_modifier_field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'effect_mine_detection_range_modifier')
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standard_landmine_detector')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_landmine_detector')
 INSERT INTO aggregatevalues (definition, field, value) VALUES
 (@definition, @core_usage_field, 14),
 (@definition, @cpu_usage_field, 20),
@@ -498,7 +502,7 @@ SET @common_basic_components = (SELECT TOP 1 definition FROM entitydefaults WHER
 SET @common_advanced_components = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_robotshard_common_advanced')
 SET @common_expert_components = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_robotshard_common_expert')
 
-SET @t1_mine_detector = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standard_landmine_detector')
+SET @t1_mine_detector = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_landmine_detector')
 SET @t2_mine_detector = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_landmine_detector')
 SET @t3_mine_detector = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_landmine_detector')
 
@@ -506,7 +510,7 @@ SET @t3_mine_detector = (SELECT TOP 1 definition FROM entitydefaults WHERE defin
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_landmine_detector')
 INSERT INTO components (definition, componentdefinition, componentamount) VALUES
 (@definition, @titanium_definition, 100),
-(@definition, @cryoperine_definition, 400),
+(@definition, @cryoperine_definition, 400)
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_landmine_detector')
 INSERT INTO components (definition, componentdefinition, componentamount) VALUES
@@ -570,22 +574,22 @@ GO
 DECLARE @definition INT
 DECLARE @calibration INT
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standard_landmine_detector')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_landmine_detector')
 SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_landmine_detector_cprg')
 INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
 (@definition, 6, @calibration, 1)
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_landmine_detector')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_landmine_detector_pr')
 SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_landmine_detector_cprg')
 INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
 (@definition, 7, @calibration, 1)
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_landmine_detector')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_landmine_detector_pr')
 SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_landmine_detector_cprg')
 INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
 (@definition, 8, @calibration, 1)
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_landmine_detector')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_landmine_detector_pr')
 SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_landmine_detector_cprg')
 INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
 (@definition, 9, @calibration, 1)
@@ -602,7 +606,7 @@ DECLARE @t4 INT
 DECLARE @group INT
 
 SET @parent = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_blob_emission_modulator')
-SET @t1 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standard_landmine_detector')
+SET @t1 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_landmine_detector')
 SET @t2 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_landmine_detector')
 SET @t3 = (SELECT TOP 1 definition definition FROM entitydefaults WHERE definitionname = 'def_named2_landmine_detector')
 SET @t4 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_landmine_detector')
@@ -625,7 +629,7 @@ DECLARE @hightech INT
 SET @common = (SELECT TOP 1 id FROM techtreepointtypes WHERE name = 'common')
 SET @hightech = (SELECT TOP 1 id FROM techtreepointtypes WHERE name = 'hitech')
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standard_landmine_detector')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_landmine_detector')
 INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
 (@definition, @common, 25000)
 
@@ -683,7 +687,7 @@ GO
 
 DECLARE @category INT
 DECLARE @basefield INT
-DECLARE @modifier field
+DECLARE @modifier INT
 
 SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_landmine_detectors')
 SET @basefield = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'effect_mine_detection_range_modifier')
@@ -692,4 +696,67 @@ SET @modifier = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'effect_enhan
 INSERT INTO aggregatemodifiers (categoryflag, basefield, modifierfield) VALUES
 (@category, @basefield, @modifier)
 
+GO
+
+---- Add landmines to public market ----
+
+DECLARE @public_market_definition INT
+SET @public_market_definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_public_market')
+
+DECLARE @definition INT
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_light_landmine_capsule')
+
+INSERT INTO marketitems (marketeid, submittereid, itemdefinition, duration, isSell, price, quantity, isvendoritem)
+	(SELECT v.marketEID, v.vendorEID, @definition, 0, 1, 500000, -1, 1 FROM entities e
+	INNER JOIN entitydefaults ed
+	ON e.definition = ed.definition
+	INNER JOIN vendors v
+	ON v.marketEID = e.eid
+	WHERE ed.definition = @public_market_definition)
+
+INSERT INTO marketitems (marketeid, submittereid, itemdefinition, duration, isSell, price, quantity, isvendoritem)
+	(SELECT e.eid, v.vendorEID, @definition, 0, 0, 50000, -1, 1 FROM entities e
+	INNER JOIN entitydefaults ed
+	ON e.definition = ed.definition
+	INNER JOIN vendors v
+	ON v.marketEID = e.eid
+	WHERE ed.definition = @public_market_definition)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_medium_landmine_capsule')
+
+INSERT INTO marketitems (marketeid, submittereid, itemdefinition, duration, isSell, price, quantity, isvendoritem)
+	(SELECT e.eid, v.vendorEID, @definition, 0, 1, 1000000, -1, 1 FROM entities e
+	INNER JOIN entitydefaults ed
+	ON e.definition = ed.definition
+	INNER JOIN vendors v
+	ON v.marketEID = e.eid
+	WHERE ed.definition = @public_market_definition)
+
+INSERT INTO marketitems (marketeid, submittereid, itemdefinition, duration, isSell, price, quantity, isvendoritem)
+	(SELECT e.eid, v.vendorEID, @definition, 0, 0, 100000, -1, 1 FROM entities e
+	INNER JOIN entitydefaults ed
+	ON e.definition = ed.definition
+	INNER JOIN vendors v
+	ON v.marketEID = e.eid
+	WHERE ed.definition = @public_market_definition)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_heavy_landmine_capsule')
+
+INSERT INTO marketitems (marketeid, submittereid, itemdefinition, duration, isSell, price, quantity, isvendoritem)
+	(SELECT e.eid, v.vendorEID, @definition, 0, 1, 1500000, -1, 1 FROM entities e
+	INNER JOIN entitydefaults ed
+	ON e.definition = ed.definition
+	INNER JOIN vendors v
+	ON v.marketEID = e.eid
+	WHERE ed.definition = @public_market_definition)
+
+INSERT INTO marketitems (marketeid, submittereid, itemdefinition, duration, isSell, price, quantity, isvendoritem)
+	(SELECT e.eid, v.vendorEID, @definition, 0, 0, 150000, -1, 1 FROM entities e
+	INNER JOIN entitydefaults ed
+	ON e.definition = ed.definition
+	INNER JOIN vendors v
+	ON v.marketEID = e.eid
+	WHERE ed.definition = @public_market_definition)
+	
 GO

@@ -57,7 +57,7 @@ DECLARE @definitionID int;
 DECLARE @aggvalueID int;
 DECLARE @aggfieldID int;
 
-------------------- Light Mines -------------------
+------------------- Light Mines attributes -------------------
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_light_landmine' ORDER BY definition DESC);
 
@@ -283,7 +283,7 @@ INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@defi
 
 GO
 
----- Link landmine capsules with landmines
+---- Link landmine capsules with landmines ----
 
 DECLARE @lightMine INT
 DECLARE @lightMineCapsule INT
@@ -386,7 +386,7 @@ DECLARE @categoryFlags int
 SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_landmine_detectors')
 
 INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-('def_standard_landmine_detector', 1, 16656, 983823, '#moduleFlag=i410#tier=$tierlevel_t1', NULL, 1, 0.5, 1000, 0, 100, 'def_standard_landmine_detector_desc', 1, 1, 1)
+('def_standard_landmine_detector', 1, 16656, @categoryFlags, '#moduleFlag=i410#tier=$tierlevel_t1', NULL, 1, 0.5, 1000, 0, 100, 'def_standard_landmine_detector_desc', 1, 1, 1),
 ('def_named1_landmine_detector', 1, 16656, @categoryFlags, '#moduleFlag=i410#tier=$tierlevel_t2', NULL, 1, 1.5, 1000, 0, 100, 'def_named_landmine_detector', 1, 1, 2),
 ('def_named1_landmine_detector_pr', 1, 16656, @categoryFlags, '#moduleFlag=i410#tier=$tierlevel_t2', NULL, 1, 1.5, 1000, 0, 100, 'def_named_landmine_detector', 1, 2, 2),
 ('def_named2_landmine_detector', 1, 16656, @categoryFlags, '#moduleFlag=i410#tier=$tierlevel_t3', NULL, 1, 1.5, 1000, 0, 100, 'def_named_landmine_detector', 1, 1, 3),
@@ -511,7 +511,7 @@ SET @t3_mine_detector = (SELECT TOP 1 definition FROM entitydefaults WHERE defin
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_landmine_detector')
 INSERT INTO components (definition, componentdefinition, componentamount) VALUES
 (@definition, @titanium_definition, 100),
-(@definition, @cryoperine_definition, 400),
+(@definition, @cryoperine_definition, 400)
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_landmine_detector')
 INSERT INTO components (definition, componentdefinition, componentamount) VALUES
@@ -698,5 +698,66 @@ INSERT INTO aggregatemodifiers (categoryflag, basefield, modifierfield) VALUES
 (@category, @basefield, @modifier)
 
 GO
+
+---- Add landmines to public market ----
+
+DECLARE @public_market_definition INT
+SET @public_market_definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_public_market')
+
+DECLARE @definition INT
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_light_landmine_capsule')
+
+INSERT INTO marketitems (marketeid, submittereid, itemdefinition, duration, isSell, price, quantity, isvendoritem)
+	(SELECT v.marketEID, v.vendorEID, @definition, 0, 1, 500000, -1, 1 FROM entities e
+	INNER JOIN entitydefaults ed
+	ON e.definition = ed.definition
+	INNER JOIN vendors v
+	ON v.marketEID = e.eid
+	WHERE ed.definition = @public_market_definition)
+
+INSERT INTO marketitems (marketeid, submittereid, itemdefinition, duration, isSell, price, quantity, isvendoritem)
+	(SELECT e.eid, v.vendorEID, @definition, 0, 0, 50000, -1, 1 FROM entities e
+	INNER JOIN entitydefaults ed
+	ON e.definition = ed.definition
+	INNER JOIN vendors v
+	ON v.marketEID = e.eid
+	WHERE ed.definition = @public_market_definition)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_medium_landmine_capsule')
+
+INSERT INTO marketitems (marketeid, submittereid, itemdefinition, duration, isSell, price, quantity, isvendoritem)
+	(SELECT e.eid, v.vendorEID, @definition, 0, 1, 1000000, -1, 1 FROM entities e
+	INNER JOIN entitydefaults ed
+	ON e.definition = ed.definition
+	INNER JOIN vendors v
+	ON v.marketEID = e.eid
+	WHERE ed.definition = @public_market_definition)
+
+INSERT INTO marketitems (marketeid, submittereid, itemdefinition, duration, isSell, price, quantity, isvendoritem)
+	(SELECT e.eid, v.vendorEID, @definition, 0, 0, 100000, -1, 1 FROM entities e
+	INNER JOIN entitydefaults ed
+	ON e.definition = ed.definition
+	INNER JOIN vendors v
+	ON v.marketEID = e.eid
+	WHERE ed.definition = @public_market_definition)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_heavy_landmine_capsule')
+
+INSERT INTO marketitems (marketeid, submittereid, itemdefinition, duration, isSell, price, quantity, isvendoritem)
+	(SELECT e.eid, v.vendorEID, @definition, 0, 1, 1500000, -1, 1 FROM entities e
+	INNER JOIN entitydefaults ed
+	ON e.definition = ed.definition
+	INNER JOIN vendors v
+	ON v.marketEID = e.eid
+	WHERE ed.definition = @public_market_definition)
+
+INSERT INTO marketitems (marketeid, submittereid, itemdefinition, duration, isSell, price, quantity, isvendoritem)
+	(SELECT e.eid, v.vendorEID, @definition, 0, 0, 150000, -1, 1 FROM entities e
+	INNER JOIN entitydefaults ed
+	ON e.definition = ed.definition
+	INNER JOIN vendors v
+	ON v.marketEID = e.eid
+	WHERE ed.definition = @public_market_definition)
 
 PRINT N'Completed';
