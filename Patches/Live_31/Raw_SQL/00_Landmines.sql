@@ -2,10 +2,10 @@
 
 INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
 ('trigger_mass', 0, 'mass_unit', 1, 0, 0, 0, NULL, NULL, NULL),
-('mine_detection_range', 1, 'mine_detection_range_unit', 10, 0, 3, 0, 1, 1, NULL),
-('mine_detection_range_modifier', 0, 'mine_detection_range_modifier_unit', 100, -100, 3, 0, 1, 1, NULL),
-('effect_mine_detection_range_modifier', 0, 'effect_mine_detection_range_modifier_unit', 100, -100, 3, 0, 1, 1, NULL),
-('effect_enhancer_mine_detection_range_modifier', 0, 'effect_enhancer_mine_detection_range_modifier_unit', 100, -100, 3, 0, 1, 1, NULL)
+('mine_detection_range', 1, 'mine_detection_range_unit', 10, 0, 5, 0, 1, 1, NULL),
+('mine_detection_range_modifier', 0, 'mine_detection_range_modifier_unit', 100, -100, 5, 0, 1, 1, NULL),
+('effect_mine_detection_range_modifier', 0, 'effect_mine_detection_range_modifier_unit', 100, -100, 6, 0, 1, 1, NULL),
+('effect_enhancer_mine_detection_range_modifier', 0, 'effect_enhancer_mine_detection_range_modifier_unit', 100, -100, 6, 0, 1, 1, NULL)
 
 GO
 

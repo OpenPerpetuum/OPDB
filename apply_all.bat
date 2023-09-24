@@ -8,7 +8,7 @@
 set StartAndWait=start /min /wait
 set SqlCmd=sqlcmd -E -S %computername%\PERPSQL -d perpetuumsa -I -i
 
-set TARGET_DIR=F:\PerpetuumServer\data
+set TARGET_DIR=C:\PerpetuumServer\data
 set TOOLS_DIR=%~dp0Tools
 set PATCHES_DIR=%~dp0Patches
 
@@ -60,7 +60,7 @@ call:applyPatch Live_27 live_patch_27.sql Server
 call:applyPatch Live_28 live_patch_28.sql Server
 call:applyPatch Live_29 live_patch_29.sql Server
 call:applyPatch Live_30 live_patch_30.sql Server
-call:applyPatch Live_31 live_patch_29.sql Server
+call:applyPatch Live_31 live_patch_31.sql Server
 
 echo.
 echo Setting up the tool admin account..
