@@ -2179,5 +2179,8 @@
 	"def_respec_token_desc": "'''Revise Spark Extensions Configuration''' or, in short, '''RESPEC''' Token allows an agent to completely reset his spark configuration to default, releasing even previously locked extension points. Due to high complexity, this operation is only allowed once per month.",
 	"cf_spark_teleport_devices": "Spark Teleport Devices",
 	"def_spark_teleport_device_hersh": "Spark Teleport Device (Hershfield)",
-	"def_spark_teleport_device_hersh_desc": "Spark teleport devices are used to instantly transfer agent's spark from one base terminal into another. Previous attempts to achieve that were often causing multiple catastrofic failures in piloted robots, and program was temporary stopped. After additional research, Syndicate scientists created special devices hardcoded to exact locations  which, potentially, could resolve disturbance in forcefields allowing agents to safe-travel at least in some locations.\n\nThis device is hardcoded to Hershfield."
+	"def_spark_teleport_device_hersh_desc": "Spark teleport devices are used to instantly transfer agent's spark from one base terminal into another. Previous attempts to achieve that were often causing multiple catastrofic failures in piloted robots, and program was temporary stopped. After additional research, Syndicate scientists created special devices hardcoded to exact locations  which, potentially, could resolve disturbance in forcefields allowing agents to safe-travel at least in some locations.\n\nThis device is hardcoded to Hershfield.",
+	"ext_production_max_prototyper_slots_basic": "Prototyping: Parallel processing I",
+	"ext_production_max_prototyper_slots_advanced": "Prototyping: Parallel processing II",
+	"ext_production_max_prototyper_slots_expert": "Prototyping: Parallel processing III"
 }
