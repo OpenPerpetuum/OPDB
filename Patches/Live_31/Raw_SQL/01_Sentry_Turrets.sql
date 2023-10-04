@@ -189,7 +189,7 @@ GO
 IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'standart_em_sentry_turret')
 BEGIN
 	INSERT INTO robottemplates (name, description, note) VALUES
-	('standart_em_sentry_turret', '#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i14d#chassisModules=[|m0=[|definition=i47|slot=i1|ammoDefinition=ifc|ammoQuantity=i32]|m1=[|definition=i47|slot=i2|ammoDefinition=ifc|ammoQuantity=i32]]', 'EM Sentry turret template')
+	('standart_em_sentry_turret', '#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i14d#chassisModules=[|m0=[|definition=i43|slot=i1|ammoDefinition=ifc|ammoQuantity=i32]|m1=[|definition=i43|slot=i2|ammoDefinition=ifc|ammoQuantity=i32]]', 'EM Sentry turret template')
 END
 
 -- Laser
@@ -267,6 +267,22 @@ BEGIN
 	(@turret_def, @turret_template, 0, 0, 'Firearm Sentry turret')
 END
 
+GO
+
+---- Add new aggregate fields
+
+IF NOT EXISTS (SELECT 1 FROM aggregatefields WHERE name = 'bandwidth_max')
+BEGIN
+	INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
+	('bandwidth_max', 1,'bandwidth_max_unit', 1, 0, 3, 0, 1, 1, 'Controlled entities limit')
+END
+/*
+IF NOT EXISTS (SELECT 1 FROM aggregatefields WHERE name = 'bandwidth_max_modifier')
+BEGIN
+	INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
+	('bandwidth_max_modifier', 1,'bandwidth_max_modifier_unit', 1, 0, 3, 0, 1, 1, 'Controlled entities limit modifier')
+END
+*/
 GO
 
 ---- Set up aggregate fields for turrets
@@ -761,10 +777,43 @@ GO
 DECLARE @definition INT
 DECLARE @field INT
 
----- Accumulator usage
+---- Max bandwidth
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'bandwidth_max')
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_turret_launcher')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_turret_launcher')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_turret_launcher')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_turret_launcher')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+
+---- Accumulator usage
+
 SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_usage')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_turret_launcher')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
@@ -943,7 +992,7 @@ SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_heavymec
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_spectator_chassis')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_spectator_chassis', 1, 1024, @category, '#height=f2.00  #decay=n500', 1, 100, 78000, 1, 100, 'def_spectator_chassis_desc', 0, NULL, NULL)
+	('def_spectator_chassis', 1, 1024, @category, '#slotFlags=4d3,6d0 #height=f2.00 #decay=n500', 1, 100, 78000, 1, 100, 'def_spectator_chassis_desc', 0, NULL, NULL)
 END
 
 SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_heavymech_head')
@@ -1248,22 +1297,6 @@ END
 
 GO
 
----- Add new aggregate fields
-
-IF NOT EXISTS (SELECT 1 FROM aggregatefields WHERE name = 'bandwidth_max')
-BEGIN
-	INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
-	('bandwidth_max', 1,'bandwidth_max_unit', 1, 0, 3, 0, 1, 1, 'Controlled entities limit')
-END
-
-IF NOT EXISTS (SELECT 1 FROM aggregatefields WHERE name = 'bandwidth_max_modifier')
-BEGIN
-	INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
-	('bandwidth_max_modifier', 1,'bandwidth_max_modifier_unit', 1, 0, 3, 0, 1, 1, 'Controlled entities limit modifier')
-END
-
-GO
-
 ---- Add chassis bonuses and link them with extensions and aggregate fields
 
 DECLARE @definition INT
@@ -1325,17 +1358,7 @@ BEGIN
 	INSERT INTO chassisbonus (definition, extension, bonus, targetpropertyID, effectenhancer) VALUES
 	(@definition, @extension, -0.02, @field, 0)
 END
-/*
-SET @extension = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_remote_combat_control')
 
-SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'bandwidth_max_modifier')
-
-IF NOT EXISTS (SELECT 1 FROM chassisbonus WHERE definition = @definition AND extension = @extension AND targetpropertyID = @field)
-BEGIN
-	INSERT INTO chassisbonus (definition, extension, bonus, targetpropertyID, effectenhancer) VALUES
-	(@definition, @extension, 1, @field, 0)
-END
-*/
 -- Head (whyyyy)
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_head')
@@ -1372,6 +1395,7 @@ END
 
 GO
 
+/*
 ---- Add new aggregate field to robot
 
 DECLARE @definitionID int;
@@ -1379,7 +1403,8 @@ DECLARE @categoryFlags int;
 DECLARE @aggfieldID int;
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'bandwidth_max');
-
+*/
+/*
 DELETE FROM [aggregatevalues] WHERE field = @aggfieldID
 
 SET @categoryFlags = (SELECT TOP 1 [value] FROM categoryFlags WHERE [NAME] = 'cf_robot_head')
@@ -1405,11 +1430,18 @@ INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value])
 SET @categoryFlags = (SELECT TOP 1 [value] FROM categoryFlags WHERE [NAME] = 'cf_walker_head')
 INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) 
 (SELECT definition, @aggfieldID, 0 FROM entitydefaults where categoryflags = @categoryFlags);
-
--- Spectator has 1 base controlled entity
+*/
+/*
+-- Spectator has 1.5 base bandwidth
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_spectator_head' ORDER BY definition DESC);
 
-UPDATE [dbo].[aggregatevalues] SET value = 15 WHERE [definition] = @definitionID and [field] = @aggfieldID;
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
+BEGIN
+	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES
+	(@definitionID, @aggfieldID, 5)
+END
+*/
+--UPDATE [dbo].[aggregatevalues] SET value = 1.5 WHERE [definition] = @definitionID and [field] = @aggfieldID;
 /*
 -- Spectator also has modifier
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'bandwidth_max_modifier');
@@ -1423,11 +1455,13 @@ GO
 
 ---- Add new extensions category
 
-INSERT INTO extensioncategories (extensioncategoryid, categoryname, hidden) VALUES
-(10, 'extcat_remote_command', 0)
+IF NOT EXISTS (SELECT 1 FROM extensioncategories WHERE categoryname = 'extcat_remote_command')
+BEGIN
+	INSERT INTO extensioncategories (extensioncategoryid, categoryname, hidden) VALUES
+	(10, 'extcat_remote_command', 0)
+END
 
 GO
-
 
 ---- Add new extensions
 
@@ -1436,19 +1470,18 @@ DECLARE @affectedField INT
 
 SET @extensionsCategory = (SELECT TOP 1 extensioncategoryid FROM extensioncategories WHERE categoryname = 'extcat_remote_command')
 
+SET @affectedField = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'bandwidth_max_modifier')
+
 IF NOT EXISTS (SELECT 1 FROM extensions WHERE extensionname = 'ext_remote_combat_control')
 BEGIN
-	INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, effectenhancer, hidden, freezelimit) VALUES
-	(366, 'ext_remote_combat_control', @extensionsCategory, 5, 'attributeA', 0.5, '', 125000, 1, 'ext_remote_combat_control_desc', 0, 0, 7)
+	INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
+	(366, 'ext_remote_combat_control', @extensionsCategory, 5, 'attributeA', 0.5, '', 125000, 1, 'ext_remote_combat_control_desc', @affectedField, 0, 0, 7)
 END
 
 /*
-SET @affectedField = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_command_channels_max')
-
 INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
 (367, 'ext_field_turret_damage', @extensionsCategory, 5, 'attributeA', 0.03, '', 125000, 1, 'ext_command_robotics_desc', NULL, 0, 0, 7),
 (368, 'ext_field_turret_cycle_time', @extensionsCategory, 5, 'attributeA', 0.5, '', 125000, 1, 'ext_remote_combat_control_desc', NULL, 0, 0, 7)
-
+*/
 
 GO
-*/
