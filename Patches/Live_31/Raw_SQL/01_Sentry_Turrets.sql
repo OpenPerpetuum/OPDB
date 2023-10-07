@@ -6,46 +6,22 @@ BEGIN
 	(3474, 'cf_sentry_turrets', 'Sentry Turret (deployed)', 1, 0)
 END
 
-IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_turret_launcher_ammo' )
+IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_remote_controlled_units' )
 BEGIN
 	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
-	(8202, 'cf_turret_launcher_ammo', 'Field turres', 0, 0)
+	(8202, 'cf_remote_controlled_units', 'Remote controlled units', 0, 0)
 END
 
-IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_sentry_turret_ammo' )
+IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_sentry_turret_units' )
 BEGIN
 	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
-	(1056778, 'cf_sentry_turret_ammo', 'Sentry turrets', 0, 0)
+	(1056778, 'cf_sentry_turret_units', 'Sentry turrets', 0, 0)
 END
 
-IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_em_sentry_turret_ammo' )
+IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_remote_controllers' )
 BEGIN
 	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
-	(269492234, 'cf_em_sentry_turret_ammo', 'EM sentry turrets', 0, 0)
-END
-
-IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_laser_sentry_turret_ammo' )
-BEGIN
-	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
-	(537927690, 'cf_laser_sentry_turret_ammo', 'Laser sentry turrets', 0, 0)
-END
-
-IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_missile_sentry_turret_ammo' )
-BEGIN
-	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
-	(806363146, 'cf_missile_sentry_turret_ammo', 'Missile sentry turrets', 0, 0)
-END
-
-IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_firearm_sentry_turret_ammo' )
-BEGIN
-	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
-	(1074798602, 'cf_firearm_sentry_turret_ammo', 'Firearms sentry turrets', 0, 0)
-END
-
-IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_turret_launchers' )
-BEGIN
-	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
-	(722703, 'cf_turret_launchers', 'Turret launchers', 0, 1)
+	(722703, 'cf_remote_controllers', 'Remote controllers', 0, 1)
 END
 
 GO
@@ -53,7 +29,41 @@ GO
 ---- Add new slot flag
 IF NOT EXISTS (SELECT 1 FROM slotFlags WHERE name = 'specialized' )
 BEGIN
-	INSERT INTO slotFlags (offset, name, note) VALUES (11, 'specialized', 'Special tools for Mk3 only')
+	INSERT INTO slotFlags (offset, name, note) VALUES (11, 'specialized', 'Special slot for remote comtrollers')
+END
+
+GO
+
+---- Add new aggregate fields
+
+IF NOT EXISTS (SELECT 1 FROM aggregatefields WHERE name = 'remote_control_bandwidth_max')
+BEGIN
+	INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
+	('remote_control_bandwidth_max', 1,'remote_control_bandwidth_max_unit', 1, 0, 3, 0, 1, 1, 'Controlled entities limit')
+END
+
+IF NOT EXISTS (SELECT 1 FROM aggregatefields WHERE name = 'remote_control_bandwidth_max_modifier')
+BEGIN
+	INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
+	('remote_control_bandwidth_max_modifier', 1,'remote_control_bandwidth_max_modifier_unit', 1, 0, 3, 0, 1, 1, 'Controlled entities limit')
+END
+
+IF NOT EXISTS (SELECT 1 FROM aggregatefields WHERE name = 'remote_control_bandwidth_usage')
+BEGIN
+	INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
+	('remote_control_bandwidth_usage', 1,'remote_control_bandwidth_usage_unit', 1, 0, 3, 0, 1, 1, 'Channel usage')
+END
+
+IF NOT EXISTS (SELECT 1 FROM aggregatefields WHERE name = 'remote_control_damage_modifier')	
+BEGIN
+	INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
+	('remote_control_damage_modifier', 1,'remote_control_damage_modifier_unit', 100, 0, 6, 2, 1, 1, 'Channel usage')
+END
+
+IF NOT EXISTS (SELECT 1 FROM aggregatefields WHERE name = 'remote_control_damage_modifier_modifier')	
+BEGIN
+	INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
+	('remote_control_damage_modifier_modifier', 1,'remote_control_damage_modifier_modifier_unit', 100, 0, 6, 2, 1, 1, 'Channel usage')
 END
 
 GO
@@ -62,39 +72,39 @@ GO
 
 DECLARE @categoryFlag INT
 
-SET @categoryFlag = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_turret_launchers')
+SET @categoryFlag = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_remote_controllers')
 
-IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_turret_launcher')
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_standart_turret_launcher', 1, 2359516, @categoryFlag, '#moduleFlag=i800  #ammoCapacity=i3  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t1', 1, 1, 1, 0, 100, 'def_standart_turret_launcher_desc', 1, 1, 1)
+	('def_standart_remote_controller', 1, 2359516, @categoryFlag, '#moduleFlag=i808  #ammoCapacity=i3  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t1', 1, 1, 1, 0, 100, 'def_standart_remote_controller_desc', 1, 1, 1)
 END
 
-IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_turret_launcher')
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named1_turret_launcher', 1, 2359516, @categoryFlag, '#moduleFlag=i800  #ammoCapacity=i3  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t2', 1, 1, 1, 0, 100, 'def_standart_turret_launcher_desc', 1, 1, 2)
+	('def_named1_remote_controller', 1, 2359516, @categoryFlag, '#moduleFlag=i808  #ammoCapacity=i3  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t2', 1, 1, 1, 0, 100, 'def_standart_remote_controller_desc', 1, 1, 2)
 END
 
-IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_turret_launcher')
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named2_turret_launcher', 1, 2359516, @categoryFlag, '#moduleFlag=i800  #ammoCapacity=i4  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t3', 1, 1, 1, 0, 100, 'def_standart_turret_launcher_desc', 1, 1, 3)
+	('def_named2_remote_controller', 1, 2359516, @categoryFlag, '#moduleFlag=i808  #ammoCapacity=i4  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t3', 1, 1, 1, 0, 100, 'def_standart_remote_controller_desc', 1, 1, 3)
 END
 
-IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_turret_launcher')
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named3_turret_launcher', 1, 2359516, @categoryFlag, '#moduleFlag=i800  #ammoCapacity=i5  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t4', 1, 1, 1, 0, 100, 'def_standart_turret_launcher_desc', 1, 1, 4)
+	('def_named3_remote_controller', 1, 2359516, @categoryFlag, '#moduleFlag=i808  #ammoCapacity=i5  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t4', 1, 1, 1, 0, 100, 'def_standart_remote_controller_desc', 1, 1, 4)
 END
 
 GO
 
----- Create entity defaults for deployed turrets
-
--- EM
+---- Create definitions for Sentry turrets
 
 DECLARE @categoryFlag INT
+
+-- EM
 
 SET @categoryFlag = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_sentry_turrets')
 
@@ -130,12 +140,12 @@ END
 
 GO
 
----- Create turrets as ammo
+---- Create turrets as ammo 
 
 DECLARE @categoryFlag INT
 DECLARE @options VARCHAR(MAX)
 
-SET @categoryFlag = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_em_sentry_turret_ammo')
+SET @categoryFlag = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_sentry_turret_units')
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_standart_em_sentry_turret'))
 
@@ -146,7 +156,6 @@ BEGIN
 END
 
 --
-SET @categoryFlag = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_laser_sentry_turret_ammo')
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_standart_laser_sentry_turret'))
 
@@ -158,8 +167,6 @@ END
 
 --
 
-SET @categoryFlag = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_missile_sentry_turret_ammo')
-
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_standart_missile_sentry_turret'))
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_missile_sentry_turret_ammo')
@@ -170,14 +177,59 @@ END
 
 --
 
-SET @categoryFlag = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_firearm_sentry_turret_ammo')
-
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_standart_firearm_sentry_turret'))
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_firearm_sentry_turret_ammo')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_standart_firearm_sentry_turret_ammo', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_firearm_sentry_turret_ammo_desc', 1, 1, 1)
+END
+
+GO
+
+---- Set up aggregate fields for turrets as ammo
+
+DECLARE @definition INT
+DECLARE @field INT
+
+---- Bandwidth usage
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_bandwidth_usage')
+
+-- EM
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_em_sentry_turret_ammo')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3)
+END
+
+-- Laser
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_laser_sentry_turret_ammo')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3)
+END
+
+-- Missile
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_missile_sentry_turret_ammo')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3)
+END
+
+-- Firearm
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_firearm_sentry_turret_ammo')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3)
 END
 
 GO
@@ -267,22 +319,6 @@ BEGIN
 	(@turret_def, @turret_template, 0, 0, 'Firearm Sentry turret')
 END
 
-GO
-
----- Add new aggregate fields
-
-IF NOT EXISTS (SELECT 1 FROM aggregatefields WHERE name = 'bandwidth_max')
-BEGIN
-	INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
-	('bandwidth_max', 1,'bandwidth_max_unit', 1, 0, 3, 0, 1, 1, 'Controlled entities limit')
-END
-/*
-IF NOT EXISTS (SELECT 1 FROM aggregatefields WHERE name = 'bandwidth_max_modifier')
-BEGIN
-	INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
-	('bandwidth_max_modifier', 1,'bandwidth_max_modifier_unit', 1, 0, 3, 0, 1, 1, 'Controlled entities limit modifier')
-END
-*/
 GO
 
 ---- Set up aggregate fields for turrets
@@ -770,6 +806,44 @@ BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 30)
 END
 
+---- Remote channel bandwidth usage
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_bandwidth_usage')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_em_sentry_turret')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3)
+END
+
+--
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_laser_sentry_turret')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3)
+END
+
+--
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_missile_sentry_turret')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3)
+END
+
+--
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_firearm_sentry_turret')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3)
+END
+
 GO
 
 ---- Set up aggregate fields for turret launchers
@@ -779,62 +853,94 @@ DECLARE @field INT
 
 ---- Max bandwidth
 
-SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'bandwidth_max')
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_bandwidth_max')
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_turret_launcher')
-
-IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
-BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0)
-END
-
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0)
 END
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2)
 END
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
 END
 
+---- Remote controlled units damage modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_damage_modifier')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1)
+END
+
 ---- Accumulator usage
 
 SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_usage')
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 50)
 END
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 45)
 END
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 55)
 END
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
@@ -843,7 +949,7 @@ END
 
 ---- CPU usage
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller')
 SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cpu_usage')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
@@ -851,21 +957,21 @@ BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 85)
 END
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 77)
 END
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 90)
 END
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
@@ -874,7 +980,7 @@ END
 
 ---- Cycle time
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller')
 SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cycle_time')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
@@ -882,21 +988,21 @@ BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3000)
 END
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3000)
 END
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2500)
 END
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
@@ -905,7 +1011,7 @@ END
 
 ---- Optimal range
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller')
 SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
@@ -913,21 +1019,21 @@ BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 20)
 END
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 20)
 END
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 25)
 END
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
@@ -936,7 +1042,7 @@ END
 
 ---- Reactor usage
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller')
 SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'powergrid_usage')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
@@ -944,21 +1050,21 @@ BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 150)
 END
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 135)
 END
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 165)
 END
 
-SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_turret_launcher')
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
@@ -1000,7 +1106,7 @@ SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_heavymec
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_spectator_head')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_spectator_head', 1, 1024, @category, '#slotFlags=4800,8,8,8,8,8  #height=f0.10', 1, 3, 3000, 1, 100, 'def_spectator_head_desc', 0, NULL, NULL)
+	('def_spectator_head', 1, 1024, @category, '#slotFlags=4808,8,8,8,8,8  #height=f0.10', 1, 3, 3000, 1, 100, 'def_spectator_head_desc', 0, NULL, NULL)
 END
 
 SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_heavymech_leg')
@@ -1395,64 +1501,6 @@ END
 
 GO
 
-/*
----- Add new aggregate field to robot
-
-DECLARE @definitionID int;
-DECLARE @categoryFlags int;
-DECLARE @aggfieldID int;
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'bandwidth_max');
-*/
-/*
-DELETE FROM [aggregatevalues] WHERE field = @aggfieldID
-
-SET @categoryFlags = (SELECT TOP 1 [value] FROM categoryFlags WHERE [NAME] = 'cf_robot_head')
-INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) 
-(SELECT definition, @aggfieldID, 0 FROM entitydefaults where categoryflags = @categoryFlags);
-
-SET @categoryFlags = (SELECT TOP 1 [value] FROM categoryFlags WHERE [NAME] = 'cf_runner_head')
-INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) 
-(SELECT definition, @aggfieldID, 0 FROM entitydefaults where categoryflags = @categoryFlags);
-
-SET @categoryFlags = (SELECT TOP 1 [value] FROM categoryFlags WHERE [NAME] = 'cf_crawler_head')
-INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) 
-(SELECT definition, @aggfieldID, 0 FROM entitydefaults where categoryflags = @categoryFlags);
-
-SET @categoryFlags = (SELECT TOP 1 [value] FROM categoryFlags WHERE [NAME] = 'cf_mech_head')
-INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) 
-(SELECT definition, @aggfieldID, 0 FROM entitydefaults where categoryflags = @categoryFlags);
-
-SET @categoryFlags = (SELECT TOP 1 [value] FROM categoryFlags WHERE [NAME] = 'cf_heavymech_head')
-INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) 
-(SELECT definition, @aggfieldID, 0 FROM entitydefaults where categoryflags = @categoryFlags);
-
-SET @categoryFlags = (SELECT TOP 1 [value] FROM categoryFlags WHERE [NAME] = 'cf_walker_head')
-INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) 
-(SELECT definition, @aggfieldID, 0 FROM entitydefaults where categoryflags = @categoryFlags);
-*/
-/*
--- Spectator has 1.5 base bandwidth
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_spectator_head' ORDER BY definition DESC);
-
-IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES
-	(@definitionID, @aggfieldID, 5)
-END
-*/
---UPDATE [dbo].[aggregatevalues] SET value = 1.5 WHERE [definition] = @definitionID and [field] = @aggfieldID;
-/*
--- Spectator also has modifier
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'bandwidth_max_modifier');
-
-DELETE FROM [aggregatevalues] WHERE field = @aggfieldID
-
-INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES
-(@definitionID, @aggfieldID, 0);
-*/
-GO
-
 ---- Add new extensions category
 
 IF NOT EXISTS (SELECT 1 FROM extensioncategories WHERE categoryname = 'extcat_remote_command')
@@ -1466,22 +1514,74 @@ GO
 ---- Add new extensions
 
 DECLARE @extensionsCategory INT
-DECLARE @affectedField INT
+DECLARE @field INT
 
 SET @extensionsCategory = (SELECT TOP 1 extensioncategoryid FROM extensioncategories WHERE categoryname = 'extcat_remote_command')
 
-SET @affectedField = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'bandwidth_max_modifier')
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_bandwidth_max_modifier')
 
-IF NOT EXISTS (SELECT 1 FROM extensions WHERE extensionname = 'ext_remote_combat_control')
+IF NOT EXISTS (SELECT 1 FROM extensions WHERE extensionname = 'ext_remote_control')
 BEGIN
 	INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
-	(366, 'ext_remote_combat_control', @extensionsCategory, 5, 'attributeA', 0.5, '', 125000, 1, 'ext_remote_combat_control_desc', @affectedField, 0, 0, 7)
+	(366, 'ext_remote_control', @extensionsCategory, 5, 'attributeA', 1, '', 125000, 1, 'ext_remote_control_desc', @field, 0, 0, 7)
 END
 
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_bandwidth_max_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM extensions WHERE extensionname = 'ext_remote_control_damage')
+BEGIN
+	INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
+	(367, 'ext_remote_control_damage', @extensionsCategory, 5, 'attributeA', 0.03, '', 125000, 1, 'ext_remote_control_damage_desc', @field, 0, 0, 4)
+END
 /*
-INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
-(367, 'ext_field_turret_damage', @extensionsCategory, 5, 'attributeA', 0.03, '', 125000, 1, 'ext_command_robotics_desc', NULL, 0, 0, 7),
-(368, 'ext_field_turret_cycle_time', @extensionsCategory, 5, 'attributeA', 0.5, '', 125000, 1, 'ext_remote_combat_control_desc', NULL, 0, 0, 7)
+IF NOT EXISTS (SELECT 1 FROM extensions WHERE extensionname = 'ext_remote_control')
+BEGIN
+	INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
+	(368, 'ext_field_turret_cycle_time', @extensionsCategory, 5, 'attributeA', 0.5, '', 125000, 1, 'ext_field_turret_cycle_time_desc', NULL, 0, 0, 7)
+END
 */
+GO
+
+---- Link base value with modifier via category flag
+
+DECLARE @category INT
+DECLARE @base INT
+DECLARE @modifier INT
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_remote_controllers')
+SET @base = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_bandwidth_max')
+SET @modifier = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_bandwidth_max_modifier')
+
+/*
+IF NOT EXISTS (SELECT 1 FROM aggregatemodifiers WHERE categoryFlag = @category AND baseField = @base AND modifierField = @modifier)
+BEGIN
+	INSERT INTO aggregatemodifiers (categoryFlag, baseField, modifierField) VALUES
+	(@category, @base, @modifier)
+END
+*/
+
+IF NOT EXISTS (SELECT 1 FROM [modulepropertymodifiers] WHERE categoryflags = @category AND baseField = @base AND modifierField = @modifier)
+BEGIN
+	INSERT INTO [modulepropertymodifiers] (categoryflags, baseField, modifierField) VALUES
+	(@category, @base, @modifier)
+END
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_sentry_turrets')
+SET @base = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_damage_modifier')
+SET @modifier = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_damage_modifier_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM [modulepropertymodifiers] WHERE categoryflags = @category AND baseField = @base AND modifierField = @modifier)
+BEGIN
+	INSERT INTO [modulepropertymodifiers] (categoryflags, baseField, modifierField) VALUES
+	(@category, @base, @modifier)
+END
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_remote_controllers')
+
+IF NOT EXISTS (SELECT 1 FROM [modulepropertymodifiers] WHERE categoryflags = @category AND baseField = @base AND modifierField = @modifier)
+BEGIN
+	INSERT INTO [modulepropertymodifiers] (categoryflags, baseField, modifierField) VALUES
+	(@category, @base, @modifier)
+END
 
 GO
