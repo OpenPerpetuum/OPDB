@@ -82,7 +82,7 @@ SELECT * FROM @table_for_removing;
 -- If they are all for T1 islands (control by name), then we remove them from the database.
 IF 0 = (SELECT COUNT(*) FROM @table_for_removing WHERE NOT [plantrule] LIKE '%_t1.txt')
 BEGIN
-    PRINT  'Here will be deleting from the database!!!';
+    DELETE FROM [dbo].[plantrules] WHERE [idx] IN (SELECT [idx] FROM @table_for_removing);
 END
 
 GO
