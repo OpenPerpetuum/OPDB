@@ -3,6 +3,8 @@
 -- 
 -- Date modified: 2023/10/10
 --      Intial commit
+-- Date modified: 2023/10/13
+--      fix non-ASCII characters
 ---------------------------------------
 
 -- Table for suspicious rules.
