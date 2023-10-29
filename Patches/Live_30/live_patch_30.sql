@@ -9,7 +9,9 @@ PRINT N'00_removing_duplicate_plant_rules__2023_10_10.sql';
 -- Date modified: 2023/10/10
 --      Intial commit
 -- Date modified: 2023/10/13
---      fix non-ASCII characters
+--      Fix non-ASCII characters
+-- Date modified: 2023/10/29
+--      Added title
 ---------------------------------------
 
 -- Table for suspicious rules.

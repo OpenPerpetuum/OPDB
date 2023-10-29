@@ -1,10 +1,17 @@
+USE [perpetuumsa]
+GO
+
+PRINT N'00_removing_duplicate_plant_rules__2023_10_10.sql';
+
 ---------------------------------------
 -- Removing duplicate rules for plants
 -- 
 -- Date modified: 2023/10/10
 --      Intial commit
 -- Date modified: 2023/10/13
---      fix non-ASCII characters
+--      Fix non-ASCII characters
+-- Date modified: 2023/10/29
+--      Added title
 ---------------------------------------
 
 -- Table for suspicious rules.
@@ -47,7 +54,7 @@ WHILE @@FETCH_STATUS = 0
 BEGIN
     -- Extract the name of the plant from the name of the rule.
     SET @plantname = LEFT(@plantrule, PATINDEX('%_seeded_%', @plantrule) - 1);
-    -- Ñount the number of duplicates.
+    -- Count the number of duplicates.
     SET @dup = (SELECT COUNT(*) FROM [dbo].[plantrules]
         WHERE [plantrule] LIKE @plantname + '%' AND NOT [plantrule] = @plantrule AND [rulesetid] = @rulesetid);
     
