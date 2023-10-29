@@ -6,6 +6,8 @@ GO
 --Added Light Combat, Light E-War, Light & Assault Indy MK2 CT Capsules to Gamma Artifact Table 
 --Small buffs to other MK2 CT Capsules droprate.
 --Date modified: 2023/10/21
+--Date modified: 2023/10/29
+--      Update chance from 0.725 to 0.0725
 -------------------------------------------------------------------
 
 DROP TABLE IF EXISTS #INDY_CTS_BY_NAME;
@@ -195,25 +197,25 @@ INSERT INTO #PELI_CTS_BY_NAME (defName, islandType, level, chance) VALUES
 --A T1 CT
 ('def_tyrannos_mk2_A_CT_capsule', 'alpha', 1, 0.0105),
 ('def_tyrannos_mk2_A_CT_capsule', 'beta', 1, 0.08),
-('def_tyrannos_mk2_A_CT_capsule', 'gamma', 1, 0.725),
+('def_tyrannos_mk2_A_CT_capsule', 'gamma', 1, 0.0725),
 --B T2
 ('def_tyrannos_mk2_B_CT_capsule', 'alpha', 2, 0.0105),
 ('def_tyrannos_mk2_B_CT_capsule', 'beta', 2, 0.08),
-('def_tyrannos_mk2_B_CT_capsule', 'gamma', 2, 0.725),
+('def_tyrannos_mk2_B_CT_capsule', 'gamma', 2, 0.0725),
 --C T3
 ('def_tyrannos_mk2_C_CT_capsule', 'alpha', 3, 0.0105),
 ('def_tyrannos_mk2_C_CT_capsule', 'beta', 3, 0.08),
-('def_tyrannos_mk2_C_CT_capsule', 'gamma', 3, 0.725),
+('def_tyrannos_mk2_C_CT_capsule', 'gamma', 3, 0.0725),
 --MECH EWAR BOT: Ictus
 --A T1
 ('def_ictus_mk2_A_CT_capsule', 'beta', 1, 0.10),
-('def_ictus_mk2_A_CT_capsule', 'gamma', 1, 0.725),
+('def_ictus_mk2_A_CT_capsule', 'gamma', 1, 0.0725),
 --B T2
 ('def_ictus_mk2_B_CT_capsule', 'beta', 2, 0.10),
-('def_ictus_mk2_B_CT_capsule', 'gamma', 2, 0.725),
+('def_ictus_mk2_B_CT_capsule', 'gamma', 2, 0.0725),
 --C T3
 ('def_ictus_mk2_C_CT_capsule', 'beta', 3, 0.10),
-('def_ictus_mk2_C_CT_capsule', 'gamma', 3, 0.725),
+('def_ictus_mk2_C_CT_capsule', 'gamma', 3, 0.0725),
 --HEAVYMECH BOT: Gropho
 --A T1
 ('def_gropho_mk2_A_CT_capsule', 'beta', 1, 0.08),
@@ -270,25 +272,25 @@ INSERT INTO #NUIMQOL_CTS_BY_NAME (defName, islandType, level, chance) VALUES
 --A T1
 ('def_kain_mk2_A_CT_capsule', 'alpha', 1, 0.0105),
 ('def_kain_mk2_A_CT_capsule', 'beta', 1, 0.08),
-('def_kain_mk2_A_CT_capsule', 'gamma', 1, 0.725),
+('def_kain_mk2_A_CT_capsule', 'gamma', 1, 0.0725),
 --B T2
 ('def_kain_mk2_B_CT_capsule', 'alpha', 2, 0.0105),
 ('def_kain_mk2_B_CT_capsule', 'beta', 2, 0.08),
-('def_kain_mk2_B_CT_capsule', 'gamma', 2, 0.725),
+('def_kain_mk2_B_CT_capsule', 'gamma', 2, 0.0725),
 --C T3
 ('def_kain_mk2_C_CT_capsule', 'alpha', 3, 0.0105),
 ('def_kain_mk2_C_CT_capsule', 'beta', 3, 0.08),
-('def_kain_mk2_C_CT_capsule', 'gamma', 3, 0.725),
+('def_kain_mk2_C_CT_capsule', 'gamma', 3, 0.0725),
 --MECH EWAR : Vagabond
 --A T1 CT
 ('def_vagabond_mk2_A_CT_capsule', 'beta', 1, 0.10),
-('def_vagabond_mk2_A_CT_capsule', 'gamma', 1, 0.725),
+('def_vagabond_mk2_A_CT_capsule', 'gamma', 1, 0.0725),
 --B T2
 ('def_vagabond_mk2_B_CT_capsule', 'beta', 2, 0.10),
-('def_vagabond_mk2_B_CT_capsule', 'gamma', 2, 0.725),
+('def_vagabond_mk2_B_CT_capsule', 'gamma', 2, 0.0725),
 --C T3
 ('def_vagabond_mk2_C_CT_capsule', 'beta', 3, 0.10),
-('def_vagabond_mk2_C_CT_capsule', 'gamma', 3, 0.725),
+('def_vagabond_mk2_C_CT_capsule', 'gamma', 3, 0.0725),
 --HEAVYMECH BOT: Mesmer
 --A T1 CT
 ('def_mesmer_mk2_A_CT_capsule', 'beta', 1, 0.08),
