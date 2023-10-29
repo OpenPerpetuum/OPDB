@@ -1,6 +1,8 @@
 USE [perpetuumsa]
 GO
 
+PRINT N'10_artifact_loot_cts_2023_10_22.sql';
+
 -------------------------------------------------------------------
 --Artifact CT Loot rebalance
 --Added Light Combat, Light E-War, Light & Assault Indy MK2 CT Capsules to Gamma Artifact Table 
