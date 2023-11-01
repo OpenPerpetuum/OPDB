@@ -133,7 +133,7 @@ SET @baseeid = (SELECT TOP 1 eid FROM entities WHERE ename = 'base_TM')
 IF NOT EXISTS (SELECT 1 FROM charactersparkteleports WHERE characterid = 0 AND baseeid = @baseeid AND basedefinition = @basedefinition)
 BEGIN
 	INSERT INTO [charactersparkteleports] (characterid, baseeid, basedefinition, zoneid, x, y) VALUES
-	(0, @baseeid, @basedefinition, 8, 1080.5, 850.5)
+	(0, @baseeid, @basedefinition, 0, 1080.5, 850.5)
 END
 
 GO
