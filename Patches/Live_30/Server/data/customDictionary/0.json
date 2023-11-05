@@ -2174,8 +2174,13 @@
 	"def_elitet4_gamma_small_driller_desc": "'''Augmented Module: This module has enhancements provided by a powerful Nian's remnants'''\n\nA single miner module consists of two main parts: a seismic generator and a high-performance laser. The generator shakes up separate ground layers with multi-frequency waves, then the laser heats up the remaining debris, causing valuable materials to emerge in plasma-like form. This process makes mining possible in high-pressured and ultra solid layers.",
 	"def_elitet4_gamma_medium_harvester_desc": "'''Augmented Module: This module has enhancements provided by a powerful Nian's remnants'''\n\nUsing the most advanced technology, harvesting lasers extract only the beneficial raw materials from native plants.",
 	"def_elitet4_gamma_small_harvester_desc": "'''Augmented Module: This module has enhancements provided by a powerful Nian's remnants'''\n\nUsing the most advanced technology, harvesting lasers extract only the beneficial raw materials from native plants.",
-	"cf_respec_token": "RESPEC Tokens",
+	"cf_respec_tokens": "RESPEC Tokens",
 	"def_respec_token": "RESPEC Token",
 	"def_respec_token_desc": "'''Revise Spark Extensions Configuration''' or, in short, '''RESPEC''' Token allows an agent to completely reset his spark configuration to default, releasing even previously locked extension points. Due to high complexity, this operation is only allowed once per month.",
-	"ErrorMessages_unknown_674": "You cannot use RESPEC token more than once in a month."
+	"ErrorMessages_unknown_674": "You cannot use RESPEC token more than once in a month.",
+	"cf_spark_teleport_devices": "Spark Teleport Devices",
+	"def_spark_teleport_device_hersh": "Spark Teleport Device (Hershfield)",
+	"def_spark_teleport_device_hersh_desc": "Spark teleport devices are used to instantly transfer agent's spark from one base terminal into another. Previous attempts to achieve that were often causing multiple catastrofic failures in piloted robots, and program was temporary stopped. After additional research, Syndicate scientists created special devices hardcoded to exact locations  which, potentially, could resolve disturbance in forcefields allowing agents to safe-travel at least in some locations.\n\nThis device is hardcoded to Hershfield.",
+	"def_spark_teleport_device_nv": "Spark Teleport Device (New Virginia)",
+	"def_spark_teleport_device_nv_desc": "Spark teleport devices are used to instantly transfer agent's spark from one base terminal into another. Previous attempts to achieve that were often causing multiple catastrofic failures in piloted robots, and program was temporary stopped. After additional research, Syndicate scientists created special devices hardcoded to exact locations  which, potentially, could resolve disturbance in forcefields allowing agents to safe-travel at least in some locations.\n\nThis device is hardcoded to New Virginia."
 }
