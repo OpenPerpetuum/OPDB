@@ -1621,3 +1621,23 @@ BEGIN
 END
 
 GO
+
+---- Add new effect category
+
+IF NOT EXISTS (SELECT 1 FROM effectcategories WHERE name = 'effcat_remote_control')
+BEGIN
+	INSERT INTO effectcategories (name, flag, maxlevel) VALUES
+	('effcat_remote_control', 47, 1)
+END
+
+GO
+
+---- Add new effect
+
+IF NOT EXISTS (SELECT 1 FROM effects WHERE name = 'effect_remote_control')
+BEGIN
+	INSERT INTO effects (effectcategory, duration, name, description, note, isaura, auraradius, ispositive, display, saveable) VALUES
+	(140737488355328, 300500, 'effect_remote_control', 'effect_remote_control_desc', 'player has remote controlled units active', 0, 0, 1, 3, 0)
+END
+
+GO
