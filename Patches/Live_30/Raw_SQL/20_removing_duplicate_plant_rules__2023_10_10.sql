@@ -1,7 +1,7 @@
 USE [perpetuumsa]
 GO
 
-PRINT N'00_removing_duplicate_plant_rules__2023_10_10.sql';
+PRINT N'20_removing_duplicate_plant_rules__2023_10_10.sql';
 
 ---------------------------------------
 -- Removing duplicate rules for plants
