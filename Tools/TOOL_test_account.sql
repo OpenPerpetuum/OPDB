@@ -906,7 +906,7 @@ VALUES
 DECLARE @ext_id INT;
 DECLARE [db_cursor] CURSOR FOR
 SELECT [extensionid] 
-FROM [dbo].[extensions]
+FROM [dbo].[extensions] WHERE [active] = 1 AND [hidden] = 0
 
 OPEN db_cursor  
 FETCH NEXT FROM db_cursor INTO @ext_id  
