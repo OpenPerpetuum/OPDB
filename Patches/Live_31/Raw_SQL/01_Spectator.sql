@@ -1,4 +1,4 @@
----- Create category flags
+---- Create category flags for sentry turrets and remote controllers
 
 IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_sentry_turrets' )
 BEGIN
@@ -30,9 +30,8 @@ BEGIN
 	(788239, 'cf_sentry_turret_guns', 'Sentry Turret Guns', 1, 1)
 END
 
-GO
-
 ---- Add new slot flag
+
 IF NOT EXISTS (SELECT 1 FROM slotFlags WHERE name = 'specialized' )
 BEGIN
 	INSERT INTO slotFlags (offset, name, note) VALUES (11, 'specialized', 'Special slot for remote comtrollers')
@@ -158,14 +157,14 @@ END
 
 GO
 
----- Create turrets as ammo 
+---- Create sentry turrets as ammo 
 
 DECLARE @categoryFlag INT
 DECLARE @options VARCHAR(MAX)
 
 SET @categoryFlag = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_sentry_turret_units')
 
-SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret'))
+SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret'), ' #turretType=$Sentry')
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret_unit')
 BEGIN
@@ -173,7 +172,7 @@ BEGIN
 	('def_standart_sentry_turret_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_sentry_turret_unit_desc', 1, 1, 1)
 END
 
-SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_improved_sentry_turret'))
+SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_improved_sentry_turret'), ' #turretType=$Sentry')
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_improved_sentry_turret_unit')
 BEGIN
@@ -181,7 +180,7 @@ BEGIN
 	('def_improved_sentry_turret_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_improved_sentry_turret_unit_desc', 1, 1, 1)
 END
 
-SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_advanced_sentry_turret'))
+SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_advanced_sentry_turret'), ' #turretType=$Sentry')
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_advanced_sentry_turret_unit')
 BEGIN
@@ -189,7 +188,7 @@ BEGIN
 	('def_advanced_sentry_turret_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_advanced_sentry_turret_unit_desc', 1, 1, 1)
 END
 
-SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_high_power_sentry_turret'))
+SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_high_power_sentry_turret'), ' #turretType=$Sentry')
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_high_power_sentry_turret_unit')
 BEGIN
@@ -285,7 +284,7 @@ END
 
 GO
 
----- Link turrets with their templates
+---- Link sentry turrets with their templates
 
 DECLARE @turret_def INT
 DECLARE @turret_template INT
@@ -328,7 +327,7 @@ END
 
 GO
 
----- Set up aggregate fields for turrets
+---- Set up aggregate fields for sentry turrets
 
 DECLARE @definition INT
 DECLARE @field INT
@@ -1850,12 +1849,16 @@ BEGIN
 	(366, 'ext_remote_control', @extensionsCategory, 5, 'attributeA', 1, '', 125000, 1, 'ext_remote_control_desc', @field, 0, 0, 7)
 END
 
-SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_bandwidth_max_modifier')
-
-IF NOT EXISTS (SELECT 1 FROM extensions WHERE extensionname = 'ext_remote_control_experience')
+IF NOT EXISTS (SELECT 1 FROM extensions WHERE extensionname = 'ext_sentry_turrets_experience')
 BEGIN
 	INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
-	(367, 'ext_remote_control_experience', @extensionsCategory, 5, 'attributeA', 0, 'Enabler for higher level turrets and drones', 125000, 1, 'ext_remote_control_damage_desc', NULL, 0, 0, 4)
+	(367, 'ext_sentry_turrets_experience', @extensionsCategory, 5, 'attributeA', 0, 'Enabler for higher level sentry turrets', 125000, 1, 'ext_sentry_turrets_experience_desc', NULL, 0, 0, 4)
+END
+
+IF NOT EXISTS (SELECT 1 FROM extensions WHERE extensionname = 'ext_mining_turrets_experience')
+BEGIN
+	INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
+	(368, 'ext_mining_turrets_experience', @extensionsCategory, 5, 'attributeA', 0, 'Enabler for higher level mining turrets', 125000, 1, 'ext_mining_turrets_experience_desc', NULL, 0, 0, 4)
 END
 
 GO
@@ -1885,7 +1888,7 @@ END
 DECLARE @definition INT
 DECLARE @extension INT
 
-SET @extension = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_remote_control_experience')
+SET @extension = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_sentry_turrets_experience')
 
 -- standart
 
@@ -1945,6 +1948,1088 @@ IF NOT EXISTS (SELECT 1 FROM effects WHERE name = 'effect_remote_control')
 BEGIN
 	INSERT INTO effects (effectcategory, duration, name, description, note, isaura, auraradius, ispositive, display, saveable) VALUES
 	(140737488355328, 300500, 'effect_remote_control', 'effect_remote_control_desc', 'player has remote controlled units active', 0, 0, 1, 3, 0)
+END
+
+GO
+
+-------------------------
+
+---- Create category flags for mining turrets
+
+IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_mining_turrets' )
+BEGIN
+	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
+	(3730, 'cf_mining_turrets', 'Mining Turret (deployed)', 1, 0)
+END
+
+IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_mining_turret_units' )
+BEGIN
+	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
+	(2105354, 'cf_mining_turret_units', 'Mining turrets', 0, 0)
+END
+
+IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_mining_turret_drillers' )
+BEGIN
+	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
+	(198159, 'cf_mining_turret_drillers', 'Mining Turret Drillers', 1, 1)
+END
+
+GO
+
+---- Crete definitions for Mining turrets
+
+DECLARE @categoryFlag INT
+
+SET @categoryFlag = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_mining_turrets')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_standart_mining_turret', 1, 1024, @categoryFlag, '', 1, 1, 1, 0, 100, 'def_standart_mining_turret_desc', 0, 1, 1)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_improved_mining_turret')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_improved_mining_turret', 1, 1024, @categoryFlag, '', 1, 1, 1, 0, 100, 'def_improved_mining_turret_desc', 0, 1, 1)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_advanced_mining_turret')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_advanced_mining_turret', 1, 1024, @categoryFlag, '', 1, 1, 1, 0, 100, 'def_advanced_mining_turret_desc', 0, 1, 1)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_high_power_mining_turret')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_high_power_mining_turret', 1, 1024, @categoryFlag, '', 1, 1, 1, 0, 100, 'def_high_power_mining_turret_desc', 0, 1, 1)
+END
+
+GO
+
+---- Create definitions for Mining turret drillers
+
+DECLARE @categoryFlag INT
+
+SET @categoryFlag = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_mining_turret_drillers')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret_driller')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_standart_mining_turret_driller', 1, 1024, @categoryFlag, '#moduleFlag=i91#tier=$tierlevel_t1', 1, 1, 1, 0, 100, 'def_standart_mining_turret_driller_desc', 0, 1, 1)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_improved_mining_turret_driller')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_improved_mining_turret_driller', 1, 1024, @categoryFlag, '#moduleFlag=i91#tier=$tierlevel_t2', 1, 1, 1, 0, 100, 'def_improved_mining_turret_driller_desc', 0, 1, 2)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_advanced_mining_turret_driller')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_advanced_mining_turret_driller', 1, 1024, @categoryFlag, '#moduleFlag=i91#tier=$tierlevel_t3', 1, 1, 1, 0, 100, 'def_advanced_mining_turret_driller_desc', 0, 1, 3)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_high_power_mining_turret_driller')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_high_power_mining_turret_driller', 1, 1024, @categoryFlag, '#moduleFlag=i91#tier=$tierlevel_t4', 1, 1, 1, 0, 100, 'def_high_power_mining_turret_driller_desc', 0, 1, 4)
+END
+
+GO
+
+---- Create mining turrets as ammo 
+
+DECLARE @categoryFlag INT
+DECLARE @options VARCHAR(MAX)
+
+SET @categoryFlag = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_mining_turret_units')
+
+SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret'), ' #turretType=$Mining')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret_unit')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_standart_mining_turret_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_mining_turret_unit_desc', 1, 1, 1)
+END
+
+SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_improved_mining_turret'), ' #turretType=$Mining')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_improved_mining_turret_unit')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_improved_mining_turret_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_improved_mining_turret_unit_desc', 1, 1, 1)
+END
+
+SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_advanced_mining_turret'), ' #turretType=$Mining')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_advanced_mining_turret_unit')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_advanced_mining_turret_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_advanced_mining_turret_unit_desc', 1, 1, 1)
+END
+
+SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_high_power_mining_turret'), ' #turretType=$Mining')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_high_power_mining_turret_unit')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_high_power_mining_turret_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_high_power_mining_turret_unit_desc', 1, 1, 1)
+END
+
+GO
+
+---- Set up aggregate fields for mining turrets as ammo
+
+DECLARE @definition INT
+DECLARE @field INT
+
+---- Bandwidth usage
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_bandwidth_usage')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_improved_mining_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_advanced_mining_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_high_power_mining_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+GO
+
+---- Create mining turret templates
+
+DECLARE @gunDefinitionId VARCHAR(MAX)
+DECLARE @description VARCHAR(MAX)
+
+IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'standart_mining_turret')
+BEGIN
+	SET @gunDefinitionId = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret_driller')
+
+	SET @description = CONCAT('#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i14d#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1]|m1=[|definition=i', @gunDefinitionId, '|slot=i2]]')
+
+	INSERT INTO robottemplates (name, description, note) VALUES
+	('standart_mining_turret', @description, 'Standart mining turret template')
+END
+
+IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'improved_mining_turret')
+BEGIN
+	SET @gunDefinitionId = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_improved_mining_turret_driller')
+
+	SET @description = CONCAT('#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i14d#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1]|m1=[|definition=i', @gunDefinitionId, '|slot=i2]]')
+
+	INSERT INTO robottemplates (name, description, note) VALUES
+	('improved_mining_turret', @description, 'Improved mining turret template')
+END
+
+IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'advanced_mining_turret')
+BEGIN
+	SET @gunDefinitionId = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_advanced_mining_turret_driller')
+
+	SET @description = CONCAT('#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i14d#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1]|m1=[|definition=i', @gunDefinitionId, '|slot=i2]]')
+
+	INSERT INTO robottemplates (name, description, note) VALUES
+	('advanced_mining_turret', @description, 'Advanced mining turret template')
+END
+
+IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'high_power_mining_turret')
+BEGIN
+	SET @gunDefinitionId = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_high_power_mining_turret_driller')
+
+	SET @description = CONCAT('#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i14d#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1]|m1=[|definition=i', @gunDefinitionId, '|slot=i2]]')
+
+	INSERT INTO robottemplates (name, description, note) VALUES
+	('high_power_mining_turret', @description, 'High power mining turret template')
+END
+
+GO
+
+---- Link mining turrets with their templates
+
+DECLARE @turret_def INT
+DECLARE @turret_template INT
+
+SET @turret_def = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret')
+SET @turret_template = (SELECT TOP 1 id FROM robottemplates WHERE name = 'standart_mining_turret')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplaterelation WHERE definition = @turret_def AND @turret_template = @turret_template)
+BEGIN
+	INSERT INTO robottemplaterelation (definition, templateid, itemscoresum, raceid, note) VALUES
+	(@turret_def, @turret_template, 0, 0, 'Standart mining turret')
+END
+
+SET @turret_def = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_improved_mining_turret')
+SET @turret_template = (SELECT TOP 1 id FROM robottemplates WHERE name = 'improved_mining_turret')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplaterelation WHERE definition = @turret_def AND @turret_template = @turret_template)
+BEGIN
+	INSERT INTO robottemplaterelation (definition, templateid, itemscoresum, raceid, note) VALUES
+	(@turret_def, @turret_template, 0, 0, 'Improved mining turret')
+END
+
+SET @turret_def = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_advanced_mining_turret')
+SET @turret_template = (SELECT TOP 1 id FROM robottemplates WHERE name = 'advanced_mining_turret')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplaterelation WHERE definition = @turret_def AND @turret_template = @turret_template)
+BEGIN
+	INSERT INTO robottemplaterelation (definition, templateid, itemscoresum, raceid, note) VALUES
+	(@turret_def, @turret_template, 0, 0, 'Advanced mining turret')
+END
+
+SET @turret_def = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_high_power_mining_turret')
+SET @turret_template = (SELECT TOP 1 id FROM robottemplates WHERE name = 'high_power_mining_turret')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplaterelation WHERE definition = @turret_def AND @turret_template = @turret_template)
+BEGIN
+	INSERT INTO robottemplaterelation (definition, templateid, itemscoresum, raceid, note) VALUES
+	(@turret_def, @turret_template, 0, 0, 'High power mining turret')
+END
+
+GO
+
+---- Set up aggregate fields for mining turrets
+
+DECLARE @definition INT
+DECLARE @field INT
+
+-- Standart Mining turret
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret')
+
+---- Armor
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1500)
+END
+
+---- Accumulator
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5000)
+END
+
+---- Detection
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'detection_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 20)
+END
+
+---- Masking
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'stealth_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 70)
+END
+
+---- Accumulator recharge
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_recharge_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 60)
+END
+
+---- Optimal range
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 100)
+END
+
+---- Locking range
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 140)
+END
+
+---- Resists
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_chemical')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_explosive')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_kinetic')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_thermal')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300)
+END
+
+---- Signature radius
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'signature_radius')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 30)
+END
+
+---- Remote channel bandwidth usage
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_bandwidth_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+---- Sensor strength
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'sensor_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 500)
+END
+
+---- Improved mining turret ----
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_improved_mining_turret')
+
+---- Armor
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2000)
+END
+
+---- Accumulator
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 6000)
+END
+
+---- Detection
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'detection_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 30)
+END
+
+---- Masking
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'stealth_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 75)
+END
+
+---- Accumulator recharge
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_recharge_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 50)
+END
+
+---- Optimal range
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 110)
+END
+
+---- Locking range
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 150)
+END
+
+---- Resists
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_chemical')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_explosive')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_kinetic')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_thermal')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300)
+END
+
+---- Signature radius
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'signature_radius')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 25)
+END
+
+---- Remote channel bandwidth usage
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_bandwidth_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+---- Sensor strength
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'sensor_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 500)
+END
+
+---- Advanced Sentry turret ----
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_advanced_mining_turret')
+
+---- Armor
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2500)
+END
+
+---- Accumulator
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 7000)
+END
+
+---- Detection
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'detection_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 40)
+END
+
+---- Masking
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'stealth_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 80)
+END
+
+---- Accumulator recharge
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_recharge_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 40)
+END
+
+---- Optimal range
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 120)
+END
+
+---- Locking range
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 160)
+END
+
+---- Resists
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_chemical')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_explosive')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_kinetic')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_thermal')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300)
+END
+
+---- Signature radius
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'signature_radius')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 20)
+END
+
+---- Remote channel bandwidth usage
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_bandwidth_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+---- Sensor strength
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'sensor_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 500)
+END
+
+---- High power mining turret ----
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_high_power_mining_turret')
+
+---- Armor
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3000)
+END
+
+---- Accumulator
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 8000)
+END
+
+---- Detection
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'detection_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 50)
+END
+
+---- Masking
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'stealth_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 85)
+END
+
+---- Accumulator recharge
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_recharge_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 30)
+END
+
+---- Optimal range
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 130)
+END
+
+---- Locking range
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 170)
+END
+
+---- Resists
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_chemical')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_explosive')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_kinetic')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_thermal')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300)
+END
+
+---- Signature radius
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'signature_radius')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 15)
+END
+
+---- Remote channel bandwidth usage
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_bandwidth_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+---- Sensor strength
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'sensor_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 500)
+END
+
+GO
+
+---- Set aggregate field values to mining turret drillers
+
+DECLARE @definitionId INT
+DECLARE @fieldId INT
+
+-- standart
+
+SET @definitionId = (SELECT TOP 1 definition FROM entityDefaults WHERE definitionname = 'def_standart_mining_turret_driller')
+
+-- core_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 55)
+END
+
+-- cpu_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cpu_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 50)
+END
+
+-- cycle_time
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cycle_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 12000)
+END
+
+-- optimal_range
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 3)
+END
+
+-- powergrid_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'powergrid_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 150)
+END
+
+-- improved
+
+SET @definitionId = (SELECT TOP 1 definition FROM entityDefaults WHERE definitionname = 'def_improved_mining_turret_driller')
+
+-- core_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 55)
+END
+
+-- cpu_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cpu_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 50)
+END
+
+-- cycle_time
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cycle_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 10000)
+END
+
+-- optimal_range
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 3)
+END
+
+-- powergrid_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'powergrid_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 150)
+END
+
+-- advanced
+
+SET @definitionId = (SELECT TOP 1 definition FROM entityDefaults WHERE definitionname = 'def_advanced_mining_turret_driller')
+
+-- core_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 55)
+END
+
+-- cpu_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cpu_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 50)
+END
+
+-- cycle_time
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cycle_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 8000)
+END
+
+-- optimal_range
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 3)
+END
+
+-- powergrid_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'powergrid_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 150)
+END
+
+-- high power
+
+SET @definitionId = (SELECT TOP 1 definition FROM entityDefaults WHERE definitionname = 'def_high_power_mining_turret_driller')
+
+-- core_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 55)
+END
+
+-- cpu_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cpu_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 50)
+END
+
+-- cycle_time
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cycle_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 6000)
+END
+
+-- optimal_range
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 3)
+END
+
+-- powergrid_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'powergrid_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 150)
+END
+
+GO
+
+---- Add enabler extensions for sentry turrets
+
+DECLARE @definition INT
+DECLARE @extension INT
+
+SET @extension = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_mining_turrets_experience')
+
+-- standart
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AND extensionid = @extension)
+BEGIN
+	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
+	(@definition, @extension, 2)
+END
+
+-- improved
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_improved_mining_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AND extensionid = @extension)
+BEGIN
+	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
+	(@definition, @extension, 4)
+END
+
+-- advanced
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_advanced_mining_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AND extensionid = @extension)
+BEGIN
+	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
+	(@definition, @extension, 6)
+END
+
+-- high power
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_high_power_mining_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AND extensionid = @extension)
+BEGIN
+	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
+	(@definition, @extension, 8)
+END
+
+GO
+
+-- assign beams to drillers
+
+DECLARE @moduleId INT
+DECLARE @beamId INT
+
+SET @beamId = (SELECT TOP 1 id FROM beams WHERE name = 'small_driller')
+
+-- standart
+
+SET @moduleId = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret_driller')
+
+IF NOT EXISTS (SELECT 1 FROM beamassignment WHERE definition = @moduleId AND beam = @beamId)
+BEGIN
+	INSERT INTO beamassignment (definition, beam) VALUES (@moduleId, @beamId)
+END
+
+-- improved
+
+SET @moduleId = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_improved_mining_turret_driller')
+
+IF NOT EXISTS (SELECT 1 FROM beamassignment WHERE definition = @moduleId AND beam = @beamId)
+BEGIN
+	INSERT INTO beamassignment (definition, beam) VALUES (@moduleId, @beamId)
+END
+
+-- advanced
+
+SET @moduleId = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_advanced_mining_turret_driller')
+
+IF NOT EXISTS (SELECT 1 FROM beamassignment WHERE definition = @moduleId AND beam = @beamId)
+BEGIN
+	INSERT INTO beamassignment (definition, beam) VALUES (@moduleId, @beamId)
+END
+
+-- high power
+
+SET @moduleId = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_high_power_mining_turret_driller')
+
+IF NOT EXISTS (SELECT 1 FROM beamassignment WHERE definition = @moduleId AND beam = @beamId)
+BEGIN
+	INSERT INTO beamassignment (definition, beam) VALUES (@moduleId, @beamId)
 END
 
 GO
