@@ -2138,7 +2138,7 @@ IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'standart_mining_turret
 BEGIN
 	SET @gunDefinitionId = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_standart_industrial_turret_driller')
 
-	SET @description = CONCAT('#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i', FORMAT(@cargo, 'X'), '#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1]|m1=[|definition=i', @gunDefinitionId, '|slot=i2]]')
+	SET @description = CONCAT('#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i', FORMAT(@cargo, 'X'), '#headModules=[|m0=[|definition=i326|slot=i1]]#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1]|m1=[|definition=i', @gunDefinitionId, '|slot=i2]]')
 
 	INSERT INTO robottemplates (name, description, note) VALUES
 	('standart_mining_turret', @description, 'Standart mining turret template')
@@ -2148,7 +2148,7 @@ IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'improved_mining_turret
 BEGIN
 	SET @gunDefinitionId = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_improved_industrial_turret_driller')
 
-	SET @description = CONCAT('#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i', FORMAT(@cargo, 'X'), '#headModules=[|m0=[|definition=i326|slot=i1]]#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1]|m1=[|definition=i', @gunDefinitionId, '|slot=i2]]')
+	SET @description = CONCAT('#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i', FORMAT(@cargo, 'X'), '#headModules=[|m0=[|definition=i326|slot=i1]|m1=[|definition=i326|slot=i2]]#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1]|m1=[|definition=i', @gunDefinitionId, '|slot=i2]]')
 
 	INSERT INTO robottemplates (name, description, note) VALUES
 	('improved_mining_turret', @description, 'Improved mining turret template')
@@ -2158,7 +2158,7 @@ IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'advanced_mining_turret
 BEGIN
 	SET @gunDefinitionId = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_advanced_industrial_turret_driller')
 
-	SET @description = CONCAT('#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i', FORMAT(@cargo, 'X'), '#headModules=[|m0=[|definition=i326|slot=i1]|m1=[|definition=i326|slot=i2]]#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1]|m1=[|definition=i', @gunDefinitionId, '|slot=i2]]')
+	SET @description = CONCAT('#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i', FORMAT(@cargo, 'X'), '#headModules=[|m0=[|definition=i326|slot=i1]|m1=[|definition=i326|slot=i2]|m2=[|definition=i326|slot=i3]]#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1]|m1=[|definition=i', @gunDefinitionId, '|slot=i2]]')
 
 	INSERT INTO robottemplates (name, description, note) VALUES
 	('advanced_mining_turret', @description, 'Advanced mining turret template')
@@ -2168,7 +2168,7 @@ IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'high_power_mining_turr
 BEGIN
 	SET @gunDefinitionId = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_high_power_industrial_turret_driller')
 
-	SET @description = CONCAT('#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i', FORMAT(@cargo, 'X'), '#headModules=[|m0=[|definition=i326|slot=i1]|m1=[|definition=i326|slot=i2]|m2=[|definition=i326|slot=i3]]#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1]|m1=[|definition=i', @gunDefinitionId, '|slot=i2]]')
+	SET @description = CONCAT('#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i', FORMAT(@cargo, 'X'), '#headModules=[|m0=[|definition=i326|slot=i1]|m1=[|definition=i326|slot=i2]|m2=[|definition=i326|slot=i3]|m3=[|definition=i326|slot=i4]]#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1]|m1=[|definition=i', @gunDefinitionId, '|slot=i2]]')
 
 	INSERT INTO robottemplates (name, description, note) VALUES
 	('high_power_mining_turret', @description, 'High power mining turret template')
@@ -3223,7 +3223,7 @@ IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'standart_harvesting_tu
 BEGIN
 	SET @gunDefinitionId = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_standart_industrial_turret_harvester')
 
-	SET @description = CONCAT('#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i', FORMAT(@cargo, 'X'), '#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1]|m1=[|definition=i', @gunDefinitionId, '|slot=i2]]')
+	SET @description = CONCAT('#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i', FORMAT(@cargo, 'X'), '#headModules=[|m0=[|definition=i326|slot=i1]]#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1]|m1=[|definition=i', @gunDefinitionId, '|slot=i2]]')
 
 	INSERT INTO robottemplates (name, description, note) VALUES
 	('standart_harvesting_turret', @description, 'Standart harvesting turret template')
@@ -3233,7 +3233,7 @@ IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'improved_harvesting_tu
 BEGIN
 	SET @gunDefinitionId = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_improved_industrial_turret_harvester')
 
-	SET @description = CONCAT('#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i', FORMAT(@cargo, 'X'), '#headModules=[|m0=[|definition=i326|slot=i1]]#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1]|m1=[|definition=i', @gunDefinitionId, '|slot=i2]]')
+	SET @description = CONCAT('#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i', FORMAT(@cargo, 'X'), '#headModules=[|m0=[|definition=i326|slot=i1]|m1=[|definition=i326|slot=i2]]#headModules=[|m0=[|definition=i326|slot=i1]]#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1]|m1=[|definition=i', @gunDefinitionId, '|slot=i2]]')
 
 	INSERT INTO robottemplates (name, description, note) VALUES
 	('improved_harvesting_turret', @description, 'Improved harvesting turret template')
@@ -3243,7 +3243,7 @@ IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'advanced_harvesting_tu
 BEGIN
 	SET @gunDefinitionId = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_advanced_industrial_turret_harvester')
 
-	SET @description = CONCAT('#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i', FORMAT(@cargo, 'X'), '#headModules=[|m0=[|definition=i326|slot=i1]|m1=[|definition=i326|slot=i2]]#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1]|m1=[|definition=i', @gunDefinitionId, '|slot=i2]]')
+	SET @description = CONCAT('#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i', FORMAT(@cargo, 'X'), '#headModules=[|m0=[|definition=i326|slot=i1]|m1=[|definition=i326|slot=i2]|m2=[|definition=i326|slot=i3]]#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1]|m1=[|definition=i', @gunDefinitionId, '|slot=i2]]')
 
 	INSERT INTO robottemplates (name, description, note) VALUES
 	('advanced_harvesting_turret', @description, 'Advanced mining turret template')
@@ -3253,7 +3253,7 @@ IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'high_power_harvesting_
 BEGIN
 	SET @gunDefinitionId = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_high_power_industrial_turret_harvester')
 
-	SET @description = CONCAT('#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i', FORMAT(@cargo, 'X'), '#headModules=[|m0=[|definition=i326|slot=i1]|m1=[|definition=i326|slot=i2]|m2=[|definition=i326|slot=i3]]#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1]|m1=[|definition=i', @gunDefinitionId, '|slot=i2]]')
+	SET @description = CONCAT('#robot=i1350#head=i1302#chassis=i1303#leg=ia01#container=i', FORMAT(@cargo, 'X'), '#headModules=[|m0=[|definition=i326|slot=i1]|m1=[|definition=i326|slot=i2]|m2=[|definition=i326|slot=i3]|m3=[|definition=i326|slot=i4]]#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1]|m1=[|definition=i', @gunDefinitionId, '|slot=i2]]')
 
 	INSERT INTO robottemplates (name, description, note) VALUES
 	('high_power_harvesting_turret', @description, 'High power harvesting turret template')
