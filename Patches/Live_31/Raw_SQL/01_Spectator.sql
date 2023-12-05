@@ -134,25 +134,25 @@ SET @categoryFlag = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_sent
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret_gun')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_standart_sentry_turret_gun', 1, 1024, @categoryFlag, '#moduleFlag=i91#ammoCapacity=i96#ammoType=L2030a#tier=$tierlevel_t1', 1, 1, 1, 0, 100, 'def_standart_sentry_turret_gun_desc', 0, 1, 1)
+	('def_standart_sentry_turret_gun', 1, 336592, @categoryFlag, '#moduleFlag=i91#ammoCapacity=i96#ammoType=L2030a#tier=$tierlevel_t1', 1, 1, 1, 0, 100, 'def_standart_sentry_turret_gun_desc', 0, 1, 1)
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_improved_sentry_turret_gun')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_improved_sentry_turret_gun', 1, 1024, @categoryFlag, '#moduleFlag=i91#ammoCapacity=i96#ammoType=L2030a#tier=$tierlevel_t2', 1, 1, 1, 0, 100, 'def_improved_sentry_turret_gun_desc', 0, 1, 2)
+	('def_improved_sentry_turret_gun', 1, 336592, @categoryFlag, '#moduleFlag=i91#ammoCapacity=i96#ammoType=L2030a#tier=$tierlevel_t2', 1, 1, 1, 0, 100, 'def_improved_sentry_turret_gun_desc', 0, 1, 2)
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_advanced_sentry_turret_gun')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_advanced_sentry_turret_gun', 1, 1024, @categoryFlag, '#moduleFlag=i91#ammoCapacity=i96#ammoType=L2030a#tier=$tierlevel_t3', 1, 1, 1, 0, 100, 'def_advanced_sentry_turret_gun_desc', 0, 1, 3)
+	('def_advanced_sentry_turret_gun', 1, 336592, @categoryFlag, '#moduleFlag=i91#ammoCapacity=i96#ammoType=L2030a#tier=$tierlevel_t3', 1, 1, 1, 0, 100, 'def_advanced_sentry_turret_gun_desc', 0, 1, 3)
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_high_power_sentry_turret_gun')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_high_power_sentry_turret_gun', 1, 1024, @categoryFlag, '#moduleFlag=i91#ammoCapacity=i96#ammoType=L2030a#tier=$tierlevel_t4', 1, 1, 1, 0, 100, 'def_high_power_sentry_turret_gun_desc', 0, 1, 4)
+	('def_high_power_sentry_turret_gun', 1, 336592, @categoryFlag, '#moduleFlag=i91#ammoCapacity=i96#ammoType=L2030a#tier=$tierlevel_t4', 1, 1, 1, 0, 100, 'def_high_power_sentry_turret_gun_desc', 0, 1, 4)
 END
 
 GO
@@ -1934,26 +1934,6 @@ IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AN
 BEGIN
 	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
 	(@definition, @extension, 8)
-END
-
-GO
-
----- Add new effect category
-
-IF NOT EXISTS (SELECT 1 FROM effectcategories WHERE name = 'effcat_remote_control')
-BEGIN
-	INSERT INTO effectcategories (name, flag, maxlevel) VALUES
-	('effcat_remote_control', 47, 1)
-END
-
-GO
-
----- Add new effect
-
-IF NOT EXISTS (SELECT 1 FROM effects WHERE name = 'effect_remote_control')
-BEGIN
-	INSERT INTO effects (effectcategory, duration, name, description, note, isaura, auraradius, ispositive, display, saveable) VALUES
-	(140737488355328, 300500, 'effect_remote_control', 'effect_remote_control_desc', 'player has remote controlled units active', 0, 0, 1, 3, 0)
 END
 
 GO
