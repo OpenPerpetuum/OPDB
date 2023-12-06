@@ -414,3 +414,318 @@ BEGIN
 END
 
 GO
+
+---- Create category flags for artillery cannons
+
+IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_artillery_cannons' )
+BEGIN
+	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
+	(853775, 'cf_artillery_cannons', 'Artillery cannons', 0, 0)
+END
+
+GO
+
+---- Create definitions for Warhammer launchers
+
+DECLARE @categoryFlag INT
+
+SET @categoryFlag = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_artillery_cannons')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_warhammer_cannon')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_standart_warhammer_cannon', 1, 402128, @categoryFlag, '#moduleFlag=i912 #ammoCapacity=i1 #ammoType=L3040a #tier=$tierlevel_t1', 1, 1, 1, 0, 100, 'def_standart_warhammer_cannon_desc', 1, 1, 1)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_warhammer_cannon')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named1_warhammer_cannon', 1, 402128, @categoryFlag, '#moduleFlag=i912 #ammoCapacity=i1 #ammoType=L3040a #tier=$tierlevel_t2', 1, 1, 1, 0, 100, 'def_named1_warhammer_cannon_desc', 1, 1, 2)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_warhammer_cannon')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named2_warhammer_cannon', 1, 402128, @categoryFlag, '#moduleFlag=i912 #ammoCapacity=i1 #ammoType=L3040a #tier=$tierlevel_t3', 1, 1, 1, 0, 100, 'def_named2_warhammer_cannon_desc', 1, 1, 3)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_warhammer_cannon')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named3_warhammer_cannon', 1, 402128, @categoryFlag, '#moduleFlag=i912 #ammoCapacity=i1 #ammoType=L3040a #tier=$tierlevel_t4', 1, 1, 1, 0, 100, 'def_named3_warhammer_cannon_desc', 1, 1, 4)
+END
+
+GO
+
+---- Set aggregate field values to warhammer launchers
+
+DECLARE @definitionId INT
+DECLARE @fieldId INT
+
+-- t1
+
+SET @definitionId = (SELECT TOP 1 definition FROM entityDefaults WHERE definitionname = 'def_standart_warhammer_cannon')
+
+-- accuracy
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'accuracy')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 1)
+END
+
+-- core_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 150)
+END
+
+-- cpu_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cpu_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 100)
+END
+
+-- cycle_time
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cycle_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 60000)
+END
+
+-- damage_modifier
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 1.3)
+END
+
+-- optimal_range
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 150)
+END
+
+-- powergrid_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'powergrid_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 225)
+END
+
+-- t2
+
+SET @definitionId = (SELECT TOP 1 definition FROM entityDefaults WHERE definitionname = 'def_named1_warhammer_cannon')
+
+-- accuracy
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'accuracy')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 1)
+END
+
+-- core_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 150)
+END
+
+-- cpu_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cpu_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 100)
+END
+
+-- cycle_time
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cycle_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 60000)
+END
+
+-- damage_modifier
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 1.3)
+END
+
+-- optimal_range
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 150)
+END
+
+-- powergrid_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'powergrid_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 225)
+END
+
+-- t3
+
+SET @definitionId = (SELECT TOP 1 definition FROM entityDefaults WHERE definitionname = 'def_named2_warhammer_cannon')
+
+-- accuracy
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'accuracy')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 1)
+END
+
+-- core_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 150)
+END
+
+-- cpu_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cpu_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 100)
+END
+
+-- cycle_time
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cycle_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 60000)
+END
+
+-- damage_modifier
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 1.3)
+END
+
+-- optimal_range
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 150)
+END
+
+-- powergrid_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'powergrid_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 225)
+END
+
+-- t4
+
+SET @definitionId = (SELECT TOP 1 definition FROM entityDefaults WHERE definitionname = 'def_named3_warhammer_cannon')
+
+-- accuracy
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'accuracy')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 1)
+END
+
+-- core_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 150)
+END
+
+-- cpu_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cpu_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 100)
+END
+
+-- cycle_time
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cycle_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 60000)
+END
+
+-- damage_modifier
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 1.3)
+END
+
+-- optimal_range
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 150)
+END
+
+-- powergrid_usage
+
+SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'powergrid_usage')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 225)
+END
