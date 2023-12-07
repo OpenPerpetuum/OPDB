@@ -218,7 +218,7 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'ammo_reload_tim
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 60000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 120000)
 END
 
 SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max')
@@ -425,7 +425,7 @@ END
 
 GO
 
----- Create definitions for Warhammer launchers
+---- Create definitions for Warhammer cannons
 
 DECLARE @categoryFlag INT
 
@@ -434,30 +434,30 @@ SET @categoryFlag = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_arti
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_warhammer_cannon')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_standart_warhammer_cannon', 1, 402128, @categoryFlag, '#moduleFlag=i912 #ammoCapacity=i1 #ammoType=L3040a #tier=$tierlevel_t1', 1, 1, 1, 0, 100, 'def_standart_warhammer_cannon_desc', 1, 1, 1)
+	('def_standart_warhammer_cannon', 1, 402128, @categoryFlag, '#moduleFlag=i912 #ammoCapacity=i1 #ammoType=L10300a #tier=$tierlevel_t1', 1, 1, 1, 0, 100, 'def_standart_warhammer_cannon_desc', 1, 1, 1)
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_warhammer_cannon')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named1_warhammer_cannon', 1, 402128, @categoryFlag, '#moduleFlag=i912 #ammoCapacity=i1 #ammoType=L3040a #tier=$tierlevel_t2', 1, 1, 1, 0, 100, 'def_named1_warhammer_cannon_desc', 1, 1, 2)
+	('def_named1_warhammer_cannon', 1, 402128, @categoryFlag, '#moduleFlag=i912 #ammoCapacity=i1 #ammoType=L10300a #tier=$tierlevel_t2', 1, 1, 1, 0, 100, 'def_named1_warhammer_cannon_desc', 1, 1, 2)
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_warhammer_cannon')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named2_warhammer_cannon', 1, 402128, @categoryFlag, '#moduleFlag=i912 #ammoCapacity=i1 #ammoType=L3040a #tier=$tierlevel_t3', 1, 1, 1, 0, 100, 'def_named2_warhammer_cannon_desc', 1, 1, 3)
+	('def_named2_warhammer_cannon', 1, 402128, @categoryFlag, '#moduleFlag=i912 #ammoCapacity=i1 #ammoType=L10300a #tier=$tierlevel_t3', 1, 1, 1, 0, 100, 'def_named2_warhammer_cannon_desc', 1, 1, 3)
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_warhammer_cannon')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named3_warhammer_cannon', 1, 402128, @categoryFlag, '#moduleFlag=i912 #ammoCapacity=i1 #ammoType=L3040a #tier=$tierlevel_t4', 1, 1, 1, 0, 100, 'def_named3_warhammer_cannon_desc', 1, 1, 4)
+	('def_named3_warhammer_cannon', 1, 402128, @categoryFlag, '#moduleFlag=i912 #ammoCapacity=i1 #ammoType=L10300a #tier=$tierlevel_t4', 1, 1, 1, 0, 100, 'def_named3_warhammer_cannon_desc', 1, 1, 4)
 END
 
 GO
 
----- Set aggregate field values to warhammer launchers
+---- Set aggregate field values to warhammer cannons
 
 DECLARE @definitionId INT
 DECLARE @fieldId INT
@@ -499,7 +499,7 @@ SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cycle_time')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 60000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 1000)
 END
 
 -- damage_modifier
@@ -566,7 +566,7 @@ SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cycle_time')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 60000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 1000)
 END
 
 -- damage_modifier
@@ -633,7 +633,7 @@ SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cycle_time')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 60000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 1000)
 END
 
 -- damage_modifier
@@ -700,7 +700,7 @@ SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cycle_time')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 60000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 1000)
 END
 
 -- damage_modifier
@@ -729,3 +729,95 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AN
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 225)
 END
+
+---- Create category flag for artillery ammo
+
+IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_artillery_ammo' )
+BEGIN
+	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
+	(12298, 'cf_artillery_ammo', 'Artillery ammo', 1, 0)
+END
+
+IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_warhammer_shells' )
+BEGIN
+	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
+	(1060874, 'cf_warhammer_shells', 'Warhammer shells', 1, 0)
+END
+
+GO
+
+---- Create entity defaults for warhammer explosive shells
+
+DECLARE @category INT
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_warhammer_shells')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_warhammer_explosive_shell')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_warhammer_explosive_shell', 100, 133120, @category, '#damageChemical=f250.00  #damageKinetic=f250.00  #damageExplosive=f250.00  #damageThermal=f250.00  #range=f40  #explosion_radius=f16  #bullettime=f7.0', 1, 2, 2, 0, 100, 'def_warhammer_explosive_shell_desc', 1, NULL, NULL)
+END
+
+---- Set up aggregate fields for warhammer shells
+
+DECLARE @definition INT
+DECLARE @field INT
+
+-- explosive
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_warhammer_explosive_shell')
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_chemical')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 250)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_explosive')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 250)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_kinetic')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 250)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_kinetic')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 250)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_toxic')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 250)
+END
+
+GO
+
+-- assign beams to warhammer shells
+
+DECLARE @moduleId INT
+DECLARE @beamId INT
+
+SET @beamId = (SELECT TOP 1 id FROM beams WHERE name = 'pbs_turret_missile')
+
+-- explosive
+
+SET @moduleId = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_warhammer_explosive_shell')
+
+IF NOT EXISTS (SELECT 1 FROM beamassignment WHERE definition = @moduleId AND beam = @beamId)
+BEGIN
+	INSERT INTO beamassignment (definition, beam) VALUES (@moduleId, @beamId)
+END
+
+GO
