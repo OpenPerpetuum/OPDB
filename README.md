@@ -1,3 +1,5 @@
+<span style="display:block;text-align:center">![opp-database](opp-database.jpeg)
+
 # OPDB
 This is the database patch repository for the Open Perpetuum Server.  
 

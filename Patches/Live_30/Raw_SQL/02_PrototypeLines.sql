@@ -1,0 +1,1 @@
+UPDATE extensions SET active = 1 WHERE extensionname in ('ext_production_max_prototyper_slots_advanced', 'ext_production_max_prototyper_slots_expert')
