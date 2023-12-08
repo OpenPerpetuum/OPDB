@@ -752,10 +752,28 @@ DECLARE @category INT
 
 SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_warhammer_shells')
 
+-- explosive
+
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_warhammer_explosive_shell')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_warhammer_explosive_shell', 100, 133120, @category, '#damageChemical=f250.00  #damageKinetic=f250.00  #damageExplosive=f250.00  #damageThermal=f250.00  #range=f40  #explosion_radius=f16  #bullettime=f7.0', 1, 2, 2, 0, 100, 'def_warhammer_explosive_shell_desc', 1, NULL, NULL)
+END
+
+-- emp
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_warhammer_emp_shell')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_warhammer_emp_shell', 100, 133120, @category, '#range=f40  #explosion_radius=f16  #bullettime=f7.0', 1, 2, 2, 0, 100, 'def_warhammer_emp_shell_desc', 1, NULL, NULL)
+END
+
+---- Add new aggregate fields for emp shells
+
+IF NOT EXISTS (SELECT 1 FROM aggregatefields WHERE name = 'damage_energy')
+BEGIN
+	INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
+	('damage_energy', 1,'damage_energy_unit', 1, 0, 6, 0, 1, 1, 'EMP damage to accu')
 END
 
 ---- Set up aggregate fields for warhammer shells
@@ -785,21 +803,40 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_kinetic'
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 250)
+    INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 250)
 END
 
-SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_kinetic')
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_thermal')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 250)
+    INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 250)
 END
 
 SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_toxic')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
+    INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 250)
+END
+
+
+-- emp
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_warhammer_emp_shell')
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_energy')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 250)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'effect_massivness_speed_max_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.7)
 END
 
 GO
@@ -812,6 +849,15 @@ DECLARE @beamId INT
 SET @beamId = (SELECT TOP 1 id FROM beams WHERE name = 'pbs_turret_missile')
 
 -- explosive
+
+SET @moduleId = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_warhammer_explosive_shell')
+
+IF NOT EXISTS (SELECT 1 FROM beamassignment WHERE definition = @moduleId AND beam = @beamId)
+BEGIN
+	INSERT INTO beamassignment (definition, beam) VALUES (@moduleId, @beamId)
+END
+
+-- emp
 
 SET @moduleId = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_warhammer_explosive_shell')
 
