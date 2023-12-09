@@ -768,12 +768,30 @@ BEGIN
 	('def_warhammer_emp_shell', 100, 133120, @category, '#range=f40  #explosion_radius=f16  #bullettime=f7.0', 1, 2, 2, 0, 100, 'def_warhammer_emp_shell_desc', 1, NULL, NULL)
 END
 
+-- acid
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_warhammer_acid_shell')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_warhammer_acid_shell', 100, 133120, @category, '#range=f40  #explosion_radius=f16  #bullettime=f7.0', 1, 2, 2, 0, 100, 'def_warhammer_acid_shell_desc', 1, NULL, NULL)
+END
+
+GO
+
 ---- Add new aggregate fields for emp shells
 
 IF NOT EXISTS (SELECT 1 FROM aggregatefields WHERE name = 'damage_energy')
 BEGIN
 	INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
 	('damage_energy', 1,'damage_energy_unit', 1, 0, 6, 0, 1, 1, 'EMP damage to accu')
+END
+
+---- Add new aggregate fields for acid shells
+
+IF NOT EXISTS (SELECT 1 FROM aggregatefields WHERE name = 'damage_acid')
+BEGIN
+	INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
+	('damage_acid', 1,'damage_acid_unit', 1, 0, 6, 0, 1, 1, 'Acid damage over time')
 END
 
 ---- Set up aggregate fields for warhammer shells
@@ -839,6 +857,17 @@ BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.7)
 END
 
+-- acid
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_warhammer_acid_shell')
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_acid')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+
 GO
 
 -- assign beams to warhammer shells
@@ -859,11 +888,40 @@ END
 
 -- emp
 
-SET @moduleId = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_warhammer_explosive_shell')
+SET @moduleId = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_warhammer_emp_shell')
 
 IF NOT EXISTS (SELECT 1 FROM beamassignment WHERE definition = @moduleId AND beam = @beamId)
 BEGIN
 	INSERT INTO beamassignment (definition, beam) VALUES (@moduleId, @beamId)
+END
+
+-- acid
+
+SET @moduleId = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_warhammer_acid_shell')
+
+IF NOT EXISTS (SELECT 1 FROM beamassignment WHERE definition = @moduleId AND beam = @beamId)
+BEGIN
+	INSERT INTO beamassignment (definition, beam) VALUES (@moduleId, @beamId)
+END
+
+GO
+
+---- Add new effect category for effect-over-time stuff
+
+IF NOT EXISTS (SELECT 1 FROM effectcategories WHERE name = 'effcat_effect_over_time')
+BEGIN
+    INSERT INTO effectcategories (name, flag, maxlevel) VALUES
+    ('effcat_effect_over_time', 47, 5)
+END
+
+GO
+
+---- Add new DoT effect
+
+IF NOT EXISTS (SELECT 1 FROM effects WHERE name = 'effect_acid_damage')
+BEGIN
+    INSERT INTO effects (effectcategory, duration, name, description, note, isaura, auraradius, ispositive, display, saveable) VALUES
+    (140737488355328, 10500, 'effect_acid_damage', 'effect_acid_damage_desc', 'player has acid DoT on him', 0, 0, 1, 5, 0)
 END
 
 GO
