@@ -583,7 +583,7 @@ UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=31
 
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_elitet4_gamma_medium_driller' ORDER BY definition DESC);
 
-UPDATE entitydefaults Set definitionname='def_elitet4_gamma_medium_driller', quantity=1, attributeflags=327696, categoryflags=33621519, options='#moduleFlag=i290#ammoCapacity=i2d#ammoType=L50a#tier=$tierlevel_t4+', 
+UPDATE entitydefaults Set definitionname='def_elitet4_gamma_medium_driller', quantity=1, attributeflags=327696, categoryflags=33621519, options='#moduleFlag=i290#ammoCapacity=i37#ammoType=L50a#tier=$tierlevel_t4+', 
                 note='elite module', enabled=1, volume=1.5, mass=750, hidden=0, health=100, descriptiontoken='def_elitet4_gamma_medium_driller_desc', purchasable=1, tiertype=3, 
                 tierlevel=4 where definition=@definitionID;
 
