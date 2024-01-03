@@ -3455,6 +3455,15 @@ BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 500)
 END
 
+-- harvesting_amount_modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'harvesting_amount_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.36)
+END
+
 ---- Improved mining turret ----
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_improved_harvesting_turret')
@@ -3583,6 +3592,15 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'sensor_strength
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 500)
+END
+
+-- harvesting_amount_modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'harvesting_amount_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.82)
 END
 
 ---- Advanced Sentry turret ----
@@ -3715,6 +3733,15 @@ BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 500)
 END
 
+-- harvesting_amount_modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'harvesting_amount_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2)
+END
+
 ---- High power mining turret ----
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_high_power_harvesting_turret')
@@ -3845,6 +3872,15 @@ BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 500)
 END
 
+-- harvesting_amount_modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'harvesting_amount_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2.5)
+END
+
 GO
 
 ---- Set aggregate field values to industrial turret harvesters
@@ -3938,7 +3974,7 @@ SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 4)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 6)
 END
 
 -- powergrid_usage
@@ -3987,7 +4023,7 @@ SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 4)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 8)
 END
 
 -- powergrid_usage
@@ -4036,7 +4072,7 @@ SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 4)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 10)
 END
 
 -- powergrid_usage
