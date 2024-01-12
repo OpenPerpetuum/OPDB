@@ -9,19 +9,25 @@ END
 IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_remote_controlled_units' )
 BEGIN
 	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
-	(8202, 'cf_remote_controlled_units', 'Remote controlled units', 0, 0)
+	(4618, 'cf_remote_controlled_units', 'Remote controlled units', 0, 0)
+END
+
+IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_remote_controlled_turrets' )
+BEGIN
+	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
+	(70154, 'cf_remote_controlled_turrets', 'Remote controlled turrets', 0, 0)
 END
 
 IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_sentry_turret_units' )
 BEGIN
 	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
-	(1056778, 'cf_sentry_turret_units', 'Sentry turrets', 0, 0)
+	(16847370, 'cf_sentry_turret_units', 'Sentry turrets', 0, 0)
 END
 
 IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_remote_controllers' )
 BEGIN
 	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
-	(722703, 'cf_remote_controllers', 'Remote controllers', 0, 1)
+	(787471, 'cf_remote_controllers', 'Remote controllers', 0, 1)
 END
 
 IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_sentry_turret_guns' )
@@ -29,6 +35,8 @@ BEGIN
 	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
 	(788239, 'cf_sentry_turret_guns', 'Sentry Turret Guns', 1, 1)
 END
+
+GO
 
 ---- Add new slot flag
 
@@ -70,25 +78,25 @@ SET @categoryFlag = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_remo
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_standart_remote_controller', 1, 2359516, @categoryFlag, '#moduleFlag=i808  #ammoCapacity=i3  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t1', 1, 1, 1, 0, 100, 'def_standart_remote_controller_desc', 1, 1, 1)
+	('def_standart_remote_controller', 1, 2359320, @categoryFlag, '#moduleFlag=i808  #ammoCapacity=i3  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t1', 1, 1, 1, 0, 100, 'def_standart_remote_controller_desc', 1, 1, 1)
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named1_remote_controller', 1, 2359516, @categoryFlag, '#moduleFlag=i808  #ammoCapacity=i3  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t2', 1, 1, 1, 0, 100, 'def_standart_remote_controller_desc', 1, 1, 2)
+	('def_named1_remote_controller', 1, 2359320, @categoryFlag, '#moduleFlag=i808  #ammoCapacity=i3  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t2', 1, 1, 1, 0, 100, 'def_standart_remote_controller_desc', 1, 1, 2)
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named2_remote_controller', 1, 2359516, @categoryFlag, '#moduleFlag=i808  #ammoCapacity=i4  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t3', 1, 1, 1, 0, 100, 'def_standart_remote_controller_desc', 1, 1, 3)
+	('def_named2_remote_controller', 1, 2359320, @categoryFlag, '#moduleFlag=i808  #ammoCapacity=i4  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t3', 1, 1, 1, 0, 100, 'def_standart_remote_controller_desc', 1, 1, 3)
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named3_remote_controller', 1, 2359516, @categoryFlag, '#moduleFlag=i808  #ammoCapacity=i5  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t4', 1, 1, 1, 0, 100, 'def_standart_remote_controller_desc', 1, 1, 4)
+	('def_named3_remote_controller', 1, 2359320, @categoryFlag, '#moduleFlag=i808  #ammoCapacity=i5  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t4', 1, 1, 1, 0, 100, 'def_standart_remote_controller_desc', 1, 1, 4)
 END
 
 GO
@@ -1139,7 +1147,7 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 15)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 30)
 END
 
 SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_time')
@@ -1808,6 +1816,24 @@ BEGIN
 	(369, 'ext_harvesting_turrets_experience', @extensionsCategory, 5, 'attributeA', 0, 'Enabler for higher level harvesting turrets', 125000, 1, 'ext_harvesting_turrets_experience_desc', NULL, 0, 0, 4)
 END
 
+IF NOT EXISTS (SELECT 1 FROM extensions WHERE extensionname = 'ext_pelistal_combat_drones_experience')
+BEGIN
+	INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
+	(370, 'ext_pelistal_combat_drones_experience', @extensionsCategory, 5, 'attributeA', 0, 'Enabler for higher level pelistal combat drones', 125000, 1, 'ext_pelistal_combat_drones_experience_desc', NULL, 0, 0, 4)
+END
+
+IF NOT EXISTS (SELECT 1 FROM extensions WHERE extensionname = 'ext_nuimqol_combat_drones_experience')
+BEGIN
+	INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
+	(371, 'ext_nuimqol_combat_drones_experience', @extensionsCategory, 5, 'attributeA', 0, 'Enabler for higher level nuimqol combat drones', 125000, 1, 'ext_nuimqol_combat_drones_experience_desc', NULL, 0, 0, 4)
+END
+
+IF NOT EXISTS (SELECT 1 FROM extensions WHERE extensionname = 'ext_thelodica_combat_drones_experience')
+BEGIN
+	INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
+	(372, 'ext_thelodica_combat_drones_experience', @extensionsCategory, 5, 'attributeA', 0, 'Enabler for higher level thelodica combat drones', 125000, 1, 'ext_thelodica_combat_drones_experience_desc', NULL, 0, 0, 4)
+END
+
 GO
 
 ---- Link base value with modifier via category flag
@@ -1892,7 +1918,7 @@ END
 IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_mining_turret_units' )
 BEGIN
 	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
-	(2105354, 'cf_mining_turret_units', 'Mining turrets', 0, 0)
+	(33624586, 'cf_mining_turret_units', 'Mining turrets', 0, 0)
 END
 
 IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_industrial_turret_drillers' )
@@ -2238,9 +2264,6 @@ END
 GO
 
 ---- Set up aggregate fields for mining turrets
-
-DECLARE @definition INT
-DECLARE @field INT
 
 DECLARE @definition INT
 DECLARE @field INT
@@ -2954,7 +2977,7 @@ END
 IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_harvesting_turret_units' )
 BEGIN
 	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
-	(3153930, 'cf_harvesting_turret_units', 'Harvesting turrets', 0, 0)
+	(50401802, 'cf_harvesting_turret_units', 'Harvesting turrets', 0, 0)
 END
 
 IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_industrial_turret_harvesters' )
@@ -3300,9 +3323,6 @@ END
 GO
 
 ---- Set up aggregate fields for harvesting turrets
-
-DECLARE @definition INT
-DECLARE @field INT
 
 DECLARE @definition INT
 DECLARE @field INT
@@ -3999,6 +4019,2645 @@ SET @moduleId = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionnam
 IF NOT EXISTS (SELECT 1 FROM beamassignment WHERE definition = @moduleId AND beam = @beamId)
 BEGIN
 	INSERT INTO beamassignment (definition, beam) VALUES (@moduleId, @beamId)
+END
+
+GO
+
+---- Create category flags for combat drones
+
+IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_combat_drones' )
+BEGIN
+	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
+	(4242, 'cf_combat_drones', 'Combat Drones (deployed)', 1, 0)
+END
+
+IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_remote_controlled_combat_drones' )
+BEGIN
+	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
+	(135690, 'cf_remote_controlled_combat_drones', 'Remote controlled combat drones', 0, 0)
+END
+
+IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_pelistal_combat_drones_units' )
+BEGIN
+	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
+	(16912906, 'cf_pelistal_combat_drones_units', 'Remote controlled pelistal combat drones', 0, 0)
+END
+
+IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_nuimqol_combat_drones_units' )
+BEGIN
+	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
+	(33690122, 'cf_nuimqol_combat_drones_units', 'Remote controlled nuimqol combat drones', 0, 0)
+END
+
+IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_thelodica_combat_drones_units' )
+BEGIN
+	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
+	(50467338, 'cf_thelodica_combat_drones_units', 'Remote controlled thelodica combat drones', 0, 0)
+END
+
+GO
+
+---- Create entity defaults for pelistal combat drones
+
+DECLARE @category INT
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_robot_chassis')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_pelistal_combat_drone_chassis')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_pelistal_combat_drone_chassis', 1, 1024, @category, '#height=f0.5#slotFlags=44d0,4d0,d2,d2,492', 1, 8, 13000, 1, 100, 'def_pelistal_combat_drone_chassis_desc', 0, NULL, NULL)
+END
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_robot_head')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_pelistal_combat_drone_head')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_pelistal_combat_drone_head', 1, 1024, @category, '#height=f0.15#slotFlags=48,8,8,8', 1, 2, 600, 1, 100, 'def_pelistal_combat_drone_head_desc', 0, NULL, NULL)
+END
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_robot_leg')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_pelistal_combat_drone_leg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_pelistal_combat_drone_leg', 1, 1024, @category, '#slotFlags=420,20,20,20  #height=f0.30', 1, 10, 2250, 1, 100, 'def_pelistal_combat_drone_leg_desc', 0, NULL, NULL)
+END
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_robot_inventory')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_pelistal_combat_drone_inventory')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_pelistal_combat_drone_inventory', 1, 4195336, @category, '#capacity=f15.0', 1, 0, 0, 0, 100, 'def_robot_inventory_desc', 0, NULL, NULL)
+END
+
+DECLARE @head INT
+DECLARE @chassis INT
+DECLARE @leg INT
+DECLARE @cargo INT
+
+SET @head = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_pelistal_combat_drone_head')
+SET @chassis = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_pelistal_combat_drone_chassis')
+SET @leg = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_pelistal_combat_drone_leg')
+SET @cargo = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_pelistal_combat_drone_inventory')
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_combat_drones')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_standart_pelistal_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_standart_pelistal_combat_drone_desc', 1, 1, 1)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named1_pelistal_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named1_pelistal_combat_drone_desc', 1, 1, 2)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named2_pelistal_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named2_pelistal_combat_drone_desc', 1, 1, 3)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named3_pelistal_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named3_pelistal_combat_drone_desc', 1, 1, 4)
+END
+
+GO
+
+---- Create pelistal combat drones as ammo 
+
+DECLARE @categoryFlag INT
+DECLARE @options VARCHAR(MAX)
+
+SET @categoryFlag = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_pelistal_combat_drones_units')
+
+SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone'), ' #turretType=$CombatDrone')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone_unit')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_standart_pelistal_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_pelistal_combat_drone_desc', 1, 1, 1)
+END
+
+SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone'), ' #turretType=$CombatDrone')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone_unit')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named1_pelistal_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_pelistal_combat_drone_desc', 1, 1, 2)
+END
+
+SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone'), ' #turretType=$CombatDrone')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone_unit')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named2_pelistal_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_pelistal_combat_drone_unit_desc', 1, 1, 3)
+END
+
+SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone'), ' #turretType=$CombatDrone')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone_unit')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named3_pelistal_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_pelistal_combat_drone_unit_desc', 1, 1, 4)
+END
+
+GO
+
+---- Create pelistal combat drones templates
+
+DECLARE @robot VARCHAR(MAX)
+DECLARE @head VARCHAR(MAX)
+DECLARE @chassis VARCHAR(MAX)
+DECLARE @leg VARCHAR(MAX)
+DECLARE @cargo VARCHAR(MAX)
+DECLARE @ammo VARCHAR(MAX)
+DECLARE @gunDefinitionId VARCHAR(MAX)
+DECLARE @description VARCHAR(MAX)
+
+SET @head = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_pelistal_combat_drone_head')
+SET @chassis = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_pelistal_combat_drone_chassis')
+SET @leg = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_pelistal_combat_drone_leg')
+SET @cargo = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_pelistal_combat_drone_inventory')
+SET @ammo = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_ammo_missile_b')
+SET @gunDefinitionId = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_standard_missile_launcher')
+
+-- T1
+
+SET @robot = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'standart_pelistal_combat_drone')
+BEGIN
+	SET @description = CONCAT('#robot=i', @robot, '#head=i', @head, '#chassis=i', @chassis, '#leg=i', @leg, '#container=i', @cargo, '#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i3|ammoDefinition=i', @ammo, '|ammoQuantity=i14]|m1=[|definition=i', @gunDefinitionId, '|slot=i4|ammoDefinition=i', @ammo, '|ammoQuantity=i14]|m3=[|definition=i', @gunDefinitionId, '|slot=i5|ammoDefinition=i', @ammo, '|ammoQuantity=i14]]')
+
+	INSERT INTO robottemplates (name, description, note) VALUES
+	('standart_pelistal_combat_drone', @description, 'Standart pelistal combat drone')
+END
+
+-- T2
+
+SET @robot = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'named1_pelistal_combat_drone')
+BEGIN
+	SET @description = CONCAT('#robot=i', @robot, '#head=i', @head, '#chassis=i', @chassis, '#leg=i', @leg, '#container=i', @cargo, '#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i3|ammoDefinition=i', @ammo, '|ammoQuantity=i14]|m1=[|definition=i', @gunDefinitionId, '|slot=i4|ammoDefinition=i', @ammo, '|ammoQuantity=i14]|m3=[|definition=i', @gunDefinitionId, '|slot=i5|ammoDefinition=i', @ammo, '|ammoQuantity=i14]]')
+
+	INSERT INTO robottemplates (name, description, note) VALUES
+	('named1_pelistal_combat_drone', @description, 'T2 pelistal combat drone')
+END
+
+-- T3
+
+SET @robot = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'named2_pelistal_combat_drone')
+BEGIN
+	SET @description = CONCAT('#robot=i', @robot, '#head=i', @head, '#chassis=i', @chassis, '#leg=i', @leg, '#container=i', @cargo, '#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i3|ammoDefinition=i', @ammo, '|ammoQuantity=i14]|m1=[|definition=i', @gunDefinitionId, '|slot=i4|ammoDefinition=i', @ammo, '|ammoQuantity=i14]|m3=[|definition=i', @gunDefinitionId, '|slot=i5|ammoDefinition=i', @ammo, '|ammoQuantity=i14]]')
+
+	INSERT INTO robottemplates (name, description, note) VALUES
+	('named2_pelistal_combat_drone', @description, 'T3 pelistal combat drone')
+END
+
+-- T4
+
+SET @robot = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'named3_pelistal_combat_drone')
+BEGIN
+	SET @description = CONCAT('#robot=i', @robot, '#head=i', @head, '#chassis=i', @chassis, '#leg=i', @leg, '#container=i', @cargo, '#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i3|ammoDefinition=i', @ammo, '|ammoQuantity=i14]|m1=[|definition=i', @gunDefinitionId, '|slot=i4|ammoDefinition=i', @ammo, '|ammoQuantity=i14]|m3=[|definition=i', @gunDefinitionId, '|slot=i5|ammoDefinition=i', @ammo, '|ammoQuantity=i14]]')
+
+	INSERT INTO robottemplates (name, description, note) VALUES
+	('named3_pelistal_combat_drone', @description, 'T4 pelistal combat drone')
+END
+
+GO
+
+---- Link pelistal combat drones with their templates
+
+DECLARE @turret_def INT
+DECLARE @turret_template INT
+
+SET @turret_def = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone')
+SET @turret_template = (SELECT TOP 1 id FROM robottemplates WHERE name = 'standart_pelistal_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplaterelation WHERE definition = @turret_def AND templateid = @turret_template)
+BEGIN
+	INSERT INTO robottemplaterelation (definition, templateid, itemscoresum, raceid, note) VALUES
+	(@turret_def, @turret_template, 0, 0, 'Standart pelistal combat drone')
+END
+
+SET @turret_def = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone')
+SET @turret_template = (SELECT TOP 1 id FROM robottemplates WHERE name = 'named1_pelistal_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplaterelation WHERE definition = @turret_def AND templateid = @turret_template)
+BEGIN
+	INSERT INTO robottemplaterelation (definition, templateid, itemscoresum, raceid, note) VALUES
+	(@turret_def, @turret_template, 0, 0, 'T2 pelistal combat drone')
+END
+
+SET @turret_def = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone')
+SET @turret_template = (SELECT TOP 1 id FROM robottemplates WHERE name = 'named2_pelistal_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplaterelation WHERE definition = @turret_def AND templateid = @turret_template)
+BEGIN
+	INSERT INTO robottemplaterelation (definition, templateid, itemscoresum, raceid, note) VALUES
+	(@turret_def, @turret_template, 0, 0, 'T3 pelistal combat drone')
+END
+
+SET @turret_def = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone')
+SET @turret_template = (SELECT TOP 1 id FROM robottemplates WHERE name = 'named3_pelistal_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplaterelation WHERE definition = @turret_def AND templateid = @turret_template)
+BEGIN
+	INSERT INTO robottemplaterelation (definition, templateid, itemscoresum, raceid, note) VALUES
+	(@turret_def, @turret_template, 0, 0, 'T4 pelistal combat drone')
+END
+
+GO
+
+---- Set up aggregate fields for pelistal combat drones as ammo
+
+DECLARE @definition INT
+DECLARE @field INT
+
+---- Bandwidth usage
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_bandwidth_usage')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+
+---- Despawn time
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'despawn_time')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 600000)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 900000)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1200000)
+END
+
+GO
+
+---- Set up aggregate fields for pelistal combat drones
+
+DECLARE @definition INT
+DECLARE @field INT
+
+--head
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_pelistal_combat_drone_head')
+
+---- CPU max
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cpu_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 495)
+END
+
+---- Locked targets max
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locked_targets_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 7)
+END
+
+---- Locking range
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 30)
+END
+
+---- Locking time
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 12500)
+END
+
+---- Sensor strength
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'sensor_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 100)
+END
+
+---- Blob emission
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'blob_emission')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 7)
+END
+
+---- Blob emission radius
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'blob_emission_radius')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 20)
+END
+
+---- Blob level low
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'blob_level_low')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 105)
+END
+
+---- Blob level high
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'blob_level_high')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 375)
+END
+
+---- Detection strength
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'detection_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 100)
+END
+
+---- Stealth strength
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'stealth_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 100)
+END
+
+-- chassis
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_pelistal_combat_drone_chassis')
+
+---- Ammo reload time
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'ammo_reload_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10000)
+END
+
+---- Armor max
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1000)
+END
+
+---- Core max
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2800)
+END
+
+---- Core recharge time
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_recharge_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 480)
+END
+
+---- Powergrid max
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'powergrid_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 950)
+END
+
+---- Resists
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_chemical')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 30)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_explosive')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 45)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_kinetic')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_thermal')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 150)
+END
+
+---- Signature radius
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'signature_radius')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10)
+END
+
+---- Missile miss
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'missile_miss')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.9)
+END
+
+---- Reactor radiation
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'reactor_radiation')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10)
+END
+
+---- Mine detection range
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'mine_detection_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 7)
+END
+
+-- leg
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_pelistal_combat_drone_leg')
+
+---- Slope
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'slope')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 6)
+END
+
+---- Speed max
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'speed_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2.6)
+END
+
+-- Standart Pelistal combat drone
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone')
+
+---- Locking range modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+-- damage modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.54)
+END
+
+-- explosion radius modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'explosion_radius_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.7)
+END
+
+-- missile cycle time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'missile_cycle_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.29)
+END
+
+---- Armor max modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.292)
+END
+
+---- Signature radius modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'signature_radius_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+---- Locking time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.22)
+END
+
+---- T2 pelistal combat drone ----
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone')
+
+---- Locking range modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+-- damage modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.6775)
+END
+
+-- explosion radius modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'explosion_radius_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.7)
+END
+
+-- missile cycle time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'missile_cycle_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.29)
+END
+
+---- Armor max modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.938)
+END
+
+---- Signature radius modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'signature_radius_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4.75)
+END
+
+---- Locking time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.22)
+END
+
+---- T3 pelistal combat drone ----
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone')
+
+---- Locking range modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+-- damage modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3.355)
+END
+
+-- explosion radius modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'explosion_radius_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.6)
+END
+
+-- missile cycle time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'missile_cycle_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.62)
+END
+
+---- Armor max modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4.76)
+END
+
+---- Signature radius modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'signature_radius_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 8.25)
+END
+
+---- Locking time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.22)
+END
+
+---- T4 pelistal combat drone ----
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone')
+
+---- Locking range modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+-- damage modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3.63)
+END
+
+-- explosion radius modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'explosion_radius_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.6)
+END
+
+-- missile cycle time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'missile_cycle_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.62)
+END
+
+---- Armor max modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 6.8)
+END
+
+---- Signature radius modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'signature_radius_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 18)
+END
+
+---- Locking time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.22)
+END
+
+GO
+
+---- Add enabler extensions for pelistal combat drones
+
+DECLARE @definition INT
+DECLARE @extension INT
+
+SET @extension = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_pelistal_combat_drones_experience')
+
+-- standart
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AND extensionid = @extension)
+BEGIN
+	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
+	(@definition, @extension, 2)
+END
+
+-- T2
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AND extensionid = @extension)
+BEGIN
+	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
+	(@definition, @extension, 4)
+END
+
+-- T3
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AND extensionid = @extension)
+BEGIN
+	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
+	(@definition, @extension, 6)
+END
+
+-- T4
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AND extensionid = @extension)
+BEGIN
+	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
+	(@definition, @extension, 8)
+END
+
+GO
+
+--------------
+
+---- Create entity defaults for nuimqol combat drones
+
+DECLARE @category INT
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_robot_chassis')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_nuimqol_combat_drone_chassis')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_nuimqol_combat_drone_chassis', 1, 1024, @category, '#height=f0.45#slotFlags=44d1,4d1,d1', 1, 8, 13000, 1, 100, 'def_nuimqol_combat_drone_chassis_desc', 0, NULL, NULL)
+END
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_robot_head')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_nuimqol_combat_drone_head')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_nuimqol_combat_drone_head', 1, 1024, @category, '#height=f0.15#slotFlags=48,8,8,8,8,8', 1, 2, 600, 1, 100, 'def_nuimqol_combat_drone_head_desc', 0, NULL, NULL)
+END
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_robot_leg')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_nuimqol_combat_drone_leg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_nuimqol_combat_drone_leg', 1, 1024, @category, '#height=f1.25#slotFlags=420,20,20,20', 1, 10, 2250, 1, 100, 'def_nuimqol_combat_drone_leg_desc', 0, NULL, NULL)
+END
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_robot_inventory')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_nuimqol_combat_drone_inventory')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_nuimqol_combat_drone_inventory', 1, 4195336, @category, '#capacity=f15.0', 1, 0, 0, 0, 100, 'def_robot_inventory_desc', 0, NULL, NULL)
+END
+
+DECLARE @head INT
+DECLARE @chassis INT
+DECLARE @leg INT
+DECLARE @cargo INT
+
+SET @head = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_nuimqol_combat_drone_head')
+SET @chassis = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_nuimqol_combat_drone_chassis')
+SET @leg = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_nuimqol_combat_drone_leg')
+SET @cargo = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_nuimqol_combat_drone_inventory')
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_combat_drones')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_standart_nuimqol_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_standart_nuimqol_combat_drone_desc', 1, 1, 1)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named1_nuimqol_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named1_nuimqol_combat_drone_desc', 1, 1, 2)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named2_nuimqol_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named2_nuimqol_combat_drone_desc', 1, 1, 3)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named3_nuimqol_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named3_nuimqol_combat_drone_desc', 1, 1, 4)
+END
+
+GO
+
+---- Create nuimqol combat drones as ammo 
+
+DECLARE @categoryFlag INT
+DECLARE @options VARCHAR(MAX)
+
+SET @categoryFlag = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_nuimqol_combat_drones_units')
+
+SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone'), ' #turretType=$CombatDrone')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_standart_nuimqol_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_nuimqol_combat_drone_desc', 1, 1, 1)
+END
+
+SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone'), ' #turretType=$CombatDrone')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named1_nuimqol_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_nuimqol_combat_drone_desc', 1, 1, 2)
+END
+
+SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone'), ' #turretType=$CombatDrone')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named2_nuimqol_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_nuimqol_combat_drone_unit_desc', 1, 1, 3)
+END
+
+SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone'), ' #turretType=$CombatDrone')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named3_nuimqol_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_nuimqol_combat_drone_unit_desc', 1, 1, 4)
+END
+
+GO
+
+---- Create nuimqol combat drones templates
+
+DECLARE @robot VARCHAR(MAX)
+DECLARE @head VARCHAR(MAX)
+DECLARE @chassis VARCHAR(MAX)
+DECLARE @leg VARCHAR(MAX)
+DECLARE @cargo VARCHAR(MAX)
+DECLARE @ammo VARCHAR(MAX)
+DECLARE @gunDefinitionId VARCHAR(MAX)
+DECLARE @description VARCHAR(MAX)
+
+SET @head = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_nuimqol_combat_drone_head')
+SET @chassis = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_nuimqol_combat_drone_chassis')
+SET @leg = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_nuimqol_combat_drone_leg')
+SET @cargo = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_nuimqol_combat_drone_inventory')
+SET @ammo = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_ammo_medium_railgun_b')
+SET @gunDefinitionId = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_standard_medium_railgun')
+
+-- T1
+
+SET @robot = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'standart_nuimqol_combat_drone')
+BEGIN
+	SET @description = CONCAT('#robot=i', @robot, '#head=i', @head, '#chassis=i', @chassis, '#leg=i', @leg, '#container=i', @cargo, '#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1|ammoDefinition=i', @ammo, '|ammoQuantity=i32]|m1=[|definition=i', @gunDefinitionId, '|slot=i2|ammoDefinition=i', @ammo, '|ammoQuantity=i32]|m2=[|definition=i', @gunDefinitionId, '|slot=i3|ammoDefinition=i', @ammo, '|ammoQuantity=i32]]')
+
+	INSERT INTO robottemplates (name, description, note) VALUES
+	('standart_nuimqol_combat_drone', @description, 'Standart nuimqol combat drone')
+END
+
+-- T2
+
+SET @robot = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'named1_nuimqol_combat_drone')
+BEGIN
+	SET @description = CONCAT('#robot=i', @robot, '#head=i', @head, '#chassis=i', @chassis, '#leg=i', @leg, '#container=i', @cargo, '#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1|ammoDefinition=i', @ammo, '|ammoQuantity=i32]|m1=[|definition=i', @gunDefinitionId, '|slot=i2|ammoDefinition=i', @ammo, '|ammoQuantity=i32]|m2=[|definition=i', @gunDefinitionId, '|slot=i3|ammoDefinition=i', @ammo, '|ammoQuantity=i32]]')
+
+	INSERT INTO robottemplates (name, description, note) VALUES
+	('named1_nuimqol_combat_drone', @description, 'T2 nuimqol combat drone')
+END
+
+-- T3
+
+SET @robot = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'named2_nuimqol_combat_drone')
+BEGIN
+	SET @description = CONCAT('#robot=i', @robot, '#head=i', @head, '#chassis=i', @chassis, '#leg=i', @leg, '#container=i', @cargo, '#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1|ammoDefinition=i', @ammo, '|ammoQuantity=i32]|m1=[|definition=i', @gunDefinitionId, '|slot=i2|ammoDefinition=i', @ammo, '|ammoQuantity=i32]|m2=[|definition=i', @gunDefinitionId, '|slot=i3|ammoDefinition=i', @ammo, '|ammoQuantity=i32]]')
+
+	INSERT INTO robottemplates (name, description, note) VALUES
+	('named2_nuimqol_combat_drone', @description, 'T3 nuimqol combat drone')
+END
+
+-- T4
+
+SET @robot = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'named3_nuimqol_combat_drone')
+BEGIN
+	SET @description = CONCAT('#robot=i', @robot, '#head=i', @head, '#chassis=i', @chassis, '#leg=i', @leg, '#container=i', @cargo, '#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1|ammoDefinition=i', @ammo, '|ammoQuantity=i32]|m1=[|definition=i', @gunDefinitionId, '|slot=i2|ammoDefinition=i', @ammo, '|ammoQuantity=i32]|m2=[|definition=i', @gunDefinitionId, '|slot=i3|ammoDefinition=i', @ammo, '|ammoQuantity=i32]]')
+
+	INSERT INTO robottemplates (name, description, note) VALUES
+	('named3_nuimqol_combat_drone', @description, 'T4 nuimqol combat drone')
+END
+
+GO
+
+---- Link nuimqol combat drones with their templates
+
+DECLARE @turret_def INT
+DECLARE @turret_template INT
+
+SET @turret_def = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone')
+SET @turret_template = (SELECT TOP 1 id FROM robottemplates WHERE name = 'standart_nuimqol_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplaterelation WHERE definition = @turret_def AND templateid = @turret_template)
+BEGIN
+	INSERT INTO robottemplaterelation (definition, templateid, itemscoresum, raceid, note) VALUES
+	(@turret_def, @turret_template, 0, 0, 'Standart nuimqol combat drone')
+END
+
+SET @turret_def = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone')
+SET @turret_template = (SELECT TOP 1 id FROM robottemplates WHERE name = 'named1_nuimqol_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplaterelation WHERE definition = @turret_def AND templateid = @turret_template)
+BEGIN
+	INSERT INTO robottemplaterelation (definition, templateid, itemscoresum, raceid, note) VALUES
+	(@turret_def, @turret_template, 0, 0, 'T2 nuimqol combat drone')
+END
+
+SET @turret_def = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone')
+SET @turret_template = (SELECT TOP 1 id FROM robottemplates WHERE name = 'named2_nuimqol_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplaterelation WHERE definition = @turret_def AND templateid = @turret_template)
+BEGIN
+	INSERT INTO robottemplaterelation (definition, templateid, itemscoresum, raceid, note) VALUES
+	(@turret_def, @turret_template, 0, 0, 'T3 nuimqol combat drone')
+END
+
+SET @turret_def = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone')
+SET @turret_template = (SELECT TOP 1 id FROM robottemplates WHERE name = 'named3_nuimqol_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplaterelation WHERE definition = @turret_def AND templateid = @turret_template)
+BEGIN
+	INSERT INTO robottemplaterelation (definition, templateid, itemscoresum, raceid, note) VALUES
+	(@turret_def, @turret_template, 0, 0, 'T4 nuimqol combat drone')
+END
+
+GO
+
+---- Set up aggregate fields for nuimqol combat drones as ammo
+
+DECLARE @definition INT
+DECLARE @field INT
+
+---- Bandwidth usage
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_bandwidth_usage')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+
+---- Despawn time
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'despawn_time')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 600000)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 900000)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1200000)
+END
+
+GO
+
+---- Set up aggregate fields for pelistal combat drones
+
+DECLARE @definition INT
+DECLARE @field INT
+
+--head
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_nuimqol_combat_drone_head')
+
+---- CPU max
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cpu_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 450)
+END
+
+---- Locked targets max
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locked_targets_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 7)
+END
+
+---- Locking range
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 35)
+END
+
+---- Locking time
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 12500)
+END
+
+---- Sensor strength
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'sensor_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 125)
+END
+
+---- Blob emission
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'blob_emission')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 7)
+END
+
+---- Blob emission radius
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'blob_emission_radius')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 20)
+END
+
+---- Blob level low
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'blob_level_low')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 105)
+END
+
+---- Blob level high
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'blob_level_high')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 375)
+END
+
+---- Detection strength
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'detection_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 100)
+END
+
+---- Stealth strength
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'stealth_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 100)
+END
+
+-- chassis
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_nuimqol_combat_drone_chassis')
+
+---- Ammo reload time
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'ammo_reload_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10000)
+END
+
+---- Armor max
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1170)
+END
+
+---- Core max
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2400)
+END
+
+---- Core recharge time
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_recharge_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 360)
+END
+
+---- Powergrid max
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'powergrid_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 600)
+END
+
+---- Resists
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_chemical')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 30)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_explosive')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 150)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_kinetic')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 45)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_thermal')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10)
+END
+
+---- Signature radius
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'signature_radius')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10)
+END
+
+---- Missile miss
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'missile_miss')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.9)
+END
+
+---- Reactor radiation
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'reactor_radiation')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10)
+END
+
+---- Mine detection range
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'mine_detection_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 7)
+END
+
+-- leg
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_nuimqol_combat_drone_leg')
+
+---- Slope
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'slope')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 6)
+END
+
+---- Speed max
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'speed_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2.6)
+END
+
+-- Standart nuimqol combat drone
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone')
+
+---- Locking range modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+-- damage modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2.145)
+END
+
+-- accuracy modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'accuracy_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.7)
+END
+
+-- turret cycle time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'turret_cycle_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.858)
+END
+
+---- Armor max modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.156)
+END
+
+---- Signature radius modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'signature_radius_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+---- Locking time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.22)
+END
+
+---- T2 nuimqol combat drone ----
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone')
+
+---- Locking range modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+-- damage modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2.53)
+END
+
+-- accuracy modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'accuracy_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.7)
+END
+
+-- turret cycle time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'turret_cycle_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.858)
+END
+
+---- Armor max modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.7)
+END
+
+---- Signature radius modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'signature_radius_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4.75)
+END
+
+---- Locking time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.22)
+END
+
+---- T3 nuimqol combat drone ----
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone')
+
+---- Locking range modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+-- damage modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 7.04)
+END
+
+-- accuracy modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'accuracy_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.6)
+END
+
+-- turret cycle time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'turret_cycle_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.95)
+END
+
+---- Armor max modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4.284)
+END
+
+---- Signature radius modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'signature_radius_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 8.25)
+END
+
+---- Locking time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.22)
+END
+
+---- T4 nuimqol combat drone ----
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone')
+
+---- Locking range modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+-- damage modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 7.315)
+END
+
+-- accuracy modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'accuracy_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.6)
+END
+
+-- turret cycle time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'turret_cycle_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.95)
+END
+
+---- Armor max modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 6.12)
+END
+
+---- Signature radius modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'signature_radius_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 18)
+END
+
+---- Locking time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.22)
+END
+
+GO
+
+---- Add enabler extensions for nuimqol combat drones
+
+DECLARE @definition INT
+DECLARE @extension INT
+
+SET @extension = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_nuimqol_combat_drones_experience')
+
+-- standart
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AND extensionid = @extension)
+BEGIN
+	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
+	(@definition, @extension, 2)
+END
+
+-- T2
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AND extensionid = @extension)
+BEGIN
+	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
+	(@definition, @extension, 4)
+END
+
+-- T3
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AND extensionid = @extension)
+BEGIN
+	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
+	(@definition, @extension, 6)
+END
+
+-- T4
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AND extensionid = @extension)
+BEGIN
+	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
+	(@definition, @extension, 8)
+END
+
+GO
+
+--------------
+
+---- Create entity defaults for thelodica combat drones
+
+DECLARE @category INT
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_robot_chassis')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_thelodica_combat_drone_chassis')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_thelodica_combat_drone_chassis', 1, 1024, @category, '#height=f0.5#slotFlags=44d1,4d1,d1', 1, 8, 13000, 1, 100, 'def_thelodica_combat_drone_chassis_desc', 0, NULL, NULL)
+END
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_robot_head')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_thelodica_combat_drone_head')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_thelodica_combat_drone_head', 1, 1024, @category, '#height=f0.15#slotFlags=48,8,8,8,8,8', 1, 2, 600, 1, 100, 'def_thelodica_combat_drone_head_desc', 0, NULL, NULL)
+END
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_robot_leg')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_thelodica_combat_drone_leg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_thelodica_combat_drone_leg', 1, 1024, @category, '#height=f1#slotFlags=420,20,20,20', 1, 10, 2250, 1, 100, 'def_thelodica_combat_drone_leg_desc', 0, NULL, NULL)
+END
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_robot_inventory')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_thelodica_combat_drone_inventory')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_thelodica_combat_drone_inventory', 1, 4195336, @category, '#capacity=f15.0', 1, 0, 0, 0, 100, 'def_robot_inventory_desc', 0, NULL, NULL)
+END
+
+DECLARE @head INT
+DECLARE @chassis INT
+DECLARE @leg INT
+DECLARE @cargo INT
+
+SET @head = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_thelodica_combat_drone_head')
+SET @chassis = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_thelodica_combat_drone_chassis')
+SET @leg = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_thelodica_combat_drone_leg')
+SET @cargo = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_thelodica_combat_drone_inventory')
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_combat_drones')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_standart_thelodica_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_standart_thelodica_combat_drone_desc', 1, 1, 1)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named1_thelodica_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named1_thelodica_combat_drone_desc', 1, 1, 2)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named2_thelodica_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named2_thelodica_combat_drone_desc', 1, 1, 3)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named3_thelodica_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named3_thelodica_combat_drone_desc', 1, 1, 4)
+END
+
+GO
+
+---- Create thelodica combat drones as ammo 
+
+DECLARE @categoryFlag INT
+DECLARE @options VARCHAR(MAX)
+
+SET @categoryFlag = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_thelodica_combat_drones_units')
+
+SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone'), ' #turretType=$CombatDrone')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone_unit')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_standart_thelodica_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_thelodica_combat_drone_desc', 1, 1, 1)
+END
+
+SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone'), ' #turretType=$CombatDrone')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone_unit')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named1_thelodica_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_thelodica_combat_drone_desc', 1, 1, 2)
+END
+
+SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone'), ' #turretType=$CombatDrone')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone_unit')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named2_thelodica_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_thelodica_combat_drone_unit_desc', 1, 1, 3)
+END
+
+SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone'), ' #turretType=$CombatDrone')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone_unit')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named3_thelodica_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_thelodica_combat_drone_unit_desc', 1, 1, 4)
+END
+
+GO
+
+---- Create thelodica combat drones templates
+
+DECLARE @robot VARCHAR(MAX)
+DECLARE @head VARCHAR(MAX)
+DECLARE @chassis VARCHAR(MAX)
+DECLARE @leg VARCHAR(MAX)
+DECLARE @cargo VARCHAR(MAX)
+DECLARE @ammo VARCHAR(MAX)
+DECLARE @gunDefinitionId VARCHAR(MAX)
+DECLARE @description VARCHAR(MAX)
+
+SET @head = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_thelodica_combat_drone_head')
+SET @chassis = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_thelodica_combat_drone_chassis')
+SET @leg = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_thelodica_combat_drone_leg')
+SET @cargo = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_thelodica_combat_drone_inventory')
+SET @ammo = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_ammo_medium_lasercrystal_a')
+SET @gunDefinitionId = (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_standard_medium_laser')
+
+-- T1
+
+SET @robot = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'standart_thelodica_combat_drone')
+BEGIN
+	SET @description = CONCAT('#robot=i', @robot, '#head=i', @head, '#chassis=i', @chassis, '#leg=i', @leg, '#container=i', @cargo, '#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1|ammoDefinition=i', @ammo, '|ammoQuantity=i78]|m1=[|definition=i', @gunDefinitionId, '|slot=i2|ammoDefinition=i', @ammo, '|ammoQuantity=i78]|m2=[|definition=i', @gunDefinitionId, '|slot=i3|ammoDefinition=i', @ammo, '|ammoQuantity=i78]]')
+
+	INSERT INTO robottemplates (name, description, note) VALUES
+	('standart_thelodica_combat_drone', @description, 'Standart thelodica combat drone')
+END
+
+-- T2
+
+SET @robot = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'named1_thelodica_combat_drone')
+BEGIN
+	SET @description = CONCAT('#robot=i', @robot, '#head=i', @head, '#chassis=i', @chassis, '#leg=i', @leg, '#container=i', @cargo, '#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1|ammoDefinition=i', @ammo, '|ammoQuantity=i78]|m1=[|definition=i', @gunDefinitionId, '|slot=i2|ammoDefinition=i', @ammo, '|ammoQuantity=i78]|m2=[|definition=i', @gunDefinitionId, '|slot=i3|ammoDefinition=i', @ammo, '|ammoQuantity=i78]]')
+
+	INSERT INTO robottemplates (name, description, note) VALUES
+	('named1_thelodica_combat_drone', @description, 'T2 thelodica combat drone')
+END
+
+-- T3
+
+SET @robot = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'named2_thelodica_combat_drone')
+BEGIN
+	SET @description = CONCAT('#robot=i', @robot, '#head=i', @head, '#chassis=i', @chassis, '#leg=i', @leg, '#container=i', @cargo, '#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1|ammoDefinition=i', @ammo, '|ammoQuantity=i78]|m1=[|definition=i', @gunDefinitionId, '|slot=i2|ammoDefinition=i', @ammo, '|ammoQuantity=i78]|m2=[|definition=i', @gunDefinitionId, '|slot=i3|ammoDefinition=i', @ammo, '|ammoQuantity=i78]]')
+
+	INSERT INTO robottemplates (name, description, note) VALUES
+	('named2_thelodica_combat_drone', @description, 'T3 thelodica combat drone')
+END
+
+-- T4
+
+SET @robot = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'named3_thelodica_combat_drone')
+BEGIN
+	SET @description = CONCAT('#robot=i', @robot, '#head=i', @head, '#chassis=i', @chassis, '#leg=i', @leg, '#container=i', @cargo, '#chassisModules=[|m0=[|definition=i', @gunDefinitionId, '|slot=i1|ammoDefinition=i', @ammo, '|ammoQuantity=i78]|m1=[|definition=i', @gunDefinitionId, '|slot=i2|ammoDefinition=i', @ammo, '|ammoQuantity=i78]|m2=[|definition=i', @gunDefinitionId, '|slot=i3|ammoDefinition=i', @ammo, '|ammoQuantity=i78]]')
+
+	INSERT INTO robottemplates (name, description, note) VALUES
+	('named3_thelodica_combat_drone', @description, 'T4 thelodica combat drone')
+END
+
+GO
+
+---- Link thelodica combat drones with their templates
+
+DECLARE @turret_def INT
+DECLARE @turret_template INT
+
+SET @turret_def = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone')
+SET @turret_template = (SELECT TOP 1 id FROM robottemplates WHERE name = 'standart_thelodica_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplaterelation WHERE definition = @turret_def AND templateid = @turret_template)
+BEGIN
+	INSERT INTO robottemplaterelation (definition, templateid, itemscoresum, raceid, note) VALUES
+	(@turret_def, @turret_template, 0, 0, 'Standart thelodica combat drone')
+END
+
+SET @turret_def = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone')
+SET @turret_template = (SELECT TOP 1 id FROM robottemplates WHERE name = 'named1_thelodica_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplaterelation WHERE definition = @turret_def AND templateid = @turret_template)
+BEGIN
+	INSERT INTO robottemplaterelation (definition, templateid, itemscoresum, raceid, note) VALUES
+	(@turret_def, @turret_template, 0, 0, 'T2 thelodica combat drone')
+END
+
+SET @turret_def = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone')
+SET @turret_template = (SELECT TOP 1 id FROM robottemplates WHERE name = 'named2_thelodica_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplaterelation WHERE definition = @turret_def AND templateid = @turret_template)
+BEGIN
+	INSERT INTO robottemplaterelation (definition, templateid, itemscoresum, raceid, note) VALUES
+	(@turret_def, @turret_template, 0, 0, 'T3 thelodica combat drone')
+END
+
+SET @turret_def = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone')
+SET @turret_template = (SELECT TOP 1 id FROM robottemplates WHERE name = 'named3_thelodica_combat_drone')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplaterelation WHERE definition = @turret_def AND templateid = @turret_template)
+BEGIN
+	INSERT INTO robottemplaterelation (definition, templateid, itemscoresum, raceid, note) VALUES
+	(@turret_def, @turret_template, 0, 0, 'T4 thelodica combat drone')
+END
+
+GO
+
+---- Set up aggregate fields for thelodica combat drones as ammo
+
+DECLARE @definition INT
+DECLARE @field INT
+
+---- Bandwidth usage
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_bandwidth_usage')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+
+---- Despawn time
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'despawn_time')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 600000)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 900000)
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1200000)
+END
+
+GO
+
+---- Set up aggregate fields for thelodica combat drones
+
+DECLARE @definition INT
+DECLARE @field INT
+
+--head
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_thelodica_combat_drone_head')
+
+---- CPU max
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cpu_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 425)
+END
+
+---- Locked targets max
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locked_targets_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 7)
+END
+
+---- Locking range
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 35)
+END
+
+---- Locking time
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 12500)
+END
+
+---- Sensor strength
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'sensor_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 125)
+END
+
+---- Blob emission
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'blob_emission')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 7)
+END
+
+---- Blob emission radius
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'blob_emission_radius')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 20)
+END
+
+---- Blob level low
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'blob_level_low')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 105)
+END
+
+---- Blob level high
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'blob_level_high')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 375)
+END
+
+---- Detection strength
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'detection_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 100)
+END
+
+---- Stealth strength
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'stealth_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 100)
+END
+
+-- chassis
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_thelodica_combat_drone_chassis')
+
+---- Ammo reload time
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'ammo_reload_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10000)
+END
+
+---- Armor max
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1300)
+END
+
+---- Core max
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2400)
+END
+
+---- Core recharge time
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_recharge_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 360)
+END
+
+---- Powergrid max
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'powergrid_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 750)
+END
+
+---- Resists
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_chemical')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 30)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_explosive')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_kinetic')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 150)
+END
+
+--
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_thermal')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 45)
+END
+
+---- Signature radius
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'signature_radius')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10)
+END
+
+---- Missile miss
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'missile_miss')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.9)
+END
+
+---- Reactor radiation
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'reactor_radiation')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10)
+END
+
+---- Mine detection range
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'mine_detection_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 7)
+END
+
+-- leg
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_thelodica_combat_drone_leg')
+
+---- Slope
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'slope')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 6)
+END
+
+---- Speed max
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'speed_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2.6)
+END
+
+-- Standart thelodica combat drone
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone')
+
+---- Locking range modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+-- damage modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.5015)
+END
+
+-- accuracy modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'accuracy_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.7)
+END
+
+-- turret cycle time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'turret_cycle_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.625)
+END
+
+---- Armor max modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.292)
+END
+
+---- Signature radius modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'signature_radius_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+---- Locking time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.22)
+END
+
+---- T2 thelodica combat drone ----
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone')
+
+---- Locking range modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+-- damage modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.7765)
+END
+
+-- accuracy modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'accuracy_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.7)
+END
+
+-- turret cycle time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'turret_cycle_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.625)
+END
+
+---- Armor max modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.938)
+END
+
+---- Signature radius modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'signature_radius_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4.75)
+END
+
+---- Locking time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.22)
+END
+
+---- T3 thelodica combat drone ----
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone')
+
+---- Locking range modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+-- damage modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4.543)
+END
+
+-- accuracy modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'accuracy_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.6)
+END
+
+-- turret cycle time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'turret_cycle_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.714)
+END
+
+---- Armor max modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4.76)
+END
+
+---- Signature radius modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'signature_radius_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 8.25)
+END
+
+---- Locking time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.22)
+END
+
+---- T4 thelodica combat drone ----
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone')
+
+---- Locking range modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+-- damage modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4.818)
+END
+
+-- accuracy modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'accuracy_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.6)
+END
+
+-- turret cycle time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'turret_cycle_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.714)
+END
+
+---- Armor max modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 6.8)
+END
+
+---- Signature radius modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'signature_radius_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 18)
+END
+
+---- Locking time modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.22)
+END
+
+GO
+
+---- Add enabler extensions for thelodica combat drones
+
+DECLARE @definition INT
+DECLARE @extension INT
+
+SET @extension = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_thelodica_combat_drones_experience')
+
+-- standart
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AND extensionid = @extension)
+BEGIN
+	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
+	(@definition, @extension, 2)
+END
+
+-- T2
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AND extensionid = @extension)
+BEGIN
+	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
+	(@definition, @extension, 4)
+END
+
+-- T3
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AND extensionid = @extension)
+BEGIN
+	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
+	(@definition, @extension, 6)
+END
+
+-- T4
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AND extensionid = @extension)
+BEGIN
+	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
+	(@definition, @extension, 8)
 END
 
 GO
