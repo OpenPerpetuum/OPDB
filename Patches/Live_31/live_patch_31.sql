@@ -2096,6 +2096,14 @@ BEGIN
 	(@definition, @extension, 4)
 END
 
+SET @extension = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_glider_specialist')
+
+IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AND extensionid = @extension)
+BEGIN
+	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
+	(@definition, @extension, 1)
+END
+
 GO
 
 ---- Add chassis bonuses and link them with extensions and aggregate fields
@@ -5394,7 +5402,7 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.54)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.265)
 END
 
 -- explosion radius modifier
@@ -5461,7 +5469,7 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.6775)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.4025)
 END
 
 -- explosion radius modifier
@@ -5528,7 +5536,7 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3.355)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2.805)
 END
 
 -- explosion radius modifier
@@ -5595,7 +5603,7 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3.63)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3.08)
 END
 
 -- explosion radius modifier
@@ -5993,7 +6001,7 @@ END
 
 GO
 
----- Set up aggregate fields for pelistal combat drones
+---- Set up aggregate fields for nuimqol combat drones
 
 DECLARE @definition INT
 DECLARE @field INT
@@ -6263,7 +6271,7 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2.145)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2.1175)
 END
 
 -- accuracy modifier
@@ -6330,7 +6338,7 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2.53)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2.255)
 END
 
 -- accuracy modifier
@@ -6397,7 +6405,7 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 7.04)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 6.49)
 END
 
 -- accuracy modifier
@@ -6464,7 +6472,7 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 7.315)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 6.765)
 END
 
 -- accuracy modifier
