@@ -2532,7 +2532,7 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'mining_amount_m
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.21)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2.7951)
 END
 
 ---- Armor max modifier
@@ -2572,7 +2572,7 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'mining_amount_m
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.62)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3.7268)
 END
 
 ---- Armor max modifier
@@ -2612,7 +2612,7 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'mining_amount_m
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.78)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4.0994)
 END
 
 ---- Armor max modifier
@@ -2652,7 +2652,7 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'mining_amount_m
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2.22)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5.12425)
 END
 
 ---- Armor max modifier
@@ -3591,7 +3591,7 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'harvesting_amou
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.36)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2.99475)
 END
 
 ---- Armor max modifier
@@ -3631,7 +3631,7 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'harvesting_amou
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.82)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3.993)
 END
 
 ---- Armor max modifier
@@ -3671,7 +3671,7 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'harvesting_amou
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4.3924)
 END
 
 ---- Armor max modifier
@@ -3711,7 +3711,7 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'harvesting_amou
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2.5)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5.4905)
 END
 
 ---- Armor max modifier
@@ -6666,6 +6666,81 @@ IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AN
 BEGIN
 	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
 	(@definition, @extension, 8)
+END
+
+GO
+
+-- Reconfigure extensions dependency and complexity
+
+UPDATE extensions SET rank = 7, price = 245000 WHERE extensionname = 'ext_command_robotics'
+
+UPDATE extensions SET rank = 7, price = 245000 WHERE extensionname = 'ext_sentry_turrets_experience'
+
+UPDATE extensions SET rank = 8, price = 320000 WHERE extensionname = 'ext_mining_turrets_experience'
+
+UPDATE extensions SET rank = 8, price = 320000 WHERE extensionname = 'ext_harvesting_turrets_experience'
+
+UPDATE extensions SET rank = 9, price = 405000 WHERE extensionname = 'ext_pelistal_combat_drones_experience'
+
+UPDATE extensions SET rank = 9, price = 405000 WHERE extensionname = 'ext_nuimqol_combat_drones_experience'
+
+UPDATE extensions SET rank = 9, price = 405000 WHERE extensionname = 'ext_thelodica_combat_drones_experience'
+
+DECLARE @extensionId INT
+DECLARE @requiredExtension iNT
+
+SET @extensionId = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_sentry_turrets_experience')
+SET @requiredExtension = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_remote_control')
+
+IF NOT EXISTS (SELECT 1 FROM extensionprerequire WHERE extensionid = @extensionId AND requiredextension = @requiredExtension)
+BEGIN
+	INSERT INTO extensionprerequire (extensionid, requiredextension, requiredlevel)
+	VALUES (@extensionId, @requiredExtension, 3)
+END
+
+SET @extensionId = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_mining_turrets_experience')
+SET @requiredExtension = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_sentry_turrets_experience')
+
+IF NOT EXISTS (SELECT 1 FROM extensionprerequire WHERE extensionid = @extensionId AND requiredextension = @requiredExtension)
+BEGIN
+	INSERT INTO extensionprerequire (extensionid, requiredextension, requiredlevel)
+	VALUES (@extensionId, @requiredExtension, 4)
+END
+
+SET @extensionId = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_harvesting_turrets_experience')
+SET @requiredExtension = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_sentry_turrets_experience')
+
+IF NOT EXISTS (SELECT 1 FROM extensionprerequire WHERE extensionid = @extensionId AND requiredextension = @requiredExtension)
+BEGIN
+	INSERT INTO extensionprerequire (extensionid, requiredextension, requiredlevel)
+	VALUES (@extensionId, @requiredExtension, 4)
+END
+
+SET @extensionId = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_pelistal_combat_drones_experience')
+SET @requiredExtension = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_sentry_turrets_experience')
+
+IF NOT EXISTS (SELECT 1 FROM extensionprerequire WHERE extensionid = @extensionId AND requiredextension = @requiredExtension)
+BEGIN
+	INSERT INTO extensionprerequire (extensionid, requiredextension, requiredlevel)
+	VALUES (@extensionId, @requiredExtension, 6)
+END
+
+SET @extensionId = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_nuimqol_combat_drones_experience')
+SET @requiredExtension = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_sentry_turrets_experience')
+
+IF NOT EXISTS (SELECT 1 FROM extensionprerequire WHERE extensionid = @extensionId AND requiredextension = @requiredExtension)
+BEGIN
+	INSERT INTO extensionprerequire (extensionid, requiredextension, requiredlevel)
+	VALUES (@extensionId, @requiredExtension, 6)
+END
+
+SET @extensionId = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_nuimqol_combat_drones_experience')
+SET @requiredExtension = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_sentry_turrets_experience')
+
+IF NOT EXISTS (SELECT 1 FROM extensionprerequire WHERE extensionid = @extensionId AND requiredextension = @requiredExtension)
+BEGIN
+	INSERT INTO extensionprerequire (extensionid, requiredextension, requiredlevel)
+	VALUES (@extensionId, @requiredExtension, 6)
 END
 
 GO
