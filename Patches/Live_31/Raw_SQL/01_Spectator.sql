@@ -1961,7 +1961,7 @@ BEGIN
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = 3.036 WHERE definition = @definition AND field = @field
+	UPDATE aggregatevalues SET value = 3.036 WHERE definition = @definitionId AND field = @fieldId
 END
 
 -- accuracy
@@ -1974,7 +1974,7 @@ BEGIN
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = 3.6 WHERE definition = @definition AND field = @field
+	UPDATE aggregatevalues SET value = 3.6 WHERE definition = @definitionId AND field = @fieldId
 END
 
 -- core_usage
@@ -2005,7 +2005,7 @@ BEGIN
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = 1790 WHERE definition = @definition AND field = @field
+	UPDATE aggregatevalues SET value = 1790 WHERE definition = @definitionId AND field = @fieldId
 END
 
 -- falloff
@@ -2018,7 +2018,7 @@ BEGIN
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = 20 WHERE definition = @definition AND field = @field
+	UPDATE aggregatevalues SET value = 20 WHERE definition = @definitionId AND field = @fieldId
 END
 
 -- optimal_range
@@ -2031,7 +2031,7 @@ BEGIN
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = 5 WHERE definition = @definition AND field = @field
+	UPDATE aggregatevalues SET value = 5 WHERE definition = @definitionId AND field = @fieldId
 END
 
 -- powergrid_usage
@@ -2066,7 +2066,7 @@ BEGIN
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = 3.311 WHERE definition = @definition AND field = @field
+	UPDATE aggregatevalues SET value = 3.311 WHERE definition = @definitionId AND field = @fieldId
 END
 
 -- accuracy
@@ -2106,7 +2106,7 @@ BEGIN
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = 1790 WHERE definition = @definition AND field = @field
+	UPDATE aggregatevalues SET value = 1790 WHERE definition = @definitionId AND field = @fieldId
 END
 
 -- falloff
@@ -2119,7 +2119,7 @@ BEGIN
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = 15 WHERE definition = @definition AND field = @field
+	UPDATE aggregatevalues SET value = 15 WHERE definition = @definitionId AND field = @fieldId
 END
 
 -- optimal_range
@@ -2132,7 +2132,7 @@ BEGIN
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = 10 WHERE definition = @definition AND field = @field
+	UPDATE aggregatevalues SET value = 10 WHERE definition = @definitionId AND field = @fieldId
 END
 
 -- powergrid_usage
@@ -2167,7 +2167,7 @@ BEGIN
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = 3.751 WHERE definition = @definition AND field = @field
+	UPDATE aggregatevalues SET value = 3.751 WHERE definition = @definitionId AND field = @fieldId
 END
 
 -- accuracy
@@ -2180,7 +2180,7 @@ BEGIN
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = 8.5 WHERE definition = @definition AND field = @field
+	UPDATE aggregatevalues SET value = 8.5 WHERE definition = @definitionId AND field = @fieldId
 END
 
 -- core_usage
@@ -2211,7 +2211,7 @@ BEGIN
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = 2140 WHERE definition = @definition AND field = @field
+	UPDATE aggregatevalues SET value = 2140 WHERE definition = @definitionId AND field = @fieldId
 END
 
 -- falloff
@@ -2224,7 +2224,7 @@ BEGIN
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = 10 WHERE definition = @definition AND field = @field
+	UPDATE aggregatevalues SET value = 10 WHERE definition = @definitionId AND field = @fieldId
 END
 
 -- optimal_range
@@ -2237,7 +2237,7 @@ BEGIN
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = 15 WHERE definition = @definition AND field = @field
+	UPDATE aggregatevalues SET value = 15 WHERE definition = @definitionId AND field = @fieldId
 END
 
 -- powergrid_usage
@@ -2272,7 +2272,7 @@ BEGIN
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = 4 WHERE definition = @definition AND field = @field
+	UPDATE aggregatevalues SET value = 4 WHERE definition = @definitionId AND field = @fieldId
 END
 
 -- accuracy
@@ -2285,7 +2285,7 @@ BEGIN
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = 10.2 WHERE definition = @definition AND field = @field
+	UPDATE aggregatevalues SET value = 10.2 WHERE definition = @definitionId AND field = @fieldId
 END
 
 -- core_usage
@@ -2316,7 +2316,7 @@ BEGIN
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = 2140 WHERE definition = @definition AND field = @field
+	UPDATE aggregatevalues SET value = 2140 WHERE definition = @definitionId AND field = @fieldId
 END
 
 -- falloff
@@ -2329,7 +2329,7 @@ BEGIN
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = 5 WHERE definition = @definition AND field = @field
+	UPDATE aggregatevalues SET value = 5 WHERE definition = @definitionId AND field = @fieldId
 END
 
 -- optimal_range
@@ -2342,7 +2342,7 @@ BEGIN
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = 20 WHERE definition = @definition AND field = @field
+	UPDATE aggregatevalues SET value = 20 WHERE definition = @definitionId AND field = @fieldId
 END
 
 -- powergrid_usage
