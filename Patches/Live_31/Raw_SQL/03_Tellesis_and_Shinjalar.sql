@@ -87,7 +87,11 @@ END
 IF NOT EXISTS (SELECT 1 FROM teleportdescriptions WHERE description = 'teleport_column_tmpve_1_to_tp_zone_6_8')
 BEGIN
 	INSERT INTO teleportdescriptions (description, sourcecolumn, targetcolumn, sourcezone, sourcerange, targetzone, targetx, targety, targetz, targetrange, usetimeout, listable, active, type, sourcecolumnname, targetcolumnname) VALUES
-	('teleport_column_tmpve_1_to_tp_zone_6_8', 98, 102, 8, 7, 6, NULL, NULL, NULL, 7, 0, 1, 1, 2, 'teleport_column_tmpve_1', 'tp_zone_6_8')
+	('teleport_column_tmpve_1_to_tp_zone_6_8', 108, 256, 8, 7, 6, NULL, NULL, NULL, 7, 0, 1, 1, 2, 'teleport_column_tmpve_1', 'tp_zone_6_8')
+END
+ELSE
+BEGIN
+	UPDATE teleportdescriptions SET sourcecolumn = 108, targetcolumn = 256 WHERE description = 'teleport_column_tmpve_1_to_tp_zone_6_8'
 END
 
 --
