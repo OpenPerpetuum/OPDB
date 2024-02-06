@@ -67,6 +67,30 @@ BEGIN
 	('remote_control_bandwidth_usage', 1,'remote_control_bandwidth_usage_unit', 1, 0, 3, 0, 1, 1, 'Channel usage')
 END
 
+IF NOT EXISTS (SELECT 1 FROM aggregatefields WHERE name = 'remote_control_operational_range')
+BEGIN
+	INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
+	('remote_control_operational_range', 1,'remote_control_operational_range_unit', 1, 0, 3, 0, 1, 1, 'Operational range')
+END
+
+IF NOT EXISTS (SELECT 1 FROM aggregatefields WHERE name = 'remote_control_operational_range_modifier')
+BEGIN
+	INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
+	('remote_control_operational_range_modifier', 1,'remote_control_operational_range_modifier_unit', 1, 0, 3, 0, 1, 1, 'Operational range modifier')
+END
+
+IF NOT EXISTS (SELECT 1 FROM aggregatefields WHERE name = 'remote_control_lifetime')
+BEGIN
+	INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
+	('remote_control_lifetime', 1,'remote_control_lifetime_unit', 1, 0, 3, 0, 1, 1, 'RCU lifetime')
+END
+
+IF NOT EXISTS (SELECT 1 FROM aggregatefields WHERE name = 'remote_control_lifetime_modifier')
+BEGIN
+	INSERT INTO aggregatefields (name, formula, measurementunit, measurementmultiplier, measurementoffset, category, digits, moreisbetter, usedinconfig, note) VALUES
+	('remote_control_lifetime_modifier', 1,'remote_control_lifetime_modifier_unit', 1, 0, 3, 0, 1, 1, 'RCU lifetime modifier')
+END
+
 GO
 
 ---- Create entity defaults for turret launchers
@@ -80,11 +104,19 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_standart_remote_controller', 1, 2359320, @categoryFlag, '#moduleFlag=i808  #ammoCapacity=i3  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t1', 1, 1, 1, 0, 100, 'def_standart_remote_controller_desc', 1, 1, 1)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET options='#moduleFlag=i808  #ammoCapacity=i3  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t1', mass=1 WHERE definitionname = 'def_standart_remote_controller'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named1_remote_controller', 1, 2359320, @categoryFlag, '#moduleFlag=i808  #ammoCapacity=i3  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t2', 1, 1, 1, 0, 100, 'def_standart_remote_controller_desc', 1, 1, 2)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET options='#moduleFlag=i808  #ammoCapacity=i3  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t2', mass=1 WHERE definitionname = 'def_named1_remote_controller'
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
@@ -92,11 +124,19 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named2_remote_controller', 1, 2359320, @categoryFlag, '#moduleFlag=i808  #ammoCapacity=i4  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t3', 1, 1, 1, 0, 100, 'def_standart_remote_controller_desc', 1, 1, 3)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET options='#moduleFlag=i808  #ammoCapacity=i4  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t3', mass=1 WHERE definitionname = 'def_named2_remote_controller'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named3_remote_controller', 1, 2359320, @categoryFlag, '#moduleFlag=i808  #ammoCapacity=i5  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t4', 1, 1, 1, 0, 100, 'def_standart_remote_controller_desc', 1, 1, 4)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET options='#moduleFlag=i808  #ammoCapacity=i5  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t4', mass=1 WHERE definitionname = 'def_named3_remote_controller'
 END
 
 GO
@@ -403,7 +443,7 @@ END
 
 ---- Despawn time
 
-SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'despawn_time')
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_lifetime')
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret_unit')
 
@@ -411,26 +451,282 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND 
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
+END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_sentry_turret_unit')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 600000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_sentry_turret_unit')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 900000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_sentry_turret_unit')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1200000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
+END
+
+---- Damage modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3.036)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 3.036 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3.311)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 3.311 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3.751)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 3.751 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 4 WHERE definition = @definition AND field = @field
+END
+
+---- Weapon cycle
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cycle_time')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1790)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 1790 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1790)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 1790 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2140)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 2140 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2140)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 2140 WHERE definition = @definition AND field = @field
+END
+
+---- Accuracy
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'accuracy')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3.6)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 3.6 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4.2)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 4.2 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 8.5)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 8.5 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10.2)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 10.2 WHERE definition = @definition AND field = @field
+END
+
+---- Optimal range
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 5 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 10 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 15)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 15 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 20)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 20 WHERE definition = @definition AND field = @field
+END
+
+---- Falloff
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'falloff')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 20)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 20 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 15)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 15 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 10 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 5 WHERE definition = @definition AND field = @field
 END
 
 GO
@@ -486,7 +782,11 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'sensor_strength
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 500)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 100)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 100 WHERE definition = @definition AND field = @field
 END
 
 ---- Blob emission
@@ -816,21 +1116,33 @@ SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionn
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 5 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 5 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 5 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
@@ -838,6 +1150,10 @@ SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionn
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 5 WHERE definition = @definition AND field = @field
 END
 
 ---- Accumulator usage
@@ -848,28 +1164,44 @@ SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionn
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 50)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 150)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 150 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 45)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 135)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 135 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 55)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 165)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 165 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 60)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 180)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 180 WHERE definition = @definition AND field = @field
 END
 
 ---- CPU usage
@@ -879,28 +1211,44 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cpu_usage')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 85)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 170)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 170 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 77)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 154)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 154 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 90)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 180)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 180 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 100)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 200)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 200 WHERE definition = @definition AND field = @field
 END
 
 ---- Cycle time
@@ -912,12 +1260,20 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND 
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3000)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 3000 WHERE definition = @definition AND field = @field
+END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 3000 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
@@ -926,12 +1282,20 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND 
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2500)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 2500 WHERE definition = @definition AND field = @field
+END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 2000 WHERE definition = @definition AND field = @field
 END
 
 ---- Optimal range
@@ -943,12 +1307,20 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND 
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 20)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 20 WHERE definition = @definition AND field = @field
+END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 20)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 20 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
@@ -957,12 +1329,20 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND 
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 25)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 25 WHERE definition = @definition AND field = @field
+END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 30)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 30 WHERE definition = @definition AND field = @field
 END
 
 ---- Reactor usage
@@ -974,12 +1354,20 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND 
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 150)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 150 WHERE definition = @definition AND field = @field
+END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 135)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 135 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
@@ -988,12 +1376,116 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND 
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 165)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 165 WHERE definition = @definition AND field = @field
+END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 180)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 180 WHERE definition = @definition AND field = @field
+END
+
+---- Rcu Lifetime
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_lifetime')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
+END
+
+---- Drones operational range
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_operational_range')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 30)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 30 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 30)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 30 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 30)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 30 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 30)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 30 WHERE definition = @definition AND field = @field
 END
 
 GO
@@ -1025,13 +1517,21 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_spectator_chassis', 1, 1024, @category, '#slotFlags=4d3,6d0 #height=f2.00 #decay=n500', 1, 100, 78000, 1, 100, 'def_spectator_chassis_desc', 0, NULL, NULL)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET options = '#slotFlags=4d3,6d0 #height=f2.00 #decay=n500', mass=78000  WHERE definitionname = 'def_spectator_chassis'
+END
 
 SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_heavymech_head')
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_spectator_head')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_spectator_head', 1, 1024, @category, '#slotFlags=4808,8,8,8,8,8  #height=f0.10', 1, 3, 3000, 1, 100, 'def_spectator_head_desc', 0, NULL, NULL)
+	('def_spectator_head', 1, 1024, @category, '#slotFlags=48,8,8,8,8,8  #height=f0.10', 1, 3, 3000, 1, 100, 'def_spectator_head_desc', 0, NULL, NULL)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET options = '#slotFlags=48,8,8,8,8,8  #height=f0.10', mass=3000  WHERE definitionname = 'def_spectator_head'
 END
 
 SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_heavymech_leg')
@@ -1041,13 +1541,21 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_spectator_leg', 1, 1024, @category, '#slotFlags=420,20,20,20,20  #height=f1.10', 1, 20, 18000, 1, 100, 'def_spectator_leg_desc', 0, NULL, NULL)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET options = '#slotFlags=420,20,20,20,20  #height=f1.10', mass=18000  WHERE definitionname = 'def_spectator_leg'
+END
 
 SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_robot_inventory')
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_robot_inventory_spectator')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_robot_inventory_spectator', 1, 4195336, @category, '#capacity=f1080.0', 1, 0, 0, 0, 100, 'def_robot_inventory_desc', 0, NULL, NULL)
+	('def_robot_inventory_spectator', 1, 4195336, @category, '#capacity=f320.0', 1, 0, 0, 0, 100, 'def_robot_inventory_desc', 0, NULL, NULL)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET options = '#capacity=f320.0', mass=0  WHERE definitionname = 'def_robot_inventory_spectator'
 END
 
 DECLARE @head INT
@@ -1451,6 +1959,10 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AN
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 3.036)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 3.036 WHERE definition = @definition AND field = @field
+END
 
 -- accuracy
 
@@ -1459,6 +1971,10 @@ SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'accuracy')
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 3.6)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 3.6 WHERE definition = @definition AND field = @field
 END
 
 -- core_usage
@@ -1487,6 +2003,10 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AN
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 1790)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 1790 WHERE definition = @definition AND field = @field
+END
 
 -- falloff
 
@@ -1494,7 +2014,11 @@ SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'falloff')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 30)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 20)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 20 WHERE definition = @definition AND field = @field
 END
 
 -- optimal_range
@@ -1503,7 +2027,11 @@ SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 10)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 5)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 5 WHERE definition = @definition AND field = @field
 END
 
 -- powergrid_usage
@@ -1535,6 +2063,10 @@ SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifi
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 3.311)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 3.311 WHERE definition = @definition AND field = @field
 END
 
 -- accuracy
@@ -1572,6 +2104,10 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AN
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 1790)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 1790 WHERE definition = @definition AND field = @field
+END
 
 -- falloff
 
@@ -1579,7 +2115,11 @@ SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'falloff')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 20)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 15)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 15 WHERE definition = @definition AND field = @field
 END
 
 -- optimal_range
@@ -1588,7 +2128,11 @@ SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 20)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 10)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 10 WHERE definition = @definition AND field = @field
 END
 
 -- powergrid_usage
@@ -1621,6 +2165,10 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AN
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 3.751)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 3.751 WHERE definition = @definition AND field = @field
+END
 
 -- accuracy
 
@@ -1629,6 +2177,10 @@ SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'accuracy')
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 8.5)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 8.5 WHERE definition = @definition AND field = @field
 END
 
 -- core_usage
@@ -1657,6 +2209,10 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AN
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 2140)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 2140 WHERE definition = @definition AND field = @field
+END
 
 -- falloff
 
@@ -1666,6 +2222,10 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AN
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 10)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 10 WHERE definition = @definition AND field = @field
+END
 
 -- optimal_range
 
@@ -1673,7 +2233,11 @@ SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 30)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 15)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 15 WHERE definition = @definition AND field = @field
 END
 
 -- powergrid_usage
@@ -1706,6 +2270,10 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AN
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 4)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 4 WHERE definition = @definition AND field = @field
+END
 
 -- accuracy
 
@@ -1714,6 +2282,10 @@ SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'accuracy')
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 10.2)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 10.2 WHERE definition = @definition AND field = @field
 END
 
 -- core_usage
@@ -1742,6 +2314,10 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AN
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 2140)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 2140 WHERE definition = @definition AND field = @field
+END
 
 -- falloff
 
@@ -1751,6 +2327,10 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AN
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 5)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 5 WHERE definition = @definition AND field = @field
+END
 
 -- optimal_range
 
@@ -1758,7 +2338,11 @@ SET @fieldId = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definitionId AND field = @fieldId)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 35)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definitionId, @fieldId, 20)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 20 WHERE definition = @definition AND field = @field
 END
 
 -- powergrid_usage
@@ -1805,11 +2389,19 @@ BEGIN
 	INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
 	(366, 'ext_remote_control', @extensionsCategory, 5, 'attributeA', 1, '', 125000, 1, 'ext_remote_control_desc', @field, 0, 0, 7)
 END
+ELSE
+BEGIN
+	UPDATE extensions SET rank=5, bonus=1, price=125000, freezelimit=7 WHERE extensionname = 'ext_remote_control'
+END
 
 IF NOT EXISTS (SELECT 1 FROM extensions WHERE extensionname = 'ext_sentry_turrets_experience')
 BEGIN
 	INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
 	(367, 'ext_sentry_turrets_experience', @extensionsCategory, 5, 'attributeA', 0, 'Enabler for higher level sentry turrets', 125000, 1, 'ext_sentry_turrets_experience_desc', NULL, 0, 0, 4)
+END
+ELSE
+BEGIN
+	UPDATE extensions SET rank=5, bonus=0, price=125000, freezelimit=4 WHERE extensionname = 'ext_sentry_turrets_experience'
 END
 
 IF NOT EXISTS (SELECT 1 FROM extensions WHERE extensionname = 'ext_mining_turrets_experience')
@@ -1817,11 +2409,19 @@ BEGIN
 	INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
 	(368, 'ext_mining_turrets_experience', @extensionsCategory, 5, 'attributeA', 0, 'Enabler for higher level mining turrets', 125000, 1, 'ext_mining_turrets_experience_desc', NULL, 0, 0, 4)
 END
+ELSE
+BEGIN
+	UPDATE extensions SET rank=5, bonus=0, price=125000, freezelimit=4 WHERE extensionname = 'ext_mining_turrets_experience'
+END
 
 IF NOT EXISTS (SELECT 1 FROM extensions WHERE extensionname = 'ext_harvesting_turrets_experience')
 BEGIN
 	INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
 	(369, 'ext_harvesting_turrets_experience', @extensionsCategory, 5, 'attributeA', 0, 'Enabler for higher level harvesting turrets', 125000, 1, 'ext_harvesting_turrets_experience_desc', NULL, 0, 0, 4)
+END
+ELSE
+BEGIN
+	UPDATE extensions SET rank=5, bonus=0, price=125000, freezelimit=4 WHERE extensionname = 'ext_harvesting_turrets_experience'
 END
 
 IF NOT EXISTS (SELECT 1 FROM extensions WHERE extensionname = 'ext_pelistal_combat_drones_experience')
@@ -1829,17 +2429,53 @@ BEGIN
 	INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
 	(370, 'ext_pelistal_combat_drones_experience', @extensionsCategory, 5, 'attributeA', 0, 'Enabler for higher level pelistal combat drones', 125000, 1, 'ext_pelistal_combat_drones_experience_desc', NULL, 0, 0, 4)
 END
+ELSE
+BEGIN
+	UPDATE extensions SET rank=5, bonus=0, price=125000, freezelimit=4 WHERE extensionname = 'ext_pelistal_combat_drones_experience'
+END
 
 IF NOT EXISTS (SELECT 1 FROM extensions WHERE extensionname = 'ext_nuimqol_combat_drones_experience')
 BEGIN
 	INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
 	(371, 'ext_nuimqol_combat_drones_experience', @extensionsCategory, 5, 'attributeA', 0, 'Enabler for higher level nuimqol combat drones', 125000, 1, 'ext_nuimqol_combat_drones_experience_desc', NULL, 0, 0, 4)
 END
+ELSE
+BEGIN
+	UPDATE extensions SET rank=5, bonus=0, price=125000, freezelimit=4 WHERE extensionname = 'ext_nuimqol_combat_drones_experience'
+END
 
 IF NOT EXISTS (SELECT 1 FROM extensions WHERE extensionname = 'ext_thelodica_combat_drones_experience')
 BEGIN
 	INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
 	(372, 'ext_thelodica_combat_drones_experience', @extensionsCategory, 5, 'attributeA', 0, 'Enabler for higher level thelodica combat drones', 125000, 1, 'ext_thelodica_combat_drones_experience_desc', NULL, 0, 0, 4)
+END
+ELSE
+BEGIN
+	UPDATE extensions SET rank=5, bonus=0, price=125000, freezelimit=4 WHERE extensionname = 'ext_thelodica_combat_drones_experience'
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_operational_range_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM extensions WHERE extensionname = 'ext_remote_control_long_range_drone_operations')
+BEGIN
+	INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
+	(373, 'ext_remote_control_long_range_drone_operations', @extensionsCategory, 5, 'attributeA', 5, '', 125000, 1, 'ext_remote_control_long_range_drone_operations_desc', @field, 0, 0, 4)
+END
+ELSE
+BEGIN
+	UPDATE extensions SET rank=5, bonus=5, price=125000, freezelimit=4 WHERE extensionname = 'ext_remote_control_long_range_drone_operations'
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_lifetime_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM extensions WHERE extensionname = 'ext_remote_control_lifetime_management')
+BEGIN
+	INSERT INTO extensions (extensionid, extensionname, category, rank, learningattributeprimary, bonus, note, price, active, description, targetpropertyID, effectenhancer, hidden, freezelimit) VALUES
+	(374, 'ext_remote_control_lifetime_management', @extensionsCategory, 5, 'attributeA', 60000, '', 125000, 1, 'ext_remote_control_lifetime_management_desc', @field, 0, 0, 4)
+END
+ELSE
+BEGIN
+	UPDATE extensions SET rank=5, bonus=60000, price=125000, freezelimit=4 WHERE extensionname = 'ext_remote_control_lifetime_management'
 END
 
 GO
@@ -1855,8 +2491,27 @@ DECLARE @modifier INT
 -- bandwidth
 
 SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_remote_controllers')
+
 SET @base = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_bandwidth_max')
 SET @modifier = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_bandwidth_max_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM [modulepropertymodifiers] WHERE categoryflags = @category AND baseField = @base AND modifierField = @modifier)
+BEGIN
+	INSERT INTO [modulepropertymodifiers] (categoryflags, baseField, modifierField) VALUES
+	(@category, @base, @modifier)
+END
+
+SET @base = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_lifetime')
+SET @modifier = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_lifetime_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM [modulepropertymodifiers] WHERE categoryflags = @category AND baseField = @base AND modifierField = @modifier)
+BEGIN
+	INSERT INTO [modulepropertymodifiers] (categoryflags, baseField, modifierField) VALUES
+	(@category, @base, @modifier)
+END
+
+SET @base = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_operational_range')
+SET @modifier = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_operational_range_modifier')
 
 IF NOT EXISTS (SELECT 1 FROM [modulepropertymodifiers] WHERE categoryflags = @category AND baseField = @base AND modifierField = @modifier)
 BEGIN
@@ -2239,7 +2894,7 @@ END
 
 ---- Despawn time
 
-SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'despawn_time')
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_lifetime')
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret_unit')
 
@@ -2247,26 +2902,42 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND 
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
+END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_mining_turret_unit')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 600000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_mining_turret_unit')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 900000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_mining_turret_unit')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1200000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
 END
 
 GO
@@ -3298,7 +3969,7 @@ END
 
 ---- Despawn time
 
-SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'despawn_time')
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_lifetime')
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_harvesting_turret_unit')
 
@@ -3306,26 +3977,42 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND 
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
+END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_harvesting_turret_unit')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 600000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_harvesting_turret_unit')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 900000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_harvesting_turret_unit')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1200000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
 END
 
 GO
@@ -4330,7 +5017,7 @@ END
 
 ---- Despawn time
 
-SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'despawn_time')
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_lifetime')
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone_unit')
 
@@ -4338,26 +5025,186 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND 
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
+END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone_unit')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 600000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone_unit')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 900000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone_unit')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1200000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
+END
+
+---- Damage
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.843)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.843 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.935)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.935 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.87)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 1.87 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2.053)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 2.053 WHERE definition = @definition AND field = @field
+END
+
+---- Cycle
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'missile_cycle_time_modifier')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.29)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.29 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.29)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.29 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.62)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.62 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.62)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.62 WHERE definition = @definition AND field = @field
+END
+
+---- Explosion radius
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'explosion_radius_modifier')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.7)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.7 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.7)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.7 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.6)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.6 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.6)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.6 WHERE definition = @definition AND field = @field
 END
 
 GO
@@ -4632,7 +5479,11 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.265)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.843)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.843 WHERE definition = @definition AND field = @field
 END
 
 -- explosion radius modifier
@@ -4699,7 +5550,11 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.4025)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.935)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.935 WHERE definition = @definition AND field = @field
 END
 
 -- explosion radius modifier
@@ -4766,7 +5621,11 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2.805)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.87)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 1.87 WHERE definition = @definition AND field = @field
 END
 
 -- explosion radius modifier
@@ -4833,7 +5692,11 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3.08)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2.053)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 2.053 WHERE definition = @definition AND field = @field
 END
 
 -- explosion radius modifier
@@ -5199,7 +6062,7 @@ END
 
 ---- Despawn time
 
-SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'despawn_time')
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_lifetime')
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit')
 
@@ -5207,26 +6070,186 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND 
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
+END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 600000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 900000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1200000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
+END
+
+---- Damage
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.41167)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 1.41167 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.503)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 1.503 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4.3267)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 4.3267 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4.51)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 4.51 WHERE definition = @definition AND field = @field
+END
+
+---- Cycle
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'turret_cycle_time_modifier')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.858)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.858 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.858)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.858 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.95)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.95 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.95)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.95 WHERE definition = @definition AND field = @field
+END
+
+---- Accuracy
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'accuracy_modifier')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.7)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.7 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.7)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.7 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.6)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.6 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.6)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.6 WHERE definition = @definition AND field = @field
 END
 
 GO
@@ -5501,7 +6524,11 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2.1175)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.41167)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 1.41167 WHERE definition = @definition AND field = @field
 END
 
 -- accuracy modifier
@@ -5568,7 +6595,11 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2.255)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.503)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 1.503 WHERE definition = @definition AND field = @field
 END
 
 -- accuracy modifier
@@ -5635,7 +6666,11 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 6.49)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4.3267)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 4.3267 WHERE definition = @definition AND field = @field
 END
 
 -- accuracy modifier
@@ -5702,7 +6737,11 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 6.765)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4.51)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 4.51 WHERE definition = @definition AND field = @field
 END
 
 -- accuracy modifier
@@ -6068,7 +7107,7 @@ END
 
 ---- Despawn time
 
-SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'despawn_time')
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_lifetime')
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone_unit')
 
@@ -6076,26 +7115,186 @@ IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND 
 BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
 END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
+END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone_unit')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 600000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone_unit')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 900000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
 END
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone_unit')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1200000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
+END
+
+---- Damage
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.001)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 1.001 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.1843)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 1.1843 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3.0287)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 3.0287 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4.818)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 4.818 WHERE definition = @definition AND field = @field
+END
+
+---- Cycle
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'turret_cycle_time_modifier')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.625)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.625 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.625)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.625 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.714)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.714 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.714)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.714 WHERE definition = @definition AND field = @field
+END
+
+---- Accuracy
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'accuracy_modifier')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.7)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.7 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.7)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.7 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.6)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.6 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 0.6)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.6 WHERE definition = @definition AND field = @field
 END
 
 GO
@@ -6370,7 +7569,11 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.5015)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.001)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 1.001 WHERE definition = @definition AND field = @field
 END
 
 -- accuracy modifier
@@ -6437,7 +7640,11 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.7765)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.1843)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 1.1843 WHERE definition = @definition AND field = @field
 END
 
 -- accuracy modifier
@@ -6504,7 +7711,11 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'damage_modifier
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4.543)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3.0287)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 3.8287 WHERE definition = @definition AND field = @field
 END
 
 -- accuracy modifier
