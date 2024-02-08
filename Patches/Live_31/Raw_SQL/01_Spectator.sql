@@ -36,6 +36,12 @@ BEGIN
 	(788239, 'cf_sentry_turret_guns', 'Sentry Turret Guns', 1, 1)
 END
 
+IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_electronics_equipment_calibration_programs' )
+BEGIN
+	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
+	(100926486, 'cf_electronics_equipment_calibration_programs', 'Electronics Equipment CT', 1, 1)
+END
+
 GO
 
 ---- Add new slot flag
@@ -93,7 +99,7 @@ END
 
 GO
 
----- Create entity defaults for turret launchers
+---- Create entity defaults for remote controllers
 
 DECLARE @categoryFlag INT
 
@@ -441,7 +447,7 @@ BEGIN
 	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3)
 END
 
----- Despawn time
+---- Lifetime
 
 SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_lifetime')
 
@@ -487,6 +493,54 @@ END
 ELSE
 BEGIN
 	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
+END
+
+---- Lifetime modifier
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_lifetime_modifier')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 60000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 60000 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 60000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 60000 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 60000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 60000 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_sentry_turret_unit')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 60000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 60000 WHERE definition = @definition AND field = @field
 END
 
 ---- Damage modifier
@@ -1103,7 +1157,7 @@ END
 
 GO
 
----- Set up aggregate fields for turret launchers
+---- Set up aggregate fields for remote controllers
 
 DECLARE @definition INT
 DECLARE @field INT
@@ -1527,11 +1581,11 @@ SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_heavymec
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_spectator_head')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_spectator_head', 1, 1024, @category, '#slotFlags=48,8,8,8,8,8  #height=f0.10', 1, 3, 3000, 1, 100, 'def_spectator_head_desc', 0, NULL, NULL)
+	('def_spectator_head', 1, 1024, @category, '#slotFlags=4808,8,8,8,8,8  #height=f0.10', 1, 3, 3000, 1, 100, 'def_spectator_head_desc', 0, NULL, NULL)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET options = '#slotFlags=48,8,8,8,8,8  #height=f0.10', mass=3000  WHERE definitionname = 'def_spectator_head'
+	UPDATE entitydefaults SET options = '#slotFlags=4808,8,8,8,8,8  #height=f0.10', mass=3000  WHERE definitionname = 'def_spectator_head'
 END
 
 SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_heavymech_leg')
@@ -1730,21 +1784,31 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2500)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 10000 WHERE definition = @definition AND field = @field
 END
 
 SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_max')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2750)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10000)
+END
+BEGIN
+	UPDATE aggregatevalues SET value = 10000 WHERE definition = @definition AND field = @field
 END
 
 SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_recharge_time')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 720)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1000)
+END
+BEGIN
+	UPDATE aggregatevalues SET value = 1000 WHERE definition = @definition AND field = @field
 END
 
 SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'powergrid_max')
@@ -7953,5 +8017,1273 @@ BEGIN
 	INSERT INTO extensionprerequire (extensionid, requiredextension, requiredlevel)
 	VALUES (@extensionId, @requiredExtension, 6)
 END
+
+GO
+
+--------- CRAFT -----------
+
+---- Position in tech tree ----
+
+DECLARE @parent INT
+DECLARE @spectator INT
+DECLARE @pupeteerT1 INT
+DECLARE @pupeteerT2 INT
+DECLARE @pupeteerT3 INT
+DECLARE @pupeteerT4 INT
+DECLARE @miningTurretT1 INT
+DECLARE @miningTurretT2 INT
+DECLARE @miningTurretT3 INT
+DECLARE @miningTurretT4 INT
+DECLARE @harvestingTurretT1 INT
+DECLARE @harvestingTurretT2 INT
+DECLARE @harvestingTurretT3 INT
+DECLARE @harvestingTurretT4 INT
+DECLARE @sentryTurretT1 INT
+DECLARE @sentryTurretT2 INT
+DECLARE @sentryTurretT3 INT
+DECLARE @sentryTurretT4 INT
+DECLARE @pelistalDroneT1 INT
+DECLARE @pelistalDroneT2 INT
+DECLARE @pelistalDroneT3 INT
+DECLARE @pelistalDroneT4 INT
+DECLARE @nuimqolDroneT1 INT
+DECLARE @nuimqolDroneT2 INT
+DECLARE @nuimqolDroneT3 INT
+DECLARE @nuimqolDroneT4 INT
+DECLARE @thelodicaDroneT1 INT
+DECLARE @thelodicaDroneT2 INT
+DECLARE @thelodicaDroneT3 INT
+DECLARE @thelodicaDroneT4 INT
+
+DECLARE @group INT
+
+SET @parent = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standard_cpu_upgrade')
+SET @spectator = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_bot')
+SET @pupeteerT1 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller')
+SET @pupeteerT2 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
+SET @pupeteerT3 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
+SET @pupeteerT4 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
+SET @miningTurretT1 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret_unit')
+SET @miningTurretT2 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_mining_turret_unit')
+SET @miningTurretT3 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_mining_turret_unit')
+SET @miningTurretT4 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_mining_turret_unit')
+SET @harvestingTurretT1 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_harvesting_turret_unit')
+SET @harvestingTurretT2 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_harvesting_turret_unit')
+SET @harvestingTurretT3 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_harvesting_turret_unit')
+SET @harvestingTurretT4 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_harvesting_turret_unit')
+SET @sentryTurretT1 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret_unit')
+SET @sentryTurretT2 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_sentry_turret_unit')
+SET @sentryTurretT3 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_sentry_turret_unit')
+SET @sentryTurretT4 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_sentry_turret_unit')
+SET @pelistalDroneT1 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone_unit')
+SET @pelistalDroneT2 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone_unit')
+SET @pelistalDroneT3 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone_unit')
+SET @pelistalDroneT4 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone_unit')
+SET @nuimqolDroneT1 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit')
+SET @nuimqolDroneT2 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit')
+SET @nuimqolDroneT3 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit')
+SET @nuimqolDroneT4 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit')
+SET @thelodicaDroneT1 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone_unit')
+SET @thelodicaDroneT2 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone_unit')
+SET @thelodicaDroneT3 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone_unit')
+SET @thelodicaDroneT4 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone_unit')
+
+SET @group = (SELECT TOP 1 id FROM [techtreegroups] WHERE name = 'common2')
+
+DELETE FROM techtree WHERE childdefinition IN (@spectator,@pupeteerT1,@pupeteerT2,@pupeteerT3,@pupeteerT4,@miningTurretT1,@miningTurretT2,@miningTurretT3,@miningTurretT4,
+@harvestingTurretT1,@harvestingTurretT2,@harvestingTurretT3,@harvestingTurretT4,@sentryTurretT1,@sentryTurretT2,@sentryTurretT3,@sentryTurretT4,
+@pelistalDroneT1,@pelistalDroneT2,@pelistalDroneT3,@pelistalDroneT4,@nuimqolDroneT1,@nuimqolDroneT2,@nuimqolDroneT3,@nuimqolDroneT4,
+@thelodicaDroneT1,@thelodicaDroneT2,@thelodicaDroneT3,@thelodicaDroneT4)
+
+INSERT INTO [techtree] (parentdefinition, childdefinition, groupID, x, y, enablerextensionid) VALUES
+	(@parent, @spectator, @group, 1, 20, NULL),
+	(@spectator, @pupeteerT1, @group, 2, 20, NULL),
+	(@pupeteerT1, @pupeteerT2, @group, 3, 20, NULL),
+	(@pupeteerT2, @pupeteerT3, @group, 4, 20, NULL),
+	(@pupeteerT3, @pupeteerT4, @group, 5, 20, NULL),
+	(@pupeteerT1, @miningTurretT1, @group, 3, 21, NULL),
+	(@miningTurretT1, @miningTurretT2, @group, 4, 21, NULL),
+	(@miningTurretT2, @miningTurretT3, @group, 5, 21, NULL),
+	(@miningTurretT3, @miningTurretT4, @group, 6, 21, NULL),
+	(@pupeteerT1, @harvestingTurretT1, @group, 3, 22, NULL),
+	(@harvestingTurretT1, @harvestingTurretT2, @group, 4, 22, NULL),
+	(@harvestingTurretT2, @harvestingTurretT3, @group, 5, 22, NULL),
+	(@harvestingTurretT3, @harvestingTurretT4, @group, 6, 22, NULL),
+	(@pupeteerT1, @sentryTurretT1, @group, 3, 23, NULL),
+	(@sentryTurretT1, @sentryTurretT2, @group, 4, 23, NULL),
+	(@sentryTurretT2, @sentryTurretT3, @group, 5, 23, NULL),
+	(@sentryTurretT3, @sentryTurretT4, @group, 6, 23, NULL),
+	(@sentryTurretT1, @pelistalDroneT1, @group, 4, 24, NULL),
+	(@pelistalDroneT1, @pelistalDroneT2, @group, 5, 24, NULL),
+	(@pelistalDroneT2, @pelistalDroneT3, @group, 6, 24, NULL),
+	(@pelistalDroneT3, @pelistalDroneT4, @group, 7, 24, NULL),
+	(@sentryTurretT1, @nuimqolDroneT1, @group, 4, 25, NULL),
+	(@nuimqolDroneT1, @nuimqolDroneT2, @group, 5, 25, NULL),
+	(@nuimqolDroneT2, @nuimqolDroneT3, @group, 6, 25, NULL),
+	(@nuimqolDroneT3, @nuimqolDroneT4, @group, 7, 25, NULL),
+	(@sentryTurretT1, @thelodicaDroneT1, @group, 4, 26, NULL),
+	(@thelodicaDroneT1, @thelodicaDroneT2, @group, 5, 26, NULL),
+	(@thelodicaDroneT2, @thelodicaDroneT3, @group, 6, 26, NULL),
+	(@thelodicaDroneT3, @thelodicaDroneT4, @group, 7, 26, NULL)
+
+GO
+
+---- Create entity defaults for Spectator prototype
+
+DECLARE @category INT
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_heavymech_chassis')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_spectator_chassis_pr')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_spectator_chassis_pr', 1, 1024, @category, '#slotFlags=4d3,6d0 #height=f2.00 #decay=n500', 1, 100, 78000, 1, 100, 'def_spectator_chassis_desc', 0, NULL, NULL)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET options = '#slotFlags=4d3,6d0 #height=f2.00 #decay=n500', mass=78000  WHERE definitionname = 'def_spectator_chassis_pr'
+END
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_heavymech_head')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_spectator_head_pr')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_spectator_head_pr', 1, 1024, @category, '#slotFlags=4808,8,8,8,8,8  #height=f0.10', 1, 3, 3000, 1, 100, 'def_spectator_head_desc', 0, NULL, NULL)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET options = '#slotFlags=4808,8,8,8,8,8  #height=f0.10', mass=3000  WHERE definitionname = 'def_spectator_head_pr'
+END
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_heavymech_leg')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_spectator_leg_pr')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_spectator_leg_pr', 1, 1024, @category, '#slotFlags=420,20,20,20,20  #height=f1.10', 1, 20, 18000, 1, 100, 'def_spectator_leg_desc', 0, NULL, NULL)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET options = '#slotFlags=420,20,20,20,20  #height=f1.10', mass=18000  WHERE definitionname = 'def_spectator_leg_pr'
+END
+
+DECLARE @head INT
+DECLARE @chassis INT
+DECLARE @leg INT
+DECLARE @cargo INT
+
+SET @head = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_head_pr')
+SET @chassis = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_chassis_pr')
+SET @leg = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_leg_pr')
+SET @cargo = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_robot_inventory_spectator')
+
+SET @category = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_combat_command_robots')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_spectator_bot_pr')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_spectator_bot_pr', 1, 0, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo, '#tier=$tierlevel_pr'), 1, 123, 0, 0, 100, 'def_spectator_bot_desc', 1, 2, NULL)
+END
+
+GO
+
+---- Create robot definitions and it's template and link them
+
+DECLARE @robot INT
+DECLARE @head INT
+DECLARE @chassis INT
+DECLARE @leg INT
+DECLARE @cargo INT
+
+SET @robot = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_bot_pr')
+SET @head = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_head_pr')
+SET @chassis = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_chassis_pr')
+SET @leg = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_leg_pr')
+SET @cargo = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_robot_inventory_spectator')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'spectator_pr_empty')
+BEGIN
+	INSERT INTO robottemplates (name, description, note) VALUES
+	('spectator_pr_empty', CONCAT('#robot=i', FORMAT(@robot, 'X'), '#head=i', FORMAT(@head, 'X'), '#chassis=i', FORMAT(@chassis, 'X'), '#leg=i', FORMAT(@leg, 'X'), '#container=i', FORMAT(@cargo, 'X')), 'Spectator')
+END
+
+DECLARE @template INT
+
+SET @template = (SELECT TOP 1 id FROM robottemplates WHERE name = 'spectator_pr_empty')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplaterelation WHERE definition = @robot AND templateid = @template)
+BEGIN
+	INSERT INTO robottemplaterelation (definition, templateid, itemscoresum, raceid, note) VALUES
+	(@robot, @template, 0, 0, 'def_spectator_pr_bot')
+END
+
+GO
+
+---- Set up aggregate fields for Spectator
+
+DECLARE @definition INT
+DECLARE @field INT
+
+-- Legs
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_leg_pr')
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'slope')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'speed_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 1.7)
+END
+
+-- Head
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_head_pr')
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cpu_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 515)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locked_targets_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 30)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10000)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'sensor_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 90)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'blob_emission')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 4)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'blob_emission_radius')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 20)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'blob_level_low')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 75)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'blob_level_high')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 340)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'detection_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 95)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'stealth_strength')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 75)
+END
+
+
+-- Chassis
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_chassis_pr')
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'ammo_reload_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10000)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2500)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2750)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_recharge_time')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 720)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'powergrid_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 845)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_chemical')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 30)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_explosive')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 45)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_kinetic')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 45)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_thermal')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 45)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'signature_radius')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 23)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'reactor_radiation')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 7)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'mine_detection_range')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 7)
+END
+
+GO
+
+---- Add enabler extensions for Spectator prototype
+
+DECLARE @definition INT
+DECLARE @extension INT
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_bot_pr')
+
+SET @extension = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_command_robotics')
+
+IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AND extensionid = @extension)
+BEGIN
+	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
+	(@definition, @extension, 4)
+END
+
+SET @extension = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_glider_specialist')
+
+IF NOT EXISTS (SELECT 1 FROM enablerextensions WHERE definition = @definition AND extensionid = @extension)
+BEGIN
+	INSERT INTO enablerextensions (definition, extensionid, extensionlevel) VALUES
+	(@definition, @extension, 1)
+END
+
+GO
+
+---- Add chassis bonuses and link them with extensions and aggregate fields
+
+DECLARE @definition INT
+DECLARE @extension INT
+DECLARE @field INT
+
+-- Chassis
+    
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_chassis_pr')
+
+SET @extension = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_command_robotics')
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_chemical')
+
+IF NOT EXISTS (SELECT 1 FROM chassisbonus WHERE definition = @definition AND extension = @extension AND targetpropertyID = @field)
+BEGIN
+	INSERT INTO chassisbonus (definition, extension, bonus, targetpropertyID, effectenhancer) VALUES
+	(@definition, @extension, 3, @field, 0)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_explosive')
+
+IF NOT EXISTS (SELECT 1 FROM chassisbonus WHERE definition = @definition AND extension = @extension AND targetpropertyID = @field)
+BEGIN
+	INSERT INTO chassisbonus (definition, extension, bonus, targetpropertyID, effectenhancer) VALUES
+	(@definition, @extension, 3, @field, 0)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_kinetic')
+
+IF NOT EXISTS (SELECT 1 FROM chassisbonus WHERE definition = @definition AND extension = @extension AND targetpropertyID = @field)
+BEGIN
+	INSERT INTO chassisbonus (definition, extension, bonus, targetpropertyID, effectenhancer) VALUES
+	(@definition, @extension, 3, @field, 0)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_thermal')
+
+IF NOT EXISTS (SELECT 1 FROM chassisbonus WHERE definition = @definition AND extension = @extension AND targetpropertyID = @field)
+BEGIN
+	INSERT INTO chassisbonus (definition, extension, bonus, targetpropertyID, effectenhancer) VALUES
+	(@definition, @extension, 3, @field, 0)
+END
+
+SET @extension = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_glider_specialist')
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM chassisbonus WHERE definition = @definition AND extension = @extension AND targetpropertyID = @field)
+BEGIN
+	INSERT INTO chassisbonus (definition, extension, bonus, targetpropertyID, effectenhancer) VALUES
+	(@definition, @extension, 0.01, @field, 0)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'reactor_radiation_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM chassisbonus WHERE definition = @definition AND extension = @extension AND targetpropertyID = @field)
+BEGIN
+	INSERT INTO chassisbonus (definition, extension, bonus, targetpropertyID, effectenhancer) VALUES
+	(@definition, @extension, -0.02, @field, 0)
+END
+
+-- Head (whyyyy)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_head_pr')
+
+SET @extension = (SELECT TOP 1 extensionid FROM extensions WHERE extensionname = 'ext_command_robotics')
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_max_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM chassisbonus WHERE definition = @definition AND extension = @extension AND targetpropertyID = @field)
+BEGIN
+	INSERT INTO chassisbonus (definition, extension, bonus, targetpropertyID, effectenhancer) VALUES
+	(@definition, @extension, 0.03, @field, 0)
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'massiveness')
+
+IF NOT EXISTS (SELECT 1 FROM chassisbonus WHERE definition = @definition AND extension = @extension AND targetpropertyID = @field)
+BEGIN
+	INSERT INTO chassisbonus (definition, extension, bonus, targetpropertyID, effectenhancer) VALUES
+	(@definition, @extension, 0.01, @field, 0)
+END
+
+-- Leg
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_leg_pr')
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'shield_absorbtion_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM chassisbonus WHERE definition = @definition AND extension = @extension AND targetpropertyID = @field)
+BEGIN
+	INSERT INTO chassisbonus (definition, extension, bonus, targetpropertyID, effectenhancer) VALUES
+	(@definition, @extension, 0.01, @field, 0)
+END
+
+GO
+
+-----------------------------
+
+---- Create entity defaults for remote controllers prototypes
+
+DECLARE @categoryFlag INT
+
+SET @categoryFlag = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_remote_controllers')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller_pr')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named1_remote_controller_pr', 1, 2359320, @categoryFlag, '#moduleFlag=i808  #ammoCapacity=i3  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t2_pr', 1, 1, 1, 0, 100, 'def_standart_remote_controller_desc', 1, 1, 2)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET options='#moduleFlag=i808  #ammoCapacity=i3  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t2_pr', mass=1 WHERE definitionname = 'def_named1_remote_controller_pr'
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller_pr')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named2_remote_controller_pr', 1, 2359320, @categoryFlag, '#moduleFlag=i808  #ammoCapacity=i4  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t3_pr', 1, 1, 1, 0, 100, 'def_standart_remote_controller_desc', 1, 1, 3)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET options='#moduleFlag=i808  #ammoCapacity=i4  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t3_pr', mass=1 WHERE definitionname = 'def_named2_remote_controller_pr'
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller_pr')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named3_remote_controller_pr', 1, 2359320, @categoryFlag, '#moduleFlag=i808  #ammoCapacity=i5  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t4_pr', 1, 1, 1, 0, 100, 'def_standart_remote_controller_desc', 1, 1, 4)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET options='#moduleFlag=i808  #ammoCapacity=i5  #ammoType=L200a  #powergrid_usage=f0.00  #cpu_usage=f0.00  #tier=$tierlevel_t4_pr', mass=1 WHERE definitionname = 'def_named3_remote_controller_pr'
+END
+
+GO
+
+---- Set up aggregate fields for remote controllers
+
+DECLARE @definition INT
+DECLARE @field INT
+
+---- Max bandwidth
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_bandwidth_max')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 5 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 5 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 5 WHERE definition = @definition AND field = @field
+END
+
+---- Accumulator usage
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_usage')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 135)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 135 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 165)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 165 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 180)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 180 WHERE definition = @definition AND field = @field
+END
+
+---- CPU usage
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cpu_usage')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 140)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 154 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 164)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 180 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 180)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 200 WHERE definition = @definition AND field = @field
+END
+
+---- Cycle time
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cycle_time')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 3000 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2500)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 2500 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 2000 WHERE definition = @definition AND field = @field
+END
+
+---- Optimal range
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 20)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 20 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 25)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 25 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 30)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 30 WHERE definition = @definition AND field = @field
+END
+
+---- Reactor usage
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'powergrid_usage')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 135)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 135 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 165)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 165 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 180)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 180 WHERE definition = @definition AND field = @field
+END
+
+---- Rcu Lifetime
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_lifetime')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 300000)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300000 WHERE definition = @definition AND field = @field
+END
+
+---- Drones operational range
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_operational_range')
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 30)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 30 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 30)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 30 WHERE definition = @definition AND field = @field
+END
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller_pr')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 30)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 30 WHERE definition = @definition AND field = @field
+END
+
+GO
+
+-------------------------------------------------------------
+
+---- Create CT for Spectator
+
+DECLARE @categoryFlags INT
+
+SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_heavymech_calibration_programs')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_spectator_bot_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_spectator_bot_cprg', 1, 1024, @categoryFlags, '#tier=$tierlevel_t3', NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 3)
+END
+
+---- Create CT for remote controllers
+
+SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_electronics_equipment_calibration_programs')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_standart_remote_controller_cprg', 1, 1024, @categoryFlags, '#tier=$tierlevel_t1', NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 1)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named1_remote_controller_cprg', 1, 1024, @categoryFlags, '#tier=$tierlevel_t2', NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 2)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named2_remote_controller_cprg', 1, 1024, @categoryFlags, '#tier=$tierlevel_t3', NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 3)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named3_remote_controller_cprg', 1, 1024, @categoryFlags, '#tier=$tierlevel_t4', NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 4)
+END
+
+GO
+
+---- Production and prorotyping cost in materials, modules and components ----
+
+DECLARE @definition INT
+
+DECLARE @titanium INT
+DECLARE @cryoperine INT
+DECLARE @axicoline INT
+DECLARE @plasteosine INT
+DECLARE @flux INT
+
+DECLARE @biotichrin INT
+DECLARE @polynitrocol INT
+DECLARE @polynucleit INT
+DECLARE @phlobotil INT
+
+DECLARE @bryochite INT
+DECLARE @alligior INT
+DECLARE @espitium INT
+DECLARE @hydrobenol INT
+
+DECLARE @common_basic_components INT
+DECLARE @common_advanced_components INT
+DECLARE @common_expert_components INT
+DECLARE @pelistal_expert_components INT
+DECLARE @nuimqol_expert_components INT
+DECLARE @thelodica_expert_components INT
+
+DECLARE @gamma_syndicate_shards INT
+
+DECLARE @remote_controller_t1 INT
+DECLARE @remote_controller_t2 INT
+DECLARE @remote_controller_t3 INT
+
+SET @titanium = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_titanium')
+SET @cryoperine = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_axicol')
+SET @axicoline = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_axicoline')
+SET @plasteosine = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_plasteosine')
+SET @flux = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_specimen_sap_item_flux')
+
+SET @biotichrin = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_biotichrin')
+SET @polynitrocol = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_polynitrocol')
+SET @polynucleit = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_polynucleit')
+SET @phlobotil = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_phlobotil')
+
+SET @alligior = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_alligior')
+SET @hydrobenol = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_hydrobenol')
+SET @espitium = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_espitium')
+SET @bryochite = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_unimetal') -- unimetal Y U NO bryochite
+
+SET @common_basic_components = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_robotshard_common_basic')
+SET @common_advanced_components = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_robotshard_common_advanced')
+SET @common_expert_components = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_robotshard_common_expert')
+
+SET @pelistal_expert_components = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_robotshard_pelistal_expert')
+SET @nuimqol_expert_components = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_robotshard_nuimqol_expert')
+SET @thelodica_expert_components = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_robotshard_thelodica_expert')
+
+SET @gamma_syndicate_shards = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_material_boss_gamma_syndicate')
+
+SET @remote_controller_t1 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller')
+SET @remote_controller_t2 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
+SET @remote_controller_t3 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
+
+-- Spectator --
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_bot')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @biotichrin, 5000),
+(@definition, @phlobotil, 3000),
+(@definition, @polynucleit, 3000),
+(@definition, @polynitrocol, 3000),
+(@definition, @titanium, 15000),
+(@definition, @plasteosine, 2000),
+(@definition, @cryoperine, 3500),
+(@definition, @hydrobenol, 3000),
+(@definition, @espitium, 10000),
+(@definition, @alligior, 5000),
+(@definition, @bryochite, 40000),
+(@definition, @flux, 500),
+(@definition, @gamma_syndicate_shards, 200)
+
+-- Spectator Prototype --
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_bot_pr')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @biotichrin, 5000),
+(@definition, @phlobotil, 3000),
+(@definition, @polynucleit, 3000),
+(@definition, @polynitrocol, 3000),
+(@definition, @titanium, 15000),
+(@definition, @plasteosine, 2000),
+(@definition, @cryoperine, 3500),
+(@definition, @hydrobenol, 3000),
+(@definition, @espitium, 10000),
+(@definition, @alligior, 5000),
+(@definition, @bryochite, 40000),
+(@definition, @flux, 500),
+(@definition, @gamma_syndicate_shards, 200),
+(@definition, @common_expert_components, 45),
+(@definition, @pelistal_expert_components, 45),
+(@definition, @nuimqol_expert_components, 45),
+(@definition, @thelodica_expert_components, 45)
+
+
+-- Remote controller T1 --
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 50),
+(@definition, @cryoperine, 250),
+(@definition, @axicoline, 100),
+(@definition, @espitium, 50)
+
+-- Remote controller T2 --
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 50),
+(@definition, @cryoperine, 250),
+(@definition, @axicoline, 100),
+(@definition, @espitium, 50),
+(@definition, @remote_controller_t1, 1)
+
+-- Remote controller T2 prototype --
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller_pr')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 50),
+(@definition, @cryoperine, 250),
+(@definition, @axicoline, 100),
+(@definition, @espitium, 50),
+(@definition, @remote_controller_t1, 1),
+(@definition, @common_basic_components, 30)
+
+-- Remote controller T3 --
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 50),
+(@definition, @cryoperine, 250),
+(@definition, @axicoline, 100),
+(@definition, @espitium, 175),
+(@definition, @hydrobenol, 50),
+(@definition, @remote_controller_t2, 1)
+
+-- Remote controller T3 prototype --
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller_pr')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 50),
+(@definition, @cryoperine, 250),
+(@definition, @axicoline, 100),
+(@definition, @espitium, 175),
+(@definition, @hydrobenol, 50),
+(@definition, @remote_controller_t2, 1),
+(@definition, @common_basic_components, 20),
+(@definition, @common_advanced_components, 20)
+
+-- Remote controller T4 --
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 50),
+(@definition, @cryoperine, 250),
+(@definition, @axicoline, 100),
+(@definition, @espitium, 300),
+(@definition, @hydrobenol, 100),
+(@definition, @bryochite, 50),
+(@definition, @remote_controller_t3, 1)
+
+-- Remote controller T4 prototype --
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller_pr')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 50),
+(@definition, @cryoperine, 250),
+(@definition, @axicoline, 100),
+(@definition, @espitium, 300),
+(@definition, @hydrobenol, 100),
+(@definition, @bryochite, 50),
+(@definition, @remote_controller_t3, 1),
+(@definition, @common_basic_components, 15),
+(@definition, @common_advanced_components, 30),
+(@definition, @common_expert_components, 45)
+
+GO
+
+---- Research levels ----
+
+DECLARE @definition INT
+DECLARE @calibration INT
+
+-- Spectator prototype
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_bot_pr')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_bot_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 8, @calibration, 1)
+
+-- Remote controller T1
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 5, @calibration, 1)
+
+-- Remote controller T2 prototype
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller_pr')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 6, @calibration, 1)
+
+-- Remote controller T3 prototype
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller_pr')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 7, @calibration, 1)
+
+-- Remote controller T4 prototype
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller_pr')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 8, @calibration, 1)
+
+GO
+
+----Research cost ----
+
+DECLARE @definition INT
+DECLARE @common INT
+DECLARE @hightech INT
+
+SET @common = (SELECT TOP 1 id FROM techtreepointtypes WHERE name = 'common')
+SET @hightech = (SELECT TOP 1 id FROM techtreepointtypes WHERE name = 'hitech')
+
+-- Spectator
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_bot')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 150000),
+(@definition, @hightech, 150000)
+
+-- Remote controller T1
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 12800)
+
+-- Remote controller T2
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 25000)
+
+-- Remote controller T3
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 43200)
+
+-- Remote controller T4
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 34300),
+(@definition, @hightech, 17150)
+
+GO
+
+---- Link items and their prototypes----
+
+DECLARE @item int
+DECLARE @prototype int
+
+-- Spectator
+
+SET @item = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname LIKE 'def_spectator_bot')
+SET @prototype = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname LIKE 'def_spectator_bot_pr')
+
+DELETE FROM prototypes WHERE definition = @item AND prototype = @prototype
+
+INSERT INTO prototypes (definition, prototype) VALUES (@item, @prototype)
+
+-- Remote controller T2
+
+SET @item = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname LIKE 'def_named1_remote_controller')
+SET @prototype = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname LIKE 'def_named1_remote_controller_pr')
+
+DELETE FROM prototypes WHERE definition = @item AND prototype = @prototype
+
+INSERT INTO prototypes (definition, prototype) VALUES (@item, @prototype)
+
+-- Remote controller T3
+
+SET @item = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname LIKE 'def_named2_remote_controller')
+SET @prototype = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname LIKE 'def_named2_remote_controller_pr')
+
+DELETE FROM prototypes WHERE definition = @item AND prototype = @prototype
+
+INSERT INTO prototypes (definition, prototype) VALUES (@item, @prototype)
+
+-- Remote controller T4
+
+SET @item = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname LIKE 'def_named3_remote_controller')
+SET @prototype = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname LIKE 'def_named3_remote_controller_pr')
+
+DELETE FROM prototypes WHERE definition = @item AND prototype = @prototype
+
+INSERT INTO prototypes (definition, prototype) VALUES (@item, @prototype)
 
 GO
