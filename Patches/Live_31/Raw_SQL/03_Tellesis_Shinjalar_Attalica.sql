@@ -1155,6 +1155,485 @@ INNER JOIN entitydefaults t3 ON t4.categoryflags = t3.categoryflags
 WHERE nl.definition = @sourceDefinition
 AND t4.tiertype = 1 and  t4.tierlevel = 4 and t3.tiertype = 1 and t3.tierlevel = 3
 
+--
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_npc_tellesis_spectator_miniboss')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_npc_tellesis_spectator_miniboss', 1, 1024, 1167, '', 'Spectator, Nuimqol Drones, Shield', 1, 0, 0, 0, 100, 'def_npc_tellesis_spectator_miniboss_desc', 1, NULL, NULL)
+END
+
+SET @targetDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_npc_tellesis_spectator_miniboss')
+
+DELETE FROM aggregatevalues WHERE definition = @targetDefinition
+
+DECLARE @field INT
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'armor_max_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @targetDefinition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@targetDefinition, @field, 3)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 3 WHERE definition = @targetDefinition AND field = @field
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_max_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @targetDefinition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@targetDefinition, @field, 3)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 3 WHERE definition = @targetDefinition AND field = @field
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_recharge_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @targetDefinition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@targetDefinition, @field, 1)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 1 WHERE definition = @targetDefinition AND field = @field
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'energy_vampired_amount_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @targetDefinition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@targetDefinition, @field, 1.5)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 1.5 WHERE definition = @targetDefinition AND field = @field
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locked_targets_max')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @targetDefinition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@targetDefinition, @field, 10)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 10 WHERE definition = @targetDefinition AND field = @field
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locked_targets_max_bonus')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @targetDefinition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@targetDefinition, @field, 10)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 10 WHERE definition = @targetDefinition AND field = @field
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_range_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @targetDefinition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@targetDefinition, @field, 4.5)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 4.5 WHERE definition = @targetDefinition AND field = @field
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'locking_time_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @targetDefinition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@targetDefinition, @field, 0.7)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 0.7 WHERE definition = @targetDefinition AND field = @field
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_chemical')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @targetDefinition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@targetDefinition, @field, 200)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 200 WHERE definition = @targetDefinition AND field = @field
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_explosive')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @targetDefinition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@targetDefinition, @field, 200)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 200 WHERE definition = @targetDefinition AND field = @field
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_kinetic')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @targetDefinition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@targetDefinition, @field, 200)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 200 WHERE definition = @targetDefinition AND field = @field
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'resist_thermal')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @targetDefinition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@targetDefinition, @field, 200)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 200 WHERE definition = @targetDefinition AND field = @field
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'sensor_strength_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @targetDefinition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@targetDefinition, @field, 300)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 300 WHERE definition = @targetDefinition AND field = @field
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'shield_absorbtion_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @targetDefinition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@targetDefinition, @field, 3)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 3 WHERE definition = @targetDefinition AND field = @field
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_bandwidth_max_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @targetDefinition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@targetDefinition, @field, 10)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 15 WHERE definition = @targetDefinition AND field = @field
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'remote_control_operational_range_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @targetDefinition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@targetDefinition, @field, 50)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 50 WHERE definition = @targetDefinition AND field = @field
+END
+
+SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'optimal_range_modifier')
+
+IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @targetDefinition AND field = @field)
+BEGIN
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@targetDefinition, @field, 3)
+END
+ELSE
+BEGIN
+	UPDATE aggregatevalues SET value = 3 WHERE definition = @targetDefinition AND field = @field
+END
+
+--
+
+DECLARE @robot INT
+DECLARE @head INT
+DECLARE @chassis INT
+DECLARE @leg INT
+DECLARE @inventory INT
+DECLARE @shield INT
+DECLARE @shield_hardener INT
+DECLARE @remote_controller INT
+DECLARE @recharger INT
+DECLARE @drainer INT
+DECLARE @sensor_booster INT
+DECLARE @combat_drone INT
+
+SET @robot = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_bot')
+SET @head = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_head')
+SET @chassis = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_chassis')
+SET @leg = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_leg')
+SET @inventory = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_robot_inventory_spectator')
+SET @shield = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standard_medium_shield_generator')
+SET @shield_hardener = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standard_shield_hardener')
+SET @remote_controller = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller')
+SET @recharger = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standard_core_recharger')
+SET @drainer = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standard_medium_energy_vampire')
+SET @sensor_booster = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standard_sensor_booster')
+SET @combat_drone = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit')
+
+IF NOT EXISTS (SELECT 1 FROM robottemplates WHERE name = 'Spectator_Nuimqol_Drones_Shield')
+BEGIN
+	INSERT INTO robottemplates (name, description, note) VALUES
+	('Spectator_Nuimqol_Drones_Shield', CONCAT(
+		'#robot=i',
+		FORMAT(@robot, 'X'),
+		'#head=i',
+		FORMAT(@head, 'X'),
+		'#chassis=i',
+		FORMAT(@chassis, 'X'),
+		'#leg=i',
+		FORMAT(@leg, 'X'),
+		'#container=i',
+		FORMAT(@inventory, 'X'),
+		'#headModules=[|m0=[|definition=i',
+		FORMAT(@remote_controller, 'X'),
+		'|slot=i1|ammoDefinition=i',
+		FORMAT(@combat_drone, 'X'),
+		'|ammoQuantity=i1]|m1=[|definition=i',
+		FORMAT(@sensor_booster, 'X'),
+		'|slot=i2]|m2=[|definition=i',
+		FORMAT(@sensor_booster, 'X'),
+		'|slot=i3]|m3=[|definition=i',
+		FORMAT(@shield_hardener, 'X'),
+		'|slot=i4]|m4=[|definition=i',
+		FORMAT(@shield_hardener, 'X'),
+		'|slot=i5]|m5=[|definition=i',
+		FORMAT(@shield_hardener, 'X'),
+		'|slot=i6]]#chassisModules=[|m0=[|definition=i',
+		FORMAT(@drainer, 'X'),
+		'|slot=i1]]#legModules=[|m0=[|definition=i',
+		FORMAT(@shield, 'X'),
+		'|slot=i1]|m1=[|definition=i',
+		FORMAT(@recharger, 'X'),
+		'|slot=i2]|m2=[|definition=i',
+		FORMAT(@recharger, 'X'),
+		'|slot=i2]|m3=[|definition=i',
+		FORMAT(@recharger, 'X'),
+		'|slot=i4]|m4=[|definition=i',
+		FORMAT(@recharger, 'X'),
+		'|slot=i5]]'), 'NPC Shielded Spectator with Nuimqol Drones')
+END
+ELSE
+BEGIN
+	UPDATE robottemplates SET description = CONCAT(
+		'#robot=i',
+		FORMAT(@robot, 'X'),
+		'#head=i',
+		FORMAT(@head, 'X'),
+		'#chassis=i',
+		FORMAT(@chassis, 'X'),
+		'#leg=i',
+		FORMAT(@leg, 'X'),
+		'#container=i',
+		FORMAT(@inventory, 'X'),
+		'#headModules=[|m0=[|definition=i',
+		FORMAT(@remote_controller, 'X'),
+		'|slot=i1|ammoDefinition=i',
+		FORMAT(@combat_drone, 'X'),
+		'|ammoQuantity=i1]|m1=[|definition=i',
+		FORMAT(@sensor_booster, 'X'),
+		'|slot=i2]|m2=[|definition=i',
+		FORMAT(@sensor_booster, 'X'),
+		'|slot=i3]|m3=[|definition=i',
+		FORMAT(@shield_hardener, 'X'),
+		'|slot=i4]|m4=[|definition=i',
+		FORMAT(@shield_hardener, 'X'),
+		'|slot=i5]|m5=[|definition=i',
+		FORMAT(@shield_hardener, 'X'),
+		'|slot=i6]]#chassisModules=[|m0=[|definition=i',
+		FORMAT(@drainer, 'X'),
+		'|slot=i1]]#legModules=[|m0=[|definition=i',
+		FORMAT(@shield, 'X'),
+		'|slot=i1]|m1=[|definition=i',
+		FORMAT(@recharger, 'X'),
+		'|slot=i2]|m1=[|definition=i',
+		FORMAT(@recharger, 'X'),
+		'|slot=i2]|m1=[|definition=i',
+		FORMAT(@recharger, 'X'),
+		'|slot=i4]|m1=[|definition=i',
+		FORMAT(@recharger, 'X'),
+		'|slot=i5]]')
+	WHERE name = 'Spectator_Nuimqol_Drones_Shield'
+END
+
+DECLARE @templateId INT
+
+SET @templateId = (SELECT TOP 1 id FROM robottemplates WHERE name = 'Spectator_Nuimqol_Drones_Shield')
+
+DELETE FROM robottemplaterelation WHERE definition = @targetDefinition
+
+INSERT INTO robottemplaterelation (definition, templateid, raceid, missionlevel, missionleveloverride, killep, note) VALUES
+(@targetDefinition, @templateId, 2, NULL, NULL, 1500, 'def_npc_tellesis_spectator_miniboss')
+
+DELETE FROM npcloot WHERE definition = @targetDefinition
+
+DECLARE @lootDefinition INT
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standard_core_recharger')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 1, 0.35, 0, 0, 1),
+(@targetDefinition, @lootDefinition, 1, 0.35, 0, 0, 1),
+(@targetDefinition, @lootDefinition, 1, 0.35, 0, 0, 1),
+(@targetDefinition, @lootDefinition, 1, 0.35, 0, 0, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standard_medium_shield_generator')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 1, 0.35, 0, 0, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standard_shield_hardener')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 1, 0.35, 0, 0, 1),
+(@targetDefinition, @lootDefinition, 1, 0.35, 0, 0, 1),
+(@targetDefinition, @lootDefinition, 1, 0.35, 0, 0, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 1, 0.15, 0, 0, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standard_medium_energy_vampire')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 1, 0.25, 0, 0, 1)
+
+
+
+--
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_core_recharger')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 1, 0.035, 0, 0, 1),
+(@targetDefinition, @lootDefinition, 1, 0.035, 0, 0, 1),
+(@targetDefinition, @lootDefinition, 1, 0.035, 0, 0, 1),
+(@targetDefinition, @lootDefinition, 1, 0.035, 0, 0, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_medium_shield_generator')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 1, 0.035, 0, 0, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_shield_hardener')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 1, 0.035, 0, 0, 1),
+(@targetDefinition, @lootDefinition, 1, 0.035, 0, 0, 1),
+(@targetDefinition, @lootDefinition, 1, 0.027, 0, 0, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 1, 0.015, 0, 0, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_medium_energy_vampire')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 1, 0.025, 0, 0, 1)
+
+--
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_core_recharger')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 1, 0.0175, 0, 0, 1),
+(@targetDefinition, @lootDefinition, 1, 0.0175, 0, 0, 1),
+(@targetDefinition, @lootDefinition, 1, 0.0175, 0, 0, 1),
+(@targetDefinition, @lootDefinition, 1, 0.0175, 0, 0, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_medium_shield_generator')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 1, 0.0175, 0, 0, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_shield_hardener')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 1, 0.0175, 0, 0, 1),
+(@targetDefinition, @lootDefinition, 1, 0.0175, 0, 0, 1),
+(@targetDefinition, @lootDefinition, 1, 0.0175, 0, 0, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 1, 0.0075, 0, 0, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_medium_energy_vampire')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 1, 0.0125, 0, 0, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_mk3_A_CT_capsule')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 1, 1, 1, 1, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 10, 0.5, 0, 1, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 10, 0.05, 0, 1, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_material_boss_gamma_syndicate')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 200, 0.5, 0, 1, 20)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_material_boss_gamma_syndicate')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 200, 1, 0, 1, 20)
+
+
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_nuimqol_reactor_plasma')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 150000, 1, 0, 1, 75000)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_kernel_nuimqol')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 75000, 1, 0, 1, 37500)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_kernel_hitech')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 75000, 1, 0, 1, 37500)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_kernel_common')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 75000, 1, 0, 1, 37500)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_research_kit_8')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 1, 0.3, 0, 1, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_research_kit_9')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 1, 0.3, 0, 1, 1)
 
 GO
 
@@ -1891,6 +2370,51 @@ IF NOT EXISTS (SELECt 1 FROM npcflock WHERE name = 'observer_02_z6_def_npc_telle
 BEGIN
 INSERT INTO npcflock ([name], presenceid, flockmembercount, [definition], spawnoriginX, spawnoriginY, spawnrangeMin, spawnrangeMax, respawnseconds, totalspawncount, homerange, note, respawnmultiplierlow, [enabled], iscallforhelp, behaviorType, npcSpecialType) VALUES
 	('observer_02_z6_def_npc_tellesis_vagabond_advanced_observer', @presenceid, 1, @definition, 0, 0, 0, 10, 18000, 0, 50, 'tellesis npc', 0.9, 1, 1, 2, 0)
+END
+
+-- spectator 1
+
+IF NOT EXISTS (SELECT 1 FROM npcpresence WHERE name = 'spectator_01_z6' AND spawnid = @spawnid)
+BEGIN
+	INSERT INTO npcpresence (name, topx, topy, bottomx, bottomy, note, spawnid, enabled, roaming, roamingrespawnseconds, presencetype, maxrandomflock, randomcenterx, randomcentery, randomradius, dynamiclifetime, isbodypull, isrespawnallowed, safebodypull, izgroupid, growthseconds) VALUES
+	('spectator_01_z6', 1565, 1535, 1600, 1565, 'Tellesis spectator', @spawnid, 1, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, NULL, NULL)
+END
+ELSE BEGIN
+	UPDATE npcpresence SET enabled = 1 WHERE name = 'spectator_01_z6'
+END
+
+SET @presenceid = (SELECT TOP 1 id FROM npcpresence WHERE name = 'spectator_01_z6')
+
+--
+
+DELETE FROM npcflock WHERE presenceid = @presenceid
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_npc_tellesis_spectator_miniboss')
+
+IF NOT EXISTS (SELECt 1 FROM npcflock WHERE name = 'spectator_01_z6_def_npc_tellesis_spectator_miniboss')
+BEGIN
+INSERT INTO npcflock ([name], presenceid, flockmembercount, [definition], spawnoriginX, spawnoriginY, spawnrangeMin, spawnrangeMax, respawnseconds, totalspawncount, homerange, note, respawnmultiplierlow, [enabled], iscallforhelp, behaviorType, npcSpecialType) VALUES
+	('spectator_01_z6_def_npc_tellesis_spectator_miniboss', @presenceid, 1, @definition, 1580, 1550, 0, 5, 18000, 0, 90, 'tellesis spectator npc', 0.9, 1, 1, 2, 1)
+END
+
+--
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_npc_tellesis_vagabond_shield_l7')
+
+IF NOT EXISTS (SELECt 1 FROM npcflock WHERE name = 'spectator_01_z6_def_npc_tellesis_vagabond_shield_l7')
+BEGIN
+INSERT INTO npcflock ([name], presenceid, flockmembercount, [definition], spawnoriginX, spawnoriginY, spawnrangeMin, spawnrangeMax, respawnseconds, totalspawncount, homerange, note, respawnmultiplierlow, [enabled], iscallforhelp, behaviorType, npcSpecialType) VALUES
+	('spectator_01_z6_def_npc_tellesis_vagabond_shield_l7', @presenceid, 2, @definition, 1580, 1550, 0, 5, 18000, 0, 90, 'tellesis spectator npc', 0.9, 1, 1, 2, 0)
+END
+
+--
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_npc_tellesis_kain_dps_l7')
+
+IF NOT EXISTS (SELECt 1 FROM npcflock WHERE name = 'spectator_01_z6_def_npc_tellesis_kain_dps_l7')
+BEGIN
+INSERT INTO npcflock ([name], presenceid, flockmembercount, [definition], spawnoriginX, spawnoriginY, spawnrangeMin, spawnrangeMax, respawnseconds, totalspawncount, homerange, note, respawnmultiplierlow, [enabled], iscallforhelp, behaviorType, npcSpecialType) VALUES
+	('spectator_01_z6_def_npc_tellesis_kain_dps_l7', @presenceid, 2, @definition, 1580, 1550, 0, 5, 18000, 0, 90, 'tellesis spectator npc', 0.9, 1, 1, 2, 0)
 END
 
 GO
