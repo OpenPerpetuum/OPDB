@@ -42,6 +42,12 @@ BEGIN
 	(100926486, 'cf_electronics_equipment_calibration_programs', 'Electronics Equipment CT', 1, 1)
 END
 
+IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_ct_capsules_robot_syndicate_commandbot' )
+BEGIN
+	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
+	(5519083504795, 'cf_ct_capsules_robot_syndicate_commandbot', 'Syndicate command bot CT capsules', 1, 1)
+END
+
 GO
 
 ---- Add new slot flag
@@ -265,7 +271,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_standart_sentry_turret_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_sentry_turret_unit_desc', 1, 1, 1)
+	('def_standart_sentry_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_sentry_turret_unit_desc', 1, 1, 1)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_standart_sentry_turret_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named1_sentry_turret'), ' #turretType=$Sentry #tier=$tierlevel_t2')
@@ -273,7 +283,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_sentry_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named1_sentry_turret_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_sentry_turret_desc', 1, 1, 2)
+	('def_named1_sentry_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_sentry_turret_desc', 1, 1, 2)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named1_sentry_turret_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named2_sentry_turret'), ' #turretType=$Sentry #tier=$tierlevel_t3')
@@ -281,7 +295,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_sentry_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named2_sentry_turret_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_sentry_turret_unit_desc', 1, 1, 3)
+	('def_named2_sentry_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_sentry_turret_unit_desc', 1, 1, 3)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named2_sentry_turret_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named3_sentry_turret'), ' #turretType=$Sentry #tier=$tierlevel_t4')
@@ -289,7 +307,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_sentry_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named3_sentry_turret_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_sentry_turret_unit_desc', 1, 1, 4)
+	('def_named3_sentry_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_sentry_turret_unit_desc', 1, 1, 4)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named3_sentry_turret_unit'
 END
 
 GO
@@ -1312,7 +1334,7 @@ SET @field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cycle_time')
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10000)
 END
 ELSE
 BEGIN
@@ -1323,7 +1345,7 @@ SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionn
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 3000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 10000)
 END
 ELSE
 BEGIN
@@ -1334,7 +1356,7 @@ SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionn
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2500)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 7500)
 END
 ELSE
 BEGIN
@@ -1345,7 +1367,7 @@ SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionn
 
 IF NOT EXISTS (SELECT 1 FROM aggregatevalues WHERE definition = @definition AND field = @field)
 BEGIN
-	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 2000)
+	INSERT INTO aggregatevalues (definition, field, value) VALUES (@definition, @field, 5000)
 END
 ELSE
 BEGIN
@@ -2774,7 +2796,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_standart_mining_turret_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_mining_turret_unit_desc', 1, 1, 1)
+	('def_standart_mining_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_mining_turret_unit_desc', 1, 1, 1)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_standart_mining_turret_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named1_mining_turret'), ' #turretType=$Mining #tier=$tierlevel_t2')
@@ -2782,7 +2808,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_mining_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named1_mining_turret_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_mining_turret_unit_desc', 1, 1, 2)
+	('def_named1_mining_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_mining_turret_unit_desc', 1, 1, 2)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named1_mining_turret_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named2_mining_turret'), ' #turretType=$Mining #tier=$tierlevel_t3')
@@ -2790,7 +2820,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_mining_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named2_mining_turret_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_mining_turret_unit_desc', 1, 1, 3)
+	('def_named2_mining_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_mining_turret_unit_desc', 1, 1, 3)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named2_mining_turret_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named3_mining_turret'), ' #turretType=$Mining #tier=$tierlevel_t4')
@@ -2798,7 +2832,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_mining_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named3_mining_turret_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_mining_turret_unit_desc', 1, 1, 4)
+	('def_named3_mining_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_mining_turret_unit_desc', 1, 1, 4)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named3_mining_turret_unit'
 END
 
 GO
@@ -3849,7 +3887,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_harvesting_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_standart_harvesting_turret_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_harvesting_turret_unit_desc', 1, 1, 1)
+	('def_standart_harvesting_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_harvesting_turret_unit_desc', 1, 1, 1)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_standart_harvesting_turret_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named1_harvesting_turret'), ' #turretType=$Harvesting #tier=$tierlevel_t2')
@@ -3857,7 +3899,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_harvesting_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named1_harvesting_turret_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_harvesting_turret_unit_desc', 1, 1, 2)
+	('def_named1_harvesting_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_harvesting_turret_unit_desc', 1, 1, 2)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named1_harvesting_turret_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named2_harvesting_turret'), ' #turretType=$Harvesting #tier=$tierlevel_t3')
@@ -3865,7 +3911,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_harvesting_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named2_harvesting_turret_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_harvesting_turret_unit_desc', 1, 1, 3)
+	('def_named2_harvesting_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_harvesting_turret_unit_desc', 1, 1, 3)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named2_harvesting_turret_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named3_harvesting_turret'), ' #turretType=$Harvesting #tier=$tierlevel_t4')
@@ -3873,7 +3923,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_harvesting_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named3_harvesting_turret_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_harvesting_turret_unit_desc', 1, 1, 4)
+	('def_named3_harvesting_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_harvesting_turret_unit_desc', 1, 1, 4)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named3_harvesting_turret_unit'
 END
 
 GO
@@ -4902,7 +4956,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_standart_pelistal_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_pelistal_combat_drone_desc', 1, 1, 1)
+	('def_standart_pelistal_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_pelistal_combat_drone_desc', 1, 1, 1)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_standart_pelistal_combat_drone_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone'), ' #turretType=$CombatDrone #tier=$tierlevel_t2')
@@ -4910,7 +4968,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named1_pelistal_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_pelistal_combat_drone_desc', 1, 1, 2)
+	('def_named1_pelistal_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_pelistal_combat_drone_desc', 1, 1, 2)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named1_pelistal_combat_drone_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone'), ' #turretType=$CombatDrone #tier=$tierlevel_t3')
@@ -4918,7 +4980,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named2_pelistal_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_pelistal_combat_drone_unit_desc', 1, 1, 3)
+	('def_named2_pelistal_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_pelistal_combat_drone_unit_desc', 1, 1, 3)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named2_pelistal_combat_drone_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone'), ' #turretType=$CombatDrone #tier=$tierlevel_t4')
@@ -4926,7 +4992,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named3_pelistal_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_pelistal_combat_drone_unit_desc', 1, 1, 4)
+	('def_named3_pelistal_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_pelistal_combat_drone_unit_desc', 1, 1, 4)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named3_pelistal_combat_drone_unit'
 END
 
 GO
@@ -5947,7 +6017,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_standart_nuimqol_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_nuimqol_combat_drone_desc', 1, 1, 1)
+	('def_standart_nuimqol_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_nuimqol_combat_drone_desc', 1, 1, 1)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone'), ' #turretType=$CombatDrone #tier=$tierlevel_t2')
@@ -5955,7 +6029,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named1_nuimqol_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_nuimqol_combat_drone_desc', 1, 1, 2)
+	('def_named1_nuimqol_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_nuimqol_combat_drone_desc', 1, 1, 2)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone'), ' #turretType=$CombatDrone #tier=$tierlevel_t3')
@@ -5963,7 +6041,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named2_nuimqol_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_nuimqol_combat_drone_unit_desc', 1, 1, 3)
+	('def_named2_nuimqol_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_nuimqol_combat_drone_unit_desc', 1, 1, 3)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone'), ' #turretType=$CombatDrone #tier=$tierlevel_t4')
@@ -5971,7 +6053,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named3_nuimqol_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_nuimqol_combat_drone_unit_desc', 1, 1, 4)
+	('def_named3_nuimqol_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_nuimqol_combat_drone_unit_desc', 1, 1, 4)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit'
 END
 
 GO
@@ -6992,7 +7078,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_standart_thelodica_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_thelodica_combat_drone_desc', 1, 1, 1)
+	('def_standart_thelodica_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_thelodica_combat_drone_desc', 1, 1, 1)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_standart_thelodica_combat_drone_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone'), ' #turretType=$CombatDrone #tier=$tierlevel_t2')
@@ -7000,7 +7090,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named1_thelodica_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_thelodica_combat_drone_desc', 1, 1, 2)
+	('def_named1_thelodica_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_thelodica_combat_drone_desc', 1, 1, 2)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named1_thelodica_combat_drone_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone'), ' #turretType=$CombatDrone #tier=$tierlevel_t3')
@@ -7008,7 +7102,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named2_thelodica_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_thelodica_combat_drone_unit_desc', 1, 1, 3)
+	('def_named2_thelodica_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_thelodica_combat_drone_unit_desc', 1, 1, 3)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named2_thelodica_combat_drone_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone'), ' #turretType=$CombatDrone #tier=$tierlevel_t4')
@@ -7016,7 +7114,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named3_thelodica_combat_drone_unit', 1, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_thelodica_combat_drone_unit_desc', 1, 1, 4)
+	('def_named3_thelodica_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_thelodica_combat_drone_unit_desc', 1, 1, 4)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named3_thelodica_combat_drone_unit'
 END
 
 GO
@@ -8220,7 +8322,7 @@ END
 
 GO
 
----- Set up aggregate fields for Spectator
+---- Set up aggregate fields for Spectator prototype
 
 DECLARE @definition INT
 DECLARE @field INT
@@ -8923,7 +9025,525 @@ BEGIN
 	('def_named3_remote_controller_cprg', 1, 1024, @categoryFlags, '#tier=$tierlevel_t4', NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 4)
 END
 
+---- Create CT for sentry turrets
+
+SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_sentry_turret_units')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_standart_sentry_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 1)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_sentry_turret_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named1_sentry_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 2)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_sentry_turret_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named2_sentry_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 3)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_sentry_turret_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named3_sentry_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 4)
+END
+
+---- Create CT for mining turrets
+
+SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_mining_turret_units')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_standart_mining_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 1)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_mining_turret_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named1_mining_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 2)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_mining_turret_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named2_mining_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 3)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_mining_turret_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named3_mining_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 4)
+END
+
+---- Create CT for harvesting turrets
+
+SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_harvesting_turret_units')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_harvesting_turret_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_standart_harvesting_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 1)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_harvesting_turret_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named1_harvesting_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 2)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_harvesting_turret_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named2_harvesting_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 3)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_harvesting_turret_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named3_harvesting_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 4)
+END
+
+---- Create CT for pelistal combat drones
+
+SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_pelistal_combat_drones_units')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_standart_pelistal_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 1)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named1_pelistal_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 2)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named2_pelistal_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 3)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named3_pelistal_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 4)
+END
+
+---- Create CT for nuimqol combat drones
+
+SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_nuimqol_combat_drones_units')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_standart_nuimqol_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 1)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named1_nuimqol_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 2)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named2_nuimqol_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 3)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named3_nuimqol_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 4)
+END
+
+---- Create CT for thelodica combat drones
+
+SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_thelodica_combat_drones_units')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_standart_thelodica_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 1)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named1_thelodica_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 2)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named2_thelodica_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 3)
+END
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone_unit_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_named3_thelodica_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 4)
+END
+
 GO
+
+-- set base ct efficiency
+
+DECLARE @definition INT
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_bot_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 50, 50)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 70, 70)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 70, 70)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_remote_controller_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 70, 70)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_remote_controller_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 70, 70)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 90, 90)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_sentry_turret_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 90, 90)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_sentry_turret_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 90, 90)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_sentry_turret_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 90, 90)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 90, 90)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_mining_turret_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 90, 90)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_mining_turret_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 90, 90)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_mining_turret_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 90, 90)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_harvesting_turret_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 90, 90)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_harvesting_turret_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 90, 90)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_harvesting_turret_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 90, 90)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_harvesting_turret_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 90, 90)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 80, 80)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 80, 80)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 80, 80)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 80, 80)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 80, 80)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 80, 80)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 80, 80)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 80, 80)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 80, 80)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 80, 80)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 80, 80)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone_unit_cprg')
+
+DELETE FROM calibrationdefaults WHERE definition = @definition
+
+INSERT INTO calibrationdefaults (definition, materialefficiency, timeefficiency) VALUES
+(@definition, 80, 80)
+
+GO
+
+-- create dynamic CT spectator
+
+DECLARE @categoryFlags INT
+
+SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_dynamic_cprg')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_spectator_bot_A_dynamic_cprg')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_spectator_bot_A_dynamic_cprg', 1, 1024, @categoryFlags, '#tier=$tierlevel_mk3', NULL, 1, 0.1, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 3)
+END
+
+DECLARE @definition INT
+DECLARE @targetDefinition INT
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_bot_A_dynamic_cprg')
+SET @targetDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_bot')
+
+DELETE FROM dynamiccalibrationtemplates WHERE definition = @definition AND targetdefinition = @targetDefinition
+
+INSERT INTO dynamiccalibrationtemplates (definition, materialefficiency, timeefficiency, targetdefinition) VALUES
+(@definition, 5, 5, @targetDefinition)
+
+GO
+
+---- set up decalibration and production time
+
+DECLARE @categoryFlags BIGINT
+
+SET @categoryFlags = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_combat_command_robots')
+
+IF NOT EXISTS (SELECT 1 FROM productiondecalibration WHERE categoryflag = @categoryFlags)
+BEGIN
+	INSERT INTO productiondecalibration (categoryflag, distorsionmin, distorsionmax, decrease) values
+	(@categoryflags, 0.005, 0.01, 3)
+END
+
+IF NOT EXISTS (SELECT 1 FROM productionduration WHERE category = @categoryFlags)
+BEGIN
+	INSERT INTO productionduration (category, durationmodifier) values
+	(@categoryFlags, 10)
+END
+
+SET @categoryFlags = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_remote_controllers')
+
+IF NOT EXISTS (SELECT 1 FROM productiondecalibration WHERE categoryflag = @categoryFlags)
+BEGIN
+	INSERT INTO productiondecalibration (categoryflag, distorsionmin, distorsionmax, decrease) values
+	(@categoryflags, 0.003, 0.005, 1)
+END
+
+IF NOT EXISTS (SELECT 1 FROM productionduration WHERE category = @categoryFlags)
+BEGIN
+	INSERT INTO productionduration (category, durationmodifier) values
+	(@categoryFlags, 2)
+END
+
+SET @categoryFlags = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_sentry_turret_units')
+
+IF NOT EXISTS (SELECT 1 FROM productiondecalibration WHERE categoryflag = @categoryFlags)
+BEGIN
+	INSERT INTO productiondecalibration (categoryflag, distorsionmin, distorsionmax, decrease) values
+	(@categoryflags, 0.001, 0.0015, 0.3)
+END
+
+IF NOT EXISTS (SELECT 1 FROM productionduration WHERE category = @categoryFlags)
+BEGIN
+	INSERT INTO productionduration (category, durationmodifier) values
+	(@categoryFlags, 0.2)
+END
+
+SET @categoryFlags = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_mining_turret_units')
+
+IF NOT EXISTS (SELECT 1 FROM productiondecalibration WHERE categoryflag = @categoryFlags)
+BEGIN
+	INSERT INTO productiondecalibration (categoryflag, distorsionmin, distorsionmax, decrease) values
+	(@categoryflags, 0.001, 0.0015, 0.3)
+END
+
+IF NOT EXISTS (SELECT 1 FROM productionduration WHERE category = @categoryFlags)
+BEGIN
+	INSERT INTO productionduration (category, durationmodifier) values
+	(@categoryFlags, 0.2)
+END
+
+SET @categoryFlags = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_harvesting_turret_units')
+
+IF NOT EXISTS (SELECT 1 FROM productiondecalibration WHERE categoryflag = @categoryFlags)
+BEGIN
+	INSERT INTO productiondecalibration (categoryflag, distorsionmin, distorsionmax, decrease) values
+	(@categoryflags, 0.001, 0.0015, 0.3)
+END
+
+IF NOT EXISTS (SELECT 1 FROM productionduration WHERE category = @categoryFlags)
+BEGIN
+	INSERT INTO productionduration (category, durationmodifier) values
+	(@categoryFlags, 0.2)
+END
+
+SET @categoryFlags = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_pelistal_combat_drones_units')
+
+IF NOT EXISTS (SELECT 1 FROM productiondecalibration WHERE categoryflag = @categoryFlags)
+BEGIN
+	INSERT INTO productiondecalibration (categoryflag, distorsionmin, distorsionmax, decrease) values
+	(@categoryflags, 0.001, 0.0015, 0.3)
+END
+
+IF NOT EXISTS (SELECT 1 FROM productionduration WHERE category = @categoryFlags)
+BEGIN
+	INSERT INTO productionduration (category, durationmodifier) values
+	(@categoryFlags, 0.2)
+END
+
+SET @categoryFlags = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_nuimqol_combat_drones_units')
+
+IF NOT EXISTS (SELECT 1 FROM productiondecalibration WHERE categoryflag = @categoryFlags)
+BEGIN
+	INSERT INTO productiondecalibration (categoryflag, distorsionmin, distorsionmax, decrease) values
+	(@categoryflags, 0.001, 0.0015, 0.3)
+END
+
+IF NOT EXISTS (SELECT 1 FROM productionduration WHERE category = @categoryFlags)
+BEGIN
+	INSERT INTO productionduration (category, durationmodifier) values
+	(@categoryFlags, 0.2)
+END
+
+SET @categoryFlags = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_thelodica_combat_drones_units')
+
+IF NOT EXISTS (SELECT 1 FROM productiondecalibration WHERE categoryflag = @categoryFlags)
+BEGIN
+	INSERT INTO productiondecalibration (categoryflag, distorsionmin, distorsionmax, decrease) values
+	(@categoryflags, 0.001, 0.0015, 0.3)
+END
+
+IF NOT EXISTS (SELECT 1 FROM productionduration WHERE category = @categoryFlags)
+BEGIN
+	INSERT INTO productionduration (category, durationmodifier) values
+	(@categoryFlags, 0.2)
+END
 
 ---- Production and prorotyping cost in materials, modules and components ----
 
@@ -9128,6 +9748,240 @@ INSERT INTO components (definition, componentdefinition, componentamount) VALUES
 (@definition, @common_advanced_components, 30),
 (@definition, @common_expert_components, 45)
 
+-- Sentry turrets --
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 500),
+(@definition, @phlobotil, 500),
+(@definition, @polynucleit, 500),
+(@definition, @polynitrocol, 500),
+(@definition, @axicoline, 500)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_sentry_turret_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 750),
+(@definition, @phlobotil, 750),
+(@definition, @polynucleit, 750),
+(@definition, @polynitrocol, 750),
+(@definition, @axicoline, 750)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_sentry_turret_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 750),
+(@definition, @phlobotil, 750),
+(@definition, @polynucleit, 750),
+(@definition, @polynitrocol, 750),
+(@definition, @axicoline, 750),
+(@definition, @espitium, 50)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_sentry_turret_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 1000),
+(@definition, @phlobotil, 1000),
+(@definition, @polynucleit, 1000),
+(@definition, @polynitrocol, 1000),
+(@definition, @axicoline, 1000),
+(@definition, @espitium, 100),
+(@definition, @bryochite, 50),
+(@definition, @flux, 10)
+
+-- Mining turrets --
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 500),
+(@definition, @axicoline, 500)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_mining_turret_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 750),
+(@definition, @axicoline, 750)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_mining_turret_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 750),
+(@definition, @axicoline, 750),
+(@definition, @espitium, 50)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_mining_turret_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 1000),
+(@definition, @axicoline, 1000),
+(@definition, @espitium, 100),
+(@definition, @bryochite, 50),
+(@definition, @flux, 10)
+
+-- Harvesting turrets --
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_harvesting_turret_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 500),
+(@definition, @axicoline, 500)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_harvesting_turret_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 750),
+(@definition, @axicoline, 750)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_harvesting_turret_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 750),
+(@definition, @axicoline, 750),
+(@definition, @espitium, 50)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_harvesting_turret_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 1000),
+(@definition, @axicoline, 1000),
+(@definition, @espitium, 100),
+(@definition, @bryochite, 50),
+(@definition, @flux, 10)
+
+-- Pelistal drones --
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 1000),
+(@definition, @phlobotil, 2000)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 1500),
+(@definition, @phlobotil, 3000)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 1500),
+(@definition, @phlobotil, 3000),
+(@definition, @espitium, 10)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 2000),
+(@definition, @phlobotil, 4000),
+(@definition, @espitium, 200),
+(@definition, @bryochite, 100),
+(@definition, @flux, 20)
+
+-- Nuimqol drones --
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 1000),
+(@definition, @polynitrocol, 2000)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 1500),
+(@definition, @polynitrocol, 3000)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 1500),
+(@definition, @polynitrocol, 3000),
+(@definition, @espitium, 10)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 2000),
+(@definition, @polynitrocol, 4000),
+(@definition, @espitium, 200),
+(@definition, @bryochite, 100),
+(@definition, @flux, 20)
+
+-- Thelodica drones --
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 1000),
+(@definition, @polynucleit, 2000)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 1500),
+(@definition, @polynucleit, 3000)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 1500),
+(@definition, @polynucleit, 3000),
+(@definition, @espitium, 10)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone_unit')
+
+DELETE FROM components WHERE definition = @definition
+
+INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+(@definition, @titanium, 2000),
+(@definition, @polynucleit, 4000),
+(@definition, @espitium, 200),
+(@definition, @bryochite, 100),
+(@definition, @flux, 20)
+
 GO
 
 ---- Research levels ----
@@ -9142,7 +9996,7 @@ SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definition
 
 DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
 
-INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+INSERT INTO itemresearchlevels (definition, researchlevel, calibrationprogram, enabled) VALUES
 (@definition, 8, @calibration, 1)
 
 -- Remote controller T1
@@ -9152,7 +10006,7 @@ SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definition
 
 DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
 
-INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+INSERT INTO itemresearchlevels (definition, researchlevel, calibrationprogram, enabled) VALUES
 (@definition, 5, @calibration, 1)
 
 -- Remote controller T2 prototype
@@ -9162,7 +10016,7 @@ SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definition
 
 DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
 
-INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+INSERT INTO itemresearchlevels (definition, researchlevel, calibrationprogram, enabled) VALUES
 (@definition, 6, @calibration, 1)
 
 -- Remote controller T3 prototype
@@ -9172,7 +10026,7 @@ SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definition
 
 DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
 
-INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+INSERT INTO itemresearchlevels (definition, researchlevel, calibrationprogram, enabled) VALUES
 (@definition, 7, @calibration, 1)
 
 -- Remote controller T4 prototype
@@ -9185,6 +10039,239 @@ DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationpro
 INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
 (@definition, 8, @calibration, 1)
 
+-- Sentry turrets
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 2, @calibration, 1)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_sentry_turret_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_sentry_turret_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 3, @calibration, 1)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_sentry_turret_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_sentry_turret_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 4, @calibration, 1)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_sentry_turret_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_sentry_turret_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 5, @calibration, 1)
+
+-- Mining turrets
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 2, @calibration, 1)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_mining_turret_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_mining_turret_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 3, @calibration, 1)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_mining_turret_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_mining_turret_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 4, @calibration, 1)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_mining_turret_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_mining_turret_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 5, @calibration, 1)
+
+-- Harvesting turrets
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_harvesting_turret_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_harvesting_turret_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 2, @calibration, 1)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_harvesting_turret_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_harvesting_turret_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 3, @calibration, 1)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_harvesting_turret_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_harvesting_turret_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 4, @calibration, 1)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_harvesting_turret_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_harvesting_turret_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 5, @calibration, 1)
+
+-- Pelistal drones
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 3, @calibration, 1)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 4, @calibration, 1)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 5, @calibration, 1)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 6, @calibration, 1)
+
+-- Nuimqol drones
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 3, @calibration, 1)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 4, @calibration, 1)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 5, @calibration, 1)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 6, @calibration, 1)
+
+-- Thelodica drones
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 3, @calibration, 1)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 4, @calibration, 1)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 5, @calibration, 1)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone_unit')
+SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone_unit_cprg')
+
+DELETE FROM itemresearchlevels WHERE definition = @definition AND calibrationprogram = @calibration
+
+INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+(@definition, 6, @calibration, 1)
+
+GO
+
+---- Create CT capsules for Spectator
+
+DECLARE @categoryFlags BIGINT
+
+SET @categoryFlags = (SELECT TOP 1 value FROM categoryFlags WHERE name = 'cf_ct_capsules_robot_syndicate_commandbot')
+
+IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_spectator_mk3_A_CT_capsule')
+BEGIN
+	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+	('def_spectator_mk3_A_CT_capsule', 1, 2052, @categoryFlags, '', 'MK3 CT Capsule', 1, 0.1, 0.1, 0, 100, 'def_spectator_mk3_A_CT_capsule_desc', 1, 1, 1)
+END
+
+GO
+
+---- link CT capsules with dynamic templates
+
+DECLARE @definition INT
+DECLARE @targetDefinition INT
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_mk3_A_CT_capsule')
+SET @targetDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_spectator_bot_A_dynamic_cprg')
+
+DELETE FROM calibrationtemplateitems WHERE definition = @definition AND targetDefinition = @targetDefinition
+
+INSERT INTO calibrationtemplateitems (definition, targetDefinition) VALUES
+(@definition, @targetDefinition)
+
 GO
 
 ----Research cost ----
@@ -9192,9 +10279,15 @@ GO
 DECLARE @definition INT
 DECLARE @common INT
 DECLARE @hightech INT
+DECLARE @pelistal INT
+DECLARE @nuimqol INT
+DECLARE @thelodica INT
 
 SET @common = (SELECT TOP 1 id FROM techtreepointtypes WHERE name = 'common')
 SET @hightech = (SELECT TOP 1 id FROM techtreepointtypes WHERE name = 'hitech')
+SET @pelistal = (SELECT TOP 1 id FROM techtreepointtypes WHERE name = 'pelistal')
+SET @nuimqol = (SELECT TOP 1 id FROM techtreepointtypes WHERE name = 'nuimqol')
+SET @thelodica = (SELECT TOP 1 id FROM techtreepointtypes WHERE name = 'thelodica')
 
 -- Spectator
 
@@ -9242,6 +10335,198 @@ DELETE FROM techtreenodeprices WHERE definition = @definition
 INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
 (@definition, @common, 34300),
 (@definition, @hightech, 17150)
+
+-- Sentry turrets
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 3200)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_sentry_turret_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 9600)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_sentry_turret_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 21600),
+(@definition, @hightech, 7200)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_sentry_turret_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 43200),
+(@definition, @hightech, 43200)
+
+-- Mining turrets
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 3200)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_mining_turret_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 9600)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_mining_turret_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 21600),
+(@definition, @hightech, 7200)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_mining_turret_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 43200),
+(@definition, @hightech, 43200)
+
+-- Harvesting turrets
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_harvesting_turret_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 3200)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_harvesting_turret_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 9600)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_harvesting_turret_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 21600),
+(@definition, @hightech, 7200)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_harvesting_turret_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 43200),
+(@definition, @hightech, 43200)
+
+-- Pelistal drones
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 4000)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 12000)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 27000),
+(@definition, @pelistal, 9000)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 54000),
+(@definition, @pelistal, 54000)
+
+-- Nuimqol drones
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 4000)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 12000)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 27000),
+(@definition, @nuimqol, 9000)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 54000),
+(@definition, @nuimqol, 54000)
+
+-- Thelodica drones
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 4000)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 12000)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 27000),
+(@definition, @thelodica, 9000)
+
+SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone_unit')
+
+DELETE FROM techtreenodeprices WHERE definition = @definition
+
+INSERT INTO [techtreenodeprices] (definition, pointtype, amount) VALUES
+(@definition, @common, 54000),
+(@definition, @thelodica, 54000)
 
 GO
 
