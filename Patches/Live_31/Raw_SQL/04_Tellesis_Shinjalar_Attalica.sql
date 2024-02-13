@@ -34,6 +34,8 @@ UPDATE teleportdescriptions SET active = 0, listable = 0 WHERE description in ('
 
 UPDATE teleportdescriptions SET active = 0, listable = 0 WHERE description in ('tp_zone_7_11_to_teleport_column_asi2_gavastrac', 'teleport_column_asi2_gavastrac_to_tp_zone_7_11')
 
+UPDATE zoneentities SET enabled = 0 WHERE ename = 'teleport_column_icspve_1'
+
 --
 
 IF NOT EXISTS (SELECT 1 FROM teleportdescriptions WHERE description = 'teleport_column_tm_cadavria_to_tp_zone_8_12')
@@ -2445,14 +2447,25 @@ GO
 
 DECLARE @sourceZoneId INT
 DECLARE @destinationZoneId INT
+DECLARE @tempTable TABLE (zoneid INT, effectid INT)
+DECLARE @tierLimitEffect INT
+
+SET @tierLimitEffect = (SELECT TOP 1 id FROM effects WHERE name = 'pbs_tech_limit')
 
 SET @sourceZoneId = (SELECT TOP 1 id FROM zones WHERE name = 'zone_gamma_z132')
 SET @destinationZoneId = (SELECT TOP 1 id FROM zones WHERE name = 'zone_ICS_pve')
 
-DELETE FROM zoneeffects WHERE zoneid = @destinationZoneId
+INSERT INTO @tempTable (zoneid, effectid)
+SELECT @destinationZoneId, effectid FROM zoneeffects WHERE zoneid = @sourceZoneId AND effectid != @tierLimitEffect
 
-INSERT INTO zoneeffects (zoneid, effectid)
-SELECT @destinationZoneId, effectid FROM zoneeffects WHERE zoneid = @sourceZoneId
+MERGE zoneeffects AS Target
+USING (SELECT zoneid, effectid FROM @tempTable) AS Source
+ON (Target.zoneid = Source.zoneid)
+WHEN MATCHED THEN
+    UPDATE SET Target.effectid = Source.effectid
+WHEN NOT MATCHED BY TARGET THEN
+    INSERT (zoneid, effectid)
+    VALUES (Source.zoneid, Source.effectid);
 
 GO
 
@@ -2472,3 +2485,12 @@ INNER JOIN entitydefaults ed ON  its.targetdefinition = ed.definition
 WHERE presetid = @sourcePresetId AND ed.categoryflags != 328859
 
 GO
+
+
+---- Set up missions for Tellesis
+
+DECLARE @zoneid INT
+
+SET @zoneid = (SELECT TOP 1 id FROM zones WHERE name = 'zone_ICS_pve')
+
+UPDATE missionlocations SET maxmissionlevel = 4 WHERE zoneid = @zoneid

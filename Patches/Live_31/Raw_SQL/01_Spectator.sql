@@ -238,11 +238,19 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_standart_sentry_turret', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_standart_sentry_turret_desc', 1, 1, 1)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_standart_sentry_turret'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_sentry_turret')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named1_sentry_turret', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named1_sentry_turret_desc', 1, 1, 2)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_named1_sentry_turret'
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_sentry_turret')
@@ -250,11 +258,19 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named2_sentry_turret', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named2_sentry_turret_desc', 1, 1, 3)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_named2_sentry_turret'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_sentry_turret')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named3_sentry_turret', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named3_sentry_turret_desc', 1, 1, 4)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_named3_sentry_turret'
 END
 
 GO
@@ -271,11 +287,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_standart_sentry_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_sentry_turret_unit_desc', 1, 1, 1)
+	('def_standart_sentry_turret_unit', 10, 2048, @categoryFlag, @options, 1, 10, 1, 0, 100, 'def_standart_sentry_turret_unit_desc', 1, 1, 1)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_standart_sentry_turret_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 10 WHERE definitionname = 'def_standart_sentry_turret_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named1_sentry_turret'), ' #turretType=$Sentry #tier=$tierlevel_t2')
@@ -283,11 +299,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_sentry_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named1_sentry_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_sentry_turret_desc', 1, 1, 2)
+	('def_named1_sentry_turret_unit', 10, 2048, @categoryFlag, @options, 1, 10, 1, 0, 100, 'def_named1_sentry_turret_desc', 1, 1, 2)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named1_sentry_turret_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 10 WHERE definitionname = 'def_named1_sentry_turret_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named2_sentry_turret'), ' #turretType=$Sentry #tier=$tierlevel_t3')
@@ -295,11 +311,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_sentry_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named2_sentry_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_sentry_turret_unit_desc', 1, 1, 3)
+	('def_named2_sentry_turret_unit', 10, 2048, @categoryFlag, @options, 1, 10, 1, 0, 100, 'def_named2_sentry_turret_unit_desc', 1, 1, 3)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named2_sentry_turret_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 10 WHERE definitionname = 'def_named2_sentry_turret_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named3_sentry_turret'), ' #turretType=$Sentry #tier=$tierlevel_t4')
@@ -307,11 +323,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_sentry_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named3_sentry_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_sentry_turret_unit_desc', 1, 1, 4)
+	('def_named3_sentry_turret_unit', 10, 2048, @categoryFlag, @options, 1, 10, 1, 0, 100, 'def_named3_sentry_turret_unit_desc', 1, 1, 4)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named3_sentry_turret_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 10 WHERE definitionname = 'def_named3_sentry_turret_unit'
 END
 
 GO
@@ -2763,11 +2779,19 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_standart_mining_turret', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_standart_mining_turret_desc', 1, 1, 1)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_standart_mining_turret'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_mining_turret')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named1_mining_turret', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named1_mining_turret_desc', 1, 1, 2)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_named1_mining_turret'
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_mining_turret')
@@ -2775,11 +2799,19 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named2_mining_turret', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named2_mining_turret_desc', 1, 1, 3)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_named2_mining_turret'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_mining_turret')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named3_mining_turret', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named3_mining_turret_desc', 1, 1, 4)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_named3_mining_turret'
 END
 
 GO
@@ -2796,11 +2828,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_standart_mining_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_mining_turret_unit_desc', 1, 1, 1)
+	('def_standart_mining_turret_unit', 10, 2048, @categoryFlag, @options, 1, 10, 1, 0, 100, 'def_standart_mining_turret_unit_desc', 1, 1, 1)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_standart_mining_turret_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 10 WHERE definitionname = 'def_standart_mining_turret_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named1_mining_turret'), ' #turretType=$Mining #tier=$tierlevel_t2')
@@ -2808,11 +2840,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_mining_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named1_mining_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_mining_turret_unit_desc', 1, 1, 2)
+	('def_named1_mining_turret_unit', 10, 2048, @categoryFlag, @options, 1, 10, 1, 0, 100, 'def_named1_mining_turret_unit_desc', 1, 1, 2)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named1_mining_turret_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 10 WHERE definitionname = 'def_named1_mining_turret_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named2_mining_turret'), ' #turretType=$Mining #tier=$tierlevel_t3')
@@ -2820,11 +2852,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_mining_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named2_mining_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_mining_turret_unit_desc', 1, 1, 3)
+	('def_named2_mining_turret_unit', 10, 2048, @categoryFlag, @options, 1, 10, 1, 0, 100, 'def_named2_mining_turret_unit_desc', 1, 1, 3)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named2_mining_turret_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 10 WHERE definitionname = 'def_named2_mining_turret_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named3_mining_turret'), ' #turretType=$Mining #tier=$tierlevel_t4')
@@ -2832,11 +2864,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_mining_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named3_mining_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_mining_turret_unit_desc', 1, 1, 4)
+	('def_named3_mining_turret_unit', 10, 2048, @categoryFlag, @options, 1, 10, 1, 0, 100, 'def_named3_mining_turret_unit_desc', 1, 1, 4)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named3_mining_turret_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 10 WHERE definitionname = 'def_named3_mining_turret_unit'
 END
 
 GO
@@ -3854,11 +3886,19 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_standart_harvesting_turret', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_standart_harvesting_turret_desc', 1, 1, 1)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_standart_harvesting_turret'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_harvesting_turret')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named1_harvesting_turret', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named1_harvesting_turret_desc', 1, 1, 2)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_named1_harvesting_turret'
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_harvesting_turret')
@@ -3866,11 +3906,19 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named2_harvesting_turret', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named2_harvesting_turret_desc', 1, 1, 3)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_named2_harvesting_turret'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_harvesting_turret')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named3_harvesting_turret', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named3_harvesting_turret_desc', 1, 1, 4)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024, options = CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo) WHERE definitionname = 'def_named3_harvesting_turret'
 END
 
 GO
@@ -3887,11 +3935,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_harvesting_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_standart_harvesting_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_harvesting_turret_unit_desc', 1, 1, 1)
+	('def_standart_harvesting_turret_unit', 10, 2048, @categoryFlag, @options, 1, 10, 1, 0, 100, 'def_standart_harvesting_turret_unit_desc', 1, 1, 1)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_standart_harvesting_turret_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 10 WHERE definitionname = 'def_standart_harvesting_turret_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named1_harvesting_turret'), ' #turretType=$Harvesting #tier=$tierlevel_t2')
@@ -3899,11 +3947,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_harvesting_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named1_harvesting_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_harvesting_turret_unit_desc', 1, 1, 2)
+	('def_named1_harvesting_turret_unit', 10, 2048, @categoryFlag, @options, 1, 10, 1, 0, 100, 'def_named1_harvesting_turret_unit_desc', 1, 1, 2)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named1_harvesting_turret_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 10 WHERE definitionname = 'def_named1_harvesting_turret_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named2_harvesting_turret'), ' #turretType=$Harvesting #tier=$tierlevel_t3')
@@ -3911,11 +3959,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_harvesting_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named2_harvesting_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_harvesting_turret_unit_desc', 1, 1, 3)
+	('def_named2_harvesting_turret_unit', 10, 2048, @categoryFlag, @options, 1, 10, 1, 0, 100, 'def_named2_harvesting_turret_unit_desc', 1, 1, 3)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named2_harvesting_turret_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 10 WHERE definitionname = 'def_named2_harvesting_turret_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named3_harvesting_turret'), ' #turretType=$Harvesting #tier=$tierlevel_t4')
@@ -3923,11 +3971,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_harvesting_turret_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named3_harvesting_turret_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_harvesting_turret_unit_desc', 1, 1, 4)
+	('def_named3_harvesting_turret_unit', 10, 2048, @categoryFlag, @options, 1, 10, 1, 0, 100, 'def_named3_harvesting_turret_unit_desc', 1, 1, 4)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named3_harvesting_turret_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 10 WHERE definitionname = 'def_named3_harvesting_turret_unit'
 END
 
 GO
@@ -4923,11 +4971,19 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_standart_pelistal_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_standart_pelistal_combat_drone_desc', 1, 1, 1)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_standart_pelistal_combat_drone'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named1_pelistal_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named1_pelistal_combat_drone_desc', 1, 1, 2)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_named1_pelistal_combat_drone'
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone')
@@ -4935,11 +4991,19 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named2_pelistal_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named2_pelistal_combat_drone_desc', 1, 1, 3)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_named2_pelistal_combat_drone'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named3_pelistal_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named3_pelistal_combat_drone_desc', 1, 1, 4)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_named3_pelistal_combat_drone'
 END
 
 GO
@@ -4956,11 +5020,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_standart_pelistal_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_pelistal_combat_drone_desc', 1, 1, 1)
+	('def_standart_pelistal_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 20, 1, 0, 100, 'def_standart_pelistal_combat_drone_desc', 1, 1, 1)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_standart_pelistal_combat_drone_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 20 WHERE definitionname = 'def_standart_pelistal_combat_drone_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone'), ' #turretType=$CombatDrone #tier=$tierlevel_t2')
@@ -4968,11 +5032,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named1_pelistal_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_pelistal_combat_drone_desc', 1, 1, 2)
+	('def_named1_pelistal_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 20, 1, 0, 100, 'def_named1_pelistal_combat_drone_desc', 1, 1, 2)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named1_pelistal_combat_drone_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 20 WHERE definitionname = 'def_named1_pelistal_combat_drone_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone'), ' #turretType=$CombatDrone #tier=$tierlevel_t3')
@@ -4980,11 +5044,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named2_pelistal_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_pelistal_combat_drone_unit_desc', 1, 1, 3)
+	('def_named2_pelistal_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 20, 1, 0, 100, 'def_named2_pelistal_combat_drone_unit_desc', 1, 1, 3)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named2_pelistal_combat_drone_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 20 WHERE definitionname = 'def_named2_pelistal_combat_drone_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone'), ' #turretType=$CombatDrone #tier=$tierlevel_t4')
@@ -4992,11 +5056,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named3_pelistal_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_pelistal_combat_drone_unit_desc', 1, 1, 4)
+	('def_named3_pelistal_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 20, 1, 0, 100, 'def_named3_pelistal_combat_drone_unit_desc', 1, 1, 4)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named3_pelistal_combat_drone_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 20 WHERE definitionname = 'def_named3_pelistal_combat_drone_unit'
 END
 
 GO
@@ -5984,11 +6048,19 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_standart_nuimqol_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_standart_nuimqol_combat_drone_desc', 1, 1, 1)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_standart_nuimqol_combat_drone'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named1_nuimqol_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named1_nuimqol_combat_drone_desc', 1, 1, 2)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_named1_nuimqol_combat_drone'
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone')
@@ -5996,11 +6068,19 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named2_nuimqol_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named2_nuimqol_combat_drone_desc', 1, 1, 3)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_named2_nuimqol_combat_drone'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named3_nuimqol_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named3_nuimqol_combat_drone_desc', 1, 1, 4)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_named3_nuimqol_combat_drone'
 END
 
 GO
@@ -6017,11 +6097,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_standart_nuimqol_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_nuimqol_combat_drone_desc', 1, 1, 1)
+	('def_standart_nuimqol_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 20, 1, 0, 100, 'def_standart_nuimqol_combat_drone_desc', 1, 1, 1)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 20 WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone'), ' #turretType=$CombatDrone #tier=$tierlevel_t2')
@@ -6029,11 +6109,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named1_nuimqol_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_nuimqol_combat_drone_desc', 1, 1, 2)
+	('def_named1_nuimqol_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 20, 1, 0, 100, 'def_named1_nuimqol_combat_drone_desc', 1, 1, 2)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 20 WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone'), ' #turretType=$CombatDrone #tier=$tierlevel_t3')
@@ -6041,11 +6121,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named2_nuimqol_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_nuimqol_combat_drone_unit_desc', 1, 1, 3)
+	('def_named2_nuimqol_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 20, 1, 0, 100, 'def_named2_nuimqol_combat_drone_unit_desc', 1, 1, 3)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 20 WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone'), ' #turretType=$CombatDrone #tier=$tierlevel_t4')
@@ -6053,11 +6133,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named3_nuimqol_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_nuimqol_combat_drone_unit_desc', 1, 1, 4)
+	('def_named3_nuimqol_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 20, 1, 0, 100, 'def_named3_nuimqol_combat_drone_unit_desc', 1, 1, 4)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 20 WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit'
 END
 
 GO
@@ -7045,11 +7125,19 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_standart_thelodica_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_standart_thelodica_combat_drone_desc', 1, 1, 1)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_standart_thelodica_combat_drone'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named1_thelodica_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named1_thelodica_combat_drone_desc', 1, 1, 2)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_named1_thelodica_combat_drone'
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone')
@@ -7057,11 +7145,19 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named2_thelodica_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named2_thelodica_combat_drone_desc', 1, 1, 3)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_named2_thelodica_combat_drone'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named3_thelodica_combat_drone', 1, 1024, @category, CONCAT('#head=n', @head, '  #chassis=n', @chassis, '  #leg=n', @leg, '  #inventory=n', @cargo), 1, 123, 0, 0, 100, 'def_named3_thelodica_combat_drone_desc', 1, 1, 4)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET attributeflags = 1024 WHERE definitionname = 'def_named3_thelodica_combat_drone'
 END
 
 GO
@@ -7078,11 +7174,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_standart_thelodica_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_standart_thelodica_combat_drone_desc', 1, 1, 1)
+	('def_standart_thelodica_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 20, 1, 0, 100, 'def_standart_thelodica_combat_drone_desc', 1, 1, 1)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_standart_thelodica_combat_drone_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 20 WHERE definitionname = 'def_standart_thelodica_combat_drone_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone'), ' #turretType=$CombatDrone #tier=$tierlevel_t2')
@@ -7090,11 +7186,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named1_thelodica_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named1_thelodica_combat_drone_desc', 1, 1, 2)
+	('def_named1_thelodica_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 20, 1, 0, 100, 'def_named1_thelodica_combat_drone_desc', 1, 1, 2)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named1_thelodica_combat_drone_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 20 WHERE definitionname = 'def_named1_thelodica_combat_drone_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone'), ' #turretType=$CombatDrone #tier=$tierlevel_t3')
@@ -7102,11 +7198,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named2_thelodica_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named2_thelodica_combat_drone_unit_desc', 1, 1, 3)
+	('def_named2_thelodica_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 20, 1, 0, 100, 'def_named2_thelodica_combat_drone_unit_desc', 1, 1, 3)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named2_thelodica_combat_drone_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 20 WHERE definitionname = 'def_named2_thelodica_combat_drone_unit'
 END
 
 SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone'), ' #turretType=$CombatDrone #tier=$tierlevel_t4')
@@ -7114,11 +7210,11 @@ SET @options = CONCAT('#turretId=i', (SELECT TOP 1 FORMAT(definition, 'X') FROM 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone_unit')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
-	('def_named3_thelodica_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 1, 1, 0, 100, 'def_named3_thelodica_combat_drone_unit_desc', 1, 1, 4)
+	('def_named3_thelodica_combat_drone_unit', 10, 2048, @categoryFlag, @options, 1, 20, 1, 0, 100, 'def_named3_thelodica_combat_drone_unit_desc', 1, 1, 4)
 END
 ELSE
 BEGIN
-	UPDATE entitydefaults SET quantity = 10 WHERE definitionname = 'def_named3_thelodica_combat_drone_unit'
+	UPDATE entitydefaults SET quantity = 10, volume = 20 WHERE definitionname = 'def_named3_thelodica_combat_drone_unit'
 END
 
 GO
@@ -9573,6 +9669,9 @@ DECLARE @nuimqol_expert_components INT
 DECLARE @thelodica_expert_components INT
 
 DECLARE @gamma_syndicate_shards INT
+DECLARE @gamma_pelistal_shards INT
+DECLARE @gamma_nuimqol_shards INT
+DECLARE @gamma_thelodica_shards INT
 
 DECLARE @remote_controller_t1 INT
 DECLARE @remote_controller_t2 INT
@@ -9603,6 +9702,9 @@ SET @nuimqol_expert_components = (SELECT TOP 1 definition FROM entitydefaults WH
 SET @thelodica_expert_components = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_robotshard_thelodica_expert')
 
 SET @gamma_syndicate_shards = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_material_boss_gamma_syndicate')
+SET @gamma_pelistal_shards = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_material_boss_gamma_pelistal')
+SET @gamma_nuimqol_shards = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_material_boss_gamma_nuimqol')
+SET @gamma_thelodica_shards = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_material_boss_gamma_syndicate')
 
 SET @remote_controller_t1 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_remote_controller')
 SET @remote_controller_t2 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_remote_controller')
@@ -9795,7 +9897,8 @@ INSERT INTO components (definition, componentdefinition, componentamount) VALUES
 (@definition, @axicoline, 1000),
 (@definition, @espitium, 100),
 (@definition, @bryochite, 50),
-(@definition, @flux, 10)
+(@definition, @flux, 10),
+(@definition, @gamma_syndicate_shards, 1)
 
 -- Mining turrets --
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret_unit')
@@ -9832,7 +9935,8 @@ INSERT INTO components (definition, componentdefinition, componentamount) VALUES
 (@definition, @axicoline, 1000),
 (@definition, @espitium, 100),
 (@definition, @bryochite, 50),
-(@definition, @flux, 10)
+(@definition, @flux, 10),
+(@definition, @gamma_syndicate_shards, 1)
 
 -- Harvesting turrets --
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_harvesting_turret_unit')
@@ -9869,7 +9973,8 @@ INSERT INTO components (definition, componentdefinition, componentamount) VALUES
 (@definition, @axicoline, 1000),
 (@definition, @espitium, 100),
 (@definition, @bryochite, 50),
-(@definition, @flux, 10)
+(@definition, @flux, 10),
+(@definition, @gamma_syndicate_shards, 1)
 
 -- Pelistal drones --
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone_unit')
@@ -9906,7 +10011,8 @@ INSERT INTO components (definition, componentdefinition, componentamount) VALUES
 (@definition, @phlobotil, 4000),
 (@definition, @espitium, 200),
 (@definition, @bryochite, 100),
-(@definition, @flux, 20)
+(@definition, @flux, 20),
+(@definition, @gamma_pelistal_shards, 1)
 
 -- Nuimqol drones --
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit')
@@ -9943,7 +10049,8 @@ INSERT INTO components (definition, componentdefinition, componentamount) VALUES
 (@definition, @polynitrocol, 4000),
 (@definition, @espitium, 200),
 (@definition, @bryochite, 100),
-(@definition, @flux, 20)
+(@definition, @flux, 20),
+(@definition, @gamma_nuimqol_shards, 20)
 
 -- Thelodica drones --
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone_unit')
@@ -9980,7 +10087,8 @@ INSERT INTO components (definition, componentdefinition, componentamount) VALUES
 (@definition, @polynucleit, 4000),
 (@definition, @espitium, 200),
 (@definition, @bryochite, 100),
-(@definition, @flux, 20)
+(@definition, @flux, 20),
+(@definition, @gamma_thelodica_shards, 1)
 
 GO
 

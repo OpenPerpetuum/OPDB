@@ -115,7 +115,7 @@ GO
 
 -- Light landmine (deployed) --
 
-IF NOT EXISTS (SELECT TOP 1 name FROM entitydefaults WHERE definitionname = 'def_light_landmine')
+IF NOT EXISTS (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_light_landmine')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_light_landmine', 1, 1024, 17040530, '#triggerMass=n10000', NULL, 1, 1.5, 1000, 0, 100, 'def_light_landmine_desc', 0, 0, 0)
@@ -123,14 +123,12 @@ END
 ELSE
 BEGIN
 	UPDATE entitydefaults SET quantity = 1, attributeflags = 1024, categoryflags = 17040530, options = '#triggerMass=n10000', note = NULL, enabled = 1, volume = 1.5, mass = 1000, hidden = 0, health = 100, descriptiontoken = 'def_light_landmine_desc', purchasable = 0, tiertype = 0, tierlevel = 1
-	WHERE name = 'def_light_landmine'
+	WHERE definitionname = 'def_light_landmine'
 END
-
-GO
 
 -- Light landmine (capsule) --
 
-IF NOT EXISTS (SELECT TOP 1 name FROM entitydefaults WHERE definitionname = 'def_light_landmine_capsule')
+IF NOT EXISTS (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_light_landmine_capsule')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_light_landmine_capsule', 1, 25167872, 3480, NULL, NULL, 1, 1.5, 1000, 0, 100, 'def_light_landmine_capsule_desc', 1, 0, 0)
@@ -138,14 +136,12 @@ END
 ELSE
 BEGIN
 	UPDATE entitydefaults SET quantity = 1, attributeflags = 25167872, categoryflags = 3480, options = NULL, note = NULL, enabled = 1, volume = 1.5, mass = 1000, hidden = 0, health = 100, descriptiontoken = 'def_light_landmine_capsule_desc', purchasable = 1, tiertype = 0, tierlevel = 1
-	WHERE name = 'def_light_landmine_capsule'
+	WHERE definitionname = 'def_light_landmine_capsule'
 END
-
-GO
 
 -- Medium landmine (deployed) --
 
-IF NOT EXISTS (SELECT TOP 1 name FROM entitydefaults WHERE definitionname = 'def_medium_landmine')
+IF NOT EXISTS (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_medium_landmine')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_medium_landmine', 1, 1024, 33817746, '#triggerMass=n20000', NULL, 1, 1.5, 1000, 0, 100, 'def_medium_landmine_desc', 0, 0, 0)
@@ -153,14 +149,12 @@ END
 ELSE
 BEGIN
 	UPDATE entitydefaults SET quantity = 1, attributeflags = 1024, categoryflags = 33817746, options = '#triggerMass=n20000', note = NULL, enabled = 1, volume = 1.5, mass = 1000, hidden = 0, health = 100, descriptiontoken = 'def_medium_landmine_desc', purchasable = 0, tiertype = 0, tierlevel = 1
-	WHERE name = 'def_medium_landmine'
+	WHERE definitionname = 'def_medium_landmine'
 END
-
-GO
 
 -- Medium landmine (capsule) --
 
-IF NOT EXISTS (SELECT TOP 1 name FROM entitydefaults WHERE definitionname = 'def_medium_landmine_capsule')
+IF NOT EXISTS (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_medium_landmine_capsule')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_medium_landmine_capsule', 1, 25167872, 3480, NULL, NULL, 1, 1.5, 1000, 0, 100, 'def_medium_landmine_capsule_desc', 1, 0, 0)
@@ -168,14 +162,12 @@ END
 ELSE
 BEGIN
 	UPDATE entitydefaults SET quantity = 1, attributeflags = 25167872, categoryflags = 3480, options = NULL, note = NULL, enabled = 1, volume = 1.5, mass = 1000, hidden = 0, health = 100, descriptiontoken = 'def_medium_landmine_capsule_desc', purchasable = 1, tiertype = 0, tierlevel = 1
-	WHERE name = 'def_medium_landmine_capsule'
+	WHERE definitionname = 'def_medium_landmine_capsule'
 END
-
-GO
 
 -- Heavy landmine (deployed) --
 
-IF NOT EXISTS (SELECT TOP 1 name FROM entitydefaults WHERE definitionname = 'def_heavy_landmine')
+IF NOT EXISTS (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_heavy_landmine')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_heavy_landmine', 1, 1024, 50594962, '#triggerMass=n30000', NULL, 1, 1.5, 1000, 0, 100, 'def_heavy_landmine_desc', 0, 0, 0)
@@ -183,14 +175,12 @@ END
 ELSE
 BEGIN
 	UPDATE entitydefaults SET quantity = 1, attributeflags = 1024, categoryflags = 50594962, options = '#triggerMass=n30000', note = NULL, enabled = 1, volume = 1.5, mass = 1000, hidden = 0, health = 100, descriptiontoken = 'def_heavy_landmine_desc', purchasable = 0, tiertype = 0, tierlevel = 1
-	WHERE name = 'def_heavy_landmine'
+	WHERE definitionname = 'def_heavy_landmine'
 END
-
-GO
 
 -- Heavy landmine (capsule) --
 
-IF NOT EXISTS (SELECT TOP 1 name FROM entitydefaults WHERE definitionname = 'def_heavy_landmine_capsule')
+IF NOT EXISTS (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_heavy_landmine_capsule')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_heavy_landmine_capsule', 1, 25167872, 3480, NULL, NULL, 1, 1.5, 1000, 0, 100, 'def_heavy_landmine_capsule_desc', 1, 0, 0)
@@ -198,351 +188,66 @@ END
 ELSE
 BEGIN
 	UPDATE entitydefaults SET quantity = 1, attributeflags = 25167872, categoryflags = 3480, options = NULL, note = NULL, enabled = 1, volume = 1.5, mass = 1000, hidden = 0, health = 100, descriptiontoken = 'def_heavy_landmine_capsule_desc', purchasable = 1, tiertype = 0, tierlevel = 1
-	WHERE name = 'def_heavy_landmine_capsule'
+	WHERE definitionname = 'def_heavy_landmine_capsule'
 END
 
-GO
+DECLARE @lightMine INT
+DECLARE @mediumMine INT
+DECLARE @heavyMine INT
 
----- Landmines attributes ----
+SET @lightMine = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_light_landmine' ORDER BY definition DESC);
+SET @mediumMine = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_medium_landmine' ORDER BY definition DESC);
+SET @heavyMine = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_heavy_landmine' ORDER BY definition DESC);
 
-DECLARE @definitionID INT;
-DECLARE @aggfieldID INT;
-DECLARE @aggvalueID INT
-
--- Light landmines --
-
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_light_landmine' ORDER BY definition DESC);
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_chemical' ORDER BY [name] DESC);
-SET @aggvalueID = 150
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
+IF NOT EXISTS (SELECT 1 FROM definitionconfig WHERE definition = @lightMine)
 BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
+	INSERT INTO definitionconfig (definition, explosion_radius, damage_chemical, damage_explosive, damage_kinetic, damage_thermal, damage_toxic) VALUES
+	(@lightMine, 1, 100, 100, 100, 100, 100)
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
+	UPDATE definitionconfig SET
+		explosion_radius = 1,
+		damage_chemical = 100,
+		damage_explosive = 100,
+		damage_kinetic = 100,
+		damage_thermal = 100,
+		damage_toxic = 100
+	WHERE definition = @lightMine
 END
 
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_explosive' ORDER BY [name] DESC);
-SET @aggvalueID = 150
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
+IF NOT EXISTS (SELECT 1 FROM definitionconfig WHERE definition = @mediumMine)
 BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_kinetic' ORDER BY [name] DESC);
-SET @aggvalueID = 150;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
+	INSERT INTO definitionconfig (definition, explosion_radius, damage_chemical, damage_explosive, damage_kinetic, damage_thermal, damage_toxic) VALUES
+	(@lightMine, 1, 300, 300, 300, 300, 300)
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
+	UPDATE definitionconfig SET
+		explosion_radius = 1,
+		damage_chemical = 300,
+		damage_explosive = 300,
+		damage_kinetic = 300,
+		damage_thermal = 300,
+		damage_toxic = 300
+	WHERE definition = @mediumMine
 END
 
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_thermal' ORDER BY [name] DESC);
-SET @aggvalueID = 150;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
+IF NOT EXISTS (SELECT 1 FROM definitionconfig WHERE definition = @heavyMine)
 BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_toxic' ORDER BY [name] DESC);
-SET @aggvalueID = 150;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
+	INSERT INTO definitionconfig (definition, explosion_radius, damage_chemical, damage_explosive, damage_kinetic, damage_thermal, damage_toxic) VALUES
+	(@lightMine, 1, 900, 900, 900, 900, 900)
 END
 ELSE
 BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'optimal_range' ORDER BY [name] DESC);
-SET @aggvalueID = 30;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'falloff' ORDER BY [name] DESC);
-SET @aggvalueID = 20;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'explosion_radius' ORDER BY [name] DESC);
-SET @aggvalueID = 1;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'trigger_mass' ORDER BY [name] DESC);
-SET @aggvalueID = 10000;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
--- Medium landmines --
-
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_medium_landmine' ORDER BY definition DESC);
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_chemical' ORDER BY [name] DESC);
-SET @aggvalueID = 450;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_explosive' ORDER BY [name] DESC);
-SET @aggvalueID = 450;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_kinetic' ORDER BY [name] DESC);
-SET @aggvalueID = 450;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_thermal' ORDER BY [name] DESC);
-SET @aggvalueID = 450;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_toxic' ORDER BY [name] DESC);
-SET @aggvalueID = 450;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'optimal_range' ORDER BY [name] DESC);
-SET @aggvalueID = 30;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'falloff' ORDER BY [name] DESC);
-SET @aggvalueID = 20;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'explosion_radius' ORDER BY [name] DESC);
-SET @aggvalueID = 1;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'trigger_mass' ORDER BY [name] DESC);
-SET @aggvalueID = 20000;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
--- Heavy landmines --
-
-SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_heavy_landmine' ORDER BY definition DESC);
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_chemical' ORDER BY [name] DESC);
-SET @aggvalueID = 1350;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_explosive' ORDER BY [name] DESC);
-SET @aggvalueID = 1350;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_kinetic' ORDER BY [name] DESC);
-SET @aggvalueID = 1350;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_thermal' ORDER BY [name] DESC);
-SET @aggvalueID = 1350;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_toxic' ORDER BY [name] DESC);
-SET @aggvalueID = 1350;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'optimal_range' ORDER BY [name] DESC);
-SET @aggvalueID = 30;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'falloff' ORDER BY [name] DESC);
-SET @aggvalueID = 20;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'explosion_radius' ORDER BY [name] DESC);
-SET @aggvalueID = 1;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
-END
-
-SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'trigger_mass' ORDER BY [name] DESC);
-SET @aggvalueID = 30000;
-
-IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
-BEGIN
-	INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) VALUES (@definitionID, @aggfieldID, @aggvalueID);
-END
-ELSE
-BEGIN
-	UPDATE aggregatevalues SET value = @aggvalueID WHERE definition = @definitionID AND field = @aggfieldID
+	UPDATE definitionconfig SET
+		explosion_radius = 1,
+		damage_chemical = 900,
+		damage_explosive = 900,
+		damage_kinetic = 900,
+		damage_thermal = 900,
+		damage_toxic = 900
+	WHERE definition = @heavyMine
 END
 
 GO
@@ -570,7 +275,7 @@ BEGIN
 END
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_chemical' ORDER BY [name] DESC);
-SET @aggvalueID = 150;
+SET @aggvalueID = 100;
 
 IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
 BEGIN
@@ -582,7 +287,7 @@ BEGIN
 END
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_explosive' ORDER BY [name] DESC);
-SET @aggvalueID = 150;
+SET @aggvalueID = 100;
 
 IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
 BEGIN
@@ -594,7 +299,7 @@ BEGIN
 END
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_kinetic' ORDER BY [name] DESC);
-SET @aggvalueID = 150;
+SET @aggvalueID = 100;
 
 IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
 BEGIN
@@ -606,7 +311,7 @@ BEGIN
 END
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_thermal' ORDER BY [name] DESC);
-SET @aggvalueID = 150;
+SET @aggvalueID = 100;
 
 IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
 BEGIN
@@ -618,7 +323,7 @@ BEGIN
 END
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_toxic' ORDER BY [name] DESC);
-SET @aggvalueID = 150;
+SET @aggvalueID = 100;
 
 IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
 BEGIN
@@ -658,7 +363,7 @@ BEGIN
 END
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_chemical' ORDER BY [name] DESC);
-SET @aggvalueID = 450;
+SET @aggvalueID = 300;
 
 IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
 BEGIN
@@ -670,7 +375,7 @@ BEGIN
 END
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_explosive' ORDER BY [name] DESC);
-SET @aggvalueID = 450;
+SET @aggvalueID = 300;
 
 IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
 BEGIN
@@ -682,7 +387,7 @@ BEGIN
 END
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_kinetic' ORDER BY [name] DESC);
-SET @aggvalueID = 450;
+SET @aggvalueID = 300;
 
 IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
 BEGIN
@@ -694,7 +399,7 @@ BEGIN
 END
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_thermal' ORDER BY [name] DESC);
-SET @aggvalueID = 450;
+SET @aggvalueID = 300;
 
 IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
 BEGIN
@@ -706,7 +411,7 @@ BEGIN
 END
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_toxic' ORDER BY [name] DESC);
-SET @aggvalueID = 450;
+SET @aggvalueID = 300;
 
 IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
 BEGIN
@@ -746,7 +451,7 @@ BEGIN
 END
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_chemical' ORDER BY [name] DESC);
-SET @aggvalueID = 1350;
+SET @aggvalueID = 900;
 
 IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
 BEGIN
@@ -758,7 +463,7 @@ BEGIN
 END
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_explosive' ORDER BY [name] DESC);
-SET @aggvalueID = 1350;
+SET @aggvalueID = 900;
 
 IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
 BEGIN
@@ -770,7 +475,7 @@ BEGIN
 END
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_kinetic' ORDER BY [name] DESC);
-SET @aggvalueID = 1350;
+SET @aggvalueID = 900;
 
 IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
 BEGIN
@@ -782,7 +487,7 @@ BEGIN
 END
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_thermal' ORDER BY [name] DESC);
-SET @aggvalueID = 1350;
+SET @aggvalueID = 900;
 
 IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
 BEGIN
@@ -794,7 +499,7 @@ BEGIN
 END
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'damage_toxic' ORDER BY [name] DESC);
-SET @aggvalueID = 1350;
+SET @aggvalueID = 900;
 
 IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
 BEGIN
@@ -899,34 +604,26 @@ GO
 
 ---- New stat mine detection for all robots ----
 DECLARE @definitionID int;
-DECLARE @categoryFlags int;
 DECLARE @aggfieldID int;
+DECLARE @tempTable TABLE (definition INT, field INT, value FLOAT)
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'mine_detection_range' ORDER BY [name] DESC);
 
-SET @categoryFlags = (SELECT TOP 1 [value] FROM categoryFlags WHERE [NAME] = 'cf_robot_chassis')
-INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) 
-(SELECT definition, @aggfieldID, 7 FROM entitydefaults where categoryflags = @categoryFlags);
+INSERT INTO @tempTable (definition, field, value) 
+(SELECT definition, @aggfieldID, 7 FROM entitydefaults ed
+	INNER JOIN categoryFlags cf
+	ON ed.categoryflags = cf.value
+	WHERE cf.name IN ('cf_robot_chassis', 'cf_runner_chassis', 'cf_crawler_chassis', 'cf_mech_chassis', 'cf_heavymech_chassis', 'cf_walker_chassis')
+);
 
-SET @categoryFlags = (SELECT TOP 1 [value] FROM categoryFlags WHERE [NAME] = 'cf_runner_chassis')
-INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) 
-(SELECT definition, @aggfieldID, 7 FROM entitydefaults where categoryflags = @categoryFlags);
-
-SET @categoryFlags = (SELECT TOP 1 [value] FROM categoryFlags WHERE [NAME] = 'cf_crawler_chassis')
-INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) 
-(SELECT definition, @aggfieldID, 7 FROM entitydefaults where categoryflags = @categoryFlags);
-
-SET @categoryFlags = (SELECT TOP 1 [value] FROM categoryFlags WHERE [NAME] = 'cf_mech_chassis')
-INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) 
-(SELECT definition, @aggfieldID, 7 FROM entitydefaults where categoryflags = @categoryFlags);
-
-SET @categoryFlags = (SELECT TOP 1 [value] FROM categoryFlags WHERE [NAME] = 'cf_heavymech_chassis')
-INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) 
-(SELECT definition, @aggfieldID, 7 FROM entitydefaults where categoryflags = @categoryFlags);
-
-SET @categoryFlags = (SELECT TOP 1 [value] FROM categoryFlags WHERE [NAME] = 'cf_walker_chassis')
-INSERT INTO [dbo].[aggregatevalues] ([definition],[field],[value]) 
-(SELECT definition, @aggfieldID, 7 FROM entitydefaults where categoryflags = @categoryFlags);
+MERGE aggregatevalues AS Target
+USING (SELECT definition, field, value FROM @tempTable) AS Source
+ON (Target.definition = Source.definition AND Target.field = Source.field)
+WHEN MATCHED THEN
+    UPDATE SET Target.value = Source.value
+WHEN NOT MATCHED BY TARGET THEN
+    INSERT (definition, field, value)
+    VALUES (Source.definition, Source.field, Source.value);
 
 -- Hermes has 100m base landmines detection range --
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_hermes_chassis' ORDER BY definition DESC);
@@ -945,12 +642,21 @@ SET @definition = (SELECT TOP 1 definition from entitydefaults WHERE [definition
 SET @extension = (SELECT TOP 1 extensionid from extensions WHERE [extensionname] = 'ext_high_tech_specialist')
 SET @property = (SELECT TOP 1 id from aggregatefields WHERE name = 'mine_detection_range')
 
-INSERT INTO chassisbonus (definition, extension, bonus, note, targetpropertyID, effectenhancer) VALUES
-(@definition, @extension, 0.3, NULL, @property, 0)
+IF NOT EXISTS (SELECT 1 FROM chassisbonus WHERE definition = @definition AND extension = @extension AND targetpropertyID = @property)
+BEGIN
+	INSERT INTO chassisbonus (definition, extension, bonus, note, targetpropertyID, effectenhancer) VALUES
+	(@definition, @extension, 0.3, NULL, @property, 0)
+END
+ELSE
+BEGIN
+	UPDATE chassisbonus SET bonus = 0.3 WHERE definition = @definition AND extension = @extension AND targetpropertyID = @property
+END
 
 GO
 
 ---- Landmine detectors category ----
+
+DELETE FROM categoryFlags WHERE name = 'cf_landmine_detectors'
 
 INSERT INTO categoryFlags (value, name, note, hidden, isunique) VALUES
 (983823, 'cf_landmine_detectors', 'Landmine Detectors', 0, 1)
@@ -960,10 +666,26 @@ GO
 ---- Landmine detectors, prototypes and cts ----
 
 DECLARE @categoryFlags int
+DECLARE @tempTable TABLE (
+definitionname VARCHAR(100),
+quantity INT,
+attributeflags BIGINT,
+categoryflags BIGINT,
+options VARCHAR(MAX),
+note NVARCHAR(2048),
+enabled BIT,
+volume FLOAT,
+mass FLOAT,
+hidden BIT,
+health FLOAT,
+descriptiontoken NVARCHAR(100),
+purchasable BIT,
+tiertype INT,
+tierlevel INT)
 
 SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_landmine_detectors')
 
-INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+INSERT INTO @tempTable (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 ('def_standart_landmine_detector', 1, 16656, @categoryFlags, '#moduleFlag=i410#tier=$tierlevel_t1', NULL, 1, 0.5, 1000, 0, 100, 'def_standart_landmine_detector_desc', 1, 1, 1),
 ('def_named1_landmine_detector', 1, 16656, @categoryFlags, '#moduleFlag=i410#tier=$tierlevel_t2', NULL, 1, 1.5, 900, 0, 100, 'def_named_landmine_detector_desc', 1, 1, 2),
 ('def_named1_landmine_detector_pr', 1, 16656, @categoryFlags, '#moduleFlag=i410#tier=$tierlevel_t2_pr', NULL, 1, 1.5, 800, 0, 100, 'def_named_landmine_detector_desc', 1, 2, 2),
@@ -974,11 +696,49 @@ INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryfl
 
 SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_engineering_calibration_programs')
 
-INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
+INSERT INTO @tempTable (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 ('def_standart_landmine_detector_cprg', 1, 1024, @categoryFlags, '#tier=$tierlevel_t1', NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 1),
 ('def_named1_landmine_detector_cprg', 1, 1024, @categoryFlags, '#tier=$tierlevel_t2', NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 2),
 ('def_named2_landmine_detector_cprg', 1, 1024, @categoryFlags, '#tier=$tierlevel_t3', NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 3),
 ('def_named3_landmine_detector_cprg', 1, 1024, @categoryFlags, '#tier=$tierlevel_t4', NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 4)
+
+MERGE entitydefaults AS Target
+USING (SELECT definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel FROM @tempTable) AS Source
+ON (Target.definitionname = Source.definitionname)
+WHEN MATCHED THEN
+    UPDATE SET 
+		Target.quantity = Source.quantity,
+		Target.attributeflags = Source.attributeflags,
+		Target.categoryflags = Source.categoryflags,
+		Target.options = Source.options,
+		Target.note = Source.note,
+		Target.enabled = Source.enabled,
+		Target.volume = Source.volume,
+		Target.mass = Source.mass,
+		Target.hidden = Source.hidden,
+		Target.health = Source.health,
+		Target.descriptiontoken = Source.descriptiontoken,
+		Target.purchasable = Source.purchasable,
+		Target.tiertype = Source.tiertype,
+		Target.tierlevel = Source.tierlevel
+WHEN NOT MATCHED BY TARGET THEN
+    INSERT (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel)
+    VALUES (
+		Source.definitionname,
+		Source.quantity,
+		Source.attributeflags,
+		Source.categoryflags,
+		Source.options,
+		Source.note,
+		Source.enabled,
+		Source.volume,
+		Source.mass,
+		Source.hidden,
+		Source.health,
+		Source.descriptiontoken,
+		Source.purchasable,
+		Source.tiertype,
+		Source.tierlevel);
 
 GO
 
@@ -990,6 +750,7 @@ DECLARE @cycle_time_field int
 DECLARE @powergrid_usage_field int
 DECLARE @effect_mine_detection_range_modifier_field int
 DECLARE @definition int
+DECLARE @tempTable TABLE (definition INT, field INT, value FLOAT)
 
 SET @core_usage_field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'core_usage')
 SET @cpu_usage_field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'cpu_usage')
@@ -998,7 +759,7 @@ SET @powergrid_usage_field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 
 SET @effect_mine_detection_range_modifier_field = (SELECT TOP 1 id FROM aggregatefields WHERE name = 'effect_mine_detection_range_modifier')
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_landmine_detector')
-INSERT INTO aggregatevalues (definition, field, value) VALUES
+INSERT INTO @tempTable (definition, field, value) VALUES
 (@definition, @core_usage_field, 14),
 (@definition, @cpu_usage_field, 20),
 (@definition, @cycle_time_field, 10000),
@@ -1006,7 +767,7 @@ INSERT INTO aggregatevalues (definition, field, value) VALUES
 (@definition, @effect_mine_detection_range_modifier_field, 1.3)
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_landmine_detector')
-INSERT INTO aggregatevalues (definition, field, value) VALUES
+INSERT INTO @tempTable (definition, field, value) VALUES
 (@definition, @core_usage_field, 14),
 (@definition, @cpu_usage_field, 18),
 (@definition, @cycle_time_field, 10000),
@@ -1014,7 +775,7 @@ INSERT INTO aggregatevalues (definition, field, value) VALUES
 (@definition, @effect_mine_detection_range_modifier_field, 1.3)
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_landmine_detector_pr')
-INSERT INTO aggregatevalues (definition, field, value) VALUES
+INSERT INTO @tempTable (definition, field, value) VALUES
 (@definition, @core_usage_field, 12),
 (@definition, @cpu_usage_field, 17),
 (@definition, @cycle_time_field, 10000),
@@ -1022,7 +783,7 @@ INSERT INTO aggregatevalues (definition, field, value) VALUES
 (@definition, @effect_mine_detection_range_modifier_field, 1.3)
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_landmine_detector')
-INSERT INTO aggregatevalues (definition, field, value) VALUES
+INSERT INTO @tempTable (definition, field, value) VALUES
 (@definition, @core_usage_field, 14),
 (@definition, @cpu_usage_field, 23),
 (@definition, @cycle_time_field, 10000),
@@ -1030,7 +791,7 @@ INSERT INTO aggregatevalues (definition, field, value) VALUES
 (@definition, @effect_mine_detection_range_modifier_field, 1.4)
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_landmine_detector_pr')
-INSERT INTO aggregatevalues (definition, field, value) VALUES
+INSERT INTO @tempTable (definition, field, value) VALUES
 (@definition, @core_usage_field, 12),
 (@definition, @cpu_usage_field, 22),
 (@definition, @cycle_time_field, 10000),
@@ -1038,7 +799,7 @@ INSERT INTO aggregatevalues (definition, field, value) VALUES
 (@definition, @effect_mine_detection_range_modifier_field, 1.4)
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_landmine_detector')
-INSERT INTO aggregatevalues (definition, field, value) VALUES
+INSERT INTO @tempTable (definition, field, value) VALUES
 (@definition, @core_usage_field, 18),
 (@definition, @cpu_usage_field, 25),
 (@definition, @cycle_time_field, 10000),
@@ -1046,12 +807,21 @@ INSERT INTO aggregatevalues (definition, field, value) VALUES
 (@definition, @effect_mine_detection_range_modifier_field, 1.5)
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_landmine_detector_pr')
-INSERT INTO aggregatevalues (definition, field, value) VALUES
+INSERT INTO @tempTable (definition, field, value) VALUES
 (@definition, @core_usage_field, 15),
 (@definition, @cpu_usage_field, 24),
 (@definition, @cycle_time_field, 10000),
 (@definition, @powergrid_usage_field, 8),
 (@definition, @effect_mine_detection_range_modifier_field, 1.5)
+
+MERGE aggregatevalues AS Target
+USING (SELECT definition, field, value FROM @tempTable) AS Source
+ON (Target.definition = Source.definition AND Target.field = Source.field)
+WHEN MATCHED THEN
+    UPDATE SET Target.value = Source.value
+WHEN NOT MATCHED BY TARGET THEN
+    INSERT (definition, field, value)
+    VALUES (Source.definition, Source.field, Source.value);
 
 GO
 
@@ -1085,21 +855,23 @@ SET @t1_mine_detector = (SELECT TOP 1 definition FROM entitydefaults WHERE defin
 SET @t2_mine_detector = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_landmine_detector')
 SET @t3_mine_detector = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_landmine_detector')
 
+DECLARE @tempTable TABLE (definition INT, componentdefinition INT, componentamount INT)
+
 -- Modules --
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_landmine_detector')
-INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+INSERT INTO @tempTable (definition, componentdefinition, componentamount) VALUES
 (@definition, @titanium_definition, 100),
 (@definition, @cryoperine_definition, 400)
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_landmine_detector')
-INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+INSERT INTO @tempTable (definition, componentdefinition, componentamount) VALUES
 (@definition, @titanium_definition, 100),
 (@definition, @cryoperine_definition, 400),
 (@definition, @t1_mine_detector, 1),
 (@definition, @common_basic_components, 30)
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_landmine_detector')
-INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+INSERT INTO @tempTable (definition, componentdefinition, componentamount) VALUES
 (@definition, @titanium_definition, 100),
 (@definition, @cryoperine_definition, 200),
 (@definition, @espitium, 200),
@@ -1108,7 +880,7 @@ INSERT INTO components (definition, componentdefinition, componentamount) VALUES
 (@definition, @common_advanced_components, 20)
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_landmine_detector')
-INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+INSERT INTO @tempTable (definition, componentdefinition, componentamount) VALUES
 (@definition, @titanium_definition, 100),
 (@definition, @cryoperine_definition, 400),
 (@definition, @espitium, 400),
@@ -1120,14 +892,14 @@ INSERT INTO components (definition, componentdefinition, componentamount) VALUES
 
 -- Prototypes --
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_landmine_detector_pr')
-INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+INSERT INTO @tempTable (definition, componentdefinition, componentamount) VALUES
 (@definition, @titanium_definition, 100),
 (@definition, @cryoperine_definition, 400),
 (@definition, @t1_mine_detector, 1),
 (@definition, @common_basic_components, 30)
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_landmine_detector_pr')
-INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+INSERT INTO @tempTable (definition, componentdefinition, componentamount) VALUES
 (@definition, @titanium_definition, 100),
 (@definition, @cryoperine_definition, 200),
 (@definition, @espitium, 200),
@@ -1136,7 +908,7 @@ INSERT INTO components (definition, componentdefinition, componentamount) VALUES
 (@definition, @common_advanced_components, 20)
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_landmine_detector_pr')
-INSERT INTO components (definition, componentdefinition, componentamount) VALUES
+INSERT INTO @tempTable (definition, componentdefinition, componentamount) VALUES
 (@definition, @titanium_definition, 100),
 (@definition, @cryoperine_definition, 400),
 (@definition, @espitium, 400),
@@ -1146,32 +918,54 @@ INSERT INTO components (definition, componentdefinition, componentamount) VALUES
 (@definition, @common_advanced_components, 30),
 (@definition, @common_expert_components, 45)
 
+MERGE components AS Target
+USING (SELECT definition, componentdefinition, componentamount FROM @tempTable) AS Source
+ON (Target.definition = Source.definition AND Target.componentdefinition = Source.componentdefinition)
+WHEN MATCHED THEN
+    UPDATE SET Target.componentamount = Source.componentamount
+WHEN NOT MATCHED BY TARGET THEN
+    INSERT (definition, componentdefinition, componentamount)
+    VALUES (Source.definition, Source.componentdefinition, Source.componentamount);
+
 GO
 
 ---- Research levels ----
 
 DECLARE @definition INT
 DECLARE @calibration INT
+DECLARE @tempTable TABLE (definition INT, researchlevel INT, calibrationprogram INT, enabled BIT)
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_landmine_detector')
 SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_landmine_detector_cprg')
-INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+INSERT INTO @tempTable (definition, researchlevel, calibrationprogram, enabled) VALUES
 (@definition, 6, @calibration, 1)
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_landmine_detector_pr')
 SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_landmine_detector_cprg')
-INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+INSERT INTO @tempTable (definition, researchlevel, calibrationprogram, enabled) VALUES
 (@definition, 7, @calibration, 1)
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_landmine_detector_pr')
 SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named2_landmine_detector_cprg')
-INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+INSERT INTO @tempTable (definition, researchlevel, calibrationprogram, enabled) VALUES
 (@definition, 8, @calibration, 1)
 
 SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_landmine_detector_pr')
 SET @calibration = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_landmine_detector_cprg')
-INSERT INTO [itemresearchlevels] (definition, researchlevel, calibrationprogram, enabled) VALUES
+INSERT INTO @tempTable (definition, researchlevel, calibrationprogram, enabled) VALUES
 (@definition, 9, @calibration, 1)
+
+MERGE itemresearchlevels AS Target
+USING (SELECT definition, researchlevel, calibrationprogram, enabled FROM @tempTable) AS Source
+ON (Target.definition = Source.definition)
+WHEN MATCHED THEN
+    UPDATE SET 
+		Target.researchlevel = Source.researchlevel,
+		Target.calibrationprogram = Source.calibrationprogram,
+		Target.enabled = Source.enabled
+WHEN NOT MATCHED BY TARGET THEN
+    INSERT (definition, researchlevel, calibrationprogram, enabled)
+    VALUES (Source.definition, Source.researchlevel, Source.calibrationprogram, Source.enabled);
 
 GO
 
@@ -1183,6 +977,7 @@ DECLARE @t2 INT
 DECLARE @t3 INT
 DECLARE @t4 INT
 DECLARE @group INT
+DECLARE @tempTable TABLE (parentdefinition INT, childdefinition INT, groupID INT, x INT, y INT, enablerextensionid INT)
 
 SET @parent = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_blob_emission_modulator')
 SET @t1 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_standart_landmine_detector')
@@ -1191,11 +986,24 @@ SET @t3 = (SELECT TOP 1 definition definition FROM entitydefaults WHERE definiti
 SET @t4 = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named3_landmine_detector')
 SET @group = (SELECT TOP 1 id FROM [techtreegroups] WHERE name = 'common2')
 
-INSERT INTO [techtree] (parentdefinition, childdefinition, groupID, x, y, enablerextensionid) VALUES
+INSERT INTO @tempTable (parentdefinition, childdefinition, groupID, x, y, enablerextensionid) VALUES
 (@parent, @t1, @group, 5, 19, NULL),
 (@t1, @t2, @group, 6, 19, NULL),
 (@t2, @t3, @group, 7, 19, NULL),
 (@t3, @t4, @group, 8, 19, NULL)
+
+MERGE techtree AS Target
+USING (SELECT parentdefinition, childdefinition, groupID, x, y, enablerextensionid FROM @tempTable) AS Source
+ON (Target.childdefinition = Source.childdefinition AND Target.groupID = Source.groupID)
+WHEN MATCHED THEN
+    UPDATE SET 
+		Target.parentdefinition = Source.parentdefinition,
+		Target.x = Source.x,
+		Target.y = Source.y,
+		Target.enablerextensionid = Source.enablerextensionid
+WHEN NOT MATCHED BY TARGET THEN
+    INSERT (parentdefinition, childdefinition, groupID, x, y, enablerextensionid)
+    VALUES (Source.parentdefinition, Source.childdefinition, Source.groupID, Source.x, Source.y, Source.enablerextensionid);
 
 GO
 
@@ -1232,33 +1040,51 @@ GO
 
 DECLARE @module int
 DECLARE @prototype int
+DECLARE @tempTable TABLE (definition INT, prototype INT)
 
 SET @module = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname LIKE 'def_named1_landmine_detector')
 SET @prototype = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname LIKE 'def_named1_landmine_detector_pr')
 
-INSERT INTO prototypes (definition, prototype) VALUES (@module, @prototype)
+INSERT INTO @tempTable (definition, prototype) VALUES (@module, @prototype)
 
 SET @module = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname LIKE 'def_named2_landmine_detector')
 SET @prototype = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname LIKE 'def_named2_landmine_detector_pr')
 
-INSERT INTO prototypes (definition, prototype) VALUES (@module, @prototype)
+INSERT INTO @tempTable (definition, prototype) VALUES (@module, @prototype)
 
 SET @module = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname LIKE 'def_named3_landmine_detector')
 SET @prototype = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname LIKE 'def_named3_landmine_detector_pr')
 
-INSERT INTO prototypes (definition, prototype) VALUES (@module, @prototype)
+INSERT INTO @tempTable (definition, prototype) VALUES (@module, @prototype)
+
+MERGE prototypes AS Target
+USING (SELECT definition, prototype FROM @tempTable) AS Source
+ON (Target.definition = Source.definition)
+WHEN MATCHED THEN
+    UPDATE SET 
+		Target.prototype = Source.prototype
+WHEN NOT MATCHED BY TARGET THEN
+    INSERT (definition, prototype)
+    VALUES (Source.definition, Source.prototype);
+
+GO
 
 GO
 
 ---- Landmine detection effect category ----
+
+DELETE FROM effectcategories WHERE name = 'effcat_mine_detection'
 
 INSERT INTO effectcategories (name, flag, maxlevel, note) VALUES
 ('effcat_mine_detection', 46, 1, NULL)
 
 ---- Landmine detection effect ----
 
-INSERT INTO effects (effectcategory, duration, name, description, note, isaura, auraradius, ispositive, display, saveable) VALUES
-(70368744177664, 10500, 'effect_mine_detector', 'effect_mine_detector_desc', 'mine detector', 0, 0, 1, 3, 0)
+IF NOT EXISTS (SELECT 1 FROM effects WHERE name = 'effect_mine_detector')
+BEGIN
+	INSERT INTO effects (effectcategory, duration, name, description, note, isaura, auraradius, ispositive, display, saveable) VALUES
+	(70368744177664, 10500, 'effect_mine_detector', 'effect_mine_detector_desc', 'mine detector', 0, 0, 1, 3, 0)
+END
 
 GO
 
