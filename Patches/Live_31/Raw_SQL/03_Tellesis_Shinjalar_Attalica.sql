@@ -141,6 +141,11 @@ GO
 
 DECLARE @sourceDefinition INT
 DECLARE @targetDefinition INT
+DECLARE @gamma_syndicate_shards INT
+DECLARE @gamma_nuimqol_shards INT
+
+SET @gamma_syndicate_shards = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_material_boss_gamma_syndicate')
+SET @gamma_nuimqol_shards = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_material_boss_gamma_nuimqol')
 
 --
 
@@ -168,7 +173,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -203,7 +208,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -238,7 +243,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -273,7 +278,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -308,7 +313,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -343,7 +348,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -378,7 +383,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -413,7 +418,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -448,7 +453,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -483,7 +488,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -518,7 +523,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -553,7 +558,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -588,7 +593,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -623,7 +628,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -658,7 +663,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -693,7 +698,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -701,6 +706,16 @@ INNER JOIN entitydefaults t4 ON nl.lootdefinition = t4.definition
 INNER JOIN entitydefaults t3 ON t4.categoryflags = t3.categoryflags
 WHERE nl.definition = @sourceDefinition
 AND t4.tiertype = 1 and  t4.tierlevel = 4 and t3.tiertype = 1 and t3.tierlevel = 3
+
+DECLARE @epriton INT
+DECLARE @noralghis INT
+
+SET @epriton = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_epriton')
+SET @noralghis = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_electroplant_fruit')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @epriton, 2000000, 1, 0, 1, 500000),
+(@targetDefinition, @noralghis, 2000000, 1, 0, 1, 500000)
 
 --
 
@@ -728,7 +743,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -763,7 +778,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -798,7 +813,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -833,7 +848,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -868,7 +883,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -903,7 +918,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -938,7 +953,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -973,7 +988,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -1008,7 +1023,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -1043,7 +1058,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -1078,7 +1093,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -1113,7 +1128,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -1148,7 +1163,7 @@ DELETE FROM npcloot WHERE definition = @targetDefinition
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, nl.lootdefinition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
 INNER JOIN entitydefaults ed ON nl.lootdefinition = ed.definition
-WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4))
+WHERE nl.definition = @sourceDefinition AND (ed.tierlevel IS NULL OR (ed.tierlevel != 4)) AND nl.lootdefinition != @gamma_syndicate_shards AND nl.lootdefinition != @gamma_nuimqol_shards
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity)
 SELECT @targetDefinition, t3.definition, nl.quantity, nl.probability, nl.repackaged, nl.dontdamage, nl.minquantity FROM npcloot nl
@@ -1514,8 +1529,6 @@ SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definit
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
 (@targetDefinition, @lootDefinition, 1, 0.25, 0, 0, 1)
 
-
-
 --
 
 SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_named1_core_recharger')
@@ -1594,11 +1607,6 @@ SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definit
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
 (@targetDefinition, @lootDefinition, 10, 0.05, 0, 1, 1)
-
-SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_material_boss_gamma_syndicate')
-
-INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
-(@targetDefinition, @lootDefinition, 200, 0.5, 0, 1, 20)
 
 SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_material_boss_gamma_syndicate')
 
@@ -2445,28 +2453,64 @@ GO
 
 ---- Add zone effects
 
-DECLARE @sourceZoneId INT
-DECLARE @destinationZoneId INT
-DECLARE @tempTable TABLE (zoneid INT, effectid INT)
-DECLARE @tierLimitEffect INT
+DROP TABLE IF EXISTS #EFFS;
+CREATE TABLE #EFFS 
+(
+	effId INT,
+	effName VARCHAR(100)
+);
 
-SET @tierLimitEffect = (SELECT TOP 1 id FROM effects WHERE name = 'pbs_tech_limit')
+DROP TABLE IF EXISTS #EFFECTMODS;
+CREATE TABLE #EFFECTMODS 
+(
+	effId INT,
+	fieldName VARCHAR(100),
+	fieldValue FLOAT
+);
 
-SET @sourceZoneId = (SELECT TOP 1 id FROM zones WHERE name = 'zone_gamma_z132')
-SET @destinationZoneId = (SELECT TOP 1 id FROM zones WHERE name = 'zone_ICS_pve')
+DECLARE @effectCatName BIGINT
+SET @effectCatName = (SELECT TOP 1 flag FROM effectcategories WHERE name = 'effcat_zone_effects');
 
-INSERT INTO @tempTable (zoneid, effectid)
-SELECT @destinationZoneId, effectid FROM zoneeffects WHERE zoneid = @sourceZoneId AND effectid != @tierLimitEffect
+DECLARE @effectName  AS VARCHAR(100) = 'effect_alpha3_bonus';
 
-MERGE zoneeffects AS Target
-USING (SELECT zoneid, effectid FROM @tempTable) AS Source
-ON (Target.zoneid = Source.zoneid)
-WHEN MATCHED THEN
-    UPDATE SET Target.effectid = Source.effectid
-WHEN NOT MATCHED BY TARGET THEN
-    INSERT (zoneid, effectid)
-    VALUES (Source.zoneid, Source.effectid);
+IF NOT EXISTS (SELECT 1 FROM effects WHERE name = @effectName)
+BEGIN
+	INSERT INTO effects (effectcategory, duration, name, description, note, isaura, auraradius, ispositive, display, saveable) VALUES
+	(@effectCatName, 0, @effectName, @effectName+'_desc', 'Alpha 3 zone effects', 1, 0, 1, 1, 0)
+END
 
+DECLARE @effectId INT;
+
+SET @effectId = (SELECT TOP 1 id FROM effects WHERE name = @effectName)
+
+INSERT INTO #EFFECTMODS (effId, fieldName, fieldValue) VALUES
+(@effectId, 'effect_mining_amount_modifier', 1.3),
+(@effectId, 'effect_harvesting_amount_modifier', 1.3),
+(@effectId, 'effect_speed_highway_modifier', 0.35)
+
+INSERT INTO #EFFS (effId, effName) VALUES
+(@effectId, @effectName);
+
+DELETE FROM effectdefaultmodifiers WHERE effectid IN (SELECT effId FROM #EFFS);
+
+INSERT INTO effectdefaultmodifiers (effectid, field, value)
+SELECT effId, (SELECT TOP 1 id FROM aggregatefields WHERE name=fieldName), fieldValue
+FROM #EFFECTMODS;
+
+DECLARE @zoneId INT
+
+SET @zoneId = (SELECT TOP 1 id FROM zones WHERE name = 'zone_ICS_pve')
+
+DELETE FROM zoneeffects WHERE zoneid = @zoneId;
+
+INSERT INTO zoneeffects (zoneid, effectid) VALUES
+(@zoneId, @effectId)
+
+DROP TABLE IF EXISTS #EFFECTMODS;
+DROP TABLE IF EXISTS #EFFS;
+GO
+
+	
 GO
 
 ---- Fill syndicate market
@@ -2494,3 +2538,52 @@ DECLARE @zoneid INT
 SET @zoneid = (SELECT TOP 1 id FROM zones WHERE name = 'zone_ICS_pve')
 
 UPDATE missionlocations SET maxmissionlevel = 4 WHERE zoneid = @zoneid
+
+---- Reconfigure plant rules for Tellesis
+
+DECLARE @rulesetid INT
+
+SET @rulesetid = (SELECT TOP 1 plantruleset FROM zones WHERE name = 'zone_ICS_pve')
+
+DELETE FROM plantrules WHERE rulesetid = @rulesetid
+
+INSERT INTO plantrules (plantrule, rulesetid, note) VALUES
+('bush_a.txt', @rulesetid, 'Tellesis decor'),
+('bush_b.txt', @rulesetid, 'Tellesis decor'),
+('coppertree.txt', @rulesetid, 'Tellesis decor'),
+('grass_a.txt', @rulesetid, 'Tellesis decor'),
+('grass_b.txt', @rulesetid, 'Tellesis decor'),
+('pinetree.txt', @rulesetid, 'Tellesis decor'),
+('quag.txt', @rulesetid, 'Tellesis decor'),
+('rango.txt', @rulesetid, 'Tellesis decor'),
+('reed.txt', @rulesetid, 'Tellesis decor'),
+('titanplant.txt', @rulesetid, 'Tellesis decor'),
+('nanowheat.txt', @rulesetid, 'Tellesis decor'),
+('irontree_hi.txt', @rulesetid, 'Tellesis harvestable'),
+('electroplant_hi.txt', @rulesetid, 'Tellesis harvestable'),
+('rustbush_hi.txt', @rulesetid, 'Tellesis harvestable')
+
+GO
+
+---- Reconfigure minerals for Tellesis
+DECLARE @materialType INT
+DECLARE @zoneId INT
+
+SET @zoneId = (SELECT TOP 1 id FROM zones WHERE name = 'zone_ICS_pve')
+
+SET @materialType = (SELECT TOP 1 idx FROM minerals WHERE name = 'titan')
+UPDATE mineralconfigs SET maxtilespernode = 625, totalamountpernode = 80000000 WHERE zoneid = @zoneId AND materialtype = @materialType
+
+SET @materialType = (SELECT TOP 1 idx FROM minerals WHERE name = 'crude')
+UPDATE mineralconfigs SET maxtilespernode = 1000, totalamountpernode = 82125000 WHERE zoneid = @zoneId AND materialtype = @materialType
+
+SET @materialType = (SELECT TOP 1 idx FROM minerals WHERE name = 'stermonit')
+UPDATE mineralconfigs SET maxtilespernode = 625, totalamountpernode = 68000000 WHERE zoneid = @zoneId AND materialtype = @materialType
+
+SET @materialType = (SELECT TOP 1 idx FROM minerals WHERE name = 'imentium')
+UPDATE mineralconfigs SET maxtilespernode = 625, totalamountpernode = 68000000 WHERE zoneid = @zoneId AND materialtype = @materialType
+
+SET @materialType = (SELECT TOP 1 idx FROM minerals WHERE name = 'liquizit')
+UPDATE mineralconfigs SET maxtilespernode = 625, totalamountpernode = 80000000 WHERE zoneid = @zoneId AND materialtype = @materialType
+
+GO

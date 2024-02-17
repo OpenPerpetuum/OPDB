@@ -48,6 +48,12 @@ BEGIN
 	(5519083504795, 'cf_ct_capsules_robot_syndicate_commandbot', 'Syndicate command bot CT capsules', 1, 1)
 END
 
+IF NOT EXISTS (SELECT 1 FROM categoryflags WHERE name = 'cf_ammo_rcu_calibration_programs' )
+BEGIN
+	INSERT INTO categoryflags (value, name, note, hidden, isunique) VALUES
+	(251855894, 'cf_ammo_rcu_calibration_programs', 'RCU CTs', 1, 1)
+END
+
 GO
 
 ---- Add new slot flag
@@ -9123,12 +9129,16 @@ END
 
 ---- Create CT for sentry turrets
 
-SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_sentry_turret_units')
+SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_ammo_rcu_calibration_programs')
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_sentry_turret_unit_cprg')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_standart_sentry_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 1)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_standart_sentry_turret_unit_cprg'
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_sentry_turret_unit_cprg')
@@ -9136,11 +9146,19 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named1_sentry_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 2)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_named1_sentry_turret_unit_cprg'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_sentry_turret_unit_cprg')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named2_sentry_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 3)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_named2_sentry_turret_unit_cprg'
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_sentry_turret_unit_cprg')
@@ -9148,15 +9166,21 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named3_sentry_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 4)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_named3_sentry_turret_unit_cprg'
+END
 
 ---- Create CT for mining turrets
-
-SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_mining_turret_units')
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_mining_turret_unit_cprg')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_standart_mining_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 1)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_standart_mining_turret_unit_cprg'
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_mining_turret_unit_cprg')
@@ -9164,11 +9188,19 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named1_mining_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 2)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_named1_mining_turret_unit_cprg'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_mining_turret_unit_cprg')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named2_mining_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 3)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_named2_mining_turret_unit_cprg'
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_mining_turret_unit_cprg')
@@ -9176,15 +9208,21 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named3_mining_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 4)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_named3_mining_turret_unit_cprg'
+END
 
 ---- Create CT for harvesting turrets
-
-SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_harvesting_turret_units')
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_harvesting_turret_unit_cprg')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_standart_harvesting_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 1)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_standart_harvesting_turret_unit_cprg'
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_harvesting_turret_unit_cprg')
@@ -9192,11 +9230,19 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named1_harvesting_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 2)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_named1_harvesting_turret_unit_cprg'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_harvesting_turret_unit_cprg')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named2_harvesting_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 3)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_named2_harvesting_turret_unit_cprg'
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_harvesting_turret_unit_cprg')
@@ -9204,15 +9250,21 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named3_harvesting_turret_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 4)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_named3_harvesting_turret_unit_cprg'
+END
 
 ---- Create CT for pelistal combat drones
-
-SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_pelistal_combat_drones_units')
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_pelistal_combat_drone_unit_cprg')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_standart_pelistal_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 1)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_standart_pelistal_combat_drone_unit_cprg'
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_pelistal_combat_drone_unit_cprg')
@@ -9220,11 +9272,19 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named1_pelistal_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 2)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_named1_pelistal_combat_drone_unit_cprg'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_pelistal_combat_drone_unit_cprg')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named2_pelistal_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 3)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_named2_pelistal_combat_drone_unit_cprg'
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_pelistal_combat_drone_unit_cprg')
@@ -9232,15 +9292,21 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named3_pelistal_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 4)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_named3_pelistal_combat_drone_unit_cprg'
+END
 
 ---- Create CT for nuimqol combat drones
-
-SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_nuimqol_combat_drones_units')
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit_cprg')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_standart_nuimqol_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 1)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_standart_nuimqol_combat_drone_unit_cprg'
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit_cprg')
@@ -9248,11 +9314,19 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named1_nuimqol_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 2)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_named1_nuimqol_combat_drone_unit_cprg'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit_cprg')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named2_nuimqol_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 3)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_named2_nuimqol_combat_drone_unit_cprg'
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit_cprg')
@@ -9260,15 +9334,21 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named3_nuimqol_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 4)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_named3_nuimqol_combat_drone_unit_cprg'
+END
 
 ---- Create CT for thelodica combat drones
-
-SET @categoryFlags = (SELECT TOP 1 value FROM categoryflags WHERE name = 'cf_thelodica_combat_drones_units')
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_standart_thelodica_combat_drone_unit_cprg')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_standart_thelodica_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 1)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_standart_thelodica_combat_drone_unit_cprg'
 END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named1_thelodica_combat_drone_unit_cprg')
@@ -9276,17 +9356,29 @@ BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named1_thelodica_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 2)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_named1_thelodica_combat_drone_unit_cprg'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named2_thelodica_combat_drone_unit_cprg')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named2_thelodica_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 3)
 END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_named2_thelodica_combat_drone_unit_cprg'
+END
 
 IF NOT EXISTS (SELECT 1 FROM entitydefaults WHERE definitionname = 'def_named3_thelodica_combat_drone_unit_cprg')
 BEGIN
 	INSERT INTO entitydefaults (definitionname, quantity, attributeflags, categoryflags, options, note, enabled, volume, mass, hidden, health, descriptiontoken, purchasable, tiertype, tierlevel) VALUES
 	('def_named3_thelodica_combat_drone_unit_cprg', 1, 1024, @categoryFlags, NULL, NULL, 1, 0.01, 0.1, 0, 100, 'calibration_program_desc', 0, 1, 4)
+END
+ELSE
+BEGIN
+	UPDATE entitydefaults SET categoryflags = @categoryFlags WHERE definitionname = 'def_named3_thelodica_combat_drone_unit_cprg'
 END
 
 GO
