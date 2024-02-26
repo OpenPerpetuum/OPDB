@@ -1613,13 +1613,6 @@ SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definit
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
 (@targetDefinition, @lootDefinition, 200, 1, 0, 1, 20)
 
-
-
-SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_nuimqol_reactor_plasma')
-
-INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
-(@targetDefinition, @lootDefinition, 150000, 1, 0, 1, 75000)
-
 SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_kernel_nuimqol')
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
@@ -1644,6 +1637,31 @@ SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definit
 
 INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
 (@targetDefinition, @lootDefinition, 1, 0.3, 0, 1, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_nuimqol_reactor_plasma')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 250000, 1, 0, 1, 125000)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_boost_ep_t0')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 3, 1, 0, 1, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_boost_ep_t1')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 2, 1, 0, 1, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_boost_ep_t2')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 1, 1, 0, 1, 1)
+
+SET @lootDefinition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionname = 'def_reactore_core_heavymech')
+
+INSERT INTO npcloot (definition, lootdefinition, quantity, probability, repackaged, dontdamage, minquantity) VALUES
+(@targetDefinition, @lootDefinition, 1, 3, 0, 1, 1)
 
 GO
 
@@ -2270,7 +2288,11 @@ SET @definition = (SELECT TOP 1 definition FROM entitydefaults WHERE definitionn
 IF NOT EXISTS (SELECt 1 FROM npcflock WHERE name = 'courier_01_z6_def_npc_tellesis_sequer_advanced_courier')
 BEGIN
 INSERT INTO npcflock ([name], presenceid, flockmembercount, [definition], spawnoriginX, spawnoriginY, spawnrangeMin, spawnrangeMax, respawnseconds, totalspawncount, homerange, note, respawnmultiplierlow, [enabled], iscallforhelp, behaviorType, npcSpecialType) VALUES
-	('courier_01_z6_def_npc_tellesis_sequer_advanced_courier', @presenceid, 3, @definition, 0, 0, 0, 10, 18000, 0, 50, 'tellesis npc', 0.9, 1, 1, 1, 0)
+	('courier_01_z6_def_npc_tellesis_sequer_advanced_courier', @presenceid, 1, @definition, 0, 0, 0, 10, 18000, 0, 50, 'tellesis npc', 0.9, 1, 1, 1, 0)
+END
+ELSE
+BEGIN
+	UPDATE npcflock SET flockmembercount = 1 WHERE name = 'courier_01_z6_def_npc_tellesis_sequer_advanced_courier'
 END
 
 --- courier 2

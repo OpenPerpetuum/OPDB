@@ -201,8 +201,8 @@ SET @heavyMine = (SELECT TOP 1 definition from entitydefaults WHERE [definitionn
 
 IF NOT EXISTS (SELECT 1 FROM definitionconfig WHERE definition = @lightMine)
 BEGIN
-	INSERT INTO definitionconfig (definition, explosion_radius, damage_chemical, damage_explosive, damage_kinetic, damage_thermal, damage_toxic) VALUES
-	(@lightMine, 1, 100, 100, 100, 100, 100)
+	INSERT INTO definitionconfig (definition, explosion_radius, damage_chemical, damage_explosive, damage_kinetic, damage_thermal, damage_toxic, item_work_range, cycle_time) VALUES
+	(@lightMine, 1, 100, 100, 100, 100, 100, 5.0, 2000)
 END
 ELSE
 BEGIN
@@ -212,14 +212,16 @@ BEGIN
 		damage_explosive = 100,
 		damage_kinetic = 100,
 		damage_thermal = 100,
-		damage_toxic = 100
+		damage_toxic = 100,
+		item_work_range = 5.0,
+		cycle_time = 2000
 	WHERE definition = @lightMine
 END
 
 IF NOT EXISTS (SELECT 1 FROM definitionconfig WHERE definition = @mediumMine)
 BEGIN
-	INSERT INTO definitionconfig (definition, explosion_radius, damage_chemical, damage_explosive, damage_kinetic, damage_thermal, damage_toxic) VALUES
-	(@lightMine, 1, 300, 300, 300, 300, 300)
+	INSERT INTO definitionconfig (definition, explosion_radius, damage_chemical, damage_explosive, damage_kinetic, damage_thermal, damage_toxic, item_work_range, cycle_time) VALUES
+	(@mediumMine, 1, 300, 300, 300, 300, 300, 5.0, 2000)
 END
 ELSE
 BEGIN
@@ -229,14 +231,16 @@ BEGIN
 		damage_explosive = 300,
 		damage_kinetic = 300,
 		damage_thermal = 300,
-		damage_toxic = 300
+		damage_toxic = 300,
+		item_work_range = 5.0,
+		cycle_time = 2000
 	WHERE definition = @mediumMine
 END
 
 IF NOT EXISTS (SELECT 1 FROM definitionconfig WHERE definition = @heavyMine)
 BEGIN
-	INSERT INTO definitionconfig (definition, explosion_radius, damage_chemical, damage_explosive, damage_kinetic, damage_thermal, damage_toxic) VALUES
-	(@lightMine, 1, 900, 900, 900, 900, 900)
+	INSERT INTO definitionconfig (definition, explosion_radius, damage_chemical, damage_explosive, damage_kinetic, damage_thermal, damage_toxic, item_work_range, cycle_time) VALUES
+	(@heavyMine, 1, 900, 900, 900, 900, 900, 5.0, 2000)
 END
 ELSE
 BEGIN
@@ -246,7 +250,9 @@ BEGIN
 		damage_explosive = 900,
 		damage_kinetic = 900,
 		damage_thermal = 900,
-		damage_toxic = 900
+		damage_toxic = 900,
+		item_work_range = 5.0,
+		cycle_time = 2000
 	WHERE definition = @heavyMine
 END
 
@@ -263,7 +269,7 @@ DECLARE @aggfieldID int;
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_light_landmine_capsule' ORDER BY definition DESC);
 
 SET @aggfieldID = (SELECT TOP 1 id from aggregatefields WHERE [name] = 'despawn_time' ORDER BY [name] DESC);
-SET @aggvalueID = 28800000;
+SET @aggvalueID = 28800000
 
 IF NOT EXISTS (SELECT TOP 1 value FROM aggregatevalues WHERE definition = @definitionID AND field = @aggfieldID)
 BEGIN
@@ -629,6 +635,11 @@ WHEN NOT MATCHED BY TARGET THEN
 SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_hermes_chassis' ORDER BY definition DESC);
 
 UPDATE [dbo].[aggregatevalues] SET value = 10 WHERE [definition] = @definitionID and [field] = @aggfieldID;
+
+-- Admin bot has 1000m base landmines detection range --
+SET @definitionID = (SELECT TOP 1 definition from entitydefaults WHERE [definitionname] = 'def_test_bot_chassis' ORDER BY definition DESC);
+
+UPDATE [dbo].[aggregatevalues] SET value = 100 WHERE [definition] = @definitionID and [field] = @aggfieldID;
 
 GO
 
