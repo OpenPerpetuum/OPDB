@@ -8,7 +8,7 @@
 set StartAndWait=start /min /wait
 set SqlCmd=sqlcmd -E -S %computername%\PERPSQL -d perpetuumsa -I -i
 
-set TARGET_DIR=H:\PerpetuumServer\data
+set TARGET_DIR=C:\PerpetuumServer\data
 set TOOLS_DIR=%~dp0Tools
 set PATCHES_DIR=%~dp0Patches
 

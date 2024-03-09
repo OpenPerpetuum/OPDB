@@ -644,3 +644,5 @@ SET @aggvalueID = (SELECT TOP 1 id from aggregatevalues WHERE [definition] = @de
 
 
 UPDATE aggregatevalues SET definition=@definitionID, field=@aggfieldID, value=150 WHERE id =  @aggvalueID;
+
+GO
