@@ -1,0 +1,29 @@
+--- ./$PLUGINSDIR/installdb.sql	2017-10-22 16:03:44.000000000 +0000
++++ ./$PLUGINSDIR/installdb_new.sql	2024-01-17 17:30:59.000000000 +0000
+@@ -1,11 +1,12 @@
++USE [master]
+ DROP DATABASE IF EXISTS [perpetuumsa]
+ GO
+ CREATE DATABASE [perpetuumsa]
+  CONTAINMENT = NONE
+  ON  PRIMARY 
+-( NAME = N'perpetuumsa', FILENAME =  N'%dataFile%'   , SIZE = 473728KB , MAXSIZE = UNLIMITED, FILEGROWTH = 102400KB )
++( NAME = N'perpetuumsa', FILENAME = N'/var/opt/mssql/data/psa.mdf' , SIZE = 473728KB , MAXSIZE = UNLIMITED, FILEGROWTH = 102400KB )
+  LOG ON 
+-( NAME = N'perpetuumsa_log', FILENAME = N'%logFile%' , SIZE = 733184KB , MAXSIZE = 2048GB , FILEGROWTH = 102400KB )
++( NAME = N'perpetuumsa_log', FILENAME = N'/var/opt/mssql/data/psa_log.ldf' , SIZE = 733184KB , MAXSIZE = 2048GB , FILEGROWTH = 102400KB )
+ GO
+ 
+ ALTER DATABASE [perpetuumsa] SET COMPATIBILITY_LEVEL = 130
+@@ -87,8 +88,8 @@
+ 
+ USE [master]
+ ALTER DATABASE [perpetuumsa] SET SINGLE_USER WITH ROLLBACK IMMEDIATE
+-RESTORE DATABASE [perpetuumsa] FROM  DISK = N'%archiveFile%' WITH  FILE = 1,  MOVE N'perpetuumsa' TO N'%dataFile%',  MOVE N'perpetuumsa_log' TO N'%logFile%',  NOUNLOAD,  REPLACE, STATS = 4,  BUFFERCOUNT = 64, MAXTRANSFERSIZE = 4194304
++RESTORE DATABASE [perpetuumsa] FROM DISK = N'/var/opt/mssql/data/perpetuumsa.bak' WITH FILE = 1, MOVE N'perpetuumsa' TO N'/var/opt/mssql/data/psa.mdf', MOVE N'perpetuumsa_log' TO N'/var/opt/mssql/data/psa_log.ldf', NOUNLOAD, REPLACE, STATS = 4,  BUFFERCOUNT = 64, MAXTRANSFERSIZE = 4194304
+ ALTER DATABASE [perpetuumsa] SET MULTI_USER
+ GO
+ ALTER DATABASE [perpetuumsa] SET COMPATIBILITY_LEVEL = 130
+-GO
+\ No newline at end of file
++GO
