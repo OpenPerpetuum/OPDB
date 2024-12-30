@@ -3138,4 +3138,10 @@
 	"Aggregate_unknown_755": "EP bonus duration",
 	"server_wide_ep_bonus_duration_unit": "hours",
 	"server_wide_ep_bonus_activated": "Server-wide EP bonus activated!",
+	"def_npc_hershfield_cameleon_shield_l3_elf": "L3 Cameleon",
+	"def_npc_hershfield_cameleon_shield_l3_elf_name": "Cultist Pixie",
+	"def_npc_hershfield_yagel_dps_l3_deer": "L3 Yagel",
+	"def_npc_hershfield_yagel_dps_l3_deer_name": "Cultist Teamster",
+	"def_npc_hershfield_sequer_basic_lindy_santa": "L7 Sequer",
+	"def_npc_hershfield_sequer_basic_lindy_santa_name": "Cultist Saint",
 }
