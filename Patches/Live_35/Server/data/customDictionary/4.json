@@ -18075,5 +18075,53 @@
 	"def_syndicate_forces_vektor_main_combat_bot_name": "Новичок Синдиката",
 	
 	"def_syndicate_forces_argano_main_support_bot": "Аргано сил Синдиката",
-	"def_syndicate_forces_argano_main_support_bot_name": "Студент-медик Синдиката"
+	"def_syndicate_forces_argano_main_support_bot_name": "Студент-медик Синдиката",
+	
+	"def_npc_argano_support_rank1": "L1 Аргано Госпитальеров",
+	"def_npc_argano_support_rank1_name": "Брат-послушник",
+	
+	"def_npc_argano_support_rank2": "L2 Аргано Госпитальеров",
+	"def_npc_argano_support_rank2_name": "Брат-служитель",
+	
+	"def_npc_argano_support_rank3": "L3 Аргано Госпитальеров",
+	"def_npc_argano_support_rank3_name": "Брат-адепт",
+	
+	"def_npc_argano_support_rank4": "L4 Аргано Госпитальеров",
+	"def_npc_argano_support_rank4_name": "Брат-мастер",
+	
+	"def_npc_argano_support_rank5": "L5 Аргано Госпитальеров",
+	"def_npc_argano_support_rank5_name": "Великий брат",
+	
+	"def_npc_termis_support_rank1": "L1 Термис Госпитальеров",
+	"def_npc_termis_support_rank1_name": "Капеллан-послушник",
+	
+	"def_npc_termis_support_rank2": "L2 Термис Госпитальеров",
+	"def_npc_termis_support_rank2_name": "Капеллан-странник",
+	
+	"def_npc_termis_support_rank3": "L3 Термис Госпитальеров",
+	"def_npc_termis_support_rank3_name": "Капеллан-адепт",
+	
+	"def_npc_termis_support_rank4": "L4 Термис Госпитальеров",
+	"def_npc_termis_support_rank4_name": "Капеллан-мастер",
+	
+	"def_npc_termis_support_rank5": "L5 Термис Госпитальеров",
+	"def_npc_termis_support_rank5_name": "Великий капеллан",
+	
+	"def_npc_riveler_support_rank1": "L1 Ривелер Госпитальеров",
+	"def_npc_riveler_support_rank1_name": "Рыцарь Справедливости-послушник",
+	
+	"def_npc_riveler_support_rank2": "L2 Ривелер Госпитальеров",
+	"def_npc_riveler_support_rank2_name": "Рыцарь Справедливости-странник",
+	
+	"def_npc_riveler_support_rank3": "L3 Ривелер Госпитальеров",
+	"def_npc_riveler_support_rank3_name": "Рыцарь Справедливости-адепт",
+	
+	"def_npc_riveler_support_rank4": "L4 Ривелер Госпитальеров",
+	"def_npc_riveler_support_rank4_name": "Магистр Рыцарей Справедливости",
+	
+	"def_npc_riveler_support_rank5": "L5 Ривелер Госпитальеров",
+	"def_npc_riveler_support_rank5_name": "Великий магистр Рыцарей Справедливости",
+	
+	"def_syndicate_forces_locust_main_combat_bot": "Локуст сил Синдиката",
+	"def_syndicate_forces_locust_main_combat_bot_name": "Разведчик Синдиката"
 }

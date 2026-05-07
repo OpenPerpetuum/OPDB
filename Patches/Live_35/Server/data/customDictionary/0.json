@@ -3448,5 +3448,53 @@
 	"def_syndicate_forces_vektor_main_combat_bot_name": "Syndicate Rookie",
 	
 	"def_syndicate_forces_argano_main_support_bot": "Syndicate Forces Argano",
-	"def_syndicate_forces_argano_main_support_bot_name": "Syndicate Medic Trainee"
+	"def_syndicate_forces_argano_main_support_bot_name": "Syndicate Medic Trainee",
+	
+	"def_npc_argano_support_rank1": "L1 Hospitalier Argano",
+	"def_npc_argano_support_rank1_name": "Apprentice Serving Brother",
+	
+	"def_npc_argano_support_rank2": "L2 Hospitalier Argano",
+	"def_npc_argano_support_rank2_name": "Journeyman Serving Brother",
+	
+	"def_npc_argano_support_rank3": "L3 Hospitalier Argano",
+	"def_npc_argano_support_rank3_name": "Adept Serving Brother",
+	
+	"def_npc_argano_support_rank4": "L4 Hospitalier Argano",
+	"def_npc_argano_support_rank4_name": "Master Serving Brother",
+	
+	"def_npc_argano_support_rank5": "L5 Hospitalier Argano",
+	"def_npc_argano_support_rank5_name": "Grandmaster Serving Brother",
+	
+	"def_npc_termis_support_rank1": "L1 Hospitalier Termis",
+	"def_npc_termis_support_rank1_name": "Apprentice Chaplain",
+	
+	"def_npc_termis_support_rank2": "L2 Hospitalier Termis",
+	"def_npc_termis_support_rank2_name": "Journeyman Chaplain",
+	
+	"def_npc_termis_support_rank3": "L3 Hospitalier Termis",
+	"def_npc_termis_support_rank3_name": "Adept Chaplain",
+	
+	"def_npc_termis_support_rank4": "L4 Hospitalier Termis",
+	"def_npc_termis_support_rank4_name": "Master Chaplain",
+	
+	"def_npc_termis_support_rank5": "L5 Hospitalier Termis",
+	"def_npc_termis_support_rank5_name": "Grandmaster Chaplain",
+	
+	"def_npc_riveler_support_rank1": "L1 Hospitalier Riveler",
+	"def_npc_riveler_support_rank1_name": "Apprentice Knight of Justice",
+	
+	"def_npc_riveler_support_rank2": "L2 Hospitalier Riveler",
+	"def_npc_riveler_support_rank2_name": "Journeyman Knight of Justice",
+	
+	"def_npc_riveler_support_rank3": "L3 Hospitalier Riveler",
+	"def_npc_riveler_support_rank3_name": "Adept Knight of Justice",
+	
+	"def_npc_riveler_support_rank4": "L4 Hospitalier Riveler",
+	"def_npc_riveler_support_rank4_name": "Master Knight of Justice",
+	
+	"def_npc_riveler_support_rank5": "L5 Hospitalier Riveler",
+	"def_npc_riveler_support_rank5_name": "Grandmaster Knight of Justice",
+	
+	"def_syndicate_forces_locust_main_combat_bot": "Syndicate Forces Locust",
+	"def_syndicate_forces_locust_main_combat_bot_name": "Syndicate Scout"
 }
