@@ -57,7 +57,7 @@ WHERE definitionname = 'def_standard_hunter_drone_pve'
   AND (options IS NULL OR options NOT LIKE '%packedTurretId=%');
 
 UPDATE dbo.entitydefaults
-SET options = COALESCE(options, '') + '#packedTurretId=i2313'
+SET options = COALESCE(options, '') + '#packedTurretId=i' + FORMAT((SELECT definition FROM dbo.entitydefaults WHERE definitionname = 'def_standard_hunter_drone_rcu_pvp'), 'x')
 WHERE definitionname = 'def_standard_hunter_drone_pvp'
   AND (options IS NULL OR options NOT LIKE '%packedTurretId=%');
 
