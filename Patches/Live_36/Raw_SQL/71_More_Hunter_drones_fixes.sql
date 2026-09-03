@@ -62,7 +62,7 @@ WHERE definitionname = 'def_standard_hunter_drone_pvp'
   AND (options IS NULL OR options NOT LIKE '%packedTurretId=%');
 
 -- Verification: both rows should now show options containing both '#faction=sSyndicate' and
--- '#packedTurretId=i2312' / '#packedTurretId=i2313' respectively.
+-- '#packedTurretId=i...' respectively.
 -- SELECT definition, definitionname, options FROM dbo.entitydefaults
 -- WHERE definitionname IN ('def_standard_hunter_drone_pve', 'def_standard_hunter_drone_pvp');
 
