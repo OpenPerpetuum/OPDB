@@ -73,6 +73,12 @@ UPDATE entitydefaults SET options = '#moduleFlag=i8#tier=$tierlevel_t3_pr#ammoCa
 UPDATE entitydefaults SET options = '#moduleFlag=i8#tier=$tierlevel_t3#ammoCapacity=i5#ammoType=L8120a' WHERE definitionname = 'def_named2_hunter_remote_controller'
 UPDATE entitydefaults SET options = '#moduleFlag=i8#tier=$tierlevel_t2_pr#ammoCapacity=i5#ammoType=L8120a' WHERE definitionname = 'def_named1_hunter_remote_controller_pr'
 UPDATE entitydefaults SET options = '#moduleFlag=i8#tier=$tierlevel_t2#ammoCapacity=i5#ammoType=L8120a' WHERE definitionname = 'def_named1_hunter_remote_controller'
-UPDATE entitydefaults SET options = '#moduleFlag=i8#tier=$tierlevel_t1#ammoCapacity=i5#ammoType=L8120a' WHERE definitionname = 'def_standard_hunter_remote_controller'
+UPDATE dbo.entitydefaults SET options = '#moduleFlag=i8#tier=$tierlevel_t4_pr#ammoCapacity=i5#ammoType=L8120a' WHERE definitionname = 'def_named3_hunter_remote_controller_pr';
+UPDATE dbo.entitydefaults SET options = '#moduleFlag=i8#tier=$tierlevel_t4#ammoCapacity=i5#ammoType=L8120a' WHERE definitionname = 'def_named3_hunter_remote_controller';
+UPDATE dbo.entitydefaults SET options = '#moduleFlag=i8#tier=$tierlevel_t3_pr#ammoCapacity=i5#ammoType=L8120a' WHERE definitionname = 'def_named2_hunter_remote_controller_pr';
+UPDATE dbo.entitydefaults SET options = '#moduleFlag=i8#tier=$tierlevel_t3#ammoCapacity=i5#ammoType=L8120a' WHERE definitionname = 'def_named2_hunter_remote_controller';
+UPDATE dbo.entitydefaults SET options = '#moduleFlag=i8#tier=$tierlevel_t2_pr#ammoCapacity=i5#ammoType=L8120a' WHERE definitionname = 'def_named1_hunter_remote_controller_pr';
+UPDATE dbo.entitydefaults SET options = '#moduleFlag=i8#tier=$tierlevel_t2#ammoCapacity=i5#ammoType=L8120a' WHERE definitionname = 'def_named1_hunter_remote_controller';
+UPDATE dbo.entitydefaults SET options = '#moduleFlag=i8#tier=$tierlevel_t1#ammoCapacity=i5#ammoType=L8120a' WHERE definitionname = 'def_standard_hunter_remote_controller';
 
 GO
