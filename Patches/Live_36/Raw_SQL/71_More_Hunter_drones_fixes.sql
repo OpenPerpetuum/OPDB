@@ -46,6 +46,18 @@ GO
 --
 -- Safe to re-run: each WHERE guard makes its statement a no-op once the option is already present.
 
+DECLARE @tplHeadDef INT = (SELECT definition FROM entitydefaults WHERE definitionname = 'def_standard_hunter_drone_head');
+DECLARE @tplChassisDef INT = (SELECT definition FROM entitydefaults WHERE definitionname = 'def_standard_hunter_drone_chassis');
+DECLARE @tplLegDef INT = (SELECT definition FROM entitydefaults WHERE definitionname = 'def_standard_hunter_drone_leg');
+DECLARE @tplInventoryDef INT = (SELECT definition FROM entitydefaults WHERE definitionname = 'def_standard_hunter_drone_inventory');
+
+UPDATE dbo.entitydefaults
+SET options = '#head=n' + FORMAT(@tplHeadDef, 'd') +
+              '#chassis=n' + FORMAT(@tplChassisDef, 'd') +
+              '#leg=n' + FORMAT(@tplLegDef, 'd') +
+              '#inventory=n' + FORMAT(@tplInventoryDef, 'd')
+WHERE definitionname IN ('def_standard_hunter_drone_pve', 'def_standard_hunter_drone_pvp');
+
 UPDATE dbo.entitydefaults
 SET options = COALESCE(options, '') + '#faction=sSyndicate'
 WHERE definitionname IN ('def_standard_hunter_drone_pve', 'def_standard_hunter_drone_pvp')
