@@ -2572,4 +2572,5 @@
 	"def_spectator_head": "Spectator head",
 	"def_spectator_chassis": "Spectator chassis",
 	"def_spectator_leg": "Spectator legs",
+	"corporationcreate_price": "Corporation founding fee: {%PRICE%} NIC",
 }
