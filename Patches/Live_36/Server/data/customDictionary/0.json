@@ -1,5 +1,5 @@
 {
-  "def_weasel_arbalest_mk3_bot_desc": "'''Class:''' Advanced assault robot specialized in magnetic weapons\r\n\r\n'''Faction:''' Nuimqol Union\r\n\r\n''This Mk3 variant was heavily customized by agent named Weasel in attempt to deal with his worst enemy, Archer.''\\n\\nNuimqol Arbalests represent the undersized brawlers of the Union’s effort. They may lack the glory of the Kain, but they are more than capable combatants in their own right, representing the largest threat to the Pelistal Empire’s swarming Castels.",
+  "def_weasel_arbalest_mk3_bot_desc": "'''Class:''' Advanced assault robot specialized in magnetic weapons\r\n\r\n'''Faction:''' Nuimqol Union\r\n\r\n''This Mk3 variant was heavily customized by agent named Weasel in attempt to deal with his worst enemy, Archer.''\r\n\r\nNuimqol Arbalests represent the undersized brawlers of the Union’s effort. They may lack the glory of the Kain, but they are more than capable combatants in their own right, representing the largest threat to the Pelistal Empire’s swarming Castels.",
   "def_weasel_arbalest_mk3_bot_inventory": "Robot cargo",
   "def_weasel_arbalest_mk3_bot": "\"Weasel\" Arbalest Mk3",
   "def_weasel_arbalest_mk3_bot_leg": "\"Weasel\" Arbalest Mk3 legs",
@@ -67,7 +67,7 @@
   "def_archer_named4_sensor_booster": "\"Hawk-Eye Array\" sensor amplifier",
   "def_archer_named4_tracking_upgrade_desc": "Range extenders improve the optimal range of all fitted modules.\r\n\r\nThis modification was created by Archer.",
   "def_archer_named4_tracking_upgrade": "\"Moonlit Sight\" range extender",
-  "def_archer_gropho_mk3_bot_desc": "'''Class:''' Customized heavy mech specialized in missiles\r\n\r\n'''Faction:''' Pelistal Empire\r\n\r\n''This Mk3 variant was heavily customized by agent named Archer in attempt to deal with his worst enemy, Weasel.''\\n\\nRuthless, methodical, merciless, unyielding - these are the hallmarks of the Gropho, one of the largest expressions of the Pelistal Empire’s strength. Although not the ultimate power in the Pelistal Empire, no Nian - Theolodican or Nuimqol - dismisses the power of the Gropho’s fusillades. Even the Gropho’s masters recognize the power of their subjects, and are mindful of it, as a kennel owner is of its most dangerous dog.",
+  "def_archer_gropho_mk3_bot_desc": "'''Class:''' Customized heavy mech specialized in missiles\r\n\r\n'''Faction:''' Pelistal Empire\r\n\r\n''This Mk3 variant was heavily customized by agent named Archer in attempt to deal with his worst enemy, Weasel.''\r\n\r\nRuthless, methodical, merciless, unyielding - these are the hallmarks of the Gropho, one of the largest expressions of the Pelistal Empire’s strength. Although not the ultimate power in the Pelistal Empire, no Nian - Theolodican or Nuimqol - dismisses the power of the Gropho’s fusillades. Even the Gropho’s masters recognize the power of their subjects, and are mindful of it, as a kennel owner is of its most dangerous dog.",
   "def_archer_gropho_mk3_bot_inventory": "Robot cargo",
   "def_archer_gropho_mk3_bot": "\"Archer\" Gropho Mk3",
   "def_archer_gropho_mk3_bot_leg": "\"Archer\" Gropho Mk3 legs",
@@ -4789,7 +4789,6 @@
   "combatlog_formatstring_effecton": "[color=#75effe]{%ATTACKER%}[/color] > {%EFFECT%} on > {%VICTIM%}",
   "productionfactory_licensenotmanufacturable": "License not manufacturable",
   "transactiontype_productionpatentmaterialefficiencydevelop": "Material efficiency development on patent",
-  "production factory_extensionmissing": "Extensions missing",
   "def_npc_kain_tank_rank1": "Kain",
   "def_npc_kain_tank_rank2": "Kain",
   "def_npc_kain_tank_rank3": "Kain",
@@ -9558,7 +9557,6 @@
   "error_ThisModuleIsNotSupportedOnNPCs": "This module has no effect on NPCs",
   "terraingang_core": "Accumulator",
   "tpc_ics_blaha_z_to_tpc_icspvp_6": "Koryosk, Novastrov",
-  "tpc_asi2_nauwy_z _to_tpc_asipvp_8": "Ghuron, Kentagura",
   "error_OnlyGangLeaderCanDoThis": "Only the squad leaders can do this.",
   "error_NoSuchGangInvite": "This squad invitation has already expired.",
   "error_CharacterAlreadyHasPendingGangInvitation": "This Agent has already been invited to a squad. You have to wait until he/she replies that.",
@@ -18223,5 +18221,5 @@
   "ext_turret_amplification_reactor_radiation": "Turrets reactor stability",
   "ext_turret_amplification_reactor_radiation_desc": "Each level of this extension increases the reactor stability of turrets by an additional {%BONUS100%}%.",
   "Aggregate_unknown_781": "Turrets reactor stability modifier",
-  "turret_amplification_reactor_radiation_modifier_unit": "%",
+  "turret_amplification_reactor_radiation_modifier_unit": "%"
 }
