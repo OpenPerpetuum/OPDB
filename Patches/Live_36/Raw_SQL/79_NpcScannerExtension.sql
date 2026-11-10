@@ -2,7 +2,7 @@ USE [perpetuumsa]
 GO
 
 -- Add NPC Scanning to the extraction skills and require level 1 for the NPC scanner charge.
--- Apply after NpcScannerAmmo.sql. The flat range bonus is in kilometers.
+-- Apply after 78_NpcScannerAmmo.sql. The flat range bonus is in kilometers.
 SET XACT_ABORT ON;
 BEGIN TRANSACTION;
 
@@ -13,7 +13,7 @@ DECLARE @requiredLevel int = 1;
 DECLARE @extensionId int;
 
 IF @definition IS NULL
-    THROW 50001, 'The NPC scanner charge definition is missing. Apply NpcScannerAmmo.sql first.', 1;
+    THROW 50001, 'The NPC scanner charge definition is missing. Apply 78_NpcScannerAmmo.sql first.', 1;
 
 IF @kilometersPerLevel <= 0 OR @requiredLevel NOT BETWEEN 1 AND 10
     THROW 50003, 'Set a positive range bonus and a required level from 1 to 10.', 1;
