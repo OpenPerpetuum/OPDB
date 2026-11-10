@@ -1,4 +1,6 @@
 {
+	"def_ammo_npc_scan":"NPC scanner charge",
+	"def_ammo_npc_scan_desc":"Scans the current zone for the nearest living NPC, draws a line from your position to it, and pings its location on your radar.",
 	"def_npc_vektor_swab_rank1":"L1 Light Combat Syndicate",
 	"def_npc_vektor_swab_rank1_name":"Zealot Swab",
 	"def_npc_vektor_swab_rank2":"L2 Light Combat Syndicate",
