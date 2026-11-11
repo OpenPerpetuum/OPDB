@@ -9,6 +9,7 @@ BEGIN TRANSACTION;
 
 DECLARE @templateName varchar(100) = 'def_ammo_intrusion_scan';
 DECLARE @chargeName varchar(100) = 'def_ammo_npc_scan';
+DECLARE @productionBatch int = 100;
 DECLARE @vendorSellPrice float = 100000; -- NIC per charge paid by the player.
 DECLARE @vendorBuyPrice float = 1000; -- NIC per charge paid by the NPC vendor.
 DECLARE @templateDefinition int;
@@ -47,7 +48,9 @@ IF @@ROWCOUNT = 0
 PRINT N'Configure NPC scanner charge';
 
 MERGE dbo.entitydefaults WITH (HOLDLOCK) AS existing
-USING (SELECT quantity, attributeflags, categoryflags, options, volume, mass, health, tiertype, tierlevel
+-- Volume describes a whole default batch; preserve the template's per-charge volume.
+USING (SELECT @productionBatch AS quantity, attributeflags, categoryflags, options,
+              volume * @productionBatch / quantity AS volume, mass, health, tiertype, tierlevel
        FROM dbo.entitydefaults WHERE definitionname = @templateName) AS template
 ON existing.definitionname = @chargeName
 WHEN MATCHED THEN UPDATE SET
