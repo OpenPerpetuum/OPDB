@@ -9,7 +9,8 @@ BEGIN TRANSACTION;
 
 DECLARE @templateName varchar(100) = 'def_ammo_intrusion_scan';
 DECLARE @chargeName varchar(100) = 'def_ammo_npc_scan';
-DECLARE @vendorPrice float = NULL; -- NULL uses the template price on each market.
+DECLARE @vendorSellPrice float = 100000; -- NIC per charge paid by the player.
+DECLARE @vendorBuyPrice float = 1000; -- NIC per charge paid by the NPC vendor.
 DECLARE @templateDefinition int;
 
 SELECT @templateDefinition = definition
@@ -19,24 +20,24 @@ WHERE definitionname = @templateName;
 IF @templateDefinition IS NULL
     THROW 50001, 'The intrusion scanner charge definition is missing.', 1;
 
-IF @vendorPrice <= 0
-    THROW 50003, 'The NPC scanner charge price must be positive.', 1;
+IF @vendorSellPrice IS NULL OR @vendorBuyPrice IS NULL
+    OR @vendorSellPrice <= 0 OR @vendorBuyPrice <= 0 OR @vendorBuyPrice >= @vendorSellPrice
+    THROW 50003, 'NPC scanner charge prices must be positive, with buy price below sell price.', 1;
 
 DECLARE @vendorOrders TABLE (
     marketeid bigint PRIMARY KEY,
     submittereid bigint NOT NULL,
-    price float NOT NULL,
     quantity int NOT NULL
 );
 
 ;WITH templateOrders AS (
-    SELECT marketeid, submittereid, price, quantity,
+    SELECT marketeid, submittereid, quantity,
         ROW_NUMBER() OVER (PARTITION BY marketeid ORDER BY price, marketitemid) AS orderNumber
     FROM dbo.marketitems
     WHERE itemdefinition = @templateDefinition AND isSell = 1 AND isvendoritem = 1 AND formembersof IS NULL
 )
-INSERT INTO @vendorOrders (marketeid, submittereid, price, quantity)
-SELECT marketeid, submittereid, COALESCE(@vendorPrice, price), quantity
+INSERT INTO @vendorOrders (marketeid, submittereid, quantity)
+SELECT marketeid, submittereid, quantity
 FROM templateOrders
 WHERE orderNumber = 1;
 
@@ -63,23 +64,34 @@ VALUES (@chargeName, template.quantity, template.attributeflags, template.catego
 
 DECLARE @chargeDefinition int = (SELECT definition FROM dbo.entitydefaults WHERE definitionname = @chargeName);
 
-PRINT N'Configure NPC sell orders for the NPC scanner charge';
+-- Both directions use the intrusion charge's markets, vendor and order quantity.
+-- Update public NPC orders only; player orders and restricted offers are untouched.
+DECLARE @orderDirections TABLE (isSell bit PRIMARY KEY, price float NOT NULL);
+INSERT INTO @orderDirections (isSell, price)
+VALUES (1, @vendorSellPrice), (0, @vendorBuyPrice);
+
+PRINT N'Configure NPC buy and sell orders for the NPC scanner charge';
 
 UPDATE existing
-SET price = template.price, quantity = template.quantity
+SET price = direction.price, quantity = template.quantity
 FROM dbo.marketitems AS existing
 JOIN @vendorOrders AS template ON template.marketeid = existing.marketeid
-WHERE existing.itemdefinition = @chargeDefinition AND existing.isSell = 1
+JOIN @orderDirections AS direction ON direction.isSell = existing.isSell
+WHERE existing.itemdefinition = @chargeDefinition
     AND existing.isvendoritem = 1 AND existing.formembersof IS NULL
-    AND (existing.price <> template.price OR existing.quantity <> template.quantity);
+    AND (existing.price <> direction.price OR existing.quantity <> template.quantity);
 
 INSERT INTO dbo.marketitems (marketeid, itemdefinition, submittereid, isSell, price, quantity, isvendoritem)
-SELECT template.marketeid, @chargeDefinition, template.submittereid, 1, template.price, template.quantity, 1
+SELECT template.marketeid, @chargeDefinition, template.submittereid,
+    direction.isSell, direction.price, template.quantity, 1
 FROM @vendorOrders AS template
+CROSS JOIN @orderDirections AS direction
 WHERE NOT EXISTS (
         SELECT 1 FROM dbo.marketitems AS existing
+        WITH (UPDLOCK, HOLDLOCK)
         WHERE existing.marketeid = template.marketeid AND existing.itemdefinition = @chargeDefinition
-            AND existing.isSell = 1 AND existing.isvendoritem = 1 AND existing.formembersof IS NULL
+            AND existing.isSell = direction.isSell
+            AND existing.isvendoritem = 1 AND existing.formembersof IS NULL
     );
 
 COMMIT TRANSACTION;
